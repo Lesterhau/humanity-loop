@@ -236,3 +236,23 @@ Human-readable mirror of `actions.jsonl`.
 
 ---
 
+---
+
+## HL-023 — 2026-09-28 — planetary-systems
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Expanded Planetary Systems to require Humanity Loop to measure/reduce its own compute footprint before claiming compensation and to scout non-technological environmental interventions.
+
+**Outcome:** Planetary Systems now includes an abate-first footprint policy, planetary balance-sheet requirements, and explicit non-tech scouting domains.
+
+
+---
+
+## HL-024 — 2026-09-28 — inner-development
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Created an Inner Development & Collective Resilience division for evidence-backed contemplative practice, awe, meaning, compassion, interconnection, pluralistic mystical literacy, and prosocial development without religious dogma.
+
+**Outcome:** A new Humanity Loop workstream now defines mission, metrics, agent families, guardrails, and the first research question for population-scale inner development.
