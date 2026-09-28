@@ -332,3 +332,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Audited installed research/science tools and documented a specialized-tool-first workflow with lawful fallbacks for credential-gated services.
 
 **Outcome:** TOOLING.md records working research connectors, Elicit's current API-plan limitation, Undermind's unconfigured workspace, and a multi-source verification workflow.
+
+---
+
+## HL-032 — 2026-09-28 — population-health
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Refined the Preventive Mental Health mission to explicitly target chronic fear/threat-reactivity, anger, grievance, humiliation, hostile attribution, and disgust-based dehumanization alongside conventional mental-health outcomes.
+
+**Outcome:** MENTAL-HEALTH.md now reflects evidence linking perceived threat to outgroup hostility, anger/grievance to aggression, and anger-focused CBT to improved outcomes, while retaining the important caveat that these pathways are probabilistic and shaped by social/institutional context.
