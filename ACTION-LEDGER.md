@@ -256,3 +256,79 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Created an Inner Development & Collective Resilience division for evidence-backed contemplative practice, awe, meaning, compassion, interconnection, pluralistic mystical literacy, and prosocial development without religious dogma.
 
 **Outcome:** A new Humanity Loop workstream now defines mission, metrics, agent families, guardrails, and the first research question for population-scale inner development.
+
+---
+
+## HL-025 — 2026-09-28 — external-outcome
+**Status:** confirmed-response  
+**Scope:** US/federal veterans services  
+
+**Action:** Reported stale Spanish-language VA benefits navigation/content.
+
+**Outcome:** VA Digital Media Engagement replied that it will investigate the error and work to resolve it soon.
+
+
+---
+
+## HL-026 — 2026-09-28 — external-outcome
+**Status:** confirmed-response  
+**Scope:** US/state nutrition assistance  
+
+**Action:** Reported conflicting Texas WIC monthly income limits.
+
+**Outcome:** Texas WIC responded with the correct monthly income limits and thanked the reporter for bringing the discrepancy to its attention; public-facing correction still needs verification.
+
+
+---
+
+## HL-027 — 2026-09-28 — external-outcome
+**Status:** acknowledged  
+**Scope:** US/state administrative rights  
+
+**Action:** Reported problematic Texas WIC fair-hearing attorney language.
+
+**Outcome:** Texas WIC acknowledged the feedback; no substantive determination or correction has yet been confirmed.
+
+
+---
+
+## HL-028 — 2026-09-28 — population-health
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Created a Preventive Mental Health & Psychological Maintenance division focused on voluntary routine check-ins, universal prevention, task-sharing, stepped care, and rapid referral.
+
+**Outcome:** MENTAL-HEALTH.md now frames population psychological maintenance as infrastructure while rejecting unsupported claims that therapy automatically changes ideology or eliminates prejudice.
+
+
+---
+
+## HL-029 — 2026-09-28 — foresight
+**Status:** executed  
+**Scope:** global scouting  
+
+**Action:** Added an explicit known-knowns/known-unknowns/unknown-knowns/unknown-unknowns question-discovery framework.
+
+**Outcome:** UNKNOWN-UNKNOWNS.md and SCOUTING.md now require assumption inversion, anomaly hunting, negative-space search, cross-domain analogy, failure mining, and unconventional local innovation scans.
+
+
+---
+
+## HL-030 — 2026-09-28 — planetary-systems
+**Status:** executed  
+**Scope:** Humanity Loop compute  
+
+**Action:** Replaced the hourly no-op bias with a productive-fallback rule and formalized environmental break-even/payback mathematics for scaling compute.
+
+**Outcome:** ENVIRONMENTAL-BREAK-EVEN.md defines resource-vector accounting, evidence-discounted benefits, exponential cost/benefit models, break-even time, uncertainty simulation, and marginal environmental ROI.
+
+
+---
+
+## HL-031 — 2026-09-28 — capability
+**Status:** executed  
+**Scope:** Humanity Loop research stack  
+
+**Action:** Audited installed research/science tools and documented a specialized-tool-first workflow with lawful fallbacks for credential-gated services.
+
+**Outcome:** TOOLING.md records working research connectors, Elicit's current API-plan limitation, Undermind's unconfigured workspace, and a multi-source verification workflow.
