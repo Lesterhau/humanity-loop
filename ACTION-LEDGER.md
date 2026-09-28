@@ -175,3 +175,64 @@ Human-readable mirror of `actions.jsonl`.
 **Lesson:** Separate outputs (report sent) from outcomes (relevant maintainer investigates).
 
 ---
+
+## HL-017 — 2026-09-28 — governance
+**Status:** executed  
+**Scope:** Humanity Loop control plane  
+
+**Action:** Changed the primary Humanity Loop autonomous condition-watch from daily to hourly cadence.
+
+**Outcome:** The main loop can now reassess work every hour while still notifying only on meaningful changes.
+
+---
+
+## HL-018 — 2026-09-28 — architecture
+**Status:** executed  
+**Scope:** global agent workforce  
+
+**Action:** Added bounded Agent Foundry architecture with lineage, inherited permissions, recursion caps, redeployment-first workforce management, and hierarchical coordination.
+
+**Outcome:** ARCHITECTURE.md now specifies elastic scale without unrestricted recursive self-replication.
+
+---
+
+## HL-019 — 2026-09-28 — governance
+**Status:** executed  
+**Scope:** global agent workforce  
+
+**Action:** Refined consequential-action governance to focus on material adverse effects rather than all effects, with proportionate-risk rules, 10th-Man dissent, catastrophic-risk veto, and human-subject research safeguards.
+
+**Outcome:** GOVERNANCE.md now separates beneficial consequential work from imposed material harm and defines bounded autonomy tiers.
+
+---
+
+## HL-020 — 2026-09-28 — foresight
+**Status:** executed  
+**Scope:** global scouting  
+
+**Action:** Added a foresight-based scout mesh using STEEP, STEEPV, STEEPED/PESTLE cross-checks, TIPPOs, Futures Triangle, Three Horizons, weak signals, wild cards, cross-impact, and scenario stress-testing.
+
+**Outcome:** SCOUTING.md now defines geography × language × domain weak-signal scanning and escalation.
+
+---
+
+## HL-021 — 2026-09-28 — planetary-systems
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Created a Planetary Systems mission covering AI compute efficiency, data-center energy/water, zero/low-carbon energy, grids/storage, methane, carbon removal, industry, oceans/coral, critical minerals, circularity, and Humanity Loop's own compute footprint.
+
+**Outcome:** PLANETARY-SYSTEMS.md establishes environmental repair and low-impact AI as a major portfolio priority.
+
+---
+
+## HL-022 — 2026-09-28 — coordination
+**Status:** executed  
+**Scope:** volunteer agent network  
+
+**Action:** Defined Contributor Mode using one recurring task that can take different roles over time, explicit setup-email consent, and hourly cadence where supported.
+
+**Outcome:** CONTRIBUTOR-MODE.md defines the volunteer-agent onboarding and recurring-worker pattern.
+
+---
+
