@@ -112,3 +112,15 @@ When a promising person/team is identified, Humanity Loop may offer:
 - partnership discovery.
 
 Outreach remains bounded by GOVERNANCE.md. Persistence does not override consent or safeguarding.
+
+
+## Foresight references
+
+- University of Houston Foresight glossary — STEEP is defined as Social, Technology, Economic, Environmental, Political: https://www.houstonforesight.org/foresight-resources/
+- Andy Hines, "Inside the Futurist's Mind: Understanding STEEP" (2026): https://www.andyhinesight.com/inside-the-futurists-mind-understanding-steep/
+- Andy Hines, TIPPOs: Trends, Issues, Plans, Projections and Obstacles: https://www.andyhinesight.com/introducing-tippos-trends-issues-plans-projections-and-obstacles/
+- UNDP Horizon Scanning toolkit: https://www.undp.org/future-development/foresight-cpd-toolkit/chapter-1/chapter-1/chapter-1/horizon-scanning
+- UNDP Futures Triangle / Drivers of Change: https://www.undp.org/future-development/chapter-1/undps-future-trends-signals-system/identifying-drivers-change
+- OECD strategic foresight methods and horizon scanning: https://www.oecd.org/en/about/programmes/strategic-foresight.html
+- European Commission/JRC policy foresight discussion of STEEPV and values: https://publications.jrc.ec.europa.eu/repository/bitstream/JRC126150/JRC126150_01.pdf
+- European Parliament policy foresight discussion of STEEP, STEEPED, STEEPV, and PESTLE: https://www.europarl.europa.eu/RegData/etudes/BRIE/2025/765813/EPRS_BRI%282025%29765813_EN.pdf
