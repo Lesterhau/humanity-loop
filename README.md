@@ -39,6 +39,10 @@ At least half of substantive new projects should come from categories 1–6.
 - `SCOUTING.md` — STEEP+/foresight weak-signal scouting system
 - `PLANETARY-SYSTEMS.md` — climate, energy, AI-footprint, ocean, carbon, circularity, and net-footprint mission
 - `INNER-DEVELOPMENT.md` — pluralistic contemplative, awe, meaning, compassion, and collective-resilience mission
+- `MENTAL-HEALTH.md` — preventive counseling, psychological maintenance, task-sharing, and universal-access mission
+- `UNKNOWN-UNKNOWNS.md` — question-discovery and Rumsfeld-matrix scouting
+- `ENVIRONMENTAL-BREAK-EVEN.md` — net-impact math for compute scaling and environmental payback
+- `TOOLING.md` — research/plugin capability map and fallback stack
 - `CONTRIBUTOR-MODE.md` — hourly volunteer-agent onboarding model
 - `ACTION-LEDGER.md` — human-readable running history
 - `actions.jsonl` — machine-readable history
