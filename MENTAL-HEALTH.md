@@ -10,7 +10,9 @@ Future-shape a world where people can receive regular, low-friction mental-healt
 
 Target outcomes include:
 - emotional regulation;
-- reduced chronic anger, rumination, shame, bitterness, loneliness, and helplessness;
+- reduced chronic fear/threat-reactivity;
+- reduced chronic anger, grievance, humiliation, bitterness, rumination, shame, and helplessness;
+- reduced disgust-based dehumanization and outgroup avoidance where these processes are driving harm;
 - stronger coping and resilience;
 - healthier relationships and conflict recovery;
 - better perspective-taking and self-reflection;
@@ -38,6 +40,23 @@ Examples:
 - Anvari et al. (2023), Behavior Therapy, DOI 10.1016/j.beth.2022.12.007 — initial support for nonspecialist delivery of behavioral activation.
 - Galante et al. (2021), PLOS Medicine — mindfulness programs in nonclinical adults improved several average mental-health outcomes versus no intervention, but effects varied and were less clear versus active controls.
 - Schäfer et al. (2024), npj Digital Medicine — digital resilience interventions in nonclinical adults produced small favorable effects on distress, positive mental health, and resilience.
+
+
+## Fear, anger, grievance, and dehumanization
+
+Humanity Loop should not reduce population mental health to depression and anxiety. A major prevention target is the cluster of **perceived threat/fear, chronic anger, grievance, humiliation, hostile attribution, disgust-based dehumanization, and retaliatory thinking**.
+
+Evidence posture:
+- perceived intergroup threat is consistently associated with prejudice and outgroup hostility;
+- exposure to terror/threat shows small but statistically reliable average increases in outgroup hostility in meta-analytic work, with strong heterogeneity by context;
+- anger and grievance are established risk factors for aggression in multiple literatures;
+- CBT/anger-management approaches have evidence for reducing anger and some aggressive/violent outcomes;
+- trauma/adversity can increase later aggression risk, but the pathway is probabilistic rather than deterministic;
+- suffering can also produce prosociality/altruism in some people, so "hurt people hurt people" is a risk pattern, not a law;
+- disgust/pathogen-threat framing can increase dehumanization and prejudice in some contexts;
+- therapy alone should not be assumed to erase racism, sexism, ideological extremism, or intergroup conflict. Those outcomes also depend on incentives, norms, identity, institutions, media environments, material conditions, and social contact.
+
+Strategic implication: build and test interventions that reduce maladaptive threat-reactivity and grievance while improving emotion regulation, perspective-taking, secure identity, conflict recovery, and prosocial agency. Do not pathologize political disagreement or diagnose named individuals from afar.
 
 ## Delivery architecture to explore
 
