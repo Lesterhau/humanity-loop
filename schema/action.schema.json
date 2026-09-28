@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Humanity Loop Action",
+  "type": "object",
+  "required": [
+    "id",
+    "date",
+    "category",
+    "status",
+    "scope",
+    "action",
+    "outcome",
+    "replicable"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "category": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "outcome": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "replicable": {
+      "type": "boolean"
+    },
+    "lesson": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
