@@ -1,0 +1,12 @@
+{
+  "daily_kwh": {"low": 0.5, "mode": 2.0, "high": 8.0},
+  "kg_co2e_per_kwh": {"low": 0.05, "mode": 0.35, "high": 0.8},
+  "liters_water_per_kwh": {"low": 0.2, "mode": 1.5, "high": 6.0},
+  "daily_gross_carbon_benefit_kg": {"low": 0.0, "mode": 3.0, "high": 30.0},
+  "attribution": {"low": 0.05, "mode": 0.25, "high": 0.8},
+  "evidence_quality": {"low": 0.2, "mode": 0.6, "high": 0.95},
+  "additionality": {"low": 0.1, "mode": 0.6, "high": 1.0},
+  "durability": {"low": 0.2, "mode": 0.8, "high": 1.0},
+  "benefit_scale_elasticity": {"low": 0.5, "mode": 1.0, "high": 1.5},
+  "initial_carbon_debt_kg": {"low": 0.0, "mode": 2.0, "high": 20.0}
+}
