@@ -8,7 +8,7 @@ Humanity Loop should audit available tools before choosing a workflow. Do not de
 - **Pendar** — exact corpus sizing, growth, institutions/countries, subfields, retraction counts.
 - **SciSpace** — very broad semantic paper discovery.
 - **Lune** — technical/research search, citation networks, full text, claim verification, evidence sufficiency.
-- **Undermind** — deep literature search/workspaces once a workspace is configured.
+- **Undermind** — Humanity Loop's persistent scholarly workspace: agentic deep literature reviews, iterative semantic/citation search, full-PDF reading via sub-agents, citation-linked notes, and preserved domain folders.
 
 ### Evidence synthesis
 - **Consensus** — fast peer-reviewed synthesis and meta-analysis discovery.
@@ -40,7 +40,7 @@ Humanity Loop should audit available tools before choosing a workflow. Do not de
 ## Tool-access status discovered 2026-09-28
 
 - **Elicit:** installed, but the connected account currently does **not** have MCP/API access under its plan.
-- **Undermind:** available but no workspace is currently configured.
+- **Undermind:** working. Workspace `Ryan's workspace` is configured (workspace_id `7792cb93-1c28-4847-9966-1b49eeef4f96`) with Humanity Loop folders for mental health, planetary systems, inner development, and scientific integrity.
 - **Consensus:** working.
 - **Scite:** working.
 - **Amass:** working.
@@ -65,10 +65,22 @@ When a preferred tool is gated:
 For consequential scientific/health conclusions, prefer:
 1. map field with Pendar;
 2. retrieve systematic reviews/meta-analyses with Consensus/Amass;
-3. inspect citation support/contradiction and notices with Scite;
-4. use full-text-capable tools (Amass, Scite OA/licensed, Lune, Wiley where available);
-5. verify key citations/retractions with Scholar Sidekick/Pendar;
-6. use current web/government sources for implementation context;
-7. explicitly record disagreements and evidence quality.
+3. use **Undermind deep search** when the question is broad, contested, interdisciplinary, or important enough to merit citation-following and persistent workspace memory;
+4. inspect citation support/contradiction and notices with Scite;
+5. use full-text-capable tools (Undermind PDF readers, Amass, Scite OA/licensed, Lune, Wiley where available);
+6. verify key citations/retractions with Scholar Sidekick/Pendar;
+7. preserve important searches, papers, and synthesis notes in the relevant Undermind Humanity Loop folder;
+8. use current web/government sources for implementation context;
+9. explicitly record disagreements and evidence quality.
+
+### When Undermind is the preferred tool
+Use it when:
+- a literature question needs comprehensive search rather than a few top papers;
+- citation-network exploration may surface non-obvious evidence;
+- important conclusions require reading full PDFs, tables, equations, or methods;
+- a Humanity Loop research stream should accumulate knowledge across future tasks;
+- we need to preserve a search and its ranked evidence for replication/audit.
+
+Do not launch redundant deep searches if a recent workspace search already covers the question.
 
 No single add-on is treated as ground truth.
