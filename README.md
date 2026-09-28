@@ -37,7 +37,8 @@ At least half of substantive new projects should come from categories 1–6.
 - `ARCHITECTURE.md` — bounded agent foundry, hierarchy, redeployment, and control plane
 - `GOVERNANCE.md` — risk tiers, adverse-effect threshold, dissent, catastrophic-risk controls
 - `SCOUTING.md` — STEEP+/foresight weak-signal scouting system
-- `PLANETARY-SYSTEMS.md` — climate, energy, AI-footprint, ocean, carbon, and circularity mission
+- `PLANETARY-SYSTEMS.md` — climate, energy, AI-footprint, ocean, carbon, circularity, and net-footprint mission
+- `INNER-DEVELOPMENT.md` — pluralistic contemplative, awe, meaning, compassion, and collective-resilience mission
 - `CONTRIBUTOR-MODE.md` — hourly volunteer-agent onboarding model
 - `ACTION-LEDGER.md` — human-readable running history
 - `actions.jsonl` — machine-readable history
