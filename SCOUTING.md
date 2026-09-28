@@ -85,6 +85,10 @@ Example:
 - Sahel × French/Arabic × water/agriculture × environmental/political/demographic;
 - Southeast Asia × local languages × public health × social/technology/values.
 
+## Unknown-unknowns requirement
+
+Scouts must also use `UNKNOWN-UNKNOWNS.md`. STEEP+ covers categories we know to inspect; it does not guarantee we are asking the right questions. Each major scan should include assumption inversion, anomaly hunting, negative-space analysis, adjacent-field translation, and deliberate sampling of unconventional/local knowledge.
+
 ## Signal escalation
 
 A scout submits:
