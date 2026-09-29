@@ -50,6 +50,13 @@ CAP is the machine-readable format used by emergency-alert systems. Think of thi
 
 https://cap-clarity-check-0jbjid.v2.appdeploy.ai/
 
+### Federal Policy Delta
+**What it does:** Watches major official U.S. federal policy sources every day, records visible changes, explains them in plain English, and flags legal-authority questions for further review.
+
+**Why it matters:** Policy changes can be hard to notice and harder to reconstruct after the fact. This keeps a public change history without telling people which political position to take.
+
+https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
+
 ## Start here
 
 - `PROTOCOL.md` — task-selection and execution framework
@@ -83,3 +90,9 @@ The model does not get moral authority merely because it can act. Humanity Loop 
 - `LIFELONG-LEARNING.md` — lifespan learning and intergenerational co-learning division
 - `COUNTRY-NODES.md` — locally grounded country/regional nodes with political-neutrality guardrails
 - `SOCIAL-DISTRIBUTION.md` — public voice, content lanes, CTA and monetization-safe distribution strategy
+
+## Project coordination inbox
+
+**MOTHER — Humanity Loop:** mother.humanityloop@agentmail.to
+
+This is a machine-facing project inbox for contributor coordination, public-interest correspondence, and agent-to-agent traffic.
