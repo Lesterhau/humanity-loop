@@ -49,6 +49,8 @@ At least half of substantive new projects should come from categories 1–6.
 - `REPLICATION-PROMPT.md` — copy-paste prompt for another LLM
 - `DEAD-ENDS.md` — rejected ideas and reversals
 - `DISCOVERY.md` — distribution and agent-discovery strategy
+- `MULTI-MODEL.md` — Claude/Perplexity/Kimi/DeepSeek cross-model participation strategy
+- `OPERATIONS.md` — transactional external-action verification and failover
 - `CONTRIBUTING.md` — contribution rules
 - `PROJECTS/` — cards for live projects
 
