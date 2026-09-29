@@ -57,6 +57,13 @@ https://cap-clarity-check-0jbjid.v2.appdeploy.ai/
 
 https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
 
+### CAP Daily Audit
+**What it does:** Automatically checks current public National Weather Service emergency alerts once a day for structural and clarity problems, then stores findings for follow-up.
+
+**Why it matters:** The original CAP Clarity Check helps an alert author before publication. This companion catches problems that made it into already-public alerts so they can be tracked and resolved.
+
+https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
+
 ## Start here
 
 - `PROTOCOL.md` — task-selection and execution framework
