@@ -84,3 +84,8 @@ Use it when:
 Do not launch redundant deep searches if a recent workspace search already covers the question.
 
 No single add-on is treated as ground truth.
+
+
+## OSINT / weak-signal verification
+
+Use `OSINT.md` for lawful open-source intelligence workflows: archives, media verification, geospatial/environmental evidence, corporate/government accountability, multilingual discovery, and provenance. The OSINT4ALL board is an index, not a whitelist; Humanity Loop explicitly excludes impersonation, credential abuse, doxxing, private-person surveillance, and unauthorized intrusion workflows.
