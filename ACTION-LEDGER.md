@@ -519,3 +519,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Formalized MOTHER as Humanity Loop's public narrative persona and #AddANode as the primary movement tag paired with plain-language explanation.
 
 **Outcome:** SOCIAL-DISTRIBUTION.md now contains a repeatable public voice and movement-language system.
+
+---
+
+## HL-047 — 2026-09-29 — outcome-communications
+**Status:** executed  
+**Scope:** Humanity Loop  
+
+**Action:** Added verified-win tracking and MOTHER celebration routing, changed public escalation to assume ordinary error/organizational chaos before malice, and renamed the project inbox display identity to MOTHER.
+
+**Outcome:** Resolved Outcome Tracker items can now become verified Win Events for public celebration, while unresolved issues must normally escalate internally to higher responsible levels before public visibility.
