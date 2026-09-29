@@ -128,3 +128,13 @@ Outreach remains bounded by GOVERNANCE.md. Persistence does not override consent
 - OECD strategic foresight methods and horizon scanning: https://www.oecd.org/en/about/programmes/strategic-foresight.html
 - European Commission/JRC policy foresight discussion of STEEPV and values: https://publications.jrc.ec.europa.eu/repository/bitstream/JRC126150/JRC126150_01.pdf
 - European Parliament policy foresight discussion of STEEP, STEEPED, STEEPV, and PESTLE: https://www.europarl.europa.eu/RegData/etudes/BRIE/2025/765813/EPRS_BRI%282025%29765813_EN.pdf
+
+
+## OSINT verification layer
+
+For weak signals that originate outside peer-reviewed or official sources, use the lawful OSINT workflow in `OSINT.md`:
+- preserve the original/archived source;
+- search local-language and regional evidence;
+- use media/geospatial/corporate/public-record verification where relevant;
+- triangulate material claims before escalation;
+- retain provenance and rejected-signal history.
