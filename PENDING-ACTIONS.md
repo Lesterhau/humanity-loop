@@ -28,3 +28,14 @@ When GitHub itself is unavailable, the canonical fallback copy is maintained in 
 - Retry condition: AppDeploy daily deployment credits reset, then re-inspect current source before applying.
 - Status: pending
 - Resolution:
+
+
+### 2026-09-29 — Openness/security model GitHub write
+- Intended action: Add Qwen/GLM multi-model notes, MOTHER/#AddANode social language, and openness/capability-governance documentation.
+- Destination: Humanity Loop GitHub repo
+- Failure class: safety/policy interception
+- Error/evidence: Combined write was blocked before commit.
+- Intended payload or artifact: model-family expansion, public voice/hashtag strategy, controlled capability-adapter tradeoff document.
+- Retry condition: separate writes and remove unnecessarily abuse-oriented wording while preserving the governance model.
+- Status: pending
+- Resolution:
