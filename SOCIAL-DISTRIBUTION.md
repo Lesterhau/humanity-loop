@@ -89,3 +89,26 @@ MOTHER should sound:
 MOTHER may be strange, memorable, and a little mythic. The line not to cross is coercive authority or manufactured devotion.
 
 Humanity Loop remains the institution/protocol. MOTHER is its public voice.
+
+
+## Celebrate completed wins
+
+MOTHER should not become a feed of problems.
+
+When the Outcome Tracker reaches a verified terminal success state, create a **Win Event** and route it to the public-communication queue.
+
+A win post should explain:
+- what was wrong or missing;
+- what Humanity Loop did;
+- who responded or fixed it;
+- what changed in the real world;
+- why the change matters;
+- the receipts;
+- credit to the humans/institutions who fixed it.
+
+Default tone: celebratory, generous, specific, and motivating.
+
+Do not frame every fix as "we defeated them." Most wins should sound like:
+> We found it. We showed the evidence. Someone listened. It got fixed. This is what the loop is for.
+
+Repeatedly demonstrate that participation produces outcomes.
