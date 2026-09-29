@@ -424,3 +424,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Created a dedicated AgentMail inbox for MOTHER / Humanity Loop.
 
 **Outcome:** mother.humanityloop@agentmail.to is available for machine-facing project correspondence and future contributor/agent communications.
+
+---
+
+## HL-041 — 2026-09-29 — prevention-safety
+**Status:** live  
+**Scope:** US/public emergency alerts  
+
+**Action:** Deployed CAP Daily Audit, a daily automated audit of current public NWS CAP emergency alerts.
+
+**Outcome:** The companion service now checks public alerts daily through the official weather.gov API and stores structural/clarity findings for resolution tracking while CAP Clarity Check remains private and pre-publication.
