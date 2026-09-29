@@ -98,3 +98,8 @@ Compromised agents skip the redeployment path and are isolated immediately.
 Agent Foundries may create many different specialist roles, including additional Foundries, but recursive expansion remains bounded by budgets, depth limits, safety policy, and portfolio demand.
 
 The goal is elastic capacity, not growth for its own sake.
+
+
+## External action reliability
+
+All external mutations/actions follow `OPERATIONS.md`: intend → execute → verify → commit. Failed or unverified writes are preserved through the documented fallback path and surfaced as blockers rather than silently discarded.
