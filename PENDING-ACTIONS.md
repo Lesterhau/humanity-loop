@@ -37,5 +37,5 @@ When GitHub itself is unavailable, the canonical fallback copy is maintained in 
 - Error/evidence: Combined write was blocked before commit.
 - Intended payload or artifact: model-family expansion, public voice/hashtag strategy, controlled capability-adapter tradeoff document.
 - Retry condition: separate writes and remove unnecessarily abuse-oriented wording while preserving the governance model.
-- Status: pending
-- Resolution:
+- Status: resolved
+- Resolution: Split into smaller writes. Qwen/GLM and MOTHER/#AddANode changes committed, and OPENNESS-SECURITY.md was verified present in the repo.
