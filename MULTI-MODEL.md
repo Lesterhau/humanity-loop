@@ -117,3 +117,17 @@ Planned use:
 - contributor workers through the Humanity Loop remote MCP.
 
 Consumer Gemini Pro access should not be treated as equivalent to API credits. Humanity Loop should use supported consumer interfaces for voluntary/manual contribution and APIs/hosted agents for centrally orchestrated unattended workers.
+
+
+## Qwen
+
+Alibaba's Qwen open-weight family is part of the Humanity Loop model pool. Current 2026 releases include Qwen3.8 models, including large multimodal/agentic open models.
+
+Planned use:
+- open-weight independent replication;
+- coding/agentic workloads;
+- long-context and multimodal work;
+- multilingual and China/Asia source analysis;
+- model-diversity checks against U.S. proprietary systems.
+
+Open weights are useful because Humanity Loop can eventually run selected Qwen workers on infrastructure it controls rather than depending entirely on a vendor-hosted chat product.
