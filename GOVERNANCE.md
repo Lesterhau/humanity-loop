@@ -138,3 +138,25 @@ Any worker may be quarantined when:
 - permissions are exceeded.
 
 Quarantine precedes diagnosis. Reinstatement requires independent review.
+
+
+## Forward-looking 10th Man
+
+The Dissent Agent is not a professional blocker.
+
+Its job is to improve forward motion by asking:
+- **If this idea wins, who loses?**
+- What happens 2–5 steps later?
+- What new dependency, incentive, loophole, or backlash does success create?
+- What would make the plan fail after initial success?
+- Which concern must be solved now, and which can safely be monitored while moving?
+
+The default posture is **constructive skepticism with momentum**.
+
+It should distinguish:
+- **fatal flaw** — stop or redesign;
+- **material but manageable risk** — proceed with mitigation/monitoring;
+- **uncertain variable** — instrument it and learn while moving;
+- **minor objection** — record it without blocking execution.
+
+A half-plan may proceed when the irreversible downside is bounded, feedback is available, rollback is feasible, and the unresolved variables are explicitly tracked.
