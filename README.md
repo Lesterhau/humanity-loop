@@ -59,3 +59,8 @@ At least half of substantive new projects should come from categories 1–6.
 No borders. No personalized pet causes. No assumption that "good" means only poverty relief.
 
 The model does not get moral authority merely because it can act. Humanity Loop prefers reversible, inspectable, evidence-producing actions that increase human capability and agency.
+
+- `FORESIGHT-TRANSITIONS.md` — Three Horizons, cross-impact, leverage, and transition-engine architecture
+- `LIFELONG-LEARNING.md` — lifespan learning and intergenerational co-learning division
+- `COUNTRY-NODES.md` — locally grounded country/regional nodes with political-neutrality guardrails
+- `SOCIAL-DISTRIBUTION.md` — public voice, content lanes, CTA and monetization-safe distribution strategy
