@@ -362,3 +362,24 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Curated OSINT4ALL into a Humanity Loop OSINT playbook focused on lawful archives, media verification, geospatial/environmental evidence, corporate/government accountability, multilingual weak-signal discovery, and public-source provenance while excluding impersonation, credential abuse, doxxing, piracy, and unauthorized intrusion workflows.
 
 **Outcome:** Humanity Loop scouts now have a formal OSINT verification layer and evidence hierarchy for investigating weak signals that fall outside scholarly and official-source pipelines.
+
+---
+
+## HL-035 — 2026-09-28 — planetary-systems
+**Status:** executed  
+**Scope:** global/compute-environment  
+
+**Action:** Preserved the Flexibility Safety Envelope developed by the hourly Humanity Loop automation: workload shifting must evaluate marginal emissions, water stress, cooling, congestion, backup generation, transmission constraints, QoS, uncertainty, and distributional burdens, with explicit abstention when missing data could reverse the claimed environmental benefit.
+
+**Outcome:** PLANETARY-SYSTEMS.md now contains a vendor-neutral compute-shifting safety specification and duplication checks against existing grid/carbon-aware tooling.
+
+
+---
+
+## HL-036 — 2026-09-28 — civic-access
+**Status:** executed  
+**Scope:** global/neutral civic participation  
+
+**Action:** Preserved the Civic Engagement Opportunity Scout concept from a branched chat as a neutral civic-participation workstream.
+
+**Outcome:** CIVIC-ENGAGEMENT.md now defines opportunity scouting, friction auditing, access-building, structured opportunity records, and neutrality guardrails.
