@@ -27,9 +27,28 @@ At least half of substantive new projects should come from categories 1–6.
 
 ## Current live projects
 
-- Critical Guidance Delta — https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
-- Evidence Integrity Sentinel — https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/
-- CAP Clarity Check — https://cap-clarity-check-0jbjid.v2.appdeploy.ai/
+### Critical Guidance Delta
+**What it does:** Watches official medication-safety pages and tells you when important safety guidance changes, while preserving the old and new versions so the change can be audited.
+
+**Why it matters:** Important safety information can change quietly. This makes those changes visible and traceable.
+
+https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
+
+### Evidence Integrity Sentinel
+**What it does:** Finds reviews, guidelines, or other evidence summaries that still cite a paper after that paper has been retracted, so a human expert can check whether the downstream conclusion needs another look.
+
+**Why it matters:** Retractions do not automatically invalidate everything that cited a paper, but they can create hidden weak points in the evidence chain.
+
+https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/
+
+### CAP Clarity Check
+**What it does:** Checks emergency-alert files **before they are published** for problems that could make an alert confusing, incomplete, inaccessible, badly targeted, or technically invalid.
+
+CAP is the machine-readable format used by emergency-alert systems. Think of this as a spell-check + safety-check for emergency alerts.
+
+**Why it matters:** During a wildfire, tornado, evacuation, chemical leak, or other emergency, a badly structured alert can waste time or fail to reach the right people.
+
+https://cap-clarity-check-0jbjid.v2.appdeploy.ai/
 
 ## Start here
 
