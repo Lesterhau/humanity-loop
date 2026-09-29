@@ -153,3 +153,51 @@ Scout:
 ## First strategic question
 
 What globally scalable delivery model could provide every willing person with periodic psychological maintenance and rapid stepped-care escalation at a sustainable cost, while preserving privacy, autonomy, cultural fit, and clinician capacity?
+
+
+## H3 intended future state
+
+Preventive mental health is a **civilizational transition domain**, not a temporary software project.
+
+Using the Three Horizons framing:
+
+### H1 — reactive psychological system
+Common features:
+- chronic threat-reactivity and fear;
+- anger and grievance as identity anchors;
+- humiliation and status threat;
+- disgust-based dehumanization;
+- rumination and retaliatory thinking;
+- help-seeking delayed until crisis;
+- mental-health support treated primarily as illness treatment.
+
+### H2 — transition system
+Build bridges such as:
+- routine voluntary psychological check-ins;
+- low-friction counseling;
+- anger/emotion-regulation interventions;
+- trauma-informed care;
+- task-sharing and peer support;
+- conflict-recovery and perspective-taking skills;
+- culturally adapted therapy access;
+- community structures that normalize psychological maintenance;
+- evidence-backed interventions that reduce hostile attribution and dehumanization.
+
+### H3 — psychologically healthier civic culture
+Desired characteristics include:
+- lower chronic fear/threat reactivity;
+- lower chronic anger/grievance;
+- lower disgust-driven dehumanization;
+- stronger secure identity and emotional regulation;
+- greater capacity to tolerate uncertainty and disagreement;
+- healthier conflict recovery;
+- higher interpersonal and institutional trust where trust is warranted;
+- more compassion and prosocial agency;
+- routine psychological maintenance before crisis.
+
+No single app is the mission.
+
+If a specific software idea is redundant or ineffective, **retire the software idea without retiring the H3 transition objective**.
+
+The standing question is:
+> What drivers keep societies trapped in H1 psychological patterns, which H2 interventions change those drivers, and what evidence shows movement toward the H3 state?
