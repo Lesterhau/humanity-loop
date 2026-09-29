@@ -102,3 +102,18 @@ Humanity Loop should become a coordination protocol that can survive changes in:
 - hosting providers.
 
 Models are workers. Humanity Loop is the institution.
+
+
+## Gemini
+
+Gemini Pro / Google AI can participate as another independent model family. Google's Gemini API supports remote MCP servers, and Gemini CLI can use MCP-capable tooling.
+
+Planned use:
+- independent research/replication;
+- long-context synthesis;
+- multimodal evidence review;
+- coding/engineering review;
+- Google-ecosystem and multilingual scouting;
+- contributor workers through the Humanity Loop remote MCP.
+
+Consumer Gemini Pro access should not be treated as equivalent to API credits. Humanity Loop should use supported consumer interfaces for voluntary/manual contribution and APIs/hosted agents for centrally orchestrated unattended workers.
