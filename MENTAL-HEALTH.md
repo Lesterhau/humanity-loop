@@ -58,6 +58,29 @@ Evidence posture:
 
 Strategic implication: build and test interventions that reduce maladaptive threat-reactivity and grievance while improving emotion regulation, perspective-taking, secure identity, conflict recovery, and prosocial agency. Do not pathologize political disagreement or diagnose named individuals from afar.
 
+
+## Adversity branching model
+
+A priority research question is not simply whether adversity increases harm, but **what determines whether suffering becomes grievance or prosocial growth**.
+
+Current evidence supports a branching model rather than a deterministic "hurt people hurt people" rule:
+- longitudinal evidence suggests pre-existing benevolence beliefs can moderate whether later adversity is associated with volunteering and charitable involvement; this does not establish that adversity itself causes prosociality (Lim et al., DOI 10.1111/jopy.12960);
+- relational attributions for one's own resilience (crediting help from other people) can be experimentally induced and are associated with greater compassion, with gratitude as a plausible pathway (Ruttan et al., DOI 10.1037/pspi0000438);
+- post-traumatic growth, empathy, and reduced ingroup bias are candidate mechanisms for altruism born of suffering, while post-traumatic stress can push in the opposite direction in some settings (Canevello et al., DOI 10.1037/emo0000803; Vollhardt & Staub, DOI 10.1111/j.1939-0025.2011.01099.x).
+
+This creates a testable prevention target: strengthen modifiable protective mechanisms such as benevolence beliefs, relational resilience attributions, gratitude, empathy, secure/prosocial identity, and effective emotion regulation without romanticizing adversity or assuming these mechanisms work uniformly across cultures and contexts.
+
+### Evidence-quality rules for this workstream
+
+Do not scale an intervention merely because it changes a prejudice or hostility questionnaire immediately after treatment. Paluck et al.'s review of 418 prejudice-reduction experiments found major durability, generalization, publication-bias, and attitude-versus-behavior problems (DOI 10.1146/annurev-psych-071620-030619). Humanity Loop therefore requires:
+- behavioral outcomes where feasible, not attitudes alone;
+- meaningful follow-up periods;
+- adequately powered and preferably preregistered evaluations;
+- field/community replication before population-scale claims;
+- adverse-effect and backfire measurement;
+- explicit testing of interactions with structural/institutional conditions;
+- no assumption that greater intervention intensity automatically produces greater durable benefit.
+
 ## Delivery architecture to explore
 
 ### Tier 0 — universal psychological maintenance
