@@ -64,6 +64,13 @@ https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
 
 https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
 
+### Humanity Loop Foundry Alpha
+**What it does:** Runs the first real hourly Humanity Loop worker line. Separate AI roles scout one task, verify it, plan it, build a draft, challenge it, safety-check it, revise it, and define how the outcome should be tracked.
+
+**Why it matters:** This is the point where Humanity Loop stops being only an architecture document and begins operating as a bounded multi-agent system.
+
+https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
+
 ## Start here
 
 - `PROTOCOL.md` — task-selection and execution framework
