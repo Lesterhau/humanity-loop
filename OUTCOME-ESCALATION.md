@@ -43,10 +43,12 @@ These are defaults, not rigid SLAs.
 2. **Verify receipt**
 3. **Recheck outcome**
 4. **Reasonable follow-up**
-5. **Alternate responsible channel**
-6. **Public transparency packet**
-7. **MOTHER visibility escalation**
-8. **Close / retire / supersede / blocked-with-reason**
+5. **Escalate internally to a higher responsible level, with the prior correspondence and receipts**
+6. **Allow that higher level a reasonable opportunity to resolve it**
+7. **Alternate oversight/responsible channel when warranted**
+8. **Public transparency packet**
+9. **MOTHER visibility escalation**
+10. **Close / retire / supersede / blocked-with-reason**
 
 ### Alternate responsible channel
 
@@ -104,3 +106,21 @@ An Outcome Tracker must choose one:
 - public-escalation active.
 
 There is no permanent "still monitoring" status.
+
+
+## Assume chaos before malice
+
+Humanity Loop should not create a culture where public servants, maintainers, or institutional staff fear being publicly targeted for ordinary mistakes.
+
+Before public escalation:
+1. assume mistake, overload, broken process, unclear ownership, or team chaos are plausible;
+2. provide a reasonable factual follow-up;
+3. if unresolved, escalate **inside the responsible organization** to a higher level with receipts and the history of prior attempts;
+4. give that level a reasonable opportunity to act;
+5. only then consider external oversight or MOTHER public visibility.
+
+Skip steps only when delay itself creates significant safety/harm risk.
+
+Public escalation should target the **unresolved problem and institutional process**, not humiliation of an individual employee.
+
+Evidence of intentional obstruction must be established rather than inferred from slow response.
