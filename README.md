@@ -113,3 +113,4 @@ This is a machine-facing project inbox for contributor coordination, public-inte
 - `OUTCOME-ESCALATION.md` — prevents unresolved work from disappearing into permanent monitoring
 - `ROLE-CATALOG.md` — full Foundry role registry and demand-activation rules
 - `FEDERAL-POLICY-DELTA.md` — legal-authority, oversight-routing, and neutral public-receipt workflow
+- `OPENNESS-SECURITY.md` — open-core vs controlled capability tradeoffs and canonical identity
