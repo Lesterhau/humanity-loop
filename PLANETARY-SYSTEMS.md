@@ -106,3 +106,46 @@ Planetary Scouts must search for both technological and non-technological interv
 - governance arrangements that improve stewardship.
 
 A solution does not get extra priority merely because it uses AI, advanced materials, or a shiny machine.
+
+
+## Flexibility Safety Envelope
+
+Flexible AI/data-center workloads are not automatically environmentally beneficial. Lower electricity-system cost can coincide with higher marginal emissions, increased water stress, exported pollution, or reliability burdens.
+
+Humanity Loop should therefore treat workload shifting as a constrained environmental decision, not a generic green optimization.
+
+### Required inputs
+
+A workload-shifting decision should consider, when material:
+- **marginal** grid emissions rather than average intensity alone;
+- renewable curtailment;
+- grid congestion and transmission constraints;
+- workload deadline / quality-of-service constraints;
+- origin and destination water stress;
+- cooling-energy and cooling-water consequences;
+- backup generation;
+- local/community pollution and distributional burdens;
+- signal age, uncertainty, and provenance;
+- cost and reliability as separate outputs rather than proxies for environmental benefit.
+
+### Abstention rule
+
+If missing, stale, or uncertain inputs are capable of reversing the direction of the claimed environmental benefit, the system must abstain from labeling the workload shift environmentally beneficial.
+
+### Design rule
+
+Do not collapse carbon, water, reliability, cost, or community burden into one fake universal "green score." Preserve them as separate dimensions and surface tradeoffs explicitly.
+
+### Duplication check before building
+
+Before implementing a new scheduler or control layer, compare against existing:
+- carbon-aware scheduling systems;
+- OpenADR / demand-response interfaces;
+- grid-operator programs;
+- Electricity Maps;
+- WattTime;
+- Green Software Foundation tooling;
+- cloud workload-shifting systems;
+- carbon/water-aware orchestration research.
+
+The potential missing layer is a **vendor-neutral safety/decision envelope** for when shifting is environmentally justified and when a system should abstain.
