@@ -393,3 +393,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Added vendor-neutral multi-model participation and external-action transaction/failover architecture.
 
 **Outcome:** Humanity Loop now documents how Claude, Perplexity, Kimi, and DeepSeek can contribute through one shared MCP/API/ledger, and requires read-after-write verification plus durable fallback for failed external actions.
+
+---
+
+## HL-038 — 2026-09-29 — architecture-expansion
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Added Gemini to the multi-model roster; formalized Foresight Transition Engine, Lifelong Learning division, Country/Regional Nodes, and social-distribution strategy; tightened Foundry Alpha issue into an executable 6–8 worker fleet with a complete autonomous task-flow success criterion.
+
+**Outcome:** Humanity Loop now has durable specifications for futures-transition leverage analysis, all-age learning, locally grounded nodes, public storytelling, and the immediate shift from documented bot roles to a real bounded worker fleet.
