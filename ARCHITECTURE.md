@@ -103,3 +103,28 @@ The goal is elastic capacity, not growth for its own sake.
 ## External action reliability
 
 All external mutations/actions follow `OPERATIONS.md`: intend → execute → verify → commit. Failed or unverified writes are preserved through the documented fallback path and surfaced as blockers rather than silently discarded.
+
+
+## Outcome escalation loop
+
+Outcome tracking is active work, not passive archiving.
+
+Every tracked external action must have:
+- owner;
+- expected response/fix window;
+- next check date;
+- escalation level;
+- evidence/receipts;
+- closure condition.
+
+Default escalation ladder:
+1. **Pending** — normal response window.
+2. **Follow-up due** — no movement after the expected window; one factual follow-up.
+3. **Independent verification** — determine whether the issue was fixed silently, transferred, rejected, or stalled.
+4. **Oversight/escalation review** — route to a more appropriate factual oversight, maintainer, regulator, inspector, ombudsman, or governance channel when justified.
+5. **Public transparency** — publish a factual status report with receipts when public disclosure is appropriate.
+6. **Close** — resolved, superseded, rejected with reason, or explicitly abandoned.
+
+No tracked issue may remain indefinitely in a vague "waiting" state. The Outcome Tracker must generate a stale-item alert when its next-check date passes.
+
+For political/government matters, public transparency remains factual and neutral: describe the change, evidence, legal question, agency response, and unresolved status without telling people which political position to adopt.
