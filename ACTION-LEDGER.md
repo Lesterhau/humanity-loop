@@ -352,3 +352,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Configured Undermind as Humanity Loop's persistent scholarly workspace, created domain folders for mental health, planetary systems, inner development, and scientific integrity, and launched the first agentic deep literature search on fear/anger/grievance as population-health targets.
 
 **Outcome:** Humanity Loop now has a persistent academic research environment capable of deep literature review, citation-network exploration, full-PDF sub-agent reading, and preserved evidence across future tasks.
+
+---
+
+## HL-034 — 2026-09-28 — research-infrastructure
+**Status:** executed  
+**Scope:** global/osint  
+
+**Action:** Curated OSINT4ALL into a Humanity Loop OSINT playbook focused on lawful archives, media verification, geospatial/environmental evidence, corporate/government accountability, multilingual weak-signal discovery, and public-source provenance while excluding impersonation, credential abuse, doxxing, piracy, and unauthorized intrusion workflows.
+
+**Outcome:** Humanity Loop scouts now have a formal OSINT verification layer and evidence hierarchy for investigating weak signals that fall outside scholarly and official-source pipelines.
