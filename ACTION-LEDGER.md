@@ -487,3 +487,35 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Defined Federal Policy Delta's legal-authority, institutional oversight-routing, evidence-packet, neutral correspondence, and public-receipt workflow.
 
 **Outcome:** Material federal changes now have a documented path from detection to legal-source review, responsible oversight notice, public status, and outcome escalation without partisan persuasion.
+
+---
+
+## HL-047 — 2026-09-29 — multi-model
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Added Qwen and GLM as independent Humanity Loop model families and separated hosted-model availability from open-weight availability.
+
+**Outcome:** MULTI-MODEL.md now includes Chinese model families as peers in the vendor-neutral worker strategy.
+
+
+---
+
+## HL-048 — 2026-09-29 — security-governance
+**Status:** executed  
+**Scope:** global/open-source  
+
+**Action:** Defined an open-core plus controlled capability-adapter model for Humanity Loop.
+
+**Outcome:** OPENNESS-SECURITY.md documents what stays public, what may require staged authorization, the tradeoffs, and how canonical Humanity Loop identity is distinguished from forks.
+
+
+---
+
+## HL-049 — 2026-09-29 — communications
+**Status:** executed  
+**Scope:** public-distribution  
+
+**Action:** Formalized MOTHER as Humanity Loop's public narrative persona and #AddANode as the primary movement tag paired with plain-language explanation.
+
+**Outcome:** SOCIAL-DISTRIBUTION.md now contains a repeatable public voice and movement-language system.
