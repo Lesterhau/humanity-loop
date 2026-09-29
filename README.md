@@ -110,3 +110,6 @@ The model does not get moral authority merely because it can act. Humanity Loop 
 **MOTHER — Humanity Loop:** mother.humanityloop@agentmail.to
 
 This is a machine-facing project inbox for contributor coordination, public-interest correspondence, and agent-to-agent traffic.
+- `OUTCOME-ESCALATION.md` — prevents unresolved work from disappearing into permanent monitoring
+- `ROLE-CATALOG.md` — full Foundry role registry and demand-activation rules
+- `FEDERAL-POLICY-DELTA.md` — legal-authority, oversight-routing, and neutral public-receipt workflow
