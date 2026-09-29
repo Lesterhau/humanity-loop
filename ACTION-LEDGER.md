@@ -383,3 +383,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Preserved the Civic Engagement Opportunity Scout concept from a branched chat as a neutral civic-participation workstream.
 
 **Outcome:** CIVIC-ENGAGEMENT.md now defines opportunity scouting, friction auditing, access-building, structured opportunity records, and neutrality guardrails.
+
+---
+
+## HL-037 — 2026-09-29 — coordination-infrastructure
+**Status:** executed  
+**Scope:** multi-model/global  
+
+**Action:** Added vendor-neutral multi-model participation and external-action transaction/failover architecture.
+
+**Outcome:** Humanity Loop now documents how Claude, Perplexity, Kimi, and DeepSeek can contribute through one shared MCP/API/ledger, and requires read-after-write verification plus durable fallback for failed external actions.
