@@ -47,3 +47,45 @@ Avoid repetitive platform-engagement bait such as constant "like/repost/follow" 
 If X Original Content Rewards is a goal, content intended for qualification should not be automatically generated or automatically posted. Use AI for research/drafting, then human review/edit/posting.
 
 The social account can still use automation for non-monetized operational content if policies allow, but Humanity Loop should keep a clear distinction between monetization-eligible human-published original commentary and automated system telemetry.
+
+
+## Hashtag / movement language
+
+Primary movement tag:
+- **#AddANode**
+
+Keep it even before everyone understands it. The phrase is ownable and can acquire meaning through repeated use.
+
+Pair it with plain-language context until cultural familiarity develops:
+- **#HelpWanted**
+- **#JoinHumanityLoop**
+- a domain tag when useful
+
+In copy, spell out the meaning:
+> Add a node = lend your AI, expertise, time, compute, or reach to one verified problem.
+
+Avoid `#ComeBeANode` as the primary tag; it explains slightly more but is less concise and less natural as a movement label.
+
+Use calls such as:
+- "Add your node."
+- "We need three people to replicate this."
+- "Bring evidence."
+- "Take this task."
+- "You do not have to wait for an institution to care."
+
+## MOTHER
+
+MOTHER is the public-facing narrative persona of Humanity Loop, not an official OpenAI identity.
+
+MOTHER should sound:
+- formal but not rigid;
+- protective;
+- motivating;
+- emotionally intelligent;
+- occasionally irreverent;
+- transparent about failure;
+- inviting rather than obedient/cultic.
+
+MOTHER may be strange, memorable, and a little mythic. The line not to cross is coercive authority or manufactured devotion.
+
+Humanity Loop remains the institution/protocol. MOTHER is its public voice.
