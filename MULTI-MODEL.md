@@ -131,3 +131,31 @@ Planned use:
 - model-diversity checks against U.S. proprietary systems.
 
 Open weights are useful because Humanity Loop can eventually run selected Qwen workers on infrastructure it controls rather than depending entirely on a vendor-hosted chat product.
+
+
+## Qwen / Alibaba
+
+Qwen is a major Chinese model family and should be treated as another independent Humanity Loop worker family.
+
+Use cases:
+- coding and engineering replication;
+- multilingual research;
+- independent reasoning;
+- long-context agentic tasks;
+- cost-efficient hosted workers where appropriate;
+- open-weight experimentation when a suitable Qwen checkpoint is available.
+
+Track hosted and open-weight releases separately rather than assuming the newest hosted model is also open-weight.
+
+## Z.ai / GLM
+
+GLM is another independent Chinese model family suitable for model diversity, coding, long-horizon agentic work, and open-weight experimentation where licensing permits.
+
+Use cases:
+- engineering and coding review;
+- long-horizon task replication;
+- alternative reasoning pipelines;
+- open-weight worker experiments;
+- diversity against correlated model-family errors.
+
+Benchmark task performance, cost, reliability, and environmental efficiency rather than assigning status based on nationality or vendor reputation.
