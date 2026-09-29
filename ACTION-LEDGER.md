@@ -444,3 +444,46 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Deployed Humanity Loop Foundry Alpha as a real hourly bounded multi-agent pipeline.
 
 **Outcome:** An hourly worker line now runs Scout, Verifier, Project Manager, Builder, 10th Man, Safety Governor, revision, and Outcome Tracker roles with persistent run logs. This is the first instantiated multi-agent Humanity Loop fleet.
+
+---
+
+## HL-043 — 2026-09-29 — population-health-foresight
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Made the fear/anger/disgust/grievance mental-health mission an explicit Three-Horizons civilizational transition objective.
+
+**Outcome:** MENTAL-HEALTH.md now distinguishes redundant software dead ends from the continuing H3 goal of lower chronic threat-reactivity, grievance, dehumanization, and stronger regulation/trust/prosocial capacity.
+
+
+---
+
+## HL-044 — 2026-09-29 — outcome-governance
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Created a mandatory stale-outcome escalation protocol with urgency classes, alternate channels, MOTHER transparency escalation, and explicit closure states.
+
+**Outcome:** Humanity Loop work can no longer remain indefinitely in an undefined monitoring state.
+
+
+---
+
+## HL-045 — 2026-09-29 — agent-architecture
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Created the full Foundry role catalog and smallest-competent-team activation rule.
+
+**Outcome:** Eight core roles remain warm while dozens of domain/governance/infrastructure specialists can be instantiated on demand rather than kept idling.
+
+
+---
+
+## HL-046 — 2026-09-29 — civic-policy-transparency
+**Status:** executed  
+**Scope:** US/federal  
+
+**Action:** Defined Federal Policy Delta's legal-authority, institutional oversight-routing, evidence-packet, neutral correspondence, and public-receipt workflow.
+
+**Outcome:** Material federal changes now have a documented path from detection to legal-source review, responsible oversight notice, public status, and outcome escalation without partisan persuasion.
