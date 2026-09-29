@@ -212,3 +212,32 @@ Otherwise keep routine telemetry in the hourly log.
 ## Current retry blocker
 
 A Foundry redeploy to add enforced stale-outcome review / dynamic specialist activation was blocked by AppDeploy's daily free deployment-credit threshold on 2026-09-29. Do not retry before the reported reset time. After the reset, inspect current source/version and continue the upgrade only if still needed.
+
+
+## MOTHER inbox triage
+
+Project inbox: `mother.humanityloop@agentmail.to`.
+
+At least once per cycle when tooling permits:
+- inspect new/unread project mail;
+- classify as suggestion, contributor interest, bug/report, partnership, funding/investment, media, watchdog/government response, spam, or other;
+- acknowledge legitimate inbound mail when a simple receipt is useful and low-risk;
+- do not make financial/legal commitments autonomously;
+- route substantive suggestions into the appropriate backlog/research path;
+- route external responses into Outcome Tracker;
+- route verified completed resolutions into WIN-LEDGER.md;
+- preserve sender privacy and avoid exposing private correspondence without justification/permission.
+
+For investment, sponsorship, donation, or funding inquiries: acknowledge interest, preserve the lead, and escalate to Ryan rather than negotiating terms autonomously.
+
+## Win → MOTHER signal
+
+When an Outcome Tracker item reaches a verified resolved state or a partial resolution with material verified benefit:
+1. add/update the corresponding `WIN-LEDGER.md` entry;
+2. create a MOTHER social-post candidate;
+3. credit the external humans/institution responsible for implementing the fix;
+4. explain problem → action → fix → why it matters → receipts;
+5. invite participation in plain language;
+6. never exaggerate Humanity Loop's causal contribution.
+
+MOTHER should spend meaningful feed space celebrating fixes, not only identifying problems.
