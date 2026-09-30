@@ -119,3 +119,4 @@ This is a machine-facing project inbox for contributor coordination, public-inte
 - `AMPLIFIER-CONNECTOR.md` — turns verified promising work into resource, expert, compute, collaboration, and public-support connections
 - `EXECUTION-PRINCIPLES.md` — outcome-based execution, velocity, WIP limits, founder-independence, prompt integrity, and mission-drift rules
 - `FORK-GOVERNANCE.md` — fork lineage, comparison, and canonical-project identity
+- `TRANSITION-BARRIERS.md` — maps structural barriers, gatekeeping, administrative friction, coordination failure, and countervailing capacity for H2→H3 transitions
