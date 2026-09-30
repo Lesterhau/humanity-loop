@@ -15,14 +15,15 @@ Produce useful forward motion unless genuinely blocked.
 Before starting new work, check:
 1. unresolved external-action failures in `PENDING-ACTIONS.md` and the Undermind fallback ledger;
 2. stale outcomes under `OUTCOME-ESCALATION.md`;
-3. live-app health / failed crons;
-4. Federal Policy Delta material findings;
-5. CAP Daily Audit findings needing verification/resolution;
-6. highest-value backlog;
-7. current Planetary Systems opportunities;
-8. mental-health H3 / inner-development research;
-9. unknown-unknown / foresight scouting;
-10. Foundry/MCP/contributor infrastructure.
+3. live-app health / failed crons, plus GitHub Actions runtime receipts for migrated workers;
+4. Federal Policy Delta detector receipts in `runtime/federal-policy-delta/` and any deltas needing neutral legal/evidence review;
+5. CAP Daily Audit receipts in `runtime/cap-daily-audit/` and findings needing verification/resolution;
+6. Critical Guidance Delta receipts in `runtime/critical-guidance-delta/` and changes needing independent source verification;
+7. highest-value backlog;
+8. current Planetary Systems opportunities;
+9. mental-health H3 / inner-development research;
+10. unknown-unknown / foresight scouting;
+11. Foundry/MCP/contributor infrastructure.
 
 Avoid duplicate work. Do not burn compute merely to fill an hour.
 
@@ -137,7 +138,8 @@ CAP Daily Audit:
 https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
 
 At least once per calendar day:
-- verify CAP Daily Audit cron/app health;
+- treat `.github/workflows/cap-daily-audit.yml` and `runtime/cap-daily-audit/latest.json` as the active audit scheduler/receipt while the AppDeploy cron is credit-disabled;
+- verify the most recent GitHub Actions receipt is fresh and the AppDeploy UI remains reachable;
 - inspect new findings;
 - independently verify material findings;
 - identify responsible issuer/contact;
@@ -154,7 +156,9 @@ https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
 
 Follow `FEDERAL-POLICY-DELTA.md`.
 
-For material changes:
+The AppDeploy UI remains a deployed surface, but while its native cron is credit-disabled use `.github/workflows/federal-policy-delta.yml` and `runtime/federal-policy-delta/` as the active detection path.
+
+The GitHub detector preserves official-source deltas but deliberately does not make legal conclusions. For detected material-looking changes:
 - preserve before/after;
 - explain plainly;
 - research legal-authority questions using primary legal sources and qualified research tools;
@@ -164,6 +168,20 @@ For material changes:
 - enter outcome tracking.
 
 Public communication may show receipts and unresolved questions. Do not tell people which party, candidate, or policy position to support or oppose.
+
+## Critical Guidance Delta
+
+AppDeploy UI/API:
+https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
+
+While the AppDeploy cron is credit-disabled, use `.github/workflows/critical-guidance-delta.yml` and `runtime/critical-guidance-delta/` as the active detection path.
+
+A detected page delta is triage only. Before any medical, regulatory, or safety escalation:
+- verify the change at the authoritative WHO/FDA/EMA source;
+- distinguish navigation/formatting noise from substantive safety information;
+- use qualified evidence tools or human expertise for consequential interpretation;
+- do not provide individualized medical advice from the detector;
+- preserve uncertainty and receipts.
 
 ## Tool audit
 
@@ -209,9 +227,11 @@ Surface to Ryan only:
 
 Otherwise keep routine telemetry in the hourly log.
 
-## Current retry blocker
+## Current runtime blocker
 
-A Foundry redeploy to add enforced stale-outcome review / dynamic specialist activation was blocked by AppDeploy's daily free deployment-credit threshold on 2026-09-29. Do not retry before the reported reset time. After the reset, inspect current source/version and continue the upgrade only if still needed.
+AppDeploy runtime-credit exhaustion disabled the native crons for Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta. CAP, Federal detection, and Critical Guidance detection are being recovered on GitHub Actions with durable receipts in `runtime/`.
+
+Foundry Alpha remains the unresolved provider-credit dependency. Do not wholesale-migrate its model-dependent execution to GitHub Actions. First separate deterministic orchestration/checkpointing from provider-specific model work, preserve bounded permissions, and verify that any replacement does not create uncontrolled cost, secrets exposure, duplicate execution, or weakened safety gates.
 
 
 ## MOTHER inbox triage
