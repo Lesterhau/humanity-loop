@@ -23,11 +23,11 @@ https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
 
 A reachable UI or healthcheck does **not** prove the worker scheduler is active.
 
-### Mode B — main-worker fallback
+### Mode B — dedicated ChatGPT Foundry worker
 
-If the independent Foundry scheduler is disabled, stale, or otherwise unavailable, the canonical Humanity Loop hourly worker may execute **at most one** bounded Foundry cycle during that hour.
+If the AppDeploy Foundry scheduler is disabled, stale, or otherwise unavailable, the dedicated **Humanity Loop — Foundry** ChatGPT automation executes the bounded Foundry cadence. The main hourly worker is coordination/failover only and must not duplicate a cycle owned by the dedicated Foundry worker.
 
-Fallback is allowed only when:
+Dedicated-worker execution is allowed only when:
 - the independent worker is verified inactive/stale;
 - no equivalent Foundry cycle is already in progress;
 - higher-priority pending external failures or time-sensitive safety work do not require the cycle instead;
@@ -47,7 +47,7 @@ Before fallback:
 5. persist the result;
 6. release the claim.
 
-If the independent worker resumes, fallback yields on the next cycle after verification.
+If a verified independent provider worker later resumes, the project must choose a single active scheduler and disable/yield the duplicate path before the next cycle.
 
 ## Role separation
 
@@ -77,7 +77,7 @@ For each meaningful cycle, preserve a compact machine-readable or Markdown recei
 Minimum fields:
 - run ID;
 - started/completed timestamps;
-- scheduler mode = `main-worker-fallback`;
+- scheduler mode = `chatgpt-foundry-worker`;
 - candidate;
 - verification verdict;
 - plan;
