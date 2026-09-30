@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-09-30
+**State timestamp:** 2026-09-30 — command-center refresh
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -16,6 +16,11 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - help accelerate desirable H1→H2→H3 transitions while preserving human agency.
 
 ## Current operating components
+
+### Current automation truth
+- Humanity Loop has one enabled project automation: **Humanity Loop — Hourly Worker**, hourly.
+- Its scheduled-task wrapper reads `AUTOMATION-PROMPT.md` at the start of every run.
+- Unrelated personal automations are outside Humanity Loop state and should not be modified by project maintenance.
 
 ### Main hourly worker
 - Title: **Humanity Loop — Hourly Worker**
@@ -145,6 +150,11 @@ Use:
 - Federal Policy Delta deterministic detection has been migrated and live-validated on GitHub Actions across all 17 configured official sources. The official GPO/LOC bill-status bulk-update feed replaces the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
 - Evidence Integrity Sentinel remains healthy on AppDeploy.
 - Foundry Alpha remains the unresolved **independent-runtime** credit dependency; bounded functional continuity is restored through the main-worker fallback defined in `FOUNDRY-RUNTIME.md`.
+
+### Current GitHub ledger head
+- Human ledger currently includes actions through **HL-058**.
+- Machine ledger `actions.jsonl` currently includes actions through **HL-058** and passed its latest validation workflow.
+- GitHub mutation capability is currently working.
 
 ## Immediate continuity priority
 
