@@ -70,13 +70,14 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ### Outcome tracking / agency correspondence
 - Durable tracker: `OUTCOME-TRACKER.md`.
 - Verified wins: `WIN-LEDGER.md`.
-- New Humanity Loop government/public-agency outreach uses MOTHER rather than Ryan's personal email.
+- New Humanity Loop government/public-agency outreach uses the project inbox with sender identity **Ryan Lester | Humanity Loop** and signature **Ryan Lester, Founder, Humanity Loop** rather than the MOTHER social persona or Ryan's personal Gmail.
 - Ryan's personal Gmail is authorized only for retrieving legacy Humanity Loop agency replies unless separately authorized.
 - Claimed fixes must be independently verified before closure/win status.
 
 ### Project correspondence
 - MOTHER project inbox: `mother.humanityloop@agentmail.to`
-- Display identity: **MOTHER**
+- Email display identity: **Ryan Lester | Humanity Loop**
+- Social/public narrative persona: **MOTHER**
 - Use for neutral project correspondence, contributor coordination, external responses, and failover alerts.
 - Financial/legal commitments still require human handling.
 
