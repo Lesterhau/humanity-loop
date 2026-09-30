@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Lesterhau/humanity-loop/schema/action-receipt.schema.json",
+  "title": "Humanity Loop External Action Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transaction_id",
+    "intended_at",
+    "actor",
+    "target",
+    "action",
+    "args_hash",
+    "risk_tier",
+    "decision",
+    "status"
+  ],
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intended_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "args_hash": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Hash/digest of the exact side-effecting argument set or payload."
+    },
+    "risk_tier": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "policy_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "allow",
+        "transform",
+        "hold",
+        "deny",
+        "escalate"
+      ]
+    },
+    "decision_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "approval_required": {
+      "type": "boolean",
+      "default": false
+    },
+    "approval_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "executed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "execution_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "verified_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "verification_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "intended",
+        "authorized",
+        "executed",
+        "verified",
+        "failed",
+        "held",
+        "denied"
+      ]
+    },
+    "failure_class": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
