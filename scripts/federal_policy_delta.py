@@ -230,7 +230,9 @@ def main() -> int:
             sort_keys=True,
         )
     )
-    return 0 if receipt["failuresCount"] == 0 else 2
+    # Preserve partial-source failures in the durable receipt without disabling the
+    # whole monitor. Fail hard only when every configured source is unreachable.
+    return 2 if receipt["failuresCount"] == receipt["sourcesConfigured"] else 0
 
 
 if __name__ == "__main__":
