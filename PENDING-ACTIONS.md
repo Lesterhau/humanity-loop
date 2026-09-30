@@ -61,3 +61,14 @@ When GitHub itself is unavailable, the canonical fallback copy is maintained in 
 - Retry condition: Revisit only when a safe, narrower research framing or an existing mature standard/tool makes the missing layer clearer.
 - Status: resolved
 - Resolution: GitHub mutation capability demonstrably recovered on 2026-09-30. Duplication review found the broad crosswalk insufficiently differentiated from existing ISO/IEC 30134 metrics, EU data-centre reporting work, and Open Compute Project sustainability efforts, so the broad backlog item is closed rather than rebuilt. Preserve only the narrower future research question of whether cross-domain burden shifting is being missed across otherwise mature accounting systems.
+
+### 2026-09-30 — H3 anger/reactive-aggression evidence-gate GitHub update
+- Intended action: Add a falsifiable H3 mechanism/evidence gate to `MENTAL-HEALTH.md`.
+- Destination: Humanity Loop GitHub repo
+- Failure class: earlier safety/policy interception; blocker later cleared
+- Error/evidence: The original write was blocked before execution and preserved in Undermind failover. GitHub mutation capability materially recovered later on 2026-09-30.
+- Intended payload or artifact: Provocation/threat → interpretation/hostile attribution → rumination/dysregulation → reactive aggression working model; behavioral/durability/cross-cultural/active-control/adverse-effect gates; preservation of justified anger and boundary-setting.
+- Retry condition: satisfied on 2026-09-30 when GitHub mutations succeeded again.
+- Status: resolved
+- Resolution: Evidence gate committed and verified in `MENTAL-HEALTH.md` at commit `a5a772530a7d29128e5562b5243848cd9ef075cd`.
+
