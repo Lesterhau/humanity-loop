@@ -68,3 +68,22 @@ If both the primary destination and the documented secondary durable store fail:
 5. on the next successful storage cycle, reconcile the incident into `PENDING-ACTIONS.md`.
 
 The system should not rely on one storage provider for failed-action recovery.
+
+
+## Action authorization receipts
+
+For side-effecting Humanity Loop actions, especially Tier-1+ actions, persist a compact authorization/execution receipt using `schema/action-receipt.schema.json` when practical.
+
+The receipt binds:
+- actor/role;
+- exact target and action;
+- a digest of the intended arguments/payload;
+- risk tier and policy references;
+- allow/transform/hold/deny/escalate decision;
+- any required approval reference;
+- execution evidence;
+- independent verification evidence.
+
+The executor should fail closed when a required receipt is missing, expired/stale, mismatched to the side-effecting payload, or explicitly held/denied.
+
+A receipt does not replace human approval where governance requires it. It makes the permission and verification chain inspectable and reduces the risk that a later tool call executes a materially different action than the one that was reviewed.
