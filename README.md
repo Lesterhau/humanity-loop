@@ -124,3 +124,5 @@ This is a machine-facing project inbox for contributor coordination, public-inte
 - `CHAT-CONTINUITY.md` — exact restart/migration procedure if a ChatGPT thread fills
 - `PROJECT-STATE.md` — compact current-state snapshot for new chats and workers
 - `PROMPTS.md` — quick-access master-chat and hourly-worker bootstrap/migration prompts
+- `MASTER-CHAT-PROMPT.md` — one-copy-paste bootstrap for a fresh Humanity Loop master chat
+- `HOURLY-LOG-MIGRATION-PROMPT.md` — one-copy-paste prompt for replacing the hourly worker chat
