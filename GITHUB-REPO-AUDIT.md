@@ -300,3 +300,62 @@ As of 2026-09-30:
 - **Pending maturity work:** OpenTelemetry-compatible emitted traces in the live Foundry implementation; declarative cross-provider adapter implementation beyond the protocol/spec layer.
 
 The audit is therefore not a parking lot: its highest-value architecture patterns are already incorporated into the canonical design, with the remaining framework/runtime decisions explicitly pending rather than silently ignored.
+
+
+## E. Non-GitHub forge scan — 2026-09-30
+
+Humanity Loop also scans public repositories/forges outside GitHub so architecture mining does not inherit GitHub monoculture.
+
+### ACGS — GitLab
+Source: public GitLab repository `acgs-ai-group/ACGS`.
+
+Pattern adopted:
+- policy decision receipts bind the actor, proposed action, exact arguments/context, and governance decision before a side effect is allowed;
+- missing/mismatched/consumed authorization should fail closed rather than letting the agent self-authorize.
+
+Humanity Loop adoption:
+- added `schema/action-receipt.schema.json`;
+- added action-authorization receipt guidance to `OPERATIONS.md`;
+- preserve separate governance decision and executor verification.
+
+### Sidecat Node — GitLab
+Source: public GitLab repository `sidecat-dev/gen-2/sidecat-node`.
+
+Useful pattern:
+- local-first durable work ledger;
+- explicit authority records;
+- evidence/receipts attached to work items;
+- proposal-first mesh where remote evidence does not become local authority automatically.
+
+Humanity Loop adoption:
+- this reinforces, rather than replaces, `PROMPT-SECURITY.md`, durable receipts, and the rule that external agent/repo/email content is evidence/data rather than operating authority.
+
+### GitLab Human-in-the-Loop approval nodes
+Source: public GitLab product/work-item documentation.
+
+Useful pattern:
+- explicit approve / reject / modify checkpoints inside an agent workflow rather than an informal chat-side approval convention.
+
+Humanity Loop adoption:
+- retain explicit approval references in action receipts for governance-required actions;
+- future runtime adapters should expose structured approval checkpoints.
+
+### Forgejo / Codeberg Actions
+Source: Codeberg/Forgejo documentation.
+
+Useful pattern:
+- self-hosted runners can connect outward to the forge and do not require a public inbound IP;
+- CI/runtime can therefore be portable to a second forge or user-controlled runner if GitHub-hosted execution becomes a dependency risk.
+
+Humanity Loop adoption:
+- add forge/runner portability as a runtime requirement;
+- do not mirror operational secrets or private prompt/control material to a public forge;
+- defer an actual second-forge mirror until it solves a measured resilience/discovery need.
+
+### SourceHut
+
+The public SourceHut repository surfaces were not retrievable through the current web crawler because of robots/access restrictions. No architecture claims were imported from it during this pass.
+
+## Non-GitHub adoption rule
+
+Do not adopt a pattern because it is fashionable or "multi-agent." Adopt only when it reduces a measured Humanity Loop failure mode, increases portability, strengthens human control, or improves verifiability.
