@@ -31,6 +31,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Specialist catalog: `ROLE-CATALOG.md`
 - Do not claim unverified runtime enhancements are live.
 - Do not wholesale-migrate the model-dependent Foundry to GitHub Actions; separate deterministic orchestration from provider-dependent execution first.
+- Bounded continuity fallback: `FOUNDRY-RUNTIME.md`. When the independent scheduler is verified inactive/stale, the main hourly worker may execute at most one non-duplicative Foundry cycle and persist it under `runtime/foundry-fallback/`.
 
 ### Live independent apps
 - Critical Guidance Delta UI/API:
@@ -143,7 +144,7 @@ Use:
 - Critical Guidance Delta deterministic detection has been migrated and live-validated on GitHub Actions.
 - Federal Policy Delta deterministic detection has been migrated and live-validated on GitHub Actions across all 17 configured official sources. The official GPO/LOC bill-status bulk-update feed replaces the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
 - Evidence Integrity Sentinel remains healthy on AppDeploy.
-- Foundry Alpha remains the unresolved runtime-credit dependency.
+- Foundry Alpha remains the unresolved **independent-runtime** credit dependency; bounded functional continuity is restored through the main-worker fallback defined in `FOUNDRY-RUNTIME.md`.
 
 ## Immediate continuity priority
 
