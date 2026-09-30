@@ -581,3 +581,24 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Added durable master-chat and hourly-worker continuity procedures plus a compact canonical project-state snapshot.
 
 **Outcome:** If either ChatGPT thread reaches a conversation limit, Humanity Loop can restart from GitHub state with a one-line bootstrap/migration prompt instead of reconstructing project history manually.
+
+---
+
+## HL-056 — 2026-09-30 — runtime-resilience
+**Status:** executed  
+**Scope:** Humanity Loop  
+
+**Action:** Migrated CAP Daily Audit, Federal Policy Delta deterministic detection, and Critical Guidance Delta deterministic detection from AppDeploy credit-dependent crons to bounded GitHub Actions workers with pinned checkout, concurrency controls, timeouts, tests, verification, and durable runtime receipts.
+
+**Outcome:** All three replacement workflows completed live validation. CAP audited 247 active NWS alerts on its validation run; Federal Policy Delta reached all 17 configured official sources after replacing the Congress.gov homepage with the official GPO/LOC bill-status update feed; Critical Guidance Delta reached all three WHO/FDA/EMA sources. Evidence Integrity Sentinel remains healthy on AppDeploy. Foundry Alpha remains the unresolved AppDeploy credit dependency.
+
+---
+
+## HL-057 — 2026-09-30 — population-health-evidence
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Added a falsifiable reactive-aggression H2 mechanism/evidence gate to the preventive mental-health architecture after the previously blocked GitHub write path recovered.
+
+**Outcome:** `MENTAL-HEALTH.md` now treats provocation/threat → interpretation/hostile attribution → rumination/dysregulation → reactive aggression as a working model to test, requires behavioral and durable outcomes before scaling, and explicitly protects justified anger, accurate threat detection, assertiveness, boundaries, help-seeking, and lawful dissent.
+
