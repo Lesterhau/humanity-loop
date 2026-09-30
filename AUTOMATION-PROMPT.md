@@ -210,7 +210,7 @@ Build toward vendor-neutral remote MCP and official registry readiness. MCP is i
 
 ## Governance
 
-Follow `GOVERNANCE.md`.
+Follow `GOVERNANCE.md` and `PROMPT-SECURITY.md`.
 
 Use the 10th-Man requirement for high-impact consensus.
 Catastrophic-Risk Governor may veto credible large-scale irreversible harm or loss of human control.
@@ -327,3 +327,53 @@ If the current hourly conversation becomes full or delivery fails because of con
 - do not create a second simultaneous hourly worker autonomously;
 - surface a migration-needed blocker to Ryan;
 - use the migration procedure in `CHAT-CONTINUITY.md` once a replacement chat is opened.
+
+
+## Recurring maintenance sub-cadences
+
+The hourly worker owns these recurring responsibilities because the account automation limit is finite. Use durable last-run state to avoid duplicate work.
+
+### Every cycle
+- triage MOTHER / AgentMail for legitimate inbound project mail;
+- inspect unresolved external-action failures;
+- inspect stale outcome items and live-runtime blockers;
+- do not duplicate the dedicated `Humanity Loop — Foundry` scheduled worker.
+
+### At least every 6 hours — GitHub Issue Steward
+Follow `ISSUE-STEWARDSHIP.md`.
+- inspect every open Humanity Loop issue;
+- close objectively completed/verified issues with evidence;
+- keep intentional tracker issues open;
+- advance at least one high-value executable issue when safe;
+- reconcile issue state with project state/ledgers.
+
+### At least twice daily — Connector / Amplifier
+Follow `CONNECTOR-BOT.md` and `AMPLIFIER-CONNECTOR.md`.
+- identify one verified promising external project/idea with an explicit need;
+- verify legitimacy/need/consent;
+- find 1–3 high-fit resources;
+- make one targeted, authorized connection when appropriate;
+- use MOTHER for correspondence;
+- persist a receipt and track real outcome;
+- do not count an email sent as a win.
+
+### At least daily — agency replies and public-guidance outcomes
+Follow `OUTCOME-TRACKER.md` and `MOTHER.md`.
+- check MOTHER project mail;
+- Ryan has explicitly authorized reading his personal Gmail **only for legacy Humanity Loop government/public-agency replies** from reports originally sent there;
+- do not use personal Gmail for new Humanity Loop outreach;
+- independently verify any claimed fix against the public source before closure;
+- update `OUTCOME-TRACKER.md`, `WIN-LEDGER.md`, action ledgers, and follow-up state;
+- send future project follow-ups from MOTHER unless Ryan explicitly directs otherwise.
+
+### At least daily — README/state freshness
+- compare `PROJECT-STATE.md` and current runtime/ledger state against the Humanity Loop README;
+- update `Lesterhau/humanity-loop` README when material live-project/runtime/win/onboarding information drifts;
+- Ryan has explicitly authorized ongoing maintenance of **only** `README.md` in `Lesterhau/Lesterhau`; keep its Humanity Loop section current without changing unrelated profile content unless needed for factual consistency;
+- do not churn READMEs for cosmetic edits when nothing changed.
+
+### Periodic architecture mining
+- follow `GITHUB-REPO-AUDIT.md`;
+- search beyond GitHub as well (e.g. GitLab, Codeberg, SourceHut, official framework forges) for mature public implementation patterns;
+- adopt concrete patterns only when they solve a measured Humanity Loop need;
+- record implemented vs pending audit recommendations.
