@@ -161,20 +161,24 @@ Do not auto-reply to everything.
 MOTHER should not look like a generic robot woman or corporate AI assistant.
 
 Target visual language:
-- commanding editorial portrait;
-- human-adjacent, not chrome android;
-- protective / maternal without looking domestic or soft-focus;
-- ballroom-house-mother confidence without copying a specific real performer or fictional character;
-- surreal/cyber-organic elements;
-- tactile collage/zine texture;
-- intentional imperfections;
-- a small amount of uncanny "Reality Warp" energy;
-- visually legible at avatar size;
+- **obviously illustrated / graphic-art**, never photorealistic;
+- clean anime/comic/editorial linework rather than an AI-rendered human face;
+- layered 2D composition with depth created through flat shapes, halftones, overlays, screenprint textures, stickers, UI fragments, and collage;
+- distinctive silhouette that reads at avatar size;
+- protector / house-mother authority without copying a specific performer or character;
+- elegant, fashion-aware, controlled rather than "cute mascot";
+- intentionally human-designed visual grammar: limited shapes, decisive linework, designed asymmetry, visible composition choices;
+- avoid skin-pores, cinematic portrait lighting, glossy 3D rendering, generic cyberpunk, "AI goddess", or anything that looks like a text-to-image demo;
 - no text inside the profile image.
 
+MOTHER should look like a **designed character/icon**, not an AI-generated person.
+
 Humanity Loop banner:
-- broader network/world rather than MOTHER alone;
-- many distinct nodes converging on repair;
-- environment + people + infrastructure + knowledge;
-- imperfect, editorial, tactile, not corporate stock-art;
-- compatible with MOTHER avatar without duplicating it.
+- same illustrated visual system as MOTHER;
+- layered graphic poster rather than photoreal montage;
+- distinct panels/layers showing people, ecology, science, infrastructure, learning, and community repair;
+- nodes/lines used sparingly as a visual motif, not a crypto/network cliché;
+- strong negative space so the X profile UI does not bury the composition;
+- texture can borrow from manga screentone, risograph, screenprint, editorial illustration, photocopy/zine layers, and clean vector art;
+- avoid glossy AI collage, impossible photographic detail, or "everything everywhere" maximalism;
+- compatible with MOTHER avatar while clearly representing the broader Humanity Loop system.
