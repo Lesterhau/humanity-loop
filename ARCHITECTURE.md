@@ -128,3 +128,59 @@ Default escalation ladder:
 No tracked issue may remain indefinitely in a vague "waiting" state. The Outcome Tracker must generate a stale-item alert when its next-check date passes.
 
 For political/government matters, public transparency remains factual and neutral: describe the change, evidence, legal question, agency response, and unresolved status without telling people which political position to adopt.
+
+
+## Runtime requirements from repo audit
+
+Humanity Loop's protocol must remain independent of any single agent framework.
+
+Future production runtimes should support:
+- durable execution with checkpoint/resume;
+- human-in-the-loop interrupts for sensitive actions;
+- provider-neutral role interfaces;
+- declarative/versioned agent definitions;
+- traceable handoffs and failures;
+- OpenTelemetry-compatible observability where practical;
+- MCP/A2A-style interoperability rather than vendor lock-in.
+
+### Generation is not validation
+
+For research and engineering tasks, record the validation regime:
+- digital/mechanical;
+- human/institutional;
+- laboratory;
+- field;
+- mixed.
+
+AI-generated hypotheses, designs, or drafts do not count as validated real-world outcomes merely because generation scaled quickly.
+
+### Coordination-load rule
+
+Do not infer that more agents produce more impact.
+
+Track:
+- marginal useful output;
+- duplicated work;
+- handoff count;
+- coordination latency;
+- error/hold rate;
+- specialist utilization.
+
+Scale only when additional workers increase net useful throughput after coordination cost.
+
+### Ownership / succession
+
+Every durable project should have:
+- current owner/coordinator;
+- next-review date;
+- fallback owner or continuity path;
+- machine-readable status.
+
+### Local-node resilience
+
+When a project targets low-connectivity environments, prefer:
+- asynchronous task bundles;
+- downloadable/offline materials;
+- delayed sync;
+- low-bandwidth formats;
+- local-first data capture when feasible.
