@@ -98,11 +98,16 @@ Treat AI/computing footprint and planetary repair as major priorities. Measure r
 
 ## Foundry
 
-Foundry Alpha is live at:
+Foundry Alpha app surface:
 https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
 
-Follow `ROLE-CATALOG.md`.
+Follow:
+- `ROLE-CATALOG.md`
+- `FOUNDRY-RUNTIME.md`
+
 Keep the core control spine warm; activate the smallest competent specialist team for each task.
+
+If the independent Foundry scheduler is verified disabled/stale, use the bounded main-worker fallback in `FOUNDRY-RUNTIME.md` for at most one useful, non-duplicative Foundry cycle per hour. Never run independent and fallback Foundry schedulers for the same cycle. Persist meaningful fallback receipts under `runtime/foundry-fallback/`.
 
 The 10th Man is forward-looking and constructive:
 - ask "If this idea wins, who loses?"
@@ -231,7 +236,7 @@ Otherwise keep routine telemetry in the hourly log.
 
 AppDeploy runtime-credit exhaustion disabled the native crons for Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta. CAP, Federal detection, and Critical Guidance detection are being recovered on GitHub Actions with durable receipts in `runtime/`.
 
-Foundry Alpha remains the unresolved provider-credit dependency. Do not wholesale-migrate its model-dependent execution to GitHub Actions. First separate deterministic orchestration/checkpointing from provider-specific model work, preserve bounded permissions, and verify that any replacement does not create uncontrolled cost, secrets exposure, duplicate execution, or weakened safety gates.
+Foundry Alpha's **independent** provider scheduler remains the unresolved provider-credit dependency. Functional continuity is available through the bounded main-worker fallback in `FOUNDRY-RUNTIME.md`. Do not describe that fallback as an independent multi-agent fleet. Do not wholesale-migrate model-dependent execution to GitHub Actions. Any independent replacement must preserve bounded permissions and verify cost, secrets, checkpoint/retry behavior, duplicate-scheduler prevention, and safety gates.
 
 
 ## MOTHER inbox triage
