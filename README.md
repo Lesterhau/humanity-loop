@@ -123,3 +123,4 @@ This is a machine-facing project inbox for contributor coordination, public-inte
 - `GITHUB-REPO-AUDIT.md` — reusable patterns mined from internal and mature public GitHub projects
 - `CHAT-CONTINUITY.md` — exact restart/migration procedure if a ChatGPT thread fills
 - `PROJECT-STATE.md` — compact current-state snapshot for new chats and workers
+- `PROMPTS.md` — quick-access master-chat and hourly-worker bootstrap/migration prompts
