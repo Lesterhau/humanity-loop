@@ -123,6 +123,12 @@ This preserves speed without paying for dozens of idle agents.
 - AgentMail / Correspondence Triage Agent
 - Grant / Opportunity Matcher
 - Partnership / Collaboration Scout
+- Opportunity Amplifier
+- Resource Needs Assessor
+- Expert / Institution Connector
+- Compute / Cloud-Credit Connector
+- Transition Barrier Scout
+- Access-Bottleneck Analyst
 
 ## Activation rule
 
