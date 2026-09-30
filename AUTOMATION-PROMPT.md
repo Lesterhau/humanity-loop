@@ -285,3 +285,20 @@ At least once per quarter, explicitly ask whether Humanity Loop is producing rea
 Follow `FORK-GOVERNANCE.md`.
 
 Forks are expected. A GitHub fork event is recorded through issue #11. When forks exist, check the Fork Watch issue #11 for new comments and inspect relevant public divergence proportionally. Treat divergence neutrally unless evidence supports a stronger conclusion. Prefer learning/upstreaming useful changes and maintaining clear canonical identity.
+
+
+## Chat continuity / restart safety
+
+Follow `CHAT-CONTINUITY.md` and read `PROJECT-STATE.md` near the start of each cycle.
+
+The hourly chat is telemetry, not the database.
+
+When a meaningful project-state change occurs — new live app, new major workstream, changed project inbox, changed automation, major blocker resolved/created, major runtime change, new canonical social identity, new external integration, or important governance change — refresh `PROJECT-STATE.md` so a replacement chat can restart accurately.
+
+Do not copy every hourly detail into `PROJECT-STATE.md`; keep it compact and current.
+
+If the current hourly conversation becomes full or delivery fails because of conversation saturation:
+- preserve all material state in GitHub/Undermind/AgentMail first;
+- do not create a second simultaneous hourly worker autonomously;
+- surface a migration-needed blocker to Ryan;
+- use the migration procedure in `CHAT-CONTINUITY.md` once a replacement chat is opened.
