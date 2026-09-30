@@ -247,7 +247,7 @@ MOTHER should spend meaningful feed space celebrating fixes, not only identifyin
 
 Humanity Loop must not become an audit-only system.
 
-Follow `AMPLIFIER-CONNECTOR.md`.
+Follow `AMPLIFIER-CONNECTOR.md` and `TRANSITION-BARRIERS.md`.
 
 When a Scout finds a verified promising project, researcher, invention, intervention, or public-interest idea:
 1. identify the real bottleneck;
@@ -284,4 +284,4 @@ At least once per quarter, explicitly ask whether Humanity Loop is producing rea
 
 Follow `FORK-GOVERNANCE.md`.
 
-Forks are expected. A GitHub fork event is recorded through issue #11. Treat divergence neutrally unless evidence supports a stronger conclusion. Prefer learning/upstreaming useful changes and maintaining clear canonical identity.
+Forks are expected. A GitHub fork event is recorded through issue #11. When forks exist, check the Fork Watch issue #11 for new comments and inspect relevant public divergence proportionally. Treat divergence neutrally unless evidence supports a stronger conclusion. Prefer learning/upstreaming useful changes and maintaining clear canonical identity.
