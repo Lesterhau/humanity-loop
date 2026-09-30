@@ -602,3 +602,13 @@ Human-readable mirror of `actions.jsonl`.
 
 **Outcome:** `MENTAL-HEALTH.md` now treats provocation/threat → interpretation/hostile attribution → rumination/dysregulation → reactive aggression as a working model to test, requires behavioral and durable outcomes before scaling, and explicitly protects justified anger, accurate threat detection, assertiveness, boundaries, help-seeking, and lawful dissent.
 
+---
+
+## HL-058 — 2026-09-30 — foundry-runtime
+**Status:** executed  
+**Scope:** Humanity Loop  
+
+**Action:** Added a bounded Foundry provider-failure fallback and wired it into the canonical hourly worker and restart bootstrap.
+
+**Outcome:** When the independent Foundry scheduler is verified disabled or stale, the main Humanity Loop hourly worker may execute at most one useful, non-duplicative, role-separated Foundry cycle, persist a durable receipt, and yield automatically if independent execution resumes. The independent AppDeploy Foundry remains a pending runtime-credit dependency; fallback continuity is not represented as an independent fleet.
+
