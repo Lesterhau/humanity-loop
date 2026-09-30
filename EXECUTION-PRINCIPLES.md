@@ -163,3 +163,26 @@ Track:
 - unresolved external dependencies.
 
 Failures route through OPERATIONS.md rather than disappearing.
+
+
+## 13. Stakeholder preflight
+
+Before a major public launch, campaign, contributor rollout, or high-visibility intervention, run a lightweight simulated stakeholder review.
+
+Include perspectives such as:
+- people directly affected;
+- implementers/operators;
+- likely adopters/contributors;
+- credible critics/skeptics;
+- people who may misunderstand the message.
+
+Ask:
+- what is confusing;
+- what feels manipulative or overclaimed;
+- what unintended incentive/backlash could appear;
+- what evidence would increase trust;
+- what wording could preserve agency.
+
+Do not convert this into a fake numeric "70% human confidence" score.
+
+Simulation is a hypothesis generator, not real user research. When stakes justify it, seek actual human feedback.
