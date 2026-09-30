@@ -56,3 +56,15 @@ Those failures must be surfaced rather than hidden in routine logs.
 ## Monitoring cadence
 
 The main Humanity Loop worker runs hourly, which is the maximum supported scheduled-task frequency. Each cycle must inspect unresolved external-action failures before starting lower-priority new work.
+
+
+## Tertiary failover
+
+If both the primary destination and the documented secondary durable store fail:
+1. send a minimal internal alert to the MOTHER project inbox `mother.humanityloop@agentmail.to` with subject prefix `[FAILOVER]`;
+2. include only non-sensitive metadata: timestamp, intended destination, failure class, project/item name, and a short recoverable summary;
+3. never include secrets, credentials, private personal data, or other sensitive payloads in the email fallback;
+4. surface the failure in the hourly log;
+5. on the next successful storage cycle, reconcile the incident into `PENDING-ACTIONS.md`.
+
+The system should not rely on one storage provider for failed-action recovery.
