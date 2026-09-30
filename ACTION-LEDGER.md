@@ -612,3 +612,53 @@ Human-readable mirror of `actions.jsonl`.
 
 **Outcome:** When the independent Foundry scheduler is verified disabled or stale, the main Humanity Loop hourly worker may execute at most one useful, non-duplicative, role-separated Foundry cycle, persist a durable receipt, and yield automatically if independent execution resumes. The independent AppDeploy Foundry remains a pending runtime-credit dependency; fallback continuity is not represented as an independent fleet.
 
+---
+
+## HL-059 — 2026-09-30 — verified-external-outcome
+**Status:** verified-resolved  
+**Scope:** US/state public guidance  
+
+**Action:** Reconciled legacy government replies from authorized personal Gmail, independently verified Texas HHS's claimed Medicaid Buy-In handbook correction, created a durable Outcome Tracker, and recorded the result as Humanity Loop's first verified win.
+
+**Outcome:** The live Texas HHS Appendix XXXI table now shows the corrected 150%–185% FPL lower bound of $1,995. `OUTCOME-TRACKER.md` now tracks unresolved agency reports and `WIN-LEDGER.md` contains WIN-001.
+
+---
+
+## HL-060 — 2026-09-30 — correspondence-infrastructure
+**Status:** executed  
+**Scope:** Humanity Loop / public-agency correspondence  
+
+**Action:** Made MOTHER the default Humanity Loop government/public-agency sender, verified unresolved VA and Texas WIC issues, and sent factual follow-ups from `mother.humanityloop@agentmail.to`.
+
+**Outcome:** New project correspondence no longer depends on Ryan's personal address. Legacy Gmail may be read only for earlier Humanity Loop agency replies unless separately authorized; claimed fixes require independent verification before closure.
+
+---
+
+## HL-061 — 2026-09-30 — operational-agents
+**Status:** executed  
+**Scope:** Humanity Loop  
+
+**Action:** Instantiated executable operating contracts for MOTHER, Connector/Amplifier, recurring GitHub Issue Stewardship, and prompt/instruction security; moved the convenience prompt index to private Undermind storage and removed `PROMPTS.md` from the current public repository tree.
+
+**Outcome:** The canonical hourly worker now runs issue stewardship at least every six hours, Connector/Amplifier work at least twice daily, agency-outcome reconciliation daily, and README/state freshness daily. MOTHER behavior and correspondence rules are executable project policy rather than chat-only decisions.
+
+---
+
+## HL-062 — 2026-09-30 — runtime-resilience
+**Status:** live  
+**Scope:** Humanity Loop  
+
+**Action:** Created a dedicated hourly `Humanity Loop — Foundry` ChatGPT automation and made it the active model-dependent Foundry scheduler while AppDeploy's native Foundry cron remains credit-disabled.
+
+**Outcome:** Foundry cycles can continue without AppDeploy cron credits while preserving role separation, durable receipts, governance gates, and single-active-scheduler rules. Deterministic monitoring workers remain on GitHub Actions.
+
+---
+
+## HL-063 — 2026-09-30 — architecture-mining
+**Status:** executed  
+**Scope:** cross-forge / runtime governance  
+
+**Action:** Extended architecture mining beyond GitHub, reviewed public GitLab and Codeberg/Forgejo patterns, added a machine-readable external-action receipt schema, and added forge/runner portability requirements.
+
+**Outcome:** Side-effecting actions can now bind reviewed intent to exact payload digests and verification receipts, while the architecture explicitly avoids treating GitHub-hosted execution as an irreplaceable runtime assumption.
+
