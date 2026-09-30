@@ -184,3 +184,17 @@ When a project targets low-connectivity environments, prefer:
 - delayed sync;
 - low-bandwidth formats;
 - local-first data capture when feasible.
+
+
+### Forge / runner portability
+
+Humanity Loop must not treat GitHub-hosted execution as an irreplaceable control-plane assumption.
+
+Where practical:
+- keep worker logic in portable scripts rather than embedding all behavior in one forge's workflow DSL;
+- separate scheduler configuration from worker logic;
+- make a self-hosted or alternate-forge runner feasible without changing mission/governance contracts;
+- keep secrets and private control material out of public mirrors;
+- do not create a second active scheduler without explicit single-active-scheduler cutover.
+
+A second forge/mirror should be added only when it improves measured resilience, discovery, or contributor access enough to justify its maintenance burden.
