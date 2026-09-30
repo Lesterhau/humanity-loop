@@ -58,6 +58,27 @@ Evidence posture:
 
 Strategic implication: build and test interventions that reduce maladaptive threat-reactivity and grievance while improving emotion regulation, perspective-taking, secure identity, conflict recovery, and prosocial agency. Do not pathologize political disagreement or diagnose named individuals from afar.
 
+### Reactive-aggression mechanism: falsifiable H2 target
+
+Treat the following as a **working causal model to test**, not an established universal chain:
+
+> provocation or perceived threat → interpretation / hostile attribution → anger, rumination, or dysregulation → reactive aggression
+
+The evidence is strong enough to justify bounded testing, but not strong enough to assume that every step is causal in every population. Adult hostile-attribution bias is associated with aggression, while much of that literature remains cross-sectional (Tuente et al., DOI 10.1016/j.avb.2019.01.009). A therapist-supported internet emotion-regulation RCT targeting maladaptive anger provides experimental evidence that anger processes are modifiable (Bjureberg et al., DOI 10.1037/ccp0000769). A 2023 systematic review/meta-analysis found a developing evidence base for cognitive-bias-modification approaches to anger/aggression rather than a settled population-scale intervention (Ciesinski et al., DOI 10.1016/j.brat.2023.104344). A 2025 meta-analysis found anger was consistently associated with several emotion-regulation strategies, with substantial heterogeneity across studies (Pop et al., DOI 10.1038/s41598-025-91646-0).
+
+#### Evidence gate before scaling
+
+Any H2 intervention aimed at this pathway should require:
+- behavioral aggression or conflict outcomes where feasible, not anger scores alone;
+- longer follow-up, with 6–12 month durability preferred for population-scale claims;
+- active-control comparisons where practical;
+- replication across cultures, languages, and social contexts;
+- explicit adverse-effect, subgroup, and backfire measurement;
+- tests of whether changing interpretation or regulation actually mediates behavioral change;
+- preservation of accurate threat detection, justified anger, assertiveness, boundary-setting, help-seeking, and lawful collective action.
+
+**10th-Man question:** if regulation training succeeds, who could lose? People facing genuine abuse, discrimination, exploitation, or structural injustice could be harmed if “calm” is treated as compliance or valid grievance is reframed as pathology. The target is reduced impulsive harmful aggression and better conflict recovery, not passivity, ideological conformity, or suppression of legitimate dissent.
+
 
 ## Adversity branching model
 
