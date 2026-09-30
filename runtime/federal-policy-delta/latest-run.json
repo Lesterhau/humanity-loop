@@ -1,0 +1,18 @@
+{
+  "baselinesCreated": 16,
+  "changes": [],
+  "changesDetected": 0,
+  "failures": [
+    {
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "source": "Congress.gov legislation",
+      "sourceKey": "congress",
+      "url": "https://www.congress.gov/"
+    }
+  ],
+  "failuresCount": 1,
+  "note": "Detection only. A delta is not a legal finding and must be neutrally reviewed before publication or escalation.",
+  "runAt": "2026-09-30T20:59:54.971258Z",
+  "schemaVersion": 1,
+  "sourcesConfigured": 17
+}
