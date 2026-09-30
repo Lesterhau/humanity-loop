@@ -47,3 +47,19 @@ The MOTHER/Public Transparency Agent should:
 6. avoid exaggerating Humanity Loop's causal contribution.
 
 Wins are evidence that the loop works and should be communicated accordingly.
+
+---
+
+## WIN-001 — Texas HHS corrected Medicaid Buy-In premium range
+- **Source Outcome Tracker item:** OT-001
+- **Problem:** Texas HHS Appendix XXXI listed the 150%–185% FPL earned-income premium range as beginning above $41,995, an impossible lower bound inconsistent with the preceding $1,995 ceiling.
+- **Humanity Loop action:** Identified the contradiction and reported it to the Texas HHS Form and Handbook Unit on 2026-09-25.
+- **External actor:** Texas Health and Human Services — Form and Handbook Unit.
+- **Verified change:** On 2026-09-30 the unit replied that the error was corrected. Independent verification of the live page confirmed the range now reads “More than $1,995 up to and including $2,461.”
+- **Evidence / receipt:** https://fhb.hhs.texas.gov/handbooks/medicaid-elderly-people-disabilities-handbook/appendix-xxxi-budget-reference-chart
+- **People/systems helped:** Medicaid Buy-In applicants, eligibility workers, advocates, and anyone using the current MEPD handbook premium chart.
+- **Date verified:** 2026-09-30
+- **Attribution confidence:** high for contribution to detection/reporting; the agency implemented the correction.
+- **Follow-on monitoring:** watch for regression at future annual FPL updates.
+- **MOTHER post status:** candidate — not yet posted.
+
