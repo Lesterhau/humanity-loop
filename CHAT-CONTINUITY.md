@@ -29,6 +29,7 @@ A new Humanity Loop master chat should read these first:
 - `WIN-LEDGER.md`
 - `ACTION-LEDGER.md`
 - `ROLE-CATALOG.md`
+- `FOUNDRY-RUNTIME.md`
 - `TOOLING.md`
 - `MULTI-MODEL.md`
 - `AMPLIFIER-CONNECTOR.md`
