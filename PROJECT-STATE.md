@@ -141,7 +141,7 @@ Use:
 - AppDeploy cron-credit exhaustion affected Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta simultaneously.
 - CAP Daily Audit has been migrated and live-validated on GitHub Actions.
 - Critical Guidance Delta deterministic detection has been migrated and live-validated on GitHub Actions.
-- Federal Policy Delta deterministic detection is being migrated to GitHub Actions; official GPO/LOC bill-status bulk updates replace the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
+- Federal Policy Delta deterministic detection has been migrated and live-validated on GitHub Actions across all 17 configured official sources. The official GPO/LOC bill-status bulk-update feed replaces the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
 - Evidence Integrity Sentinel remains healthy on AppDeploy.
 - Foundry Alpha remains the unresolved runtime-credit dependency.
 
