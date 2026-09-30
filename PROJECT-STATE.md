@@ -183,8 +183,8 @@ Use:
 - Foundry Alpha's native AppDeploy cron remains credit-disabled, but this is no longer a functional Foundry blocker because the dedicated **Humanity Loop — Foundry** automation is active. MOTHER has asked AppDeploy whether public-interest/open-source credit support is available without making a financial commitment.
 
 ### Current GitHub ledger head
-- Human ledger currently includes actions through **HL-064**.
-- Machine ledger `actions.jsonl` currently includes actions through **HL-064**; latest validation must remain green after each ledger append.
+- Human ledger currently includes actions through **HL-065**.
+- Machine ledger `actions.jsonl` currently includes actions through **HL-065**; latest validation must remain green after each ledger append.
 - GitHub mutation capability is currently working.
 
 ## Immediate continuity priority
