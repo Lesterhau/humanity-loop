@@ -1,6 +1,12 @@
 name: CAP Daily Audit
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/cap_daily_audit.py'
+      - 'scripts/test_cap_daily_audit.py'
+      - '.github/workflows/cap-daily-audit.yml'
   schedule:
     # GitHub schedules are UTC. Two slots plus the DST gate preserve 10:30 AM America/New_York.
     - cron: '30 14 * * *'
