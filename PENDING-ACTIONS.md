@@ -23,11 +23,11 @@ When GitHub itself is unavailable, the canonical fallback copy is maintained in 
 - Intended action: Redeploy Foundry Alpha with enforced stale-outcome review and dynamic specialist activation.
 - Destination: AppDeploy app `humanity-loop-foundry-alpha-0wls2s`
 - Failure class: provider quota / deployment credits
-- Error/evidence: AppDeploy reported fewer than the 14 credits required for another deployment; daily reset at 2026-09-30T00:00:00Z.
+- Error/evidence: Initial redeploy was blocked by deployment credits. After the reset, live reconciliation on 2026-09-30 found the app deployed/ready but its hourly cron disabled with `credits_exhausted`; current source still lacks the planned pre-scout stale-outcome gate and dynamic bounded specialist activation.
 - Intended payload or artifact: Outcome-escalation enforcement + specialist role routing.
-- Retry condition: AppDeploy daily deployment credits reset, then re-inspect current source before applying.
+- Retry condition: Reattempt only when AppDeploy mutation/runtime-credit conditions materially change, or after deterministic Foundry orchestration has been safely separated from provider-dependent model work.
 - Status: pending
-- Resolution:
+- Resolution: CAP Daily Audit, Federal Policy detection, and Critical Guidance detection were moved to credit-independent GitHub Actions. Foundry remains unresolved because its model-dependent execution should not be wholesale-migrated without preserving bounded permissions, safety gates, checkpointing, secrets discipline, and cost controls.
 
 
 ### 2026-09-29 — Openness/security model GitHub write
@@ -59,5 +59,5 @@ When GitHub itself is unavailable, the canonical fallback copy is maintained in 
 - Error/evidence: Original hourly-worker GitHub writes were blocked on 2026-09-28; a reconstruction attempt on 2026-09-30 was also intercepted.
 - Intended payload or artifact: Duplication-first research into whether a machine-readable crosswalk is missing across electricity, grid burden, water context, cooling, carbon, heat reuse, backup systems, materials, and infrastructure constraints.
 - Retry condition: Revisit only when a safe, narrower research framing or an existing mature standard/tool makes the missing layer clearer.
-- Status: pending
-- Resolution:
+- Status: resolved
+- Resolution: GitHub mutation capability demonstrably recovered on 2026-09-30. Duplication review found the broad crosswalk insufficiently differentiated from existing ISO/IEC 30134 metrics, EU data-centre reporting work, and Open Compute Project sustainability efforts, so the broad backlog item is closed rather than rebuilt. Preserve only the narrower future research question of whether cross-domain burden shifting is being missed across otherwise mature accounting systems.
