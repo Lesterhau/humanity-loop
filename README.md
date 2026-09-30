@@ -71,11 +71,10 @@ https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
 
 https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
 
-## Restart / canonical prompts
+## Restart / continuity
 
-If a ChatGPT thread needs to be replaced:
+If a ChatGPT thread needs to be replaced, use the private prompt index in the authorized Humanity Loop workspace plus these public continuity specifications:
 
-- **`PROMPTS.md`** — quick-access index containing both the master-chat bootstrap and hourly-worker migration prompt.
 - **`MASTER-CHAT-PROMPT.md`** — copy/paste bootstrap for a fresh Humanity Loop master chat.
 - **`HOURLY-LOG-MIGRATION-PROMPT.md`** — copy/paste prompt if the hourly-worker chat itself needs to be replaced.
 - **`AUTOMATION-PROMPT.md`** — full canonical operating instructions for the hourly worker.
@@ -134,6 +133,5 @@ This is a machine-facing project inbox for contributor coordination, public-inte
 - `GITHUB-REPO-AUDIT.md` — reusable patterns mined from internal and mature public GitHub projects
 - `CHAT-CONTINUITY.md` — exact restart/migration procedure if a ChatGPT thread fills
 - `PROJECT-STATE.md` — compact current-state snapshot for new chats and workers
-- `PROMPTS.md` — quick-access master-chat and hourly-worker bootstrap/migration prompts
 - `MASTER-CHAT-PROMPT.md` — one-copy-paste bootstrap for a fresh Humanity Loop master chat
 - `HOURLY-LOG-MIGRATION-PROMPT.md` — one-copy-paste prompt for replacing the hourly worker chat
