@@ -48,3 +48,23 @@ As adoption grows, distinguish the official project through:
 - brand/trademark policy if later warranted.
 
 Open code enables learning and replication. Canonical identity tells people which implementation is maintained by the original project.
+
+
+## Detached copies / copycats
+
+GitHub fork monitoring does not detect someone who copies Humanity Loop files into a brand-new unrelated repository instead of using GitHub's fork mechanism.
+
+Periodically search public GitHub for distinctive canonical phrases / file signatures from:
+- PROTOCOL.md
+- GOVERNANCE.md
+- ARCHITECTURE.md
+- REPLICATION-PROMPT.md
+
+When a likely detached copy is found:
+- record the repository and public lineage evidence;
+- compare governance/safety-critical differences;
+- distinguish legitimate reuse from misleading claims of canonical status;
+- do not assume harmful intent merely because attribution, branding, or governance differs;
+- use canonical identity/provenance mechanisms when clarification is needed.
+
+This is a discovery problem, not permission to interfere with another repository.
