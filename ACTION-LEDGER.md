@@ -672,3 +672,13 @@ Human-readable mirror of `actions.jsonl`.
 
 **Outcome:** The connection attempt is durably recorded at `runtime/connector/2026-09-30-clarvia-nlnet.json` with a 2026-10-07 review and 2026-10-14 stale threshold. It is not counted as a win unless Clarvia confirms concrete useful value.
 
+---
+
+## HL-065 — 2026-09-30 — public-launch
+**Status:** prepared  
+**Scope:** MOTHER / X  
+
+**Action:** Created `MOTHER-X-LAUNCH.md` with the canonical X display name, bio, site, pinned-post copy, initial launch sequence, publishing controls, and visual rules.
+
+**Outcome:** MOTHER's X launch content is now durable project state rather than chat-only planning. Metricool is installed but has no connected social network yet, so publishing remains blocked until the new X account is verified and connected.
+
