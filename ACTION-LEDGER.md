@@ -529,3 +529,35 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Added verified-win tracking and MOTHER celebration routing, changed public escalation to assume ordinary error/organizational chaos before malice, and renamed the project inbox display identity to MOTHER.
 
 **Outcome:** Resolved Outcome Tracker items can now become verified Win Events for public celebration, while unresolved issues must normally escalate internally to higher responsible levels before public visibility.
+
+---
+
+## HL-051 — 2026-09-29 — replication-governance
+**Status:** executed  
+**Scope:** Humanity Loop/open-source  
+
+**Action:** Added automatic GitHub fork notifications through a Fork Watch issue and documented neutral fork-lineage/canonical-identity rules.
+
+**Outcome:** New public forks now trigger a canonical notification thread; Humanity Loop can inspect public divergence and upstream useful changes without pretending it can edit another owner's repository.
+
+
+---
+
+## HL-052 — 2026-09-29 — resource-mobilization
+**Status:** executed  
+**Scope:** global  
+
+**Action:** Created the Amplifier & Connector layer to move verified promising external work from discovery into resource matching, collaboration, compute, institutional connections, grants/programs, and consent-based public amplification.
+
+**Outcome:** Humanity Loop now has a formal Scout → Verify → Needs Assess → Match → Connect/Amplify → Outcome pipeline instead of stopping at auditing.
+
+
+---
+
+## HL-053 — 2026-09-29 — execution-governance
+**Status:** executed  
+**Scope:** Humanity Loop  
+
+**Action:** Recovered the strongest execution principles from the complete legacy God Mode conversation and translated them into Humanity Loop rules.
+
+**Outcome:** EXECUTION-PRINCIPLES.md now adds outcome-based delegation, execution velocity, WIP limits, human-dependency reduction, role-overlap audits, pre-build need validation, front-page defensibility, Xerox/prompt integrity, quarterly mission-drift audits, contained identity/spend, and failure recovery.
