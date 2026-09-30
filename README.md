@@ -25,51 +25,44 @@ Diversify across:
 
 At least half of substantive new projects should come from categories 1–6.
 
-## Current live projects
+## What is live now
 
-### Critical Guidance Delta
-**What it does:** Watches official medication-safety pages and tells you when important safety guidance changes, while preserving the old and new versions so the change can be audited.
+Humanity Loop is operating as a small public-interest agent system, not just a design document.
 
-**Why it matters:** Important safety information can change quietly. This makes those changes visible and traceable.
+### Active control plane
 
-https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
+- **Humanity Loop — Hourly Worker** — command-center maintenance, outcome follow-up, issue stewardship, Connector/Amplifier cycles, and state freshness.
+- **Humanity Loop — Foundry** — a dedicated hourly bounded Foundry cycle, now independent of AppDeploy cron credits.
+- **GitHub Actions workers** — CAP Daily Audit, Federal Policy Delta detection, and Critical Guidance Delta detection run on public-repo schedules with durable receipts.
+- **Evidence Integrity Sentinel** — its AppDeploy scheduler remains healthy.
+- **MOTHER** — Humanity Loop's public voice and project-correspondence identity at `mother.humanityloop@agentmail.to`.
+- **Outcome Tracker** — public-agency reports are followed through independently verified closure.
+- **Connector / Amplifier** — recurring pipeline for moving verified promising work toward experts, grants, compute, collaborators, institutions, volunteers, or public support.
+- **Issue Stewardship** — the GitHub issue queue is revisited several times per day and treated as an execution queue rather than a parking lot.
 
-### Evidence Integrity Sentinel
-**What it does:** Finds reviews, guidelines, or other evidence summaries that still cite a paper after that paper has been retracted, so a human expert can check whether the downstream conclusion needs another look.
+### Verified real-world outcome
 
-**Why it matters:** Retractions do not automatically invalidate everything that cited a paper, but they can create hidden weak points in the evidence chain.
+**WIN-001 — Texas HHS Medicaid Buy-In correction.** Humanity Loop identified an impossible income range in the current Texas HHS MEPD handbook, reported it, received confirmation from the Form and Handbook Unit, and independently verified that the live public table was corrected.
 
-https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/
+See `WIN-LEDGER.md` and `OUTCOME-TRACKER.md`.
 
-### CAP Clarity Check
-**What it does:** Checks emergency-alert files **before they are published** for problems that could make an alert confusing, incomplete, inaccessible, badly targeted, or technically invalid.
+### Live public app surfaces
 
-CAP is the machine-readable format used by emergency-alert systems. Think of this as a spell-check + safety-check for emergency alerts.
+- [Critical Guidance Delta](https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/) — authoritative WHO/FDA/EMA medication-safety change detection. Its active scheduler now runs through GitHub Actions while the AppDeploy cron is credit-disabled.
+- [Evidence Integrity Sentinel](https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/) — identifies downstream evidence that may rely on retracted research.
+- [CAP Clarity Check](https://cap-clarity-check-0jbjid.v2.appdeploy.ai/) — pre-publication emergency-alert clarity and structure checking.
+- [Federal Policy Delta](https://federal-policy-delta-p49z0b.v2.appdeploy.ai/) — neutral official-source change monitoring. Active deterministic detection runs through GitHub Actions.
+- [CAP Daily Audit](https://cap-daily-audit-s0a2he.v2.appdeploy.ai/) — audits live NWS alerts. Its active daily scheduler runs through GitHub Actions.
+- [Foundry Alpha](https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/) — original multi-role app surface. Its AppDeploy cron is credit-disabled; the active Foundry cadence now comes from the dedicated ChatGPT automation.
 
-**Why it matters:** During a wildfire, tornado, evacuation, chemical leak, or other emergency, a badly structured alert can waste time or fail to reach the right people.
+### Current build priorities
 
-https://cap-clarity-check-0jbjid.v2.appdeploy.ai/
-
-### Federal Policy Delta
-**What it does:** Watches major official U.S. federal policy sources every day, records visible changes, explains them in plain English, and flags legal-authority questions for further review.
-
-**Why it matters:** Policy changes can be hard to notice and harder to reconstruct after the fact. This keeps a public change history without telling people which political position to take.
-
-https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
-
-### CAP Daily Audit
-**What it does:** Automatically checks current public National Weather Service emergency alerts once a day for structural and clarity problems, then stores findings for follow-up.
-
-**Why it matters:** The original CAP Clarity Check helps an alert author before publication. This companion catches problems that made it into already-public alerts so they can be tracked and resolved.
-
-https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
-
-### Humanity Loop Foundry Alpha
-**What it does:** Runs the first real hourly Humanity Loop worker line. Separate AI roles scout one task, verify it, plan it, build a draft, challenge it, safety-check it, revise it, and define how the outcome should be tracked.
-
-**Why it matters:** This is the point where Humanity Loop stops being only an architecture document and begins operating as a bounded multi-agent system.
-
-https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
+1. Produce measurable external connections through the Connector/Amplifier layer.
+2. Close or materially advance stale GitHub issues instead of accumulating architecture debt.
+3. Finish vendor-neutral MCP/discovery infrastructure.
+4. Mature Foundry checkpointing, provider adapters, and observability.
+5. Keep verified agency/public-guidance outcomes moving to closure.
+6. Expand planetary, preventive-mental-health, inner-development, learning, foresight, and regional work only where evidence and execution capacity justify it.
 
 ## Restart / continuity
 
@@ -114,6 +107,11 @@ The model does not get moral authority merely because it can act. Humanity Loop 
 - `LIFELONG-LEARNING.md` — lifespan learning and intergenerational co-learning division
 - `COUNTRY-NODES.md` — locally grounded country/regional nodes with political-neutrality guardrails
 - `SOCIAL-DISTRIBUTION.md` — public voice, content lanes, CTA and monetization-safe distribution strategy
+- `MOTHER.md` — executable MOTHER voice, reply, correspondence, and X interaction contract
+- `CONNECTOR-BOT.md` — executable Connector/Amplifier worker contract
+- `ISSUE-STEWARDSHIP.md` — recurring GitHub issue execution and closure rules
+- `OUTCOME-TRACKER.md` — unresolved, acknowledged, and verified external outcomes
+- `PROMPT-SECURITY.md` — trusted-control-source and prompt-injection boundary
 
 ## Project coordination inbox
 
