@@ -1,0 +1,12 @@
+{
+  "baselinesCreated": 3,
+  "changes": [],
+  "changesDetected": 0,
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-09-30T21:00:44.586016Z",
+  "schemaVersion": 1,
+  "sourcesChecked": 3,
+  "sourcesConfigured": 3,
+  "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
+}
