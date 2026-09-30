@@ -26,7 +26,7 @@ MAX_DIFF = 20_000
 
 SOURCES = [
     {"key": "white-house", "name": "White House presidential actions", "branch": "Executive", "url": "https://www.whitehouse.gov/presidential-actions/"},
-    {"key": "congress", "name": "Congress.gov legislation", "branch": "Legislative", "url": "https://www.congress.gov/"},
+    {"key": "congress", "name": "Congress bill-status bulk updates (GPO/LOC)", "branch": "Legislative", "url": "https://www.govinfo.gov/rss/billstatus-batch.xml"},
     {"key": "fda", "name": "Food and Drug Administration", "branch": "Executive agency", "url": "https://www.federalregister.gov/agencies/food-and-drug-administration"},
     {"key": "dod", "name": "Department of Defense", "branch": "Executive department", "url": "https://www.federalregister.gov/agencies/defense-department"},
     {"key": "state", "name": "Department of State", "branch": "Executive department", "url": "https://www.federalregister.gov/agencies/state-department"},
