@@ -39,3 +39,14 @@ When GitHub itself is unavailable, the canonical fallback copy is maintained in 
 - Retry condition: separate writes and remove unnecessarily abuse-oriented wording while preserving the governance model.
 - Status: resolved
 - Resolution: Split into smaller writes. Qwen/GLM and MOTHER/#AddANode changes committed, and OPENNESS-SECURITY.md was verified present in the repo.
+
+
+### 2026-09-29 — Environmental break-even issue update
+- Intended action: Enrich GitHub issue #10 for the environmental break-even calculator.
+- Destination: Humanity Loop GitHub issue #10
+- Failure class: GitHub write rejection followed by secondary fallback failure
+- Error/evidence: Hourly worker reported the issue update was blocked and the Undermind fallback write also failed.
+- Intended payload or artifact: Additional implementation requirements derived from `ENVIRONMENTAL-BREAK-EVEN.md`.
+- Retry condition: Recover from the canonical environmental-break-even specification when GitHub becomes writable.
+- Status: resolved
+- Resolution: Added recovery comment to issue #10 documenting separate resource ledgers, uncertainty/provenance, Monte Carlo payback distributions, marginal environmental ROI, avoided-compute accounting, and scale/reallocate outputs. Tertiary failover policy added to OPERATIONS.md.
