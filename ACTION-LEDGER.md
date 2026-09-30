@@ -662,3 +662,13 @@ Human-readable mirror of `actions.jsonl`.
 
 **Outcome:** Side-effecting actions can now bind reviewed intent to exact payload digests and verification receipts, while the architecture explicitly avoids treating GitHub-hosted execution as an irreplaceable runtime assumption.
 
+---
+
+## HL-064 — 2026-09-30 — connector-execution
+**Status:** outcome-pending  
+**Scope:** Europe / open digital commons  
+
+**Action:** Executed the first external Connector/Amplifier cycle by matching Clarvia ASBL's publicly stated open-source funding/technical-maturity needs with NLnet's current Open Internet Stack call and sending one targeted, verified MOTHER email with the fit and GenAI-policy caveat.
+
+**Outcome:** The connection attempt is durably recorded at `runtime/connector/2026-09-30-clarvia-nlnet.json` with a 2026-10-07 review and 2026-10-14 stale threshold. It is not counted as a win unless Clarvia confirms concrete useful value.
+
