@@ -283,3 +283,20 @@ Do not import:
 5. Add coordination-load metrics to Foundry scaling.
 6. Add low-connectivity/local-node requirement to country/regional architecture.
 7. Evaluate OpenAI Agents SDK vs LangGraph vs Microsoft Agent Framework before any Foundry runtime migration.
+
+
+## Implementation status
+
+As of 2026-09-30:
+
+- **Implemented:** validation-regime metadata requirement in `ARCHITECTURE.md`.
+- **Implemented:** checkpoint/restart and durable-execution requirement in `ARCHITECTURE.md` / `FOUNDRY-RUNTIME.md`.
+- **Implemented:** OpenTelemetry-compatible observability target in `ARCHITECTURE.md`.
+- **Implemented:** owner/succession fields for durable projects in `ARCHITECTURE.md`.
+- **Implemented:** coordination-load metrics in `ARCHITECTURE.md`.
+- **Implemented:** low-connectivity/local-node resilience requirement in `ARCHITECTURE.md` and `COUNTRY-NODES.md`.
+- **Implemented in current runtime practice:** generation/validation separation; uncertainty-first environmental estimates; bounded agent scaling; smallest-geography/local relevance; bounded wait vs premature retirement.
+- **Pending evaluation:** OpenAI Agents SDK vs LangGraph vs Microsoft Agent Framework before any canonical Foundry engine migration.
+- **Pending maturity work:** OpenTelemetry-compatible emitted traces in the live Foundry implementation; declarative cross-provider adapter implementation beyond the protocol/spec layer.
+
+The audit is therefore not a parking lot: its highest-value architecture patterns are already incorporated into the canonical design, with the remaining framework/runtime decisions explicitly pending rather than silently ignored.
