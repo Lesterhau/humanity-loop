@@ -24,23 +24,37 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Chat output is telemetry, not institutional memory.
 
 ### Foundry Alpha
-- Live bounded multi-agent worker line:
+- Live bounded multi-agent app surface:
   https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
+- AppDeploy hourly cron is currently disabled with `credits_exhausted`; the app itself remains deployed/ready.
 - Core roles: Scout, Verifier, PM, Builder, 10th Man, Safety Governor, Outcome Tracker, Planetary Accountant.
 - Specialist catalog: `ROLE-CATALOG.md`
 - Do not claim unverified runtime enhancements are live.
+- Do not wholesale-migrate the model-dependent Foundry to GitHub Actions; separate deterministic orchestration from provider-dependent execution first.
 
 ### Live independent apps
-- Critical Guidance Delta:
+- Critical Guidance Delta UI/API:
   https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
+  - AppDeploy cron is disabled by `credits_exhausted`.
+  - Credit-independent change detection now runs from `.github/workflows/critical-guidance-delta.yml`.
+  - Canonical detector receipts: `runtime/critical-guidance-delta/`.
 - Evidence Integrity Sentinel:
   https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/
+  - AppDeploy cron remains enabled/healthy as of the latest reconciliation.
 - CAP Clarity Check:
   https://cap-clarity-check-0jbjid.v2.appdeploy.ai/
-- CAP Daily Audit:
+  - Browser tool; no cron by design.
+- CAP Daily Audit UI/API:
   https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
-- Federal Policy Delta:
+  - AppDeploy cron is disabled by `credits_exhausted`.
+  - Credit-independent daily audit now runs from `.github/workflows/cap-daily-audit.yml`.
+  - Canonical audit receipts: `runtime/cap-daily-audit/`.
+- Federal Policy Delta UI/API:
   https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
+  - AppDeploy cron is disabled by `credits_exhausted`.
+  - Credit-independent official-source delta detection now runs from `.github/workflows/federal-policy-delta.yml`.
+  - Canonical detector receipts: `runtime/federal-policy-delta/`.
+  - Detection is intentionally separate from neutral legal-authority analysis.
 
 ### Durable research
 - Undermind workspace configured.
@@ -121,6 +135,15 @@ Use:
 - `DEAD-ENDS.md` for rejected/retired paths;
 - `PROJECTS/` for live project cards;
 - `CHAT-CONTINUITY.md` for restart procedure.
+
+## Current runtime resilience
+
+- AppDeploy cron-credit exhaustion affected Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta simultaneously.
+- CAP Daily Audit has been migrated and live-validated on GitHub Actions.
+- Critical Guidance Delta deterministic detection has been migrated and live-validated on GitHub Actions.
+- Federal Policy Delta deterministic detection is being migrated to GitHub Actions; official GPO/LOC bill-status bulk updates replace the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
+- Evidence Integrity Sentinel remains healthy on AppDeploy.
+- Foundry Alpha remains the unresolved runtime-credit dependency.
 
 ## Immediate continuity priority
 
