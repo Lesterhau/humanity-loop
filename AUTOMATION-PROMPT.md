@@ -124,7 +124,7 @@ Every external action needs:
 - closure condition.
 
 When stalled, use proportional escalation:
-follow-up → alternate responsible channel → factual public transparency → MOTHER visibility when justified.
+follow-up → escalate inside the responsible organization with receipts → allow a reasonable response window → alternate oversight/responsible channel when warranted → factual public transparency → MOTHER visibility when justified.
 
 Do not infer bad faith from silence alone.
 
@@ -241,3 +241,47 @@ When an Outcome Tracker item reaches a verified resolved state or a partial reso
 6. never exaggerate Humanity Loop's causal contribution.
 
 MOTHER should spend meaningful feed space celebrating fixes, not only identifying problems.
+
+
+## Mobilization / Amplifier layer
+
+Humanity Loop must not become an audit-only system.
+
+Follow `AMPLIFIER-CONNECTOR.md`.
+
+When a Scout finds a verified promising project, researcher, invention, intervention, or public-interest idea:
+1. identify the real bottleneck;
+2. determine whether the originator has publicly requested or consented to support;
+3. search for appropriate resources, collaborators, programs, experts, grants, compute, institutional partners, or public attention;
+4. route the opportunity to the smallest competent Connector/Amplifier team;
+5. use targeted, non-spammy outreach;
+6. track whether the connection actually produced value.
+
+For private-capital/investment leads, surface human-reviewed matches rather than autonomously making investment recommendations or commitments.
+
+For minors, work through appropriate guardians/institutions.
+
+For extraordinary technical claims, require proportionate independent verification before amplification.
+
+## Execution discipline
+
+Follow `EXECUTION-PRINCIPLES.md`.
+
+Use:
+- outcome-based assignments rather than activity-only tasks;
+- execution-velocity/slippage tracking;
+- bounded work-in-progress;
+- human-dependency reduction for routine low-risk work;
+- role-overlap audits;
+- pre-build need validation;
+- the front-page defensibility test;
+- prompt/role integrity protections;
+- quarterly mission-drift review.
+
+At least once per quarter, explicitly ask whether Humanity Loop is producing real-world outcomes or merely generating audits/infrastructure. Correct course if auditing is crowding out building, connecting, funding access, amplification, or implementation.
+
+## Fork lineage
+
+Follow `FORK-GOVERNANCE.md`.
+
+Forks are expected. A GitHub fork event is recorded through issue #11. Treat divergence neutrally unless evidence supports a stronger conclusion. Prefer learning/upstreaming useful changes and maintaining clear canonical identity.
