@@ -1,0 +1,37 @@
+name: Fork Watch
+
+on:
+  fork:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on Fork Watch issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const forkee = context.payload.forkee;
+            const owner = forkee.owner?.login || 'unknown';
+            const url = forkee.html_url;
+            const name = forkee.full_name;
+            const created = forkee.created_at || new Date().toISOString();
+            const body = [
+              '## New public fork detected',
+              '',
+              '- Repository: [' + name + '](' + url + ')',
+              '- Owner: @' + owner,
+              '- Created: ' + created,
+              '',
+              'Forks are independent repositories. Divergence is not treated as harmful by default; this record exists for lineage, useful upstream improvements, and canonical-project clarity.'
+            ].join('\n');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 11,
+              body
+            });
