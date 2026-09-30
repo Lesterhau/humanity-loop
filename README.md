@@ -116,3 +116,6 @@ This is a machine-facing project inbox for contributor coordination, public-inte
 - `OPENNESS-SECURITY.md` — open-core vs controlled capability tradeoffs and canonical identity
 
 - `WIN-LEDGER.md` — verified completed wins and MOTHER celebration signals
+- `AMPLIFIER-CONNECTOR.md` — turns verified promising work into resource, expert, compute, collaboration, and public-support connections
+- `EXECUTION-PRINCIPLES.md` — outcome-based execution, velocity, WIP limits, founder-independence, prompt integrity, and mission-drift rules
+- `FORK-GOVERNANCE.md` — fork lineage, comparison, and canonical-project identity
