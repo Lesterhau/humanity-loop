@@ -1,0 +1,73 @@
+name: Critical Guidance Delta
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/critical_guidance_delta.py'
+      - 'scripts/test_critical_guidance_delta.py'
+      - '.github/workflows/critical-guidance-delta.yml'
+  schedule:
+    - cron: '7 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: critical-guidance-delta
+  cancel-in-progress: false
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Checkout canonical repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+
+      - name: Run deterministic tests
+        env:
+          PYTHONPATH: scripts
+        run: python3 -m unittest scripts/test_critical_guidance_delta.py
+
+      - name: Detect authoritative guidance changes
+        run: python3 scripts/critical_guidance_delta.py
+
+      - name: Verify receipt
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("runtime/critical-guidance-delta/latest-run.json").read_text(encoding="utf-8"))
+          assert data["schemaVersion"] == 1
+          assert data["sourcesConfigured"] == 3
+          assert data["changesDetected"] == len(data["changes"])
+          assert data["failuresCount"] == len(data["failures"])
+          for change in data["changes"]:
+              assert change["materiality"] == "unreviewed"
+              assert change["severity"] == "unreviewed"
+              assert change["medicalAdvice"] is None
+          print(
+              f"verified checked={data['sourcesChecked']} "
+              f"baselines={data['baselinesCreated']} "
+              f"changes={data['changesDetected']} failures={data['failuresCount']}"
+          )
+          PY
+
+      - name: Commit snapshots and receipts
+        run: |
+          if [ -z "$(git status --porcelain -- runtime/critical-guidance-delta)" ]; then
+            echo "No guidance runtime changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runtime/critical-guidance-delta
+          git commit -m "runtime: record critical guidance scan"
+          git pull --rebase origin main
+          git push origin HEAD:main
