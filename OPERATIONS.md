@@ -33,12 +33,25 @@ Examples:
 
 ## Failure preservation
 
+**Preservation is not resolution.** A fallback record exists so work is not lost; it never counts as completion.
+
+Every unresolved fallback item must include:
+- owner;
+- exact blocked action;
+- failure class;
+- retry condition;
+- next retry/review time or concrete blocker-change signal;
+- escalation path;
+- final closure evidence when resolved.
+
 If GitHub is unavailable or a GitHub write is intercepted:
 1. preserve the intended write, target path/issue, timestamp, and error in Undermind at:
    `/humanity-loop/operations/pending-external-actions.md`
 2. mention the unresolved failure in the hourly automation output;
-3. retry on a later cycle only after diagnosing the failure;
-4. once successful, mark the fallback item resolved with the final artifact/commit URL.
+3. assign a next retry/review condition instead of leaving the item passively parked;
+4. retry automatically when that condition is met or materially changed;
+5. if the blocker persists past its stale threshold, escalate rather than silently carrying it forward;
+6. once successful, mark the fallback item resolved with the final artifact/commit URL.
 
 Do not weaken a safety/permission control merely to force a write through.
 
