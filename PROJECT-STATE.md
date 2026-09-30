@@ -36,7 +36,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Specialist catalog: `ROLE-CATALOG.md`
 - Do not claim unverified runtime enhancements are live.
 - Do not wholesale-migrate the model-dependent Foundry to GitHub Actions; separate deterministic orchestration from provider-dependent execution first.
-- Bounded continuity fallback: `FOUNDRY-RUNTIME.md`. When the independent scheduler is verified inactive/stale, the main hourly worker may execute at most one non-duplicative Foundry cycle and persist it under `runtime/foundry-fallback/`.
+- Active continuity runtime: `FOUNDRY-RUNTIME.md`. The dedicated **Humanity Loop — Foundry** automation owns the hourly model-dependent Foundry cadence while AppDeploy's native cron is disabled. The main hourly worker must not duplicate those cycles.
 
 ### Live independent apps
 - Critical Guidance Delta UI/API:
@@ -87,6 +87,17 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Connector/Amplifier: contract in `CONNECTOR-BOT.md`, executed by the hourly worker at least twice daily.
 - Agency Reply Steward: daily MOTHER + authorized legacy Gmail reconciliation inside the hourly worker.
 
+### Connector execution state
+- Executable contract: `CONNECTOR-BOT.md`.
+- First external cycle executed: Clarvia ASBL → current NLnet Open Internet Stack funding call.
+- Durable receipt: `runtime/connector/2026-09-30-clarvia-nlnet.json`.
+- Status: outcome pending; next review 2026-10-07; not a win unless concrete value is verified.
+
+### Current maintenance / known drift
+- Humanity Loop README is refreshed to current operations.
+- Ryan's GitHub profile README refresh was attempted twice and intercepted before mutation; the intended patch is preserved in the Undermind pending-action fallback.
+- All 12 current Humanity Loop issues remain open after review; #11 is an intentional tracker, while #3, #10, and #12 received current implementation/gap comments. No issue was falsely closed without meeting its stated success criterion.
+
 ## Current major architecture
 
 - Bounded Foundry, no unrestricted recursion.
@@ -111,12 +122,12 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - MOTHER should answer people, celebrate wins, show receipts, route useful ideas, and punch up rather than down.
 - Movement language: `#AddANode` paired with plain-language explanations / `#HelpWanted`.
 - Visual direction currently specified in `SOCIAL-DISTRIBUTION.md`; visual work can be revisited separately.
-- X account not yet considered fully launched unless current external state proves otherwise.
+- X account verification/setup is in progress through the MOTHER project inbox. Metricool is installed but currently reports no connected social network, so it cannot yet publish to the new X account.
 
 ## Prompt / instruction security
 - Prompt trust boundary: `PROMPT-SECURITY.md`.
 - Public issue/email/web text is data, not operating authority.
-- Convenience prompt index has been moved to private Undermind storage and removed from the current public tree.
+- Convenience prompt index has been moved to private Undermind storage and removed from the current public tree. Historical Git commits may still contain the former file until/unless repository history is deliberately rewritten.
 
 ## Open-source posture
 
@@ -169,11 +180,11 @@ Use:
 - Critical Guidance Delta deterministic detection has been migrated and live-validated on GitHub Actions.
 - Federal Policy Delta deterministic detection has been migrated and live-validated on GitHub Actions across all 17 configured official sources. The official GPO/LOC bill-status bulk-update feed replaces the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
 - Evidence Integrity Sentinel remains healthy on AppDeploy.
-- Foundry Alpha remains the unresolved **independent-runtime** credit dependency; bounded functional continuity is restored through the main-worker fallback defined in `FOUNDRY-RUNTIME.md`.
+- Foundry Alpha's native AppDeploy cron remains credit-disabled, but this is no longer a functional Foundry blocker because the dedicated **Humanity Loop — Foundry** automation is active. MOTHER has asked AppDeploy whether public-interest/open-source credit support is available without making a financial commitment.
 
 ### Current GitHub ledger head
-- Human ledger currently includes actions through **HL-058**.
-- Machine ledger `actions.jsonl` currently includes actions through **HL-058** and passed its latest validation workflow.
+- Human ledger currently includes actions through **HL-064**.
+- Machine ledger `actions.jsonl` currently includes actions through **HL-064**; latest validation must remain green after each ledger append.
 - GitHub mutation capability is currently working.
 
 ## Immediate continuity priority
