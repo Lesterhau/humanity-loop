@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "runId": "connector-2026-09-30-clarvia-nlnet",
+  "runAt": "2026-09-30",
+  "candidate": {
+    "name": "Clarvia ASBL",
+    "project": "Clarvia / Clarvia Graph",
+    "source": "https://clarvia.org/en/about",
+    "publicNeedEvidence": [
+      "https://github.com/clarvia-org/clarvia-graph",
+      "https://clarvia.org/en/about"
+    ],
+    "need": "Grant support and technical maturity work including validation/testing/documentation/independent technical review"
+  },
+  "verification": {
+    "status": "proceed",
+    "notes": "Registered Luxembourg nonprofit; open-source/public-interest infrastructure; public materials identify grant funding and open contribution channels."
+  },
+  "match": {
+    "name": "NLnet Foundation — current Open Internet Stack funding cycle",
+    "source": "https://nlnet.nl/propose/",
+    "call": "https://nlnet.nl/news/2026/20260903-call.html",
+    "deadline": "2026-11-03T12:00:00+01:00",
+    "caveat": "NLnet has a specific generative-AI policy; Clarvia must independently assess current policy/scope fit."
+  },
+  "action": {
+    "type": "targeted-email",
+    "sender": "MOTHER <mother.humanityloop@agentmail.to>",
+    "recipient": "contact@clarvia.org",
+    "subject": "Possible NLnet funding match for Clarvia’s open digital-commons work",
+    "verifiedSent": true,
+    "threadId": "84745782-8baa-4911-8d4c-a5576166e9b6"
+  },
+  "tenthMan": {
+    "whoCouldLose": "Clarvia could lose time if the match is poor or AI-policy requirements make the application unsuitable.",
+    "mitigation": "One concise note only; caveat stated; no pressure, no mass outreach, recipient asked only for optional usefulness feedback."
+  },
+  "status": "connection-sent-awaiting-value-verification",
+  "nextReview": "2026-10-07",
+  "staleThreshold": "2026-10-14",
+  "closureCondition": "Clarvia confirms the lead was useful/actionable, or explicitly not useful, or no response after one proportionate review/follow-up cycle.",
+  "winCondition": "Evidence that the connection produced concrete useful value (e.g. application, fund-fit clarification, support service, or another actionable resource)."
+}
