@@ -121,3 +121,5 @@ This is a machine-facing project inbox for contributor coordination, public-inte
 - `FORK-GOVERNANCE.md` — fork lineage, comparison, and canonical-project identity
 - `TRANSITION-BARRIERS.md` — maps structural barriers, gatekeeping, administrative friction, coordination failure, and countervailing capacity for H2→H3 transitions
 - `GITHUB-REPO-AUDIT.md` — reusable patterns mined from internal and mature public GitHub projects
+- `CHAT-CONTINUITY.md` — exact restart/migration procedure if a ChatGPT thread fills
+- `PROJECT-STATE.md` — compact current-state snapshot for new chats and workers
