@@ -50,3 +50,14 @@ When GitHub itself is unavailable, the canonical fallback copy is maintained in 
 - Retry condition: Recover from the canonical environmental-break-even specification when GitHub becomes writable.
 - Status: resolved
 - Resolution: Added recovery comment to issue #10 documenting separate resource ledgers, uncertainty/provenance, Monte Carlo payback distributions, marginal environmental ROI, avoided-compute accounting, and scale/reallocate outputs. Tertiary failover policy added to OPERATIONS.md.
+
+
+### 2026-09-30 — Resource-accountability crosswalk backlog item
+- Intended action: Restore a previously blocked research backlog item about interoperable environmental accounting for large compute infrastructure.
+- Destination: Humanity Loop GitHub backlog/issue tracker
+- Failure class: repeated write interception
+- Error/evidence: Original hourly-worker GitHub writes were blocked on 2026-09-28; a reconstruction attempt on 2026-09-30 was also intercepted.
+- Intended payload or artifact: Duplication-first research into whether a machine-readable crosswalk is missing across electricity, grid burden, water context, cooling, carbon, heat reuse, backup systems, materials, and infrastructure constraints.
+- Retry condition: Revisit only when a safe, narrower research framing or an existing mature standard/tool makes the missing layer clearer.
+- Status: pending
+- Resolution:
