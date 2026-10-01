@@ -1,0 +1,27 @@
+name: Environmental break-even tests
+
+on:
+  push:
+    paths:
+      - "scripts/environmental_break_even.py"
+      - "scripts/test_environmental_break_even.py"
+      - "ENVIRONMENTAL-BREAK-EVEN.md"
+      - ".github/workflows/environmental-break-even.yml"
+  pull_request:
+    paths:
+      - "scripts/environmental_break_even.py"
+      - "scripts/test_environmental_break_even.py"
+      - "ENVIRONMENTAL-BREAK-EVEN.md"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/test_environmental_break_even.py
