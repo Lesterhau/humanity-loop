@@ -11,7 +11,7 @@ Humanity Loop should survive the loss of AppDeploy, one model provider, one sche
 - A transactional control-plane datastore holds ephemeral operational state: agents, tasks, leases, heartbeats, attempts, approvals, dead letters, usage and run events.
 - GitHub records durable summarized receipts; the control plane handles concurrency.
 
-Preferred near-term control-plane backend: **Supabase/Postgres**, with a portable schema and no Supabase-only business logic where avoidable.
+**Default long-term control-plane backend: Supabase/Postgres.** Use standard Postgres schema and SQL so the control plane remains portable; avoid Supabase-only business logic where practical.
 
 ### 2. Scheduling
 - Deterministic/public-data jobs: GitHub Actions.
@@ -44,7 +44,7 @@ Near-term acceptance:
 3. validate with at least two independent MCP clients;
 4. publish discovery metadata only after validation.
 
-Hosting must be replaceable. AppDeploy is not required.
+**Default public MCP/web host: Vercel.** The current MCP server is Next.js-native, making Vercel the lowest-friction primary host with a straightforward scale-up path. Hosting must remain replaceable; AppDeploy is not required, and the service must be portable to another Node-compatible host.
 
 ### 5. Permissions and side effects
 Use capability-based permissions.
@@ -152,3 +152,16 @@ The objective is a repeatable loop:
 **sense → verify → prioritize → design → dissent → safeguard → act → verify → measure → connect → scale → learn**
 
 The system becomes powerful when it can repeat that loop across many domains, with credible evidence, resources, collaborators, durable memory, and bounded authority.
+
+
+## Knowledge cockpit
+
+Obsidian may be used as an optional **human-facing knowledge cockpit** for browsing linked Markdown, visualizing relationships, and offline reading.
+
+It is not canonical infrastructure:
+- GitHub remains the public/versioned institutional record.
+- Supabase/Postgres owns transactional runtime state.
+- Undermind remains the research workspace for literature-heavy work.
+- Obsidian must not become a scheduler, control plane, approval system, or sole copy of project knowledge.
+
+If adopted, prefer a read-only or carefully synchronized view of selected Humanity Loop Markdown rather than creating another independent source of truth.
