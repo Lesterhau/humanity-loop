@@ -127,3 +127,20 @@ The independent Foundry blocker is fully resolved only when either:
 - a replacement independent runtime has been live-validated with bounded cost, secrets discipline, checkpoint/retry behavior, role permissions, safety gates, and no duplicate scheduler.
 
 Until then, Mode B keeps the Foundry function alive but should be described as a fallback, not as an independent multi-agent fleet.
+
+
+## Executable governance preflight
+
+Before a high-impact proposal can move from review to external execution, the runtime must apply the minimum preflight encoded in `scripts/governance_gates.py`.
+
+Required checks:
+- independent evidence verification;
+- completed 10th-Man review;
+- dissent fatal-flaw result;
+- Catastrophic-Risk Governor review when trigger conditions exist;
+- rollback and containment plan;
+- any governance-required human approval.
+
+`GO` permits the workflow to continue subject to normal authorization. `HOLD` requires the missing safeguard to be completed. `BLOCK` stops escalation until the proposal is materially redesigned and independently reviewed.
+
+The adversarial regression suite in `scripts/test_governance_gates.py` must remain green. A model-generated consensus cannot override a deterministic BLOCK/HOLD result.
