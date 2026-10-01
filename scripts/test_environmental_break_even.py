@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Deterministic verification tests for environmental_break_even.py."""
-import math
 import unittest
-from unittest.mock import patch
 
-from environmental_break_even import HORIZONS, recommendation, simulate
+from environmental_break_even import HORIZONS, marginal_carbon_roi, recommendation, simulate
 
 
 def fixed_cfg(daily_kwh=5.0, kg_per_kwh=1.0, daily_benefit=20.0, initial_debt=150.0):
@@ -37,13 +35,41 @@ class BreakEvenTests(unittest.TestCase):
         for horizon in HORIZONS:
             self.assertEqual(out["payback_probability"][horizon], 0.0)
 
-    def test_recommendation_thresholds(self):
-        def result(p):
-            return {"payback_probability": {"1y": p}}
-        base = result(0.50)
-        self.assertEqual(recommendation(base, result(0.60)), "SCALE")
-        self.assertEqual(recommendation(base, result(0.50)), "HOLD")
-        self.assertEqual(recommendation(base, result(0.40)), "REALLOCATE")
+    def test_task_model_usage_and_agent_growth_are_supported(self):
+        cfg = fixed_cfg(daily_kwh=1.0)
+        cfg.pop("daily_kwh")
+        cfg["task_usage"] = {
+            "tasks_per_day": 100,
+            "kwh_per_task": 0.01,
+            "model_energy_multiplier": 1.2,
+            "avoided_compute_fraction": 0.25,
+        }
+        cfg["agent_growth"] = {"initial_agents": 2, "daily_rate": 0.001}
+        out = simulate(cfg, n=16, seed=3)
+        self.assertGreater(out["annual_task_volume"]["median"], 0)
+        self.assertGreater(out["annual_energy_kwh"]["median"], 0)
+        self.assertIn("10y", out["cumulative_footprint"])
+        self.assertIn("water_use_liters", out["cumulative_footprint"]["1y"])
+
+    def test_non_fungibility_is_explicit(self):
+        out = simulate(fixed_cfg(), n=8, seed=1)
+        self.assertIn("separate decision dimensions", out["non_fungibility_note"])
+
+    def test_marginal_roi_and_recommendation_thresholds(self):
+        def result(p, cost=100.0, benefit=100.0):
+            return {
+                "payback_probability": {"1y": p},
+                "annual_carbon_cost_kg": {"median": cost},
+                "annual_attributable_carbon_benefit_kg": {"median": benefit},
+            }
+        base = result(0.50, 100, 100)
+        scale = result(0.60, 110, 125)
+        hold = result(0.50, 110, 109)
+        reallocate = result(0.40, 120, 105)
+        self.assertGreater(marginal_carbon_roi(base, scale), 1.0)
+        self.assertEqual(recommendation(base, scale), "SCALE")
+        self.assertEqual(recommendation(base, hold), "HOLD")
+        self.assertEqual(recommendation(base, reallocate), "REALLOCATE")
 
 
 if __name__ == "__main__":
