@@ -144,3 +144,28 @@ Required checks:
 `GO` permits the workflow to continue subject to normal authorization. `HOLD` requires the missing safeguard to be completed. `BLOCK` stops escalation until the proposal is materially redesigned and independently reviewed.
 
 The adversarial regression suite in `scripts/test_governance_gates.py` must remain green. A model-generated consensus cannot override a deterministic BLOCK/HOLD result.
+
+
+## Control-plane reference implementation
+
+The provider-neutral reference implementation is `scripts/foundry_control_plane.py`.
+
+It provides:
+- immutable agent and parent IDs;
+- inherited tool/permission ceilings;
+- bounded child count and recursion depth;
+- compute-budget ceilings;
+- heartbeat/status state;
+- task claim/lease semantics that prevent duplicate work;
+- retry and dead-letter handling;
+- stage/result persistence;
+- project/agent compute and environmental usage accounting;
+- event history;
+- read-only snapshot data for active agents, current tasks, recent outcomes, failures, and usage.
+
+`scripts/foundry_status_api.py` exposes a minimal read-only JSON status surface for serialized snapshots.
+
+Regression coverage lives in `scripts/test_foundry_control_plane.py`, including a complete bounded task flow through:
+Scout → Verify → Assign → Build/Act → Dissent → Safety → Revision → Outcome.
+
+This is the canonical control-plane contract for future provider adapters. A live provider runtime should integrate these invariants rather than reimplement weaker ad hoc state.
