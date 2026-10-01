@@ -1,0 +1,32 @@
+name: Governance gate tests
+
+on:
+  push:
+    paths:
+      - "GOVERNANCE.md"
+      - "FOUNDRY-RUNTIME.md"
+      - "AUTOMATION-PROMPT.md"
+      - "scripts/governance_gates.py"
+      - "scripts/test_governance_gates.py"
+      - ".github/workflows/governance-gates.yml"
+  pull_request:
+    paths:
+      - "GOVERNANCE.md"
+      - "FOUNDRY-RUNTIME.md"
+      - "AUTOMATION-PROMPT.md"
+      - "scripts/governance_gates.py"
+      - "scripts/test_governance_gates.py"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run governance adversarial tests
+        run: python -m unittest scripts/test_governance_gates.py
