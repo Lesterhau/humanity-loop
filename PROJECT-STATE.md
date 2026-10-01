@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-09-30 — command-center + MOTHER launch reconciliation
+**State timestamp:** 2026-10-01 — core-readiness incident reconciliation
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -18,7 +18,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ## Current operating components
 
 ### Current automation truth
-- Humanity Loop has two enabled project automations: **Humanity Loop — Hourly Worker** and **Humanity Loop — Foundry**, both hourly.
+- Humanity Loop has two enabled project automations: **Humanity Loop — Hourly Worker** and **Humanity Loop — Foundry**, both hourly. This was re-verified on 2026-10-01 after the Foundry task had temporarily been disabled.
 - Its scheduled-task wrapper reads `AUTOMATION-PROMPT.md` at the start of every run.
 - Unrelated personal automations are outside Humanity Loop state and should not be modified by project maintenance.
 
@@ -99,7 +99,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Issue #7 (10th-Man / catastrophic-risk gates): **closed completed** after executable deterministic preflight + adversarial tests + CI were added.
 - Issue #10 (environmental break-even calculator): **closed completed** after v0.2 added task/model usage, agent growth, cumulative footprint bands, payback probabilities, marginal carbon ROI, separate water deltas, uncertainty, tests, and CI.
 - Issue #3 (bounded Foundry/control plane): materially advanced with lineage, permission ceilings, leases, heartbeats, DLQ, usage accounting, status API, and tests; remains open pending live provider integration.
-- Issue #1 (remote MCP): server implementation exists under `mcp-server/`; remains open pending stable HTTPS deployment and two-client validation.
+- Issue #1 (remote MCP): server implementation exists under `mcp-server/`; its pinned MCP v2 / Next.js build, typecheck, and high-severity production dependency audit are green. It remains open pending stable HTTPS deployment and two-client validation.
 - Issue #12 (Connector): first targeted external connection executed; remains open until measurable useful value is verified.
 
 ### MOTHER social automation
@@ -110,7 +110,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ### Current maintenance / known drift
 - Humanity Loop README is refreshed to current operations.
 - Ryan's GitHub profile README refresh subsequently succeeded and was verified after earlier intercepted attempts; the stale fallback should be treated as resolved.
-- All 12 current Humanity Loop issues remain open after review; #11 is an intentional tracker, while #3, #10, and #12 received current implementation/gap comments. No issue was falsely closed without meeting its stated success criterion.
+- Ten Humanity Loop issues remain open. Issues #7 and #10 are closed completed and verified. #11 is an intentional tracker. #1, #3, and #12 remain open because material acceptance criteria are still outstanding.
 
 ## Current major architecture
 
@@ -161,6 +161,28 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - No political persuasion; policy work is factual/neutral.
 - No indefinite "still monitoring" state.
 
+## Core-readiness gate
+
+As of 2026-10-01, public-facing MOTHER buildout is deliberately deprioritized while core readiness is hardened.
+
+Before expanding social/public launch activity:
+- latest core CI runs must be green, not merely historical failures superseded by later success;
+- canonical GitHub and Undermind state must agree on active blockers;
+- required durable writes/receipts must persist and verify;
+- core scheduled workers must match the state documented here;
+- security/audit gates for public infrastructure must pass.
+
+Current reconciliation:
+- governance-gate latest runs are green; the three earlier failures were superseded by successful runs;
+- Foundry control-plane tests are green;
+- environmental break-even tests are green;
+- MCP build is green from a pinned dependency graph with a high-severity production audit gate;
+- the previously missing 01:37Z Foundry receipt was replayed and read-back verified;
+- stale Undermind write-interception blockers were reconciled as resolved;
+- the dedicated Humanity Loop — Foundry automation is enabled again.
+
+MOTHER/profile growth, follow-network expansion, and social automation are maintenance-only until Ryan explicitly resumes public rollout.
+
 ## Current strategic correction
 
 Humanity Loop must **not become an audit-only system**.
@@ -194,12 +216,12 @@ Use:
 - Critical Guidance Delta deterministic detection has been migrated and live-validated on GitHub Actions.
 - Federal Policy Delta deterministic detection has been migrated and live-validated on GitHub Actions across all 17 configured official sources. The official GPO/LOC bill-status bulk-update feed replaces the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
 - Evidence Integrity Sentinel remains healthy on AppDeploy.
-- Foundry Alpha's native AppDeploy cron remains credit-disabled, but this is no longer a functional Foundry blocker because the dedicated **Humanity Loop — Foundry** automation is active. MOTHER has asked AppDeploy whether public-interest/open-source credit support is available without making a financial commitment.
+- Foundry Alpha's native AppDeploy cron remains credit-disabled, but functional continuity is provided by the enabled dedicated **Humanity Loop — Foundry** automation. Do not treat AppDeploy credit exhaustion as resolved unless the provider state materially changes.
 
 ### Current GitHub ledger head
 - Human ledger currently includes actions through **HL-065**.
 - Machine ledger `actions.jsonl` currently includes actions through **HL-065**; latest validation must remain green after each ledger append.
-- GitHub mutation capability is currently working.
+- GitHub mutation capability is currently working. The 2026-10-01 recovered Foundry receipt write was independently read-back verified, and the corresponding Undermind failover record was resolved.
 
 ## Immediate continuity priority
 
