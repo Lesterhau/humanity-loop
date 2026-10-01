@@ -198,3 +198,10 @@ Where practical:
 - do not create a second active scheduler without explicit single-active-scheduler cutover.
 
 A second forge/mirror should be added only when it improves measured resilience, discovery, or contributor access enough to justify its maintenance burden.
+
+
+## Core independence
+
+The active migration plan for removing single-provider runtime dependencies is documented in `CORE-INDEPENDENCE-ROADMAP.md`.
+
+No hosting, model, scheduler, or chat provider may become a single point of failure for canonical state, governance, or critical public-interest workflows.
