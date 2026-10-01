@@ -1,10 +1,10 @@
 {
-  "baselinesCreated": 3,
+  "baselinesCreated": 0,
   "changes": [],
   "changesDetected": 0,
   "failures": [],
   "failuresCount": 0,
-  "runAt": "2026-09-30T21:00:44.586016Z",
+  "runAt": "2026-10-01T05:39:58.083897Z",
   "schemaVersion": 1,
   "sourcesChecked": 3,
   "sourcesConfigured": 3,
