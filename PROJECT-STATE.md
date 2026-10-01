@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-09-30 — command-center refresh
+**State timestamp:** 2026-09-30 — command-center + MOTHER launch reconciliation
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -96,7 +96,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 
 ### Current maintenance / known drift
 - Humanity Loop README is refreshed to current operations.
-- Ryan's GitHub profile README refresh was attempted twice and intercepted before mutation; the intended patch is preserved in the Undermind pending-action fallback.
+- Ryan's GitHub profile README refresh subsequently succeeded and was verified after earlier intercepted attempts; the stale fallback should be treated as resolved.
 - All 12 current Humanity Loop issues remain open after review; #11 is an intentional tracker, while #3, #10, and #12 received current implementation/gap comments. No issue was falsely closed without meeting its stated success criterion.
 
 ## Current major architecture
@@ -123,7 +123,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - MOTHER should answer people, celebrate wins, show receipts, route useful ideas, and punch up rather than down.
 - Movement language: `#AddANode` paired with plain-language explanations / `#HelpWanted`.
 - Visual direction currently specified in `SOCIAL-DISTRIBUTION.md`; visual work can be revisited separately.
-- X account verification/setup is in progress through the MOTHER project inbox. Metricool is installed but currently reports no connected social network, so it cannot yet publish to the new X account.
+- X account **@MotherFixes** is live. MOTHER is the public/social persona; formal correspondence remains **Ryan Lester | Humanity Loop**. Profile setup/launch configuration is still being completed. Metricool is installed but, at the latest check, still reports no connected social network, so it cannot yet publish to @MotherFixes.
 
 ## Prompt / instruction security
 - Prompt trust boundary: `PROMPT-SECURITY.md`.
