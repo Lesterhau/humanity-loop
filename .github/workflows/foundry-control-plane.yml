@@ -1,0 +1,30 @@
+name: Foundry control-plane tests
+
+on:
+  push:
+    paths:
+      - "scripts/foundry_control_plane.py"
+      - "scripts/test_foundry_control_plane.py"
+      - "scripts/foundry_status_api.py"
+      - "FOUNDRY-RUNTIME.md"
+      - ".github/workflows/foundry-control-plane.yml"
+  pull_request:
+    paths:
+      - "scripts/foundry_control_plane.py"
+      - "scripts/test_foundry_control_plane.py"
+      - "scripts/foundry_status_api.py"
+      - "FOUNDRY-RUNTIME.md"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Foundry control-plane tests
+        run: python scripts/test_foundry_control_plane.py
