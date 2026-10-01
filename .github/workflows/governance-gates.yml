@@ -29,4 +29,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Run governance adversarial tests
-        run: python -m unittest scripts/test_governance_gates.py
+        run: python scripts/test_governance_gates.py
