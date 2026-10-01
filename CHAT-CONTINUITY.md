@@ -14,6 +14,12 @@ When restarting any Humanity Loop chat, use sources in this order:
 
 Chat history is working memory. GitHub/Undermind are institutional memory.
 
+## Branch-chat reconciliation
+
+Branched or parallel Humanity Loop chats are working-memory surfaces, not separate sources of authority. When a branch contains a material decision, completed external action, new permission, new account state, blocker, or verified outcome, promote it into the canonical repo during the same active session when practical. Do not leave important branch-only state waiting for a later manual merge.
+
+When branch state conflicts with GitHub, independently verify the current external state before updating canonical files. A shared-chat link is useful for human review but is not the continuity mechanism.
+
 ## Mandatory bootstrap files
 
 A new Humanity Loop master chat should read these first:
