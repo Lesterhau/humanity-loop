@@ -59,12 +59,7 @@ const handler = createMcpHandler(
       async ({ query }) => text(await searchDeadEnds(query ?? "")),
     );
   },
-  {
-    serverInfo: {
-      name: "humanity-loop",
-      version: "0.1.0",
-    },
-  },
+  {},
   { basePath: "/api" },
 );
 
