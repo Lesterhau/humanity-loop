@@ -682,3 +682,14 @@ Human-readable mirror of `actions.jsonl`.
 
 **Outcome:** MOTHER's X launch content is now durable project state rather than chat-only planning. Metricool is installed but has no connected social network yet, so publishing remains blocked until the new X account is verified and connected.
 
+
+
+---
+
+## HL-066 — 2026-10-01 — core-readiness-recovery
+**Status:** verified  
+**Scope:** Humanity Loop control plane / MCP / persistence  
+
+**Action:** Reconciled the October 1 readiness incident: distinguished superseded historical CI failures from current failures; repaired the MCP production build; upgraded it to the current MCP v2 stack and patched Next.js line; added a high-severity production dependency audit gate and pinned lockfile; replayed and verified the previously blocked Foundry receipt; reconciled stale Undermind failover entries; re-enabled the dedicated Foundry automation; and made core readiness outrank MOTHER/public expansion.
+
+**Outcome:** Latest governance-gate, Foundry control-plane, environmental break-even, MCP build, and ledger validation checks are green at reconciliation time. The MCP server remains intentionally not public-ready until stable HTTPS deployment and two-client validation satisfy issue #1. Public MOTHER expansion is paused/deprioritized until Ryan explicitly resumes it.
