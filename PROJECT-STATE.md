@@ -94,6 +94,19 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Durable receipt: `runtime/connector/2026-09-30-clarvia-nlnet.json`.
 - Status: outcome pending; next review 2026-10-07; not a win unless concrete value is verified.
 
+### Ranked GitHub issue execution
+- Open issues are ranked before work by safety/risk reduction, architectural blocking value, live-outcome impact, completion leverage, tractability, evidence, and reversibility.
+- Issue #7 (10th-Man / catastrophic-risk gates): **closed completed** after executable deterministic preflight + adversarial tests + CI were added.
+- Issue #10 (environmental break-even calculator): **closed completed** after v0.2 added task/model usage, agent growth, cumulative footprint bands, payback probabilities, marginal carbon ROI, separate water deltas, uncertainty, tests, and CI.
+- Issue #3 (bounded Foundry/control plane): materially advanced with lineage, permission ceilings, leases, heartbeats, DLQ, usage accounting, status API, and tests; remains open pending live provider integration.
+- Issue #1 (remote MCP): server implementation exists under `mcp-server/`; remains open pending stable HTTPS deployment and two-client validation.
+- Issue #12 (Connector): first targeted external connection executed; remains open until measurable useful value is verified.
+
+### MOTHER social automation
+- Airtable base `Humanity Loop — MOTHER Social` exists with an `X Queue` table for drafts/approved/posted/failed state.
+- Airtable currently has no external social account authorized, so the X/Twitter action cannot be completed through the connector until Ryan authorizes @MotherFixes once in Airtable's UI.
+- Do not pay for Metricool solely for X while a lower-cost native path remains viable.
+
 ### Current maintenance / known drift
 - Humanity Loop README is refreshed to current operations.
 - Ryan's GitHub profile README refresh subsequently succeeded and was verified after earlier intercepted attempts; the stale fallback should be treated as resolved.
