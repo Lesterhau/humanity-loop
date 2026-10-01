@@ -23,13 +23,28 @@ Inspect all open Humanity Loop issues several times per day.
 
 ## Priority
 
-Prefer:
-1. completion of partially built work;
-2. blockers affecting live outcomes;
-3. Connector/Amplifier mobilization;
-4. MCP/contributor infrastructure;
-5. validated domain work;
-6. speculative new infrastructure.
+Every pass must rank **all open issues before working them**. Do not default to issue number, recency, or easiest-first.
+
+Score qualitatively on:
+1. safety / catastrophic-risk reduction;
+2. architectural blocking value — how many other issues it unlocks;
+3. live-outcome impact;
+4. completion leverage — partially built work that can be finished now;
+5. tractability / autonomous feasibility;
+6. evidence quality and reversibility.
+
+Work the highest-ranked safe executable issue first. Lower-ranked cleanup must not displace a materially more important blocker.
+
+Default tie-break order:
+1. safety/governance controls;
+2. core runtime/control-plane blockers;
+3. gateway/MCP interoperability;
+4. Connector/Amplifier real-world mobilization;
+5. scouting/verification infrastructure;
+6. environmental/resource accounting;
+7. domain divisions and pilots;
+8. contributor/discovery polish;
+9. intentional tracker issues.
 
 Do not create issues faster than the system can close or materially advance them.
 
