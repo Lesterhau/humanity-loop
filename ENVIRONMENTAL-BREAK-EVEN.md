@@ -112,3 +112,30 @@ Build a telemetry calculator that:
 - records verified environmental benefits from interventions;
 - Monte Carlo simulates break-even distributions;
 - produces scale-up/reallocation recommendations without claiming false precision.
+
+
+## Calculator v0.2 implementation
+
+The reference calculator at `scripts/environmental_break_even.py` now supports both direct daily-energy inputs and task/model telemetry:
+
+- tasks per day;
+- energy per task;
+- model energy multiplier;
+- avoided-compute fraction from caching/deduplication;
+- initial active-agent count;
+- daily agent-count growth;
+- benefit scaling elasticity;
+- grid carbon intensity;
+- cooling-water intensity;
+- attribution, evidence-quality, additionality, and durability discounts.
+
+Outputs include:
+- p10/median/p90 annual task, energy, carbon, and water bands;
+- cumulative 90-day / 1-year / 3-year / 10-year footprint bands;
+- carbon payback distribution and horizon probabilities;
+- marginal carbon ROI for added compute;
+- marginal water-use deltas kept as a separate resource dimension;
+- SCALE / HOLD / REALLOCATE signals;
+- an explicit non-fungibility warning.
+
+The implementation intentionally does not convert water, materials, biodiversity, and carbon into a single score. Additional resource dimensions should be added as separate vectors when credible telemetry exists.
