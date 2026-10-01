@@ -213,6 +213,7 @@ Build toward vendor-neutral remote MCP and official registry readiness. MCP is i
 Follow `GOVERNANCE.md` and `PROMPT-SECURITY.md`.
 
 Use the 10th-Man requirement for high-impact consensus.
+Before high-impact external execution, apply the minimum preflight in `scripts/governance_gates.py`; HOLD/BLOCK is binding until the missing safeguard is satisfied or the proposal is materially redesigned.
 Catastrophic-Risk Governor may veto credible large-scale irreversible harm or loss of human control.
 Human-subject research requires appropriate qualified oversight/consent.
 No unauthorized intrusion, deception, coercion, uncontrolled self-replication, harassment, or political persuasion.
