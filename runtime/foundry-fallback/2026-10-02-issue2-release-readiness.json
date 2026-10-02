@@ -1,0 +1,22 @@
+{
+  "run_id": "foundry-issue2-release-readiness-20261002",
+  "scheduler_mode": "chatgpt-foundry-worker",
+  "candidate": "Refresh MCP contributor documentation and discovery readiness",
+  "verification_verdict": "PROCEED",
+  "artifact_action_reference": {
+    "path": "mcp-server/README.md",
+    "commit": "fb240aa30825e1d0657cf58425f9afe984788346"
+  },
+  "dissent": {
+    "fatal_flaw": null,
+    "manageable_risk": "Users may mistake MCP connection for host scheduling.",
+    "mitigation": "Documentation separates connection from owner-approved recurring scheduling."
+  },
+  "safety_decision": "GO — Tier 0 documentation-only change.",
+  "outcome_plan": {
+    "success_evidence": "GitHub read-back verified the update.",
+    "next_review": "Two-client production validation for issue 2.",
+    "closure_condition": "Complete issue 2 discovery and release criteria."
+  },
+  "status": "completed"
+}
