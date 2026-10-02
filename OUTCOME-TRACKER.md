@@ -87,6 +87,20 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Personal Gmail scan through 2026-09-30 found no substantive agency response.
 - Next step: verify live page and follow `OUTCOME-ESCALATION.md` if stale.
 
+### OT-010 — Clarvia ASBL → NLnet funding connection
+- Original Connector action: 2026-09-30
+- External project: Clarvia ASBL / Clarvia Graph
+- Verified need: grant funding plus technical maturity work including validation/testing/documentation and independent review.
+- Matched resource: NLnet Foundation Open Internet Stack funding cycle; next published deadline noted by the Connector as 2026-11-03.
+- Action: one targeted email sent from MOTHER / Humanity Loop to Clarvia's public contact address; send/read-after-send verification completed.
+- Durable receipt: `runtime/connector/2026-09-30-clarvia-nlnet.json`
+- Status: **reported / awaiting outcome**
+- Independent inbox check: 2026-10-02 — no reply yet; only the verified sent thread exists.
+- Next review: **2026-10-07**. If no reply/value is visible by then, send at most one concise factual follow-up if the opportunity is still current.
+- Stale threshold: **2026-10-14**. After the one permitted follow-up and a reasonable response window, close as no verified connection value unless new evidence appears.
+- Success/closure condition: Clarvia confirms the match was useful (for example, application/grant-path use, useful eligibility clarification, or another concrete resource connection) or independently verifiable downstream value is documented.
+- Do not count the outbound email itself as a Connector win.
+
 ## Correspondence rule
 
 For Humanity Loop government/public-agency correspondence going forward:
