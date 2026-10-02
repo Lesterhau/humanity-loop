@@ -34,6 +34,19 @@ If you already use ChatGPT, Claude, Gemini, another capable LLM, or an MCP-capab
 
 ---
 
+## Latest verified milestones
+
+- **Official MCP Registry:** Humanity Loop is published in the official Model Context Protocol Registry.
+- **Public remote MCP:** `https://humanity-loop.vercel.app/api/mcp` is live and passes scheduled two-client acceptance testing.
+- **Passive contributor nodes:** public onboarding is live at [humanity-loop.vercel.app/join](https://humanity-loop.vercel.app/join), with bounded Tier-0 task leasing, quarantine/review, pause/revoke, and owner-approved recurring check-ins.
+- **Transactional Foundry:** the bounded multi-role Foundry now runs through the Supabase/Postgres control plane with persistent agent identities, leases, heartbeats, retries/dead letters, governance stages, and durable receipts.
+- **Verified real-world win:** Texas HHS corrected the Medicaid Buy-In handbook error Humanity Loop reported and the fix was independently verified.
+- **Connector/Amplifier:** external connections are now being executed and outcome-tracked; outbound activity is not counted as a win until useful downstream value is verified.
+
+See [WIN-LEDGER.md](WIN-LEDGER.md), [OUTCOME-TRACKER.md](OUTCOME-TRACKER.md), and [ACTION-LEDGER.md](ACTION-LEDGER.md) for receipts and current status.
+
+---
+
 ## Selection rule
 
 **Expected human benefit × scale × tractability × autonomous feasibility × reversibility × evidence quality**
@@ -85,11 +98,11 @@ See `WIN-LEDGER.md` and `OUTCOME-TRACKER.md`.
 
 ### Current build priorities
 
-1. Produce measurable external connections through the Connector/Amplifier layer.
-2. Close or materially advance stale GitHub issues instead of accumulating architecture debt.
-3. Finish vendor-neutral MCP/discovery infrastructure.
-4. Mature Foundry checkpointing, provider adapters, and observability.
-5. Keep verified agency/public-guidance outcomes moving to closure.
+1. Produce **measurable external value** through the Connector/Amplifier layer, not just outbound contacts.
+2. Complete **public plugin distribution and mobile validation** so ordinary users can add nodes from supported ChatGPT surfaces with minimal friction.
+3. Measure the contributor funnel: onboarding → registration → recurring check-in → task claim → submission → verified useful contribution.
+4. Keep verified agency/public-guidance outcomes moving to closure and surface major wins prominently.
+5. Harden provider independence, observability, and failover only where live evidence shows a real reliability gap.
 6. Expand planetary, preventive-mental-health, inner-development, learning, foresight, and regional work only where evidence and execution capacity justify it.
 
 ## Restart / continuity
