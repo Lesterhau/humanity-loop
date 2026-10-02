@@ -103,3 +103,12 @@ The missing layer may be coordination, translation, comparative evidence, or glo
 ## First research question
 
 What low-cost, culturally portable combination of awe, contemplative micro-practice, compassion, meaning, nature exposure, and service produces the largest durable improvements in emotional regulation, connectedness, intergroup prosociality, and planetary concern without requiring religious belief?
+
+
+## First pilot
+
+The evidence-backed first pilot protocol is `INNER-DEVELOPMENT-PILOT.md`.
+
+It is deliberately modular and worldview-pluralistic. Meditation is optional/substitutable because adverse events are documented. The pilot compares the bundle with an active information control and includes explicit safety, cultural-portability, stop, null-result, and dismantling rules.
+
+Do not execute human-subject research without appropriate ethics and qualified oversight.
