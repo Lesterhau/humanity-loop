@@ -3,13 +3,13 @@ name: Publish MCP Registry metadata
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
+    tags:
+      - "v*"
     paths:
       - server.json
       - .github/workflows/publish-mcp-registry.yml
-  push:
-    tags:
-      - "v*"
 
 permissions:
   contents: read
@@ -22,14 +22,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Check production MCP endpoint
+      - name: Check production JSON fallback
         run: |
           curl --fail --silent --show-error --max-time 20 \
-            -H 'Accept: application/json, text/event-stream' \
-            https://humanity-loop.vercel.app/api/mcp \
-            -o /dev/null || true
-          curl --fail --silent --show-error --max-time 20 \
-            https://humanity-loop.vercel.app/api/v1?tool=get_protocol \
+            'https://humanity-loop.vercel.app/api/v1?tool=get_protocol' \
             -o /dev/null
 
       - name: Install MCP publisher
