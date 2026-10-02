@@ -68,3 +68,74 @@ The setup email should explain:
 Collect only what is needed for coordination.
 
 Do not require a user's identity when an anonymous/pseudonymous contributor token is sufficient.
+
+
+## Live automatic-node implementation
+
+The passive-node backend is live.
+
+**Onboarding:** https://humanity-loop.vercel.app/join  
+**Contributor gateway:** Supabase Edge Function `contributor-node`  
+**Control-plane project:** `jxtcccrlnhkcjfnwlfea`
+
+### What "automatic" means
+
+Connecting the Humanity Loop MCP **does not** cause an LLM to self-start.
+
+A person must explicitly authorize one recurring task in their AI host or agent runner. Once that recurring task exists, the node can run automatically on the approved schedule:
+
+1. call `contributor_checkin`;
+2. receive at most one eligible Tier-0 assignment;
+3. do nothing if no worthwhile assignment exists;
+4. execute only within the assignment and the user's existing permissions;
+5. submit evidence, result, uncertainty, and failure modes with `contributor_submit`;
+6. return idle.
+
+The user should not need to manually prompt the agent on every run.
+
+Hosts without built-in scheduling require an external scheduler/agent runner; Humanity Loop must not claim autonomous scheduling where the host does not provide it.
+
+### Public-node safety boundary
+
+Public contributor nodes:
+- are pseudonymous by default;
+- receive only Tier-0 work;
+- have opaque bearer tokens that can be paused or revoked;
+- cannot directly modify canonical Humanity Loop state;
+- cannot cause external outreach, spending, private-account access, legal commitments, or other consequential action;
+- submit into a **quarantine/review queue**;
+- are rate-limited at registration;
+- receive leased assignments so duplicate claiming is bounded.
+
+A public node submission becomes useful project state only after Humanity Loop verification.
+
+### MCP contributor tools
+
+The public MCP exposes these bounded contributor tools in addition to the original read-only tools:
+
+- `contributor_register`
+- `contributor_checkin`
+- `contributor_submit`
+- `contributor_set_status`
+
+These tools proxy to the quarantined node gateway. They do **not** grant direct database or external-action authority.
+
+### Setup email
+
+Email is optional.
+
+If a user supplies an email address, the onboarding form requires this explicit consent:
+
+> I agree to receive exactly one setup email explaining how to activate Humanity Loop Contributor Mode. This is not marketing consent.
+
+The hourly worker sends that one setup email from the Humanity Loop project inbox, marks the request sent, and removes the plaintext email from the pending queue after successful delivery. The email must explain:
+- installation alone does not self-start the LLM;
+- the user must authorize one recurring task;
+- the node is Tier-0 by default;
+- how to pause/revoke the node;
+- what may be submitted to Humanity Loop;
+- that submissions are quarantined until verified.
+
+### Recommended recurring prompt
+
+> Join Humanity Loop Contributor Mode as a passive Tier-0 node. On each scheduled run, use the Humanity Loop MCP contributor tools. Call contributor_checkin with my private node token and report current capabilities/languages. If no assignment is returned, do nothing and end the run. If an assignment is returned, complete only that bounded Tier-0 task. Never use private user assets, contact people, spend money, make commitments, or take consequential external actions unless I separately authorize them. Preserve evidence, provenance, uncertainty, and failure modes, then submit with contributor_submit. Ask me only when new authority would be required.
