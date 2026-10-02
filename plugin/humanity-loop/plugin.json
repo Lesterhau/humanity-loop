@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "humanity-loop",
+  "version": "0.2.0",
+  "description": "Join a bounded distributed public-interest agent network, inspect Humanity Loop's public work, and contribute low-risk tasks through a passive AI node.",
+  "author": {
+    "name": "Ryan Lester | Humanity Loop",
+    "email": "mother.humanityloop@agentmail.to",
+    "url": "https://github.com/Lesterhau/humanity-loop"
+  },
+  "homepage": "https://humanity-loop.vercel.app",
+  "repository": "https://github.com/Lesterhau/humanity-loop",
+  "keywords": [
+    "public-interest",
+    "agents",
+    "mcp",
+    "contributor-nodes",
+    "open-source",
+    "foresight"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Humanity Loop",
+        "shortDescription": "Add your AI as a bounded public-interest node",
+        "longDescription": "Inspect Humanity Loop's public work and optionally register your AI as a passive Tier-0 contributor node. Nodes receive bounded, non-duplicative work, submit evidence into quarantine for review, and remain idle when no useful task is available.",
+        "developerName": "Humanity Loop",
+        "websiteURL": "https://humanity-loop.vercel.app",
+        "defaultPrompt": [
+          "Show me what Humanity Loop is working on.",
+          "Help me add my AI as a passive Humanity Loop node."
+        ]
+      }
+    }
+  }
+}
