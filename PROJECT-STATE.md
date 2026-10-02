@@ -28,6 +28,14 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Canonical prompt: `AUTOMATION-PROMPT.md`
 - Chat output is telemetry, not institutional memory.
 
+### STEEP+ Scout Mesh
+- Live Supabase tables: `hl_control.scout_cells` and `hl_control.scout_signals`.
+- Six-cell initial geography × language × domain matrix is active.
+- One-cell transactional claim function is live and regression-tested after an initial ambiguous-column bug was repaired before accepted output.
+- First verified signal recorded from the global English AI-infrastructure cell.
+- Canonical runtime: `SCOUT-MESH.md`.
+- Main hourly worker rotates at most one due cell per eligible Scout cycle; no-signal outcomes are valid.
+
 ### Passive contributor nodes
 - Live onboarding path: `https://humanity-loop.vercel.app/join`.
 - Supabase Edge Function `contributor-node` is deployed and active.
