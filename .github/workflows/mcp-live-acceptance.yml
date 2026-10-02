@@ -1,0 +1,47 @@
+name: MCP live endpoint acceptance
+
+on:
+  push:
+    paths:
+      - "mcp-server/**"
+      - ".github/workflows/mcp-live-acceptance.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  live-acceptance:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mcp-server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pinned project dependencies
+        run: npm ci
+      - name: Install official MCP client for live acceptance
+        run: npm install --no-save --package-lock=false @modelcontextprotocol/client@2.2.0
+      - name: Wait for public HTTPS endpoint
+        run: |
+          for i in {1..30}; do
+            if curl --fail --silent "https://humanity-loop.vercel.app/api/v1?tool=get_protocol" >/dev/null; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Public MCP JSON fallback did not become reachable"
+          exit 1
+      - name: Validate public endpoint with official MCP TypeScript client
+        env:
+          MCP_URL: https://humanity-loop.vercel.app/api/mcp
+        run: node scripts/test-mcp-sdk-client.mjs
+      - name: Validate public endpoint with independent raw Streamable HTTP client
+        env:
+          MCP_URL: https://humanity-loop.vercel.app/api/mcp
+        run: node scripts/test-mcp-raw-client.mjs
