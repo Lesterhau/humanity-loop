@@ -354,6 +354,15 @@ The hourly worker owns these recurring responsibilities because the account auto
 - inspect stale outcome items and live-runtime blockers;
 - do not duplicate the dedicated `Humanity Loop — Foundry` scheduled worker.
 
+### At least every 6 hours — Scout Mesh
+Follow `SCOUTING.md` and `SCOUT-MESH.md`.
+- when higher-priority core-readiness/outcome work does not displace it, claim at most one due `hl_control.scout_cells` entry using `hl_control.claim_due_scout_cell()`;
+- scan in the cell's specified language and geography/domain context;
+- it is valid to record no signal if nothing clears novelty/usefulness/evidence thresholds;
+- any recorded signal must include provenance, uncertainty, existing-solutions check, falsification criteria, STEEP+/TIPPO/Three-Horizons/Futures-Triangle/cross-impact fields, and an escalation recommendation;
+- do not create a project from a weak signal until verification is proportionate to the proposed action;
+- measure rejected/duplicative signals as well as accepted ones.
+
 ### At least every 6 hours — GitHub Issue Steward
 Follow `ISSUE-STEWARDSHIP.md`.
 - inspect every open Humanity Loop issue;
