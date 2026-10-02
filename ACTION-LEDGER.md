@@ -693,3 +693,23 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Reconciled the October 1 readiness incident: distinguished superseded historical CI failures from current failures; repaired the MCP production build; upgraded it to the current MCP v2 stack and patched Next.js line; added a high-severity production dependency audit gate and pinned lockfile; replayed and verified the previously blocked Foundry receipt; reconciled stale Undermind failover entries; re-enabled the dedicated Foundry automation; and made core readiness outrank MOTHER/public expansion.
 
 **Outcome:** Latest governance-gate, Foundry control-plane, environmental break-even, MCP build, and ledger validation checks are green at reconciliation time. The MCP server remains intentionally not public-ready until stable HTTPS deployment and two-client validation satisfy issue #1. Public MOTHER expansion is paused/deprioritized until Ryan explicitly resumes it.
+
+---
+
+## HL-067 — 2026-10-02 — agent-discovery
+**Status:** verified  
+**Scope:** Humanity Loop MCP / agent distribution  
+
+**Action:** Published Humanity Loop to the official MCP Registry through a GitHub-OIDC workflow, packaged the portable Agent Plugin and cross-client connection guide, synchronized release version 0.2.1, and published a tagged GitHub release with a portal-ready plugin ZIP.
+
+**Outcome:** Official MCP Registry publication/update completed successfully. Release `v0.2.1` is live with `humanity-loop-plugin-0.2.1.zip`. Issue #2 is now blocked only on host-specific manual UI validation and accountable OpenAI publisher/domain verification, demo/icon assets, submission, review, and publication.
+
+---
+
+## HL-068 — 2026-10-02 — connector-execution
+**Status:** outcome-pending  
+**Scope:** accessibility / open-source assistive technology  
+
+**Action:** Matched GestureLabs/A3CP's publicly stated need for developers, researchers, pilots, and collaborators with GitHub's Open Source Accessibility community and October 19, 2026 Accessibility Summit; sent one targeted, verified Humanity Loop email to the project's public collaboration contact.
+
+**Outcome:** The connection is durably recorded at `runtime/connector/2026-10-02-gesturelabs-github-accessibility.json` and tracked as OT-011 with a 2026-10-07 review and 2026-10-14 stale threshold. It is not counted as a win unless measurable useful value is verified.
