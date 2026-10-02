@@ -53,6 +53,16 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - MCP contributor tools are live and validated in the public server build; issue #6 is closed completed.
 - Optional setup email requires explicit one-message consent and is processed by the hourly worker.
 
+### Contributor growth telemetry
+- Privacy-safe node funnel telemetry is live in Supabase.
+- Canonical spec: `NODE-GROWTH.md`.
+- Funnel: join session → registration → scheduled check-in → task claim → submission → verified contribution.
+- `/join` records one HMAC-hashed browser session plus coarse mobile/desktop classification; raw IPs, full user-agent strings, emails, and node tokens are not stored in funnel events.
+- Registration/check-in/claim/submission/acceptance metrics come from server-side database transitions.
+- Initial production baseline at activation: **0 external nodes / 0 verified contributions**.
+- Transactional rollback test passed every post-registration stage without leaving test data.
+- Contributor Node Edge Function version 3 is active; Vercel deployment containing the instrumented join page is green.
+
 ### Transactional control plane
 - Supabase/Postgres project **Humanity Loop Control Plane** is live and healthy in `us-east-1`.
 - Project ref: `jxtcccrlnhkcjfnwlfea`.
