@@ -151,7 +151,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ### Current maintenance / known drift
 - Humanity Loop README is refreshed to current operations.
 - Ryan's GitHub profile README refresh subsequently succeeded and was verified after earlier intercepted attempts; the stale fallback should be treated as resolved.
-- Five Humanity Loop issues remain open: #2, #8, #9, #11, and #12. #11 is intentional infrastructure; #12 is outcome-pending rather than implementation-blocked.
+- Three Humanity Loop issues remain open: #2, #11, and #12. #11 is intentional infrastructure; #12 is outcome-pending rather than implementation-blocked.
 
 ## Current major architecture
 
