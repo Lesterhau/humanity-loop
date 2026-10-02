@@ -127,9 +127,9 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 
 ### Connector execution state
 - Executable contract: `CONNECTOR-BOT.md`.
-- First external cycle executed: Clarvia ASBL → current NLnet Open Internet Stack funding call.
-- Durable receipt: `runtime/connector/2026-09-30-clarvia-nlnet.json`.
-- Status: outcome pending; next review 2026-10-07; not a win unless concrete value is verified.
+- **OT-010:** Clarvia ASBL → NLnet Open Internet Stack funding call. Receipt: `runtime/connector/2026-09-30-clarvia-nlnet.json`. Outcome pending; next review 2026-10-07; stale threshold 2026-10-14.
+- **OT-011:** GestureLabs/A3CP → GitHub Open Source Accessibility community + 2026 Accessibility Summit. Receipt: `runtime/connector/2026-10-02-gesturelabs-github-accessibility.json`. Targeted email sent/read-back verified; next review 2026-10-07; stale threshold 2026-10-14.
+- Neither outbound connection counts as a win unless measurable useful downstream value is verified.
 
 ### Ranked GitHub issue execution
 - Open issues are ranked before work by safety/risk reduction, architectural blocking value, live-outcome impact, completion leverage, tractability, evidence, and reversibility.
@@ -261,8 +261,9 @@ Use:
 - Foundry Alpha's native AppDeploy cron remains credit-disabled, but functional continuity is provided by the enabled dedicated **Humanity Loop — Foundry** automation backed by the Supabase transactional control plane. AppDeploy credit exhaustion is no longer a core-state dependency.
 
 ### Current GitHub ledger head
-- Human ledger currently includes actions through at least **HL-066**.
-- Machine ledger `actions.jsonl` currently includes actions through at least **HL-066**; latest validation must remain green after each ledger append.
+- Human ledger currently includes actions through at least **HL-068**.
+- Machine ledger `actions.jsonl` currently includes actions through at least **HL-068**.
+- Ledger validation succeeded after both HL-067 (official registry/release packaging) and HL-068 (GestureLabs Connector execution).
 - GitHub mutation capability is currently working. The 2026-10-01 recovered Foundry receipt write was independently read-back verified, and the corresponding Undermind failover record was resolved.
 
 ## Immediate continuity priority
