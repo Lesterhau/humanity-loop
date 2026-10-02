@@ -1,25 +1,10 @@
 {
   "baselinesCreated": 0,
-  "changes": [
-    {
-      "authority": "European Medicines Agency",
-      "detectedAt": "2026-10-02T12:23:00.342053Z",
-      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- Meeting highlights from the Pharmacovigilance Risk Assessment Committee (PRAC) 4-7 May 2026\n- PRAC carried out its broad range of responsibilities for managing the risks associated with medicine use\n- 8 May 2026\n\nADDED IN CURRENT VERSION:\n+ Meeting highlights from the Pharmacovigilance Risk Assessment Committee (PRAC) 28 September - 1 October\n+ PRAC carried out its broad range of responsibilities for managing the safety of medicines\n+ 2 October 2026",
-      "materiality": "unreviewed",
-      "medicalAdvice": null,
-      "newFingerprint": "48a2382ff8e9ebf7789c8df841845a88a99780f59e0449d57404cd8d6de1c184",
-      "oldFingerprint": "446abd2e0a8010a13f1e92d6e29376039b151ba795ba323703d01912bd9ef59c",
-      "severity": "unreviewed",
-      "sourceKey": "ema-prac",
-      "sourceName": "EMA PRAC Safety Highlights",
-      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
-      "verificationStatus": "needs-independent-source-review"
-    }
-  ],
-  "changesDetected": 1,
+  "changes": [],
+  "changesDetected": 0,
   "failures": [],
   "failuresCount": 0,
-  "runAt": "2026-10-02T12:23:00.342053Z",
+  "runAt": "2026-10-02T22:06:34.443537Z",
   "schemaVersion": 1,
   "sourcesChecked": 3,
   "sourcesConfigured": 3,
