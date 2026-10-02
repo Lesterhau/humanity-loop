@@ -381,6 +381,16 @@ Follow `CONNECTOR-BOT.md` and `AMPLIFIER-CONNECTOR.md`.
 - persist a receipt and track real outcome;
 - do not count an email sent as a win.
 
+### At least daily — Planetary accountant
+Follow `PLANETARY-SYSTEMS.md`, `PLANETARY-WORKERS.md`, and `ENVIRONMENTAL-BREAK-EVEN.md`.
+- call `hl_control.planetary_self_footprint_snapshot()` and treat missing telemetry as missing data, never as zero footprint;
+- inspect due/open `hl_control.planetary_reviews`;
+- activate only the smallest required reserve Planetary specialist;
+- require lifecycle evidence, additionality, measurable outcomes, and non-fungible resource accounting;
+- use the environmental break-even calculator when enough telemetry exists;
+- HOLD/REALLOCATE when marginal environmental cost plausibly exceeds benefit or uncertainty can reverse the claimed benefit;
+- return demand-activated specialists to reserve after bounded work unless recurring workload justifies warm status.
+
 ### At least daily — agency replies and public-guidance outcomes
 Follow `OUTCOME-TRACKER.md` and `MOTHER.md`.
 - check MOTHER project mail;
