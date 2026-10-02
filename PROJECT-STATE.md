@@ -180,6 +180,14 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Detached copy/copycat detection is a separate discovery problem.
 - Multi-model direction includes OpenAI, Claude, Gemini, Perplexity, Kimi, DeepSeek, Qwen, and GLM where supported.
 
+### Public-launch mobile gate
+- MOTHER remains in maintenance-only mode until the **published Humanity Loop plugin is successfully exercised from the ChatGPT mobile app**.
+- A desktop-only personal/imported plugin is not sufficient for launch readiness.
+- Launch acceptance requires: public-directory approval → publication → install/open from mobile → successful Humanity Loop tool invocation → successful Add-a-Node onboarding path from mobile.
+- OpenAI's public plugin guidelines require reliable ChatGPT operation on both desktop and mobile; this is therefore a release gate, not a cosmetic preference.
+- Metricool is **not** the selected X publishing path because X support requires paid Metricool access plus an additional X add-on. Do not incur that cost merely to automate @MotherFixes.
+- Until a lower-cost/free X automation path is justified, MOTHER posts may be published manually after mobile launch readiness is satisfied.
+
 ## Public/social strategy
 
 - **Humanity Loop** = institution.
@@ -188,7 +196,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - MOTHER should answer people, celebrate wins, show receipts, route useful ideas, and punch up rather than down.
 - Movement language: `#AddANode` paired with plain-language explanations / `#HelpWanted`.
 - Visual direction currently specified in `SOCIAL-DISTRIBUTION.md`; visual work can be revisited separately.
-- X account **@MotherFixes** is live. MOTHER is the public/social persona; formal correspondence remains **Ryan Lester | Humanity Loop**. Profile setup/launch configuration is still being completed. Metricool is installed but, at the latest check, still reports no connected social network, so it cannot yet publish to @MotherFixes.
+- X account **@MotherFixes** is live. MOTHER is the public/social persona; formal correspondence remains **Ryan Lester | Humanity Loop**. Profile setup/launch configuration is still being completed. Metricool is installed but is intentionally **not** the chosen X path because connecting X would add paid subscription/add-on cost. Do not pay for Metricool solely to automate @MotherFixes.
 
 ## Prompt / instruction security
 - Prompt trust boundary: `PROMPT-SECURITY.md`.
