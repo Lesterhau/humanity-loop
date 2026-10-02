@@ -1,0 +1,61 @@
+{
+  "run_id": "connector-2026-10-02-gesturelabs-github-accessibility",
+  "timestamp": "2026-10-02T17:58:20Z",
+  "candidate": {
+    "name": "GestureLabs / A3CP",
+    "public_source": "https://www.gesturelabs.org/get-involved",
+    "verification": "GestureLabs publicly describes A3CP as open-source ability-adaptive AAC and explicitly invites developers, researchers, pilot partners, supporters, and collaboration inquiries."
+  },
+  "explicit_need": {
+    "needs": [
+      "developers",
+      "researchers",
+      "pilot partners",
+      "contributors",
+      "support"
+    ],
+    "source": "https://www.gesturelabs.org/get-involved"
+  },
+  "matched_resources": [
+    {
+      "name": "GitHub Open Source Accessibility community",
+      "source": "https://github.com/open-source-accessibility/open-source-accessibility",
+      "fit": "Ongoing accessibility/open-source collaboration community, working groups, and contribution pathways."
+    },
+    {
+      "name": "Open Source Accessibility Summit 2026",
+      "date": "2026-10-19",
+      "source": "https://github.blog/open-source/from-pledge-to-practice-building-a-more-inclusive-open-source-ecosystem/",
+      "fit": "GitHub states the event connects disability, accessibility, and open-source communities and creates opportunities to work on real accessibility improvements."
+    }
+  ],
+  "action": {
+    "type": "targeted_email",
+    "from": "Ryan Lester | Humanity Loop <mother.humanityloop@agentmail.to>",
+    "to": "dmitrikatz23@gmail.com",
+    "subject": "Possible GitHub accessibility-community match for A3CP",
+    "agentmail_thread_id": "625a9116-2af2-47b1-a1b0-25c1e9e16b0b",
+    "message_id": "<010001a0fdc4621a-f022247d-a2e0-4d9d-bf6e-7e4ffb4597d9-000000@email.amazonses.com>",
+    "verified": true
+  },
+  "tenth_man": {
+    "fatal_flaws": [],
+    "manageable_risks": [
+      "The October 19 summit is in-person in Raleigh while GestureLabs is Berlin-based.",
+      "The resource may already be known to the project."
+    ],
+    "mitigations": [
+      "Email explicitly notes travel may be impractical and points to ongoing community channels beyond the event.",
+      "No claim of affiliation, acceptance, funding, or guaranteed fit."
+    ]
+  },
+  "safety": {
+    "risk_tier": 1,
+    "decision": "GO",
+    "reason": "One factual, targeted project email to a public collaboration contact; no commitment, solicitation campaign, sensitive data, or consequential authority."
+  },
+  "next_review": "2026-10-07",
+  "stale_threshold": "2026-10-14",
+  "outcome_status": "reported-awaiting-outcome",
+  "success_condition": "GestureLabs confirms the connection was useful or independently verifiable participation/collaboration attributable to the connection is documented."
+}
