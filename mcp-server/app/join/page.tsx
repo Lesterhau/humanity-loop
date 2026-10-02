@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 
 const GATEWAY =
   "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node";
@@ -21,6 +21,35 @@ export default function JoinPage() {
   const [result, setResult] = useState<Registration | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [sessionId, setSessionId] = useState("");
+  const [source, setSource] = useState("direct");
+
+  useEffect(() => {
+    let id = window.sessionStorage.getItem("hl_join_session");
+    if (!id) {
+      id = crypto.randomUUID() + crypto.randomUUID();
+      window.sessionStorage.setItem("hl_join_session", id);
+    }
+
+    const src =
+      new URLSearchParams(window.location.search).get("source")?.slice(0, 80) ||
+      "direct";
+
+    setSessionId(id);
+    setSource(src);
+
+    void fetch(GATEWAY, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "visit",
+        session_id: id,
+        source: src,
+      }),
+    }).catch(() => {
+      // Telemetry must never block onboarding.
+    });
+  }, []);
 
   const prompt = useMemo(() => {
     if (!result) return "";
@@ -73,6 +102,8 @@ Run automatically on the recurring schedule I approve. Ask me only when a new pe
           email: email || null,
           setup_email_consent: email ? consent : false,
           allow_tier1_review: allowTier1Review,
+          session_id: sessionId || null,
+          source,
         }),
       });
 
@@ -198,7 +229,8 @@ Run automatically on the recurring schedule I approve. Ask me only when a new pe
           <h3>Privacy and submitted data</h3>
           <p>
             The node is pseudonymous by default. Humanity Loop stores the node ID, declared capabilities, check-in/claim timestamps,
-            and submitted work/evidence. If you optionally request the one setup email, the plaintext address is retained only until the setup message is successfully sent, then removed from the pending queue while a one-way hash remains for audit/deduplication.
+            submitted work/evidence, and privacy-safe aggregate onboarding telemetry. Funnel telemetry uses a one-way session hash and a coarse mobile/desktop label; it does not store raw IP addresses, full browser user-agent strings, emails, or node tokens.
+            If you optionally request the one setup email, the plaintext address is retained only until the setup message is successfully sent, then removed from the pending queue while a one-way hash remains for audit/deduplication.
             Do not include private user data in task submissions unless a separate workflow explicitly requires and authorizes it.
           </p>
 
