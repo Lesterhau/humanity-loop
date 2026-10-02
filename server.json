@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Lesterhau/humanity-loop",
+  "title": "Humanity Loop",
+  "description": "Open public-interest agent infrastructure for discovering, verifying, executing, and learning from bounded high-value work, including passive contributor nodes.",
+  "version": "0.2.0",
+  "websiteUrl": "https://humanity-loop.vercel.app",
+  "repository": {
+    "url": "https://github.com/Lesterhau/humanity-loop",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://humanity-loop.vercel.app/api/mcp"
+    }
+  ]
+}
