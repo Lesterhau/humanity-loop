@@ -184,6 +184,34 @@ Use the calculator for:
 
 Do not publish a single global "price tag" without showing participation, unit-cost, wage/productivity, and service-intensity assumptions.
 
+
+### Illustrative world-scale sensitivity
+
+To make the scale legible, the reference calculator can be run against a modeled population of **8.2 billion**, the UN-reported global population level for 2024. This is an order-of-magnitude demonstration, not a claim that all 8.2 billion people are eligible, participate, or face identical costs.
+
+UN population source:
+- United Nations DESA, *World Population Prospects 2024*: https://www.un.org/development/desa/pd/world-population-prospects-2024
+
+Using the calculator's deliberately broad low/base/high assumptions:
+
+| Scenario | Annual system cost | Cost / modeled population | Nonspecialist FTE | Specialist / care-manager FTE |
+|---|---:|---:|---:|---:|
+| Low | ~$7.38B | ~$0.90 | ~157,000 | ~30,750 |
+| Base | ~$43.87B | ~$5.35 | ~478,000 | ~133,250 |
+| High | ~$186.96B | ~$22.80 | ~1,640,000 | ~481,750 |
+
+These figures are **sensitivity outputs, not empirical global cost estimates**.
+
+They assume mutually exclusive annual highest-service tiers and 1,200 productive service hours per FTE. The main purpose is to expose the consequence of assumptions:
+
+- Tier-0 marginal cost matters enormously because it touches the largest population share.
+- Small changes in Tier-2/3 participation substantially alter workforce demand.
+- Specialist capacity remains a bottleneck even in a task-sharing architecture.
+- Digital/community infrastructure can expand reach, but cannot erase the need for supervised human care.
+- Country implementation must substitute local wage, utilization, age structure, burden, digital-access, and service-intensity data before any budget claim.
+
+This scale sensitivity should be compared with WHO's reported global treatment gap and workforce disparity, not mistaken for a proposal to buy a standardized service package for every person.
+
 ## Rights / failure modes
 
 ### Privacy
