@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-02 — transactional runtime + contributor + Scout/Planetary reconciliation
+**State timestamp:** 2026-10-02 — registry publication + release + open-issue reconciliation
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -139,9 +139,10 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - #5 Planetary Systems workers: **closed completed** — always-warm Planetary Accountant, five demand-activated specialist families, review ledger, self-footprint gate, first real Scout→Planetary lifecycle review.
 - #6 Contributor Mode onboarding: **closed completed** — live /join page, Supabase node gateway, owner-approved recurring automatic check-ins, Tier-0-only automatic work, quarantine, pause/revoke, one-setup-email consent, MCP contributor tools.
 - #7 governance gates and #10 environmental break-even: **closed completed** from the prior pass.
-- #12 Connector/Amplifier: remains open because the first Clarvia→NLnet connection has not yet produced a measurable verified external benefit; next review 2026-10-07.
-- #11 Fork Watch remains intentionally open as the canonical notification thread.
-- Remaining research/publication work: #2 discovery/publication, #8 Inner Development pilot, #9 psychological-maintenance model.
+- #2 discovery/publication: **open at the human-review boundary** — production MCP is live and two-client tested; official MCP Registry publication succeeded; portable Agent Plugin packaging and cross-client setup docs are committed; release **v0.2.1** is live with `humanity-loop-plugin-0.2.1.zip` attached. Remaining blockers are host-specific manual UI validation plus OpenAI publisher/domain verification, icon/demo assets, submission, review, and publication.
+- #12 Connector/Amplifier: remains open because the first Clarvia→NLnet connection has not yet produced a measurable verified external benefit. It is now tracked as **OT-010** with next review 2026-10-07, one-follow-up maximum, and stale threshold 2026-10-14.
+- #11 Fork Watch remains intentionally open as the canonical notification thread. The scheduled Fork Network Scan succeeded on 2026-10-02 and found no new public forks.
+- **No other GitHub issues are currently open.**
 
 ### MOTHER social automation
 - Airtable base `Humanity Loop — MOTHER Social` exists with an `X Queue` table for drafts/approved/posted/failed state.
@@ -151,7 +152,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ### Current maintenance / known drift
 - Humanity Loop README is refreshed to current operations.
 - Ryan's GitHub profile README refresh subsequently succeeded and was verified after earlier intercepted attempts; the stale fallback should be treated as resolved.
-- Three Humanity Loop issues remain open: #2, #11, and #12. #11 is intentional infrastructure; #12 is outcome-pending rather than implementation-blocked.
+- Three Humanity Loop issues remain open: **#2, #11, and #12**. #2 is blocked only on accountable human directory-submission/UI-validation steps; #11 is intentional infrastructure; #12 is outcome-pending rather than implementation-blocked.
 
 ## Current major architecture
 
