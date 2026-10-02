@@ -39,6 +39,7 @@ export function registerContributorNode(input: {
   user_agent_label?: string;
   email?: string;
   setup_email_consent?: boolean;
+  allow_tier1_review?: boolean;
 }) {
   return callGateway({ action: "register", ...input });
 }
