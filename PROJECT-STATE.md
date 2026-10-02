@@ -28,6 +28,18 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Canonical prompt: `AUTOMATION-PROMPT.md`
 - Chat output is telemetry, not institutional memory.
 
+### Transactional control plane
+- Supabase/Postgres project **Humanity Loop Control Plane** is live and healthy in `us-east-1`.
+- Project ref: `jxtcccrlnhkcjfnwlfea`.
+- Cost at creation: **$0/month**.
+- Private schema: `hl_control`.
+- Live tables: agents, tasks, approvals, events, dead letters, usage.
+- Transactional task claiming uses `FOR UPDATE SKIP LOCKED`; heartbeat and expired-lease recovery primitives are live.
+- Initial rollback self-test successfully claimed a task and established agent heartbeat/lease state.
+- Supabase Security Advisor: **zero findings** after initialization.
+- Canonical spec: `CONTROL-PLANE.md`.
+- Remaining Foundry gap: live Foundry execution still needs to use this database rather than only the in-memory reference control-plane implementation.
+
 ### Foundry Alpha
 - Live bounded multi-agent app surface:
   https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
