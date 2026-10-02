@@ -29,3 +29,25 @@ jobs:
         run: npm audit --omit=dev --audit-level=high
       - run: npm run typecheck
       - run: npm run build
+
+      - name: Install official MCP client for acceptance test
+        run: npm install --no-save --package-lock=false @modelcontextprotocol/client@2.2.0
+      - name: Start production MCP server
+        run: |
+          npm start > /tmp/humanity-loop-mcp.log 2>&1 &
+          echo $! > /tmp/humanity-loop-mcp.pid
+          for i in {1..30}; do
+            if curl --fail --silent "http://127.0.0.1:3000/api/v1?tool=get_protocol" >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/humanity-loop-mcp.log
+          exit 1
+      - name: Validate with official MCP TypeScript client
+        run: node scripts/test-mcp-sdk-client.mjs
+      - name: Validate with independent raw Streamable HTTP client
+        run: node scripts/test-mcp-raw-client.mjs
+      - name: Show MCP logs on failure
+        if: failure()
+        run: cat /tmp/humanity-loop-mcp.log || true
