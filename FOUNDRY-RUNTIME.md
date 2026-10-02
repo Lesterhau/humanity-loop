@@ -169,3 +169,40 @@ Regression coverage lives in `scripts/test_foundry_control_plane.py`, including 
 Scout → Verify → Assign → Build/Act → Dissent → Safety → Revision → Outcome.
 
 This is the canonical control-plane contract for future provider adapters. A live provider runtime should integrate these invariants rather than reimplement weaker ad hoc state.
+
+
+## Live transactional runtime
+
+The dedicated ChatGPT Foundry worker now uses the live Supabase/Postgres control plane as its operational state layer.
+
+- Supabase project ref: `jxtcccrlnhkcjfnwlfea`
+- private schema: `hl_control`
+- stable worker identity: `foundry_chatgpt_hourly`
+- canonical database contract: `CONTROL-PLANE.md`
+
+At the start of each dedicated Foundry cycle:
+
+1. call `hl_control.register_or_heartbeat_agent(...)` for `foundry_chatgpt_hourly`;
+2. call `hl_control.release_expired_leases()`;
+3. claim at most one eligible task with `hl_control.claim_next_task('foundry_chatgpt_hourly', <lease_seconds>)`;
+4. if no task exists, do not manufacture busywork merely to satisfy cadence; perform bounded scouting only when useful and enqueue only a concrete, non-duplicative candidate;
+5. renew the lease for work that may outlive the current lease;
+6. persist each role-stage result with `hl_control.advance_task_stage(...)`;
+7. on a recoverable execution failure call `hl_control.fail_task(...)`; retries and dead-letter state belong in the database rather than chat memory;
+8. meaningful completion still requires a durable GitHub receipt and any required action/outcome ledger updates.
+
+The database is the concurrency authority. A GitHub receipt is the durable institutional record. Neither replaces the other.
+
+The dedicated worker must never execute a task it did not successfully claim. The main hourly worker must not independently execute a Foundry cycle while the dedicated worker is healthy; it may inspect/control-plane health, enqueue validated work, and recover stale infrastructure.
+
+### Verified recovery behavior
+
+A rollback-wrapped adversarial test has verified:
+- successful task claim;
+- stage advancement;
+- forced failure and requeue;
+- successful reclaim;
+- forced lease expiry;
+- automatic dead-letter after max attempts.
+
+This proves the control plane can recover work without treating a lost chat/session as successful completion.
