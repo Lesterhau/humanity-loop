@@ -101,6 +101,19 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Success/closure condition: Clarvia confirms the match was useful (for example, application/grant-path use, useful eligibility clarification, or another concrete resource connection) or independently verifiable downstream value is documented.
 - Do not count the outbound email itself as a Connector win.
 
+### OT-011 — GestureLabs/A3CP → GitHub Open Source Accessibility community
+- Original Connector action: 2026-10-02
+- External project: GestureLabs / Ability-Adaptive Augmentative Communication Platform (A3CP)
+- Verified need: public project materials explicitly invite developers, researchers, pilot partners, supporters, and collaboration inquiries.
+- Matched resource: GitHub's Open Source Accessibility community and the 2026 Open Source Accessibility Summit on 2026-10-19.
+- Action: one targeted email sent from Ryan Lester | Humanity Loop to GestureLabs' public collaboration contact; read-after-send verification completed.
+- Durable receipt: `runtime/connector/2026-10-02-gesturelabs-github-accessibility.json`
+- Status: **reported / awaiting outcome**
+- Next review: **2026-10-07**. If no reply/value is visible, send at most one concise factual follow-up if the connection remains timely.
+- Stale threshold: **2026-10-14**. After the one permitted follow-up and a reasonable response window, close as no verified connection value unless new evidence appears.
+- Success/closure condition: GestureLabs confirms the community/event connection was useful or independently verifiable participation/collaboration attributable to the connection is documented.
+- Do not count the outbound email itself as a Connector win.
+
 ## Correspondence rule
 
 For Humanity Loop government/public-agency correspondence going forward:
