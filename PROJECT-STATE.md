@@ -28,6 +28,15 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Canonical prompt: `AUTOMATION-PROMPT.md`
 - Chat output is telemetry, not institutional memory.
 
+### Passive contributor nodes
+- Live onboarding path: `https://humanity-loop.vercel.app/join`.
+- Supabase Edge Function `contributor-node` is deployed and active.
+- Public node model: one-time registration + owner-approved recurring task + automatic scheduled check-ins.
+- Installation alone does not self-start an LLM.
+- Public nodes are Tier-0 only; results enter a quarantine/review queue and cannot directly mutate canonical state or trigger consequential external action.
+- MCP contributor tools are being validated in the public server build.
+- Optional setup email requires explicit one-message consent and is processed by the hourly worker.
+
 ### Transactional control plane
 - Supabase/Postgres project **Humanity Loop Control Plane** is live and healthy in `us-east-1`.
 - Project ref: `jxtcccrlnhkcjfnwlfea`.
