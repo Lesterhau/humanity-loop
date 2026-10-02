@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-01 — core-readiness incident reconciliation
+**State timestamp:** 2026-10-02 — transactional runtime + contributor + Scout/Planetary reconciliation
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -50,7 +50,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Public node model: one-time registration + owner-approved recurring task + automatic scheduled check-ins.
 - Installation alone does not self-start an LLM.
 - Public nodes are Tier-0 only; results enter a quarantine/review queue and cannot directly mutate canonical state or trigger consequential external action.
-- MCP contributor tools are being validated in the public server build.
+- MCP contributor tools are live and validated in the public server build; issue #6 is closed completed.
 - Optional setup email requires explicit one-message consent and is processed by the hourly worker.
 
 ### Transactional control plane
@@ -63,13 +63,13 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Initial rollback self-test successfully claimed a task and established agent heartbeat/lease state.
 - Supabase Security Advisor: **zero findings** after initialization.
 - Canonical spec: `CONTROL-PLANE.md`.
-- Remaining Foundry gap: live Foundry execution still needs to use this database rather than only the in-memory reference control-plane implementation.
+- Live Foundry execution now uses this database. Stable scheduler identity, leases, stage persistence, recovery/dead-letter behavior, persistent child-role identities, and live status snapshots have been accepted and verified.
 
 ### Foundry Alpha
 - Live bounded multi-agent app surface:
   https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
 - AppDeploy hourly cron is currently disabled with `credits_exhausted`; the app itself remains deployed/ready. A dedicated ChatGPT automation, **Humanity Loop — Foundry**, now supplies the active model-dependent Foundry cadence.
-- Core roles: Scout, Verifier, PM, Builder, 10th Man, Safety Governor, Outcome Tracker, Planetary Accountant.
+- Core live roles include Scout, Verifier, PM, Builder, 10th Man, Safety Governor, Revision, Outcome Tracker, and always-warm Planetary Accountant. Role state/permissions/budgets are persisted in the Supabase control plane.
 - Specialist catalog: `ROLE-CATALOG.md`
 - Do not claim unverified runtime enhancements are live.
 - Do not wholesale-migrate the model-dependent Foundry to GitHub Actions; separate deterministic orchestration from provider-dependent execution first.
@@ -133,11 +133,15 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 
 ### Ranked GitHub issue execution
 - Open issues are ranked before work by safety/risk reduction, architectural blocking value, live-outcome impact, completion leverage, tractability, evidence, and reversibility.
-- Issue #7 (10th-Man / catastrophic-risk gates): **closed completed** after executable deterministic preflight + adversarial tests + CI were added.
-- Issue #10 (environmental break-even calculator): **closed completed** after v0.2 added task/model usage, agent growth, cumulative footprint bands, payback probabilities, marginal carbon ROI, separate water deltas, uncertainty, tests, and CI.
-- Issue #3 (bounded Foundry/control plane): materially advanced with lineage, permission ceilings, leases, heartbeats, DLQ, usage accounting, status API, and tests; remains open pending live provider integration.
-- Issue #1 (remote MCP): server implementation exists under `mcp-server/`; its pinned MCP v2 / Next.js build, typecheck, and high-severity production dependency audit are green. It remains open pending stable HTTPS deployment and two-client validation.
-- Issue #12 (Connector): first targeted external connection executed; remains open until measurable useful value is verified.
+- #1 remote MCP: **closed completed** — public HTTPS MCP + JSON fallback, pinned/security-gated build, two independent local clients, and two-client live-endpoint acceptance.
+- #3 bounded Foundry/control plane: **closed completed** — transactional Supabase runtime, leases/heartbeats/recovery/DLQ, persistent role identities, bounded inheritance, full role-path acceptance, durable receipts.
+- #4 STEEP+ Scout Mesh: **closed completed** — six-cell geography × language × domain matrix, one-cell claim primitive, structured signals, first verified real signal, recurrence wired to hourly worker.
+- #5 Planetary Systems workers: **closed completed** — always-warm Planetary Accountant, five demand-activated specialist families, review ledger, self-footprint gate, first real Scout→Planetary lifecycle review.
+- #6 Contributor Mode onboarding: **closed completed** — live /join page, Supabase node gateway, owner-approved recurring automatic check-ins, Tier-0-only automatic work, quarantine, pause/revoke, one-setup-email consent, MCP contributor tools.
+- #7 governance gates and #10 environmental break-even: **closed completed** from the prior pass.
+- #12 Connector/Amplifier: remains open because the first Clarvia→NLnet connection has not yet produced a measurable verified external benefit; next review 2026-10-07.
+- #11 Fork Watch remains intentionally open as the canonical notification thread.
+- Remaining research/publication work: #2 discovery/publication, #8 Inner Development pilot, #9 psychological-maintenance model.
 
 ### MOTHER social automation
 - Airtable base `Humanity Loop — MOTHER Social` exists with an `X Queue` table for drafts/approved/posted/failed state.
@@ -147,7 +151,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ### Current maintenance / known drift
 - Humanity Loop README is refreshed to current operations.
 - Ryan's GitHub profile README refresh subsequently succeeded and was verified after earlier intercepted attempts; the stale fallback should be treated as resolved.
-- Ten Humanity Loop issues remain open. Issues #7 and #10 are closed completed and verified. #11 is an intentional tracker. #1, #3, and #12 remain open because material acceptance criteria are still outstanding.
+- Five Humanity Loop issues remain open: #2, #8, #9, #11, and #12. #11 is intentional infrastructure; #12 is outcome-pending rather than implementation-blocked.
 
 ## Current major architecture
 
@@ -213,7 +217,7 @@ Current reconciliation:
 - governance-gate latest runs are green; the three earlier failures were superseded by successful runs;
 - Foundry control-plane tests are green;
 - environmental break-even tests are green;
-- MCP build is green from a pinned dependency graph with a high-severity production audit gate;
+- MCP build is green from a pinned dependency graph with a high-severity production audit gate; public HTTPS deployment and scheduled two-client live acceptance are also green;
 - the previously missing 01:37Z Foundry receipt was replayed and read-back verified;
 - stale Undermind write-interception blockers were reconciled as resolved;
 - the dedicated Humanity Loop — Foundry automation is enabled again.
@@ -253,11 +257,11 @@ Use:
 - Critical Guidance Delta deterministic detection has been migrated and live-validated on GitHub Actions.
 - Federal Policy Delta deterministic detection has been migrated and live-validated on GitHub Actions across all 17 configured official sources. The official GPO/LOC bill-status bulk-update feed replaces the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
 - Evidence Integrity Sentinel remains healthy on AppDeploy.
-- Foundry Alpha's native AppDeploy cron remains credit-disabled, but functional continuity is provided by the enabled dedicated **Humanity Loop — Foundry** automation. Do not treat AppDeploy credit exhaustion as resolved unless the provider state materially changes.
+- Foundry Alpha's native AppDeploy cron remains credit-disabled, but functional continuity is provided by the enabled dedicated **Humanity Loop — Foundry** automation backed by the Supabase transactional control plane. AppDeploy credit exhaustion is no longer a core-state dependency.
 
 ### Current GitHub ledger head
-- Human ledger currently includes actions through **HL-065**.
-- Machine ledger `actions.jsonl` currently includes actions through **HL-065**; latest validation must remain green after each ledger append.
+- Human ledger currently includes actions through at least **HL-066**.
+- Machine ledger `actions.jsonl` currently includes actions through at least **HL-066**; latest validation must remain green after each ledger append.
 - GitHub mutation capability is currently working. The 2026-10-01 recovered Foundry receipt write was independently read-back verified, and the corresponding Undermind failover record was resolved.
 
 ## Immediate continuity priority
