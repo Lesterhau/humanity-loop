@@ -98,6 +98,7 @@ const handler = createMcpHandler((server) => {
         user_agent_label: z.string().max(120).optional(),
         email: z.string().email().optional(),
         setup_email_consent: z.boolean().optional(),
+        allow_tier1_review: z.boolean().optional(),
       }),
     },
     async (input) => text(await registerContributorNode(input)),
