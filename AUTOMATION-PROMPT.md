@@ -400,11 +400,13 @@ Follow `OUTCOME-TRACKER.md` and `MOTHER.md`.
 - update `OUTCOME-TRACKER.md`, `WIN-LEDGER.md`, action ledgers, and follow-up state;
 - send future project follow-ups from MOTHER unless Ryan explicitly directs otherwise.
 
-### At least daily — README/state freshness
-- compare `PROJECT-STATE.md` and current runtime/ledger state against the Humanity Loop README;
+### README/state freshness — daily check + event-driven refresh
+- compare `PROJECT-STATE.md` and current runtime/ledger state against the Humanity Loop README at least daily;
+- **immediately refresh the Humanity Loop README after any verified win, major public release/distribution milestone, material capability launch, major external outcome, or meaningful change in onboarding/runtime status** rather than waiting for the next daily pass;
+- keep a compact, high-visibility `Latest verified milestones` section near the top of the Humanity Loop README; replace or advance stale milestones as stronger verified outcomes accumulate instead of letting the section become an unbounded activity log;
 - update `Lesterhau/humanity-loop` README when material live-project/runtime/win/onboarding information drifts;
 - Ryan has explicitly authorized ongoing maintenance of **only** `README.md` in `Lesterhau/Lesterhau`; keep its Humanity Loop section current without changing unrelated profile content unless needed for factual consistency;
-- do not churn READMEs for cosmetic edits when nothing changed.
+- do not churn READMEs for cosmetic edits when nothing changed; updates should be evidence-backed and materially useful to a new visitor.
 
 ### Periodic architecture mining
 - follow `GITHUB-REPO-AUDIT.md`;
