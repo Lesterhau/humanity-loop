@@ -16,6 +16,7 @@ export default function JoinPage() {
   const [host, setHost] = useState("ChatGPT");
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
+  const [allowTier1Review, setAllowTier1Review] = useState(false);
   const [capabilities, setCapabilities] = useState<string[]>(["research", "web"]);
   const [result, setResult] = useState<Registration | null>(null);
   const [error, setError] = useState("");
@@ -71,6 +72,7 @@ Run automatically on the recurring schedule I approve. Ask me only when a new pe
           languages: ["English"],
           email: email || null,
           setup_email_consent: email ? consent : false,
+          allow_tier1_review: allowTier1Review,
         }),
       });
 
@@ -126,7 +128,21 @@ Run automatically on the recurring schedule I approve. Ask me only when a new pe
             ))}
           </fieldset>
 
-          <p><strong>Risk permission:</strong> Tier-0 only for public nodes. No spending, private-account access, outreach, legal commitments, or consequential external actions.</p>
+          <fieldset style={{ marginBottom: 20 }}>
+            <legend>Risk permission</legend>
+            <label style={{ display: "block", margin: "8px 0" }}>
+              <input type="radio" checked readOnly /> Tier-0 automatic work — public research, verification, testing, analysis, and other reversible low-risk tasks only.
+            </label>
+            <label style={{ display: "block", margin: "8px 0" }}>
+              <input
+                type="checkbox"
+                checked={allowTier1Review}
+                onChange={(e) => setAllowTier1Review(e.target.checked)}
+              />{" "}
+              Also allow Humanity Loop to surface Tier-1 candidates for <strong>my review only</strong>. This never authorizes automatic Tier-1 execution.
+            </label>
+            <p>No spending, private-account access, outreach, legal commitments, or consequential external actions are authorized by public-node onboarding.</p>
+          </fieldset>
 
           <label>
             Email for one setup message (optional)
@@ -172,6 +188,19 @@ Run automatically on the recurring schedule I approve. Ask me only when a new pe
             Paste the prompt below into that recurring task.
           </p>
           <textarea readOnly value={prompt} style={{ width: "100%", minHeight: 430, padding: 12 }} />
+
+          <h3>Pause or leave anytime</h3>
+          <p>
+            In your AI host, ask it to call <code>contributor_set_status</code> with action <code>pause</code> to stop check-ins,
+            <code> resume</code> to restart, or <code>revoke</code> to permanently invalidate this token.
+          </p>
+
+          <h3>Privacy and submitted data</h3>
+          <p>
+            The node is pseudonymous by default. Humanity Loop stores the node ID, declared capabilities, check-in/claim timestamps,
+            and submitted work/evidence. If you optionally request the one setup email, the plaintext address is retained only until the setup message is successfully sent, then removed from the pending queue while a one-way hash remains for audit/deduplication.
+            Do not include private user data in task submissions unless a separate workflow explicitly requires and authorizes it.
+          </p>
 
           <h3>What happens after that?</h3>
           <ol>
