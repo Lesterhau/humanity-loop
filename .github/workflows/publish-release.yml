@@ -29,16 +29,41 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
 
+      - name: Validate plugin version matches release version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          PLUGIN_VERSION=$(jq -r '.version' plugin/humanity-loop/plugin.json)
+          test "$PLUGIN_VERSION" = "$VERSION"
+
+      - name: Build portal-ready plugin ZIP
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          cd plugin/humanity-loop
+          zip -r "../../humanity-loop-plugin-$VERSION.zip" . \
+            -x "*.DS_Store" "__MACOSX/*"
+          cd ../..
+          unzip -t "humanity-loop-plugin-$VERSION.zip"
+
       - name: Create tagged release if missing
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.version.outputs.tag }}
         run: |
           if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "$TAG already exists; leaving it unchanged."
+            echo "$TAG already exists."
           else
             gh release create "$TAG" \
               --target "$GITHUB_SHA" \
               --title "Humanity Loop $TAG" \
-              --notes "First public remote-MCP discovery release. Includes the production Streamable HTTP MCP endpoint, bounded passive contributor-node tools, official MCP Registry metadata, portable Agent Plugin packaging, and cross-client connection documentation."
+              --notes "Public remote-MCP discovery release. Includes the production Streamable HTTP MCP endpoint, bounded passive contributor-node tools, official MCP Registry metadata, portable Agent Plugin packaging, and cross-client connection documentation."
           fi
+
+      - name: Attach portal-ready plugin ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release upload "$TAG" "humanity-loop-plugin-$VERSION.zip" --clobber
