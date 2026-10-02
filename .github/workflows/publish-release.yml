@@ -1,0 +1,44 @@
+name: Publish Humanity Loop release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - server.json
+      - plugin/humanity-loop/**
+      - .github/workflows/publish-release.yml
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Resolve version
+        id: version
+        run: |
+          VERSION=$(jq -r '.version' server.json)
+          test -n "$VERSION"
+          test "$VERSION" != "null"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create tagged release if missing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "$TAG already exists; leaving it unchanged."
+          else
+            gh release create "$TAG" \
+              --target "$GITHUB_SHA" \
+              --title "Humanity Loop $TAG" \
+              --notes "First public remote-MCP discovery release. Includes the production Streamable HTTP MCP endpoint, bounded passive contributor-node tools, official MCP Registry metadata, portable Agent Plugin packaging, and cross-client connection documentation."
+          fi
