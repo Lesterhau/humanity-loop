@@ -151,3 +151,26 @@ Remaining acceptance work for issue #3:
 2. write and read-back verify its GitHub receipt;
 3. confirm the scheduled dedicated worker remains enabled and uses the same lifecycle on its next normal run;
 4. record resource usage from live cycles as telemetry becomes available.
+
+
+## Persistent Foundry Alpha fleet
+
+Foundry Alpha now has one scheduler identity plus eight persistent bounded child-role identities:
+
+- `foundry_scout`
+- `foundry_verifier`
+- `foundry_pm`
+- `foundry_builder`
+- `foundry_dissent`
+- `foundry_safety`
+- `foundry_revision`
+- `foundry_outcome`
+
+Child creation is enforced by `hl_control.spawn_child_agent(...)`, which rejects tool, permission, budget, recursion-depth, or child-count escalation beyond the parent.
+
+`hl_control.advance_task_stage_v2(...)` keeps the scheduler as lease owner while attributing every stage result/event to the executing role agent.
+
+Acceptance task `foundry-role-fleet-validation-2026-10-02` completed all eight stages with distinct persistent role-agent IDs.
+
+Acceptance receipt:
+`runtime/foundry-fallback/2026-10-02-persistent-role-fleet-acceptance.md`
