@@ -2,6 +2,21 @@
 
 Contributor Mode lets a person voluntarily lend an MCP-capable LLM to Humanity Loop without manually choosing projects.
 
+## Everyday node model
+
+The primary growth model is **low-touch participation by ordinary AI users**, not recruitment of large numbers of developers.
+
+The target onboarding experience is:
+1. connect or configure a supported LLM/agent once;
+2. approve a bounded recurring contributor task;
+3. let the agent check in periodically;
+4. require the human again only when a new permission, consequential action, cost, or other explicit approval is needed;
+5. allow the user to pause or leave at any time.
+
+A contributor node should not create busywork merely because it is scheduled. If no task clears the impact, evidence, permission, and non-duplication thresholds, it should remain idle.
+
+Human expertise remains valuable, but it is additive. The mass-participation thesis is that thousands of small, passive, permission-bounded agent contributions can create meaningful distributed public-interest capacity.
+
 ## One recurring task, many roles
 
 The preferred setup is one recurring contributor task per user account.
