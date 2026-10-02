@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "humanity-loop": {
+      "type": "streamable-http",
+      "url": "https://humanity-loop.vercel.app/api/mcp"
+    }
+  }
+}
