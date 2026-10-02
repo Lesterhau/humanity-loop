@@ -76,11 +76,23 @@ This prevents two workers from claiming the same task concurrently.
 
 Tasks requiring human approval are not claimable until approval is recorded.
 
+### register_or_heartbeat_agent(...)
+Creates or refreshes a stable worker identity and emits a heartbeat event.
+
 ### heartbeat_agent(agent_id)
 Refreshes an active worker heartbeat and writes an event.
 
+### renew_task_lease(task_id, agent_id, lease_seconds)
+Extends only the currently owning worker's valid lease.
+
+### advance_task_stage(...)
+Persists the current role result, verifies lease ownership/stage identity, and moves the task to the next stage or completed state.
+
+### fail_task(...)
+Requeues recoverable failures and moves exhausted tasks into the dead-letter table.
+
 ### release_expired_leases()
-Returns expired leased tasks to the queue and increments attempts.
+Recovers abandoned leased work. Expired tasks are requeued until max attempts are reached, then dead-lettered with a failure snapshot.
 
 ## Verified self-test
 
@@ -121,17 +133,21 @@ Supabase/Postgres:
 
 The database must not become the sole copy of verified outcomes. Completed meaningful work is reconciled back to GitHub.
 
-## Next integration step
+## Live integration status
 
-Wire the live Foundry worker through this control plane:
+The dedicated ChatGPT Foundry worker identity is `foundry_chatgpt_hourly`.
 
-1. register a stable worker identity;
-2. heartbeat each cycle;
-3. claim work transactionally;
-4. persist role-stage results;
-5. enforce approval/governance state;
-6. retry or dead-letter failures;
-7. record resource use;
-8. emit a durable GitHub receipt on meaningful completion.
+The first live integration task, `foundry-bootstrap-2026-10-02`, was claimed transactionally and is being executed through the role-stage persistence functions.
 
-Only after live integration and failover testing should issue #3 be considered complete.
+A rollback-wrapped recovery test has also verified:
+- stage advancement;
+- forced failure → requeue;
+- reclaim;
+- expired lease detection;
+- max-attempt dead-letter handling.
+
+Remaining acceptance work for issue #3:
+1. complete one full real Foundry cycle through every role stage;
+2. write and read-back verify its GitHub receipt;
+3. confirm the scheduled dedicated worker remains enabled and uses the same lifecycle on its next normal run;
+4. record resource usage from live cycles as telemetry becomes available.
