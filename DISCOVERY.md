@@ -30,3 +30,25 @@ Humanity Loop should be discoverable by both humans and agents without manufactu
 ## Growth metric
 
 Optimize for verified independent replication, useful contributions, downstream installs, and documented outcomes rather than stars alone.
+
+
+## Current publication status
+
+As of 2026-10-02:
+
+- Production remote MCP: `https://humanity-loop.vercel.app/api/mcp`
+- Official MCP Registry metadata: `server.json`
+- Official MCP Registry publication: **successful** via GitHub OIDC workflow
+- Registry publisher workflow: `.github/workflows/publish-mcp-registry.yml`
+- Tagged GitHub release: **v0.2.0**
+- Cross-client connection guide: `DISCOVERY-CLIENTS.md`
+- Portable Agent Plugin package: `plugin/humanity-loop/`
+- OpenAI review metadata includes required positive/negative test cases plus support/privacy/terms URLs.
+
+Remaining public-directory work:
+1. manually validate the host-specific install path in ChatGPT/Claude/Cursor/Gemini surfaces and record results;
+2. finish OpenAI submission-only assets/materials, including primary icon and reviewer-accessible demo recording;
+3. complete OpenAI publisher/domain verification and submit through the Plugins portal;
+4. evaluate secondary community directories only after official channels are stable.
+
+Do not treat OpenAI portal submission as automatable project code: publisher identity, domain challenge, review attestations, and final publication are accountable human actions.
