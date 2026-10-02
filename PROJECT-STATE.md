@@ -28,6 +28,14 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Canonical prompt: `AUTOMATION-PROMPT.md`
 - Chat output is telemetry, not institutional memory.
 
+### Planetary worker division
+- Always-warm `planetary_accountant` plus five demand-activated Planetary specialist families are live in Supabase.
+- Review ledger: `hl_control.planetary_reviews`.
+- Self-footprint gate: `hl_control.planetary_self_footprint_snapshot()`.
+- Current telemetry status is insufficient; this explicitly blocks environmental-benefit claims/unbounded expansion rather than treating missing data as zero footprint.
+- First Scout→Planetary handoff completed for water-free megawatt-rack cooling; decision is RESEARCH, not scale, pending lifecycle/production evidence.
+- Canonical runtime: `PLANETARY-WORKERS.md`.
+
 ### STEEP+ Scout Mesh
 - Live Supabase tables: `hl_control.scout_cells` and `hl_control.scout_signals`.
 - Six-cell initial geography × language × domain matrix is active.
