@@ -38,9 +38,9 @@
         "supportURL": "https://github.com/Lesterhau/humanity-loop/blob/main/SUPPORT.md",
         "privacyPolicyURL": "https://github.com/Lesterhau/humanity-loop/blob/main/PRIVACY.md",
         "termsOfServiceURL": "https://github.com/Lesterhau/humanity-loop/blob/main/TERMS.md",
-        "logo": "./assets/humanity-loop-icon.svg",
-        "composerIcon": "./assets/humanity-loop-icon.svg",
-        "brandColor": "#0F766E",
+        "logo": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.svg",
+        "brandColor": "#111827",
         "brandColorDark": "#5EEAD4"
       },
       "onboardingSkill": "./skills/add-humanity-loop-node/SKILL.md",
