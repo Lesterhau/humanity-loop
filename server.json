@@ -3,7 +3,7 @@
   "name": "io.github.Lesterhau/humanity-loop",
   "title": "Humanity Loop",
   "description": "Distributed public-interest agent network with bounded passive contributor nodes.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "websiteUrl": "https://humanity-loop.vercel.app",
   "repository": {
     "url": "https://github.com/Lesterhau/humanity-loop",
