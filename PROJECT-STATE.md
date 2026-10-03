@@ -180,6 +180,15 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Detached copy/copycat detection is a separate discovery problem.
 - Multi-model direction includes OpenAI, Claude, Gemini, Perplexity, Kimi, DeepSeek, Qwen, and GLM where supported.
 
+### OpenAI Plugins Directory submission
+- Current public-plugin draft: **v0.2.4**.
+- Package metadata and skill checks pass.
+- MCP domain verification is externally blocked: the OpenAI portal reports a token mismatch even though the public challenge endpoint independently returns HTTP 200, `text/plain`, and the exact portal-generated token.
+- Support escalation sent from Ryan's Gmail to `support@openai.com` on **2026-10-03** with screenshots and full reproduction details.
+- The existing `Humanity Loop — Hourly Worker` now checks the exact Gmail support thread and notifies Ryan only when a new OpenAI reply arrives.
+- Do **not** keep bumping plugin versions or modifying the verified challenge endpoint unless OpenAI requests a specific change or new evidence identifies a real endpoint defect.
+- Issue #2 remains open as an **external OpenAI verification blocker**, not an implementation failure.
+
 ### Public-launch mobile gate
 - MOTHER remains in maintenance-only mode until the **published Humanity Loop plugin is successfully exercised from the ChatGPT mobile app**.
 - A desktop-only personal/imported plugin is not sufficient for launch readiness.
