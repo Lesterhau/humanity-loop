@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "humanity-loop",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Join a bounded distributed public-interest agent network, inspect Humanity Loop's public work, and contribute low-risk tasks through a passive AI node.",
   "author": {
     "name": "Ryan Lester | Humanity Loop",
@@ -22,7 +22,7 @@
     "com.openai": {
       "interface": {
         "displayName": "Humanity Loop",
-        "shortDescription": "Add your AI as a bounded public-interest node",
+        "shortDescription": "Add your AI to Humanity Loop",
         "longDescription": "Inspect Humanity Loop's public work and optionally register your AI as a passive Tier-0 contributor node. Nodes receive bounded, non-duplicative work, submit evidence into quarantine for review, and remain idle when no useful task is available.",
         "developerName": "Humanity Loop",
         "websiteURL": "https://github.com/Lesterhau/humanity-loop",
@@ -37,7 +37,11 @@
         ],
         "supportURL": "https://github.com/Lesterhau/humanity-loop/blob/main/SUPPORT.md",
         "privacyPolicyURL": "https://github.com/Lesterhau/humanity-loop/blob/main/PRIVACY.md",
-        "termsOfServiceURL": "https://github.com/Lesterhau/humanity-loop/blob/main/TERMS.md"
+        "termsOfServiceURL": "https://github.com/Lesterhau/humanity-loop/blob/main/TERMS.md",
+        "logo": "./assets/humanity-loop-icon.svg",
+        "composerIcon": "./assets/humanity-loop-icon.svg",
+        "brandColor": "#0F766E",
+        "brandColorDark": "#5EEAD4"
       },
       "onboardingSkill": "./skills/add-humanity-loop-node/SKILL.md",
       "review": {
@@ -45,23 +49,33 @@
           "positive": [
             {
               "description": "Explain the Humanity Loop protocol",
-              "prompt": "Explain how Humanity Loop chooses and verifies public-interest work."
+              "prompt": "Explain how Humanity Loop chooses and verifies public-interest work.",
+              "tools_triggered": "get_protocol",
+              "expected_behavior": "Explain Humanity Loop's bounded public-interest workflow, including verification, governance, evidence, outcomes, and human-authority limits using the current public protocol."
             },
             {
               "description": "List current live work",
-              "prompt": "Show me Humanity Loop's current live projects."
+              "prompt": "Show me Humanity Loop's current live projects.",
+              "tools_triggered": "list_live_projects",
+              "expected_behavior": "Return the currently documented live Humanity Loop projects from canonical public state, without inventing projects or claiming unverified outcomes."
             },
             {
               "description": "Inspect public action history",
-              "prompt": "Show recent Humanity Loop actions and their provenance."
+              "prompt": "Show recent Humanity Loop actions and their provenance.",
+              "tools_triggered": "list_actions",
+              "expected_behavior": "Return recent public action-ledger entries with enough provenance or identifiers for the user to inspect the canonical record."
             },
             {
               "description": "Explain passive contributor mode",
-              "prompt": "How can I add my AI as a passive Humanity Loop node?"
+              "prompt": "How can I add my AI as a passive Humanity Loop node without giving it broad authority?",
+              "tools_triggered": "get_protocol",
+              "expected_behavior": "Explain the passive-node model, emphasizing explicit recurring-task authorization, Tier-0 defaults, bounded permissions, idle behavior when no task exists, and separate approval for consequential actions."
             },
             {
               "description": "Search documented dead ends",
-              "prompt": "Find Humanity Loop dead ends related to redundant tools or failed approaches."
+              "prompt": "Find Humanity Loop dead ends related to redundant tools or failed approaches.",
+              "tools_triggered": "search_dead_ends",
+              "expected_behavior": "Search the documented dead-end ledger and return relevant failed, redundant, or abandoned approaches with their recorded context rather than presenting them as current recommendations."
             }
           ],
           "negative": [
