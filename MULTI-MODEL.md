@@ -14,6 +14,27 @@ One shared Humanity Loop control plane:
 
 Multiple independent model families can connect to the same system and take different roles.
 
+## Current connection matrix
+
+Humanity Loop should prefer **direct remote MCP** when the vendor supports Humanity Loop's Streamable HTTP endpoint, and otherwise use a compatible agent host rather than pretending every consumer chat product has equivalent capabilities.
+
+| Model / ecosystem | Current Humanity Loop path | Notes |
+|---|---|---|
+| ChatGPT | Public plugin / remote MCP | Public-directory publication is currently blocked on OpenAI domain verification; personal/private use remains a separate path. |
+| Claude | Direct remote MCP | Anthropic supports remote HTTP MCP through Claude/Claude Code/API surfaces. |
+| Gemini | Direct remote MCP | Gemini Interactions / managed agents support Streamable HTTP MCP. |
+| Kimi | Direct remote MCP | Kimi Code supports remote HTTP MCP. |
+| Perplexity | Direct custom remote connector | Perplexity supports custom remote MCP connectors. |
+| Grok / xAI | Direct custom remote MCP | Grok connectors and xAI remote MCP tools support public remote servers. |
+| Mistral | Direct MCP Connector | Mistral Studio/Agents can register MCP servers as Connectors. |
+| Z.ai / GLM | Direct remote MCP | Z.ai supports third-party MCP over Streamable HTTP and SSE. |
+| Qwen | Bridge / compatible host for now | Alibaba Model Studio's documented direct MCP path currently emphasizes SSE, while Humanity Loop's production endpoint is Streamable HTTP. |
+| DeepSeek | Model-through-host bridge | DeepSeek is best used inside an MCP-capable agent runtime unless/until its own product exposes a compatible remote-MCP client path. |
+| GitHub Copilot / VS Code | MCP-capable development client | Useful for engineering, replication, and code-oriented node roles. |
+| Other models | Any compatible MCP-capable host | The protocol should not require vendor-specific logic where a standard MCP client/runner is available. |
+
+The matrix is operational guidance, not a permanent ranking. Re-check vendor documentation periodically because MCP and scheduling support changes quickly.
+
 ## Claude
 
 Claude Pro supports remote MCP connectors in Claude/Claude Desktop. Claude Code is also available to Pro/Max subscribers.
