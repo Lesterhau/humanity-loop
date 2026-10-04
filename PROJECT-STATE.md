@@ -49,8 +49,8 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Supabase Edge Function `contributor-node` is deployed and active.
 - Public node model: one-time registration + owner-approved recurring task + automatic scheduled check-ins.
 - Installation alone does not self-start an LLM.
-- Public nodes are Tier-0 only; results enter a quarantine/review queue and cannot directly mutate canonical state or trigger consequential external action.
-- MCP contributor tools are live and validated in the public server build; issue #6 is closed completed.
+- Public nodes default to full bounded autonomy: authorized Tier-0 and Tier-1 work may run automatically with evidence/audit receipts; Tier-2 candidates require explicit human approval before execution; Tier-3 remains prohibited or specialist-controlled. Results still enter review before becoming canonical Humanity Loop state.
+- MCP contributor tools are live and validated in the public server build; contributor onboarding now includes ChatGPT, Claude, Gemini, Kimi, Qwen, Perplexity, Grok, Mistral, DeepSeek-via-host, Z.ai/GLM-via-host, GitHub Copilot, and generic MCP-capable agents; issue #6 is closed completed.
 - Optional setup email requires explicit one-message consent and is processed by the hourly worker.
 
 ### Contributor growth telemetry
