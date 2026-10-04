@@ -90,7 +90,7 @@ const handler = createMcpHandler((server) => {
     "contributor_register",
     {
       title: "Register a Humanity Loop contributor node",
-      description: "Create a pseudonymous Tier-0 contributor identity. Returns a private node token shown once. Optional setup email requires explicit consent.",
+      description: "Create a pseudonymous Humanity Loop contributor node. By default, Tier-0 and Tier-1 work may run autonomously with an audit trail; Tier-2 candidates require explicit human approval. Returns a private node token shown once.",
       inputSchema: z.object({
         capabilities: z.array(z.string()).max(25).optional(),
         languages: z.array(z.string()).max(12).optional(),
@@ -98,6 +98,7 @@ const handler = createMcpHandler((server) => {
         user_agent_label: z.string().max(120).optional(),
         email: z.string().email().optional(),
         setup_email_consent: z.boolean().optional(),
+        risk_permissions: z.array(z.enum(["tier0", "tier1-auto", "tier2-review"])).max(3).optional(),
         allow_tier1_review: z.boolean().optional(),
       }),
     },
@@ -108,7 +109,7 @@ const handler = createMcpHandler((server) => {
     "contributor_checkin",
     {
       title: "Check in as a Humanity Loop contributor node",
-      description: "Check in automatically and claim at most one bounded Tier-0 task. Returns no assignment when nothing worthwhile is available.",
+      description: "Check in and claim at most one bounded task allowed by this node's permissions. Tier-0 and authorized Tier-1 work may be returned for autonomous execution; Tier-2 can only be surfaced as an approval-required candidate.",
       inputSchema: z.object({
         node_token: z.string().min(20),
         capabilities: z.array(z.string()).max(25).optional(),
@@ -125,7 +126,7 @@ const handler = createMcpHandler((server) => {
     "contributor_submit",
     {
       title: "Submit contributor-node work",
-      description: "Submit a claimed Tier-0 task result. Results enter quarantine for Humanity Loop verification and cannot directly alter canonical state or trigger external action.",
+      description: "Submit a claimed contributor task result with evidence and uncertainty. Tier-1 external actions should include a verifiable receipt. Submissions enter Humanity Loop review before becoming canonical project state.",
       inputSchema: z.object({
         node_token: z.string().min(20),
         work_id: z.string().uuid(),
