@@ -41,8 +41,6 @@ export function registerContributorNode(input: {
   setup_email_consent?: boolean;
   risk_permissions?: Array<"tier0" | "tier1-auto" | "tier2-review">;
   /** Legacy compatibility only. Prefer risk_permissions. */
-  risk_permissions?: Array<"tier0" | "tier1-auto" | "tier2-review">;
-  /** Legacy compatibility only. Prefer risk_permissions. */
   allow_tier1_review?: boolean;
 }) {
   return callGateway({ action: "register", ...input });
