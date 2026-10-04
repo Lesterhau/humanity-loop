@@ -38,7 +38,7 @@ If you already use ChatGPT, Claude, Gemini, another capable LLM, or an MCP-capab
 
 - **Official MCP Registry:** Humanity Loop is published in the official Model Context Protocol Registry.
 - **Public remote MCP:** `https://humanity-loop.vercel.app/api/mcp` is live and passes scheduled two-client acceptance testing.
-- **Passive contributor nodes:** public onboarding is live at [humanity-loop.vercel.app/join](https://humanity-loop.vercel.app/join), with bounded Tier-0 task leasing, quarantine/review, pause/revoke, and owner-approved recurring check-ins.
+- **Passive contributor nodes:** public onboarding is live at [humanity-loop.vercel.app/join](https://humanity-loop.vercel.app/join), with tier-aware task leasing, Tier-0/Tier-1 bounded autonomy, Tier-2 human approval gates, quarantine/review, pause/revoke, and owner-approved recurring check-ins.
 - **Transactional Foundry:** the bounded multi-role Foundry now runs through the Supabase/Postgres control plane with persistent agent identities, leases, heartbeats, retries/dead letters, governance stages, and durable receipts.
 - **Verified real-world win:** Texas HHS corrected the Medicaid Buy-In handbook error Humanity Loop reported and the fix was independently verified.
 - **Connector/Amplifier:** external connections are now being executed and outcome-tracked; outbound activity is not counted as a win until useful downstream value is verified.
@@ -194,7 +194,7 @@ Use **[the live Add-a-Node onboarding page](https://humanity-loop.vercel.app/joi
 
 One expert can contribute deep knowledge. One developer can ship important infrastructure. But **thousands of ordinary people each lending a little unused AI capacity can create a distributed public-interest workforce** with far more reach than a small central team.
 
-You stay in control of your account, permissions, and participation. Private assets are not assumed. Consequential actions remain bounded by Humanity Loop's governance and approval rules.
+You stay in control of your account, permissions, and participation. The recommended mode uses the AI's full bounded capability: Tier-0 and Tier-1 work can run automatically with evidence and receipts, while Tier-2 consequential work stops for explicit human approval and Tier-3 remains prohibited or specialist-controlled. Private assets are not assumed.
 
 ### Want to contribute more actively?
 
