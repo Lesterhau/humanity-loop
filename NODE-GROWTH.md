@@ -7,7 +7,7 @@ Humanity Loop measures contributor-node growth as an **outcome funnel**, not as 
 1. **Join session** — one deduplicated visit to `/join`.
 2. **Registration** — a pseudonymous contributor node is created.
 3. **Scheduled check-in** — the node actually wakes up after setup.
-4. **Task claim** — the node receives an eligible Tier-0 assignment.
+4. **Task claim** — the node receives an eligible assignment within its authorized risk permissions.
 5. **Submission** — the node returns work into quarantine.
 6. **Verified contribution** — Humanity Loop accepts the submission after review.
 
@@ -99,7 +99,9 @@ Primary:
 
 Secondary:
 - mobile vs desktop onboarding;
-- host distribution;
+- host/model-family distribution;
+- autonomy-mode / authorized-risk distribution;
+- Tier-0 vs Tier-1 claim mix and Tier-2 approval surfacing;
 - time from registration to first scheduled check-in;
 - time from claim to submission;
 - rejection reasons.
