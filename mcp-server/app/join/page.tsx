@@ -39,20 +39,20 @@ const HOSTS = [
   {
     value: "Perplexity",
     label: "Perplexity",
-    path: "Use a supported MCP connector/client surface when available",
-    automation: "If the selected surface has no scheduler, use an authorized external runner.",
+    path: "Custom remote MCP connector",
+    automation: "Use Perplexity Computer workflows where available; otherwise use an authorized external runner.",
   },
   {
     value: "Grok",
     label: "Grok / xAI",
-    path: "Use a compatible MCP-capable host or agent runtime",
-    automation: "Use the host's scheduler or an authorized external runner.",
+    path: "Direct custom remote MCP connector or xAI remote MCP tool",
+    automation: "Use the supported Grok/xAI agent surface or an authorized external runner.",
   },
   {
     value: "Mistral",
     label: "Mistral / Le Chat",
-    path: "Use a compatible MCP-capable host or agent runtime",
-    automation: "Use the host's scheduler or an authorized external runner.",
+    path: "Direct MCP Connector in Mistral Studio/Agents",
+    automation: "Use Mistral Agents/Conversations or an authorized external runner.",
   },
   {
     value: "DeepSeek",
@@ -62,9 +62,9 @@ const HOSTS = [
   },
   {
     value: "GLM",
-    label: "Z.ai / GLM via an MCP-capable host",
-    path: "Run the model through a compatible agent runtime",
-    automation: "Use the host's scheduler or an authorized external runner.",
+    label: "Z.ai / GLM",
+    path: "Direct Streamable HTTP MCP through the Z.ai API",
+    automation: "Use an authorized API/agent scheduler.",
   },
   {
     value: "Copilot",
