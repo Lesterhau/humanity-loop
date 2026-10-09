@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-02 — registry publication + release + open-issue reconciliation
+**State timestamp:** 2026-10-09 — scheduler ownership, Foundry verification, and release-state reconciliation
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -18,7 +18,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ## Current operating components
 
 ### Current automation truth
-- Humanity Loop has two enabled project automations: **Humanity Loop — Hourly Worker** and **Humanity Loop — Foundry**, both hourly. This was re-verified on 2026-10-01 after the Foundry task had temporarily been disabled.
+- As verified 2026-10-09, **Humanity Loop — Hourly Worker** is enabled and the separate ChatGPT **Humanity Loop — Foundry** automation is disabled. The independent AppDeploy Foundry cron is enabled; its reported scheduler success does not independently verify model output.
 - Its scheduled-task wrapper reads `AUTOMATION-PROMPT.md` at the start of every run.
 - Unrelated personal automations are outside Humanity Loop state and should not be modified by project maintenance.
 
@@ -73,17 +73,17 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Initial rollback self-test successfully claimed a task and established agent heartbeat/lease state.
 - Supabase Security Advisor: **zero findings** after initialization.
 - Canonical spec: `CONTROL-PLANE.md`.
-- Live Foundry execution now uses this database. Stable scheduler identity, leases, stage persistence, recovery/dead-letter behavior, persistent child-role identities, and live status snapshots have been accepted and verified.
+- The Supabase control-plane reference implementation is live and tested. Source audit of the separately deployed AppDeploy Foundry worker on 2026-10-09 found it writes run records to its own AppDeploy database, not to the canonical Supabase control plane. Do not infer worker completion from absent Supabase events or scheduler success alone.
 
 ### Foundry Alpha
 - Live bounded multi-agent app surface:
   https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
-- AppDeploy hourly cron is currently disabled with `credits_exhausted`; the app itself remains deployed/ready. A dedicated ChatGPT automation, **Humanity Loop — Foundry**, now supplies the active model-dependent Foundry cadence.
+- The independent AppDeploy hourly Foundry cron is enabled and the app is deployed/ready as of 2026-10-09; cron-level `success` is not proof of completed model work. The separate ChatGPT Foundry automation is disabled to prevent duplicate cycles. Deployed source still has fail-open decision parsing and returns HTTP 200 for caught model errors; remediation remains pending.
 - Core live roles include Scout, Verifier, PM, Builder, 10th Man, Safety Governor, Revision, Outcome Tracker, and always-warm Planetary Accountant. Role state/permissions/budgets are persisted in the Supabase control plane.
 - Specialist catalog: `ROLE-CATALOG.md`
 - Do not claim unverified runtime enhancements are live.
 - Do not wholesale-migrate the model-dependent Foundry to GitHub Actions; separate deterministic orchestration from provider-dependent execution first.
-- Active continuity runtime: `FOUNDRY-RUNTIME.md`. The dedicated **Humanity Loop — Foundry** automation owns the hourly model-dependent Foundry cadence while AppDeploy's native cron is disabled. The main hourly worker must not duplicate those cycles.
+- Active continuity runtime: `FOUNDRY-RUNTIME.md`. The enabled independent AppDeploy scheduler owns the Foundry cadence. Do not activate a duplicate ChatGPT fallback while that scheduler remains enabled; require a verified completed artifact before declaring model-execution recovery.
 
 ### Live independent apps
 - Critical Guidance Delta UI/API:
@@ -130,7 +130,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 
 ### Current operational workers
 - Main hourly command worker: broad orchestration and maintenance.
-- Dedicated hourly Foundry worker: bounded role-separated Foundry cycles independent of AppDeploy cron credits.
+- Dedicated ChatGPT Foundry automation: currently disabled; the independent AppDeploy scheduler is enabled, with productive execution not yet independently verified.
 - Issue Steward: contract in `ISSUE-STEWARDSHIP.md`, executed by the hourly worker at least every 6 hours.
 - Connector/Amplifier: contract in `CONNECTOR-BOT.md`, executed by the hourly worker at least twice daily.
 - Agency Reply Steward: daily MOTHER + authorized legacy Gmail reconciliation inside the hourly worker.
@@ -149,7 +149,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - #5 Planetary Systems workers: **closed completed** — always-warm Planetary Accountant, five demand-activated specialist families, review ledger, self-footprint gate, first real Scout→Planetary lifecycle review.
 - #6 Contributor Mode onboarding: **closed completed** — live /join page, Supabase node gateway, owner-approved recurring automatic check-ins, Tier-0-only automatic work, quarantine, pause/revoke, one-setup-email consent, MCP contributor tools.
 - #7 governance gates and #10 environmental break-even: **closed completed** from the prior pass.
-- #2 discovery/publication: **open at the human-review boundary** — production MCP is live and two-client tested; official MCP Registry publication succeeded; portable Agent Plugin packaging and cross-client setup docs are committed; release **v0.2.1** is live with `humanity-loop-plugin-0.2.1.zip` attached. Remaining blockers are host-specific manual UI validation plus OpenAI publisher/domain verification, icon/demo assets, submission, review, and publication.
+- #2 discovery/publication: **open at the human-review boundary** — production MCP is live and two-client tested; official MCP Registry publication succeeded; portable Agent Plugin packaging and cross-client setup docs are committed; release **v0.2.4** is live with `humanity-loop-plugin-0.2.4.zip` attached. Remaining blockers are host-specific manual UI validation plus OpenAI publisher/domain verification, icon/demo assets, submission, review, and publication.
 - #12 Connector/Amplifier: remains open because the first Clarvia→NLnet connection has not yet produced a measurable verified external benefit. It is now tracked as **OT-010** with next review 2026-10-07, one-follow-up maximum, and stale threshold 2026-10-14.
 - #11 Fork Watch remains intentionally open as the canonical notification thread. The scheduled Fork Network Scan succeeded on 2026-10-02 and found no new public forks.
 - **No other GitHub issues are currently open.**
@@ -248,7 +248,7 @@ Current reconciliation:
 - MCP build is green from a pinned dependency graph with a high-severity production audit gate; public HTTPS deployment and scheduled two-client live acceptance are also green;
 - the previously missing 01:37Z Foundry receipt was replayed and read-back verified;
 - stale Undermind write-interception blockers were reconciled as resolved;
-- the dedicated Humanity Loop — Foundry automation is enabled again.
+- the independent AppDeploy Foundry cron is enabled while the separate ChatGPT Foundry automation is disabled; deployed safety-parser and truthful-error-status corrections remain pending.
 
 MOTHER/profile growth, follow-network expansion, and social automation are maintenance-only until Ryan explicitly resumes public rollout.
 
