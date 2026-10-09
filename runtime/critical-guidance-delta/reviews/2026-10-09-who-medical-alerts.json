@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "sourceKey": "who-medical-alerts",
+  "detectorRunAt": "2026-10-09T13:06:19.221178Z",
+  "reviewDate": "2026-10-09",
+  "reviewer": "Humanity Loop hourly worker",
+  "status": "reviewed-no-substantive-change-evidenced",
+  "materiality": "navigation/header-noise-likely",
+  "confidence": "moderate-high",
+  "reasoning": [
+    "Detector's entire evidenceDiff consists of two added copies of the site-name text 'World Health Organization'; no alert title, date, medicine, advisory or safety instruction appears in the diff.",
+    "Independent read of the authoritative WHO Full List of Medical Product Alerts on 2026-10-09 shows the latest listed item dated 2026-07-03: Medical Product Alert N°3/2026 (Falsified DARZALEX).",
+    "The newly captured normalized snapshot likewise shows the 2026-07-03 item as latest. A fingerprint change alone does not establish a medical-product safety update."
+  ],
+  "sourceUrls": [
+    "https://github.com/Lesterhau/humanity-loop/blob/main/runtime/critical-guidance-delta/events/20261009T130619.221178Z.json",
+    "https://www.who.int/teams/regulation-prequalification/incidents-and-SF/full-list-of-who-medical-product-alerts"
+  ],
+  "action": "No external medical/regulatory escalation or individualized advice. Close this detected header-only delta as triaged, not a verified clinical update.",
+  "tenthMan": {
+    "question": "If this classification wins, who loses?",
+    "risk": "A genuine alert could be overlooked if the detector normalizer strips new content or if the WHO index updates asynchronously.",
+    "mitigation": "Retain original detector event; on next scheduled scan compare the newest alert title/date/link and full list, and re-open if a new substantive item appears."
+  },
+  "nextReview": "Next scheduled critical-guidance-delta scan or any newly detected substantive WHO alert",
+  "closureCondition": "This event is triaged; no action unless authoritative alert content changes."
+}
