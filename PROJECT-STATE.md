@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-09 — scheduler ownership, Foundry verification, and release-state reconciliation
+**State timestamp:** 2026-10-10 — live scheduler parity, canonical runtime ownership, and detector receipt reconciliation
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -88,8 +88,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ### Live independent apps
 - Critical Guidance Delta UI/API:
   https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
-  - AppDeploy cron is disabled by `credits_exhausted`.
-  - Credit-independent change detection now runs from `.github/workflows/critical-guidance-delta.yml`.
+  - AppDeploy native `guidance-scan` cron is **enabled**; GitHub Actions `.github/workflows/critical-guidance-delta.yml` is also scheduled. These are independently implemented scanners with separate AppDeploy DB state versus canonical GitHub receipts. Do not disable either until data/UI continuity, baseline and authoritative ownership are reconciled.
   - Canonical detector receipts: `runtime/critical-guidance-delta/`.
 - Evidence Integrity Sentinel:
   https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/
@@ -99,13 +98,11 @@ Build a vendor-neutral, distributed public-interest agent system that can:
   - Browser tool; no cron by design.
 - CAP Daily Audit UI/API:
   https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
-  - AppDeploy cron is disabled by `credits_exhausted`.
-  - Credit-independent daily audit now runs from `.github/workflows/cap-daily-audit.yml`.
+  - AppDeploy native `daily-cap-audit` cron is **enabled**; GitHub Actions `.github/workflows/cap-daily-audit.yml` is also scheduled. These are independently implemented scanners with separate AppDeploy DB state versus canonical GitHub receipts. Do not disable either until data/UI continuity, baseline and authoritative ownership are reconciled.
   - Canonical audit receipts: `runtime/cap-daily-audit/`.
 - Federal Policy Delta UI/API:
   https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
-  - AppDeploy cron is disabled by `credits_exhausted`.
-  - Credit-independent official-source delta detection now runs from `.github/workflows/federal-policy-delta.yml`.
+  - AppDeploy native `daily-policy-scan` cron is **enabled**; GitHub Actions `.github/workflows/federal-policy-delta.yml` is also scheduled. The implementations use independent snapshots; GitHub's Congress source differs from AppDeploy's and cannot be cut over blindly. Preserve UI/history and canonical GitHub receipts until scheduler ownership is verified.
   - Canonical detector receipts: `runtime/federal-policy-delta/`.
   - Detection is intentionally separate from neutral legal-authority analysis.
 
@@ -280,12 +277,12 @@ Use:
 
 ## Current runtime resilience
 
-- AppDeploy cron-credit exhaustion affected Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta simultaneously.
-- CAP Daily Audit has been migrated and live-validated on GitHub Actions.
-- Critical Guidance Delta deterministic detection has been migrated and live-validated on GitHub Actions.
-- Federal Policy Delta deterministic detection has been migrated and live-validated on GitHub Actions across all 17 configured official sources. The official GPO/LOC bill-status bulk-update feed replaces the Congress.gov homepage because the runner received HTTP 403 from Congress.gov.
+- **Historical:** AppDeploy cron-credit exhaustion had affected Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta. As independently verified on 2026-10-10, native AppDeploy crons for all four are enabled with reported last-status `success`; that only confirms scheduler-level results, not full model execution or equivalent output.
+- CAP Daily Audit GitHub Actions remains scheduled and produces durable validated receipts, **in parallel** with the enabled native AppDeploy cron. The two independently maintain findings/state; owner cutover is **not complete**.
+- Critical Guidance Delta deterministic GitHub Actions detection remains scheduled and produces durable receipts, **in parallel** with the enabled native AppDeploy scanner (which also uses AI classifications). Owner cutover is **not complete**.
+- Federal Policy Delta GitHub Actions detector runs across 17 configured official sources, using the official GPO/LOC bill-status bulk-update feed instead of the Congress.gov homepage after HTTP 403. The enabled native AppDeploy scanner independently uses Congress.gov and separate AppDeploy DB state; ownership, source parity and UI/history cutover are **not reconciled**.
 - Evidence Integrity Sentinel remains healthy on AppDeploy.
-- Foundry Alpha's native AppDeploy cron remains credit-disabled, but functional continuity is provided by the enabled dedicated **Humanity Loop — Foundry** automation backed by the Supabase transactional control plane. AppDeploy credit exhaustion is no longer a core-state dependency.
+- Foundry Alpha native AppDeploy `hourly-foundry-run` cron is **enabled**; the separate ChatGPT **Humanity Loop — Foundry** automation is **disabled** to prevent duplication. AppDeploy cron status `success` does **not** verify successful model output or Supabase task completion: deployed Foundry writes to its own AppDeploy DB. Deployed Safety Governor and Verifier parsing are fail-open on later affirmative lines, and caught model failures return HTTP 200; source-matched corrective patch is prepared and tested but **not deployed**. See Undermind operation `2026-10-10-foundry-parser-patch-ready.md`. Do not expand its side-effecting powers before reviewed remediation.
 
 ### Current GitHub ledger head
 - Human ledger currently includes actions through at least **HL-068**.
