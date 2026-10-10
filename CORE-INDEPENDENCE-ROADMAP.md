@@ -116,17 +116,17 @@ If AppDeploy credits disappear, the public surfaces may degrade, but sensing, sc
 - [x] reconcile active scheduler truth
 
 ### Phase B — remove hosting dependency
-- [ ] deploy MCP to replaceable public HTTPS host
-- [ ] validate MCP with two independent clients
+- [x] deploy MCP to replaceable public HTTPS host — Vercel `https://humanity-loop.vercel.app/api/mcp`, verified under #1
+- [x] validate MCP with two independent clients — independently confirmed and documented under closed #1
 - [ ] add health endpoint + uptime check
 - [ ] document host failover/redeploy procedure
 
 ### Phase C — transactional control plane
-- [ ] create portable Postgres schema for agents/tasks/leases/events/dead-letter/approvals/usage
-- [ ] implement lease claiming and heartbeat expiration transactionally
-- [ ] persist Foundry cycles through the control plane
-- [ ] reconcile completed runs into GitHub receipts
-- [ ] add RLS/least privilege and security advisor checks
+- [x] create portable Postgres schema for agents/tasks/leases/events/dead-letter/approvals/usage — live private `hl_control` in Supabase, per `CONTROL-PLANE.md`
+- [x] implement lease claiming and heartbeat expiration transactionally — SQL `FOR UPDATE SKIP LOCKED`, heartbeat/renewal, expiry recovery regression-tested per `CONTROL-PLANE.md`
+- [ ] persist Foundry cycles through the control plane — **BLOCKED INTEGRATION**: current native AppDeploy Foundry writes run records to its private AppDeploy DB, not canonical `hl_control`; do not infer completion from cron `success`
+- [ ] reconcile completed runs into GitHub receipts — require independently verified completed Foundry artifact and safe stage/lineage bridge; GitHub audit receipts do not prove Foundry completion
+- [ ] add RLS/least privilege and security advisor checks — private schema ACLs and Security Advisor inspected; INFO `rls_enabled_no_policy` and exposed Edge gateway still require explicit security acceptance tests; no blind RLS change
 
 ### Phase D — provider independence
 - [ ] define provider adapter interface
