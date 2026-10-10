@@ -79,6 +79,11 @@ def audit_feature(feature: dict[str, Any], now: str) -> list[dict[str, Any]]:
 
     findings: list[dict[str, Any]] = []
 
+    # Operational test/keepalive events are not public hazard warnings.
+    # Retain these messages in raw NWS data and count their records in alertsChecked.
+    if event.strip().casefold() == "test message" or as_text(p.get("status")).strip().casefold() == "test":
+        return findings
+
     if not alert_id:
         add_finding(
             findings,
@@ -129,8 +134,8 @@ def audit_feature(feature: dict[str, Any], now: str) -> list[dict[str, Any]]:
             findings,
             base,
             "warning",
-            "Immediate alert has no action instruction",
-            "An immediate alert without a clear instruction may leave recipients unsure what action to take.",
+            "Immediate alert lacks separate CAP instruction field",
+            "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
             now,
         )
     if not area_desc:
