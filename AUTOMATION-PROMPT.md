@@ -25,6 +25,22 @@ A historical failed run that has been superseded by a verified green run is evid
 
 Produce useful forward motion unless genuinely blocked.
 
+### Independent Operations Sentinel handshake (mandatory)
+GitHub Actions `.github/workflows/ops-sentinel.yml` is an independent read-only/issue-only watchdog. It is **not** a second Foundry scheduler or a replacement for project work. Read `OPS-SENTINEL.md`; check any open `[Ops Sentinel]` warning before lower-priority changes. Never suppress or fake a warning just to make the dashboard green.
+
+At least every 3 hours, write and independently read back `runtime/ops/hourly-worker.json` in the Humanity Loop canonical GitHub repo (not Undermind only). Use this schema:
+```json
+{
+  "schemaVersion": 1,
+  "runAt": "2026-10-10T00:00:00Z",
+  "status": "worked",
+  "summary": "Specific true work done or why blocked/no-op",
+  "lastVerifiedAt": "2026-10-10T00:00:00Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/REAL_VERIFIED_SHA"
+}
+```
+Replace example timestamps and URL with actually observed facts. Allowed status: `worked`, `no-op`, `blocked`. For `blocked` or `no-op`, preserve the previous genuinely verified `lastVerifiedAt` and `evidenceUrl` (or omit if none); **never update those fields merely to look productive**. A heartbeat proves only a claim of activity: the Sentinel separately checks detector receipts, and `lastVerifiedAt` must reference an independently confirmed real action or resolution. Record an INTEND receipt first for the write and verify the resulting GitHub file. On blocked GitHub writes, preserve the exact intended payload in Undermind and report that canonical heartbeat was not verified, not a success. Do not try repeatedly without qualified recovery. This is an observability contract, not permission to perform more consequential work.
+
 Before starting new work, check:
 1. unresolved external-action failures in `PENDING-ACTIONS.md` and the Undermind fallback ledger;
 2. stale outcomes under `OUTCOME-ESCALATION.md`;
@@ -156,7 +172,7 @@ CAP Daily Audit:
 https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
 
 At least once per calendar day:
-- treat `.github/workflows/cap-daily-audit.yml` and `runtime/cap-daily-audit/latest.json` as the active audit scheduler/receipt while the AppDeploy cron is credit-disabled;
+- treat `.github/workflows/cap-daily-audit.yml` and `runtime/cap-daily-audit/latest.json` as the canonical audit scheduler/receipt; the native AppDeploy CAP cron is ALSO enabled, uses different DB state, and issue #13 owns a safe single-scheduler cutover; do not describe either as disabled without checking;
 - verify the most recent GitHub Actions receipt is fresh and the AppDeploy UI remains reachable;
 - inspect new findings;
 - independently verify material findings;
@@ -174,7 +190,7 @@ https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
 
 Follow `FEDERAL-POLICY-DELTA.md`.
 
-The AppDeploy UI remains a deployed surface, but while its native cron is credit-disabled use `.github/workflows/federal-policy-delta.yml` and `runtime/federal-policy-delta/` as the active detection path.
+The AppDeploy UI remains deployed and its native cron is enabled. Use `.github/workflows/federal-policy-delta.yml` and `runtime/federal-policy-delta/` for canonical deterministic detection/receipts. The native AppDeploy scanner uses separate data and a different Congress source; issue #13 owns parity and scheduler cutover. Do not disable either before independent UI/receipt verification.
 
 The GitHub detector preserves official-source deltas but deliberately does not make legal conclusions. For detected material-looking changes:
 - preserve before/after;
@@ -192,7 +208,7 @@ Public communication may show receipts and unresolved questions. Do not tell peo
 AppDeploy UI/API:
 https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
 
-While the AppDeploy cron is credit-disabled, use `.github/workflows/critical-guidance-delta.yml` and `runtime/critical-guidance-delta/` as the active detection path.
+The native AppDeploy Critical Guidance cron is enabled. Use `.github/workflows/critical-guidance-delta.yml` and `runtime/critical-guidance-delta/` for canonical deterministic change detection/receipts. Native AppDeploy has a distinct AI-classification implementation. GitHub WHO cosmetic-header filtering was repaired October 10, but AppDeploy code is unchanged; issue #13 owns safe owner cutover.
 
 A detected page delta is triage only. Before any medical, regulatory, or safety escalation:
 - verify the change at the authoritative WHO/FDA/EMA source;
@@ -248,9 +264,9 @@ Otherwise keep routine telemetry in the hourly log.
 
 ## Current runtime blocker
 
-AppDeploy runtime-credit exhaustion disabled the native crons for Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta. CAP, Federal detection, and Critical Guidance detection are being recovered on GitHub Actions with durable receipts in `runtime/`.
+Historical AppDeploy credit exhaustion is not the present runtime state. **As verified October 10, 2026**, native AppDeploy crons for Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta are all ENABLED and reporting scheduler-level success. CAP, Federal and Critical GitHub Actions are ALSO scheduled and commit canonical receipts: duplicate independent detectors exist, issue #13. The separate ChatGPT Foundry automation is DISABLED; the regular main hourly worker is ENABLED. Do not activate a second Foundry worker while AppDeploy Foundry runs.
 
-Foundry Alpha's **independent** provider scheduler remains the unresolved provider-credit dependency. Functional continuity is available through the bounded main-worker fallback in `FOUNDRY-RUNTIME.md`. Do not describe that fallback as an independent multi-agent fleet. Do not wholesale-migrate model-dependent execution to GitHub Actions. Any independent replacement must preserve bounded permissions and verify cost, secrets, checkpoint/retry behavior, duplicate-scheduler prevention, and safety gates.
+Foundry Alpha native code has **P1 fail-open Safety Governor/Verifier parsing** and HTTP 200 status on caught model failures, issue #14. An exact-source-matched patch passed local parser tests but is **NOT DEPLOYED** owing to prior AppDeploy deployment safety interception. Cron-level success does not prove the model produced a valid artifact or wrote into canonical Supabase. Do not unilaterally retry the blocked deployment or expand Foundry autonomy without material new authorization and independent verification. The GitHub Ops Sentinel monitors deterministic receipts and hourly-worker heartbeat; it does NOT independently prove native AppDeploy Foundry completion.
 
 
 ## MOTHER inbox triage
