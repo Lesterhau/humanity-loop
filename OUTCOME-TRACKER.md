@@ -94,9 +94,10 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Matched resource: NLnet Foundation Open Internet Stack funding cycle; next published deadline noted by the Connector as 2026-11-03.
 - Action: one targeted email sent from MOTHER / Humanity Loop to Clarvia's public contact address; send/read-after-send verification completed.
 - Durable receipt: `runtime/connector/2026-09-30-clarvia-nlnet.json`
-- Status: **reported / awaiting outcome**
-- Independent inbox check: 2026-10-02 — no reply yet; only the verified sent thread exists.
-- Next review: **2026-10-07**. If no reply/value is visible by then, send at most one concise factual follow-up if the opportunity is still current.
+- Status: **follow-up-sent / awaiting verified external outcome**
+- Independent AgentMail inbox/thread verification: **2026-10-10 02:45:45Z** — exactly two outbound messages; no Clarvia reply. A single corrective follow-up was sent about NLnet's explicit AI-generated-project/proposal restrictions; Clarvia eligibility remains undetermined. Project inbox thread `84745782-8baa-4911-8d4c-a5576166e9b6`, follow-up message `<010001a123b3c16b-a86cd94c-97ef-40db-95bf-f456cde86b11-000000@email.amazonses.com>`.
+- Follow-up receipt: Undermind `/humanity-loop/operations/2026-10-09-ot010-one-followup.md`; **one-follow-up limit EXHAUSTED; do not send another routine contact without material new evidence or recipient opt-in**.
+- Next review: **2026-10-14** for independently verified useful downstream outcome or proportional closure; do not count either sent email as a win.
 - Stale threshold: **2026-10-14**. After the one permitted follow-up and a reasonable response window, close as no verified connection value unless new evidence appears.
 - Success/closure condition: Clarvia confirms the match was useful (for example, application/grant-path use, useful eligibility clarification, or another concrete resource connection) or independently verifiable downstream value is documented.
 - Do not count the outbound email itself as a Connector win.
@@ -108,8 +109,10 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Matched resource: GitHub's Open Source Accessibility community and the 2026 Open Source Accessibility Summit on 2026-10-19.
 - Action: one targeted email sent from Ryan Lester | Humanity Loop to GestureLabs' public collaboration contact; read-after-send verification completed.
 - Durable receipt: `runtime/connector/2026-10-02-gesturelabs-github-accessibility.json`
-- Status: **reported / awaiting outcome**
-- Next review: **2026-10-07**. If no reply/value is visible, send at most one concise factual follow-up if the connection remains timely.
+- Status: **follow-up-sent / awaiting verified external outcome**
+- Independent AgentMail inbox/thread verification: **2026-10-10 02:40:01Z** — exactly two outbound messages; no GestureLabs reply. One timely follow-up referenced the October 19 accessibility summit and standing GitHub Open Source Accessibility community. Project inbox thread `625a9116-2af2-47b1-a1b0-25c1e9e16b0b`, follow-up message `<010001a123ae80ca-5e4ab17e-dae2-4820-a451-d099cf99dc84-000000@email.amazonses.com>`.
+- Follow-up receipt: Undermind `/humanity-loop/operations/2026-10-09-ot011-followup.md`; **one-follow-up limit EXHAUSTED; do not send another routine contact without material new evidence or recipient opt-in**.
+- Next review: **2026-10-14** for independently verified useful downstream outcome or proportional closure; do not count either sent email as a win.
 - Stale threshold: **2026-10-14**. After the one permitted follow-up and a reasonable response window, close as no verified connection value unless new evidence appears.
 - Success/closure condition: GestureLabs confirms the community/event connection was useful or independently verifiable participation/collaboration attributable to the connection is documented.
 - Do not count the outbound email itself as a Connector win.
