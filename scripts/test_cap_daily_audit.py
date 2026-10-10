@@ -45,7 +45,65 @@ class CapDailyAuditTests(unittest.TestCase):
             },
         }
         titles = {item["title"] for item in audit_feature(feature, self.now)}
-        self.assertIn("Immediate alert has no action instruction", titles)
+        self.assertIn("Immediate alert lacks separate CAP instruction field", titles)
+
+    def test_nws_test_message_is_not_public_hazard_finding(self):
+        feature = {
+            "id": "https://api.weather.gov/alerts/urn:oid:KEEPALIVE",
+            "properties": {
+                "event": "Test Message",
+                "urgency": "Immediate",
+                "status": "Actual",
+                "headline": "",
+            },
+        }
+        self.assertEqual(audit_feature(feature, self.now), [])
+        report = build_report([feature], self.now)
+        self.assertEqual(report["alertsChecked"], 1)
+        self.assertEqual(report["findingsCount"], 0)
+
+    def test_cap_status_test_is_not_public_hazard_finding(self):
+        feature = {
+            "id": "https://api.weather.gov/alerts/test-status",
+            "properties": {
+                "event": "Tornado Warning",
+                "status": "Test",
+                "urgency": "Immediate",
+                "headline": "",
+            },
+        }
+        self.assertEqual(audit_feature(feature, self.now), [])
+
+    def test_real_tornado_warning_is_not_filtered(self):
+        feature = {
+            "id": "https://api.weather.gov/alerts/real-warning",
+            "properties": {
+                "event": "Tornado Warning",
+                "status": "Actual",
+                "urgency": "Immediate",
+                "headline": "",
+                "instruction": "",
+            },
+        }
+        titles = {item["title"] for item in audit_feature(feature, self.now)}
+        self.assertIn("Missing headline", titles)
+        self.assertIn("Immediate alert lacks separate CAP instruction field", titles)
+
+    def test_optional_instruction_detail_avoids_unverified_safety_claim(self):
+        feature = {
+            "id": "https://api.weather.gov/alerts/real-warning",
+            "properties": {
+                "event": "Tornado Warning",
+                "status": "Actual",
+                "urgency": "Immediate",
+                "description": "Shelter in a basement immediately.",
+                "instruction": "",
+            },
+        }
+        findings = audit_feature(feature, self.now)
+        flagged = [f for f in findings if f["title"] == "Immediate alert lacks separate CAP instruction field"]
+        self.assertEqual(len(flagged), 1)
+        self.assertIn("before concluding", flagged[0]["detail"])
 
     def test_bad_expiration_is_flagged(self):
         feature = {
