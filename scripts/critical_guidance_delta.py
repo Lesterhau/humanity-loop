@@ -95,6 +95,19 @@ def fetch_text(url: str) -> str:
     return text
 
 
+def comparable_text(source_key: str, text: str) -> str:
+    """Ignore only standalone WHO brand-header lines when comparing alert pages.
+
+    Keep source snapshots and evidence diffs unmodified; no other source is filtered.
+    """
+    if source_key != "who-medical-alerts":
+        return text
+    return "\n".join(
+        line for line in text.splitlines()
+        if line.strip() != "World Health Organization"
+    )
+
+
 def fingerprint(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
@@ -160,6 +173,12 @@ def run(root: Path) -> dict[str, Any]:
                 continue
 
             if prior.get("fingerprint") != current_fp:
+                # A variable number of identical WHO site-header lines is not a
+                # product-alert update. Refresh the snapshot but emit no incident.
+                if comparable_text(source["key"], prior.get("normalizedText", "")) == comparable_text(source["key"], current):
+                    save_snapshot(root, source, current, now)
+                    continue
+
                 changes.append(
                     {
                         "sourceKey": source["key"],
