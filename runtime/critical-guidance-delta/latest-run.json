@@ -1,25 +1,10 @@
 {
   "baselinesCreated": 0,
-  "changes": [
-    {
-      "authority": "World Health Organization",
-      "detectedAt": "2026-10-09T22:33:34.457551Z",
-      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- World Health Organization\n- World Health Organization\n\nADDED IN CURRENT VERSION:",
-      "materiality": "unreviewed",
-      "medicalAdvice": null,
-      "newFingerprint": "92ef4bbf53ca330090554692800aa68d0c1a454b3ae1e47c886e77165fbc3607",
-      "oldFingerprint": "1a908844309bc3f82494274e24500897a23affd9ed9492efece27669eab835ba",
-      "severity": "unreviewed",
-      "sourceKey": "who-medical-alerts",
-      "sourceName": "WHO Medical Product Alerts",
-      "sourceUrl": "https://www.who.int/teams/regulation-prequalification/incidents-and-SF/full-list-of-who-medical-product-alerts",
-      "verificationStatus": "needs-independent-source-review"
-    }
-  ],
-  "changesDetected": 1,
+  "changes": [],
+  "changesDetected": 0,
   "failures": [],
   "failuresCount": 0,
-  "runAt": "2026-10-09T22:33:34.457551Z",
+  "runAt": "2026-10-10T05:40:03.678601Z",
   "schemaVersion": 1,
   "sourcesChecked": 3,
   "sourcesConfigured": 3,
