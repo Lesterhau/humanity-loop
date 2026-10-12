@@ -1,62 +1,26 @@
 {
-  "alertsChecked": 250,
+  "alertsChecked": 194,
   "bySeverity": {
     "advisory": 0,
     "error": 0,
-    "warning": 4
+    "warning": 1
   },
   "findings": [
     {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b0471287a16271311e03c69cde8a72874833d7d1.001.1",
-      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
-      "event": "Special Marine Warning",
-      "firstSeen": "2026-10-11T19:05:56.664711Z",
-      "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-11T14:29:00-04:00",
-      "severity": "warning",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b0471287a16271311e03c69cde8a72874833d7d1.001.1",
-      "status": "open",
-      "title": "Immediate alert lacks separate CAP instruction field"
-    },
-    {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.639631c3a228f15e4f25ce23e42cc8742601a11d.001.2",
-      "detail": "The alert may lack enough context for recipients to understand the hazard.",
-      "event": "Small Craft Advisory",
-      "firstSeen": "2026-10-11T19:05:56.664711Z",
-      "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-11T14:02:00-04:00",
-      "severity": "warning",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.639631c3a228f15e4f25ce23e42cc8742601a11d.001.2",
-      "status": "open",
-      "title": "Missing description"
-    },
-    {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.01fb1a47c63d4f008d23a8a44c5c11d471c64294.001.1",
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8ddaaf8ae3fc804a98854c02c97a5bb7558eed37.001.1",
       "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
       "event": "Flood Warning",
-      "firstSeen": "2026-10-11T19:05:56.664711Z",
+      "firstSeen": "2026-10-12T22:11:33.655135Z",
       "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-11T11:56:00-04:00",
+      "sent": "2026-10-12T10:37:00-04:00",
       "severity": "warning",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.01fb1a47c63d4f008d23a8a44c5c11d471c64294.001.1",
-      "status": "open",
-      "title": "Immediate alert lacks separate CAP instruction field"
-    },
-    {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5b20df7677ae257204c245c06da5f08702ddbeb2.001.1",
-      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
-      "event": "Flood Warning",
-      "firstSeen": "2026-10-11T19:05:56.664711Z",
-      "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-11T08:55:00-05:00",
-      "severity": "warning",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5b20df7677ae257204c245c06da5f08702ddbeb2.001.1",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8ddaaf8ae3fc804a98854c02c97a5bb7558eed37.001.1",
       "status": "open",
       "title": "Immediate alert lacks separate CAP instruction field"
     }
   ],
-  "findingsCount": 4,
-  "runAt": "2026-10-11T19:05:56.664711Z",
+  "findingsCount": 1,
+  "runAt": "2026-10-12T22:11:33.655135Z",
   "schemaVersion": 1,
   "source": "https://api.weather.gov/alerts/active"
 }
