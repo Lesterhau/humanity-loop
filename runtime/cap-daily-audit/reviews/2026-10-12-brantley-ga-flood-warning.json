@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-12T23:12:11Z",
+  "sourceAudit": "runtime/cap-daily-audit/latest.json",
+  "alertUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8ddaaf8ae3fc804a98854c02c97a5bb7558eed37.001.1",
+  "issuingOffice": "NWS Jacksonville FL",
+  "area": "Brantley County, Georgia — Satilla River at Atkinson",
+  "issuedAt": "2026-10-12T10:37:00-04:00",
+  "verifiedFacts": {
+    "sourceFetch": "Live public NWS API retrieval; HTTP 200 application/geo+json",
+    "urgency": "Immediate",
+    "severity": "Severe",
+    "certainty": "Observed",
+    "response": "Avoid",
+    "instructionField": null,
+    "descriptionMentions": "Flooding of Warners Landing, Louis Landing, secondary roads near KOA campgrounds, and River Rock Road; links to NWS flood safety guidance.",
+    "nextStatement": "2026-10-13 around 10:45 AM EDT",
+    "messageExpires": "2026-10-13T10:45:00-04:00"
+  },
+  "standardCheck": {
+    "source": "https://docs.oasis-open.org/emergency/cap/v1.2/cs01/CAP-v1.2-cs01.html",
+    "section": "3.2.2 info element; instruction is OPTIONAL (0..1)",
+    "conclusion": "Missing instruction field alone is NOT a CAP 1.2 nonconformance."
+  },
+  "classification": "verified absence of dedicated instruction; no established standards violation; possible plain-language accessibility gap",
+  "externalAction": "none — no issuer criticism or escalation based on optional field alone",
+  "nextReview": "2026-10-13T15:00:00Z",
+  "staleThreshold": "2026-10-14T15:00:00Z",
+  "closureCondition": "Check next authoritative alert update and whether direct protective advice is present in any field or linked guidance; close as no actionable gap if adequate, otherwise consider one neutral clarification to issuing office.",
+  "tenthMan": "If an automated clarity flag wins, who loses? Issuers and recipients may face alert fatigue and false accusations. Keep human verification and avoid labeling optional fields as legal defects.",
+  "status": "reviewed_pending_next_issuer_update"
+}
