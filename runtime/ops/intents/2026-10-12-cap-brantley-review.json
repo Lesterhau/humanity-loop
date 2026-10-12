@@ -1,0 +1,20 @@
+{
+  "transaction_id": "hl-2026-10-12-cap-brantley-review",
+  "intended_at": "2026-10-12T23:12:11Z",
+  "actor": "Humanity Loop Hourly Worker",
+  "role": "CAP Daily Audit verifier",
+  "target": "runtime/cap-daily-audit/reviews/2026-10-12-brantley-ga-flood-warning.json",
+  "action": "create_file",
+  "args_hash": "fnv1a64-codepoints:1dad5a80ebb7d15d",
+  "risk_tier": 0,
+  "policy_refs": [
+    "AUTOMATION-PROMPT.md",
+    "OPERATIONS.md",
+    "GOVERNANCE.md"
+  ],
+  "decision": "allow",
+  "decision_at": "2026-10-12T23:12:11Z",
+  "approval_required": false,
+  "status": "intended",
+  "notes": "Internal, reversible evidence review. No external contact or change to NWS alert. Official CAP instruction element is optional."
+}
