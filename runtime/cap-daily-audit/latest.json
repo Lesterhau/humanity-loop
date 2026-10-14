@@ -1,62 +1,62 @@
 {
-  "alertsChecked": 236,
+  "alertsChecked": 250,
   "bySeverity": {
-    "advisory": 3,
+    "advisory": 4,
     "error": 0,
-    "warning": 1
+    "warning": 0
   },
   "findings": [
     {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a368c9d42ef1e1b52e1e249676078ee2bb68528.001.2",
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.003.1",
       "detail": "At least one instruction sentence has 43 words; shorter sentences may reduce cognitive load during emergencies.",
       "event": "Heat Advisory",
-      "firstSeen": "2026-10-13T20:18:21.589555Z",
+      "firstSeen": "2026-10-14T18:47:40.256979Z",
       "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-13T11:21:00-07:00",
+      "sent": "2026-10-14T11:38:00-07:00",
       "severity": "advisory",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a368c9d42ef1e1b52e1e249676078ee2bb68528.001.2",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.003.1",
       "status": "open",
       "title": "Long sentence in instruction"
     },
     {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a368c9d42ef1e1b52e1e249676078ee2bb68528.003.1",
-      "detail": "At least one instruction sentence has 43 words; shorter sentences may reduce cognitive load during emergencies.",
-      "event": "Heat Advisory",
-      "firstSeen": "2026-10-13T20:18:21.589555Z",
-      "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-13T11:21:00-07:00",
-      "severity": "advisory",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a368c9d42ef1e1b52e1e249676078ee2bb68528.003.1",
-      "status": "open",
-      "title": "Long sentence in instruction"
-    },
-    {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a368c9d42ef1e1b52e1e249676078ee2bb68528.001.1",
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.002.1",
       "detail": "At least one instruction sentence has 43 words; shorter sentences may reduce cognitive load during emergencies.",
       "event": "Wind Advisory",
-      "firstSeen": "2026-10-13T20:18:21.589555Z",
+      "firstSeen": "2026-10-14T18:47:40.256979Z",
       "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-13T11:21:00-07:00",
+      "sent": "2026-10-14T11:38:00-07:00",
       "severity": "advisory",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a368c9d42ef1e1b52e1e249676078ee2bb68528.001.1",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.002.1",
       "status": "open",
       "title": "Long sentence in instruction"
     },
     {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7414d44ef8a33988ac09b31b44c38b584c49a611.001.1",
-      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
-      "event": "Flood Warning",
-      "firstSeen": "2026-10-13T20:18:21.589555Z",
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.002.2",
+      "detail": "At least one instruction sentence has 43 words; shorter sentences may reduce cognitive load during emergencies.",
+      "event": "Heat Advisory",
+      "firstSeen": "2026-10-14T18:47:40.256979Z",
       "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-10-13T09:44:00-04:00",
-      "severity": "warning",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7414d44ef8a33988ac09b31b44c38b584c49a611.001.1",
+      "sent": "2026-10-14T11:38:00-07:00",
+      "severity": "advisory",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.002.2",
       "status": "open",
-      "title": "Immediate alert lacks separate CAP instruction field"
+      "title": "Long sentence in instruction"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.004.1",
+      "detail": "At least one instruction sentence has 43 words; shorter sentences may reduce cognitive load during emergencies.",
+      "event": "Wind Advisory",
+      "firstSeen": "2026-10-14T18:47:40.256979Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-10-14T11:38:00-07:00",
+      "severity": "advisory",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f9800fe8ff125b7ca25a93873309f26226ecf5ce.004.1",
+      "status": "open",
+      "title": "Long sentence in instruction"
     }
   ],
   "findingsCount": 4,
-  "runAt": "2026-10-13T20:18:21.589555Z",
+  "runAt": "2026-10-14T18:47:40.256979Z",
   "schemaVersion": 1,
   "source": "https://api.weather.gov/alerts/active"
 }
