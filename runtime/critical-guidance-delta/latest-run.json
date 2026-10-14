@@ -1,25 +1,10 @@
 {
   "baselinesCreated": 0,
-  "changes": [
-    {
-      "authority": "European Medicines Agency",
-      "detectedAt": "2026-10-14T17:02:31.678944Z",
-      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- Getting involved\n\nADDED IN CURRENT VERSION:",
-      "materiality": "unreviewed",
-      "medicalAdvice": null,
-      "newFingerprint": "bb94925f8e07166a8d024bb79fba941b4840296521c100316bcf417c631ab612",
-      "oldFingerprint": "b09512996372bb62cc532448b0c5b5d73d940be3a8e409ecb593f4c631687003",
-      "severity": "unreviewed",
-      "sourceKey": "ema-prac",
-      "sourceName": "EMA PRAC Safety Highlights",
-      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
-      "verificationStatus": "needs-independent-source-review"
-    }
-  ],
-  "changesDetected": 1,
+  "changes": [],
+  "changesDetected": 0,
   "failures": [],
   "failuresCount": 0,
-  "runAt": "2026-10-14T17:02:31.678944Z",
+  "runAt": "2026-10-14T21:35:06.094650Z",
   "schemaVersion": 1,
   "sourcesChecked": 3,
   "sourcesConfigured": 3,
