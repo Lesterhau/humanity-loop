@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "actor": "Humanity Loop hourly worker",
+  "intentAt": "2026-10-18T06:44:22Z",
+  "action": "Update one assertion in scripts/test_ops_sentinel.js to match existing Markdown-emphasized safety wording",
+  "target": "Lesterhau/humanity-loop/scripts/test_ops_sentinel.js",
+  "expectedOld": "assert.match(text,/Do not automatically disable jobs/i);",
+  "expectedNew": "assert.match(text,/Do \\*\\*not\\*\\* automatically disable jobs/i);",
+  "risk": "Tier-0 test-only; no runtime behavior changed",
+  "reason": "Latest scheduled Ops Sentinel run #39099363788 fails 1/12 tests before checks execute; job log confirms assertion mismatch",
+  "verification": "Read back changed file, inspect commit and triggered GitHub Actions run; do not claim repair without green",
+  "rollback": "Revert single test assertion",
+  "governance": "OPERATIONS.md intend-execute-verify-commit; OPS-SENTINEL.md; preserve warnings; do not suppress health findings"
+}
