@@ -37,7 +37,7 @@ test("late verified action warns despite fresh heartbeat",() => assert.equal(s.e
 test("alert instructions are plain language, never auto-escalation",() => {
   const r=s.evaluate(NOW,fixture({[s.CHECKS[0][1]]:null}));
   const text=s.alertBody(r);
-  assert.match(text,/Do not automatically disable jobs/i);
+  assert.match(text,/Do \*\*not\*\* automatically disable jobs/i);
   assert.match(text,/CAP Daily Audit/);
   assert.match(text,/sentinel:/);
 });
