@@ -33,7 +33,8 @@ function receiptCheck(name, path, limitHours, nowMs, read = readJSON) {
         throw Error("CAP totals disagree");
     } else if (path.includes("evidence-integrity-backup")) {
       if (!Array.isArray(r.candidateFindings) || !Number.isInteger(r.candidateFindingsCount) || r.candidateFindingsCount !== r.candidateFindings.length ||
-          !Array.isArray(r.failures) || !Number.isInteger(r.failuresCount) || r.failuresCount !== r.failures.length)
+          !Array.isArray(r.failures) || !Number.isInteger(r.failuresCount) || r.failuresCount !== r.failures.length ||
+          !Array.isArray(r.coverageGaps) || !Number.isInteger(r.coverageGapsCount) || r.coverageGapsCount !== r.coverageGaps.length)
         throw Error("Evidence backup totals disagree");
     } else if (!Array.isArray(r.changes) || !Number.isInteger(r.changesDetected) || r.changesDetected !== r.changes.length) {
       throw Error("Change totals disagree");
@@ -45,7 +46,9 @@ function receiptCheck(name, path, limitHours, nowMs, read = readJSON) {
       out.status = "warning";
       out.detail = "Latest run recorded " + (r.failuresCount || 0) + " source or coverage gap(s)";
     } else {
-      out.detail = "Receipt " + r.runAt + " (" + age.toFixed(1) + "h old)";
+      out.detail = "Receipt " + r.runAt + " (" + age.toFixed(1) + "h old)" +
+        (path.includes("evidence-integrity-backup") && r.coverageGapsCount > 0 ?
+          "; " + r.coverageGapsCount + " known index coverage gap(s), not API failure" : "");
     }
   } catch (e) {
     out.status = "critical";
