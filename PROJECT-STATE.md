@@ -15,6 +15,13 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - learn from wins, failures, dead ends, and replications;
 - help accelerate desirable H1→H2→H3 transitions while preserving human agency.
 
+## Operating decision — October 20, 2026: execution leads
+
+- **Mode:** verified, bounded public-interest **execution-first**, with maintenance as a safety/reliability floor and new building only when a real bottleneck warrants it. Working target ~60% direct execution/outcome verification, ~30% essential maintenance, ~10% targeted capability work; never treat these as measured quotas.
+- Existing hourly worker's canonical `AUTOMATION-PROMPT.md` now enforces this choice while preserving human approvals for Tier-2 material impacts, limits on contact, truthful outcome accounting and mandatory security checks. The AppDeploy Foundry P1 and credit stoppage restrict THAT runner, not all authorized Tier-0/Tier-1 work.
+- **First visible execution of the shift:** on Oct20 Humanity Loop independently reverified the VA Spanish current-rates mismatch (OT-002), sent a bounded new-evidence update in the existing project correspondence, and verified the outbound AgentMail message. No public correction yet verified; next outcome check Oct27. OT-004 Texas WIC was independently checked: the current Spanish entry page matches USDA 2026-27 guidelines, while a legacy URL currently returns HTTP403 to automated readers, so a claimed full correction or live misleading page would be premature.
+- **Success definition:** independently confirmed corrected public guidance, useful accepted contributions, validated resource connections, or other beneficiary-level effects. Outreach/candidate creation/commits are intermediate outputs, not wins.
+
 ## Current operating components
 
 ### Current automation truth
