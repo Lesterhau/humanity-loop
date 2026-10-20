@@ -55,9 +55,11 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Original report: 2026-09-25
 - Agency: Texas WIC / Texas Health and Human Services
 - Agency response: 2026-09-28 confirmed the current correct income limits and said the discrepancy could be quickly addressed.
-- Status: **acknowledged**
-- Verification: public correction not yet independently confirmed; automated retrieval of the stale Spanish page is currently blocked by the site.
-- Next step: retry independent browser/source verification before declaring a win.
+- Status: **acknowledged / current main site corrected, legacy page not verifiable**
+- **2026-10-20 independent finding:** The accessible Spanish WIC application page `https://www.texaswic.org/es/solicita-beneficios` and its English counterpart `https://www.texaswic.org/apply` both publish the current 2026–27 income limits, including 1-person gross monthly **$2,461** and 2-person **$3,337**, which match USDA's July 1, 2026 guidelines (`https://www.fna.usda.gov/wic/fr-042926`). Their current paths were fetched directly successfully.
+- **Remaining uncertainty:** The older Spanish page `https://www.texaswic.org/es/solicita-beneficios-de-wic/como-iniciar-tu-participacion-en-wic` still appears in the search index with **2024** outdated 1-person **$2,322** and 2-person **$3,152** limits, but the direct live fetch returned HTTP **403 Forbidden**. A search-index snippet is NOT proof that ordinary users can presently see those old figures. Do not count this as verified-resolved or a current public exposure defect until independent human/browser navigation confirms the legacy-page behavior.
+- Follow-up: no unverified new agency contact on this observation. Request a documented browser/user-visible navigation or agency confirmation of retirement/correction; recheck Oct 27 or on substantive agency reply.
+- Next decision: mark verified-resolved only if the obsolete public entry point is inaccessible to normal users, redirects correctly, or has actually been updated; otherwise make one proportionate factual correction request under governance and outreach limits.
 
 ### OT-005 — IRS EITC / translated-page annual-update inconsistencies
 - Original report: 2026-09-17/18
