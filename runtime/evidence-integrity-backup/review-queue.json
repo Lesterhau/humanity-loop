@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "description": "Unreviewed public scholarly citation leads requiring source-level verification; not claims of invalid research or misconduct",
+  "items": [
+    {
+      "retractedDoi": "10.1186/s40659-022-00408-z",
+      "noticeDoi": "10.1186/s40659-026-00737-3",
+      "citingSource": "MED",
+      "citingId": "37564374",
+      "citingTitle": "The application and progress of stem cells in auricular cartilage regeneration: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/37564374",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-20T22:01:21.564316Z",
+      "provenanceUrl": "https://github.com/Lesterhau/humanity-loop/commit/cd6cea0167de466400f30dcd48a029264f9f6a7b"
+    }
+  ]
+}
