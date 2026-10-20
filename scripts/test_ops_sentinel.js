@@ -10,7 +10,7 @@ function fixture(overrides = {}) {
     records[path] = path.includes("cap-daily") ?
       {runAt:fresh, findingsCount:0, findings:[]} :
       path.includes("evidence-integrity-backup") ?
-        {runAt:fresh, candidateFindingsCount:0, candidateFindings:[], failuresCount:0, failures:[], status:"ok"} :
+        {runAt:fresh, candidateFindingsCount:0, candidateFindings:[], failuresCount:0, failures:[], coverageGapsCount:0, coverageGaps:[], status:"ok"} :
         {runAt:fresh, changesDetected:0, changes:[], failuresCount:0};
   }
   records[s.WORKER] = {schemaVersion:1,runAt:fresh,status:"worked",lastVerifiedAt:fresh};
@@ -75,20 +75,30 @@ test("malformed CAP findings cannot hide behind a source failure",() => {
 test("stale Evidence Integrity backup receipt is critical",() => {
   const p=s.CHECKS.find(x=>x[0]==="Evidence Integrity Backup")[1];
   const old={runAt:new Date(NOW-43*3600000).toISOString(),status:"ok",
-    candidateFindingsCount:0,candidateFindings:[],failuresCount:0,failures:[]};
+    candidateFindingsCount:0,candidateFindings:[],failuresCount:0,failures:[],coverageGapsCount:0,coverageGaps:[]};
   const result=s.evaluate(NOW,fixture({[p]:old}));
   assert.equal(result.status,"critical");
 });
 test("Evidence Integrity partial coverage is warned, not mistaken for completed coverage",() => {
   const p=s.CHECKS.find(x=>x[0]==="Evidence Integrity Backup")[1];
   const partial={runAt:fresh,status:"partial",candidateFindingsCount:0,candidateFindings:[],
-    failuresCount:1,failures:[{stage:"index_not_found"}]};
+    failuresCount:1,failures:[{stage:"network"}],coverageGapsCount:0,coverageGaps:[]};
   const result=s.evaluate(NOW,fixture({[p]:partial}));
   assert.equal(result.status,"warning");
 });
 test("Evidence Integrity mismatched finding counts cannot pass as healthy",() => {
   const p=s.CHECKS.find(x=>x[0]==="Evidence Integrity Backup")[1];
   const malformed={runAt:fresh,status:"ok",candidateFindingsCount:7,candidateFindings:[],
-    failuresCount:0,failures:[]};
+    failuresCount:0,failures:[],coverageGapsCount:0,coverageGaps:[]};
   assert.equal(s.evaluate(NOW,fixture({[p]:malformed})).status,"critical");
+});
+
+test("known Europe PMC coverage gaps remain visible without a false outage",() => {
+  const p=s.CHECKS.find(x=>x[0]==="Evidence Integrity Backup")[1];
+  const limited={runAt:fresh,status:"limited",candidateFindingsCount:0,candidateFindings:[],
+    failuresCount:0,failures:[],coverageGapsCount:2,
+    coverageGaps:[{stage:"not_indexed"},{stage:"not_indexed"}]};
+  const result=s.evaluate(NOW,fixture({[p]:limited}));
+  assert.equal(result.status,"healthy");
+  assert.match(result.checks.find(x=>x.name==="Evidence Integrity Backup").detail,/2 known index coverage gap/);
 });
