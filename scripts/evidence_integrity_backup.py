@@ -76,6 +76,7 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
     finding_keys = set(previous.get("findingKeys") or [])
     timestamp = now or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     failures = []
+    coverage_gaps = []
     findings = []
     checked = 0
     citation_count = 0
@@ -96,8 +97,8 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
             results = (fetch(search_url).get("resultList") or {}).get("result") or []
             if not results:
                 # Not finding a DOI in Europe PMC is not proof it has no downstream impact.
-                failures.append({"stage": "index_not_found", "doi": doi,
-                                 "reason": "No Europe PMC match; retry later"})
+                coverage_gaps.append({"stage": "not_indexed", "doi": doi,
+                                      "reason": "No Europe PMC match; scientific coverage limited; retry later"})
                 continue
             record = results[0]
             source, ident = record.get("source"), record.get("id")
@@ -151,13 +152,15 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
              "findingKeys": sorted(finding_keys)[-3000:], "updatedAt": timestamp}
     report = {
         "schemaVersion": 1, "runAt": timestamp,
-        "status": "failed" if failures and not checked and not new_processed else ("partial" if failures else "ok"),
+        "status": ("failed" if failures and not checked and not new_processed else
+                   "partial" if failures else "limited" if coverage_gaps else "ok"),
         "source": "Crossref retraction notices + Europe PMC citation metadata",
         "sourceLimit": {"crossrefRows": 25, "newDoisPerRun": MAX_DOIS,
                         "citationsPerDoi": MAX_CITATIONS},
         "newRetractionsChecked": checked, "citationsExamined": citation_count,
         "candidateFindingsCount": len(findings), "candidateFindings": findings,
         "failuresCount": len(failures), "failures": failures,
+        "coverageGapsCount": len(coverage_gaps), "coverageGaps": coverage_gaps,
         "clinicalConclusions": None,
         "notice": ("Triage only. Incomplete citation coverage is possible. "
                    "Candidate citations are not proof that any guideline or review "
@@ -180,7 +183,8 @@ def main() -> None:
     state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"status": report["status"], "newRetractionsChecked": report["newRetractionsChecked"],
                       "candidateFindingsCount": report["candidateFindingsCount"],
-                      "failuresCount": report["failuresCount"]}))
+                      "failuresCount": report["failuresCount"],
+                      "coverageGapsCount": report["coverageGapsCount"]}))
 
 
 if __name__ == "__main__":
