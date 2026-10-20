@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-10 — live scheduler parity, canonical runtime ownership, and detector receipt reconciliation
+**State timestamp:** 2026-10-20 — AppDeploy credit shutdown, repaired watchdog, and remaining worker/foundry gaps
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -18,7 +18,7 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ## Current operating components
 
 ### Current automation truth
-- As verified 2026-10-09, **Humanity Loop — Hourly Worker** is enabled and the separate ChatGPT **Humanity Loop — Foundry** automation is disabled. The independent AppDeploy Foundry cron is enabled; its reported scheduler success does not independently verify model output.
+- As independently checked 2026-10-20, **Humanity Loop — Hourly Worker** remains enabled and the separate ChatGPT **Humanity Loop — Foundry** task remains disabled. All five native AppDeploy crons are now **disabled** due to exhausted credits, including Foundry; the three GitHub-based detectors still save canonical receipts. Old native last-status `success` does not verify full model work. See Ops Sentinel warning issue #15 for the missing worker heartbeat.
 - Its scheduled-task wrapper reads `AUTOMATION-PROMPT.md` at the start of every run.
 - Unrelated personal automations are outside Humanity Loop state and should not be modified by project maintenance.
 
@@ -78,31 +78,31 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 ### Foundry Alpha
 - Live bounded multi-agent app surface:
   https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/
-- The independent AppDeploy hourly Foundry cron is enabled and the app is deployed/ready as of 2026-10-09; cron-level `success` is not proof of completed model work. The separate ChatGPT Foundry automation is disabled to prevent duplicate cycles. Deployed source still has fail-open decision parsing and returns HTTP 200 for caught model errors; remediation remains pending.
+- The Foundry app remains deployed/ready, but its independent native hourly cron is **DISABLED (credits_exhausted)** as of 2026-10-20. The separate ChatGPT Foundry task is still disabled. Actual bounded Foundry model execution and canonical receipt continuity are **NOT VERIFIED**. The deployed code still has fail-open decision parsing and returns HTTP 200 for caught model errors; do not blindly restart it. See issue #14.
 - Core live roles include Scout, Verifier, PM, Builder, 10th Man, Safety Governor, Revision, Outcome Tracker, and always-warm Planetary Accountant. Role state/permissions/budgets are persisted in the Supabase control plane.
 - Specialist catalog: `ROLE-CATALOG.md`
 - Do not claim unverified runtime enhancements are live.
 - Do not wholesale-migrate the model-dependent Foundry to GitHub Actions; separate deterministic orchestration from provider-dependent execution first.
-- Active continuity runtime: `FOUNDRY-RUNTIME.md`. The enabled independent AppDeploy scheduler owns the Foundry cadence. Do not activate a duplicate ChatGPT fallback while that scheduler remains enabled; require a verified completed artifact before declaring model-execution recovery.
+- Continuity playbook: `FOUNDRY-RUNTIME.md`. The independent AppDeploy scheduler is **disabled by credit exhaustion**. Bounded fallback is permitted only with verified nonduplication, safety controls and durable completion evidence; do not reactivate insecure Foundry or a duplicate unsupervised worker. No working replacement is independently verified.
 
 ### Live independent apps
 - Critical Guidance Delta UI/API:
   https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
-  - AppDeploy native `guidance-scan` cron is **enabled**; GitHub Actions `.github/workflows/critical-guidance-delta.yml` is also scheduled. These are independently implemented scanners with separate AppDeploy DB state versus canonical GitHub receipts. Do not disable either until data/UI continuity, baseline and authoritative ownership are reconciled.
+  - AppDeploy native `guidance-scan` cron is **disabled (credits_exhausted)** as of 2026-10-20. Independent GitHub Actions `.github/workflows/critical-guidance-delta.yml` still saves receipts. Implementations/baselines differ; do not casually reenable duplicate native scanning.
   - Canonical detector receipts: `runtime/critical-guidance-delta/`.
 - Evidence Integrity Sentinel:
   https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/
-  - AppDeploy cron remains enabled/healthy as of the latest reconciliation.
+  - Native `integrity-scan` cron is **disabled (credits_exhausted)** as of 2026-10-20; no verified independent replacement. UI remains deployed.
 - CAP Clarity Check:
   https://cap-clarity-check-0jbjid.v2.appdeploy.ai/
   - Browser tool; no cron by design.
 - CAP Daily Audit UI/API:
   https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
-  - AppDeploy native `daily-cap-audit` cron is **enabled**; GitHub Actions `.github/workflows/cap-daily-audit.yml` is also scheduled. These are independently implemented scanners with separate AppDeploy DB state versus canonical GitHub receipts. Do not disable either until data/UI continuity, baseline and authoritative ownership are reconciled.
+  - AppDeploy native `daily-cap-audit` cron is **disabled (credits_exhausted)** as of 2026-10-20. GitHub Actions `.github/workflows/cap-daily-audit.yml` remains active and saved its latest verified 2026-10-20 receipt. Preserve separate native history/baseline during any future deliberate cutover.
   - Canonical audit receipts: `runtime/cap-daily-audit/`.
 - Federal Policy Delta UI/API:
   https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
-  - AppDeploy native `daily-policy-scan` cron is **enabled**; GitHub Actions `.github/workflows/federal-policy-delta.yml` is also scheduled. The implementations use independent snapshots; GitHub's Congress source differs from AppDeploy's and cannot be cut over blindly. Preserve UI/history and canonical GitHub receipts until scheduler ownership is verified.
+  - AppDeploy native `daily-policy-scan` cron is **disabled (credits_exhausted)** as of 2026-10-20. GitHub Actions `.github/workflows/federal-policy-delta.yml` remains active and saved a 2026-10-20 canonical receipt. Its GPO/LOC source differs from the native AppDeploy Congress.gov scanner; preserve UI/history and reconcile before cutover.
   - Canonical detector receipts: `runtime/federal-policy-delta/`.
   - Detection is intentionally separate from neutral legal-authority analysis.
 
@@ -277,14 +277,15 @@ Use:
 - `PROJECTS/` for live project cards;
 - `CHAT-CONTINUITY.md` for restart procedure.
 
-## Current runtime resilience
+## Current runtime resilience — October 20, 2026
 
-- **Historical:** AppDeploy cron-credit exhaustion had affected Foundry Alpha, CAP Daily Audit, Federal Policy Delta, and Critical Guidance Delta. As independently verified on 2026-10-10, native AppDeploy crons for all four are enabled with reported last-status `success`; that only confirms scheduler-level results, not full model execution or equivalent output.
-- CAP Daily Audit GitHub Actions remains scheduled and produces durable validated receipts, **in parallel** with the enabled native AppDeploy cron. The two independently maintain findings/state; owner cutover is **not complete**.
-- Critical Guidance Delta deterministic GitHub Actions detection remains scheduled and produces durable receipts, **in parallel** with the enabled native AppDeploy scanner (which also uses AI classifications). Owner cutover is **not complete**.
-- Federal Policy Delta GitHub Actions detector runs across 17 configured official sources, using the official GPO/LOC bill-status bulk-update feed instead of the Congress.gov homepage after HTTP 403. The enabled native AppDeploy scanner independently uses Congress.gov and separate AppDeploy DB state; ownership, source parity and UI/history cutover are **not reconciled**.
-- Evidence Integrity Sentinel remains healthy on AppDeploy.
-- Foundry Alpha native AppDeploy `hourly-foundry-run` cron is **enabled**; the separate ChatGPT **Humanity Loop — Foundry** automation is **disabled** to prevent duplication. AppDeploy cron status `success` does **not** verify successful model output or Supabase task completion: deployed Foundry writes to its own AppDeploy DB. Deployed Safety Governor and Verifier parsing are fail-open on later affirmative lines, and caught model failures return HTTP 200; source-matched corrective patch is prepared and tested but **not deployed**. See Undermind operation `2026-10-10-foundry-parser-patch-ready.md`. Do not expand its side-effecting powers before reviewed remediation.
+- **P1 credit shutdown:** Native AppDeploy cron jobs for Foundry Alpha, CAP Daily Audit, Federal Policy Delta, Critical Guidance Delta, and Evidence Integrity Sentinel all returned `enabled=false`, `disabled_reason=credits_exhausted`. Applications remain deployed/ready; prior success timestamps are insufficient proof of actual scan/model outcomes. No funds were purchased and none of these crons were restarted.
+- **Surviving GitHub scanner coverage:** CAP, Federal and Critical deterministic GitHub Actions recorded real fresh canonical receipts on October 20. These are separate from AppDeploy UI/database history, and cannot replace the disabled Evidence Integrity model work or safely restart Foundry.
+- **Watchdog repaired end-to-end:** Ops Sentinel source's bold **not** safety warning was retained. Test-only commit `ddbdfec6583a5839538d18593590b1934f863339` and scoped on-push live-check workflow commit `e2613357a68ce9e93acf3726dec66d89bb4f893c` produced a successful run #59 and saved `runtime/ops-sentinel/latest.json` as **warning** with 3 detector receipts OK and missing ChatGPT worker heartbeat. It also opened **[issue #15](https://github.com/Lesterhau/humanity-loop/issues/15)**. This proves issue/report pipeline worked on that run; hourly cron schedule reliability is still unproven.
+- **Unresolved:** `runtime/ops/hourly-worker.json` does not exist. Its absence is not proof the automation stopped. Worker prompt requires an independently read-back, truthfully sourced heartbeat every 3h; previous worker writes were safety-blocked. Alert #15 stays open until genuine evidence is recorded.
+- **Foundry safety:** P1 issue #14 remains open: fail-open Verifier/Safety Governor parsing and HTTP200 swallowed model errors; patch prepared but not deployed. No independent, verified live Foundry replacement while credits are exhausted. Do not expand autonomous actions or run unsafe fallback.
+- **Future parity issue #13:** Separate native/GitHub detector implementations still have different snapshots and UI histories; do not automatically reactivate all AppDeploy crons if credits return or claim the cutover finished.
+- **Reliability ceiling:** GitHub scheduled workflows have shown major delay/drop events; a green source-triggered watchdog run does not establish hour-by-hour monitoring. Track actual scheduled-run coverage and verify alert notifications before declaring robust independence.
 
 ### Current GitHub ledger head
 - Human ledger currently includes actions through at least **HL-068**.
