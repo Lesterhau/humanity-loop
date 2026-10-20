@@ -170,6 +170,19 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
     return report, state
 
 
+def merge_review_queue(existing: dict, candidates: list[dict], detected_at: str) -> dict:
+    items = list(existing.get("items") or [])
+    keys = {(f.get("retractedDoi"), f.get("citingSource"), f.get("citingId")) for f in items}
+    for finding in candidates:
+        key = (finding.get("retractedDoi"), finding.get("citingSource"), finding.get("citingId"))
+        if key not in keys:
+            items.append({**finding, "detectedAt": detected_at})
+            keys.add(key)
+    return {"schemaVersion": 1,
+            "description": "Unreviewed citation candidates, not verified clinical or misconduct findings",
+            "items": items[-500:]}
+
+
 def main() -> None:
     ROOT.mkdir(parents=True, exist_ok=True)
     state_path = ROOT / "state.json"
@@ -178,6 +191,14 @@ def main() -> None:
     except FileNotFoundError:
         previous = {}
     report, state = scan(previous=previous)
+    queue_path = ROOT / "review-queue.json"
+    try:
+        queue = json.loads(queue_path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        queue = {"schemaVersion": 1, "items": []}
+    merged_queue = merge_review_queue(queue, report["candidateFindings"], report["runAt"])
+    # Preserve the candidate queue before marking DOIs fully seen.
+    queue_path.write_text(json.dumps(merged_queue, indent=2) + "\n", encoding="utf-8")
     # State changes only after successful, fully checked DOI lookups.
     (ROOT / "latest.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
