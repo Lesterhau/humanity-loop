@@ -26,16 +26,19 @@ function receiptCheck(name, path, limitHours, nowMs, read = readJSON) {
     const r = read(path);
     const age = (nowMs - parseDate(r.runAt)) / 3600000;
     if (age < -5 / 60) throw Error("future timestamp");
+    // Contradictory totals are never downgraded by a simultaneous source failure.
+    if (path.includes("cap-daily")) {
+      if (!Array.isArray(r.findings) || !Number.isInteger(r.findingsCount) || r.findingsCount !== r.findings.length)
+        throw Error("CAP totals disagree");
+    } else if (!Array.isArray(r.changes) || !Number.isInteger(r.changesDetected) || r.changesDetected !== r.changes.length) {
+      throw Error("Change totals disagree");
+    }
     if (age > limitHours) {
       out.status = "critical";
       out.detail = "No fresh receipt for " + age.toFixed(1) + " hours (limit " + limitHours + ")";
     } else if ((r.failuresCount || 0) > 0) {
       out.status = "warning";
       out.detail = "Latest run recorded " + r.failuresCount + " source failure(s)";
-    } else if (path.includes("cap-daily") && (r.findingsCount !== r.findings.length)) {
-      throw Error("CAP totals disagree");
-    } else if (!path.includes("cap-daily") && (r.changesDetected !== r.changes.length)) {
-      throw Error("Change totals disagree");
     } else {
       out.detail = "Receipt " + r.runAt + " (" + age.toFixed(1) + "h old)";
     }
@@ -63,13 +66,21 @@ function heartbeatCheck(nowMs, read = readJSON) {
     } else {
       out.detail = "Heartbeat " + age.toFixed(1) + "h ago; does not independently prove productivity.";
     }
-    if (r.lastVerifiedAt && (nowMs - parseDate(r.lastVerifiedAt)) > 30 * 3600000 && out.status === "ok") {
-      out.status = "warning";
-      out.detail = "No independently confirmed action reported by worker in over 30h.";
+    if (r.lastVerifiedAt) {
+      const verifiedAge = nowMs - parseDate(r.lastVerifiedAt);
+      if (verifiedAge < -5 * 60000) throw Error("future success time");
+      if (verifiedAge > 30 * 3600000 && out.status === "ok") {
+        out.status = "warning";
+        out.detail = "No independently confirmed action reported by worker in over 30h.";
+      }
     }
     if (!r.lastVerifiedAt && nowMs > GRACE_END + 86400000 && out.status === "ok") {
       out.status = "warning";
       out.detail = "Worker reports activity but has supplied no independent success evidence.";
+    }
+    if (r.status === "blocked" && out.status === "ok") {
+      out.status = "warning";
+      out.detail = "Worker explicitly reported blocked activity; inspect underlying failure.";
     }
   } catch (e) {
     out.status = "warning"; out.detail = "Invalid hourly-worker heartbeat; activity not verified.";
