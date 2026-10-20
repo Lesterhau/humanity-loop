@@ -1,26 +1,32 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-20T21:29:31.479Z",
+  "runAt": "2026-10-20T22:04:02.293Z",
   "status": "warning",
-  "fingerprint": "2683a039708d",
+  "fingerprint": "5e3bda254517",
   "checks": [
     {
       "name": "CAP Daily Audit",
       "path": "runtime/cap-daily-audit/latest.json",
       "status": "ok",
-      "detail": "Receipt 2026-10-20T18:36:05.112278Z (2.9h old)"
+      "detail": "Receipt 2026-10-20T18:36:05.112278Z (3.5h old)"
     },
     {
       "name": "Federal Policy Delta",
       "path": "runtime/federal-policy-delta/latest-run.json",
       "status": "ok",
-      "detail": "Receipt 2026-10-20T19:16:19.059683Z (2.2h old)"
+      "detail": "Receipt 2026-10-20T19:16:19.059683Z (2.8h old)"
     },
     {
       "name": "Critical Guidance Delta",
       "path": "runtime/critical-guidance-delta/latest-run.json",
       "status": "ok",
-      "detail": "Receipt 2026-10-20T16:50:19.270002Z (4.7h old)"
+      "detail": "Receipt 2026-10-20T21:32:07.721553Z (0.5h old)"
+    },
+    {
+      "name": "Evidence Integrity Backup",
+      "path": "runtime/evidence-integrity-backup/latest.json",
+      "status": "warning",
+      "detail": "Latest run recorded 5 source or coverage gap(s)"
     },
     {
       "name": "ChatGPT hourly worker",
