@@ -9,7 +9,9 @@ function fixture(overrides = {}) {
   for (const [name, path] of s.CHECKS) {
     records[path] = path.includes("cap-daily") ?
       {runAt:fresh, findingsCount:0, findings:[]} :
-      {runAt:fresh, changesDetected:0, changes:[], failuresCount:0};
+      path.includes("evidence-integrity-backup") ?
+        {runAt:fresh, candidateFindingsCount:0, candidateFindings:[], failuresCount:0, failures:[], status:"ok"} :
+        {runAt:fresh, changesDetected:0, changes:[], failuresCount:0};
   }
   records[s.WORKER] = {schemaVersion:1,runAt:fresh,status:"worked",lastVerifiedAt:fresh};
   return (p) => {
@@ -68,4 +70,25 @@ test("malformed CAP findings cannot hide behind a source failure",() => {
   const bad={runAt:fresh,findingsCount:0,findings:null,failuresCount:1};
   const result=s.evaluate(NOW,fixture({[s.CHECKS[0][1]]:bad}));
   assert.equal(result.status,"critical");
+});
+
+test("stale Evidence Integrity backup receipt is critical",() => {
+  const p=s.CHECKS.find(x=>x[0]==="Evidence Integrity Backup")[1];
+  const old={runAt:new Date(NOW-43*3600000).toISOString(),status:"ok",
+    candidateFindingsCount:0,candidateFindings:[],failuresCount:0,failures:[]};
+  const result=s.evaluate(NOW,fixture({[p]:old}));
+  assert.equal(result.status,"critical");
+});
+test("Evidence Integrity partial coverage is warned, not mistaken for completed coverage",() => {
+  const p=s.CHECKS.find(x=>x[0]==="Evidence Integrity Backup")[1];
+  const partial={runAt:fresh,status:"partial",candidateFindingsCount:0,candidateFindings:[],
+    failuresCount:1,failures:[{stage:"index_not_found"}]};
+  const result=s.evaluate(NOW,fixture({[p]:partial}));
+  assert.equal(result.status,"warning");
+});
+test("Evidence Integrity mismatched finding counts cannot pass as healthy",() => {
+  const p=s.CHECKS.find(x=>x[0]==="Evidence Integrity Backup")[1];
+  const malformed={runAt:fresh,status:"ok",candidateFindingsCount:7,candidateFindings:[],
+    failuresCount:0,failures:[]};
+  assert.equal(s.evaluate(NOW,fixture({[p]:malformed})).status,"critical");
 });
