@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "runAt": "2026-10-20T21:29:31.479Z",
+  "status": "warning",
+  "fingerprint": "2683a039708d",
+  "checks": [
+    {
+      "name": "CAP Daily Audit",
+      "path": "runtime/cap-daily-audit/latest.json",
+      "status": "ok",
+      "detail": "Receipt 2026-10-20T18:36:05.112278Z (2.9h old)"
+    },
+    {
+      "name": "Federal Policy Delta",
+      "path": "runtime/federal-policy-delta/latest-run.json",
+      "status": "ok",
+      "detail": "Receipt 2026-10-20T19:16:19.059683Z (2.2h old)"
+    },
+    {
+      "name": "Critical Guidance Delta",
+      "path": "runtime/critical-guidance-delta/latest-run.json",
+      "status": "ok",
+      "detail": "Receipt 2026-10-20T16:50:19.270002Z (4.7h old)"
+    },
+    {
+      "name": "ChatGPT hourly worker",
+      "path": "runtime/ops/hourly-worker.json",
+      "status": "warning",
+      "detail": "No verifiable heartbeat. This does not prove that the worker stopped."
+    }
+  ],
+  "limitation": "Checks saved GitHub detector results and a worker self-report. Does NOT verify AppDeploy Foundry model execution."
+}
