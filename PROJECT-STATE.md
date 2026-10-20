@@ -295,8 +295,8 @@ Use:
 - **Reliability ceiling:** GitHub scheduled workflows have shown major delay/drop events; a green source-triggered watchdog run does not establish hour-by-hour monitoring. Track actual scheduled-run coverage and verify alert notifications before declaring robust independence.
 
 ### Current GitHub ledger head
-- Human ledger currently includes actions through at least **HL-068**.
-- Machine ledger `actions.jsonl` currently includes actions through at least **HL-068**.
+- Human ledger includes actions through at least **HL-069** (Oct20 public-guidance evidence update; outcome pending).
+- Machine ledger `actions.jsonl` contains **69 unique well-formed actions**, through HL-069 (local JSON syntax + unique-ID readback confirmed; pipeline validator status not independently checked on this change).
 - Ledger validation succeeded after both HL-067 (official registry/release packaging) and HL-068 (GestureLabs Connector execution).
 - GitHub mutation capability is currently working. The 2026-10-01 recovered Foundry receipt write was independently read-back verified, and the corresponding Undermind failover record was resolved.
 
