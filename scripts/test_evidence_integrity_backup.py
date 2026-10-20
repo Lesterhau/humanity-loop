@@ -73,9 +73,12 @@ class EvidenceIntegrityBackupTests(unittest.TestCase):
         self.assertEqual(recovered["candidateFindingsCount"], 1)
         self.assertEqual(len(state["seenDois"]), 1)
 
-    def test_unindexed_doi_retries_not_a_negative_result(self):
+    def test_unindexed_doi_retries_without_falsely_claiming_source_failure(self):
         report, state = scan(fetch=lookup(article={"resultList": {"result": []}}))
-        self.assertGreater(report["failuresCount"], 0)
+        self.assertEqual(report["status"], "limited")
+        self.assertEqual(report["failuresCount"], 0)
+        self.assertEqual(report["coverageGapsCount"], 1)
+        self.assertEqual(report["coverageGaps"][0]["stage"], "not_indexed")
         self.assertEqual(state["seenDois"], [])
 
     def test_truncated_citation_response_retries(self):
