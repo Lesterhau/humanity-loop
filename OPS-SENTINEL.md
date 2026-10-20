@@ -12,7 +12,7 @@ If there is a problem, it opens or updates **one** GitHub issue called `[Ops Sen
 
 1. [Click here to see whether Ops Sentinel ran](https://github.com/Lesterhau/humanity-loop/actions/workflows/ops-sentinel.yml). Each run has a green check for success or a red X for failure.
 2. [Click here to look for an Ops Sentinel warning](https://github.com/Lesterhau/humanity-loop/issues?q=is%3Aissue+is%3Aopen+Ops+Sentinel). Open the issue and follow its **What to do** section.
-3. [Click here to read the last saved status](https://github.com/Lesterhau/humanity-loop/blob/main/runtime/ops-sentinel/latest.json). The first full scheduled run must produce the file; a missing file before then is not proof of failure.
+3. [Click here to read the last saved status](https://github.com/Lesterhau/humanity-loop/blob/main/runtime/ops-sentinel/latest.json). A successful code-push run first produced this file on October 20, 2026. A missing or old status report after that is a real observability warning, not proof that every other component is stopped.
 4. [Click here for the restart instructions](https://github.com/Lesterhau/humanity-loop/blob/main/CHAT-CONTINUITY.md).
 
 ## If ChatGPT disappears
@@ -23,15 +23,15 @@ If a warning exists, use the issue to direct a new AI assistant or a human devel
 
 ## How alerts reach you
 
-The watchdog uses GitHub issues, not ChatGPT notifications. To receive GitHub emails, open your GitHub profile image (top right) -> **Settings** -> **Notifications**, review email notification settings; also open the Humanity Loop repo and select **Watch** -> **Custom** -> **Issues** (if available). Check you actually receive a test notification. Being assigned an issue may notify you depending on your GitHub settings. We have **not** independently tested email delivery.
+The watchdog uses GitHub issues, not ChatGPT notifications. To receive GitHub emails, open your GitHub profile image (top right) -> **Settings** -> **Notifications**, review email notification settings; also open the Humanity Loop repo and select **Watch** -> **Custom** -> **Issues** (if available). Check you actually receive a test notification. Being assigned an issue may notify you depending on your GitHub settings. **GitHub issue email delivery was independently verified in connected Gmail on October 20, 2026:** issue #15's creation and assignment notifications arrived. This confirms one actual delivery, not future deliverability or phone push notifications.
 
 ## Limits (important)
 
 - A green 'Ops Sentinel' run is only evidence these checks ran. It does not prove successful model execution inside AppDeploy Foundry.
 - The Hourly Worker must explicitly write `runtime/ops/hourly-worker.json`; a missing heartbeat becomes a warning after the rollout grace period (October 11, 2026, 09:00 UTC).
 - A heartbeat is self-reported. Verified output should include a date and direct link to the independently confirmed result.
-- If GitHub Actions itself is down, this watchdog may not run. The GitHub Actions page and notifications are the second check.
-- Future improvements: add an authorized read-only Foundry/Supabase monitor and independent end-to-end test; never publish service-role tokens or privileged credentials.
+- GitHub scheduled workflows have shown material delays/missed runs; an individual successful push-triggered watchdog check does not prove dependable hourly scheduling. If the watchdog report becomes stale, check the Actions page directly and use separate escalation issue #16. If GitHub Actions itself is down, this watchdog may not run.
+- Native AppDeploy schedules for Foundry, CAP, Federal, Critical and Evidence Integrity became **disabled due to exhausted credits** on October 20; GitHub detector receipts continued, but Foundry and Evidence Integrity have no independently verified active replacement. See [P1 incident #16](https://github.com/Lesterhau/humanity-loop/issues/16). Future improvements: a genuinely independent read-only Foundry/Supabase monitor and end-to-end test; never publish service-role tokens or privileged credentials.
 
 ## What we're deliberately not doing
 
