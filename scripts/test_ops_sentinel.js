@@ -46,3 +46,26 @@ test("stable alert fingerprint across elapsed hours",()=>{
   const b=s.evaluate(NOW+3600000,fixture({[s.WORKER]:null}));
   assert.equal(a.fingerprint,b.fingerprint);
 });
+
+test("blocked worker with fresh activity and evidence must still warn",() => {
+  const blocked = {schemaVersion:1,runAt:fresh,status:"blocked",lastVerifiedAt:fresh};
+  const result=s.evaluate(NOW,fixture({[s.WORKER]:blocked}));
+  assert.equal(result.status,"warning");
+  assert.match(result.checks.at(-1).detail,/blocked activity/i);
+});
+test("future-dated worker success is not valid evidence",() => {
+  const falseProof={schemaVersion:1,runAt:fresh,status:"worked",lastVerifiedAt:new Date(NOW+3600000).toISOString()};
+  const result=s.evaluate(NOW,fixture({[s.WORKER]:falseProof}));
+  assert.equal(result.status,"warning");
+  assert.match(result.checks.at(-1).detail,/Invalid hourly-worker heartbeat/i);
+});
+test("contradictory Federal finding counts are critical even on source failure",() => {
+  const bad={runAt:fresh,changesDetected:2,changes:[],failuresCount:1};
+  const result=s.evaluate(NOW,fixture({[s.CHECKS[1][1]]:bad}));
+  assert.equal(result.status,"critical");
+});
+test("malformed CAP findings cannot hide behind a source failure",() => {
+  const bad={runAt:fresh,findingsCount:0,findings:null,failuresCount:1};
+  const result=s.evaluate(NOW,fixture({[s.CHECKS[0][1]]:bad}));
+  assert.equal(result.status,"critical");
+});
