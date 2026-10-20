@@ -6,6 +6,7 @@ const CHECKS = [
   ["CAP Daily Audit", "runtime/cap-daily-audit/latest.json", 40],
   ["Federal Policy Delta", "runtime/federal-policy-delta/latest-run.json", 40],
   ["Critical Guidance Delta", "runtime/critical-guidance-delta/latest-run.json", 12],
+  ["Evidence Integrity Backup", "runtime/evidence-integrity-backup/latest.json", 42],
 ];
 const WORKER = "runtime/ops/hourly-worker.json";
 const GRACE_END = Date.parse("2026-10-11T09:00:00Z");
@@ -30,15 +31,19 @@ function receiptCheck(name, path, limitHours, nowMs, read = readJSON) {
     if (path.includes("cap-daily")) {
       if (!Array.isArray(r.findings) || !Number.isInteger(r.findingsCount) || r.findingsCount !== r.findings.length)
         throw Error("CAP totals disagree");
+    } else if (path.includes("evidence-integrity-backup")) {
+      if (!Array.isArray(r.candidateFindings) || !Number.isInteger(r.candidateFindingsCount) || r.candidateFindingsCount !== r.candidateFindings.length ||
+          !Array.isArray(r.failures) || !Number.isInteger(r.failuresCount) || r.failuresCount !== r.failures.length)
+        throw Error("Evidence backup totals disagree");
     } else if (!Array.isArray(r.changes) || !Number.isInteger(r.changesDetected) || r.changesDetected !== r.changes.length) {
       throw Error("Change totals disagree");
     }
     if (age > limitHours) {
       out.status = "critical";
       out.detail = "No fresh receipt for " + age.toFixed(1) + " hours (limit " + limitHours + ")";
-    } else if ((r.failuresCount || 0) > 0) {
+    } else if ((r.failuresCount || 0) > 0 || r.status === "failed") {
       out.status = "warning";
-      out.detail = "Latest run recorded " + r.failuresCount + " source failure(s)";
+      out.detail = "Latest run recorded " + (r.failuresCount || 0) + " source or coverage gap(s)";
     } else {
       out.detail = "Receipt " + r.runAt + " (" + age.toFixed(1) + "h old)";
     }
