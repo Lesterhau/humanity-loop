@@ -2,7 +2,7 @@
 """Offline regressions for the credit-free Evidence Integrity metadata backup."""
 import unittest
 
-from evidence_integrity_backup import candidate_kind, extract_retractions, scan, CROSSREF
+from evidence_integrity_backup import candidate_kind, extract_retractions, scan, merge_review_queue, CROSSREF
 
 
 RETRACTION = {
@@ -111,6 +111,18 @@ class EvidenceIntegrityBackupTests(unittest.TestCase):
                                          "pubTypeList": {"pubType": ["Meta-Analysis"]}})[0],
                          "Meta-analysis")
         self.assertIsNone(candidate_kind({"title": "Research article", "source": "MED"}))
+
+
+
+    def test_review_queue_retains_existing_leads_and_owner_review_status(self):
+        original={"schemaVersion":1,"items":[{"retractedDoi":"10.1000/old","citingSource":"MED","citingId":"42","status":"under-review"}]}
+        candidate={"retractedDoi":"10.1000/new","citingSource":"MED","citingId":"7","status":"unreviewed"}
+        a=merge_review_queue(original,[candidate],"2026-10-20T22:00:00Z")
+        b=merge_review_queue(a,[candidate],"2026-10-21T22:00:00Z")
+        self.assertEqual(len(a["items"]),2)
+        self.assertEqual(len(b["items"]),2)
+        self.assertEqual(b["items"][0]["status"],"under-review")
+        self.assertEqual(b["items"][1]["detectedAt"],"2026-10-20T22:00:00Z")
 
 
 if __name__ == "__main__":
