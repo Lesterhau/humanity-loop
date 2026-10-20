@@ -1,0 +1,68 @@
+name: Evidence Integrity — credit-free metadata backup
+
+on:
+  schedule:
+    - cron: '23 3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/evidence_integrity_backup.py'
+      - 'scripts/test_evidence_integrity_backup.py'
+      - '.github/workflows/evidence-integrity-backup.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: humanity-loop-evidence-integrity-backup
+  cancel-in-progress: false
+
+jobs:
+  metadata-triage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout canonical repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+
+      - name: Run deterministic offline safety tests
+        env:
+          PYTHONPATH: scripts
+        run: python3 -m unittest scripts/test_evidence_integrity_backup.py -v
+
+      - name: Scan public Crossref and Europe PMC sources for unreviewed candidate links
+        run: python3 scripts/evidence_integrity_backup.py
+
+      - name: Validate honest, bounded triage receipt
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path("runtime/evidence-integrity-backup/latest.json").read_text())
+          assert report["schemaVersion"] == 1
+          assert report["status"] in ("ok", "partial", "failed")
+          assert report["clinicalConclusions"] is None
+          assert report["nativeAppDeployStateSynced"] is False
+          assert report["candidateFindingsCount"] == len(report["candidateFindings"])
+          assert report["failuresCount"] == len(report["failures"])
+          assert all(f["status"] == "unreviewed" for f in report["candidateFindings"])
+          print("Verified public-metadata triage only:", report["status"],
+                "candidates", report["candidateFindingsCount"],
+                "failures", report["failuresCount"])
+          PY
+
+      - name: Persist canonical history and latest status
+        run: |
+          if [ -z "$(git status --porcelain -- runtime/evidence-integrity-backup)" ]; then
+            echo "No changes to persist."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runtime/evidence-integrity-backup
+          git commit -m "runtime: record evidence-integrity backup scan"
+          git pull --rebase origin main
+          git push origin HEAD:main
