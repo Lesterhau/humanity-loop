@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "runAt": "2026-10-20T22:01:21.564316Z",
+  "status": "partial",
+  "source": "Crossref retraction notices + Europe PMC citation metadata",
+  "sourceLimit": {
+    "crossrefRows": 25,
+    "newDoisPerRun": 15,
+    "citationsPerDoi": 1000
+  },
+  "newRetractionsChecked": 10,
+  "citationsExamined": 57,
+  "candidateFindingsCount": 1,
+  "candidateFindings": [
+    {
+      "retractedDoi": "10.1186/s40659-022-00408-z",
+      "noticeDoi": "10.1186/s40659-026-00737-3",
+      "citingSource": "MED",
+      "citingId": "37564374",
+      "citingTitle": "The application and progress of stem cells in auricular cartilage regeneration: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/37564374",
+      "status": "unreviewed"
+    }
+  ],
+  "failuresCount": 5,
+  "failures": [
+    {
+      "stage": "index_not_found",
+      "doi": "10.1016/j.jallcom.2024.173535",
+      "reason": "No Europe PMC match; retry later"
+    },
+    {
+      "stage": "index_not_found",
+      "doi": "10.1016/j.jallcom.2024.173920",
+      "reason": "No Europe PMC match; retry later"
+    },
+    {
+      "stage": "index_not_found",
+      "doi": "10.25060/residpediatr-2021.v11n1-128",
+      "reason": "No Europe PMC match; retry later"
+    },
+    {
+      "stage": "index_not_found",
+      "doi": "10.1007/s10722-025-02344-9",
+      "reason": "No Europe PMC match; retry later"
+    },
+    {
+      "stage": "index_not_found",
+      "doi": "10.1002/pc.25583",
+      "reason": "No Europe PMC match; retry later"
+    }
+  ],
+  "clinicalConclusions": null,
+  "notice": "Triage only. Incomplete citation coverage is possible. Candidate citations are not proof that any guideline or review relies on invalid evidence. Human source-level validation required.",
+  "nativeAppDeployStateSynced": false
+}
