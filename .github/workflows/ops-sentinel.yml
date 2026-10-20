@@ -33,7 +33,6 @@ jobs:
         run: node --test scripts/test_ops_sentinel.js
 
       - name: Read live receipts and maintain ONE alert issue
-        if: github.event_name != 'push'
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -78,7 +77,6 @@ jobs:
             console.log('Canonical daily/transition receipt changed: ' + persistReport(r));
 
       - name: Persist daily or changed-state watchdog report
-        if: github.event_name != 'push'
         run: |
           if [ -z "$(git status --porcelain -- runtime/ops-sentinel/latest.json)" ]; then
             echo "No new daily/transition receipt; no commit needed."
