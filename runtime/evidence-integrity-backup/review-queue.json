@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "Unreviewed public scholarly citation leads requiring source-level verification; not claims of invalid research or misconduct",
+  "description": "Unreviewed citation candidates, not verified clinical or misconduct findings",
   "items": [
     {
       "retractedDoi": "10.1186/s40659-022-00408-z",
