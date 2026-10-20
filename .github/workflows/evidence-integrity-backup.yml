@@ -43,11 +43,12 @@ jobs:
           from pathlib import Path
           report=json.loads(Path("runtime/evidence-integrity-backup/latest.json").read_text())
           assert report["schemaVersion"] == 1
-          assert report["status"] in ("ok", "partial", "failed")
+          assert report["status"] in ("ok", "limited", "partial", "failed")
           assert report["clinicalConclusions"] is None
           assert report["nativeAppDeployStateSynced"] is False
           assert report["candidateFindingsCount"] == len(report["candidateFindings"])
           assert report["failuresCount"] == len(report["failures"])
+          assert report["coverageGapsCount"] == len(report["coverageGaps"])
           assert all(f["status"] == "unreviewed" for f in report["candidateFindings"])
           print("Verified public-metadata triage only:", report["status"],
                 "candidates", report["candidateFindingsCount"],
