@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 1,
+  "amendment": "source-access-amendment-2026-10-21.md",
+  "amendmentCommit": "211a6918e3900fcb94180dae109fdfd31a68d83c",
+  "retrievalMode": "public web slow search, each exact amended query separately",
+  "retrievalDate": "2026-10-21",
+  "timestampMethodNote": "postIdTimeFromSnowflake is calculated from X/Twitter Snowflake ID (42-bit timestamp offset). It is NOT direct independent verification of live content or user-visible post date.",
+  "originalWindow": [
+    "2026-07-23T00:00:00Z",
+    "2026-10-21T00:00:00Z (exclusive)"
+  ],
+  "strata": [
+    {
+      "topic": "climate-attribution",
+      "query": "site:x.com/grok/status climate",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/grok/status/2005050634312007705",
+          "postIdTimeFromSnowflake": "2025-12-27T22:58:17.916Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/grok/status/2018320360978915533",
+          "postIdTimeFromSnowflake": "2026-02-02T13:47:27.293Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 3,
+          "url": "https://x.com/grok/status/1994343630778360262",
+          "postIdTimeFromSnowflake": "2025-11-28T09:52:29.347Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 4,
+          "url": "https://x.com/grok/status/1956053470752166292",
+          "postIdTimeFromSnowflake": "2025-08-14T18:01:03.800Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 5,
+          "url": "https://x.com/grok/status/1961299865344082398",
+          "postIdTimeFromSnowflake": "2025-08-29T05:28:21.744Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 6,
+          "url": "https://x.com/grok/status/1953630583655215436/people",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 7,
+          "url": "https://x.com/grok/status/1941181539292938568",
+          "postIdTimeFromSnowflake": "2025-07-04T17:05:19.033Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 8,
+          "url": "https://x.com/grok/status/2065792314501730352",
+          "postIdTimeFromSnowflake": "2026-06-13T13:44:02.999Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 9,
+          "url": "https://x.com/grok/status/1987750637854134338",
+          "postIdTimeFromSnowflake": "2025-11-10T05:14:17.342Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 10,
+          "url": "https://x.com/grok/status/1963178940983583182",
+          "postIdTimeFromSnowflake": "2025-09-03T09:55:08.288Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        }
+      ]
+    },
+    {
+      "topic": "vaccines",
+      "query": "site:x.com/grok/status vaccine",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/grok/status/2039856296308957331",
+          "postIdTimeFromSnowflake": "2026-04-03T00:03:34.394Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/grok/status/1931163887052980696",
+          "postIdTimeFromSnowflake": "2025-06-07T01:38:44.620Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 3,
+          "url": "https://x.com/grok/status/2005050634312007705",
+          "postIdTimeFromSnowflake": "2025-12-27T22:58:17.916Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 4,
+          "url": "https://x.com/i/grok/share/P70twHLdagJcm8srNILzKvNj3",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 5,
+          "url": "https://x.com/grok/status/1969338995185500235/people",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 6,
+          "url": "https://x.com/grok/status/1956053470752166292",
+          "postIdTimeFromSnowflake": "2025-08-14T18:01:03.800Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 7,
+          "url": "https://x.com/grok/status/2065792314501730352",
+          "postIdTimeFromSnowflake": "2026-06-13T13:44:02.999Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 8,
+          "url": "https://x.com/grok/status/2034672677001084997",
+          "postIdTimeFromSnowflake": "2026-03-19T16:45:43.244Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 9,
+          "url": "https://x.com/grok/status/1969664341327954211",
+          "postIdTimeFromSnowflake": "2025-09-21T07:25:48.223Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 10,
+          "url": "https://x.com/grok/status/1987750637854134338",
+          "postIdTimeFromSnowflake": "2025-11-10T05:14:17.342Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        }
+      ]
+    },
+    {
+      "topic": "nuclear-power",
+      "query": "site:x.com/grok/status nuclear",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/grok/status/2031386853182484945",
+          "postIdTimeFromSnowflake": "2026-03-10T15:09:01.798Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/grok/status/1994343630778360262",
+          "postIdTimeFromSnowflake": "2025-11-28T09:52:29.347Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 3,
+          "url": "https://x.com/grok/status/1961299865344082398",
+          "postIdTimeFromSnowflake": "2025-08-29T05:28:21.744Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 4,
+          "url": "https://x.com/grok/status/1956053470752166292",
+          "postIdTimeFromSnowflake": "2025-08-14T18:01:03.800Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 5,
+          "url": "https://x.com/grok/status/2005050634312007705",
+          "postIdTimeFromSnowflake": "2025-12-27T22:58:17.916Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 6,
+          "url": "https://x.com/i/trending/2070581312981799135",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 7,
+          "url": "https://x.com/grok/status/1987750637854134338",
+          "postIdTimeFromSnowflake": "2025-11-10T05:14:17.342Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 8,
+          "url": "https://x.com/grok/status/2065792314501730352",
+          "postIdTimeFromSnowflake": "2026-06-13T13:44:02.999Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 9,
+          "url": "https://x.com/grok/status/1929226605739823276",
+          "postIdTimeFromSnowflake": "2025-06-01T17:20:40.762Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 10,
+          "url": "https://x.com/GovNuclear/with_replies",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        }
+      ]
+    },
+    {
+      "topic": "gmo-safety",
+      "query": "site:x.com/grok/status GMO",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/grok/status/1994343630778360262",
+          "postIdTimeFromSnowflake": "2025-11-28T09:52:29.347Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/grok/status/2058802207865053637",
+          "postIdTimeFromSnowflake": "2026-05-25T06:47:51.707Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 3,
+          "url": "https://x.com/grok/status/1931163887052980696",
+          "postIdTimeFromSnowflake": "2025-06-07T01:38:44.620Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 4,
+          "url": "https://x.com/grok/status/1956053470752166292",
+          "postIdTimeFromSnowflake": "2025-08-14T18:01:03.800Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 5,
+          "url": "https://x.com/grok/status/2065792314501730352",
+          "postIdTimeFromSnowflake": "2026-06-13T13:44:02.999Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 6,
+          "url": "https://x.com/grok/status/1961299865344082398",
+          "postIdTimeFromSnowflake": "2025-08-29T05:28:21.744Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 7,
+          "url": "https://x.com/grok/status/1963178940983583182",
+          "postIdTimeFromSnowflake": "2025-09-03T09:55:08.288Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 8,
+          "url": "https://x.com/grok/status/1987750637854134338",
+          "postIdTimeFromSnowflake": "2025-11-10T05:14:17.342Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 9,
+          "url": "https://x.com/grok/status/2005050634312007705",
+          "postIdTimeFromSnowflake": "2025-12-27T22:58:17.916Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 10,
+          "url": "https://x.com/grok/status/2023302565945872876",
+          "postIdTimeFromSnowflake": "2026-02-16T07:44:57.522Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        }
+      ]
+    },
+    {
+      "topic": "photosynthesis",
+      "query": "site:x.com/grok/status photosynthesis",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/grok/status/2065792314501730352",
+          "postIdTimeFromSnowflake": "2026-06-13T13:44:02.999Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/grok/status/1956053470752166292",
+          "postIdTimeFromSnowflake": "2025-08-14T18:01:03.800Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 3,
+          "url": "https://x.com/grok/status/1987750637854134338",
+          "postIdTimeFromSnowflake": "2025-11-10T05:14:17.342Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 4,
+          "url": "https://x.com/grok/status/2005050634312007705",
+          "postIdTimeFromSnowflake": "2025-12-27T22:58:17.916Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 5,
+          "url": "https://x.com/i/trending/2063377450042593391",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 6,
+          "url": "https://x.com/grok/status/1961299865344082398",
+          "postIdTimeFromSnowflake": "2025-08-29T05:28:21.744Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 7,
+          "url": "https://x.com/grok/status/2023302565945872876",
+          "postIdTimeFromSnowflake": "2026-02-16T07:44:57.522Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 8,
+          "url": "https://x.com/grok/with_replies?lang=en",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 9,
+          "url": "https://x.com/grok/with_replies?screen_name=grok",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 10,
+          "url": "https://x.com/grok/status/1963178940983583182",
+          "postIdTimeFromSnowflake": "2025-09-03T09:55:08.288Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        }
+      ]
+    },
+    {
+      "topic": "plate-tectonics",
+      "query": "site:x.com/grok/status \"plate tectonics\"",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/i/trending/2030776016994529499?lang=en",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/i/grok/share/wbR80raBG0xz4WtGJRArhGi4Y",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        }
+      ]
+    },
+    {
+      "topic": "orbital-mechanics",
+      "query": "site:x.com/grok/status orbital",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/grok/status/2041381664547319972",
+          "postIdTimeFromSnowflake": "2026-04-07T05:04:50.522Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/grok/status/2019684935435464979",
+          "postIdTimeFromSnowflake": "2026-02-06T08:09:47.196Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 3,
+          "url": "https://x.com/grok/status/1994343630778360262",
+          "postIdTimeFromSnowflake": "2025-11-28T09:52:29.347Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 4,
+          "url": "https://x.com/grok/status/1956053470752166292",
+          "postIdTimeFromSnowflake": "2025-08-14T18:01:03.800Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 5,
+          "url": "https://x.com/grok/status/1961299865344082398",
+          "postIdTimeFromSnowflake": "2025-08-29T05:28:21.744Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 6,
+          "url": "https://x.com/grok/status/2065792314501730352",
+          "postIdTimeFromSnowflake": "2026-06-13T13:44:02.999Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 7,
+          "url": "https://x.com/i/trending/1992420145847803944",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 8,
+          "url": "https://x.com/i/trending/2065004982563156278",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 9,
+          "url": "https://x.com/i/trending/2018809350295597088",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 10,
+          "url": "https://x.com/grok/status/1987750637854134338",
+          "postIdTimeFromSnowflake": "2025-11-10T05:14:17.342Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        }
+      ]
+    },
+    {
+      "topic": "aspirin-mechanism",
+      "query": "site:x.com/grok/status aspirin",
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://x.com/grok/status/1994343630778360262",
+          "postIdTimeFromSnowflake": "2025-11-28T09:52:29.347Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 2,
+          "url": "https://x.com/grok/status/2023835587472474118",
+          "postIdTimeFromSnowflake": "2026-02-17T19:02:59.757Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 3,
+          "url": "https://x.com/grok/status/1956053470752166292",
+          "postIdTimeFromSnowflake": "2025-08-14T18:01:03.800Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 4,
+          "url": "https://x.com/grok/status/1941181539292938568",
+          "postIdTimeFromSnowflake": "2025-07-04T17:05:19.033Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 5,
+          "url": "https://x.com/grok/status/1987750637854134338",
+          "postIdTimeFromSnowflake": "2025-11-10T05:14:17.342Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 6,
+          "url": "https://x.com/grok/status/2065792314501730352",
+          "postIdTimeFromSnowflake": "2026-06-13T13:44:02.999Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 7,
+          "url": "https://x.com/grok/status/1961299865344082398",
+          "postIdTimeFromSnowflake": "2025-08-29T05:28:21.744Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 8,
+          "url": "https://x.com/grok/with_replies?lang=en",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        },
+        {
+          "rank": 9,
+          "url": "https://x.com/grok/status/1929226605739823276",
+          "postIdTimeFromSnowflake": "2025-06-01T17:20:40.762Z",
+          "eligibility": "excluded",
+          "reason": "outside preregistered publication window"
+        },
+        {
+          "rank": 10,
+          "url": "https://x.com/grok/with_replies?screen_name=grok",
+          "eligibility": "excluded",
+          "reason": "not direct canonical original @grok status URL"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "queryCount": 8,
+    "returnedSearchResults": 72,
+    "resultsWithinWindowBySnowflake": 0,
+    "verifiedEligibleOriginalGrokPosts": 0,
+    "actualAuditCases": 0,
+    "actualPublicChallenges": 0,
+    "ecrStatus": "undefined: no reviewed or challenged cases"
+  },
+  "conclusion": "Discovery via both prespecified search strategies failed to produce a verifiable date-eligible original public Grok scientific claim. Search rankings reused older generic posts unrelated to query topics. No Grok error rate, ideology or retraining inference can be drawn.",
+  "nextAction": "Do not retrospectively alter date window or cherry-pick older posts. Evaluate authorized direct X data retrieval methods and preregister any new method prospectively before new collection."
+}
