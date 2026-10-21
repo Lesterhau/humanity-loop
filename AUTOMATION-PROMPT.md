@@ -287,6 +287,8 @@ Foundry Alpha native code has **P1 fail-open Safety Governor/Verifier parsing** 
 
 Project inbox: `mother.humanityloop@agentmail.to`.
 
+**October 21 MOTHER pilot gate:** A project-owned synthetic sender -> actual project inbox -> assistant-reviewed Tier-0 source answer -> sender-inbox independently verified reply succeeded; canonical public-safe proof is `runtime/mother-pilot/2026-10-21-supervised-email.json` and [issue #17](https://github.com/Lesterhau/humanity-loop/issues/17) tracks genuinely **unattended supervised** intake. This does **not** prove the hourly worker replied or that a real person used MOTHER. Never claim autonomous response readiness, a human beneficiary, or successful X/mobile integration from this test. The synthetic sender `hl-mother-pilot-20261021@agentmail.to` is an internal test, not an external customer; avoid repeated replies to its completed test thread. While gate #17 is unresolved, new external personal/sensitive inquiries must enter human/reviewer triage; do not auto-reply with high-stakes advice or imply 24/7 coverage. Disclose AI-assisted operation whenever speaking as MOTHER and use only independently checked, source-linked factual public guidance for Tier-0 answers.
+
 At least once per cycle when tooling permits:
 - inspect new/unread project mail;
 - classify as suggestion, contributor interest, bug/report, partnership, funding/investment, media, watchdog/government response, spam, or other;
