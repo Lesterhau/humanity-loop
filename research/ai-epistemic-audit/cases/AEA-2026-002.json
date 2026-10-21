@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "caseId": "AEA-2026-002",
-  "collectionStatus": "captured",
+  "collectionStatus": "source-review",
   "collectedAt": "2026-10-21T09:57:56.863Z",
   "surface": "public-x-grok",
   "claim": {
@@ -23,13 +23,28 @@
     "randomizationGroup": "not-assigned"
   },
   "evidenceReview": {
-    "status": "pending",
-    "initialVerdict": "unreviewed",
-    "sources": [],
+    "status": "single-review-provisional",
+    "initialVerdict": "supported",
+    "sources": [
+      {
+        "url": "https://world-nuclear.org/news-and-media/press-statements/global-nuclear-electricity-generation-reaches-record-high-for-second-year-running",
+        "sourceType": "other-primary",
+        "relevance": "supports",
+        "verifiedAt": "2026-10-21T09:59:07.120Z",
+        "notes": "World Nuclear Association 2026 report says 2025 worldwide nuclear reactor capacity factor was 83.7%; industry source, no independent second assessor."
+      },
+      {
+        "url": "https://pris.iaea.org/PRIS/WorldStatistics/WorldTrendinEnergyAvailabilityFactor.aspx",
+        "sourceType": "government",
+        "relevance": "context",
+        "verifiedAt": "2026-10-21T09:59:07.120Z",
+        "notes": "IAEA PRIS reports 2025 energy availability factor 84.1%, a related but technically different measure from electricity capacity factor; do not mislabel it as the same statistic."
+      }
+    ],
     "reviewerDisagreement": "not-assessed",
-    "counterargument": null,
-    "largestUncertainty": null,
-    "reviewNotes": "Source and authorship verified, scientific correctness NOT yet adjudicated. Full source post may contain other claims not included in this first excerpt."
+    "counterargument": "Worldwide averages conceal national and reactor-type differences, outages and maintenance; 'no weather dependence' is too absolute if interpreted as immunity from extreme temperatures or cooling-water shortages.",
+    "largestUncertainty": "The reviewed excerpt is narrower than the full post; its UK AGR and 2026 UK capacity/Hinkley details were not assessed. The 83.7% supporting figure is reported by an industry organization and not yet double-reviewed.",
+    "reviewNotes": "Provisional verdict applies ONLY to the narrow empirical clause that worldwide nuclear capacity factors are typically above 80% (2025: 83.7%). Not an endorsement of the full post, the 'no weather dependence' absolute, or relative nuclear safety. No challenge warranted on this clause. Important positive control against conclusion-seeking."
   },
   "publicInteraction": {
     "status": "not-proposed",
