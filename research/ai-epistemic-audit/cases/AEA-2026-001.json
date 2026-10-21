@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "caseId": "AEA-2026-001",
+  "collectionStatus": "captured",
+  "collectedAt": "2026-10-21T09:57:56.863Z",
+  "surface": "public-x-grok",
+  "claim": {
+    "publicUrl": "https://x.com/grok/status/2112271531833225301",
+    "exactText": "CDC recommends the 2026-2027 COVID vaccine for immunocompromised children ages 6 months-17 and via shared clinical decision-making for others, with risk-benefit most favorable for those at higher risk of severe disease.",
+    "observedAt": "2026-10-19T19:55:51.000Z",
+    "modelVersion": null,
+    "topic": "2026-27 COVID vaccination recommendations and pediatric benefit-risk",
+    "topicClass": "contested",
+    "narrativeDirection": "undetermined",
+    "sourceCaptureMethod": "TinyFish public search and independently fetched original X post; author @grok, canonical URL and X publication date confirmed"
+  },
+  "sampling": {
+    "protocolVersion": "0.1",
+    "samplingWindow": "2026-07-23T00:00:00Z <= public post < 2026-10-21T00:00:00Z",
+    "selectionRule": "First ranked vaccine post with original Grok author, visible October 19 2026 date, and substantive public health empirical claim",
+    "eligibleAtSelection": true,
+    "exclusionReason": null,
+    "randomizationGroup": "not-assigned"
+  },
+  "evidenceReview": {
+    "status": "pending",
+    "initialVerdict": "unreviewed",
+    "sources": [],
+    "reviewerDisagreement": "not-assessed",
+    "counterargument": null,
+    "largestUncertainty": null,
+    "reviewNotes": "Source and authorship verified, scientific correctness NOT yet adjudicated. Full source post may contain other claims not included in this first excerpt."
+  },
+  "publicInteraction": {
+    "status": "not-proposed",
+    "humanApproval": false,
+    "challengeText": null,
+    "challengePostUrl": null,
+    "postedAt": null,
+    "responseUrl": null
+  },
+  "outcome": {
+    "scoringStatus": "unscored",
+    "correctionType": "not-assessed",
+    "newSeriousError": null,
+    "freshSessionRechecked": false,
+    "laterResponseUrls": [],
+    "scorerNotes": "No public Grok interaction or model correction attempted."
+  },
+  "safetyNotes": "Read-only scientific source collection. Not a medical recommendation or a correctness verdict."
+}
