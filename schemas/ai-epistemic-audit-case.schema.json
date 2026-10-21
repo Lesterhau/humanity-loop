@@ -346,5 +346,81 @@
     "safetyNotes": {
       "type": "string"
     }
-  }
+  },
+  "allOf": [
+    {
+      "description": "A case marked publicly posted must record explicit approval, real post URL, and timestamp; the record is not itself independent proof of consent.",
+      "if": {
+        "properties": {
+          "publicInteraction": {
+            "properties": {
+              "status": {
+                "const": "posted"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "publicInteraction"
+        ]
+      },
+      "then": {
+        "properties": {
+          "publicInteraction": {
+            "properties": {
+              "humanApproval": {
+                "const": true
+              },
+              "challengePostUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "postedAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "humanApproval",
+              "challengePostUrl",
+              "postedAt"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "description": "A scored case needs an actual scoring decision; a placeholder cannot be counted.",
+      "if": {
+        "properties": {
+          "collectionStatus": {
+            "const": "scored"
+          }
+        },
+        "required": [
+          "collectionStatus"
+        ]
+      },
+      "then": {
+        "properties": {
+          "outcome": {
+            "properties": {
+              "scoringStatus": {
+                "enum": [
+                  "provisional",
+                  "blinded-reviewed"
+                ]
+              }
+            },
+            "required": [
+              "scoringStatus"
+            ]
+          }
+        }
+      }
+    }
+  ]
 }
