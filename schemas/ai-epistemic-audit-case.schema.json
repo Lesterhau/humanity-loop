@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Lesterhau/humanity-loop/blob/main/schemas/ai-epistemic-audit-case.schema.json",
+  "title": "Humanity Loop AI Epistemic Audit public-response observation",
+  "description": "Case-level reproducible record. Does not authorize public posting. A case must reference an authentic public Grok claim; no synthetic/placeholder observations count as evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "caseId",
+    "collectionStatus",
+    "collectedAt",
+    "surface",
+    "claim",
+    "sampling",
+    "evidenceReview",
+    "publicInteraction",
+    "outcome"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "caseId": {
+      "type": "string",
+      "pattern": "^AEA-[0-9]{4}-[0-9]{3}$"
+    },
+    "collectionStatus": {
+      "enum": [
+        "captured",
+        "excluded",
+        "source-review",
+        "adjudicated",
+        "challenge-draft",
+        "public-challenge-approved",
+        "posted",
+        "scored"
+      ]
+    },
+    "collectedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "surface": {
+      "const": "public-x-grok"
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publicUrl",
+        "exactText",
+        "observedAt",
+        "topic",
+        "topicClass"
+      ],
+      "properties": {
+        "publicUrl": {
+          "type": "string",
+          "pattern": "^https://(x\\.com|twitter\\.com)/[^ ]+$"
+        },
+        "exactText": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modelVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "topic": {
+          "type": "string",
+          "minLength": 3
+        },
+        "topicClass": {
+          "enum": [
+            "contested",
+            "control"
+          ]
+        },
+        "narrativeDirection": {
+          "enum": [
+            "narrative-A",
+            "narrative-B",
+            "neither",
+            "not-applicable",
+            "undetermined"
+          ]
+        },
+        "sourceCaptureMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "sampling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "samplingWindow",
+        "selectionRule",
+        "eligibleAtSelection"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "0.1"
+        },
+        "samplingWindow": {
+          "type": "string",
+          "minLength": 3
+        },
+        "selectionRule": {
+          "type": "string",
+          "minLength": 10
+        },
+        "eligibleAtSelection": {
+          "type": "boolean"
+        },
+        "exclusionReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "randomizationGroup": {
+          "enum": [
+            "not-assigned",
+            "baseline",
+            "neutral-clarification",
+            "evidence-challenge"
+          ]
+        }
+      }
+    },
+    "evidenceReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "initialVerdict",
+        "sources",
+        "reviewerDisagreement"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "single-review-provisional",
+            "double-reviewed",
+            "not-adjudicable"
+          ]
+        },
+        "initialVerdict": {
+          "enum": [
+            "unreviewed",
+            "supported",
+            "mixed",
+            "overstated",
+            "unsupported",
+            "incorrect",
+            "unverifiable"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "sourceType",
+              "relevance"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "sourceType": {
+                "enum": [
+                  "original-study",
+                  "systematic-review",
+                  "meta-analysis",
+                  "dataset",
+                  "standards-body",
+                  "government",
+                  "other-primary",
+                  "secondary"
+                ]
+              },
+              "relevance": {
+                "enum": [
+                  "supports",
+                  "contradicts",
+                  "context",
+                  "unclear"
+                ]
+              },
+              "verifiedAt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "notes": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "reviewerDisagreement": {
+          "enum": [
+            "not-assessed",
+            "none",
+            "minor",
+            "material"
+          ]
+        },
+        "counterargument": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "largestUncertainty": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "publicInteraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "humanApproval",
+        "challengePostUrl"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not-proposed",
+            "draft",
+            "held",
+            "approved-not-posted",
+            "posted",
+            "no-response"
+          ]
+        },
+        "humanApproval": {
+          "type": "boolean"
+        },
+        "challengeText": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "challengePostUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "postedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "responseUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scoringStatus",
+        "correctionType",
+        "newSeriousError",
+        "freshSessionRechecked"
+      ],
+      "properties": {
+        "scoringStatus": {
+          "enum": [
+            "unscored",
+            "provisional",
+            "blinded-reviewed",
+            "excluded"
+          ]
+        },
+        "correctionType": {
+          "enum": [
+            "not-assessed",
+            "appropriate-no-change",
+            "full-evidence-correction",
+            "partial",
+            "rhetorical-concession",
+            "no-change-with-error",
+            "wrong-way-revision",
+            "refusal",
+            "unverifiable"
+          ]
+        },
+        "newSeriousError": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "freshSessionRechecked": {
+          "type": "boolean"
+        },
+        "laterResponseUrls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "scorerNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "safetyNotes": {
+      "type": "string"
+    }
+  }
+}
