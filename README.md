@@ -125,6 +125,7 @@ If a ChatGPT thread needs to be replaced, use the private prompt index in the au
 - `INNER-DEVELOPMENT.md` — pluralistic contemplative, awe, meaning, compassion, and collective-resilience mission
 - `MENTAL-HEALTH.md` — preventive counseling, psychological maintenance, task-sharing, and universal-access mission
 - `UNKNOWN-UNKNOWNS.md` — question-discovery and Rumsfeld-matrix scouting
+- `AI-EPISTEMIC-AUDIT.md` — **draft** impartial audit protocol for public-facing Grok empirical claims, with preregistered sampling, controls, source checking, and no automated X replies ([pilot issue #18](https://github.com/Lesterhau/humanity-loop/issues/18))
 - `ENVIRONMENTAL-BREAK-EVEN.md` — net-impact math for compute scaling and environmental payback
 - `TOOLING.md` — research/plugin capability map and fallback stack
 - `CONTRIBUTOR-MODE.md` — hourly volunteer-agent onboarding model
