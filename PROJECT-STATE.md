@@ -22,6 +22,13 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - **First visible execution of the shift:** on Oct20 Humanity Loop independently reverified the VA Spanish current-rates mismatch (OT-002), sent a bounded new-evidence update in the existing project correspondence, and verified the outbound AgentMail message. No public correction yet verified; next outcome check Oct27. OT-004 Texas WIC was independently checked: the current Spanish entry page matches USDA 2026-27 guidelines, while a legacy URL currently returns HTTP403 to automated readers, so a claimed full correction or live misleading page would be premature.
 - **Success definition:** independently confirmed corrected public guidance, useful accepted contributions, validated resource connections, or other beneficiary-level effects. Outreach/candidate creation/commits are intermediate outputs, not wins.
 
+## MOTHER controlled intake pilot — October 21, 2026
+
+- **Supervised synthetic email round trip independently PASSED:** a new, explicitly project-controlled test inbox sent a non-sensitive question about Spanish VA benefit-rate links into the approved MOTHER project mailbox. The receiver mailbox's original, source-checked supervised reply, handling of quoted prompt-injection content, and delivered reply in the independently queried sender mailbox were all verified, including `In-Reply-To` and two official current VA 2026 rate links.
+- Canonical *sanitized* test receipt: `runtime/mother-pilot/2026-10-21-supervised-email.json`; detailed private send/readback receipts: Undermind `/humanity-loop/operations/2026-10-21-mother-supervised-pilot.md`; gate: GitHub [issue #17](https://github.com/Lesterhau/humanity-loop/issues/17).
+- **Strict qualification:** This test was performed by the assistant in the active conversation. It did NOT demonstrate unattended hourly intake, autonomous triage/replies, responsiveness SLA, a consenting external adult tester, public X interaction, working Foundry, or mobile plugin onboarding. An internal synthetic sender is NOT an external beneficiary.
+- Full MOTHER public launch stays **on HOLD**. Three X posts remain unpublished Airtable `Draft` records; no social publishing connector or consent to broadcast. Next proof: independent supervised intake flow that can surface a new incoming message *without this chat*, then separately a consenting real-person Tier-0 trial and a demonstrated response review queue.
+
 ## Current operating components
 
 ### Current automation truth
