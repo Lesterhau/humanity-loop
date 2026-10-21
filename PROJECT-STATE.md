@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-20 — AppDeploy credit shutdown, repaired watchdog, and remaining worker/foundry gaps
+**State timestamp:** 2026-10-21 — MOTHER supervised pilot, new read-only AI Epistemic Audit candidate, and inherited recovery gaps
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -28,6 +28,14 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - Canonical *sanitized* test receipt: `runtime/mother-pilot/2026-10-21-supervised-email.json`; detailed private send/readback receipts: Undermind `/humanity-loop/operations/2026-10-21-mother-supervised-pilot.md`; gate: GitHub [issue #17](https://github.com/Lesterhau/humanity-loop/issues/17).
 - **Strict qualification:** This test was performed by the assistant in the active conversation. It did NOT demonstrate unattended hourly intake, autonomous triage/replies, responsiveness SLA, a consenting external adult tester, public X interaction, working Foundry, or mobile plugin onboarding. An internal synthetic sender is NOT an external beneficiary.
 - Full MOTHER public launch stays **on HOLD**. Three X posts remain unpublished Airtable `Draft` records; no social publishing connector or consent to broadcast. Next proof: independent supervised intake flow that can surface a new incoming message *without this chat*, then separately a consenting real-person Tier-0 trial and a demonstrated response review queue.
+
+## Research candidate — AI Epistemic Audit / Grok Science Accountability (October 21, 2026)
+
+- The user supplied a conversation handoff proposing a neutral, scientific accountability audit of **public-facing @Grok answers on X**, specifically empirical claims on contested cultural/political subjects. This is NOT an effort to customize a private Grok account or a promise to change xAI's model training.
+- **Current stage: Phase-0 research design; NOT an active public-correction campaign.** Canonical charter: [AI-EPISTEMIC-AUDIT.md](AI-EPISTEMIC-AUDIT.md); case-level data schema: [schemas/ai-epistemic-audit-case.schema.json](schemas/ai-epistemic-audit-case.schema.json); scoped [pilot issue #18](https://github.com/Lesterhau/humanity-loop/issues/18).
+- First milestone is a pre-registered, read-only **12 contested plus 4 low-controversy** public Grok-claim observational sample, with source adjudication, controls, counterevidence, reviewer disagreements and evidence-calibrated scoring. **Zero actual claims or model corrections have been independently recorded yet** under this initiative; no empirical conclusion is authorized.
+- Long-term scope may include symmetric comparisons with other AI systems. The protocol measures claim correction and justified confidence, NOT adherence to a chosen political position or model-weight modification.
+- X official automation rules require prior written permission for AI-powered public reply bots; no unsolicited, bulk or automated public replies. External challenges remain per-post human-review decisions under Governance and X rules. **MOTHER's public launch and Foundry safety holds are unchanged.** Avoid starting another persistent task or subscription solely to pursue this pilot; conduct research through existing authorized project capabilities.
 
 ## Current operating components
 
