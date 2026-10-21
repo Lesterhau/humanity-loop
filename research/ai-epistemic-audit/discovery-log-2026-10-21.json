@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "protocol": "research/ai-epistemic-audit/preregistration-2026-10-21.md",
+  "preRegistrationCommit": "e36c28e4a770185e9f8b40d11c72d390bf24d399",
+  "collectionDate": "2026-10-21",
+  "phase": "first search discovery attempt",
+  "status": "collection_blocked",
+  "firstSearch": {
+    "toolType": "public indexed web search (fast)",
+    "execution": "eight exact frozen queries submitted in single batch",
+    "resultAttributionLimit": "The merged search output did not annotate results with their originating query. Therefore query-level candidate rank, result counts, and per-stratum candidate inclusion could not be established, and the display of results cannot be presented as a stratified corpus.",
+    "outcome": "Returned unrelated X trending summaries, other authors' X posts and a public Grok share link, none demonstrated a verified original @grok/status/<id> post.",
+    "representativeNoneligibleResults": [
+      {
+        "url": "https://x.com/i/trending/2036044951914791240",
+        "reason": "Grok-generated trending summary, not an original @grok-authored reply"
+      },
+      {
+        "url": "https://x.com/GMO_Gaika/status/2077725360280768612",
+        "reason": "Author is a different X account"
+      },
+      {
+        "url": "https://x.com/i/grok/share/3UYyCBpnVgoLId0mktQMBVYoC",
+        "reason": "Public Grok share, not original @grok/status/<id> on X; outside registered surface"
+      }
+    ]
+  },
+  "strata": [
+    {
+      "topic": "climate-attribution",
+      "query": "site:x.com/grok/status \"climate\" \"2026\"",
+      "requestedSlots": 3,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    },
+    {
+      "topic": "vaccines",
+      "query": "site:x.com/grok/status \"vaccine\" \"2026\"",
+      "requestedSlots": 3,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    },
+    {
+      "topic": "nuclear-power",
+      "query": "site:x.com/grok/status \"nuclear\" \"2026\"",
+      "requestedSlots": 3,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    },
+    {
+      "topic": "gmo-safety",
+      "query": "site:x.com/grok/status \"GMO\" \"2026\"",
+      "requestedSlots": 3,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    },
+    {
+      "topic": "photosynthesis",
+      "query": "site:x.com/grok/status \"photosynthesis\" \"2026\"",
+      "requestedSlots": 1,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    },
+    {
+      "topic": "plate-tectonics",
+      "query": "site:x.com/grok/status \"plate tectonics\" \"2026\"",
+      "requestedSlots": 1,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    },
+    {
+      "topic": "orbital-mechanics",
+      "query": "site:x.com/grok/status \"orbital\" \"2026\"",
+      "requestedSlots": 1,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    },
+    {
+      "topic": "aspirin-mechanism",
+      "query": "site:x.com/grok/status \"aspirin\" \"2026\"",
+      "requestedSlots": 1,
+      "searchSubmitted": true,
+      "perQueryResults": "not independently attributable from merged response",
+      "originalPublicGrokPostsVerified": 0,
+      "selectedCases": 0,
+      "exclusionReason": "Only unassigned aggregated search results; no original post meeting account+date+text verification established."
+    }
+  ],
+  "totals": {
+    "targetCases": 16,
+    "verifiedOriginalPosts": 0,
+    "eligibleCases": 0,
+    "initialErrorClaims": 0,
+    "publicChallenges": 0,
+    "ecrNumerator": null,
+    "ecrDenominator": 0,
+    "ecrStatus": "undefined: no intervention denominators"
+  },
+  "nextStep": "Prospective, separately versioned source-access feasibility amendment prior to changing search method, without concealing this failed frozen attempt.",
+  "notClaimed": [
+    "Grok is accurate",
+    "Grok is inaccurate",
+    "X has zero Grok-authored answers",
+    "every topic yielded zero search results",
+    "model retrained",
+    "sample representative"
+  ],
+  "externalActions": "none"
+}
