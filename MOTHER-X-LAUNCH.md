@@ -1,6 +1,8 @@
 # MOTHER X Launch
 
-Status: account verification / connection in progress.
+Status (independently checked 2026-10-20): **NO GO for unrestricted public launch; internal draft/pilot preparation only.** @MotherFixes was previously recorded as live, but no social publishing account is connected in Airtable or Metricool. Do not equate a live handle with an operational, staffed public responder.
+
+Three source-linked posts have been drafted, **not approved/published/scheduled**, in Airtable `Humanity Loop — MOTHER Social` → `X Queue`: introduction, verified Texas HHS correction, honest operational status. Read-back on Oct20 found exactly three `Draft` records.
 
 ## Profile
 
@@ -50,6 +52,20 @@ https://github.com/Lesterhau/humanity-loop
 3. **How to use MOTHER** — corrections, ideas, evidence, contributor offers, expertise, compute, public-interest projects.
 4. **Open problem / Help Wanted** — one real Humanity Loop issue with a clear bounded ask.
 5. **Connector field report** — Clarvia → NLnet connection only after/if the recipient confirms the lead was useful; do not present a sent email as a win.
+
+## Release decision and pilot gates
+
+**Full MOTHER rollout remains on HOLD** until the already established mobile plugin onboarding gate in `PROJECT-STATE.md` is satisfied, or the user explicitly authorizes a revised, genuinely bounded launch policy. Also address:
+
+1. **Safety/runtime:** Foundry P1 fail-open parsing, swallowed model failures and credit-disabled execution remain unresolved (issue #14 and #16); never promise autonomous Foundry delivery while it is stopped.
+2. **Trustworthy monitoring:** GitHub detector/watchdog proof exists, but the main ChatGPT hourly worker still lacks its canonical heartbeat (issue #15). Verify actual schedule and human notifications, not just green badges.
+3. **Functional intake/reply:** Prove that a real non-sensitive test message to an approved public channel is received, routed, processed and answered with source receipts under review. No open-ended automatic replies or sensitive individual cases before this gate.
+4. **Publication path and accountability:** An actual social account connection or authorized manual publication workflow, human-vetted first posts, clear AI disclosure, useful live issue/volunteer link, opt-out and error correction route.
+5. **Mobile user path:** Resolve OpenAI plugin issue #2; verify publication and mobile installation, successful public tool call and Add-a-Node onboarding; old challenge-token status does not count as acceptance.
+
+**Permitted before these gates:** private drafts, scenario testing, consent-based closed pilot with review, verifiable corrections and project-inbox issue follow-ups within the established governance. No unsupported full-network/reply promise. No public post, follower campaign or launch automation is authorized merely by having three drafts.
+
+Pilot draft receipts: Airtable X Queue records `rec0ciC3cGrNjErMJ`, `recwsjyihpC0zHlGQ`, `recF8ixOvZXdvSrfF`. All are `Draft`. No guarantee an unchanged draft is ready to publish on its eventual posting date; reverify sources and operational claims first.
 
 ## Publishing controls
 
