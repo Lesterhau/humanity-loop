@@ -9,7 +9,8 @@
     "canonicalInstructions": "https://github.com/Lesterhau/humanity-loop/commit/867e9f8f85256eeaea78b632d5ad991d9ab9fb06",
     "stewardHandoff": "https://github.com/Lesterhau/humanity-loop/commit/2749a83695b5d6cfaab38d8a225dccedbf81f552",
     "staleDetectorTextRepair": "https://github.com/Lesterhau/humanity-loop/commit/0823d8c963ecd593e035819291b883814f343232",
-    "expectedCodeEffect": "Canonical workflow states an explicit Case Steward lane, recommends four-hour external check-ins but does not assert Claude is connected or scheduled, and disambiguates three old native AppDeploy cron statements."
+    "expectedCodeEffect": "Canonical instructions define a Case Steward lane. The external Claude task is NOT verified scheduled. Its documented scheduler offers an hourly recurring option, with substantive case rereviews gated by due dates and ordinarily at least four hours apart. Three stale AppDeploy-native enabled claims were removed and replaced with dated live-recheck language.",
+    "hourlyCadenceCorrection": "https://github.com/Lesterhau/humanity-loop/commit/d6c8257ed20476c5eca7b51f5a5cd666a1056f68"
   },
   "limits": [
     "No Claude Scheduled Task in the external account has been independently verified.",
