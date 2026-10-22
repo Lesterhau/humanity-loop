@@ -15,6 +15,8 @@ Claim primitive:
 - `hl_control.claim_due_scout_cell()` claims one due cell using `FOR UPDATE SKIP LOCKED`;
 - exactly one cell is advanced per claim;
 - a regression test verified one-cell-only mutation after an early ambiguous-column bug was detected and repaired before any scouting output was accepted.
+- **Critical accuracy qualification independently verified October 21:** `claim_due_scout_cell()` **immediately updates `last_run_at` and `next_due_at` on CLAIM**, before any source research. Therefore those fields record **claims, not verified finished research**. Treat completed evidence reviews as a distinct receipt with source, time, analysis and readback. Do not call the claim RPC just to refresh its timestamp. Correct completion semantics under [P1 issue #19](https://github.com/Lesterhau/humanity-loop/issues/19); current functions do not independently prove completed cycles.
+- **Current empirical incident:** all six active cell claim timestamps remain October 2 at 06:38 UTC and all `next_due_at` timestamps October 3; one verified `scout_signals` row was recorded October 2. No later Scout cell claims or source-verified completion receipts were found in this store as of Oct21. The system has not demonstrated its planned recurring six-hour research rotation.
 
 ## Initial deliberately small matrix
 
@@ -107,8 +109,8 @@ Planetary Impact Accountant should compare lifecycle water, energy, materials, r
 
 The main hourly worker may claim at most one due Scout cell per eligible Scout-Mesh cycle. Do not burn compute on every cell every hour.
 
-Suggested operating cadence:
-- inspect one due cell at least every 6 hours when higher-priority core-readiness/outcome work does not displace it;
+Required operating cadence:
+- complete or independently record a concrete safety/access block for **one due cell within every six-hour window**. Do not let known maintenance issues starve the Scout Mesh indefinitely. A mere claim timestamp does not count. During current issue #19 recovery, avoid the unsafe claim-as-completion assumption; use independently verifiable research-completion evidence, and do not bypass an execution write block;
 - each cell defaults to a 24-hour cadence;
 - no signal is required from a scan;
 - "nothing sufficiently useful/novel found" is an acceptable outcome.
