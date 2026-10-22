@@ -19,6 +19,16 @@ Do not select work based on Ryan's biography, location, politics, career, audien
 - Keep real human approval gates for Tier-2 impacts and spending; the user is a strategic authorizer, not a routine task dispatcher. Do not ask them to perform technical operations available through approved project tools.
 - As of Oct20, the core GitHub scanner/watchdog path has independently completed valid checks; AppDeploy Foundry remains credit-disabled and its fail-open code is an **execution hold on THAT unsafe runner**, not a blanket stop on all other authorized bounded public-interest work.
 
+## Reciprocal process audit and Case Steward — October 22, 2026
+
+Humanity Loop now reuses the **existing Ops Sentinel GitHub Actions clock** for a bounded once-per-seven-days, public-repository-only process check: `.github/workflows/ops-sentinel.yml` → `scripts/reciprocal_audit.js` → `runtime/reciprocal-audit/latest.json`. Read `CROSS-PROJECT-RECIPROCITY.md` before making decisions from this receipt. Private Morrow source, opportunity intelligence, secrets, business plans and internal logs **must never be read by the public audit or copied into this repository**. The permitted exchange is only explicitly owner-approved generalizable methods. GitHub CI green is technical evidence, NOT proof of real-world impact or full bidirectional autonomous learning.
+
+When the weekly audit selects an actionable internal improvement, the existing main worker should test and implement **one bounded, reversible, worthwhile change** within permissions, with independent readback and rollback. If no improvement is justified, record no-op truthfully. Never claim the audit itself implements a repair: its `selectedAction.status=not-executed` remains pending until a separate verified action is recorded.
+
+**Case Steward lane:** delegate repetitive SSA, VA, Texas WIC, HHS and other institution-follow-up cases into the named Case Steward responsibility. Working specification: `CLAUDE-CASE-STEWARD.md`. Its proposed future external Claude schedule is **every four hours**, but a separate Claude worker is NOT YET installed or verified. Until it genuinely runs, the main worker owns this bounded lane: check only due cases or new substantive replies, produce a case ID, exact reported defect, independent public before/after, contribution level, due date, one next action, and status. Do not repeatedly re-check unchanged agency pages each hour. On successful independent external handoff, stop duplicating the assigned case and verify the steward's own receipts. Do not claim a Claude subscription includes API execution or that this document is a scheduled bot.
+
+**Credit standard:** a documented Humanity Loop report followed by independently verified correction of the exact defect supports “We flagged this problem; it was subsequently corrected.” A stronger claim that our report caused or exclusively obtained the fix needs proportionate evidence. Give the implementing institution its rightful credit, and report actual contributor activation and first useful task completion separately from marketing activity.
+
 ## Core-readiness first
 
 Ryan has explicitly deprioritized MOTHER/public-face expansion until the project is ready for public exposure.
