@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-21T08:40:34.748996Z",
+  "runAt": "2026-10-22T08:42:51.516341Z",
   "status": "limited",
   "source": "Crossref retraction notices + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,72 +8,94 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 3,
-  "citationsExamined": 48,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
+  "newRetractionsChecked": 1,
+  "citationsExamined": 47,
+  "candidateFindingsCount": 1,
+  "candidateFindings": [
+    {
+      "retractedDoi": "10.1038/bjc.2014.283",
+      "noticeDoi": "10.1038/s41416-026-03656-y",
+      "citingSource": "MED",
+      "citingId": "37950285",
+      "citingTitle": "The association of statin therapy and cancer: a meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/37950285",
+      "status": "unreviewed"
+    }
+  ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 12,
+  "coverageGapsCount": 14,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1080/03067319.2024.2391951",
+      "doi": "10.1007/s11276-021-02661-8",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3390/electronics15173954",
+      "doi": "10.1007/s11276-021-02662-7",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.21273/hortsci13997-19",
+      "doi": "10.1007/s11276-021-02657-4",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/26395916.2026.2687375",
+      "doi": "10.1007/s11276-021-02648-5",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3233/ica-220693",
+      "doi": "10.1007/s11276-023-03515-1",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3233/ica-230710",
+      "doi": "10.1007/s11276-021-02646-7",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3233/ica-210672",
+      "doi": "10.1007/s11276-023-03524-0",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3233/ica-210661",
+      "doi": "10.1007/s11276-021-02672-5",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.eij.2025.100843",
+      "doi": "10.1007/s11276-021-02666-3",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.eij.2025.100856",
+      "doi": "10.1007/s11276-021-02715-x",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.eij.2025.100702",
+      "doi": "10.1007/s11276-021-02663-6",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.eij.2025.100756",
+      "doi": "10.1007/s11276-023-03525-z",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/s11276-021-02664-5",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/s11276-021-02647-6",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],

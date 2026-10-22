@@ -14,6 +14,18 @@
       "status": "unreviewed",
       "detectedAt": "2026-10-20T22:01:21.564316Z",
       "provenanceUrl": "https://github.com/Lesterhau/humanity-loop/commit/cd6cea0167de466400f30dcd48a029264f9f6a7b"
+    },
+    {
+      "retractedDoi": "10.1038/bjc.2014.283",
+      "noticeDoi": "10.1038/s41416-026-03656-y",
+      "citingSource": "MED",
+      "citingId": "37950285",
+      "citingTitle": "The association of statin therapy and cancer: a meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/37950285",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-22T08:42:51.516341Z"
     }
   ]
 }
