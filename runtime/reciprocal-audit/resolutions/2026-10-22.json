@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "auditReceipt": "runtime/reciprocal-audit/latest.json",
+  "originalAuditRun": "https://github.com/Lesterhau/humanity-loop/actions/runs/39874749564",
+  "auditFinding": "case-delegation-absent",
+  "status": "technical-repair-verified",
+  "resolvedAt": "2026-10-22",
+  "verification": {
+    "canonicalInstructions": "https://github.com/Lesterhau/humanity-loop/commit/867e9f8f85256eeaea78b632d5ad991d9ab9fb06",
+    "stewardHandoff": "https://github.com/Lesterhau/humanity-loop/commit/2749a83695b5d6cfaab38d8a225dccedbf81f552",
+    "staleDetectorTextRepair": "https://github.com/Lesterhau/humanity-loop/commit/0823d8c963ecd593e035819291b883814f343232",
+    "expectedCodeEffect": "Canonical workflow states an explicit Case Steward lane, recommends four-hour external check-ins but does not assert Claude is connected or scheduled, and disambiguates three old native AppDeploy cron statements."
+  },
+  "limits": [
+    "No Claude Scheduled Task in the external account has been independently verified.",
+    "No case steward execution or external handoff is proven.",
+    "First weekly reciprocal audit ran successfully once; no second recurrence yet.",
+    "No private Morrow code was read, copied, transferred or used in public CI.",
+    "This is an operating-instruction repair, not proof of an institutional public-interest outcome."
+  ]
+}
