@@ -31,7 +31,15 @@ For any candidate produced by the weekly script, the existing main Humanity Loop
 
 **Initial first-cycle tangible improvement:** The previously documented native AppDeploy status contradicted three earlier unqualified `enabled` assertions in `AUTOMATION-PROMPT.md`. Commit `0823d8c963ecd593e035819291b883814f343232` replaced those claims with accurate **last-verified Oct20 disabled** facts and mandatory live rechecks. This prevents an hourly worker from using stale declarations to spawn duplicate work. It is a technical documentation/decision-quality fix, **not a public-interest outcome**.
 
-The pending case-delegation improvement should transfer repetitive SSA/VA/WIC checks into a named steward lane, with due dates and summary receipts. No Claude worker is claimed installed or scheduled until its separate platform schedule has been proven. Start Claude at **four-hour check-ins** if the user's account supports it, with actual case source rereviews only when due or new correspondence arrives.
+The pending case-delegation improvement should transfer repetitive SSA/VA/WIC checks into a named steward lane, with due dates and summary receipts. No Claude worker is claimed installed or scheduled until its separate platform schedule has been proven. Start Claude using its **documented hourly schedule**, with a low-cost check and substantive rereviews no more often than every four hours per case unless new evidence or urgency justifies it; see `CLAUDE-CASE-STEWARD.md`. A separate Claude schedule is NOT yet configured or independently confirmed.
+
+## First verified audit → actual fix (October 22)
+
+The existing Ops Sentinel workflow's [run #77](https://github.com/Lesterhau/humanity-loop/actions/runs/39874749564) successfully completed six `test_reciprocal_audit.js` cases, performed its existing watchdog checks, and saved the [first bounded audit receipt](runtime/reciprocal-audit/latest.json), `2026-10-22T23:54:00Z`. The receipt selected `case-delegation-absent`, explicitly `status: not-executed`; this was a proposed action, not an automatically completed change.
+
+**Human-executed authorized follow-through in this project:** added the [Claude Case Steward configuration](CLAUDE-CASE-STEWARD.md) as a read-only setup contract (GitHub commit `2749a83695b5d6cfaab38d8a225dccedbf81f552`), and corrected the canonical [hourly operating instructions](AUTOMATION-PROMPT.md) with a named case lane (commit `867e9f8f85256eeaea78b632d5ad991d9ab9fb06`). [Resolution receipt](runtime/reciprocal-audit/resolutions/2026-10-22.json) independently records this technical repair. The Claude cadence was later refined to its actually documented built-in hourly schedule (rather than a nonexistent manual four-hour scheduler), with deep case reviews gated by due dates. **No external Claude worker is yet connected, scheduled, or independently proven to have performed this role.**
+
+A single successful scheduled/triggered process run is **not evidence** of seven-day recurring reliability. Later runs must be verified by actual GitHub Actions job and `runtime/reciprocal-audit/latest.json` timestamps. This side has no private Morrow read/write access, so the ongoing reciprocal *learning* bridge still needs owner-approved sanitized method proposals to move from Morrow to public Humanity Loop.
 
 ## Risk-proportionate execution thresholds
 
