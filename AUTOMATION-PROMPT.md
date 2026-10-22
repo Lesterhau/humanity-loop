@@ -386,14 +386,16 @@ The hourly worker owns these recurring responsibilities because the account auto
 - inspect stale outcome items and live-runtime blockers;
 - do not duplicate the dedicated `Humanity Loop — Foundry` scheduled worker.
 
-### At least every 6 hours — Scout Mesh
+### At least every 6 hours — Scout Mesh (starvation guard; issue #19)
 Follow `SCOUTING.md` and `SCOUT-MESH.md`.
-- when higher-priority core-readiness/outcome work does not displace it, claim at most one due `hl_control.scout_cells` entry using `hl_control.claim_due_scout_cell()`;
-- scan in the cell's specified language and geography/domain context;
-- it is valid to record no signal if nothing clears novelty/usefulness/evidence thresholds;
-- any recorded signal must include provenance, uncertainty, existing-solutions check, falsification criteria, STEEP+/TIPPO/Three-Horizons/Futures-Triangle/cross-impact fields, and an escalation recommendation;
-- do not create a project from a weak signal until verification is proportionate to the proposed action;
-- measure rejected/duplicative signals as well as accepted ones.
+- **Service debt discovered 2026-10-21:** an independently read-only Supabase audit found all SIX active cells last scanned **2026-10-02 06:38Z**, due again Oct 3; only one verified `hl_control.scout_signals` exists. ChatGPT task invocation is NOT proof that scouting occurred. Track recovery in [issue #19](https://github.com/Lesterhau/humanity-loop/issues/19).
+- **Do not postpone scouting indefinitely** because there is always maintenance. Reserve a minimum of **one real, source-checked Scout Mesh cycle in each rolling six-hour window**, except when a *specific live* P0/P1 security or safety incident makes even read-only scouting unsafe. Routine known incidents (AppDeploy credit outage, already-recorded heartbeat block, historical failures) do not alone excuse missed research. If truly blocked, make a dated, evidence-backed `scouting_blocked` record with concrete blocker, affected due cell, next allowed retry, and alert; **never** write fabricated `last_run_at`, heartbeat or signal just to satisfy a cadence.
+- Check `hl_control.scout_cells` actual `last_run_at`/`next_due_at` with a live **read-only** query before claiming/scanning. Pick the oldest due cell and **at most one** using `hl_control.claim_due_scout_cell()` *only after* checking the exact SQL function effect and assuring a real eligible research cycle. If claiming advances `last_run_at` prematurely, preserve the discrepancy and correct the execution/receipt protocol before claim; a claim is not a completed scan. Respect permissions and never bypass a write block.
+- Scan using the cell's specified geography, language, domain and uncertainty lenses with actual public sources; verify existing solutions and novelty. A documented **no-signal** finding is acceptable; do not manufacture projects or evidence.
+- For candidate signals, capture independent provenance, dates, uncertainty, existing-solutions check, falsification criteria, STEEP+/TIPPO/Three-Horizons/Futures-Triangle/cross-impact fields, and escalation recommendation, then read back the durable state. De-duplicate before adding signals.
+- When evidence supports an intervention, route into the smallest **already-authorized and actually executing** Scout → Verifier → 10th Man → Builder/Connector → Outcome process; task records or static agent registrations do **not** prove live bot execution. Do not reenable unsafe Foundry, start a paid service, auto-replicate, or create unsupervised task schedulers. New specialist workers require role, bounded compute, unique owner, permissions, termination, independent completion receipt and explicit new-authority gates.
+- Each daily cycle report must distinguish `verified_scans`, `no_signal`, `source_blocked`, `verified_candidates`, `verified_interventions`, `verified_outcomes`; report stale source-store data as stale even if other project agents researched something outside the Scout Mesh. Independently verify `scout_cells` advancement, and do not close #19 solely on self-reported activity.
+- Measure rejected/duplicative signals as well as accepted ones; expand geography/topic cells **only after** useful output and credible operational capacity justify more coverage.
 
 ### At least every 6 hours — GitHub Issue Steward
 Follow `ISSUE-STEWARDSHIP.md`.
