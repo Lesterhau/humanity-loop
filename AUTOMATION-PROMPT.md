@@ -184,7 +184,7 @@ CAP Daily Audit:
 https://cap-daily-audit-s0a2he.v2.appdeploy.ai/
 
 At least once per calendar day:
-- treat `.github/workflows/cap-daily-audit.yml` and `runtime/cap-daily-audit/latest.json` as the canonical audit scheduler/receipt; the native AppDeploy CAP cron is ALSO enabled, uses different DB state, and issue #13 owns a safe single-scheduler cutover; do not describe either as disabled without checking;
+- treat `.github/workflows/cap-daily-audit.yml` and `runtime/cap-daily-audit/latest.json` as the canonical audit scheduler/receipt. The native AppDeploy CAP cron uses a separate UI/database implementation; **last verified disabled Oct20 because credits were exhausted**. Check its live status before stating it is enabled or disabled. Issue #13 owns a safe single-scheduler cutover; do not accidentally create duplicate reporting.
 - verify the most recent GitHub Actions receipt is fresh and the AppDeploy UI remains reachable;
 - inspect new findings;
 - independently verify material findings;
@@ -202,7 +202,7 @@ https://federal-policy-delta-p49z0b.v2.appdeploy.ai/
 
 Follow `FEDERAL-POLICY-DELTA.md`.
 
-The AppDeploy UI remains deployed and its native cron is enabled. Use `.github/workflows/federal-policy-delta.yml` and `runtime/federal-policy-delta/` for canonical deterministic detection/receipts. The native AppDeploy scanner uses separate data and a different Congress source; issue #13 owns parity and scheduler cutover. Do not disable either before independent UI/receipt verification.
+The AppDeploy UI remained deployed on last check, but its native cron was **verified disabled Oct20 due to exhausted credits**. Use `.github/workflows/federal-policy-delta.yml` and `runtime/federal-policy-delta/` for canonical deterministic detection/receipts. The native AppDeploy implementation has a separate database and different Congress source. Recheck live native cron status before asserting it runs; issue #13 owns parity and the safe single-scheduler cutover.
 
 The GitHub detector preserves official-source deltas but deliberately does not make legal conclusions. For detected material-looking changes:
 - preserve before/after;
@@ -220,7 +220,7 @@ Public communication may show receipts and unresolved questions. Do not tell peo
 AppDeploy UI/API:
 https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/
 
-The native AppDeploy Critical Guidance cron is enabled. Use `.github/workflows/critical-guidance-delta.yml` and `runtime/critical-guidance-delta/` for canonical deterministic change detection/receipts. Native AppDeploy has a distinct AI-classification implementation. GitHub WHO cosmetic-header filtering was repaired October 10, but AppDeploy code is unchanged; issue #13 owns safe owner cutover.
+The native AppDeploy Critical Guidance cron was **verified disabled Oct20 due to exhausted credits**. Use `.github/workflows/critical-guidance-delta.yml` and `runtime/critical-guidance-delta/` for canonical deterministic change detection/receipts. Native AppDeploy has a distinct AI-classification implementation. Recheck native status before any reactivation, and preserve issue #13 safe owner cutover.
 
 A detected page delta is triage only. Before any medical, regulatory, or safety escalation:
 - verify the change at the authoritative WHO/FDA/EMA source;
