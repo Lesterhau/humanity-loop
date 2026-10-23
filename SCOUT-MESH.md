@@ -31,6 +31,8 @@ Claim primitive:
 
 Do not scale the matrix merely because more cells are easy to add. Expand only after the existing cells produce useful, non-duplicative signals.
 
+**Cross-cutting defensive priority (Oct 23):** AI-enabled coordinated cyber threats to critical infrastructure, financial institutions and essential digital services; search for public, defensible **protective solutions and unmet support needs**, not attack targets. Apply [AI-INFRASTRUCTURE-DEFENSE-SCOUT.md](AI-INFRASTRUCTURE-DEFENSE-SCOUT.md) alongside existing geographic/topic cells, especially the global AI infrastructure and science integrity domains where relevant. Track [issue #21](https://github.com/Lesterhau/humanity-loop/issues/21) without adding a seventh idle cell or new schedule. This new priority does **not** excuse overdue claim-vs-completion recovery [#19](https://github.com/Lesterhau/humanity-loop/issues/19).
+
 ## Required signal fields
 
 Every accepted Scout signal includes:
