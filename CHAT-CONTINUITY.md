@@ -38,6 +38,8 @@ A new Humanity Loop master chat should read these first:
 - `FOUNDRY-RUNTIME.md`
 - `TOOLING.md`
 - `MULTI-MODEL.md`
+- `CROSS-PROJECT-RECIPROCITY.md` — Humanity Loop-only weekly process audit, strict private Morrow boundary and verified receipts
+- `CLAUDE-CASE-STEWARD.md` — ready-to-configure independent hourly-check task; do not claim Claude is scheduled until verified
 - `AMPLIFIER-CONNECTOR.md`
 - `TRANSITION-BARRIERS.md`
 - `SOCIAL-DISTRIBUTION.md`
