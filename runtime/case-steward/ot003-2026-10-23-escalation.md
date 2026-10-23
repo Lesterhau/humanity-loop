@@ -2,7 +2,7 @@
 
 **Owner:** Humanity Loop Case Steward lane (main worker until separate specialist execution verified).  
 **Responsible institution:** Texas Health and Human Services / Texas WIC; escalation recipient is HHSC Fair and Fraud Hearings Department.  
-**Current state:** unresolved; escalation **SENT and independently verified** October 23, 2026. HHSC automated receipt independently verified; no substantive reply or correction yet.  
+**Current state (updated 2026-10-23):** unresolved public PDF; substantive HHSC Deputy Director response confirms the HHSC-assigned lawyer represents the agency, not the appellant, and agrees the handout wording is misleading. Responsible publications owner still unidentified; no PDF correction verified.  
 **Prior contacts:** original report September 25, 2026; one project follow-up September 30 to wicgeneral@hhs.texas.gov and wicsupport@hhs.texas.gov. AgentMail thread `d2013f26-d40d-4f0f-af3d-5b4058ec524c` contains one sent message and no received response as checked October 23.
 
 ## Independently checked public evidence (October 23, 2026)
@@ -48,3 +48,13 @@ https://github.com/Lesterhau/humanity-loop
 - HHSC automated acknowledgement received at `2026-10-23T18:51:18Z`; sender `occ_appeals_fairandfraudhearings@hhsc.state.tx.us`, Message-ID `<48ced5101b1443c6aaa50ec5e801a42d@CY8PR05MB9963.namprd05.prod.outlook.com>`. The automatic reply confirms receipt, but is **not** a substantive response, acceptance of responsibility, or evidence of correction. It requests case IDs for individual appeals; this report concerns a public handout and has no individual appeal ID.
 - **Next action:** Case Steward reviews this correspondence on a substantive reply or November 6, 2026, whichever comes first, and independently rechecks the same PDF. **Stale threshold:** November 13, 2026; then consider closing with reason or one proportionate higher responsible channel, not repeated messages to the same recipient. **Closure:** corrected bilingual PDF, documented official clarification, or explicit closure with reason.
 - **Impact classification:** factual issue escalated and delivery acknowledged; no beneficiary outcome or institutional fix verified. No MOTHER publication authorized.
+
+
+## Material agency response and verified reply — October 23, 2026
+- **Received:** 2026-10-23T20:26:07Z from M. Elizabeth Boyce, Deputy Director, HHSC Contested Case Department / Appeals Division, at the authorized Humanity Loop project AgentMail inbox. Incoming Message-ID: `<SA0PR05MB740382EEE00FB9E42E5AE37BAF642@SA0PR05MB7403.namprd05.prod.outlook.com>`; thread `f089af94-9ca7-4f18-acb8-bb1f749b7aeb`.
+- **Substantive confirmation:** HHSC-assigned counsel represents **the agency**, not the appellant; appellants obtain their own lawyer at their own expense. Deputy Director agreed that the public handout's wording is misleading. She did not know the handout's author or responsible editor and **offered to identify a better contact**. This is meaningful institutional acknowledgment and clarification, **not a published correction** or admission of legal liability.
+- **Bounded response sent:** 2026-10-23T21:36:59Z, from `mother.humanityloop@agentmail.to`, thanking the official and accepting the offer to identify/forward to the WIC policy/publications owner. Included the exact bilingual PDF link and requested clear role-specific wording in both languages. Sent Message-ID: `<010001a16ab21afc-2f7aa7fd-d1d9-41a6-b8c5-3c66dcb37afe-000000@email.amazonses.com>`. Independently read back in the same two-message AgentMail thread. No further automatic reminders to this official.
+- **Public state:** Last independently checked 2026-10-23; PDF still carried ambiguous attorney-assignment text. A reply does **not** establish the handout was revised.
+- **Owner:** Case Steward lane (main worker until an independently verified handoff).
+- **Next action:** On an actual referral/substantive reply, verify responsible WIC editor and obtain a correction path; otherwise check the public PDF on **2026-11-06**. **Stale threshold:** 2026-11-13; consider one proportionate escalation or documented closure, without repeated pressure on this responder. **Closure:** corrected bilingual handout independently fetched, or explicit documented closure with reason.
+- **Attribution:** HHSC official supplied the substantive clarification and acknowledged wording ambiguity. Humanity Loop reported the discrepancy; no claim of causal correction, beneficiary impact, or public resolution.
