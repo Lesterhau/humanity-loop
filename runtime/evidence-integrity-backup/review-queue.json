@@ -26,6 +26,114 @@
       "europePmcUrl": "https://europepmc.org/article/MED/37950285",
       "status": "unreviewed",
       "detectedAt": "2026-10-22T08:42:51.516341Z"
+    },
+    {
+      "retractedDoi": "10.3390/jpm13050774",
+      "noticeDoi": "10.3390/jpm16110542",
+      "citingSource": "MED",
+      "citingId": "40650721",
+      "citingTitle": "Clinical outcomes of interproximal enamel reduction in orthodontic treatment of children and adolescents: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/40650721",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.3390/jpm13050774",
+      "noticeDoi": "10.3390/jpm16110542",
+      "citingSource": "MED",
+      "citingId": "40142644",
+      "citingTitle": "The Co-Occurrence of Temporomandibular Disorders in Patients Diagnosed with Tinnitus: A Systematic Review with Meta-Analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/40142644",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.3390/jpm13050774",
+      "noticeDoi": "10.3390/jpm16110542",
+      "citingSource": "MED",
+      "citingId": "39988709",
+      "citingTitle": "Evaluating the success rates and effectiveness of surgical and orthodontic interventions for impacted canines: a systematic review of surgical and orthodontic interventions and a case series.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39988709",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.3390/jpm13050774",
+      "noticeDoi": "10.3390/jpm16110542",
+      "citingSource": "MED",
+      "citingId": "39594950",
+      "citingTitle": "The Diagnosis and Management of Infraoccluded Deciduous Molars: A Systematic Review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39594950",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.3390/jpm13050774",
+      "noticeDoi": "10.3390/jpm16110542",
+      "citingSource": "MED",
+      "citingId": "38002872",
+      "citingTitle": "Primary Failure Eruption: Genetic Investigation, Diagnosis and Treatment: A Systematic Review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/38002872",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.1007/s10936-023-10003-2",
+      "noticeDoi": "10.1007/s10936-026-10324-y",
+      "citingSource": "MED",
+      "citingId": "42857135",
+      "citingTitle": "Non-pharmacological executive function interventions for children and adolescents with neurodevelopmental disorders: a systematic review and network meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/42857135",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.1007/s10936-023-10003-2",
+      "noticeDoi": "10.1007/s10936-026-10324-y",
+      "citingSource": "MED",
+      "citingId": "42342602",
+      "citingTitle": "Technology-Based Interventions for Children and Adolescents with ADHD: A Systematic Review and Meta-Analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/42342602",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.1007/s10936-023-10003-2",
+      "noticeDoi": "10.1007/s10936-026-10324-y",
+      "citingSource": "MED",
+      "citingId": "41890930",
+      "citingTitle": "Mindfulness-based interventions for children and adolescents with attention-deficit/hyperactivity disorder: a Bayesian meta-analysis of randomized controlled trials.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41890930",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.1007/s10936-023-10003-2",
+      "noticeDoi": "10.1007/s10936-026-10324-y",
+      "citingSource": "MED",
+      "citingId": "41769550",
+      "citingTitle": "Mapping the Mind: A Network Meta-Analysis of Mindfulness and Traditional and Digital Interventions for Cognitive and Behavioral Enhancement in Children With Attention-Deficit/Hyperactivity Disorder (ADHD).",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41769550",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-23T08:38:38.935116Z"
     }
   ]
 }
