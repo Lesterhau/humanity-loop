@@ -1,6 +1,6 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-21 22:20 CDT — independent Hourly Worker, Scout Mesh and agent-fleet evidence audit
+**State timestamp:** 2026-10-22 — reciprocal process audit verified, first operating fix, Claude handoff prepared
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
@@ -47,6 +47,14 @@ Build a vendor-neutral, distributed public-interest agent system that can:
 - **Deterministic independent scan network works within bounds:** latest independent GitHub Ops Sentinel report `runtime/ops-sentinel/latest.json` `2026-10-22T01:48:57Z` has CAP, Federal Policy, Critical Guidance and Evidence Integrity Backup receipts all OK, but still warns missing `runtime/ops/hourly-worker.json`. These measure narrowly specified feeds, not full autonomous world-problem discovery.
 - **Prompt correction performed:** canonical `AUTOMATION-PROMPT.md` updated Oct21 to prevent indefinite Scout starvation and to explicitly separate due-cell claim timestamps from verified research completion. Changes apply to subsequent scheduled worker runs when it successfully fetches GitHub; they do **not** establish a recovered Scout Mesh or guarantee that ChatGPT host executes every requested action. No automatic payments, further crons, uncontrolled recursive agents or unsafe Foundry restart authorized.
 - **Database advisory:** Supabase schema inventory warns 14 private `hl_control` tables lack Row Level Security. Independent SQL checks of `anon`/`authenticated` roles found **no private-schema USAGE or SELECT** for sampled scout/tasks tables; public exposure is NOT independently established. Least-privilege review tracked under **[issue #20](https://github.com/Lesterhau/humanity-loop/issues/20)**. Do not bulk-enable RLS without safe policy/rollout checks.
+
+## Humanity Loop ↔ Morrow reciprocal improvement (October 22, 2026)
+
+- Owner explicitly authorized **independent, private-safe process comparison** between Humanity Loop (public) and Morrow Engine (PRIVATE). No merged operations, cross-repository token or private-data transfer. Canonical contract: `CROSS-PROJECT-RECIPROCITY.md`. Morrow's recent private GitHub commit metadata describes a separate read-only comparison implementation, but its independent scheduled run and receipt have **not** been verified here; never claim both directions operational from one project's run.
+- **No new scheduler created:** Existing `.github/workflows/ops-sentinel.yml` invokes `scripts/reciprocal_audit.js --if-due` within its current watchdog schedule, bounded by a 7-day persisted receipt. Script reads only five allowlisted local PUBLIC Humanity Loop files and cannot access Morrow. Six `scripts/test_reciprocal_audit.js` regression tests cover no-op truth, due gate, status drift, Scout claim semantics, missing case handoff and no private access.
+- **Initial tested run:** [GitHub Actions #77](https://github.com/Lesterhau/humanity-loop/actions/runs/39874749564) completed successfully October 22, including reciprocal audit step. Durable `runtime/reciprocal-audit/latest.json` at `2026-10-22T23:54:00Z` proposed `case-delegation-absent` (NOT an auto-executed fix). Actual separately verified repair: `CLAUDE-CASE-STEWARD.md` + Case Steward ownership and realistic trigger/cost gates in `AUTOMATION-PROMPT.md`, logged `runtime/reciprocal-audit/resolutions/2026-10-22.json`. Earlier commit `0823d8c963ecd593e035819291b883814f343232` fixed three stale native detector status assertions. Technical process improvements, not public-benefit outcomes.
+- **Claude handoff state:** ready-to-configure **hourly lightweight scheduled task** with review of cases only when due (normally no more than one substantive rereview per case in four hours). No independent Claude connection or scheduled first run has been verified. Claude's paid chat plan does NOT establish metered API access or off-platform agent authority.
+- Next reciprocal audit is **eligible** no earlier than ~`2026-10-29T23:54Z`, but GitHub scheduled runs can be delayed or skipped. The first run validates the implementation, **not recurring weekly reliability**. A genuinely bidirectional flow of new nonproprietary methods requires approved sanitized Morrow-to-Humanity-Loop proposals before publication.
 
 ## Current operating components
 
