@@ -22,6 +22,30 @@
 >
 > When there is no actionable new case, return `no-op` with the next genuine case review date and stop. Escalate only if a consequential new issue, deadline, verified correction or permission gate exists. No fake progress.
 
+## Run-to-run context: canonical memory, not chat reconstruction
+
+**At the beginning of EVERY scheduled run**:
+
+1. Read Humanity Loop's current `PROJECT-STATE.md`, `GOVERNANCE.md`, `OUTCOME-TRACKER.md`, this file, and the existing approved Case Steward handoff if one actually exists. Check the most recent GitHub commit or previously verified steward receipt before making any case decision.
+2. Reconstruct current case ownership, last independently verified evidence, next review due date, recent changes and duplicate tasks **from those records**, not from a past Claude conversation or summary alone. Claude's cloud memory can help with project preferences and context but is **not** the canonical source for public facts or task completion.
+3. Check only new relevant project-inbox correspondence when the authorized account connector permits it; do not assume that Gmail is the same as MOTHER AgentMail, or that any inbox is connected.
+4. Select one genuinely due case. If nothing changed, return a brief `no-op` with exact next review date. Do not use old memories to invent a new action.
+
+**At the end of EVERY run:** provide a brief structured case handoff with current case ID, source links, verified outcome level, changed facts, one next authorized action and due date, whether a write occurred, and a real commit/receipt URL ONLY when independently read back. During read-only setup, return the proposed handoff in Claude's task result and label `project_delivery: not_connected`; do not imply the ChatGPT worker has received it. After a separately approved, tested GitHub write permission, the steward may write a **public-safe** canonical `runtime/case-steward/latest.json` receipt. Never put raw private agency emails, message bodies, personal records, secrets or tokens in this PUBLIC repository.
+
+**Frequency:** The owner has entered a proposed **four-hour** cadence in Claude's setup. This overrides the older generic hourly recommendation **only if Claude actually confirms it as the saved task schedule**. If the interface does not support that cadence, use an available hourly lightweight schedule and gate substantive case work to due dates; do not claim scheduling success without an actual task confirmation.
+
+## Where to report and when MOTHER can use it
+
+Default destination is **Humanity Loop's shared project record**, not an intrusive personal notification. A task result in Claude by itself does **not** notify ChatGPT or deliver work to Humanity Loop. To enable real cross-model handoff, establish and independently test an authorized GitHub event/receipt connection. Until it works, label output `delivery_pending` and do not claim a trigger happened.
+
+Classify each proposed communication into:
+- `routine`: checking status, unchanged webpages, cleared backlog, small code fix, ordinary follow-up, or a blocked action with no new implication. Save it; **no MOTHER content draft and no owner notification**.
+- `impact_candidate`: independently verified public-benefit correction **of the exact reported problem**, a meaningful contribution with documentary evidence, an urgent public resource, or a strong externally useful discovery. Save the date/source trail and **propose one MOTHER content draft for separate factual/voice review**, not automatic publication. Include `why_audience_should_care`, `before_evidence`, `after_evidence`, and attribution qualifiers.
+- `approval_required`: credible high-impact opportunity with consequential external action, spending, privacy, account changes or public posting beyond existing authority. Flag the narrow approval reason to Humanity Loop's main worker. Escalate to the owner only if a genuine human decision is unavoidable.
+
+MOTHER must **not** automatically post because a steward changed an issue status or cleared its queue. Social publishing needs a functioning authorized publishing route, source checks at post time, appropriate human approval and platform compliance. Project updates are not inherently audience-worthy.
+
 ## Return record (JSON-compatible)
 
 - `worker`: `Claude Case Steward`
