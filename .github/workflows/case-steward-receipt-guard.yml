@@ -1,0 +1,37 @@
+name: Case Steward — safe handoff guard
+
+on:
+  pull_request:
+    paths:
+      - 'runtime/case-steward/**'
+      - 'scripts/validate_case_steward_receipt.js'
+      - 'scripts/test_case_steward_receipt.js'
+      - '.github/workflows/case-steward-receipt-guard.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'runtime/case-steward/**'
+      - 'scripts/validate_case_steward_receipt.js'
+      - 'scripts/test_case_steward_receipt.js'
+      - '.github/workflows/case-steward-receipt-guard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Checkout public Humanity Loop repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Test untrusted Claude handoff rejection rules
+        run: node --test scripts/test_case_steward_receipt.js
+      - name: Check latest handoff only if independently delivered
+        run: |
+          if [ -f runtime/case-steward/latest.json ]; then
+            node scripts/validate_case_steward_receipt.js runtime/case-steward/latest.json
+          else
+            echo "No Claude handoff received. Unit tests only; no integration success claimed."
+          fi
