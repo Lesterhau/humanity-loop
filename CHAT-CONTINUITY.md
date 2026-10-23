@@ -39,7 +39,9 @@ A new Humanity Loop master chat should read these first:
 - `TOOLING.md`
 - `MULTI-MODEL.md`
 - `CROSS-PROJECT-RECIPROCITY.md` — Humanity Loop-only weekly process audit, strict private Morrow boundary and verified receipts
-- `CLAUDE-CASE-STEWARD.md` — ready-to-configure independent hourly-check task; do not claim Claude is scheduled until verified
+- `CLAUDE-CASE-STEWARD.md` — owner-reported *four-hour* scheduled Claude Case Steward, yet no independently verified Claude result delivery; keep active per owner choice, no global connector changes
+- `CLAUDE-STEWARD-DIRECTIVES.md` — Humanity Loop's public-safe command queue for Claude to read at run start; latest GitHub revisions can be edited through the main worker, but receipt by Claude is not yet proven
+- `AI-INFRASTRUCTURE-DEFENSE-SCOUT.md` — protective AI-enabled-threat scouting across critical infrastructure and finance; public defensive research only, issue #21
 - `AMPLIFIER-CONNECTOR.md`
 - `TRANSITION-BARRIERS.md`
 - `SOCIAL-DISTRIBUTION.md`
