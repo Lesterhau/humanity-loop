@@ -49,7 +49,8 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Status: **follow-up-sent**
 - Follow-up: sent 2026-09-30 from MOTHER / Humanity Loop to WICGeneral@hhs.texas.gov and WICsupport@hhs.texas.gov.
 - Public source: https://texaswic.cart.com/Shared/PDF-Downloads/13-06-12103.pdf
-- Next review: daily agency-reply/outcome pass; independently recheck before closure.
+- **2026-10-23 verified recheck and internal escalation:** Original bilingual PDF still promises an HHS-assigned lawyer; HHSC general Fair and Fraud Hearings FAQ separately says appellant counsel is at the appellant's expense. This warrants program-specific clarification rather than a categorical legal conclusion. One neutral clarification/escalation sent to the HHSC Fair and Fraud Hearings Department (different responsible unit), independently read back in approved AgentMail thread `4a80f3d5-e07d-4646-88c8-a65404adbbb2`; an automated receipt was independently verified. No substantive response or correction yet. Full public-safe intent/evidence/receipt: `runtime/case-steward/ot003-2026-10-23-escalation.md`.
+- **Case Steward owner and review:** Humanity Loop main worker until separate specialist actually verified; review on substantive HHSC response or **2026-11-06**, whichever comes first. Stale threshold **2026-11-13**; decide one proportional next step or close with reason. No more routine follow-ups to the same recipients. Closure requires corrected bilingual handout, official clarification, or documented closure decision.
 
 ### OT-004 — Texas WIC conflicting Spanish income limits
 - Original report: 2026-09-25
