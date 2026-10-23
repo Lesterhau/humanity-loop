@@ -103,6 +103,16 @@ A scout submits:
 
 A Novelty/Opportunity Verifier independently checks the signal before a Project Manager mobilizes resources.
 
+## Priority lens — defensive AI-swarm security and critical-system resilience (October 23, 2026)
+
+The owner explicitly added **protection of critical infrastructure, financial institutions and large systems against coordinated AI-enabled cyber threats** to Humanity Loop's global-good Scout portfolio.
+
+Required operating rubric: [AI-INFRASTRUCTURE-DEFENSE-SCOUT.md](AI-INFRASTRUCTURE-DEFENSE-SCOUT.md); first bounded research-and-connection [issue #21](https://github.com/Lesterhau/humanity-loop/issues/21).
+
+Look for credible, publicly supported **defensive solutions and organizations we can responsibly amplify, contribute to, or connect**: safe agent delegation and least-privilege control, resilience and recovery, defensive monitoring, verified protective tools, open benchmarks and accessible guidance for resource-constrained operators. Compare claimed capabilities with CISA/ACSC guidance, BIS financial-sector research, FS-ISAC and responsible open-source maintainers. Treat AI-swarm scenarios as hypotheses unless an actual incident is independently documented.
+
+**Do not build a new standing Scout or claim live critical-system protection from merely listing sources.** Integrate as a cross-cutting investigation within existing six-cell cadence, but keep issue #19 Scout-cycle recovery measurable. No unauthorized probing, scanning, exploit testing, bank/infrastructure targeting, malicious playbooks or unapproved external contact.
+
 ## Opportunity support
 
 When a promising person/team is identified, Humanity Loop may offer:
