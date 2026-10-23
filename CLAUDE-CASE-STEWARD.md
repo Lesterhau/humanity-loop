@@ -1,4 +1,4 @@
-# Claude Case Steward — independent worker handoff (READY TO CONFIGURE; NOT CONNECTED)
+# Claude Case Steward — scheduled externally, handoff NOT CONNECTED
 
 **Purpose:** Remove repetitive agency-case monitoring from Humanity Loop's main Hourly Worker, freeing the main worker for scouting and verified intervention. Does not change the missions, authority gates, private-source protections, or human oversight.
 
@@ -6,7 +6,7 @@
 
 **Proposed initial schedule: HOURLY**, using Anthropic's documented built-in hourly recurring option (not an unsupported custom four-hour clock). On most runs perform a lightweight check for genuinely new authorized responses or due cases. **Gate costly substantive case work to one review per case no more often than every four hours** unless new material evidence or urgent deadlines justify more. Prefer a no-op for unchanged cases, and monitor paid-plan usage limits. If hourly check-ins prove wasteful, change to the official daily schedule until a genuinely supported custom cadence exists. An hourly task trigger does not mean hourly agency follow-up.
 
-**Current truth:** This file and Humanity Loop's internal Case Steward lane are prepared, but a separately running Claude worker is **NOT verified installed, connected, or scheduled**. Do not modify Humanity Loop's ChatGPT automations or create duplicate supervisors as part of setup.
+**Current truth (owner screenshot, 2026-10-23):** Claude reports a scheduled Case Steward task **every four hours**, with an initial on-demand run started. The screenshot is evidence of Claude's **setup report**, not an independently retrieved run log. The first case review and cross-model GitHub handoff have **not** been independently verified here. Claude explicitly reported that the scheduled task inherited Gmail send/trash, Zapier, Make, Vercel and other connectors with automatic approval; **do not treat the read-only instructions as enforceable permissions**. Safest next step: pause recurring task until unnecessary connectors are disabled or blocked and/or manual approval is active. Do not add new wide GitHub access to solve this. Never claim a completed review merely because Claude stated a run began.
 
 ## Worker configuration / complete first-pilot task
 
@@ -33,7 +33,7 @@
 
 **At the end of EVERY run:** provide a brief structured case handoff with current case ID, source links, verified outcome level, changed facts, one next authorized action and due date, whether a write occurred, and a real commit/receipt URL ONLY when independently read back. During read-only setup, return the proposed handoff in Claude's task result and label `project_delivery: not_connected`; do not imply the ChatGPT worker has received it. After a separately approved, tested GitHub write permission, the steward may write a **public-safe** canonical `runtime/case-steward/latest.json` receipt. Never put raw private agency emails, message bodies, personal records, secrets or tokens in this PUBLIC repository.
 
-**Frequency:** The owner has entered a proposed **four-hour** cadence in Claude's setup. This overrides the older generic hourly recommendation **only if Claude actually confirms it as the saved task schedule**. If the interface does not support that cadence, use an available hourly lightweight schedule and gate substantive case work to due dates; do not claim scheduling success without an actual task confirmation.
+**Frequency:** Claude's October 23 screenshot reports a **four-hour scheduled task**. Respect the owner's chosen cadence and verify the real schedule/run history within Claude before relying on it. Do not revert to hourly because of outdated generic guidance. Each run should read the live tracker and skip closed, resolved or not-yet-due cases.
 
 ## Where to report and when MOTHER can use it
 
@@ -45,6 +45,16 @@ Classify each proposed communication into:
 - `approval_required`: credible high-impact opportunity with consequential external action, spending, privacy, account changes or public posting beyond existing authority. Flag the narrow approval reason to Humanity Loop's main worker. Escalate to the owner only if a genuine human decision is unavoidable.
 
 MOTHER must **not** automatically post because a steward changed an issue status or cleared its queue. Social publishing needs a functioning authorized publishing route, source checks at post time, appropriate human approval and platform compliance. Project updates are not inherently audience-worthy.
+
+## Required least-privilege boundary before unattended production
+
+- **No automatic approval to unrelated accounts.** Owner-provided Claude screenshot reported broad inherited access including Gmail send/trash, Zapier, Make, Vercel. A prompt prohibiting writes is NOT a technical permission boundary.
+- Prefer restricting/removing unused connectors from **this task**, or switch it to Manually approve until a supported scoped-task configuration is demonstrably in effect. Do not inadvertently revoke connectors used by unrelated personal projects. Verify granted tools in the running session before resuming.
+- For the first pilot, use only permitted read-only public web and GitHub source retrieval. **Do not add GitHub push access or enable an automatic external email tool just to complete a handoff.**
+- Only after the first run is independently inspected should a dedicated, narrow GitHub integration be considered. Prefer **draft pull requests** touching solely an allowed public-safe receipt file, with protected-main review and validator tests before merge; a normal GitHub connector or token may allow much more than one file. Require an explicitly approved grant, tested path restrictions and revocation plan. Any private agency emails, personal Gmail, tokens and raw correspondence MUST stay outside the public repository.
+- The handoff is **not** the same as MOTHER automatically posting. No social post or notification until a separately source-verified impact candidate clears review and the social channel permissions are verified.
+
+**Live-case contradiction check:** The owner screenshot quotes Claude's claim that OT-003 and OT-005 through OT-011 were all overdue. The current live `OUTCOME-TRACKER.md` already shows OT-003's next routine review on **November 6** (unless a new substantive reply arrives), and OT-010/OT-011 as **closed on October 23** without a verified downstream outcome. The steward must reconstruct due cases from the latest repo every run, rather than repeat the initial rotation list or reopen already closed work. This is a testable first-run quality check, not an accusation that Claude's subsequent run remains wrong.
 
 ## Return record (JSON-compatible)
 
