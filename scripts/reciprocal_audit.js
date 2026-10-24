@@ -2,6 +2,7 @@
 // PUBLIC Humanity Loop repo only. No read/clone/fetch/auth to private Morrow.
 const fs=require('node:fs');
 const path=require('node:path');
+const {verifyPublishedMethods,RELEASE,SOURCE}=require('./public_methods_source');
 const RECEIPT='runtime/reciprocal-audit/latest.json';
 const SEVEN_DAYS=7*24*60*60*1000;
 const METHODS=Object.freeze([
@@ -43,14 +44,14 @@ function evaluate(files,now=new Date()) {
  const first=findings[0];
  return {
   schemaVersion:1,runAt:now.toISOString(),status:first?'action-proposed':'checks-passed',
-  boundary:'Only the public Humanity Loop repository was read. No private Morrow files, APIs, tokens or business intelligence accessed.',
+  boundary:'Reads only public Humanity Loop files and a pinned PUBLIC methods release. No private Morrow files, APIs, tokens or business intelligence accessed.',
   methodSource:'Owner-approved general principles; no private implementation transplanted',
   methods:METHODS.map(x=>x.id),checksPerformed:5,findings,
   selectedAction:first?{id:first.id,scope:'Humanity Loop only',risk:'bounded internal review',status:'not-executed',next:first.action}:null,
   evidenceLimit:'A local process scan is not proof of two-way model learning, an executed repair or real-world public benefit.'
  };
 }
-function main(now=new Date(),root='.') {
+async function main(now=new Date(),root='.',verifySource=verifyPublishedMethods) {
  const p=path.join(root,RECEIPT);let prev;
  try{prev=JSON.parse(fs.readFileSync(p,'utf8'));}catch(_){prev=null;}
  if(!due(prev,now.getTime())){console.log('Cross-audit already completed within seven days; no new receipt.');return {ran:false,receipt:prev};}
@@ -63,6 +64,20 @@ function main(now=new Date(),root='.') {
   scout:safeRead('SCOUT-MESH.md',root)
  };
  const report=evaluate(files,now);
+ // A missing/changed public document is not proof of accepted methods.
+ // Never fetch private Morrow or treat external text as instructions.
+ try {
+   const evidence=await verifySource();
+   if(evidence?.status!=='verified'||evidence.verifiedBlobSha!==RELEASE.blobSha)
+     throw new Error('unverified public methods release');
+   report.publicMethods={status:'verified',source:SOURCE,commit:RELEASE.commit,
+                         gitBlobSha:evidence.verifiedBlobSha,bytes:evidence.bytes,
+                         scope:'provenance only; no new execution authority'};
+ } catch (_) {
+   report.publicMethods={status:'unverified',source:SOURCE,commit:RELEASE.commit,
+                         gitBlobSha:RELEASE.blobSha,
+                         reason:'Public release unavailable, changed, or not verified; local audit continues'};
+ }
  fs.mkdirSync(path.dirname(p),{recursive:true});
  fs.writeFileSync(p,JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify({status:report.status,findings:report.findings.length,scope:'public-only',runAt:report.runAt}));
@@ -70,6 +85,6 @@ function main(now=new Date(),root='.') {
 }
 if(require.main===module){
  if(!process.argv.includes('--if-due')){console.error('Use --if-due for bounded operation.');process.exitCode=2;}
- else main();
+ else main().catch(err=>{console.error('Reciprocal audit failed:',err.message);process.exitCode=1;});
 }
 module.exports={RECEIPT,SEVEN_DAYS,METHODS,due,evaluate,main};
