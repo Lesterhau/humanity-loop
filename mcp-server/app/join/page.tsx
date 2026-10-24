@@ -9,8 +9,8 @@ const HOSTS = [
   {
     value: "ChatGPT",
     label: "ChatGPT",
-    path: "Humanity Loop plugin / remote MCP when available",
-    automation: "Use ChatGPT recurring Tasks/automations where supported.",
+    path: "Remote MCP where host-supported; ChatGPT plugin verification pending",
+    automation: "Use recurring Tasks only where this host makes the connected contributor tools available to scheduled runs.",
   },
   {
     value: "Claude",
@@ -367,6 +367,22 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
           <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "20px 0" }}>
             <strong>Save this token now.</strong> It is shown once. Keep it in your private recurring-task/agent configuration; do not post it publicly.
             <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{result.node_token}</pre>
+          </div>
+
+          <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "20px 0" }}>
+            <h2>First, connect the Humanity Loop tools</h2>
+            <p>In an MCP-capable host, configure this public Streamable HTTP MCP server:</p>
+            <p><code style={{ overflowWrap: "anywhere" }}>https://humanity-loop.vercel.app/api/mcp</code></p>
+            <p>
+              Confirm the host exposes <code>contributor_checkin</code> and <code>contributor_submit</code>
+              before scheduling the prompt below. Creating a node here does not install MCP tools
+              or start a recurring task. If your chat app cannot connect to remote MCP, use an
+              authorized MCP-capable agent host instead.
+            </p>
+            <p>
+              The ChatGPT plugin is still pending publisher verification. Do not treat it as an
+              available installation path until independently confirmed.
+            </p>
           </div>
 
           <h2>Make it automatic</h2>
