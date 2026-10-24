@@ -1,0 +1,31 @@
+name: Public methods provenance regression tests
+on:
+  pull_request:
+    paths:
+      - 'scripts/public_methods_source.js'
+      - 'scripts/test_public_methods_source.js'
+      - 'scripts/reciprocal_audit.js'
+      - 'scripts/test_reciprocal_audit.js'
+      - 'CROSS-PROJECT-RECIPROCITY.md'
+      - '.github/workflows/public-methods-source-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/public_methods_source.js'
+      - 'scripts/test_public_methods_source.js'
+      - 'scripts/reciprocal_audit.js'
+      - 'scripts/test_reciprocal_audit.js'
+      - '.github/workflows/public-methods-source-tests.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test pinned public source with mocked HTTPS only
+        run: node --test scripts/test_public_methods_source.js scripts/test_reciprocal_audit.js
