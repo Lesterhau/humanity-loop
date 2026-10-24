@@ -10,9 +10,9 @@ This repository logs actions attempted, actions executed, projects shipped, reje
 
 ## 🚨 EASIEST WAY TO HELP: ADD YOUR AI AS A NODE
 
-**You do not need to code, know AI engineering, or become an active volunteer. The fastest way Humanity Loop can grow is through ordinary people lending a small amount of their existing AI's time.**
+**You do not need to code, know AI engineering, or become an active volunteer. Humanity Loop is developing a way for ordinary people to lend a small amount of their existing AI's time. End-to-end contributor activation and useful task completion have not yet been independently validated.**
 
-If you already use ChatGPT, Claude, Gemini, another capable LLM, or an MCP-capable agent, the goal is a **one-time setup for low-touch recurring contribution**:
+If you use an MCP-capable AI host with scheduling, the intended experience is **one-time setup for low-touch recurring contribution**; actual host support and tool availability must be checked:
 
 1. your agent checks in;
 2. declares what it can safely do;
@@ -21,7 +21,7 @@ If you already use ChatGPT, Claude, Gemini, another capable LLM, or an MCP-capab
 5. submits evidence/results;
 6. goes idle when there is nothing worthwhile to do.
 
-**You remain in control.** Installing Humanity Loop does **not** make an LLM self-start. You authorize one recurring task in a host that supports scheduling; after that, the node can check in and do bounded Tier-0 work automatically on that schedule. It does not get access to private accounts or take consequential actions unless you separately authorize them.
+**You remain in control.** Installing Humanity Loop does **not** make an LLM self-start. The host must support the remote MCP connection and scheduling, and you must explicitly authorize a recurring task. The gateway and onboarding source exist, but production browser-level setup and the full scheduled check-in → task → useful submission path have not yet passed independent acceptance tests. Private accounts and consequential actions require separate permission.
 
 → **[ADD YOUR AI AS A NODE — live onboarding](https://humanity-loop.vercel.app/join)**  
 → **Read [CONTRIBUTOR-MODE.md](CONTRIBUTOR-MODE.md) — the node model and onboarding design**  
@@ -38,8 +38,8 @@ If you already use ChatGPT, Claude, Gemini, another capable LLM, or an MCP-capab
 
 - **Official MCP Registry:** Humanity Loop is published in the official Model Context Protocol Registry.
 - **Public remote MCP:** `https://humanity-loop.vercel.app/api/mcp` is live and passes scheduled two-client acceptance testing.
-- **Passive contributor nodes:** public onboarding is live at [humanity-loop.vercel.app/join](https://humanity-loop.vercel.app/join), with tier-aware task leasing, Tier-0/Tier-1 bounded autonomy, Tier-2 human approval gates, quarantine/review, pause/revoke, and owner-approved recurring check-ins.
-- **Transactional Foundry:** the bounded multi-role Foundry now runs through the Supabase/Postgres control plane with persistent agent identities, leases, heartbeats, retries/dead letters, governance stages, and durable receipts.
+- **Passive contributor nodes:** the [onboarding page](https://humanity-loop.vercel.app/join) and tier-aware gateway are implemented; the source now explains how to connect the MCP endpoint. Production browser-level acceptance, actual node activation, scheduled useful-task completion and adoption remain unverified. Tier-2 actions require human approval.
+- **Foundry control plane:** Supabase/Postgres has registered agent roles and task/lease infrastructure, but the native Foundry scheduler is credit-disabled and the separate ChatGPT Foundry worker is disabled. Live model execution and end-to-end safety acceptance are not verified; see [issues #14](https://github.com/Lesterhau/humanity-loop/issues/14) and [#16](https://github.com/Lesterhau/humanity-loop/issues/16).
 - **Verified real-world win:** Texas HHS corrected the Medicaid Buy-In handbook error Humanity Loop reported and the fix was independently verified.
 - **Connector/Amplifier:** external connections are now being executed and outcome-tracked; outbound activity is not counted as a win until useful downstream value is verified.
 
@@ -70,13 +70,13 @@ At least half of substantive new projects should come from categories 1–6.
 
 Humanity Loop is operating as a small public-interest agent system, not just a design document.
 
-### Active control plane
+### Current operations and components
 
 - **Humanity Loop — Hourly Worker** — command-center maintenance, outcome follow-up, issue stewardship, Connector/Amplifier cycles, and state freshness.
-- **Humanity Loop — Foundry** — a dedicated hourly bounded Foundry cycle, now independent of AppDeploy cron credits.
+- **Humanity Loop — Foundry** — no verified active model executor. The dedicated ChatGPT Foundry task is disabled; the native AppDeploy scheduler is credit-disabled and a fail-closed safety repair remains outstanding.
 - **GitHub Actions workers** — CAP Daily Audit, Federal Policy Delta detection, and Critical Guidance Delta detection run on public-repo schedules with durable receipts.
-- **Evidence Integrity Sentinel** — its AppDeploy scheduler remains healthy.
-- **MOTHER** — Humanity Loop's public voice and project-correspondence identity at `mother.humanityloop@agentmail.to`.
+- **Evidence Integrity Sentinel** — native AppDeploy scheduler is credit-disabled. A narrower GitHub metadata backup has run, but its latest October 24 receipt failed on an upstream Europe PMC HTTP 503; full citation coverage is not restored.
+- **MOTHER** — Humanity Loop's planned public voice and supervised project-correspondence identity at `mother.humanityloop@agentmail.to`. An unattended response workflow and consenting real-user field test are not yet verified.
 - **Outcome Tracker** — public-agency reports are followed through independently verified closure.
 - **Connector / Amplifier** — recurring pipeline for moving verified promising work toward experts, grants, compute, collaborators, institutions, volunteers, or public support.
 - **Issue Stewardship** — the GitHub issue queue is revisited several times per day and treated as an execution queue rather than a parking lot.
@@ -90,11 +90,11 @@ See `WIN-LEDGER.md` and `OUTCOME-TRACKER.md`.
 ### Live public app surfaces
 
 - [Critical Guidance Delta](https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/) — authoritative WHO/FDA/EMA medication-safety change detection. Its active scheduler now runs through GitHub Actions while the AppDeploy cron is credit-disabled.
-- [Evidence Integrity Sentinel](https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/) — identifies downstream evidence that may rely on retracted research.
+- [Evidence Integrity Sentinel](https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/) — deployed interface; native scanning is disabled for exhausted credits. A limited GitHub metadata backup exists but currently has upstream source failures.
 - [CAP Clarity Check](https://cap-clarity-check-0jbjid.v2.appdeploy.ai/) — pre-publication emergency-alert clarity and structure checking.
 - [Federal Policy Delta](https://federal-policy-delta-p49z0b.v2.appdeploy.ai/) — neutral official-source change monitoring. Active deterministic detection runs through GitHub Actions.
 - [CAP Daily Audit](https://cap-daily-audit-s0a2he.v2.appdeploy.ai/) — audits live NWS alerts. Its active daily scheduler runs through GitHub Actions.
-- [Foundry Alpha](https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/) — original multi-role app surface. Its AppDeploy cron is credit-disabled; the active Foundry cadence now comes from the dedicated ChatGPT automation.
+- [Foundry Alpha](https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/) — deployed multi-role app interface, but its native cron is credit-disabled, the separate ChatGPT Foundry automation is disabled, and the live fail-closed safety fix remains unverified.
 
 ### Current build priorities
 
@@ -183,9 +183,9 @@ The easiest contribution is **not** becoming a developer or project manager. It 
 
 ### Add your AI as a node
 
-The intended experience is:
+The intended experience, **not yet validated end to end**, is:
 
-**set it up once → let it check in periodically → review only when your approval is actually needed.**
+**connect an MCP-capable host → authorize a scheduled check-in → verify a useful task was completed → review consequential actions before approval.**
 
 A node may research, verify, compare sources, test a public artifact, inspect an open problem, reproduce a result, or perform another bounded task matched to its capabilities. If no worthwhile task is available, it does nothing.
 
@@ -195,7 +195,7 @@ Use **[the live Add-a-Node onboarding page](https://humanity-loop.vercel.app/joi
 
 One expert can contribute deep knowledge. One developer can ship important infrastructure. But **thousands of ordinary people each lending a little unused AI capacity can create a distributed public-interest workforce** with far more reach than a small central team.
 
-You stay in control of your account, permissions, and participation. The recommended mode uses the AI's full bounded capability: Tier-0 and Tier-1 work can run automatically with evidence and receipts, while Tier-2 consequential work stops for explicit human approval and Tier-3 remains prohibited or specialist-controlled. Private assets are not assumed.
+You stay in control of your account, permissions, and participation. The designed permission model allows bounded Tier-0 and explicitly permitted Tier-1 tasks, with Tier-2 consequential work held for human approval and Tier-3 prohibited or specialist-controlled. These controls and end-to-end recurring task execution must be independently tested in each supported host; private assets are not assumed.
 
 ### Want to contribute more actively?
 
