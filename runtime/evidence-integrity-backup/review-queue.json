@@ -36,8 +36,18 @@
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/40650721",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-23T08:38:38.935116Z"
+      "status": "triaged_low_priority_notice_unverified",
+      "detectedAt": "2026-10-23T08:38:38.935116Z",
+      "reviewedOn": "2026-10-23",
+      "reviewedBy": "Humanity Loop main worker — source-level read-only triage",
+      "reviewEvidence": [
+        "https://link.springer.com/article/10.1007/s40368-025-01081-y",
+        "https://www.mdpi.com/2075-4426/13/5/774",
+        "https://www.mdpi.com/2075-4426/15/10/446/notes"
+      ],
+      "reviewSummary": "The citing systematic review lists Patano et al. (2023) in its references; that work is itself a scoping review, whereas the citing review reports 10 included primary studies (2 cohorts, 1 case-control, 7 case reports). This supports bibliography citation but does not establish that the cited work was included among the 10 primary studies or that the clinical conclusion relies on it. Publisher's indexed original currently displays a 2025 correction; the queue's purported 2026 notice DOI was not independently retrievable/verified as a retraction during this review. Do not notify authors, infer invalid conclusions, or call this a confirmed retraction until the actual notice and citation context are verified.",
+      "nextAction": "Verify publisher notice DOI 10.3390/jpm16110542 from an authoritative accessible source; if a true retraction, review any narrative reliance on the cited scoping review before considering neutral editorial outreach.",
+      "nextReviewDate": "2026-11-06"
     },
     {
       "retractedDoi": "10.3390/jpm13050774",
