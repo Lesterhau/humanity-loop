@@ -11,6 +11,8 @@ on:
       - 'scripts/test_ops_sentinel.js'
       - 'scripts/reciprocal_audit.js'
       - 'scripts/test_reciprocal_audit.js'
+      - 'scripts/public_methods_source.js'
+      - 'scripts/test_public_methods_source.js'
       - 'CROSS-PROJECT-RECIPROCITY.md'
       - '.github/workflows/ops-sentinel.yml'
 
@@ -38,7 +40,7 @@ jobs:
       - name: Run bounded weekly reciprocal process audit (must not block watchdog)
         continue-on-error: true
         run: |
-          node --test scripts/test_reciprocal_audit.js
+          node --test scripts/test_reciprocal_audit.js scripts/test_public_methods_source.js
           node scripts/reciprocal_audit.js --if-due
 
       - name: Read live receipts and maintain ONE alert issue

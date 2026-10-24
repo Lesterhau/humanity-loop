@@ -38,17 +38,52 @@ test('case-delegation omission is actionable rather than new bot spawning',()=>{
  const r=a.evaluate({...fixture,prompt:fixture.prompt.replace('Case Steward; ','')},now);
  assert.equal(r.findings[0].id,'case-delegation-absent');
 });
-test('only fixed local Humanity Loop files; readback and 7-day dedup',()=>{
+test('public-only sources, pinned verified methods, readback and 7-day dedup',async()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'hl-reciprocal-'));
  const files={'AUTOMATION-PROMPT.md':fixture.prompt,'PROJECT-STATE.md':fixture.state,
   'GOVERNANCE.md':fixture.governance,'.github/workflows/ops-sentinel.yml':fixture.workflow,'SCOUT-MESH.md':fixture.scout};
  try{
   for(const [p,v] of Object.entries(files)){const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,v);}
-  const first=a.main(now,root),again=a.main(new Date(now.getTime()+3600000),root);
+  const verified=async()=>({status:'verified',
+    verifiedBlobSha:require('./public_methods_source').RELEASE.blobSha,bytes:2531});
+  const first=await a.main(now,root,verified);
+  const again=await a.main(new Date(now.getTime()+3600000),root,verified);
   assert.equal(first.ran,true);assert.equal(again.ran,false);
   const r=JSON.parse(fs.readFileSync(path.join(root,a.RECEIPT),'utf8'));
   assert.equal(r.status,'checks-passed');
+  assert.equal(r.publicMethods.status,'verified');
   assert.equal(r.methodSource,'Owner-approved general principles; no private implementation transplanted');
   assert.ok(!fs.existsSync(path.join(root,'morrow-engine')));
  }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
+
+test('failed public source never blocks the existing local audit',async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'hl-reciprocal-fail-'));
+ const files={'AUTOMATION-PROMPT.md':fixture.prompt,'PROJECT-STATE.md':fixture.state,
+  'GOVERNANCE.md':fixture.governance,'.github/workflows/ops-sentinel.yml':fixture.workflow,
+  'SCOUT-MESH.md':fixture.scout};
+ try {
+  for(const [p,v] of Object.entries(files)){
+   const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,v);
+  }
+  const out=await a.main(now,root,async()=>{throw new Error('upstream unavailable');});
+  assert.equal(out.ran,true);
+  assert.equal(out.receipt.status,'checks-passed');
+  assert.equal(out.receipt.publicMethods.status,'unverified');
+  assert.ok(!JSON.stringify(out.receipt).includes('upstream unavailable'));
+ } finally {fs.rmSync(root,{recursive:true,force:true});}
+});
+
+test('dishonest public source verification result is rejected',async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'hl-reciprocal-tamper-'));
+ const files={'AUTOMATION-PROMPT.md':fixture.prompt,'PROJECT-STATE.md':fixture.state,
+  'GOVERNANCE.md':fixture.governance,'.github/workflows/ops-sentinel.yml':fixture.workflow,
+  'SCOUT-MESH.md':fixture.scout};
+ try {
+  for(const [p,v] of Object.entries(files)){
+   const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,v);
+  }
+  const out=await a.main(now,root,async()=>({status:'verified',verifiedBlobSha:'0'.repeat(40)}));
+  assert.equal(out.receipt.publicMethods.status,'unverified');
+ } finally {fs.rmSync(root,{recursive:true,force:true});}
 });
