@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-24T15:19:14.360Z",
+  "runAt": "2026-10-24T18:20:24.500Z",
   "status": "worked",
-  "summary": "Completed independent Spanish-language LATAM public-health Scout review on Mexico lead prevention and regulatory transition. Primary PAHO/COFEPRIS/DOF and existing Pure Earth interventions checked; no novel unmet assistance need verified. Dated no-signal report committed and independently read back. Supabase scout_cells remain overdue since Oct 3; no claim RPC or fake completion event.",
-  "lastVerifiedAt": "2026-10-24T15:19:14.360Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/07c1f3825fd6d93eef7fe5e532f8e5ff96aa8943"
+  "summary": "Completed source-reviewed Indonesian Perlinsos assisted-access transition Scout. Official Bali data show 93.35% of registered households agent-assisted; existing government support channels checked and no verified exclusion incident asserted. Research receipt committed/read back. Supabase scout_cells completion state remains unverified; no claim RPC or independent specialist execution.",
+  "lastVerifiedAt": "2026-10-24T18:20:24.500Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/7be8868deeaae9ff326a375e3a1d77e4fe943d33"
 }
