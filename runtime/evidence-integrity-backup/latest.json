@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-24T08:13:17.758898Z",
+  "runAt": "2026-10-24T12:17:38.398340Z",
   "status": "failed",
   "source": "Crossref retraction notices + Europe PMC citation metadata",
   "sourceLimit": {
@@ -12,82 +12,12 @@
   "citationsExamined": 0,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
-  "failuresCount": 15,
+  "failuresCount": 1,
   "failures": [
     {
-      "stage": "citation_lookup",
-      "doi": "10.1029/2023wr034623",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1007/s11259-025-10737-5",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1007/s11259-026-11266-5",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1007/s12011-024-04439-3",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1186/s12905-023-02202-9",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.xagr.2026.100621",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2019.04.280",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2021.128474",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2021.128439",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2019.04.325",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2019.05.125",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2019.03.241",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2021.129015",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jclepro.2021.125920",
-      "reason": "HTTP Error 503: "
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.memsci.2022.121270",
-      "reason": "HTTP Error 503: "
+      "stage": "europepmc_http",
+      "doi": "10.1016/j.insi.2025.100170",
+      "reason": "HTTP 503: Europe PMC metadata lookup unavailable"
     }
   ],
   "coverageGapsCount": 0,
