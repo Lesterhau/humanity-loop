@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "cellId": "latam-es-public-health",
+  "researchCompletedAt": "2026-10-24T20:35:29Z",
+  "owner": "Humanity Loop main hourly worker",
+  "status": "no_signal",
+  "researchScope": "Spanish-language Latin America public-health access; Colombia medicine-delivery backlog and existing oversight",
+  "intend": "Complete one genuinely source-reviewed due Scout cell; persist a public-safe receipt; do not claim a novel defect, outreach, beneficiary outcome, or autonomous specialist execution.",
+  "sources": [
+    {
+      "url": "https://www.minsalud.gov.co/Comunicaciones/noticias/2026/Paginas/Plan-de-Choque-en-Salud-pacientes-que-reciben-medicamentos-pasan-de-177-mil-a-mas-de-273-mil-en-el-nuevo-reporte.aspx",
+      "published": "2026-10-15",
+      "observed": "2026-10-24",
+      "finding": "Colombia reports 273,000 patients with some medicine delivery by Oct 5, 39.2% of originally pending medication units delivered, and 168,422 procedures reported resolved. Ministry explicitly states unit-delivery percentages are NOT completed treatment percentages; it is validating procedures and running weekly EPS follow-up through Dec 31."
+    },
+    {
+      "url": "https://www.minsalud.gov.co/Comunicaciones/noticias/2026/Paginas/Mas-de-177-mil-pacientes-han-recibido-medicamentos-en-el-marco-del-Plan-de-Choque-en-Salud.aspx",
+      "published": "2026-10-06",
+      "observed": "2026-10-24",
+      "finding": "Earlier official baseline: 177,048 patients and 31.2% pending medicine units dispensed as of Oct 2. Separates patients from units and identifies formal multi-agency control table with patient representatives."
+    },
+    {
+      "url": "https://www.defensoria.gov.co/en/-/pese-a-que-hay-esfuerzos-administrativos-de-nueva-eps-no-se-traducen-en-soluciones-para-sus-usuarios",
+      "published": "2026-03-05",
+      "observed": "2026-10-24",
+      "finding": "Ombudsman's earlier Nueva EPS oversight documents medicine-delivery failures and discrepancies between administrative indicators and patient experience; does not establish the current October state."
+    },
+    {
+      "url": "https://www.paho.org/es/noticias/27-7-2026-americas-cuentan-con-herramientas-para-eliminar-vih-pero-persisten-brechas",
+      "published": "2026-07-27",
+      "observed": "2026-10-24",
+      "finding": "PAHO documents broader regional HIV treatment-access gaps and existing regional alliance; not a new defect requiring Humanity Loop intervention."
+    }
+  ],
+  "findings": {
+    "verified": "Official Colombia Oct 15 release shows progress and outstanding medication units; both government and Ombudsman already acknowledge and monitor patient-level access gaps.",
+    "not_verified": "No independent October patient-level treatment-completion sample, current Nueva EPS failure rate, or specific newly unreported error was established.",
+    "existingSolutions": "Ministry weekly EPS monitoring and cross-agency technical control table with patient representation; Ombudsman oversight; PAHO access initiatives.",
+    "noveltyAssessment": "Low: pre-existing documented access problem with responsible institutions already active; no specific new unaddressed intervention or data defect independently verified.",
+    "uncertainty": "Ministry figures are administrative, not proof that patients completed treatments. Ombudsman March findings cannot be assumed current in October.",
+    "STEEPplus": [
+      "Social: treatment continuity and equity",
+      "Political/Legal: health-system oversight",
+      "Economic: medication supply and payment",
+      "Ethical: patient-level verification"
+    ],
+    "TIPPO": [
+      "Trend: measured backlog reduction",
+      "Potential issue: patient experience versus administrative metrics"
+    ],
+    "horizons": "H1 current backlog response; H2 possible improved patient-verified accountability; H3 no supported extrapolation",
+    "futuresTriangle": {
+      "push": "High medication backlog and ongoing oversight",
+      "pull": "Complete timely treatment and verified patient outcomes",
+      "weight": "Supply, finance, and implementation constraints"
+    },
+    "crossImpacts": "Partial dispensing may improve administrative progress while failing to restore treatment continuity; transparent denominators mitigate misinterpretation.",
+    "falsificationCriteria": "A new official data release, independently corroborated patient report, or specific unaddressed access/translation defect demonstrates a tractable new gap; otherwise no additional Humanity Loop case.",
+    "scores": {
+      "novelty": 0.2,
+      "usefulness": 0.45,
+      "evidenceQuality": 0.83,
+      "uncertainty": 0.5
+    },
+    "decision": "NO SIGNAL: no new case, contact, or public accusation; re-evaluate only if an independently verified new gap emerges.",
+    "nextReview": "2026-10-31",
+    "externalAction": "none",
+    "beneficiaryImpact": "not claimed",
+    "databaseCompletion": "pending post-commit independent verification; claim_due_scout_cell() not invoked"
+  }
+}
