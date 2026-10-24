@@ -24,8 +24,8 @@ const data=(p=payload())=>{
 };
 function client({files=[file()],other=[],body=data()}={}){
  return async path=>{
-  if(path.includes("/files?")&&path.includes("page=1"))return files;
-  if(path.includes("/files?")&&path.includes("page=2"))return other;
+  if(path.includes("/files?")&&/[?&]page=1(?:&|$)/.test(path))return files;
+  if(path.includes("/files?")&&/[?&]page=2(?:&|$)/.test(path))return other;
   if(path.includes("/contents/"))return body;
   throw Error("Unexpected untrusted URL");
  };
