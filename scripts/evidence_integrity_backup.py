@@ -12,6 +12,7 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
@@ -142,6 +143,14 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
                 })
             known.add(doi)
             new_processed.append(doi)
+        except HTTPError as exc:
+            failures.append({"stage": "europepmc_http", "doi": doi,
+                             "reason": f"HTTP {exc.code}: Europe PMC metadata lookup unavailable"})
+            if exc.code in (429, 502, 503, 504):
+                # Shared service pressure/outage: avoid hammering the provider for every DOI.
+                # This DOI and all unvisited DOIs stay unmarked and retry on a later run.
+                break
+            continue
         except Exception as exc:
             failures.append({"stage": "citation_lookup", "doi": doi, "reason": str(exc)[:240]})
             # Crucial: failed DOI is NOT marked seen, so the next run can retry.
