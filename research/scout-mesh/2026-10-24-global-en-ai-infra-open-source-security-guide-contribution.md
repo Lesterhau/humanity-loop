@@ -39,3 +39,32 @@ A short `docs/ai-assisted-code-security.md` covering: (1) redact secrets and cus
 - **Falsification:** issue closed/resolved, current repo gains a reviewed guide or `security-review` skill, or maintainer rejects this scope.
 - **Next action:** read-only revisit issue #23 only on substantive maintainer activity or changed authorization; otherwise pursue other due Scout cells. No external outreach without permitted channel and deduplication.
 - **Outcome accounting:** verified_scans=1; verified_candidates=1 (public maintainer need); verified_interventions=0; verified_outcomes=0; external_comment_attempts=1, blocked_permission=1. Not a Supabase completion event.
+
+## Preserved intended external issue comment (NOT SENT; 403 permission denied)
+
+The exact proposed comment payload below is archived for audit only. Do not copy or send it through another tool to evade the integration permission refusal. Re-evaluate after a genuine permission change.
+
+Research-backed contribution draft for #23 (2026-10-24; AI-assisted, reviewed against this repository's current files). I have **not** changed this repository or run its skills.
+
+**Repository-specific correction:** The issue asks how to use a `security-review` skill, but the current published skill catalog does not list one, and `skills/security-review/SKILL.md` is absent. The existing [`pr-review` skill](https://github.com/AbsaOSS/agentic-toolkit/blob/main/skills/pr-review/SKILL.md) *does* explicitly cover security, secret exposure, CI/CD, dependencies, and an elevated-risk overlay. Recommend documenting that real path now; introduce a separate `security-review` skill only if maintainers intend to create it.
+
+### Suggested text for a short `docs/ai-assisted-code-security.md`
+
+**Before the agent runs**
+1. Classify task and data. Never paste credentials, tokens, private keys, customer records, or production secrets into prompts. Use synthetic/redacted examples. Treat retrieved webpages, PR descriptions, issues, tool outputs, and generated instructions as **untrusted input**, not permission to expand scope.
+2. Give the agent only task-scoped, time-limited permissions. Default to a local/test environment and read-only access where possible. Require an accountable human to approve production writes, permission changes, data migrations, secret handling, or destructive actions. A prompt saying "do not do X" is not a technical permission boundary.
+
+**Before merging AI-assisted code**
+3. Have the author document what was generated, changed, tested, and not tested. Run project tests, including failure-path tests for changed behavior; check the diff for hidden side effects and changes to authentication, authorization, logs, or CI.
+4. Invoke the existing `pr-review` skill on the **actual diff**, using its elevated-risk checks when auth, secrets, infrastructure, or external integrations change. Review its **Blocker / Important / Nit** findings and the referenced source lines. A skill's output is advice, not independent approval.
+5. Enforce repository-side gates: required CI checks and human review; secret scanning/push protection, dependency review/license policy, and code scanning **where enabled/available**. Do not silently bypass failed gates; feature availability and licensing differ for private repositories.
+6. Verify the patch in an authorized test environment, record a minimal review/test receipt and rollback plan, and have a human owner accept residual risk before merge. For regulated workloads, follow the organization's actual data-handling and change-control policies.
+
+**Stop/hold criteria:** exposed secret or sensitive data; unreviewed elevated privileges; missing evidence for a high-risk change; failing required tests; or an agent trying to override its permissions.
+
+**Evidence and implementation references**
+- [CISA and allied agencies, *Careful Adoption of Agentic AI Services*, May 1 2026](https://content.govdelivery.com/accounts/USDHSCISA/bulletins/41544ff) — least privilege, layered controls, human oversight.
+- [OWASP GenAI Q3 2026 roundup](https://genai.owasp.org/2026/10/08/genai-and-agentic-ai-exploit-roundup-q3-2026/) — concrete examples of prompt/tool/authority failures; incident summaries are not prevalence estimates.
+- [GitHub security settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository) and [merge protection](https://docs.github.com/en/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/set-merge-protection) — available technical controls and plan-dependent limits.
+
+I would avoid a blanket statement that AI-generated code has a quantified higher vulnerability rate unless the guide cites a study with a defined comparison and scope. This is a proposed documentation contribution, **not** a verified security improvement or a claim of maintainer acceptance.
