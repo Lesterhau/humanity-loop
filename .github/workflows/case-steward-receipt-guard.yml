@@ -1,16 +1,19 @@
-name: Case Steward — safe handoff guard
+name: Case Steward — trusted-base handoff guard
 
+# Security: PR authors can change the validator or workflows in their branch.
+# pull_request_target uses the BASE branch workflow, never PR-authored code.
+# GitHub token is read-only and no secrets are used; checkout only BASE SHA.
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
     paths:
       - 'runtime/case-steward/**'
-      - 'scripts/validate_case_steward_receipt.js'
-      - 'scripts/test_case_steward_receipt.js'
-      - '.github/workflows/case-steward-receipt-guard.yml'
   push:
     branches: [main]
     paths:
       - 'runtime/case-steward/**'
+      - 'scripts/check_case_steward_pr.js'
+      - 'scripts/test_case_steward_pr_guard.js'
       - 'scripts/validate_case_steward_receipt.js'
       - 'scripts/test_case_steward_receipt.js'
       - '.github/workflows/case-steward-receipt-guard.yml'
@@ -18,20 +21,32 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 6
     steps:
-      - name: Checkout public Humanity Loop repo
+      - name: Checkout trusted BASE revision, never PR head
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - name: Test untrusted Claude handoff rejection rules
-        run: node --test scripts/test_case_steward_receipt.js
-      - name: Check latest handoff only if independently delivered
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          persist-credentials: false
+      - name: Test trusted public receipt validator and its constraints
+        run: |
+          node --test scripts/test_case_steward_receipt.js
+          node --test scripts/test_case_steward_pr_guard.js
+      - name: Check proposed PR changes via GitHub API without executing PR content
+        if: github.event_name == 'pull_request_target'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/check_case_steward_pr.js
+      - name: Check existing merged receipt only if present
+        if: github.event_name != 'pull_request_target'
         run: |
           if [ -f runtime/case-steward/latest.json ]; then
             node scripts/validate_case_steward_receipt.js runtime/case-steward/latest.json
           else
-            echo "No Claude handoff received. Unit tests only; no integration success claimed."
+            echo "No Claude handoff merged. Unit tests only; integration NOT claimed."
           fi
