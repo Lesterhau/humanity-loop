@@ -2,6 +2,18 @@
 
 Humanity Loop's Scout Mesh is a bounded weak-signal discovery system. It is designed to find useful, falsifiable emerging signals without turning every novelty into a project.
 
+## Defensive priority: AI-swarm resilience in interconnected essential systems (October 24)
+
+The Scout Mesh should include **defensive resilience against coordinated AI-enabled threats** as a recurring candidate discovery theme, alongside—not in place of—its existing global STEEP+ priorities. Seek verifiable public-interest gaps and solutions in electric grids and utilities, water, telecommunications, healthcare, banking/payment networks, logistics and government digital services.
+
+Look for defensive methods and credible teams working on: agent identity and least privilege; transaction and tool-use authorization; rate limits and kill switches; coordinated anomaly detection; cross-provider incident reporting; adversarial evaluation in consented sandboxes; human override; segmented networks; recoverable operations; supply-chain provenance; and independent testing of resilience claims.
+
+**Allowed outputs:** public-source evidence briefs, documented defensive opportunities, responsible introductions with consent, safe benchmarks, vetted solution directories, and audience-relevant educational content. Assess practical deployment readiness, safeguards, independent validation, and who can act.
+
+**Not allowed:** probing live infrastructure, credential harvesting, exploiting vulnerabilities, building or coordinating attack swarms, accessing banks or utilities without authorization, or publishing actionable attack details. Do not claim any target has a vulnerability based solely on general threat research. Route specific vulnerabilities to responsible disclosure.
+
+Deduplicate against existing security scouts and open issues before creating a new agent or recurring task. Start with a bounded research scout using existing scheduled capacity; spawn a separate worker only if the queue, measurable workload and permission boundaries justify it. The goal is useful defensive connections and verified improvements, not more bots for their own sake.
+
 ## Live control-plane state
 
 Backend: Supabase/Postgres project `jxtcccrlnhkcjfnwlfea`  
