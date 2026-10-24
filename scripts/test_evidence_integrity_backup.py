@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Offline regressions for the credit-free Evidence Integrity metadata backup."""
 import unittest
+from urllib.error import HTTPError
 
 from evidence_integrity_backup import candidate_kind, extract_retractions, scan, merge_review_queue, CROSSREF
 
@@ -72,6 +73,29 @@ class EvidenceIntegrityBackupTests(unittest.TestCase):
         self.assertEqual(recovered["status"], "ok")
         self.assertEqual(recovered["candidateFindingsCount"], 1)
         self.assertEqual(len(state["seenDois"]), 1)
+
+    def test_upstream_503_stops_batch_and_preserves_unchecked_dois(self):
+        two_retractions = {"message": {"items": [
+            {"DOI": "10.1000/notice-one", "update-to": [
+                {"DOI": "10.1000/retracted-one", "type": "retraction"}]},
+            {"DOI": "10.1000/notice-two", "update-to": [
+                {"DOI": "10.1000/retracted-two", "type": "retraction"}]},
+        ]}}
+        requests = []
+
+        def unavailable(url):
+            requests.append(url)
+            if url == CROSSREF:
+                return two_retractions
+            raise HTTPError(url, 503, "Service Unavailable", None, None)
+
+        report, state = scan(fetch=unavailable, now="2026-10-24T12:00:00Z")
+        self.assertEqual(report["status"], "failed")
+        self.assertEqual(report["failuresCount"], 1)
+        self.assertEqual(report["failures"][0]["stage"], "europepmc_http")
+        self.assertEqual(len(requests), 2)  # One Crossref call, only one Europe PMC call.
+        self.assertEqual(state["seenDois"], [])
+        self.assertEqual(report["candidateFindingsCount"], 0)
 
     def test_unindexed_doi_retries_without_falsely_claiming_source_failure(self):
         report, state = scan(fetch=lookup(article={"resultList": {"result": []}}))
