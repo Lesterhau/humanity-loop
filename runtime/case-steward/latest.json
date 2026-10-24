@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "producer": "Claude Case Steward",
+  "runId": "SYNTHETIC-SECURITY-TEST-NOT-A-CLAUDE-RUN",
+  "runAt": "2026-10-24T11:45:40.997Z",
+  "status": "no-op",
+  "caseId": null,
+  "finding": "SYNTHETIC pull request to exercise trusted-base receipt gate; not a real Claude output.",
+  "nextAction": "Reject any inference of a completed specialist handoff; close this draft after checking the security job.",
+  "nextReviewAt": null,
+  "evidence": [],
+  "creditLevel": "pending",
+  "impactRationale": null,
+  "noWriteClaim": true
+}
