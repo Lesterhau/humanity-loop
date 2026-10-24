@@ -80,6 +80,11 @@ const HOSTS = [
   },
 ] as const;
 
+const LANGUAGE_OPTIONS = [
+  "English", "Spanish", "French", "Indonesian",
+  "Portuguese", "Arabic", "Hindi", "Swahili",
+] as const;
+
 type Registration = {
   node_id: string;
   node_token: string;
@@ -94,6 +99,7 @@ export default function JoinPage() {
   const [autonomy, setAutonomy] = useState<"full" | "research">("full");
   const [surfaceTier2, setSurfaceTier2] = useState(true);
   const [capabilities, setCapabilities] = useState<string[]>(["research", "web"]);
+  const [languages, setLanguages] = useState<string[]>(["English"]);
   const [result, setResult] = useState<Registration | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -148,6 +154,9 @@ ${result.node_token}
 Authorized risk permissions:
 ${result.risk_permissions.join(", ")}
 
+Working languages declared for task matching:
+${languages.join(", ")}
+
 On every run:
 1. Call contributor_checkin with this token and report your current capabilities, languages, and host.
 2. If a Tier-0 or authorized Tier-1 assignment is returned, complete the bounded task using the strongest relevant tools you are authorized to use.
@@ -160,7 +169,15 @@ On every run:
 9. If the node is paused or revoked, stop.
 
 Run automatically on the recurring schedule I approve. Ask me only when new authority, meaningful cost, private-account access, or a Tier-2 consequential action would be required.`;
-  }, [result]);
+  }, [result, languages]);
+
+  function toggleLanguage(value: string) {
+    setLanguages((current) =>
+      current.includes(value)
+        ? current.length > 1 ? current.filter((x) => x !== value) : current
+        : [...current, value],
+    );
+  }
 
   function toggleCapability(value: string) {
     setCapabilities((current) =>
@@ -188,7 +205,7 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
           host,
           user_agent_label: host + " contributor node",
           capabilities,
-          languages: ["English"],
+          languages,
           email: email || null,
           setup_email_consent: email ? consent : false,
           risk_permissions: riskPermissions,
@@ -244,6 +261,20 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
               the same model can participate through a compatible MCP-capable agent host or runner.
             </p>
           </div>
+
+          <fieldset style={{ marginBottom: 20 }}>
+            <legend>Languages this AI can reliably work in (choose at least one)</legend>
+            {LANGUAGE_OPTIONS.map((language) => (
+              <label key={language} style={{ display: "block", margin: "8px 0" }}>
+                <input
+                  type="checkbox"
+                  checked={languages.includes(language)}
+                  onChange={() => toggleLanguage(language)}
+                />{" "}
+                {language}
+              </label>
+            ))}
+          </fieldset>
 
           <fieldset style={{ marginBottom: 20 }}>
             <legend>Capabilities this node may volunteer</legend>
