@@ -69,12 +69,14 @@
     "databaseCompletion": "pending post-commit independent verification; claim_due_scout_cell() not invoked"
   },
   "databaseCompletion": {
-    "status": "verified",
-    "verifiedAt": "2026-10-24T20:37:05Z",
-    "lastRunAt": "2026-10-24T20:37:05.509678Z",
-    "nextDueAt": "2026-10-25T20:37:05.509678Z",
-    "readback": "Supabase read-only SELECT independently confirmed this cell's timestamps and receipt link; five other active cells remained due.",
-    "method": "Scoped post-research SQL UPDATE with stale-version WHERE guard; claim_due_scout_cell() not called.",
-    "scope": "One cell only; no autonomous schedule or specialist execution demonstrated."
+    "status": "verified_append_only_event",
+    "eventId": 109,
+    "eventCreatedAt": "2026-10-24T20:40:26.069382Z",
+    "eventType": "scout_scan_completed",
+    "readback": "Separate Supabase SELECT confirmed event #109, cell ID, no-signal decision and matching evidence URL. Separate SELECT confirmed scout_cells original Oct 2/3 claim timestamps restored.",
+    "claimRpcInvoked": false,
+    "claimTimestampsAdvanced": false,
+    "autonomousSpecialistExecuted": false,
+    "correction": "A manual post-research timestamp update at 20:37Z was reverted. Prior system design treats scout_cells timestamps as claims, not verified research completions; the separate append-only event is the correct interim completion receipt. Full claim/lease/completion semantics and scheduling remain unresolved in issue #19."
   }
 }
