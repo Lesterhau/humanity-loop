@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-24T11:05:02.880Z",
+  "runAt": "2026-10-24T12:20:26.348Z",
   "status": "worked",
-  "summary": "Verified a concrete contributor onboarding setup gap: the post-registration page omitted the MCP endpoint and connection prerequisite. Added the documented public endpoint, contributor-tool preflight, and ChatGPT plugin verification caveat; GitHub source independently read back. No deployed browser acceptance, registration, contributor activity, or beneficiary impact claimed.",
-  "lastVerifiedAt": "2026-10-24T11:05:02.880Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/09379084f117cd65b1fa2bb160a6a2331222741b"
+  "summary": "Contained Evidence Integrity Backup upstream Europe PMC 503 storm: added fail-fast on 429/502/503/504 with unprocessed DOIs retained, plus offline regression. Source/test readback verified; GitHub Actions run 40093355520 passed. Fresh receipt shows one HTTP 503 instead of 15 repeated lookups. Upstream service and scientific citation coverage remain unavailable; Ops Sentinel warning stays open.",
+  "lastVerifiedAt": "2026-10-24T12:20:26.348Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/b7d7932eb43a8b0eec6b03f5dded498dc7463e49"
 }
