@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-23T22:15:15.376301Z",
+  "runAt": "2026-10-24T02:36:16.931Z",
   "status": "worked",
-  "summary": "Verified canonical Scout research-completion event #106 against GitHub research record; independently confirmed six Scout claim timestamps remain stale (Oct 2/3) and the original OpenAI support thread has no new reply after Oct 18. This heartbeat is a self-report, not proof of autonomous Scout scheduling or beneficiary impact.",
-  "lastVerifiedAt": "2026-10-23T21:32:57.831740Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/4d6ab5674595470bfdd6fb9b5d68b0e9d43aa190"
+  "summary": "Independently verified one source-level evidence-integrity queue triage: a 2025 pediatric orthodontics review cites a 2023 scoping review in its bibliography, but reliance on the cited work for its ten included primary studies is not established. The purported 2026 retraction notice remains unverified. No external outreach, clinical correction, beneficiary outcome or autonomous Scout recovery claimed.",
+  "lastVerifiedAt": "2026-10-24T02:35:44Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/86aa94f3bdabc7cfb2b15bbd645d2369f963e429"
 }
