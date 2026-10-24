@@ -53,3 +53,18 @@ A single successful scheduled/triggered process run is **not evidence** of seven
 Canonical files here: `CROSS-PROJECT-RECIPROCITY.md`, `scripts/reciprocal_audit.js`, `scripts/test_reciprocal_audit.js`, `runtime/reciprocal-audit/latest.json`, `AUTOMATION-PROMPT.md`, `PROJECT-STATE.md`.
 
 Morrow's side runs under its **own** owner-approved private policies. A Morrow-side commit saying “weekly” is not evidence that the schedule ran; each side must verify its own workflow run and receipt. Do not accept circular self-attestation as an outcome. Future new chats/agents read these canonical public records without needing access to the other's private repository.
+
+
+## Public methods integration — proposed October 24, 2026
+
+The owner has approved and released generic reusable methods through the distinct **PUBLIC** repository [`Lesterhau/morrow-methods`](https://github.com/Lesterhau/morrow-methods). These are not the private Morrow Engine sources, and the public methods text does not confer execution authority.
+
+This project's existing weekly audit now has a read-only, pinned public-source verifier:
+
+- `scripts/public_methods_source.js` fetches exactly the public `METHODS.md` file at commit `f6fd07bac3eb42c5068d6d9c8e9dcc1e8e623109` from GitHub's raw public host; no access token or private source is used.
+- The content is bounded to 32 KiB, the Git blob hash is checked against `b5378330d38a1e2d622d2270b8a457ad2924897c`, and redirects or unexpected HTTP status are rejected. A change upstream requires a separately reviewed re-pin.
+- `scripts/reciprocal_audit.js` records only whether that public source was verified, its pinned commit, byte count and hash. The full document is never embedded in the generated public audit receipt, and no private Morrow data is requested.
+- The verifier is called **only when the existing seven-day audit is due**, using the existing Ops Sentinel schedule. If public GitHub is unavailable or the content differs, status is `unverified`, and the original local Humanity Loop checks proceed independently. An unverified document is not adopted as an instruction.
+- Regression tests mock HTTP requests: no test fetches private resources, and failing/tampered remote material never creates a false verification claim.
+
+**Important limits:** Passing these integrity checks proves only that the selected public text matches the approved release; it does not certify that the methods are effective or authorize changing Humanity Loop policy. The existing human/automated governance boundaries remain authoritative. A green CI run does not prove that a live network fetch or real-world benefit occurred; inspect a later weekly receipt to establish the former. No new scheduler, account, secret, paid API or public-to-private sync is created.
