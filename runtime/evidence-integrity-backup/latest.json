@@ -1,142 +1,97 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-23T08:38:38.935116Z",
-  "status": "limited",
+  "runAt": "2026-10-24T08:13:17.758898Z",
+  "status": "failed",
   "source": "Crossref retraction notices + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 11,
-  "citationsExamined": 77,
-  "candidateFindingsCount": 9,
-  "candidateFindings": [
+  "newRetractionsChecked": 0,
+  "citationsExamined": 0,
+  "candidateFindingsCount": 0,
+  "candidateFindings": [],
+  "failuresCount": 15,
+  "failures": [
     {
-      "retractedDoi": "10.3390/jpm13050774",
-      "noticeDoi": "10.3390/jpm16110542",
-      "citingSource": "MED",
-      "citingId": "40650721",
-      "citingTitle": "Clinical outcomes of interproximal enamel reduction in orthodontic treatment of children and adolescents: a systematic review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/40650721",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1029/2023wr034623",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.3390/jpm13050774",
-      "noticeDoi": "10.3390/jpm16110542",
-      "citingSource": "MED",
-      "citingId": "40142644",
-      "citingTitle": "The Co-Occurrence of Temporomandibular Disorders in Patients Diagnosed with Tinnitus: A Systematic Review with Meta-Analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/40142644",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1007/s11259-025-10737-5",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.3390/jpm13050774",
-      "noticeDoi": "10.3390/jpm16110542",
-      "citingSource": "MED",
-      "citingId": "39988709",
-      "citingTitle": "Evaluating the success rates and effectiveness of surgical and orthodontic interventions for impacted canines: a systematic review of surgical and orthodontic interventions and a case series.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/39988709",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1007/s11259-026-11266-5",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.3390/jpm13050774",
-      "noticeDoi": "10.3390/jpm16110542",
-      "citingSource": "MED",
-      "citingId": "39594950",
-      "citingTitle": "The Diagnosis and Management of Infraoccluded Deciduous Molars: A Systematic Review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/39594950",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1007/s12011-024-04439-3",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.3390/jpm13050774",
-      "noticeDoi": "10.3390/jpm16110542",
-      "citingSource": "MED",
-      "citingId": "38002872",
-      "citingTitle": "Primary Failure Eruption: Genetic Investigation, Diagnosis and Treatment: A Systematic Review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/38002872",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1186/s12905-023-02202-9",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.1007/s10936-023-10003-2",
-      "noticeDoi": "10.1007/s10936-026-10324-y",
-      "citingSource": "MED",
-      "citingId": "42857135",
-      "citingTitle": "Non-pharmacological executive function interventions for children and adolescents with neurodevelopmental disorders: a systematic review and network meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/42857135",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.xagr.2026.100621",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.1007/s10936-023-10003-2",
-      "noticeDoi": "10.1007/s10936-026-10324-y",
-      "citingSource": "MED",
-      "citingId": "42342602",
-      "citingTitle": "Technology-Based Interventions for Children and Adolescents with ADHD: A Systematic Review and Meta-Analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/42342602",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2019.04.280",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.1007/s10936-023-10003-2",
-      "noticeDoi": "10.1007/s10936-026-10324-y",
-      "citingSource": "MED",
-      "citingId": "41890930",
-      "citingTitle": "Mindfulness-based interventions for children and adolescents with attention-deficit/hyperactivity disorder: a Bayesian meta-analysis of randomized controlled trials.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/41890930",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2021.128474",
+      "reason": "HTTP Error 503: "
     },
     {
-      "retractedDoi": "10.1007/s10936-023-10003-2",
-      "noticeDoi": "10.1007/s10936-026-10324-y",
-      "citingSource": "MED",
-      "citingId": "41769550",
-      "citingTitle": "Mapping the Mind: A Network Meta-Analysis of Mindfulness and Traditional and Digital Interventions for Cognitive and Behavioral Enhancement in Children With Attention-Deficit/Hyperactivity Disorder (ADHD).",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/41769550",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2021.128439",
+      "reason": "HTTP Error 503: "
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2019.04.325",
+      "reason": "HTTP Error 503: "
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2019.05.125",
+      "reason": "HTTP Error 503: "
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2019.03.241",
+      "reason": "HTTP Error 503: "
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2021.129015",
+      "reason": "HTTP Error 503: "
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jclepro.2021.125920",
+      "reason": "HTTP Error 503: "
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.memsci.2022.121270",
+      "reason": "HTTP Error 503: "
     }
   ],
-  "failuresCount": 0,
-  "failures": [],
-  "coverageGapsCount": 4,
-  "coverageGaps": [
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.mset.2026.09.001",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.3390/fluids9050110",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.3390/land14040796",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.3390/electronics15173954",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    }
-  ],
+  "coverageGapsCount": 0,
+  "coverageGaps": [],
   "clinicalConclusions": null,
   "notice": "Triage only. Incomplete citation coverage is possible. Candidate citations are not proof that any guideline or review relies on invalid evidence. Human source-level validation required.",
   "nativeAppDeployStateSynced": false

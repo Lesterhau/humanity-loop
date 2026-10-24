@@ -39,7 +39,7 @@
       "status": "triaged_low_priority_notice_unverified",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-23",
-      "reviewedBy": "Humanity Loop main worker — source-level read-only triage",
+      "reviewedBy": "Humanity Loop main worker \u2014 source-level read-only triage",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s40368-025-01081-y",
         "https://www.mdpi.com/2075-4426/13/5/774",
