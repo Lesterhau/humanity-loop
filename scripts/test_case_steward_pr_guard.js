@@ -77,7 +77,7 @@ test("rejects untrusted extra fields and false impact claims",async()=>{
  await assert.rejects(check({body:data(unsafe)}),/unapproved field/);
  const falseWin={...payload(),status:"impact_candidate",creditLevel:"confirmed_contributor",
  impactRationale:"We fixed everything",evidence:[]};
- await assert.rejects(check({body:data(falseWin)}),/two|at least/);
+ await assert.rejects(check({body:data(falseWin)}),/independent before\/after source references/);
 });
 
 test("rejects missing token, wrong head content, oversized patch",async()=>{
