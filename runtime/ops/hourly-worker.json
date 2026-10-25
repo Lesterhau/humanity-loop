@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-25T01:44:04Z",
+  "runAt": "2026-10-25T03:15:43.594Z",
   "status": "worked",
-  "summary": "Created and independently verified the first bounded Tier-0 contributor work item in private Supabase: read-only public onboarding browser acceptance, work_id 814b80cc-53e5-4c91-b2e9-70e265f63455, risk_tier=0, status=open, required capability web, expires Nov 2. Public task spec committed and independently read back. No registered nodes, claims, submissions, production acceptance, or beneficiary effect asserted.",
-  "lastVerifiedAt": "2026-10-25T01:44:04Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/3252b1d96ea3cba2f9932467c87f343355a48e94"
+  "summary": "Verified onboarding source required node registration before revealing the public MCP endpoint and contributor tool prerequisites. Moved the connection prerequisite ahead of the registration form, independently read back source blob and commit 14a8201. Read-only public-page extraction returned only introductory text; production browser acceptance, build, deployment, contributor installs and completed tasks remain unverified.",
+  "lastVerifiedAt": "2026-10-25T03:15:43.594Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/14a820196c4698df5ded8330b7512216960616d0"
 }
