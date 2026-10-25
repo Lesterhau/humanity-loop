@@ -39,7 +39,7 @@
       "status": "triaged_low_priority_notice_unverified",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-23",
-      "reviewedBy": "Humanity Loop main worker — source-level read-only triage",
+      "reviewedBy": "Humanity Loop main worker \u2014 source-level read-only triage",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s40368-025-01081-y",
         "https://www.mdpi.com/2075-4426/13/5/774",
@@ -133,13 +133,13 @@
       "status": "triaged_verified_study_level_dependency",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-24",
-      "reviewedBy": "Humanity Loop main worker — source-level read-only verification",
+      "reviewedBy": "Humanity Loop main worker \u2014 source-level read-only verification",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s10936-023-10003-2",
         "https://link.springer.com/article/10.1007/s10936-026-10324-y",
         "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1711994/full"
       ],
-      "reviewSummary": "Publisher confirms Oct 23 retraction of Ponomarev 2023; Liu et al. 2026 Frontiers Bayesian ADHD meta-analysis names the same trial among included-study risk-of-bias assessments (Results §3.3). Exact contribution to pooled effect estimates not independently checked; no invalidity or misconduct conclusion.",
+      "reviewSummary": "Publisher confirms Oct 23 retraction of Ponomarev 2023; Liu et al. 2026 Frontiers Bayesian ADHD meta-analysis names the same trial among included-study risk-of-bias assessments (Results \u00a73.3). Exact contribution to pooled effect estimates not independently checked; no invalidity or misconduct conclusion.",
       "nextAction": "Oct 30 inspect Supplementary S1 and effect-size data, then check for an exact-DOI editorial update; human approval required for any external inquiry.",
       "nextReviewDate": "2026-10-30",
       "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-24-global-en-science-integrity-bayesian-adhd-retracted-trial.md",
@@ -156,6 +156,18 @@
       "europePmcUrl": "https://europepmc.org/article/MED/41769550",
       "status": "unreviewed",
       "detectedAt": "2026-10-23T08:38:38.935116Z"
+    },
+    {
+      "retractedDoi": "10.1159/000487998",
+      "noticeDoi": "10.1159/nim/adxag006",
+      "citingSource": "MED",
+      "citingId": "38798711",
+      "citingTitle": "Curcumin in the treatment of inflammation and oxidative stress responses in traumatic brain injury: a systematic review and meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/38798711",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-25T08:31:12.463677Z"
     }
   ]
 }
