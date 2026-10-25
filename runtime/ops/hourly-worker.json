@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-25T13:38:30Z",
+  "runAt": "2026-10-25T15:07:50Z",
   "status": "worked",
-  "summary": "Completed source-reviewed due global-en-ai-infra Scout: ACSC Sep 29 AI credential security advisory, NIST agent standards, OWASP ACS, and live maintainer issues checked. No new independently substantiated unmet need: ACS fail-open and unauthenticated reference limitations already disclosed and tracked. GitHub research note commit 369ff76 independently read back; Supabase no_signal completion receipt a8db1fce independently queried. Legacy claim timestamps unchanged. No external contact, accepted contribution, autonomous scheduler proof, or beneficiary impact.",
-  "lastVerifiedAt": "2026-10-25T13:38:30Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/369ff76cfb1cb274b1aee5bdffcc6b4aeed5a01d"
+  "summary": "Source-reviewed a distinct Cureus pediatric ADHD network meta-analysis against Springer 2026-10-23 Ponomarev retraction; independently verified Table 1 included-trial match, published evidence note commit 1deceb0, opened and fetched issue #30, reconciled two verified queue records commit 37550d6, and read back both action ledgers. No effect-size sensitivity, journal contact, correction, contributor adoption or beneficiary impact claimed. Scout six-hour minimum was satisfied by prior 13:36Z global AI infrastructure review; no new due Scout claim made.",
+  "lastVerifiedAt": "2026-10-25T15:07:50Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/1deceb0b905c52f75e4b7c9b02fdc46d1dfc4c8c"
 }
