@@ -11,9 +11,21 @@
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/37564374",
-      "status": "unreviewed",
+      "status": "triaged_verified_study_level_and_narrative_dependency",
       "detectedAt": "2026-10-20T22:01:21.564316Z",
-      "provenanceUrl": "https://github.com/Lesterhau/humanity-loop/commit/cd6cea0167de466400f30dcd48a029264f9f6a7b"
+      "provenanceUrl": "https://github.com/Lesterhau/humanity-loop/commit/cd6cea0167de466400f30dcd48a029264f9f6a7b",
+      "reviewedOn": "2026-10-25",
+      "reviewedBy": "Humanity Loop main worker — independent publisher and citing-review full-text check",
+      "reviewEvidence": [
+        "https://link.springer.com/article/10.1186/s40659-026-00737-3",
+        "https://www.frontiersin.org/journals/cell-and-developmental-biology/articles/10.3389/fcell.2023.1204050/full"
+      ],
+      "reviewSummary": "Hassan et al. 2022 was retracted by its publisher on 2026-10-20. Liu et al. 2023 Frontiers review includes it in Table 2 among 14 BMMSC studies (33 studies overall), and cites its findings in BMMSC discussion and conclusion/prospects. The retraction postdates the review. No pooled meta-analysis dependency, changed overall conclusion, editor notice, or clinical impact has been verified.",
+      "nextAction": "By 2026-10-30 compare affected narrative claims with remaining included evidence, check for an existing Frontiers update, and determine whether a neutral human-reviewed editorial inquiry is justified.",
+      "nextReviewDate": "2026-10-30",
+      "evidenceClassification": "verified_included_study_narrative_reliance_no_outcome_claim",
+      "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/evidence-integrity/2026-10-25-auricular-cartilage-review-retracted-rabbit-study.md",
+      "reviewIssueUrl": "https://github.com/Lesterhau/humanity-loop/issues/28"
     },
     {
       "retractedDoi": "10.1038/bjc.2014.283",
