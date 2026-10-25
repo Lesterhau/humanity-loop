@@ -24,8 +24,19 @@
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/37950285",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-22T08:42:51.516341Z"
+      "status": "triaged_verified_background_only_no_pooled_dependency",
+      "detectedAt": "2026-10-22T08:42:51.516341Z",
+      "reviewedOn": "2026-10-25",
+      "reviewedBy": "Humanity Loop main worker — independent publisher and full-text source review",
+      "reviewEvidence": [
+        "https://www.nature.com/articles/s41416-026-03656-y",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10636977/",
+        "https://pubmed.ncbi.nlm.nih.gov/37950285/"
+      ],
+      "reviewSummary": "Publisher retracted Lee et al. 2014 (DOI 10.1038/bjc.2014.283) on 2026-10-22 over overlapping Figure 3B/3C sections. Chen et al. 2023 (DOI 10.1186/s12944-023-01955-4) cites it as reference [3] only in the Introduction for a preclinical antiangiogenic mechanism. The review's eligibility criteria restrict pooled evidence to prospective randomized human statin trials with cancer outcomes; Table 1 enumerates 35 RCTs, none Lee et al. 2014. Therefore the citation is a verified background reference to a subsequently retracted paper, NOT evidence that retracted study data entered the meta-analysis. No demonstrated effect on pooled cancer-incidence or mortality estimates; do not imply the meta-analysis is invalid or contact editors on this basis alone.",
+      "nextAction": "No external inquiry on this citation alone. Retain as low-priority background-reference update candidate only if journal issues a relevant notice or further evidence shows substantive dependence.",
+      "nextReviewDate": "2026-11-25",
+      "evidenceClassification": "verified_citation_context_no_study_level_dependency"
     },
     {
       "retractedDoi": "10.3390/jpm13050774",
@@ -39,7 +50,7 @@
       "status": "triaged_low_priority_notice_unverified",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-23",
-      "reviewedBy": "Humanity Loop main worker \u2014 source-level read-only triage",
+      "reviewedBy": "Humanity Loop main worker — source-level read-only triage",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s40368-025-01081-y",
         "https://www.mdpi.com/2075-4426/13/5/774",
@@ -133,13 +144,13 @@
       "status": "triaged_verified_study_level_dependency",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-24",
-      "reviewedBy": "Humanity Loop main worker \u2014 source-level read-only verification",
+      "reviewedBy": "Humanity Loop main worker — source-level read-only verification",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s10936-023-10003-2",
         "https://link.springer.com/article/10.1007/s10936-026-10324-y",
         "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1711994/full"
       ],
-      "reviewSummary": "Publisher confirms Oct 23 retraction of Ponomarev 2023; Liu et al. 2026 Frontiers Bayesian ADHD meta-analysis names the same trial among included-study risk-of-bias assessments (Results \u00a73.3). Exact contribution to pooled effect estimates not independently checked; no invalidity or misconduct conclusion.",
+      "reviewSummary": "Publisher confirms Oct 23 retraction of Ponomarev 2023; Liu et al. 2026 Frontiers Bayesian ADHD meta-analysis names the same trial among included-study risk-of-bias assessments (Results §3.3). Exact contribution to pooled effect estimates not independently checked; no invalidity or misconduct conclusion.",
       "nextAction": "Oct 30 inspect Supplementary S1 and effect-size data, then check for an exact-DOI editorial update; human approval required for any external inquiry.",
       "nextReviewDate": "2026-10-30",
       "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-24-global-en-science-integrity-bayesian-adhd-retracted-trial.md",
