@@ -81,8 +81,19 @@
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/40142644",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-23T08:38:38.935116Z"
+      "status": "triaged_verified_intro_claim_only_no_pooled_dependency",
+      "detectedAt": "2026-10-23T08:38:38.935116Z",
+      "reviewedOn": "2026-10-25",
+      "reviewedBy": "Humanity Loop main worker — independent publisher retraction notice and citing-review text/table verification",
+      "reviewEvidence": [
+        "https://www.mdpi.com/2075-4426/16/11/542",
+        "https://www.mdpi.com/2077-0383/14/6/1836",
+        "https://www.mdpi.com/2077-0383/14/6/1836/pdf?version=1741580945"
+      ],
+      "reviewSummary": "MDPI retracted Patano et al. (2023), a mandibular-crowding scoping review (DOI 10.3390/jpm13050774), on 2026-10-23 for major methodological flaws. Bury et al. (2025), DOI 10.3390/jcm14061836, cite Patano as reference [8] in their Introduction to support a tentative statement that mandibular crowding may contribute to tinnitus. The citing review pooled eleven observational studies on TMD/tinnitus co-occurrence; the retracted scoping review is not among those eleven and contributed no identified numerical data to the reported prevalence or odds estimates. This is a verified narrow narrative/background citation dependency, not proof the meta-analysis estimates are affected. Retraction postdates the citing review.",
+      "nextAction": "Do not allege compromised pooled estimates or send an immediate editorial inquiry. On 2026-11-06, check the exact Bury review for any reader-facing citation update and consider a proportionate, human-reviewed clarification only if the specific introductory claim remains materially misleading.",
+      "nextReviewDate": "2026-11-06",
+      "evidenceClassification": "verified_intro_narrative_citation_no_pooled_study_dependency"
     },
     {
       "retractedDoi": "10.3390/jpm13050774",
