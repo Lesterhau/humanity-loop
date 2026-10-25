@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-25T03:15:43.594Z",
+  "runAt": "2026-10-25T06:52:18.166Z",
   "status": "worked",
-  "summary": "Verified onboarding source required node registration before revealing the public MCP endpoint and contributor tool prerequisites. Moved the connection prerequisite ahead of the registration form, independently read back source blob and commit 14a8201. Read-only public-page extraction returned only introductory text; production browser acceptance, build, deployment, contributor installs and completed tasks remain unverified.",
-  "lastVerifiedAt": "2026-10-25T03:15:43.594Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/14a820196c4698df5ded8330b7512216960616d0"
+  "summary": "Implemented and independently SQL-tested private read-only completion-based Scout due selector; confirmed 0 due now, 6 due at deterministic future as-of, limit-one ordering, owner-only execution and unchanged legacy claims. Verified SCOUT-MESH.md commit fd975f6 and issue #19 comment 6394575765. No new Scout review or scheduler recovery claimed.",
+  "lastVerifiedAt": "2026-10-25T06:52:18.166Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/fd975f61ca192f222237b01073e3257a25ee5e3a"
 }
