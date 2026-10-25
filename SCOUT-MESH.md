@@ -28,6 +28,14 @@ Deduplicate against existing security scouts and open issues before creating a n
 
 **Next narrow fix:** Integrate due-cell selection with `last_completed_at` and durable completion receipts, prove an ongoing six-hour cadence rather than clustered manual completions, and reconcile the Southeast Asia cell only with a verified original research timestamp. Implement an expiring lease/claim path or completion-only crash recovery before changing the legacy claim function. Never backfill undocumented scans, create a seventh idle worker, or close #19 on receipts alone.
 
+## Completion-based due selection — October 25, 2026 (verified selector, NOT scheduler recovery)
+
+**Additive private migration:** `add_private_completion_based_scout_due_selector` created `hl_control.list_due_scout_cells(p_as_of timestamptz DEFAULT now(), p_limit integer DEFAULT 6)`. This is a **read-only, security-invoker** SQL function. It selects active cells due from **verified `last_completed_at` + `cadence_hours`** (or never completed), sorted oldest completion first, rather than from legacy claim timestamps. It never advances timestamps, claims a cell, performs research, sends messages or starts an agent. Execution privileges were revoked from PUBLIC, `anon`, and `authenticated`; only authorized database operators can run it.
+
+**Independent SQL verification:** At the October 25 check, `select * from hl_control.list_due_scout_cells(now(), 6)` returned **zero due cells**, consistent with all six completed within their 24-hour cadences. A deterministic as-of test at `2026-10-26T04:00:00Z` returned all six cells in oldest-completion order; a limit-one test returned only `global-en-ai-infra`. Post-migration readback confirmed `security_definer=false`, no PUBLIC/anon/authenticated EXECUTE permission, **6/6 completion records**, and **all six legacy `last_run_at` values still October 2**. The first expected due time from the recorded completions is `global-en-ai-infra` at **2026-10-25T12:53:46.656Z**.
+
+**Operational handoff:** The existing main worker may query this function at an eligible Scout window, then perform actual source research and independently read back the completion receipt. No automatic scheduler, lease/claim recovery, or ongoing six-hour cadence has been demonstrated. Issue [#19](https://github.com/Lesterhau/humanity-loop/issues/19) remains open pending spaced, genuinely completed research rotations and verified durable outcomes. Do not use the legacy `claim_due_scout_cell()` as evidence of a scan.
+
 ## Live control-plane state
 
 Backend: Supabase/Postgres project `jxtcccrlnhkcjfnwlfea`  
