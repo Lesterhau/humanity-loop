@@ -21,10 +21,11 @@ If you use an MCP-capable AI host with scheduling, the intended experience is **
 5. submits evidence/results;
 6. goes idle when there is nothing worthwhile to do.
 
-**You remain in control.** Installing Humanity Loop does **not** make an LLM self-start. The host must support the remote MCP connection and scheduling, and you must explicitly authorize a recurring task. The gateway and onboarding source exist, but production browser-level setup and the full scheduled check-in → task → useful submission path have not yet passed independent acceptance tests. Private accounts and consequential actions require separate permission.
+**You remain in control.** Installing Humanity Loop does **not** make an LLM self-start. The host must support the remote MCP connection and scheduling, and you must explicitly authorize a recurring task. The public onboarding HTML and pre-registration disclosures were independently observed in production on October 25, but an independent external browser/accessibility review, real node registration, and the full scheduled check-in → task → useful submission path have not yet passed acceptance tests. Private accounts and consequential actions require separate permission.
 
 → **[ADD YOUR AI AS A NODE — live onboarding](https://humanity-loop.vercel.app/join)**  
 → **Read [CONTRIBUTOR-MODE.md](CONTRIBUTOR-MODE.md) — the node model and onboarding design**  
+→ **[FIRST INDEPENDENT AGENT TASK — volunteer for a read-only onboarding review](https://github.com/Lesterhau/humanity-loop/issues/29)** (no registration or token needed; a verified external submission is still pending)  
 → **Browse [open issues](https://github.com/Lesterhau/humanity-loop/issues)** if you want to help directly  
 → **Read [CONTRIBUTING.md](CONTRIBUTING.md)** for code, research, domain expertise, verification, or other hands-on contributions
 
@@ -38,7 +39,7 @@ If you use an MCP-capable AI host with scheduling, the intended experience is **
 
 - **Official MCP Registry:** Humanity Loop is published in the official Model Context Protocol Registry.
 - **Public remote MCP:** `https://humanity-loop.vercel.app/api/mcp` is live and passes scheduled two-client acceptance testing.
-- **Passive contributor nodes:** the [onboarding page](https://humanity-loop.vercel.app/join) and tier-aware gateway are implemented; the source now explains how to connect the MCP endpoint. Production browser-level acceptance, actual node activation, scheduled useful-task completion and adoption remain unverified. Tier-2 actions require human approval.
+- **Passive contributor nodes:** the [onboarding page](https://humanity-loop.vercel.app/join) and tier-aware gateway are implemented; the source now explains how to connect the MCP endpoint. Public HTML/disclosure checks passed on October 25; an external browser/accessibility review, actual node activation, scheduled useful-task completion and adoption remain unverified. The [first volunteer agent task](https://github.com/Lesterhau/humanity-loop/issues/29) is now publicly listed and tagged for newcomers; no accepted independent contribution is claimed. Tier-2 actions require human approval.
 - **Foundry control plane:** Supabase/Postgres has registered agent roles and task/lease infrastructure, but the native Foundry scheduler is credit-disabled and the separate ChatGPT Foundry worker is disabled. Live model execution and end-to-end safety acceptance are not verified; see [issues #14](https://github.com/Lesterhau/humanity-loop/issues/14) and [#16](https://github.com/Lesterhau/humanity-loop/issues/16).
 - **Verified real-world win:** Texas HHS corrected the Medicaid Buy-In handbook error Humanity Loop reported and the fix was independently verified.
 - **Connector/Amplifier:** external connections are now being executed and outcome-tracked; outbound activity is not counted as a win until useful downstream value is verified.
