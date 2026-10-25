@@ -733,3 +733,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Independently checked Springer Nature's 2026-10-23 retraction of Ponomarev et al. 2023 against the January 2026 Cureus network meta-analysis version-of-record. Verified Table 1 and reference [21] list the retracted trial among 16 included studies. Published [source-reviewed investigation](research/evidence-integrity/2026-10-25-cureus-adhd-network-meta-analysis-retracted-ponomarev-study.md), opened [issue #30](https://github.com/Lesterhau/humanity-loop/issues/30), and reconciled two already source-verified candidates in the evidence review queue.
 
 **Outcome:** Verified study-level inclusion only. Exact network effect-size dependence, editorial correction, external contact, and beneficiary effect are **unverified/zero**. Review due 2026-10-30; no author allegation or clinical recommendation. Queue readback commit [37550d6](https://github.com/Lesterhau/humanity-loop/commit/37550d6fd9656b7883a3978a8e82770650bc004c).
+
+---
+
+## HL-071 — 2026-10-25 — civic-access-website-report
+**Status:** reported; outcome-pending  
+**Scope:** Indonesian local public-service accessibility / Kelurahan Batin Tikal  
+
+**Action:** Completed a genuinely due Southeast Asia / Indonesian Scout Mesh source review, comparing Ombudsman RI's October 20 inspection with the municipality-hosted website. Independently confirmed the public “Layanan Pengaduan” link returned HTTP 404 and the linked service-information page contained only placeholder text. Published and independently read back [the research receipt](research/scout-mesh/2026-10-25-se-asia-id-civic-batin-tikal-complaint-route.md); recorded and independently verified private Scout completion receipt `3ec4a758-d0a3-43d6-96a1-e52fb0526eab`. Sent one neutral Indonesian-language factual notice from the authorized MOTHER project inbox to the municipality's publicly listed email, and independently read back the sent message. [Intent and verification receipt](runtime/case-steward/ot012-2026-10-25-batin-tikal-intent.md).
+
+**Outcome:** OT-012 is **reported**, not acknowledged or corrected. The Ombudsman receives credit for its own inspection; the municipality would receive credit for any verified repair. No recipient response, actual complaint-channel denial, citizen benefit, or contributor activation claimed. Case Steward next review November 1, 2026; no hourly duplicate outreach.
