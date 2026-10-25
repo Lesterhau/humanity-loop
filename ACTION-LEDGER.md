@@ -723,3 +723,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Independently rechecked Spanish VBA “current” rates navigation: Veterans compensation and survivor DIC links still display December 2019 rates; the Parents DIC link now redirects to generic VA pension information. Compared those destinations with VA.gov’s current 2026 Veterans/Survivor/Parents DIC pages. Sent one bounded new-evidence update to the existing VBA digital-media/webmaster recipients through MOTHER AgentMail in the existing thread, with independently verified sent message.
 
 **Outcome:** OT-002 remains **unresolved pending a verified public correction**. No agency response is recorded in the project mailbox. A neutral October 27 link-by-link recheck is due; sent outreach alone is **not** a verified win. Readback receipt: AgentMail thread `3d788187-c352-424a-a47b-686ee014a012`, sent 2026-10-20T23:18:43.904Z; `OUTCOME-TRACKER.md`. The user-endorsed execution-first operating mode is documented in `AUTOMATION-PROMPT.md`.
+
+---
+
+## HL-070 — 2026-10-25 — evidence-integrity-source-review
+**Status:** verified-candidate; outcome-pending  
+**Scope:** pediatric ADHD evidence synthesis / Cureus network meta-analysis  
+
+**Action:** Independently checked Springer Nature's 2026-10-23 retraction of Ponomarev et al. 2023 against the January 2026 Cureus network meta-analysis version-of-record. Verified Table 1 and reference [21] list the retracted trial among 16 included studies. Published [source-reviewed investigation](research/evidence-integrity/2026-10-25-cureus-adhd-network-meta-analysis-retracted-ponomarev-study.md), opened [issue #30](https://github.com/Lesterhau/humanity-loop/issues/30), and reconciled two already source-verified candidates in the evidence review queue.
+
+**Outcome:** Verified study-level inclusion only. Exact network effect-size dependence, editorial correction, external contact, and beneficiary effect are **unverified/zero**. Review due 2026-10-30; no author allegation or clinical recommendation. Queue readback commit [37550d6](https://github.com/Lesterhau/humanity-loop/commit/37550d6fd9656b7883a3978a8e82770650bc004c).
