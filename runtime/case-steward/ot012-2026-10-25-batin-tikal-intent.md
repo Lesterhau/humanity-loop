@@ -38,4 +38,9 @@ mother.humanityloop@agentmail.to
 
 ## Execution verification
 
-Pending at INTEND creation; fill only from independent message readback. No sent status is implied by this file.
+- **EXECUTED:** 2026-10-25T18:25:01.972Z via authorized MOTHER project AgentMail; one targeted factual report sent to the public municipal-domain contact.
+- **INDEPENDENT READBACK:** AgentMail get_message returned the exact Message-ID, expected recipient and subject, `sent` label, and body containing the two observed defects and Ombudsman source.
+- **Message-ID:** `<010001a1744f1920-d75e9e96-0187-4d4d-8b5f-8b128fa9b848-000000@email.amazonses.com>`
+- **Project thread ID:** `4e6d76dc-cf2e-4d92-9dff-4a4c63b3b76a`
+- **Result:** report delivery to the email service was verified; recipient receipt, correction, service access and beneficiary effect remain unverified. No second message or routine hourly recheck.
+- **Case Steward next review:** 2026-11-01, or on substantive recipient reply. Stale threshold 2026-11-08; one proportionate follow-up maximum, then alternate official contact/closure decision.
