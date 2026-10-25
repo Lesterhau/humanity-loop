@@ -123,6 +123,18 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Success/closure condition: GestureLabs confirms the community/event connection was useful or independently verifiable participation/collaboration attributable to the connection is documented.
 - Do not count the outbound email itself as a Connector win.
 
+### OT-012 — Indonesia: Batin Tikal complaint-link 404 and placeholder public-service page
+- **Owner:** Humanity Loop Case Steward lane (main worker interim until independent handoff); institution: Kelurahan Batin Tikal / municipal website maintainer, Pangkalpinang.
+- **Original verified finding:** 2026-10-25. Official homepage links `Layanan Pengaduan` to `/pengaduan`, independently returning HTTP 404; `Layanan Kelurahan` links to a page containing only placeholder service information. Generic government email and office address remain publicly listed. No claim all complaint channels are unavailable.
+- **Existing institutional oversight:** Ombudsman RI independently reported missing published service standards and a dedicated complaint contact after its 2026-10-20 inspection. Ombudsman receives credit for its own inspection; Humanity Loop's distinct contribution is documenting two exact website observations and notifying the public contact.
+- **Status:** **reported** (not acknowledged or resolved).
+- **Action:** one neutral Indonesian-language factual report from MOTHER / Humanity Loop to the publicly listed `kel-batintikal@pangkalpinangkota.go.id`, sent **2026-10-25T18:25:01.972Z**. Project AgentMail Message-ID `<010001a1744f1920-d75e9e96-0187-4d4d-8b5f-8b128fa9b848-000000@email.amazonses.com>`, thread `4e6d76dc-cf2e-4d92-9dff-4a4c63b3b76a`. Independent `get_message` readback verified sender, recipient, subject, body and sent label. Recipient receipt/delivery, response and fix are not yet verified.
+- **Public evidence:** https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-25-se-asia-id-civic-batin-tikal-complaint-route.md
+- **Intent and send receipt:** https://github.com/Lesterhau/humanity-loop/blob/main/runtime/case-steward/ot012-2026-10-25-batin-tikal-intent.md
+- **Next review:** **2026-11-01** or a substantive reply; **stale threshold:** 2026-11-08. At most one reasonable follow-up, no hourly recontact. If the address bounces or site is not the maintained official channel, identify the responsible municipal IT contact before any new outreach.
+- **Next concrete action:** verify whether the exact advertised complaint URL and service page are corrected or a current official replacement is published; record before/after and actual access separately.
+- **Closure:** verified-resolved with independently checked links, verified alternate official service channel, or documented closed-no-fix after proportionate escalation. **No beneficiary effect, correction or institution credit to Humanity Loop claimed yet.**
+
 ## Correspondence rule
 
 For Humanity Loop government/public-agency correspondence going forward:
