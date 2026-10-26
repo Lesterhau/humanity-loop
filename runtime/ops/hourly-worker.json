@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-26T20:36:42.375Z",
+  "runAt": "2026-10-26T23:23:57.812062Z",
   "status": "worked",
-  "summary": "Independently checked current NWS CAP-transition production and preview PDFs: production and official index consistently say November 20, 2026, while public preview PDF has a November 30 body paragraph. Added the narrow preview-only discrepancy and November 5 case-review gate to the existing NWS case; independently read back the GitHub change. No new external outreach, agency correction or beneficiary effect. Supabase completion-based due selector returned zero due Scout cells; legacy claim timestamps were not changed.",
-  "lastVerifiedAt": "2026-10-26T20:35:38.031Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/210d09c4a70ddc91868f32c37ca44c2c9a5948f4"
+  "summary": "Completed one source-reviewed due Scout cell (south-asia-en-education): UNESCO 2026 GEM, NITI Aayog 2026, UNESCO 2025 and existing DIKSHA/PM e-VIDYA assessed. No novel independently verified low-risk intervention; published and independently verified no-signal research. Private Supabase completion receipt b7ac2dac-eccf-46f6-b6c6-3c8f09ba440f independently read back (completed 23:20:15Z, recorded 23:22:18Z); due selector now empty. Legacy claim timestamps untouched. No external contact, agent activation, beneficiary effect, or six-hour scheduler restoration claimed.",
+  "lastVerifiedAt": "2026-10-26T23:22:18.738961Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/611d41267af6dafc9af2354ecaa76e8afad84975"
 }
