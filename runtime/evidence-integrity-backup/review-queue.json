@@ -140,8 +140,20 @@
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/42857135",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-23T08:38:38.935116Z"
+      "status": "triaged_verified_included_study_retraction_dependency_effect_unquantified",
+      "detectedAt": "2026-10-23T08:38:38.935116Z",
+      "reviewedOn": "2026-10-26",
+      "reviewedBy": "Humanity Loop main worker — independent publisher and citing-review included-study table check",
+      "reviewEvidence": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13651499/",
+        "https://link.springer.com/article/10.1007/s10936-023-10003-2",
+        "https://link.springer.com/article/10.1007/s10936-026-10324-y"
+      ],
+      "reviewSummary": "Liang et al. eClinicalMedicine 2026 (online Sept 28; DOI 10.1016/j.eclinm.2026.104228) includes Ponomarev et al. 2023 (DOI 10.1007/s10936-023-10003-2) explicitly in its study-characteristics table under pair-wise mindfulness training, n=90. Springer marks that original study retracted Oct 23, 2026, after the review appeared. The accessible notice does not expose the reason. Exact effect-size contribution, effect of exclusion, editorial update, and clinical impact are NOT verified.",
+      "nextAction": "By 2026-10-30 check for journal updates, obtain supplementary extraction/effect-size data, isolate Ponomarev's contribution, and assess sensitivity; prepare neutral human-reviewed editorial inquiry only if an unaddressed material dependency remains.",
+      "nextReviewDate": "2026-10-30",
+      "evidenceClassification": "verified_included_study_retraction_dependency_effect_unquantified",
+      "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/evidence-integrity/2026-10-26-liang-ef-network-meta-analysis-retracted-ponomarev-trial.md"
     },
     {
       "retractedDoi": "10.1007/s10936-023-10003-2",
