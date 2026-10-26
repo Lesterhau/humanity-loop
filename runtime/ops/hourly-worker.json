@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-26T17:27:00Z",
+  "runAt": "2026-10-26T20:36:42.375Z",
   "status": "worked",
-  "summary": "Completed one bounded source-backed website-integrity report to a named humanitarian information-service maintainer. The project inbox independently confirmed the exact sent message and recipient; private case/evidence is retained outside the public repository. This proves sender-side acceptance only, not recipient delivery, acknowledgment, compromise, correction or beneficiary impact. No public security details published. Previous public verification pointer retained because the new report evidence is private.",
-  "lastVerifiedAt": "2026-10-26T13:44:05Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/80e2789dec03d9fa49ed81bbc82fea781820e66d"
+  "summary": "Independently checked current NWS CAP-transition production and preview PDFs: production and official index consistently say November 20, 2026, while public preview PDF has a November 30 body paragraph. Added the narrow preview-only discrepancy and November 5 case-review gate to the existing NWS case; independently read back the GitHub change. No new external outreach, agency correction or beneficiary effect. Supabase completion-based due selector returned zero due Scout cells; legacy claim timestamps were not changed.",
+  "lastVerifiedAt": "2026-10-26T20:35:38.031Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/210d09c4a70ddc91868f32c37ca44c2c9a5948f4"
 }
