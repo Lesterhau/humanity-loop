@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-25T08:31:12.463677Z",
+  "runAt": "2026-10-26T09:04:06.319440Z",
   "status": "limited",
   "source": "Crossref retraction notices + Europe PMC citation metadata",
   "sourceLimit": {
@@ -9,53 +9,41 @@
     "citationsPerDoi": 1000
   },
   "newRetractionsChecked": 4,
-  "citationsExamined": 27,
-  "candidateFindingsCount": 1,
-  "candidateFindings": [
-    {
-      "retractedDoi": "10.1159/000487998",
-      "noticeDoi": "10.1159/nim/adxag006",
-      "citingSource": "MED",
-      "citingId": "38798711",
-      "citingTitle": "Curcumin in the treatment of inflammation and oxidative stress responses in traumatic brain injury: a systematic review and meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/38798711",
-      "status": "unreviewed"
-    }
-  ],
+  "citationsExamined": 10,
+  "candidateFindingsCount": 0,
+  "candidateFindings": [],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 11,
+  "coverageGapsCount": 9,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1109/aimsec.2011.6010819",
+      "doi": "10.1016/j.net.2026.104447",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1109/aimsec.2011.6011039",
+      "doi": "10.1109/aimsec.2011.6011014",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3390/land14040796",
+      "doi": "10.21926/obm.neurobiol.2603351",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.eij.2025.100748",
+      "doi": "10.1007/s00339-025-08876-2",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.eij.2025.100756",
+      "doi": "10.1016/j.epsr.2026.113068",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.surfin.2026.109021",
+      "doi": "10.1016/j.ceramint.2024.08.084",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
@@ -65,22 +53,12 @@
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.ijnss.2026.08.019",
+      "doi": "10.1109/aimsec.2011.6010819",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.insi.2025.100170",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1007/s11869-023-01324-1",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1029/2023wr034623",
+      "doi": "10.1109/aimsec.2011.6011039",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
