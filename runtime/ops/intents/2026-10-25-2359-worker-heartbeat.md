@@ -1,0 +1,3 @@
+# INTEND — verified Scout activity heartbeat
+
+At 2026-10-25 23:59 UTC, update only `runtime/ops/hourly-worker.json` with the independently read-back 2026-10-25 West Africa Scout source review, its genuine `no_signal` decision, and public commit `ccb84b15a60e6b6cdce3e0bb90a971ae4fb786ae`. Private receipt `71f265cf-e021-4747-b548-11d96dd95b41` was independently queried, showing `last_completed_at=2026-10-25T23:59:12.363Z`. Preserve truthful outcome limits: no agency action, beneficiary impact, node activation, or scheduler recovery. Verify new heartbeat by separate fetch. If blocked by safety checks, stop this write; do not reroute.
