@@ -1,0 +1,27 @@
+{
+  "baselinesCreated": 0,
+  "changes": [
+    {
+      "authority": "European Medicines Agency",
+      "detectedAt": "2026-10-26T22:35:43.549430Z",
+      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- Agenda of the PRAC meeting 6-9 July 2026\n- EMA/PRAC/141965/2026\n- (518.48 KB - PDF)\n- 06/07/2026\n- Page 1 of 51\n- 51\n\nADDED IN CURRENT VERSION:\n+ Agenda of the PRAC meeting 26 - 29 October 2026\n+ EMA/PRAC/227255/2026\n+ (478.42 KB - PDF)\n+ 26/10/2026\n+ Page 1 of 52\n+ 52",
+      "materiality": "unreviewed",
+      "medicalAdvice": null,
+      "newFingerprint": "1b27373e1e13f28694e408ea13341d556f794f6c65a531341d51b6b3f4a4f825",
+      "oldFingerprint": "9944189979b388eb3a5e15e3e07da7c4bffc51362ecb580db49d297a2e6904ce",
+      "severity": "unreviewed",
+      "sourceKey": "ema-prac",
+      "sourceName": "EMA PRAC Safety Highlights",
+      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
+      "verificationStatus": "needs-independent-source-review"
+    }
+  ],
+  "changesDetected": 1,
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-10-26T22:35:43.549430Z",
+  "schemaVersion": 1,
+  "sourcesChecked": 3,
+  "sourcesConfigured": 3,
+  "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
+}
