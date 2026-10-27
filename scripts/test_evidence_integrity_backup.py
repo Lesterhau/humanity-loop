@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Offline regressions for the credit-free Evidence Integrity metadata backup."""
+import io
 import unittest
+from unittest.mock import patch
 from urllib.error import HTTPError
 
-from evidence_integrity_backup import candidate_kind, extract_retractions, scan, merge_review_queue, CROSSREF
+from evidence_integrity_backup import candidate_kind, extract_retractions, scan, merge_review_queue, get_json, CROSSREF
 
 
 RETRACTION = {
@@ -96,6 +98,36 @@ class EvidenceIntegrityBackupTests(unittest.TestCase):
         self.assertEqual(len(requests), 2)  # One Crossref call, only one Europe PMC call.
         self.assertEqual(state["seenDois"], [])
         self.assertEqual(report["candidateFindingsCount"], 0)
+
+    def test_transient_503_retries_once_and_recovers(self):
+        url = "https://example.org/metadata"
+        transient = HTTPError(url, 503, "Service Unavailable", None, None)
+        with patch("evidence_integrity_backup.urlopen",
+                   side_effect=[transient, io.BytesIO(b'{"ok": true}')]) as fetch, \
+             patch("evidence_integrity_backup.time.sleep") as sleep:
+            self.assertEqual(get_json(url), {"ok": True})
+        self.assertEqual(fetch.call_count, 2)
+        sleep.assert_called_once_with(2)
+
+    def test_persistent_503_stops_after_one_retry(self):
+        url = "https://example.org/metadata"
+        transient = HTTPError(url, 503, "Service Unavailable", None, None)
+        with patch("evidence_integrity_backup.urlopen", side_effect=transient) as fetch, \
+             patch("evidence_integrity_backup.time.sleep") as sleep:
+            with self.assertRaises(HTTPError):
+                get_json(url)
+        self.assertEqual(fetch.call_count, 2)
+        sleep.assert_called_once_with(2)
+
+    def test_429_is_not_retried(self):
+        url = "https://example.org/metadata"
+        limited = HTTPError(url, 429, "Too Many Requests", None, None)
+        with patch("evidence_integrity_backup.urlopen", side_effect=limited) as fetch, \
+             patch("evidence_integrity_backup.time.sleep") as sleep:
+            with self.assertRaises(HTTPError):
+                get_json(url)
+        self.assertEqual(fetch.call_count, 1)
+        sleep.assert_not_called()
 
     def test_unindexed_doi_retries_without_falsely_claiming_source_failure(self):
         report, state = scan(fetch=lookup(article={"resultList": {"result": []}}))
