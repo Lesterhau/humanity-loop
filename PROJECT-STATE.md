@@ -4,6 +4,10 @@
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
 
+## Verified outcome — VA Spanish rate links (2026-10-27)
+
+**WIN-002 / OT-002 verified-resolved:** Humanity Loop documented in September and again October 20 that the Spanish VA benefits-rate index labeled links current while compensation/DIC destinations were marked effective 2019. On October 27 the same index was independently followed to official **2026** VA.gov Veterans compensation, SMC, survivor DIC and Parents DIC tables. The index currently shows a last-updated date of October 22; exact edit timing and exclusive causation are unproven. **We flagged this issue; it was subsequently corrected.** Credit the VA for implementation. The linked rate tables are in English, and actual beneficiary use was not measured. Evidence: [public before/report/after](runtime/case-steward/ot002-2026-10-27-va-spanish-rates-corrected.md); [WIN-LEDGER.md](WIN-LEDGER.md). No new outreach or public MOTHER post. A human-review-only post candidate is saved at [runtime/mother-drafts/2026-10-27-va-spanish-current-rate-links-win002.md](runtime/mother-drafts/2026-10-27-va-spanish-current-rate-links-win002.md).
+
 ## Mission
 
 Build a vendor-neutral, distributed public-interest agent system that can:
