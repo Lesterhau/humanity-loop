@@ -79,7 +79,8 @@ def extract_retractions(data: dict) -> list[tuple[str, str]]:
             doi = update.get("DOI")
             if update.get("type") == "retraction" and isinstance(doi, str) and doi.strip():
                 found.setdefault(doi.strip().lower(), str(work.get("DOI") or ""))
-    return list(found.items())[:MAX_DOIS]
+    # The per-run cap applies to unseen attempts, not the first Crossref rows.
+    return list(found.items())
 
 
 def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
@@ -94,6 +95,7 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
     checked = 0
     citation_count = 0
     new_processed = []
+    unseen_attempts = 0
     try:
         candidates = extract_retractions(fetch(CROSSREF))
     except Exception as exc:
@@ -103,6 +105,9 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
     for doi, notice_doi in candidates:
         if doi in known:
             continue
+        if unseen_attempts >= MAX_DOIS:
+            break
+        unseen_attempts += 1
         try:
             search_url = ("https://www.ebi.ac.uk/europepmc/webservices/rest/search?"
                           + urlencode({"query": 'DOI:"' + doi + '"',
