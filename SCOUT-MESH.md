@@ -2,6 +2,10 @@
 
 Humanity Loop's Scout Mesh is a bounded weak-signal discovery system. It is designed to find useful, falsifiable emerging signals without turning every novelty into a project.
 
+## Information integrity and covert-influence resilience — October 27
+
+Treat public information manipulation, foreign influence disclosure and coordinated AI/bot amplification as a **priority read-only discovery lens**, alongside defensive AI-swarm resilience, not as a partisan persuasion mission. Read [INFORMATION-INTEGRITY-SCOUT.md](INFORMATION-INTEGRITY-SCOUT.md) for required source attribution, protections against treating identity or criticism as proof of misconduct, and comparative assessment of Israeli/Russian/other state actors, powerful platform owners and coordinated inauthentic networks. Public documentation and accurate source explanations are permitted; no mass replies, harassment, political microtargeting, unlawful access, or claims about specific actors without case-level proof. Preserve the existing six geographic cells and deduplicate other Scout findings.
+
 ## Defensive priority: AI-swarm resilience in interconnected essential systems (October 24)
 
 The Scout Mesh should include **defensive resilience against coordinated AI-enabled threats** as a recurring candidate discovery theme, alongside—not in place of—its existing global STEEP+ priorities. Seek verifiable public-interest gaps and solutions in electric grids and utilities, water, telecommunications, healthcare, banking/payment networks, logistics and government digital services.
