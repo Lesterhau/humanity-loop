@@ -1,27 +1,177 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-27T11:31:01.488598Z",
-  "status": "failed",
+  "runAt": "2026-10-27T23:05:25.037698Z",
+  "status": "limited",
   "source": "Crossref retraction notices + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 0,
-  "citationsExamined": 0,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
-  "failuresCount": 1,
-  "failures": [
+  "newRetractionsChecked": 4,
+  "citationsExamined": 63,
+  "candidateFindingsCount": 9,
+  "candidateFindings": [
     {
-      "stage": "europepmc_http",
-      "doi": "10.1155/2022/4163308",
-      "reason": "HTTP 503: Europe PMC metadata lookup unavailable"
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "42564916",
+      "citingTitle": "Tranexamic acid in radical cystectomy: a systematic review and meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/42564916",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "42355800",
+      "citingTitle": "Prophylactic Use of Tranexamic Acid to Prevent Postpartum Hemorrhage in High-Risk Cesarean Deliveries: A Systematic Review and Meta-Analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/42355800",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "41066405",
+      "citingTitle": "Efficacy of prophylactic tranexamic acid among parturient at increased risk for postpartum hemorrhage undergoing cesarean delivery: A systematic review and meta-analyses of randomized controlled trials.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41066405",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "40891871",
+      "citingTitle": "The use of tranexamic acid in external dacryocystorhinostomy: a systematic review and meta-analysis of randomized controlled trials.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/40891871",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "40712613",
+      "citingTitle": "Prophylactic strategies for prevention of postpartum haemorrhage in caesarean delivery: a systematic review and Bayesian network meta-analysis of randomised controlled trials.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/40712613",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "40406479",
+      "citingTitle": "Efficacy of tranexamic acid application in gynecology and obstetrics procedures: a umbrella review of systematic reviews of randomized trials.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/40406479",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "39082365",
+      "citingTitle": "Prophylactic tranexamic acid for reducing blood loss in pregnant females undergoing cesarean section: A systematic review and meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39082365",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "37928456",
+      "citingTitle": "Prehospital tranexamic acid in trauma patients: a systematic review and meta-analysis of randomized controlled trials.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/37928456",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.ajogmf.2023.101049",
+      "noticeDoi": "10.1016/j.ajogmf.2023.101049",
+      "citingSource": "MED",
+      "citingId": "37601311",
+      "citingTitle": "Tranexamic acid for the prevention of postpartum bleeding: Protocol for a systematic review and individual patient data meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/37601311",
+      "status": "unreviewed"
     }
   ],
-  "coverageGapsCount": 0,
-  "coverageGaps": [],
+  "failuresCount": 0,
+  "failures": [],
+  "coverageGapsCount": 11,
+  "coverageGaps": [
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.colsurfa.2019.123842",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2019.02.176",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2018.03.225",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2017.06.032",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2018.03.175",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2017.05.112",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2017.03.230",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2017.05.115",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2019.01.215",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2021.01.168",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.seppur.2026.140507",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    }
+  ],
   "clinicalConclusions": null,
   "notice": "Triage only. Incomplete citation coverage is possible. Candidate citations are not proof that any guideline or review relies on invalid evidence. Human source-level validation required.",
   "nativeAppDeployStateSynced": false
