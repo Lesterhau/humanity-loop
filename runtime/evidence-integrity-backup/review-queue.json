@@ -174,8 +174,20 @@
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/42342602",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-23T08:38:38.935116Z"
+      "status": "triaged_retraction_verified_dependency_unverified",
+      "detectedAt": "2026-10-23T08:38:38.935116Z",
+      "reviewedOn": "2026-10-27",
+      "reviewedBy": "Humanity Loop main worker — PubMed original/retraction and citing-review abstract verification",
+      "reviewEvidence": [
+        "https://pubmed.ncbi.nlm.nih.gov/37544957/",
+        "https://pubmed.ncbi.nlm.nih.gov/42909659/",
+        "https://research.hacettepe.edu.tr/en/publications/technology-based-interventions-for-children-and-adolescents-with-/",
+        "https://doi.org/10.1080/01942638.2026.2689070"
+      ],
+      "reviewSummary": "PubMed explicitly links the 2023 Ponomarev et al. randomized digital cognitive/mindfulness training study (90 children) to a 2026-10-23 retraction notice (DOI 10.1007/s10936-026-10324-y). The 2026 Ceyhan/Akyurek systematic review covers 2020-2025 studies and reports 34 eligible studies, 14 RCTs pooled; indexed citation metadata lists a possible citation to the retracted study. Accessible abstract and metadata do NOT show whether Ponomarev et al. was one of the 34 studies, one of the 14 pooled RCTs, or merely a background citation. Full citing-review study tables/text could not be independently accessed without restricted publisher access; paid Scite tool was unavailable. No evidence of compromised pooled results or patient impact. No journal outreach authorized on this evidence alone.",
+      "nextAction": "On 2026-10-30 seek lawful full-text/supplementary study table or openly indexed citation context for Ceyhan/Akyurek 2026; classify Ponomarev as included/pooled/background/absent. Only consider neutral human-reviewed editorial notice if substantive dependence is independently established.",
+      "nextReviewDate": "2026-10-30",
+      "evidenceClassification": "confirmed_retraction_possible_citation_unverified_study_inclusion"
     },
     {
       "retractedDoi": "10.1007/s10936-023-10003-2",
