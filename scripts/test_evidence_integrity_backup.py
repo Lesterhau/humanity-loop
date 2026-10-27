@@ -51,6 +51,34 @@ class EvidenceIntegrityBackupTests(unittest.TestCase):
         ]}}
         self.assertEqual(extract_retractions(items), [("10.1000/retracted", "10.1000/notice")])
 
+    def test_seen_crossref_prefix_does_not_hide_unseen_doi(self):
+        # Crossref returns 25 rows, but the first 16 may already be recorded.
+        works = []
+        for i in range(17):
+            works.append({"DOI": f"10.1000/notice-{i}", "update-to": [
+                {"DOI": f"10.1000/original-{i}", "type": "retraction"}]})
+        previous = {"seenDois": [f"10.1000/original-{i}" for i in range(16)]}
+        report, state = scan(
+            fetch=lookup(crossref={"message": {"items": works}}),
+            previous=previous, now="2026-10-27T23:00:00Z")
+        self.assertEqual(report["newRetractionsChecked"], 1)
+        self.assertEqual(report["candidateFindingsCount"], 1)
+        self.assertIn("10.1000/original-16", state["seenDois"])
+
+    def test_limit_counts_unseen_attempts_not_total_crossref_rows(self):
+        works = []
+        for i in range(18):
+            works.append({"DOI": f"10.1000/notice-{i}", "update-to": [
+                {"DOI": f"10.1000/original-{i}", "type": "retraction"}]})
+        previous = {"seenDois": ["10.1000/original-0", "10.1000/original-1"]}
+        report, state = scan(
+            fetch=lookup(crossref={"message": {"items": works}}),
+            previous=previous, now="2026-10-27T23:00:00Z")
+        self.assertEqual(report["newRetractionsChecked"], 15)
+        self.assertEqual(report["candidateFindingsCount"], 15)
+        self.assertIn("10.1000/original-16", state["seenDois"])
+        self.assertNotIn("10.1000/original-17", state["seenDois"])
+
     def test_real_candidate_is_triage_only(self):
         report, state = scan(fetch=lookup(), now="2026-10-20T20:00:00Z")
         self.assertEqual(report["status"], "ok")
