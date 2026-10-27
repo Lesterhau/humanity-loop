@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError
@@ -27,8 +28,19 @@ MAX_CITATIONS = 1000
 
 def get_json(url: str) -> dict:
     request = Request(url, headers={"Accept": "application/json", "User-Agent": USER_AGENT})
-    with urlopen(request, timeout=25) as response:
-        return json.load(response)
+    # One bounded retry for transient upstream server failures; never retry rate limits
+    # or a response with Retry-After. The caller still fails closed and preserves
+    # unprocessed DOIs if the provider remains unavailable.
+    for attempt in range(2):
+        try:
+            with urlopen(request, timeout=25) as response:
+                return json.load(response)
+        except HTTPError as exc:
+            if (attempt == 1 or exc.code not in (502, 503, 504)
+                    or (exc.headers and exc.headers.get("Retry-After"))):
+                raise
+            time.sleep(2)
+    raise AssertionError("Unreachable retry state")
 
 
 def candidate_kind(citation: dict) -> tuple[str, str] | None:
