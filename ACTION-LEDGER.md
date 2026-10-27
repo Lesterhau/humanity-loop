@@ -743,3 +743,14 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Completed a genuinely due Southeast Asia / Indonesian Scout Mesh source review, comparing Ombudsman RI's October 20 inspection with the municipality-hosted website. Independently confirmed the public “Layanan Pengaduan” link returned HTTP 404 and the linked service-information page contained only placeholder text. Published and independently read back [the research receipt](research/scout-mesh/2026-10-25-se-asia-id-civic-batin-tikal-complaint-route.md); recorded and independently verified private Scout completion receipt `3ec4a758-d0a3-43d6-96a1-e52fb0526eab`. Sent one neutral Indonesian-language factual notice from the authorized MOTHER project inbox to the municipality's publicly listed email, and independently read back the sent message. [Intent and verification receipt](runtime/case-steward/ot012-2026-10-25-batin-tikal-intent.md).
 
 **Outcome:** OT-012 is **reported**, not acknowledged or corrected. The Ombudsman receives credit for its own inspection; the municipality would receive credit for any verified repair. No recipient response, actual complaint-channel denial, citizen benefit, or contributor activation claimed. Case Steward next review November 1, 2026; no hourly duplicate outreach.
+
+
+---
+
+## HL-072 — 2026-10-27 — verified-public-guidance-correction
+**Status:** verified-resolved (OT-002 / WIN-002)  
+**Scope:** U.S. Department of Veterans Affairs / Spanish benefits-rate navigation  
+
+**Action:** Independently revisited the exact Spanish current-rate index Humanity Loop reported September 25 and re-reported with new evidence October 20. Followed its Veterans compensation, SMC, survivor DIC and Parents DIC links directly to official 2026 VA.gov rate tables; published and read back [the before/report/after evidence](runtime/case-steward/ot002-2026-10-27-va-spanish-rates-corrected.md), updated [OT-002](OUTCOME-TRACKER.md), [WIN-002](WIN-LEDGER.md) and the README milestone. No new external contact.
+
+**Outcome:** **We flagged this issue; it was subsequently corrected.** The VA implemented the link updates. Timing/causation beyond the verified sequence, full Spanish-language rate-table accessibility and actual beneficiary utilization remain unverified. No claim that the agency credited Humanity Loop or that the report exclusively caused the fix.
