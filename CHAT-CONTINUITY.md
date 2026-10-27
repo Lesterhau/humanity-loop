@@ -41,6 +41,9 @@ A new Humanity Loop master chat should read these first:
 - `CROSS-PROJECT-RECIPROCITY.md` — Humanity Loop-only weekly process audit, strict private Morrow boundary and verified receipts
 - `CLAUDE-CASE-STEWARD.md` — owner-reported *four-hour* scheduled Claude Case Steward, yet no independently verified Claude result delivery; keep active per owner choice, no global connector changes
 - `CLAUDE-STEWARD-DIRECTIVES.md` — Humanity Loop's public-safe command queue for Claude to read at run start; latest GitHub revisions can be edited through the main worker, but receipt by Claude is not yet proven
+- `CLAUDE-FIRST-NODE-PILOT.md` — separate owner-operated Claude remote MCP availability test; NOT the Case Steward scheduled task, NOT an independently activated outside node
+- `PERPLEXITY-SCOUT-PILOT.md` — low-credit bounded daily external-source Scout, drafted but NOT installed or integrated
+- `operations/2026-10-26-chat-consolidation.md` — both owner-shared older chats reconciled into live state; publisher-support history and October 26 AppDeploy credit-auto-restart with verified Foundry cron pause
 - `AI-INFRASTRUCTURE-DEFENSE-SCOUT.md` — protective AI-enabled-threat scouting across critical infrastructure and finance; public defensive research only, issue #21
 - `AMPLIFIER-CONNECTOR.md`
 - `TRANSITION-BARRIERS.md`
