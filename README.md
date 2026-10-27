@@ -35,12 +35,14 @@ If you use an MCP-capable AI host with scheduling, the intended experience is **
 
 ---
 
+> **October 26 operations note:** AppDeploy credits reset and auto-reenabled all five background crons. Humanity Loop **removed only the unsafe Foundry hourly cron** after verifying its outstanding safety-parser defect; the other native detector crons remain enabled and have separately running GitHub counterparts. The project is accepting bounded pilot/research participation, **not advertising unattended 24/7 autonomous service**. See [current project state](PROJECT-STATE.md) and [Oct26 consolidated incident handoff](operations/2026-10-26-chat-consolidation.md).
+
 ## Latest verified milestones
 
 - **Official MCP Registry:** Humanity Loop is published in the official Model Context Protocol Registry.
 - **Public remote MCP:** `https://humanity-loop.vercel.app/api/mcp` is live and passes scheduled two-client acceptance testing.
 - **Passive contributor nodes:** the [onboarding page](https://humanity-loop.vercel.app/join) and tier-aware gateway are implemented; the source now explains how to connect the MCP endpoint. Public HTML/disclosure checks passed on October 25; an external browser/accessibility review, actual node activation, scheduled useful-task completion and adoption remain unverified. The [first volunteer agent task](https://github.com/Lesterhau/humanity-loop/issues/29) is now publicly listed and tagged for newcomers; no accepted independent contribution is claimed. Tier-2 actions require human approval.
-- **Foundry control plane:** Supabase/Postgres has registered agent roles and task/lease infrastructure, but the native Foundry scheduler is credit-disabled and the separate ChatGPT Foundry worker is disabled. Live model execution and end-to-end safety acceptance are not verified; see [issues #14](https://github.com/Lesterhau/humanity-loop/issues/14) and [#16](https://github.com/Lesterhau/humanity-loop/issues/16).
+- **Foundry control plane:** Supabase/Postgres has registered agent roles and task/lease infrastructure, but the native Foundry schedule is **explicitly paused for safety** after the October 26 credit reset (saved `cron.json=[]`), and the separate ChatGPT Foundry worker is disabled. Live model execution and end-to-end safety acceptance are not verified; see [issues #14](https://github.com/Lesterhau/humanity-loop/issues/14) and [#16](https://github.com/Lesterhau/humanity-loop/issues/16).
 - **Verified real-world win:** Texas HHS corrected the Medicaid Buy-In handbook error Humanity Loop reported and the fix was independently verified.
 - **Connector/Amplifier:** external connections are now being executed and outcome-tracked; outbound activity is not counted as a win until useful downstream value is verified.
 
@@ -74,9 +76,9 @@ Humanity Loop is operating as a small public-interest agent system, not just a d
 ### Current operations and components
 
 - **Humanity Loop — Hourly Worker** — command-center maintenance, outcome follow-up, issue stewardship, Connector/Amplifier cycles, and state freshness.
-- **Humanity Loop — Foundry** — no verified active model executor. The dedicated ChatGPT Foundry task is disabled; the native AppDeploy scheduler is credit-disabled and a fail-closed safety repair remains outstanding.
+- **Humanity Loop — Foundry** — no verified active model executor. The dedicated ChatGPT Foundry task is disabled; the native AppDeploy schedule was **intentionally removed October 26** after a credit-reset auto-restart; a fail-closed safety repair remains outstanding.
 - **GitHub Actions workers** — CAP Daily Audit, Federal Policy Delta detection, and Critical Guidance Delta detection run on public-repo schedules with durable receipts.
-- **Evidence Integrity Sentinel** — native AppDeploy scheduler is credit-disabled. A narrower GitHub metadata backup has run, but its latest October 24 receipt failed on an upstream Europe PMC HTTP 503; full citation coverage is not restored.
+- **Evidence Integrity Sentinel** — native AppDeploy schedule reenabled with the October 26 credit reset and runs separately from GitHub's limited metadata backup. The two implementations are not yet reconciled; earlier Europe PMC 503s show that no blanket full-coverage claim is justified.
 - **MOTHER** — Humanity Loop's planned public voice and supervised project-correspondence identity at `mother.humanityloop@agentmail.to`. An unattended response workflow and consenting real-user field test are not yet verified.
 - **Outcome Tracker** — public-agency reports are followed through independently verified closure.
 - **Connector / Amplifier** — recurring pipeline for moving verified promising work toward experts, grants, compute, collaborators, institutions, volunteers, or public support.
@@ -90,12 +92,12 @@ See `WIN-LEDGER.md` and `OUTCOME-TRACKER.md`.
 
 ### Live public app surfaces
 
-- [Critical Guidance Delta](https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/) — authoritative WHO/FDA/EMA medication-safety change detection. Its active scheduler now runs through GitHub Actions while the AppDeploy cron is credit-disabled.
-- [Evidence Integrity Sentinel](https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/) — deployed interface; native scanning is disabled for exhausted credits. A limited GitHub metadata backup exists but currently has upstream source failures.
+- [Critical Guidance Delta](https://critical-guidance-delta-y7nzmd.v2.appdeploy.ai/) — authoritative WHO/FDA/EMA medication-safety change detection. Its independent GitHub detector continues, and the distinct native AppDeploy cron reenabled October 26; scheduler ownership and cost parity are still under review.
+- [Evidence Integrity Sentinel](https://evidence-integrity-sentinel-uip4nx.v2.appdeploy.ai/) — deployed interface; native scanning reenabled after the October 26 credit reset; the separate GitHub metadata backup has experienced upstream-source gaps, and the two implementations are not equivalent.
 - [CAP Clarity Check](https://cap-clarity-check-0jbjid.v2.appdeploy.ai/) — pre-publication emergency-alert clarity and structure checking.
 - [Federal Policy Delta](https://federal-policy-delta-p49z0b.v2.appdeploy.ai/) — neutral official-source change monitoring. Active deterministic detection runs through GitHub Actions.
 - [CAP Daily Audit](https://cap-daily-audit-s0a2he.v2.appdeploy.ai/) — audits live NWS alerts. Its active daily scheduler runs through GitHub Actions.
-- [Foundry Alpha](https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/) — deployed multi-role app interface, but its native cron is credit-disabled, the separate ChatGPT Foundry automation is disabled, and the live fail-closed safety fix remains unverified.
+- [Foundry Alpha](https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/) — deployed multi-role app interface, but automatic native execution was deliberately paused October 26 (`cron.json=[]`) while the live fail-closed safety fix remains unverified; the separate ChatGPT Foundry automation is disabled.
 
 ### Current build priorities
 
