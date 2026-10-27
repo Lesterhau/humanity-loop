@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-27T07:35:53.721691Z",
+  "runAt": "2026-10-27T11:31:52.517732Z",
   "status": "worked",
-  "summary": "Independently verified that the VA's Spanish current-rate index, previously reported as routing readers to 2019 rates, now links to official 2026 Veterans compensation, SMC, survivor DIC and Parents DIC tables. Public before/report/after note, OT-002, WIN-002, README, action ledgers and a human-review-only MOTHER draft were saved and independently read back. The VA implemented the change; no exclusive causation, Spanish translation completeness or beneficiary usage claimed. Current governance and healthy Ops Sentinel read; completion-based Scout selector zero due cells, contributor nodes zero, onboarding requests/submissions zero. No external contact, spending, agents or Foundry activation.",
-  "lastVerifiedAt": "2026-10-27T07:35:53.721691Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/6548a8e3adcdcb0403a2bbb7336cc391c9d69352"
+  "summary": "Verified current canonical instructions, watchdog warning and source failure. Added one bounded 502/503/504 retry (not 429 or Retry-After), three offline regression tests, and a canonical-main refresh before metadata scans to repair a reproducible stale-checkout GitHub Actions conflict. Independently read back all three code changes; latest workflow 40496714344 completed with 14 tests passing and successful receipt persistence. Source 503 remains unresolved in its latest 11:31Z report (zero newly checked in that run); a preceding 11:26Z partial run checked 6 retractions and queued 3 unreviewed citation leads, not clinical findings. Supabase selector zero due Scout cells and zero registered contributor nodes; no external contact, spending, agents, public post or beneficiary impact.",
+  "lastVerifiedAt": "2026-10-27T11:31:52.517732Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/c7a7ab68e3a8e0d03cc932096afb48a123f31ab9"
 }
