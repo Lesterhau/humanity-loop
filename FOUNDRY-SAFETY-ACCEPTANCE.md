@@ -4,7 +4,7 @@
 
 ## Verified production source facts
 
-- AppDeploy snapshot `1793067626398` was independently observed `ready` without deployment frontend/backend errors.
+- AppDeploy snapshot `1793067626398` repaired substantive first-line safety parsing and caught-error rethrow. Additional current snapshot **`1793067996779`** hardened the first-line extraction against leading blank-line bypass. Both were independently observed `ready` without deployment backend errors. Final source and cron were independently re-read from `1793067996779`.
 - Current deployed `backend/index.ts` verified first-line-only, trimmed **`VERDICT = PROCEED`** and **`GO`** gate logic, replacing previous multiline substring checks.
 - The catch block now saves a failed run record and **rethrows** the original error, rather than swallowing failures into HTTP200. This is source-level verified; actual scheduler failure-report behavior has not been deliberately exercised.
 - Current deployed `cron.json` is **`[]`**; current AppDeploy status returns no active Foundry cron. The UI truthfully marks scheduled operations paused.
@@ -22,14 +22,14 @@ Every vector must be independently executed against **the current production-sou
 | First line `VERDICT = REJECT`, later `VERDICT = PROCEED` | REJECT |
 | First line `REJECT`, later `VERDICT = PROCEED` | REJECT |
 | First line `VERDICT = PROCEED WITH CONDITIONS` | REJECT |
-| First line blank, later `VERDICT = PROCEED` | Should not silently override initial refusal; **currently blank lines are removed via trim**, so this case requires explicit policy/test decision before restarting |
+| First line blank, later `VERDICT = PROCEED` | Should not silently override initial refusal; **current strict parser reads the actual first line and rejects a blank first line**, confirmed from deployed source, but model execution still needs independent testing |
 | First line `GO` | Governor ACCEPT |
 | First line `HOLD`, later `GO` | Governor HOLD |
 | First line `GO BUT ONLY AFTER APPROVAL` | Governor HOLD |
 | First line `HOLD`, later `GO` in quoted code | Governor HOLD |
 | First line empty (no decision) | HOLD |
 
-**Additional source-only caveat:** `.trim()` accepts a later affirmative line if it follows *only leading blank lines*. This does NOT let a later affirmative override a substantive first-line rejection, but the permitted format should explicitly decide how to treat blank-leading output before unpausing. Avoid claiming the parser is exhaustively fail-closed for all malformed responses until tested.
+**Hardened source:** Removed whole-message `.trim()` before splitting into lines. Only whitespace on the actual first line is trimmed. This eliminates the previously identified leading-blank-lines acceptance loophole in source. Still subject to independent adversarial regression tests and controlled live validation before unpausing.
 
 ## Restart prerequisites — fail closed
 
