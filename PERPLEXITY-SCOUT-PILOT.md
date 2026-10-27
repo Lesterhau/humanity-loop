@@ -12,7 +12,8 @@ Perplexity Computer Automations (as publicly documented October 2026) can run on
 
 **Global public-interest Scout with alternating daily lenses**, weighted toward:
 - Defensive resilience against AI-swarm-enabled security threats to critical infrastructure, electric/water systems, banks/payments, hospitals, telecommunications and interconnected supply chains (research only; no live probing).
-- Validated public-information correction opportunities and service accessibility.
+- Evidence-backed information-integrity risks: disclosed or covert foreign influence, coordinated inauthentic behavior, synthetic propaganda, anti-Muslim and antisemitic hate amplification, and platform concentration. Cover independently substantiated Israeli/Russian and other foreign-state activities and powerful U.S. platform-owner influence with equal evidentiary standards. **No partisan targeting or blanket allegations.** Before this lens, read [INFORMATION-INTEGRITY-SCOUT.md](INFORMATION-INTEGRITY-SCOUT.md).
+- Validated public-information correction opportunities and service accessibility.- Validated public-information correction opportunities and service accessibility.
 - Credible, promising open-source scientific/public-good projects seeking contributors rather than generic news headlines.
 - Global educational access, climate adaptation and neglected infrastructure vulnerabilities.
 
