@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "sourceKey": "ema-prac",
+  "detectorRunAt": "2026-10-26T22:35:43.549430Z",
+  "reviewDate": "2026-10-26",
+  "reviewer": "Humanity Loop hourly worker",
+  "status": "reviewed-substantive-agenda-not-final-guidance",
+  "materiality": "new-draft-meeting-agenda-with-pending-safety-signal-and-referral",
+  "confidence": "high-for-agenda-publication; no-conclusion-on-risk-or-regulatory-action",
+  "reasoning": [
+    "Detector reported that the EMA PRAC index changed from the July 6-9 agenda to the draft October 26-29 agenda (EMA/PRAC/227255/2026). Independent official EMA PDF read confirms its publication date and four-day meeting schedule.",
+    "Draft agenda section 3.1.1 lists a newly triggered non-urgent Article 31 benefit-risk referral concerning melitracen hydrochloride and flupentixol hydrochloride (EMA/REF/0000382942), notified by Belgium; it proposes rapporteur appointment and procedural adoption, not a final benefit-risk finding.",
+    "Draft agenda section 4.1.1 lists a new human normal immunoglobulin signal of batch-associated hypersensitivity reactions (EPITT 20318) and an item for adoption of a PRAC recommendation; the agenda does not disclose a final adopted recommendation or establish product-level causality.",
+    "EMA expressly says this is a working agenda, scopes may change and further details will appear in PRAC meeting highlights when procedures are finalised. The page delta therefore is substantive regulatory-process information but not itself an implemented safety instruction, withdrawal, or clinical advice.",
+    "No independent source in this review establishes an adopted October 26-29 PRAC recommendation or new patient-facing guidance. Do not infer medication harm, change treatment, or contact patients from the draft agenda."
+  ],
+  "sourceUrls": [
+    "https://github.com/Lesterhau/humanity-loop/blob/main/runtime/critical-guidance-delta/latest-run.json",
+    "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
+    "https://www.ema.europa.eu/en/documents/agenda/agenda-prac-meeting-26-29-october-2026_en.pdf"
+  ],
+  "action": "Preserve as a source-verified pending regulatory signal. No external outreach or clinical claim. Recheck official EMA PRAC meeting highlights or adopted recommendations after the October 29 meeting; only then evaluate whether a material public guidance change warrants a case.",
+  "tenthMan": {
+    "question": "If this classification wins, who loses?",
+    "risk": "Treating a draft agenda as merely routine might delay attention to a real emerging safety signal; treating it as final advice could mislead patients and clinicians.",
+    "mitigation": "Retain exact identifiers EPITT 20318 and EMA/REF/0000382942, review adopted official outcomes promptly after the meeting, and distinguish signal investigation from regulatory decision."
+  },
+  "nextReview": "2026-10-30 or the first publication of official PRAC 26-29 October meeting highlights, whichever is later; otherwise next weekly safety-delta review",
+  "closureCondition": "Close as triaged when the adopted outcome is reviewed, or when EMA confirms no public-facing action; re-open only on independently verified substantive guidance change.",
+  "externalAction": "none",
+  "beneficiaryImpact": "none_verified"
+}
