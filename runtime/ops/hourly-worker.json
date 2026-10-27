@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-27T15:11:28.732761Z",
+  "runAt": "2026-10-27T18:43:51.232940Z",
   "status": "worked",
-  "summary": "Read canonical operating instructions and current watchdog. Independently source-reviewed a new evidence-integrity citation lead: PubMed confirms the 2016 Asarat in-vitro SCFA study was retracted July 22, 2026; Cambridge's November 2025 Mediterranean-diet mental-health review cites it as [159] in a five-reference butyrate mechanism sentence, not as a demonstrated included/pooled outcome study. Published and independently verified public triage report (commit cd93b49942e25fa2041f865874b447265a5ea2bb), then updated and read back the precise review-queue entry (commit ae566519c5df9885f5bdd685ff6077666b653f4d). No editorial contact or clinical-impact claim. All six Scout cells have completion receipts within 24h; none currently due, next SE Asia around 18:24Z. Contributor nodes zero. Evidence Integrity Backup's latest saved run still reports Europe PMC HTTP503. No spending, outreach, new agents or public posting.",
-  "lastVerifiedAt": "2026-10-27T15:11:28.732761Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/ae566519c5df9885f5bdd685ff6077666b653f4d"
+  "summary": "Read canonical operating instructions, governance, Scout Mesh and current Ops Sentinel warning. Completed a genuinely due Indonesian civic-access Scout: the official Tulang Bawang civil-registration complaint board still publicly displays unrelated QLola/WhatsApp banking-support guidance in May 2026 entries #419/#420/#423. Cross-checked BRI's official QLola service guidance, avoided personal/contact data and fraud allegations, checked duplication, and published/read back a bounded Tier-0 verified-candidate report (commit 5928545566d6046e46ded802624acfa15f8484fc). Recorded and independently read back Supabase Scout completion receipt c5d39169-f3d7-4a15-81c2-a6b70ec62e3c; legacy claim timestamps unchanged, no due cells after review. Contributor nodes and pending onboarding requests zero. Evidence Integrity Backup source warning persists. No third-party correction, contact, spending, agent activation, or beneficiary effect claimed.",
+  "lastVerifiedAt": "2026-10-27T18:42:57.274472Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/5928545566d6046e46ded802624acfa15f8484fc"
 }
