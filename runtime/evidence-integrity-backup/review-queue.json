@@ -15,7 +15,7 @@
       "detectedAt": "2026-10-20T22:01:21.564316Z",
       "provenanceUrl": "https://github.com/Lesterhau/humanity-loop/commit/cd6cea0167de466400f30dcd48a029264f9f6a7b",
       "reviewedOn": "2026-10-25",
-      "reviewedBy": "Humanity Loop main worker — independent publisher and citing-review full-text check",
+      "reviewedBy": "Humanity Loop main worker \u2014 independent publisher and citing-review full-text check",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1186/s40659-026-00737-3",
         "https://www.frontiersin.org/journals/cell-and-developmental-biology/articles/10.3389/fcell.2023.1204050/full"
@@ -39,7 +39,7 @@
       "status": "triaged_verified_background_only_no_pooled_dependency",
       "detectedAt": "2026-10-22T08:42:51.516341Z",
       "reviewedOn": "2026-10-25",
-      "reviewedBy": "Humanity Loop main worker — independent publisher and full-text source review",
+      "reviewedBy": "Humanity Loop main worker \u2014 independent publisher and full-text source review",
       "reviewEvidence": [
         "https://www.nature.com/articles/s41416-026-03656-y",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC10636977/",
@@ -62,7 +62,7 @@
       "status": "triaged_low_priority_notice_unverified",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-23",
-      "reviewedBy": "Humanity Loop main worker — source-level read-only triage",
+      "reviewedBy": "Humanity Loop main worker \u2014 source-level read-only triage",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s40368-025-01081-y",
         "https://www.mdpi.com/2075-4426/13/5/774",
@@ -84,7 +84,7 @@
       "status": "triaged_verified_intro_claim_only_no_pooled_dependency",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-25",
-      "reviewedBy": "Humanity Loop main worker — independent publisher retraction notice and citing-review text/table verification",
+      "reviewedBy": "Humanity Loop main worker \u2014 independent publisher retraction notice and citing-review text/table verification",
       "reviewEvidence": [
         "https://www.mdpi.com/2075-4426/16/11/542",
         "https://www.mdpi.com/2077-0383/14/6/1836",
@@ -107,7 +107,7 @@
       "status": "triaged_verified_bibliography_only_no_included_study",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-26",
-      "reviewedBy": "Humanity Loop main worker — source-level independent publisher full-text review",
+      "reviewedBy": "Humanity Loop main worker \u2014 source-level independent publisher full-text review",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1186/s12903-025-05635-w",
         "https://www.mdpi.com/2075-4426/16/11/542"
@@ -153,7 +153,7 @@
       "status": "triaged_verified_included_study_retraction_dependency_effect_unquantified",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-26",
-      "reviewedBy": "Humanity Loop main worker — independent publisher and citing-review included-study table check",
+      "reviewedBy": "Humanity Loop main worker \u2014 independent publisher and citing-review included-study table check",
       "reviewEvidence": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC13651499/",
         "https://link.springer.com/article/10.1007/s10936-023-10003-2",
@@ -177,7 +177,7 @@
       "status": "triaged_retraction_verified_dependency_unverified",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-27",
-      "reviewedBy": "Humanity Loop main worker — PubMed original/retraction and citing-review abstract verification",
+      "reviewedBy": "Humanity Loop main worker \u2014 PubMed original/retraction and citing-review abstract verification",
       "reviewEvidence": [
         "https://pubmed.ncbi.nlm.nih.gov/37544957/",
         "https://pubmed.ncbi.nlm.nih.gov/42909659/",
@@ -201,13 +201,13 @@
       "status": "triaged_verified_study_level_dependency",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-24",
-      "reviewedBy": "Humanity Loop main worker — source-level read-only verification",
+      "reviewedBy": "Humanity Loop main worker \u2014 source-level read-only verification",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s10936-023-10003-2",
         "https://link.springer.com/article/10.1007/s10936-026-10324-y",
         "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1711994/full"
       ],
-      "reviewSummary": "Publisher confirms Oct 23 retraction of Ponomarev 2023; Liu et al. 2026 Frontiers Bayesian ADHD meta-analysis names the same trial among included-study risk-of-bias assessments (Results §3.3). Exact contribution to pooled effect estimates not independently checked; no invalidity or misconduct conclusion.",
+      "reviewSummary": "Publisher confirms Oct 23 retraction of Ponomarev 2023; Liu et al. 2026 Frontiers Bayesian ADHD meta-analysis names the same trial among included-study risk-of-bias assessments (Results \u00a73.3). Exact contribution to pooled effect estimates not independently checked; no invalidity or misconduct conclusion.",
       "nextAction": "Oct 30 inspect Supplementary S1 and effect-size data, then check for an exact-DOI editorial update; human approval required for any external inquiry.",
       "nextReviewDate": "2026-10-30",
       "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-24-global-en-science-integrity-bayesian-adhd-retracted-trial.md",
@@ -225,7 +225,7 @@
       "status": "triaged_verified_study_level_dependency_effect_unquantified",
       "detectedAt": "2026-10-23T08:38:38.935116Z",
       "reviewedOn": "2026-10-25",
-      "reviewedBy": "Humanity Loop main worker — independently checked Springer retraction and Cureus version-of-record Table 1/reference 21",
+      "reviewedBy": "Humanity Loop main worker \u2014 independently checked Springer retraction and Cureus version-of-record Table 1/reference 21",
       "reviewEvidence": [
         "https://link.springer.com/article/10.1007/s10936-023-10003-2",
         "https://link.springer.com/article/10.1007/s10936-026-10324-y",
@@ -250,7 +250,7 @@
       "status": "triaged_verified_included_study_8_endpoints_effect_unquantified",
       "detectedAt": "2026-10-25T08:31:12.463677Z",
       "reviewedOn": "2026-10-25",
-      "reviewedBy": "Humanity Loop main worker — prior independently verified publisher and Frontiers Table 2 evidence (issue #27)",
+      "reviewedBy": "Humanity Loop main worker \u2014 prior independently verified publisher and Frontiers Table 2 evidence (issue #27)",
       "reviewEvidence": [
         "https://karger.com/nim/article/33/1/336/955006/Retraction-Statement-Tetrahydrocurcumin-Provides",
         "https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2024.1380353/full"

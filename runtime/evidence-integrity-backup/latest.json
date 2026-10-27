@@ -1,67 +1,27 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-26T09:04:06.319440Z",
-  "status": "limited",
+  "runAt": "2026-10-27T09:06:53.513639Z",
+  "status": "failed",
   "source": "Crossref retraction notices + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 4,
-  "citationsExamined": 10,
+  "newRetractionsChecked": 0,
+  "citationsExamined": 0,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
-  "failuresCount": 0,
-  "failures": [],
-  "coverageGapsCount": 9,
-  "coverageGaps": [
+  "failuresCount": 1,
+  "failures": [
     {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.net.2026.104447",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/aimsec.2011.6011014",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.21926/obm.neurobiol.2603351",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1007/s00339-025-08876-2",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.epsr.2026.113068",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ceramint.2024.08.084",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1159/000551831",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/aimsec.2011.6010819",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/aimsec.2011.6011039",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+      "stage": "europepmc_http",
+      "doi": "10.1007/s12011-024-04306-1",
+      "reason": "HTTP 503: Europe PMC metadata lookup unavailable"
     }
   ],
+  "coverageGapsCount": 0,
+  "coverageGaps": [],
   "clinicalConclusions": null,
   "notice": "Triage only. Incomplete citation coverage is possible. Candidate citations are not proof that any guideline or review relies on invalid evidence. Human source-level validation required.",
   "nativeAppDeployStateSynced": false
