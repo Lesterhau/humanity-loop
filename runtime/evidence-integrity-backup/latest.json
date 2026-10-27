@@ -1,27 +1,72 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-27T09:06:53.513639Z",
-  "status": "failed",
+  "runAt": "2026-10-27T11:26:19.507032Z",
+  "status": "partial",
   "source": "Crossref retraction notices + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 0,
-  "citationsExamined": 0,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
-  "failuresCount": 1,
+  "newRetractionsChecked": 6,
+  "citationsExamined": 199,
+  "candidateFindingsCount": 3,
+  "candidateFindings": [
+    {
+      "retractedDoi": "10.3109/08820139.2015.1122613",
+      "noticeDoi": "10.1080/08820139.2026.2706222",
+      "citingSource": "MED",
+      "citingId": "41488310",
+      "citingTitle": "The characteristics of the gut microbiota in patients with Kawasaki disease: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41488310",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.3109/08820139.2015.1122613",
+      "noticeDoi": "10.1080/08820139.2026.2706222",
+      "citingSource": "MED",
+      "citingId": "41194535",
+      "citingTitle": "Effect of Mediterranean diet on mental health outcomes: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41194535",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.3109/08820139.2015.1122613",
+      "noticeDoi": "10.1080/08820139.2026.2706222",
+      "citingSource": "MED",
+      "citingId": "36901634",
+      "citingTitle": "Changes in Gut Microbiota and Multiple Sclerosis: A Systematic Review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/36901634",
+      "status": "unreviewed"
+    }
+  ],
+  "failuresCount": 2,
   "failures": [
     {
       "stage": "europepmc_http",
-      "doi": "10.1007/s12011-024-04306-1",
+      "doi": "10.1007/s12011-025-04560-x",
+      "reason": "HTTP 500: Europe PMC metadata lookup unavailable"
+    },
+    {
+      "stage": "europepmc_http",
+      "doi": "10.3390/molecules25225445",
       "reason": "HTTP 503: Europe PMC metadata lookup unavailable"
     }
   ],
-  "coverageGapsCount": 0,
-  "coverageGaps": [],
+  "coverageGapsCount": 1,
+  "coverageGaps": [
+    {
+      "stage": "not_indexed",
+      "doi": "10.1155/2022/4163308",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    }
+  ],
   "clinicalConclusions": null,
   "notice": "Triage only. Incomplete citation coverage is possible. Candidate citations are not proof that any guideline or review relies on invalid evidence. Human source-level validation required.",
   "nativeAppDeployStateSynced": false
