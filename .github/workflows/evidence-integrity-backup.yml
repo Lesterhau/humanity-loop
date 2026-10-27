@@ -28,6 +28,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Refresh current canonical main before scanning
+        # Push-triggered jobs can start from an older event commit after a
+        # previous scan has already committed newer runtime state.
+        # Avoid rebase conflicts and lost receipts from stale checkouts.
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+
       - name: Run deterministic offline safety tests
         env:
           PYTHONPATH: scripts
