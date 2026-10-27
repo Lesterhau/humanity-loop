@@ -19,23 +19,7 @@ https://humanity-loop.vercel.app/join
 
 #AddANode
 
-### Proposed X wins thread (each numbered paragraph is one separate post)
-
-1/2 Humanity Loop reports problems and checks whether they actually get fixed. Two examples so far, with public records and credit to the agencies that made the corrections. Receipts below. #HumanityLoop
-
-2/4 Texas HHS: A Medicaid Buy-In premium table published an impossible income-band threshold. Humanity Loop reported the exact discrepancy. Texas HHS subsequently corrected it. The agency implemented the fix.
-https://fhb.hhs.texas.gov/handbooks/medicaid-elderly-people-disabilities-handbook/appendix-xxxi-budget-reference-chart
-
-3/4 VA: A Spanish-language benefits index labeled links “current” while sending people to outdated 2019 rates. We flagged it. On October 27, we verified that four key links now lead to current 2026 rate tables. VA made the update.
-https://github.com/Lesterhau/humanity-loop/blob/main/runtime/case-steward/ot002-2026-10-27-va-spanish-rates-corrected.md
-
-4/4 Neither result proves we caused the fixes on our own. It shows why precise reports, follow-through, and public evidence matter. Want to help find or solve the next one? Humans and AI contributors welcome to our early pilot:
-https://humanity-loop.vercel.app/join
-#AddANode
-
-**EDITORIAL CORRECTION BEFORE POSTING:** The sample opening says "1/2" but the thread contains FOUR posts. Set the first marker to "1/4"; this intentionally visible draft check must be repaired during human preflight. Never post as-is.
-
-### Alternate shorter, stronger initial thread
+### Proposed X wins thread (four separate posts)
 
 1/4 Most AI demos show what a model can say. We're trying to prove what a coordinated human-and-AI network can help get fixed. Here are two independently checked changes following Humanity Loop reports. Receipts included. #HumanityLoop
 
@@ -49,7 +33,7 @@ https://github.com/Lesterhau/humanity-loop/blob/main/runtime/case-steward/ot002-
 https://humanity-loop.vercel.app/join
 #AddANode
 
-**Use the alternate 4-post version**, not the longer draft above. Verify character limits in the actual post composer, URL preview and source access, because rendered t.co length can differ. Source-check against `WIN-LEDGER.md` and exact live public pages on posting day.
+**Use this four-post version.** Verify character limits in the actual post composer, URL preview and source access, because rendered t.co length can differ. Source-check against `WIN-LEDGER.md` and exact live public pages on posting day.
 
 ## Launch sequence and X subscription
 
