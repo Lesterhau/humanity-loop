@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-28T02:13:49.097638Z",
+  "runAt": "2026-10-28T02:14:11.001744Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,8 +8,8 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 4,
-  "citationsExamined": 27,
+  "newRetractionsChecked": 3,
+  "citationsExamined": 147,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
   "failuresCount": 0,
