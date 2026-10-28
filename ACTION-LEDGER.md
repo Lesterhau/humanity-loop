@@ -784,3 +784,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Read the active version-5 gateway source and independently enumerated private-schema client-role grants, public RPC execute privileges and RLS state. Confirmed the generic gateway exception response includes a truncated underlying backend error message; request-size preflight alone does not prove bounded parsed-body size. No live endpoint probing or database mutation. Published and independently read back the [scoped security finding and safe repair plan](https://github.com/Lesterhau/humanity-loop/issues/20#issuecomment-6465172332).
 
 **Outcome:** A source-level risk was documented for reviewed remediation; no actual leak, exploit, unauthorized database access, production fix, new contributor or beneficiary impact established. Security Review/gateway maintainer owns a reviewed generic-error/size-limit patch and tests before any approved deployment.
+
+---
+
+## HL-076 — 2026-10-28 — contributor-gateway-hardening-proposal
+**Status:** independently tested proposal; NOT deployed  
+**Scope:** Supabase Contributor Node gateway v5 / issue #20  
+
+**Action:** Prepared a concrete bounded-stream JSON parser and fixed generic-error response to address the source-confirmed gateway weaknesses in HL-075. Nine standalone Node Web Streams regression tests passed, including absent/understated Content-Length, 65,536-byte boundary, malformed JSON/UTF-8, and client-error detail omission. Published and independently fetched the [proposal](https://github.com/Lesterhau/humanity-loop/blob/main/security/contributor-node-gateway-v5-hardening-proposal-2026-10-28.md), commit [`100df782`](https://github.com/Lesterhau/humanity-loop/commit/100df782cb50c1fb7d3f5491f76d979eb3a6ef08), and independently verified the [issue #20 maintainer handoff](https://github.com/Lesterhau/humanity-loop/issues/20#issuecomment-6467347305).
+
+**Outcome:** Reproducible defensive remediation candidate and explicit Deno/Edge integration, legitimate-flow, approval, and rollback gates. Tests do not establish production compatibility or an implemented fix. No deployment, live security probing, contributor adoption, or beneficiary effect. Owner: Security Review + gateway maintainer; next action only in an authorized tested deployment window.
