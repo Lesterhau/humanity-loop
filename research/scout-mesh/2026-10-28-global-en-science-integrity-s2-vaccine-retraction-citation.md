@@ -1,0 +1,34 @@
+# Scout Mesh — Global / English / Science Integrity: retracted S2 vaccine study remains a cited evidentiary example
+
+**Research completed:** 2026-10-28, approximately 04:44 UTC (source review performed 04:36–04:44 UTC).  
+**Cell:** `global-en-science-integrity` | **Owner:** Humanity Loop Scout Owner  
+**Decision:** `verified_candidate` — narrow citation-context clarification; **no publisher correction or clinical impact verified**.  
+**Action tier:** Tier 0 public research; any subsequent journal note is a separate bounded Tier 1 transaction.  
+**Novelty:** 0.58 | **Usefulness:** 0.68 | **Evidence quality:** 0.92 | **Interpretation uncertainty:** 0.25 (heuristic 0–1).
+
+## Source-verified chain
+
+1. **Retracted primary paper:** Ng et al., *SARS-CoV-2 S2-targeted vaccination elicits broadly neutralizing antibodies*, *Science Translational Medicine* (July 27, 2022), DOI [10.1126/scitranslmed.abn3715](https://doi.org/10.1126/scitranslmed.abn3715), PMID [35895836](https://pubmed.ncbi.nlm.nih.gov/35895836/). PubMed now classifies this record as **Retracted Publication** and links the formal **October 14, 2026** retraction notice, DOI [10.1126/scitranslmed.aem5154](https://doi.org/10.1126/scitranslmed.aem5154), PMID [42873900](https://pubmed.ncbi.nlm.nih.gov/42873900/). This is a verified retraction, not merely an expression of concern. [Retraction Watch's October 14 report](https://retractionwatch.com/2026/10/14/former-crick-ph-d-student-loses-covid-vaccine-paper-for-fabrication/) summarizes the publisher/institutional findings; attribution to the original authors should not extend beyond the notice.
+2. **Later narrative review:** Karczmarzyk and Kęsik-Brodacka, *Challenges and Prospects in the Development of a Universal SARS-CoV-2 Vaccine*, *Vaccines* (February 13, 2026), DOI [10.3390/vaccines14020173](https://doi.org/10.3390/vaccines14020173), PMID [41746093](https://pubmed.ncbi.nlm.nih.gov/41746093/). Its §3.2 uses **Ng et al. and Halfmann et al. together** to support an example of preclinical S2 immunization generating neutralizing responses; the reference list identifies **Ng et al. as reference #36** and Halfmann et al. as #37. This is a **direct, source-text-verified evidentiary citation** to the now-retracted paper, not merely a keyword or citation-network match. The review predates the retraction, so this is **not** evidence of author misconduct. The publisher article's indexed content still displays the original narrative; a current formal correction/annotation was **not independently established** (direct full-page retrieval was rate-limited).
+3. **Independent research paper with historical reliance:** Hsieh et al., *Prefusion-stabilized SARS-CoV-2 S2-only antigen provides protection against SARS-CoV-2 challenge*, *Nature Communications* (February 20, 2024), DOI [10.1038/s41467-024-45404-x](https://doi.org/10.1038/s41467-024-45404-x). In its Discussion, it cites Ng et al. as reference #53 and describes that study's reported mouse protection and antibody findings. **Hsieh et al. also report their own distinct experimental results**, which are not invalidated merely by citing the retracted paper. This second downstream citation is background/context and merits separate editorial-context triage, not a blanket claim of dependent invalidity.
+4. **Independent corroborating work:** Halfmann et al., *Multivalent S2-based vaccines provide broad protection against SARS-CoV-2 variants of concern and pangolin coronaviruses*, *eBioMedicine* (November 11, 2022), DOI [10.1016/j.ebiom.2022.104341](https://doi.org/10.1016/j.ebiom.2022.104341), PMID [36375316](https://pubmed.ncbi.nlm.nih.gov/36375316/). This independently published work is cited alongside Ng in the 2026 review. Retraction of Ng **does not refute the general S2-vaccine research program** or demonstrate a change in existing vaccine safety or efficacy.
+
+## Novelty and duplication screen
+
+The **retraction itself is already publicly indexed** in PubMed, OpenAlex, and reporting; Humanity Loop did **not** discover the misconduct or cause the retraction. The narrower potential service is identifying an **exact downstream evidence statement** in a 2026 narrative review and a 2024 independent research Discussion that predate the retraction. A public correction/annotation for either downstream paper has not been independently verified. Check with publishers before claiming any uncorrected status. No clinical guideline, treatment recommendation, human trial outcome, or patient effect was established.
+
+## Foresight / decision frame
+
+- **Signal type:** publication-integrity status change with downstream citation-lag risk (anomaly/transition signal).
+- **STEEP+:** scientific credibility, digital metadata propagation, journal editorial workflows, health communication, ethical attribution.
+- **TIPPO:** trend = increasing metadata-based retraction detection; issue = outdated evidence claims in secondary sources; potential = source-specific correction notes; obstacle = uncertain downstream causal dependence; opportunity = low-cost editorial clarification, not generalized accusation.
+- **Three Horizons:** H1 legacy review citations; H2 PubMed/Crossref notice propagation and human editorial checks; H3 machine-readable, source-specific post-retraction evidence annotations.
+- **Futures Triangle:** push = formal retraction and indexing; pull = accurate evidence synthesis; weight = legacy narrative references and publisher update lag.
+- **Cross-impact:** overclaiming this finding as a defect in licensed COVID vaccines could cause serious misinformation; explicitly distinguish experimental **mouse S2** vaccination from authorized human products.
+- **Falsification/stop conditions:** stop or reclassify if the publisher shows a dated correction already handling #36, if the original reference mapping changes, or if a qualified reviewer establishes the passage no longer relies on Ng. Do not claim any other paper is retracted without its own notice.
+
+## Next bounded action and follow-up
+
+**Scout Owner:** confirm the latest publisher version/correction history for DOI 10.3390/vaccines14020173; if still unannotated, one factual, non-accusatory message to the journal's official editorial contact asking whether a post-publication citation note is appropriate. Official *Vaccines* editorial address is listed at [MDPI's journal information](https://www.mdpi.com/journal/vaccines/about) as `vaccines@mdpi.com`. Observe one-follow-up limit; log send/response separately. For Hsieh et al., do not send a second outreach until the precise dependence and editorial process have been reviewed. **Next public-state review: 2026-11-11**, or on a substantive publisher response. No automated public posting or clinical guidance.
+
+**Outcome accounting:** one source-reviewed candidate only. No journal response, correction, third-party acceptance, beneficiary impact, or contributor-node adoption is claimed.
