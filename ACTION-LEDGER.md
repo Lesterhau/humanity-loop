@@ -794,3 +794,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Prepared a concrete bounded-stream JSON parser and fixed generic-error response to address the source-confirmed gateway weaknesses in HL-075. Nine standalone Node Web Streams regression tests passed, including absent/understated Content-Length, 65,536-byte boundary, malformed JSON/UTF-8, and client-error detail omission. Published and independently fetched the [proposal](https://github.com/Lesterhau/humanity-loop/blob/main/security/contributor-node-gateway-v5-hardening-proposal-2026-10-28.md), commit [`100df782`](https://github.com/Lesterhau/humanity-loop/commit/100df782cb50c1fb7d3f5491f76d979eb3a6ef08), and independently verified the [issue #20 maintainer handoff](https://github.com/Lesterhau/humanity-loop/issues/20#issuecomment-6467347305).
 
 **Outcome:** Reproducible defensive remediation candidate and explicit Deno/Edge integration, legitimate-flow, approval, and rollback gates. Tests do not establish production compatibility or an implemented fix. No deployment, live security probing, contributor adoption, or beneficiary effect. Owner: Security Review + gateway maintainer; next action only in an authorized tested deployment window.
+
+---
+
+## HL-077 — 2026-10-28 — public-reuse-rights-clarity
+**Status:** verified public-facing documentation clarification; owner license decision pending  
+**Scope:** Humanity Loop public README / licensing issue #31  
+
+**Action:** Following the verified absence of a repository-wide license (HL-074), added a clearly visible reuse-and-licensing status notice near the top of README without selecting or granting any license. The notice distinguishes public visibility and voluntary read-only issue participation from permission to redistribute code and links to [issue #31](https://github.com/Lesterhau/humanity-loop/issues/31). Independently fetched the exact new README blob and verified [commit c88dc1e](https://github.com/Lesterhau/humanity-loop/commit/c88dc1e1d3febf0d45cc96e64aebef0faa3a1612).
+
+**Outcome:** A public visitor now receives explicit, truthful reuse-rights context while the rights-holder decides licensing scope. This does not itself grant reuse rights, resolve #31, satisfy OSS-directory eligibility, establish contributor activation, or demonstrate beneficiary impact. Next action only after owner license decision or new material evidence.
