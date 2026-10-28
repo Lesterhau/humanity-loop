@@ -145,9 +145,23 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
                 if key in finding_keys:
                     continue
                 finding_keys.add(key)
+                # Crossref/Retraction Watch can expose an update relation whose
+                # notice DOI is the original DOI itself. Preserve the lead but
+                # never present that relationship as a verified retraction.
+                self_referential = bool(notice_doi and notice_doi.lower() == doi.lower())
                 findings.append({
                     "retractedDoi": doi,
                     "noticeDoi": notice_doi,
+                    "crossrefUpdateSelfReferential": self_referential,
+                    "noticeStatus": "unverified",
+                    "metadataCaveat": (
+                        "Self-referential Crossref retraction-type update: the notice DOI "
+                        "matches the original DOI. Independently verify the publisher "
+                        "notice and its actual status before asserting retraction."
+                        if self_referential else
+                        "Crossref retraction-type metadata is a discovery lead, not "
+                        "independent verification of the publisher notice or status."
+                    ),
                     "citingSource": str(citation["source"]),
                     "citingId": str(citation["id"]),
                     "citingTitle": str(citation.get("title") or "")[:500],
@@ -180,7 +194,7 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
         "schemaVersion": 1, "runAt": timestamp,
         "status": ("failed" if failures and not checked and not new_processed else
                    "partial" if failures else "limited" if coverage_gaps else "ok"),
-        "source": "Crossref retraction notices + Europe PMC citation metadata",
+        "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
         "sourceLimit": {"crossrefRows": 25, "newDoisPerRun": MAX_DOIS,
                         "citationsPerDoi": MAX_CITATIONS},
         "newRetractionsChecked": checked, "citationsExamined": citation_count,
@@ -190,7 +204,9 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
         "clinicalConclusions": None,
         "notice": ("Triage only. Incomplete citation coverage is possible. "
                    "Candidate citations are not proof that any guideline or review "
-                   "relies on invalid evidence. Human source-level validation required."),
+                   "relies on invalid evidence. Crossref update-type metadata, especially "
+                   "self-referential notice DOIs, does not independently establish "
+                   "a formal retraction. Human source-level validation required."),
         "nativeAppDeployStateSynced": False,
     }
     return report, state
