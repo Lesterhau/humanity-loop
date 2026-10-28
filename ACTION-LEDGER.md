@@ -754,3 +754,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Independently revisited the exact Spanish current-rate index Humanity Loop reported September 25 and re-reported with new evidence October 20. Followed its Veterans compensation, SMC, survivor DIC and Parents DIC links directly to official 2026 VA.gov rate tables; published and read back [the before/report/after evidence](runtime/case-steward/ot002-2026-10-27-va-spanish-rates-corrected.md), updated [OT-002](OUTCOME-TRACKER.md), [WIN-002](WIN-LEDGER.md) and the README milestone. No new external contact.
 
 **Outcome:** **We flagged this issue; it was subsequently corrected.** The VA implemented the link updates. Timing/causation beyond the verified sequence, full Spanish-language rate-table accessibility and actual beneficiary utilization remain unverified. No claim that the agency credited Humanity Loop or that the report exclusively caused the fix.
+
+---
+
+## HL-073 — 2026-10-28 — evidence-integrity-metadata-safety
+**Status:** verified internal safety fix (not public correction)  
+**Scope:** Crossref retraction-type metadata / Evidence Integrity Backup  
+
+**Action:** Added an explicit self-referential Crossref update flag, `noticeStatus: unverified`, and human-verification caveat to newly discovered citation leads, preserving the underlying candidate and original source relationship. Added an offline regression for same-DOI and distinct-DOI notices. Independently read back [source and test commit](https://github.com/Lesterhau/humanity-loop/commit/4793d3fb34f79d06d3b4305d9a88cb248f91a850). The subsequent [GitHub Actions-generated scan receipt](https://github.com/Lesterhau/humanity-loop/commit/a2bb64eae5147856df3d58f7f1257250f84603f4) at 2026-10-28T02:14:11Z uses the revised description, recorded 3 DOI investigations and 147 citations, with zero new candidates, zero request failures, and 11 known coverage gaps.
+
+**Outcome:** More explicit evidence uncertainty for future metadata triage. No publisher retraction established by this code change, no journal outreach, no clinical conclusion, and no beneficiary impact. The pre-existing nine Cheema expression-of-concern records remain source-reviewed separately.
