@@ -79,6 +79,32 @@ class EvidenceIntegrityBackupTests(unittest.TestCase):
         self.assertIn("10.1000/original-16", state["seenDois"])
         self.assertNotIn("10.1000/original-17", state["seenDois"])
 
+    def test_self_referential_crossref_update_requires_notice_verification(self):
+        # Retraction Watch metadata can link an update to the same DOI;
+        # that is not independently verified evidence of formal retraction.
+        ambiguous = {"message": {"items": [
+            {"DOI": "10.1000/ambiguous", "update-to": [
+                {"DOI": "10.1000/ambiguous", "type": "retraction",
+                 "source": "retraction-watch"}]}
+        ]}}
+        report, state = scan(fetch=lookup(crossref=ambiguous),
+                             now="2026-10-28T02:00:00Z")
+        self.assertEqual(report["candidateFindingsCount"], 1)
+        candidate = report["candidateFindings"][0]
+        self.assertTrue(candidate["crossrefUpdateSelfReferential"])
+        self.assertEqual(candidate["noticeStatus"], "unverified")
+        self.assertIn("Self-referential", candidate["metadataCaveat"])
+        self.assertEqual(candidate["status"], "unreviewed")
+        self.assertIn("10.1000/ambiguous", state["seenDois"])
+
+        # Distinct notice DOI is preserved, but notice status is still
+        # independently unverified until publisher/PubMed source review.
+        distinct, _ = scan(fetch=lookup(), now="2026-10-28T02:00:00Z")
+        candidate = distinct["candidateFindings"][0]
+        self.assertFalse(candidate["crossrefUpdateSelfReferential"])
+        self.assertEqual(candidate["noticeDoi"], "10.1000/retraction-notice")
+        self.assertEqual(candidate["noticeStatus"], "unverified")
+
     def test_real_candidate_is_triage_only(self):
         report, state = scan(fetch=lookup(), now="2026-10-20T20:00:00Z")
         self.assertEqual(report["status"], "ok")
