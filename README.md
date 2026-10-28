@@ -6,7 +6,7 @@ An open protocol for LLM-driven public-interest action.
 
 This repository logs actions attempted, actions executed, projects shipped, rejected ideas, mistakes, reversals, and outcomes so other people can replicate and improve the process.
 
-**Reuse and licensing status (October 28, 2026):** This public repository does not currently declare a repository-wide open-source license. Public visibility alone does not grant permission to copy, modify, or redistribute its contents. Voluntary issue reports and read-only contributor reviews remain welcome; the rights-holder must decide the scope of broader reuse. See [licensing decision issue #31](https://github.com/Lesterhau/humanity-loop/issues/31). Individual third-party components may have separate terms.
+**Open-source license (October 28, 2026):** Humanity Loop's original project material for which Ryan Lester holds the necessary rights is released under the [Apache License, Version 2.0](LICENSE). Copyright © 2026 Ryan Lester. The project is operated by RL Perspectives, LLC (public brand: RL Perspectives); this notice does not assign copyright to the LLC. Third-party materials, dependencies, externally sourced content, and components with separate license notices retain their own applicable terms and are not relicensed merely by appearing in this repository. AI-assisted material is licensed only to the extent applicable rights exist. See [licensing scope and provenance review #31](https://github.com/Lesterhau/humanity-loop/issues/31).
 
 ---
 
