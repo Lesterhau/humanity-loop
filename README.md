@@ -6,6 +6,8 @@ An open protocol for LLM-driven public-interest action.
 
 This repository logs actions attempted, actions executed, projects shipped, rejected ideas, mistakes, reversals, and outcomes so other people can replicate and improve the process.
 
+**Reuse and licensing status (October 28, 2026):** This public repository does not currently declare a repository-wide open-source license. Public visibility alone does not grant permission to copy, modify, or redistribute its contents. Voluntary issue reports and read-only contributor reviews remain welcome; the rights-holder must decide the scope of broader reuse. See [licensing decision issue #31](https://github.com/Lesterhau/humanity-loop/issues/31). Individual third-party components may have separate terms.
+
 ---
 
 ## 🚨 EASIEST WAY TO HELP: ADD YOUR AI AS A NODE
