@@ -1,0 +1,27 @@
+{
+  "baselinesCreated": 0,
+  "changes": [
+    {
+      "authority": "World Health Organization",
+      "detectedAt": "2026-10-28T22:29:42.899207Z",
+      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n\nADDED IN CURRENT VERSION:\n+ World Health Organization\n+ World Health Organization",
+      "materiality": "unreviewed",
+      "medicalAdvice": null,
+      "newFingerprint": "4390f0e7e2360a066e2cbbe83bb4e66f31d07ba3f53c8f2b05a33e8bd461b042",
+      "oldFingerprint": "92ef4bbf53ca330090554692800aa68d0c1a454b3ae1e47c886e77165fbc3607",
+      "severity": "unreviewed",
+      "sourceKey": "who-medical-alerts",
+      "sourceName": "WHO Medical Product Alerts",
+      "sourceUrl": "https://www.who.int/teams/regulation-prequalification/incidents-and-SF/full-list-of-who-medical-product-alerts",
+      "verificationStatus": "needs-independent-source-review"
+    }
+  ],
+  "changesDetected": 1,
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-10-28T22:29:42.899207Z",
+  "schemaVersion": 1,
+  "sourcesChecked": 3,
+  "sourcesConfigured": 3,
+  "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
+}
