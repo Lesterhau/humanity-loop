@@ -774,3 +774,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Independently checked the public repository root, README, CONTRIBUTING, and existing issues for a repository-wide OSS license; none was found. Cross-checked GitHub's license guidance and a free MCP directory's published eligibility requirement. Opened and independently read back [issue #31](https://github.com/Lesterhau/humanity-loop/issues/31) to request a rights-holder licensing decision and provenance review. Held third-party directory submission rather than misrepresent the project as OSS-licensed.
 
 **Outcome:** One verified, externally accessible governance/distribution blocker documented. No license chosen, third-party listing, contributor node, adoption, spending, or beneficiary impact. Owner action is required before any license grant; review only on owner decision or material new evidence.
+
+---
+
+## HL-075 — 2026-10-28 — contributor-gateway-error-handling-review
+**Status:** source-confirmed potential information-disclosure risk; no deployed fix  
+**Scope:** Supabase Contributor Node Edge Function / private control-plane access boundary  
+
+**Action:** Read the active version-5 gateway source and independently enumerated private-schema client-role grants, public RPC execute privileges and RLS state. Confirmed the generic gateway exception response includes a truncated underlying backend error message; request-size preflight alone does not prove bounded parsed-body size. No live endpoint probing or database mutation. Published and independently read back the [scoped security finding and safe repair plan](https://github.com/Lesterhau/humanity-loop/issues/20#issuecomment-6465172332).
+
+**Outcome:** A source-level risk was documented for reviewed remediation; no actual leak, exploit, unauthorized database access, production fix, new contributor or beneficiary impact established. Security Review/gateway maintainer owns a reviewed generic-error/size-limit patch and tests before any approved deployment.
