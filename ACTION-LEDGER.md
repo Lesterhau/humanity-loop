@@ -764,3 +764,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Added an explicit self-referential Crossref update flag, `noticeStatus: unverified`, and human-verification caveat to newly discovered citation leads, preserving the underlying candidate and original source relationship. Added an offline regression for same-DOI and distinct-DOI notices. Independently read back [source and test commit](https://github.com/Lesterhau/humanity-loop/commit/4793d3fb34f79d06d3b4305d9a88cb248f91a850). The subsequent [GitHub Actions-generated scan receipt](https://github.com/Lesterhau/humanity-loop/commit/a2bb64eae5147856df3d58f7f1257250f84603f4) at 2026-10-28T02:14:11Z uses the revised description, recorded 3 DOI investigations and 147 citations, with zero new candidates, zero request failures, and 11 known coverage gaps.
 
 **Outcome:** More explicit evidence uncertainty for future metadata triage. No publisher retraction established by this code change, no journal outreach, no clinical conclusion, and no beneficiary impact. The pre-existing nine Cheema expression-of-concern records remain source-reviewed separately.
+
+---
+
+## HL-074 — 2026-10-28 — contributor-discovery-license-clarity
+**Status:** verified governance/distribution blocker; owner decision required  
+**Scope:** Humanity Loop public GitHub repository / third-party OSS MCP directories  
+
+**Action:** Independently checked the public repository root, README, CONTRIBUTING, and existing issues for a repository-wide OSS license; none was found. Cross-checked GitHub's license guidance and a free MCP directory's published eligibility requirement. Opened and independently read back [issue #31](https://github.com/Lesterhau/humanity-loop/issues/31) to request a rights-holder licensing decision and provenance review. Held third-party directory submission rather than misrepresent the project as OSS-licensed.
+
+**Outcome:** One verified, externally accessible governance/distribution blocker documented. No license chosen, third-party listing, contributor node, adoption, spending, or beneficiary impact. Owner action is required before any license grant; review only on owner decision or material new evidence.
