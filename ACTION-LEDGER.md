@@ -804,3 +804,13 @@ Human-readable mirror of `actions.jsonl`.
 **Action:** Following the verified absence of a repository-wide license (HL-074), added a clearly visible reuse-and-licensing status notice near the top of README without selecting or granting any license. The notice distinguishes public visibility and voluntary read-only issue participation from permission to redistribute code and links to [issue #31](https://github.com/Lesterhau/humanity-loop/issues/31). Independently fetched the exact new README blob and verified [commit c88dc1e](https://github.com/Lesterhau/humanity-loop/commit/c88dc1e1d3febf0d45cc96e64aebef0faa3a1612).
 
 **Outcome:** A public visitor now receives explicit, truthful reuse-rights context while the rights-holder decides licensing scope. This does not itself grant reuse rights, resolve #31, satisfy OSS-directory eligibility, establish contributor activation, or demonstrate beneficiary impact. Next action only after owner license decision or new material evidence.
+
+---
+
+## HL-078 — 2026-10-28 — owner-approved-apache-license-scope
+**Status:** verified public licensing-clarity closure; file-level rights caveats remain  
+**Scope:** Humanity Loop root Apache-2.0 license, provenance boundaries and issue #31  
+
+**Action:** Owner approved Apache-2.0 for eligible original material while retaining personal copyright (governance [issue #32](https://github.com/Lesterhau/humanity-loop/issues/32)). Independently verified the root [LICENSE](LICENSE) and README licensing notice committed earlier, including normalized comparison to the SPDX standard text, the tracked-file tree and separate dependency licenses. Created and independently read back [LICENSE-SCOPE.md](LICENSE-SCOPE.md), linked it from README, and closed/read back [issue #31](https://github.com/Lesterhau/humanity-loop/issues/31). Verified [scope commit 1654f519](https://github.com/Lesterhau/humanity-loop/commit/1654f51912d18fa118c6ae0f5296e2aa19d53a2e) and [README-link commit 57b9bd3](https://github.com/Lesterhau/humanity-loop/commit/57b9bd3e8b64f7650543a3a1a4d8f9d35abc3601).
+
+**Outcome:** Repository-wide absence of a clear owner-approved license is resolved. This is not comprehensive file-by-file provenance clearance; external excerpts, third-party dependencies, logos/marks and rights not owned by Ryan are not automatically relicensed. No copyright assignment to RL Perspectives, LLC; no directory listing, contributor installation, accepted outside task, spending, deployment or beneficiary effect. Next adoption owner: issue #29; review exact package/asset rights before new external distribution.
