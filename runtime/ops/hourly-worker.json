@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-29T09:27:44Z",
+  "runAt": "2026-10-29T11:55:33Z",
   "status": "worked",
-  "summary": "Verified a WCAG contrast defect in the draft public homepage's report→correction status labels (foreground #176449 on #244739, ratio ~1.45:1). Corrected the scoped CSS to #c8f36a (~8.10:1) on PR #40; independently fetched and verified commit c5c5487. No build, deployment, independent MCP acceptance, outside contributor, or beneficiary impact claimed. Six Scout cells have recent completion receipts and no cells were due at this check.",
-  "lastVerifiedAt": "2026-10-29T09:27:44Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/c5c54879074df6dd6a8f0cbb8052df787ee6682a"
+  "summary": "Independently verified a research-integrity clarification candidate: the 2025 Maddukuri et al. ivermectin systematic review cites and includes in several main analyses a Pott-Junior pilot trial formally retracted in 2022; also noted an abstract/body RCT and participant-count mismatch. Published and independently read back source-backed GitHub issue #42 with balanced limitations, editorial-review owner and 2026-11-05 next review. No journal contact, clinical conclusion, correction, beneficiary impact, contributor activation or completed Scout Mesh review claimed.",
+  "lastVerifiedAt": "2026-10-29T11:55:33Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/42"
 }
