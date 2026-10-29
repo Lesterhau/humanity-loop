@@ -51,6 +51,7 @@
 .impact .intro{color:#d1e4d7}
 .impact .card{background:#244739;border-color:#426253}
 .impact .card h3{color:white}
+.impact .number{color:var(--lime)}
 .impact .card p{color:#d5e5d9}
 .impact .card a{color:var(--lime)}
 .disclosure{margin-top:24px;font-size:.9rem;color:#d1e4d7;line-height:1.65}
