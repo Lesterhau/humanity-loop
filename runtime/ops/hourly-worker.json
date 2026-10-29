@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-29T14:45:00Z",
+  "runAt": "2026-10-29T17:25:04Z",
   "status": "worked",
-  "summary": "Completed source-reviewed due global-en-ai-infra Scout on FERC large-load cost transparency; no distinct correctable defect or novel intervention after checking FERC OPP docket process, FERC commissioner concurrence, IEA and EIA. Published and independently fetched no-signal research; private completion receipt 8272e9eb-5f60-47bd-a2f8-a530480ed30a independently read back; due selector now empty. Adoption database: 0 registered nodes, 0 submissions, 0 onboarding requests. No external outreach, correction, beneficiary effect or human contributor claimed.",
-  "lastVerifiedAt": "2026-10-29T14:43:23Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-29-global-en-ai-infra-large-load-cost-transparency-no-signal.md"
+  "summary": "Independently verified Wiley's Oct 29 retraction of a 2021 kefir/Alzheimer mouse study and its exact study-level inclusion in Tanure et al. 2025 seven-study review. Published and read back a narrow evidence report (commit 9d980e0) and issue #44. Next editorial-update review Nov 5; no contact, clinical effect, contributor activation or beneficiary outcome claimed. Due Scout selector empty. npm registry DNS remains unavailable for #26; no unsafe lockfile changes.",
+  "lastVerifiedAt": "2026-10-29T17:25:04Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/44"
 }
