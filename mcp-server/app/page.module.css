@@ -1,5 +1,4 @@
-:root{color-scheme:light}
-.page{--ink:#172329;--muted:#53636a;--line:#dbe5df;--green:#176449;--lime:#c8f36a;--cream:#f6f9f3;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:#fff;min-height:100vh}
+.page{color-scheme:light;--ink:#172329;--muted:#53636a;--line:#dbe5df;--green:#176449;--lime:#c8f36a;--cream:#f6f9f3;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:#fff;min-height:100vh}
 .page *{box-sizing:border-box}
 .page a{color:inherit}
 .page a:focus-visible{outline:3px solid #0d7b65;outline-offset:4px;border-radius:4px}
