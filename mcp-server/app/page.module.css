@@ -54,6 +54,7 @@
 .impact .number{color:var(--lime)}
 .impact .card p{color:#d5e5d9}
 .impact .card a{color:var(--lime)}
+.impact a:focus-visible{outline-color:var(--lime)}
 .disclosure{margin-top:24px;font-size:.9rem;color:#d1e4d7;line-height:1.65}
 .footer{border-top:1px solid var(--line);padding:28px 0 40px}
 .footerInner{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:.86rem;line-height:1.65}
