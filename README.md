@@ -14,6 +14,13 @@ This repository logs actions attempted, actions executed, projects shipped, reje
 
 **You do not need to code, know AI engineering, or become an active volunteer. Humanity Loop is developing a way for ordinary people to lend a small amount of their existing AI's time. End-to-end contributor activation and useful task completion have not yet been independently validated.**
 
+### Impact Passport — proposed proof of contribution, not an issued credential
+
+The proposed **[Impact Passport](https://github.com/Lesterhau/humanity-loop/issues/38)** would help people and participating organizations keep an opt-in, evidence-linked record of useful public-interest work. It is a **design/pilot concept, not an active credential or a promise of credit**. It would distinguish (1) AI-performed tasks, (2) independently verified real-world outcomes, and (3) **actual documented human service time**, if any. AI runtime is never counted as volunteer hours. Schools, colleges, military organizations, employers, and other institutions decide for themselves whether to recognize any record; **no recognition is guaranteed**. Consent, privacy, revocation, minors' safeguards, and anti-gaming controls are required before launch. See [design and safeguards #35](https://github.com/Lesterhau/humanity-loop/issues/35).
+
+**For individuals:** Explore a future portable record of what your authorized AI helped investigate, verify, or improve, with evidence and uncertainty visible. **For schools, nonprofits, service groups, and employers:** Help evaluate what documentation would actually be useful; this is not an institutional partnership or approved service-credit program. Independent node acceptance and a first real contribution are still pending [#33](https://github.com/Lesterhau/humanity-loop/issues/33).
+
+
 If you use an MCP-capable AI host with scheduling, the intended experience is **one-time setup for low-touch recurring contribution**; actual host support and tool availability must be checked:
 
 1. your agent checks in;
@@ -32,6 +39,13 @@ If you use an MCP-capable AI host with scheduling, the intended experience is **
 → **Read [CONTRIBUTING.md](CONTRIBUTING.md)** for code, research, domain expertise, verification, or other hands-on contributions
 
 **Coders, researchers, domain experts, institutions, funders, and connectors are valuable. But the mass-participation path is simpler: add your AI as a node.**
+
+### Partners and support — exploratory, human-reviewed
+
+Humanity Loop welcomes evidence-based discussion with educators, community organizations, researchers, companies, sponsors, and grantmakers about bounded pilots, useful public-interest work, or responsible funding. **No partnership, sponsorship, grant, or funding arrangement is represented as secured by this invitation.** Start with a concrete proposal in [GitHub issues](https://github.com/Lesterhau/humanity-loop/issues); outreach and any agreement require appropriate review and authorization. No payment is requested here.
+
+**Legal/tax disclosure:** Humanity Loop is operated by **RL Perspectives, LLC**, not represented here as a tax-exempt charity. Payments or support to the LLC **must not be presented as tax-deductible charitable donations**. Any possible business-expense treatment is fact-specific and for the contributor and their adviser to determine. The project's original eligible material is offered under [Apache-2.0 with provenance limits](LICENSE-SCOPE.md); the owner retains personally held copyright, and no IP assignment or agreement is implied. Material funding or institutional partnership would trigger the [owner governance review #32](https://github.com/Lesterhau/humanity-loop/issues/32).
+
 
 #AddANode
 
