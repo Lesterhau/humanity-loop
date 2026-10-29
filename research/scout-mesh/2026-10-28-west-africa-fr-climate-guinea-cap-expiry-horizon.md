@@ -34,3 +34,16 @@
 ## Accounting
 
 This is a newly completed, source-reviewed due Scout investigation, not a claim-RPC refresh. No `claim_due_scout_cell()` invocation; its old claim timestamps are not completion proof. After independent GitHub readback, record and independently verify a completion receipt using `hl_control.record_completed_scout_review`. No independent specialist execution, outreach, alert repair, installation, or beneficiary impact claimed. See [INTEND](../../runtime/ops/intents/2026-10-28-west-africa-fr-climate-guinea-cap-expiry.md) and [Scout Mesh issue #19](https://github.com/Lesterhau/humanity-loop/issues/19).
+
+
+## Follow-up verification — 29 October 2026, 16:00 UTC (supersedes original XML uncertainty)
+
+The public ANM alert pages themselves link directly to the original CAP XML. A fresh independent read of the linked XML confirmed that the unusually long expiry values are present in the **source CAP messages**, not only the HTML pages:
+
+- [14 May original CAP XML](https://anmeteo.gov.gn/api/cap/f150677c-3653-4400-a758-656a53b58e34.xml): `effective=2026-05-14T15:56:00+00:00`; `expires=2026-10-15T23:00:00+00:00`. Narrative covers the evening/night of May 14.
+- [15 May original CAP XML](https://anmeteo.gov.gn/api/cap/21f414de-1875-4be8-8e39-a7fd2a46f6c5.xml): `effective=2026-05-15T17:58:00+00:00`; `expires=2026-10-17T20:00:00+00:00`. Narrative covers the night of May 15–16.
+- [22 October original CAP XML (comparison)](https://anmeteo.gov.gn/api/cap/b9d8dff1-5978-4064-a357-58fae4265f08.xml): `effective=2026-10-22T22:27:00+00:00`; `expires=2026-10-23T05:00:00+00:00`, consistent with the overnight event description.
+
+**Scope refinement:** The earlier concern about a possible HTML-only rendering defect is resolved: the values occur in source CAP XML. This **does not** establish that CAP message validity must equal event duration, that the extended validity was unintended, that an active false warning was published, or that anyone was harmed. Both May notices are currently archived as expired.
+
+**Verified Tier-1 action:** After a duplicate check in the authorized Humanity Loop project mailbox, one factual French clarification was sent to the published CAP sender address at **2026-10-29T16:00:35Z**. The project-mail sent record was independently read back; no agency response or correction has yet been observed. Track this case in [issue #43](https://github.com/Lesterhau/humanity-loop/issues/43), with next review **2026-11-05**, or sooner on a substantive response. No additional outreach before the next justified review. This is one verified contact, **not** a real-world correction or beneficiary impact.
