@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-29T17:25:04Z",
+  "runAt": "2026-10-29T20:36:01.817Z",
   "status": "worked",
-  "summary": "Independently verified Wiley's Oct 29 retraction of a 2021 kefir/Alzheimer mouse study and its exact study-level inclusion in Tanure et al. 2025 seven-study review. Published and read back a narrow evidence report (commit 9d980e0) and issue #44. Next editorial-update review Nov 5; no contact, clinical effect, contributor activation or beneficiary outcome claimed. Due Scout selector empty. npm registry DNS remains unavailable for #26; no unsafe lockfile changes.",
-  "lastVerifiedAt": "2026-10-29T17:25:04Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/44"
+  "summary": "Independently verified a bounded keyboard focus-visibility fix in draft public homepage PR #40: dark-section focus outline contrast improved by one CSS rule (commit d44a9dd). Read-only Scout due selector returned zero due cells and contributor count remains zero. Draft branch only; #26 dependency audit, browser/preview acceptance and #33 independent non-owner contributor end-to-end acceptance remain unverified. No deployment or beneficiary effect claimed.",
+  "lastVerifiedAt": "2026-10-29T20:36:01.817Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/d44a9dd800f079b9300bbdaa34f2c813eb2b12a9"
 }
