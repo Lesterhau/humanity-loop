@@ -1,0 +1,45 @@
+# TEMPORARY, BRANCH-SCOPED LOCKFILE REPAIR FOR ISSUE #26.
+# Remove this workflow from the PR before merging. No production deployment.
+name: MCP dependency lockfile regeneration (temporary #26)
+
+on:
+  push:
+    branches:
+      - fix/mcp-dependency-audit-26
+    paths:
+      - ".github/workflows/mcp-lockfile-repair-26.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: github.repository == 'Lesterhau/humanity-loop'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Regenerate lockfile using npm registry metadata
+        working-directory: mcp-server
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Validate lockfile diff
+        run: git diff --check -- mcp-server/package-lock.json
+      - name: Commit generated lockfile to this repair branch only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mcp-server/package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m "fix(mcp): regenerate npm lockfile for security gate #26"
+            git push origin "HEAD:refs/heads/fix/mcp-dependency-audit-26"
+          fi
+      - name: Verify clean pinned install
+        working-directory: mcp-server
+        run: npm ci
+      - name: Preserve high-severity audit gate
+        working-directory: mcp-server
+        run: npm audit --omit=dev --audit-level=high
