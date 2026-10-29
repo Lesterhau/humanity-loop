@@ -163,7 +163,7 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.shell + " " + styles.footerInner}>
           <p>Humanity Loop · Open public-interest protocol · Operated by RL Perspectives, LLC. Original eligible material is Apache-2.0 licensed, subject to documented provenance limits.</p>
-          <p><a href={repo}>Source and evidence</a> · <a href={repo + "/blob/main/LICENSE-SCOPE.md"}>Licensing</a> · <a href="/api/mcp">MCP endpoint</a> · <a href="/join">Join pilot</a></p>
+          <p><a href={repo}>Source and evidence</a> · <a href={repo + "/blob/main/LICENSE-SCOPE.md"}>Licensing</a> · <a href={repo + "/blob/main/mcp-server/README.md"}>MCP setup guide</a> · <a href="/join">Join pilot</a></p>
         </div>
       </footer>
     </div>
