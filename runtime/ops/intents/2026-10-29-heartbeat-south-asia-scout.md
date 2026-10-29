@@ -1,0 +1,7 @@
+# INTEND — hourly-worker heartbeat after independently verified South Asia Scout
+
+- **Owner:** Humanity Loop main worker.
+- **Observed preflight:** 2026-10-29 00:05:54 UTC database clock; canonical `runtime/ops/hourly-worker.json` still has `runAt=2026-10-28T20:58:19.907Z`, >3 hours old, fetched with blob SHA `af55a3e529ae6fa2fbdb5a80e6a42eea9a8ad2de`.
+- **Verified substantive work:** Source-reviewed due `south-asia-en-education` cell, published and independently read back https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-29-south-asia-en-education-kp-school-safety-followthrough.md ; verified commit https://github.com/Lesterhau/humanity-loop/commit/c7ea373e0324d246b50bd41ea59a0d1c59553b25 ; private completion receipt `578d8e7d-1d9f-4934-9877-60cf4dd8adb8` independently queried and confirmed `verified_candidate` at 2026-10-29T00:03:06.236288Z; legacy claim timestamps unchanged. Selector subsequently showed zero due cells.
+- **Intended mutation:** update `runtime/ops/hourly-worker.json` once with status `worked`, accurate `runAt` from observed clock, `lastVerifiedAt` equal to the independently observed research completion timestamp, and `evidenceUrl` equal to the verified report commit. Do not imply public school repairs, contributor adoption, beneficiary impact, or a restored six-hour scheduler.
+- **Verification:** Fetch heartbeat after write and confirm schema, status, evidence URL and timestamps. If blocked, stop and preserve truthful unverified state.
