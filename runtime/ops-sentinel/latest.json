@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-28T00:42:59.000Z",
+  "runAt": "2026-10-29T00:22:20.369Z",
   "status": "healthy",
   "fingerprint": "13f08f6cea8c",
   "checks": [
@@ -8,31 +8,31 @@
       "name": "CAP Daily Audit",
       "path": "runtime/cap-daily-audit/latest.json",
       "status": "ok",
-      "detail": "Receipt 2026-10-27T19:32:45.771050Z (5.2h old)"
+      "detail": "Receipt 2026-10-28T19:44:25.215156Z (4.6h old)"
     },
     {
       "name": "Federal Policy Delta",
       "path": "runtime/federal-policy-delta/latest-run.json",
       "status": "ok",
-      "detail": "Receipt 2026-10-27T20:05:27.511921Z (4.6h old)"
+      "detail": "Receipt 2026-10-28T20:15:55.073430Z (4.1h old)"
     },
     {
       "name": "Critical Guidance Delta",
       "path": "runtime/critical-guidance-delta/latest-run.json",
       "status": "ok",
-      "detail": "Receipt 2026-10-27T22:06:20.969429Z (2.6h old)"
+      "detail": "Receipt 2026-10-28T22:29:42.899207Z (1.9h old)"
     },
     {
       "name": "Evidence Integrity Backup",
       "path": "runtime/evidence-integrity-backup/latest.json",
       "status": "ok",
-      "detail": "Receipt 2026-10-27T23:05:25.037698Z (1.6h old); 11 known index coverage gap(s), not API failure"
+      "detail": "Receipt 2026-10-28T09:48:08.685244Z (14.6h old); 13 known index coverage gap(s), not API failure"
     },
     {
       "name": "ChatGPT hourly worker",
       "path": "runtime/ops/hourly-worker.json",
       "status": "ok",
-      "detail": "Heartbeat 2.2h ago; does not independently prove productivity."
+      "detail": "Heartbeat 0.3h ago; does not independently prove productivity."
     }
   ],
   "limitation": "Checks saved GitHub detector results and a worker self-report. Does NOT verify AppDeploy Foundry model execution."
