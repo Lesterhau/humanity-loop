@@ -6,11 +6,13 @@ export function normalizeRiskPermissions(
   requested?: readonly PublicRiskPermission[],
   allowTier1Review = false,
 ): StoredRiskPermission[] {
-  const selected = requested?.length
-    ? requested
-    : allowTier1Review
-      ? (["tier0", "tier2-review"] as const)
-      : (["tier0", "tier1-auto", "tier2-review"] as const);
+  if (requested && requested.length === 0) {
+    throw new Error("At least one risk permission is required.");
+  }
+
+  const selected = requested ?? (allowTier1Review
+    ? (["tier0", "tier2-review"] as const)
+    : (["tier0", "tier1-auto", "tier2-review"] as const));
 
   return [...new Set(selected.map((permission) =>
     permission === "tier1-auto" ? "tier1" : permission,
