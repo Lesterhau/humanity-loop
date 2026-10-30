@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-29T10:07:06.966742Z",
+  "runAt": "2026-10-30T10:09:11.168772Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,173 +8,82 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 11,
-  "citationsExamined": 375,
-  "candidateFindingsCount": 10,
+  "newRetractionsChecked": 4,
+  "citationsExamined": 100,
+  "candidateFindingsCount": 1,
   "candidateFindings": [
     {
-      "retractedDoi": "10.1016/j.toxrep.2022.04.023",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.023",
-      "crossrefUpdateSelfReferential": true,
+      "retractedDoi": "10.3389/fmed.2020.577578",
+      "noticeDoi": "10.3389/fmed.2026.2023218",
+      "crossrefUpdateSelfReferential": false,
       "noticeStatus": "unverified",
-      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
-      "citingId": "40845897",
-      "citingTitle": "A Systematic Review of Neuroprotective Effects of Mangosteen and its Xanthones Against Oxidative Stress and Inflammation.",
+      "citingId": "36629031",
+      "citingTitle": "Prognostic and therapeutic potential of microRNAs for fracture healing processes and non-union fractures: A systematic review.",
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/40845897",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "40441732",
-      "citingTitle": "Drug treatments for mild or moderate covid-19: systematic review and network meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/40441732",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "40124821",
-      "citingTitle": "Ivermectin as a Treatment Modality in COVID-19 Patients: A Systematic Review and Meta-Analysis of Up-To-Date RCTs.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/40124821",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "35870876",
-      "citingTitle": "Systematic review and meta-analysis of ivermectin for treatment of COVID-19: evidence beyond the hype.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/35870876",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "35698151",
-      "citingTitle": "Ivermectin under scrutiny: a systematic review and meta-analysis of efficacy and possible sources of controversies in COVID-19 patients.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/35698151",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "PPR",
-      "citingId": "PPR607264",
-      "citingTitle": "Systematic Review and Meta-Analysis of Ivermectin for Treatment of COVID-19: Evidence Beyond the Hype",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/PPR/PPR607264",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "34933115",
-      "citingTitle": "Bias as a source of inconsistency in ivermectin trials for COVID-19: A systematic review. Ivermectin's suggested benefits are mainly based on potentially biased results.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/34933115",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "34570241",
-      "citingTitle": "Efficacy and safety of ivermectin for the treatment of COVID-19: a systematic review and meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/34570241",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.toxrep.2021.03.003",
-      "noticeDoi": "10.1016/j.toxrep.2022.04.009",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "34145166",
-      "citingTitle": "Ivermectin for Prevention and Treatment of COVID-19 Infection: A Systematic Review, Meta-analysis, and Trial Sequential Analysis to Inform Clinical Guidelines.",
-      "candidateType": "Possible guideline",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/34145166",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1155/2021/5525306",
-      "noticeDoi": "10.1155/omcl/9795039",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "40376196",
-      "citingTitle": "Potential benefits of kefir and its compounds on Alzheimer's disease: A systematic review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/40376196",
+      "europePmcUrl": "https://europepmc.org/article/MED/36629031",
       "status": "unreviewed"
     }
   ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 4,
+  "coverageGapsCount": 11,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1080/02670836.2020.1711614",
+      "doi": "10.1016/j.esr.2024.101590",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/02670836.2020.1777650",
+      "doi": "10.1007/s00706-022-02952-6",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.32604/iasc.2022.019555",
+      "doi": "10.1016/j.esr.2024.101622",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1111/jace.16355",
+      "doi": "10.3390/app13084855",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/20479700.2023.2166206",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/20479700.2023.2175414",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/20479700.2022.2157071",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/20479700.2022.2097765",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/20479700.2023.2170006",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/20479700.2022.2130631",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/20479700.2022.2161146",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
