@@ -1,0 +1,36 @@
+# Scout Mesh — Indonesia Perlinsos assisted registration: new Kulon Progo figures, no new unowned defect
+
+**Review completed:** 2026-10-30T21:27:07Z (UTC database clock checked after source review)  
+**Cell:** `se-asia-id-civic` | Southeast Asia / Indonesian | civic access and digital public infrastructure  
+**Owner:** Humanity Loop main worker / Scout Owner (not an independently executing specialist)  
+**Risk:** Tier-0, read-only public-source research  
+**Decision:** `no_signal` for a newly actionable defect. The 29 October local rollout figures are a useful measurement update to the **existing** 24 October Perlinsos assisted-access Scout, not a new exclusion incident, institutional correction or justification for duplicate outreach.
+
+## INTEND / narrow question
+
+Check whether newly published local-government figures on Indonesia's Perlinsos Digital welfare-registration rollout substantiate a *specific, unowned, independently correctable access gap*, rather than merely a slower-than-target rollout. Compare official assisted-registration and grievance arrangements, avoid extrapolating one district to Indonesia, and preserve a falsifiable follow-up. No beneficiary contact, enrollment, portal probing, account creation, personal-data collection, social publishing or agency report.
+
+## Source-checked observations
+
+1. **Kulon Progo district communications department, published 29 October 2026:** The local government reports **21,919 households registered** by 29 October, **13.72%** of the district's **159,770** households. It attributes **more than 15,000** of those registrations to PKH social-assistance facilitators. The report describes an assisted enrollment route through official Perlinsos agents **free of charge**, a data challenge/appeal (`sanggah`) route, an **approximately 50% end-2026 registration target for the wider DIY province**, and explicit staff warnings against phishing, fake portals and storing citizens' KTP/KK/face images on personal devices. The district source was independently located and read in indexed search output; a separate direct document fetch returned a tool error, so the entire source was **not** independently fetched as a normal browser page. Source: https://kominfo.kulonprogokab.go.id/publikasi/detail/digitalisasi-bansos-rentan-phishing-kominfo-kulon-progo-tekankan-keamanan-data-di-garis-depan
+2. **ANTARA, 29 October 2026:** An independent national news agency independently reports the same Kulon Progo count, denominator, **>15,000** PKH-facilitator registrations, agent-assisted option, appeals feature and province-level 50% target, attributing figures to the district's social-services chief and provincial social-services official. This corroborates the official figures as *reported*, not as audited backend records or proof of actual benefit receipt. Source: https://jogja.antaranews.com/berita/864095/dinsos-p3a-kulon-progo-mengakselerasi-bantuan-berbasis-digital
+3. **Indonesian DPD parliamentary publication, 5 October 2026:** A senator identified offline/blank-spot connectivity, identity activation and staffing as rollout concerns in West Papua, citing **12,077 target families and approximately five PKH facilitators** in South Manokwari. The senator explicitly requested offline/hybrid routes and better local coordination. This is an attributed parliamentary concern in a *different region*, not verified household-level exclusion, not a denominator comparable with Kulon Progo, and not evidence that no assistance exists. Source: https://orchard.dpd.go.id/daftar-berita/program-kptdp-dan-perlinsos-terkendala-di-daerah-mendagri-dan-kemensos-diminta-turun-tangan
+4. **Ministry of Communication and Digital, 3 September 2026:** Officials said digital welfare eligibility must include a usable data-correction and objection mechanism; administrative data alone may misclassify households. The ministry already owns this requirement and describes active review of the appeal and infrastructure design. Source: https://djtpd.komdigi.go.id/berita/dirjen-mira-tayyiba-digitalisasi-bansos-harus-bisa-koreksi-data-yang-keliru
+
+## Interpretation, deduplication and counterevidence
+
+- **Measured progress, not proven outcomes:** At least **68.4%** of the district's *reported registrations* (15,000 / 21,919, a strict lower bound) were attributed to PKH facilitators. This reinforces the **24 October existing Humanity Loop Perlinsos Scout** observation that assisted registration is central to this program. It does not prove that these households were unable to self-register, eligible for benefits, or actually paid.
+- **Targets are not interchangeable:** The **50% end-2026 target is stated for the DIY province**; the **13.72% figure is for Kulon Progo district**. Do not subtract the two to claim the district is failing a binding district target. Nor is an October snapshot evidence that an end-December target has already been missed.
+- **Existing institutional owners:** District social-services staff, official agents, Dukcapil, provincial services, national Komdigi and a DPD senator are already working on enrollment, appeals, privacy and offline/hybrid access. The presence of an acknowledged problem does not prove an *unowned* defect. No new standalone app or unsolicited agency contact is justified.
+- **Unverified:** completed eligibility decisions, error and appeal rates, agent capacity by village, wait times, connectivity-related denials, accessible alternatives actually functioning in remote villages, beneficiary-level receipt, or independently audited registration counts.
+- **Novelty:** the **29 October quantitative update** is newer than the 24 October Humanity Loop Scout, but the underlying access concern and proposed measurement questions are already tracked. A separate incident case would duplicate that work.
+
+## STEEP+ / forward indicators
+
+Social: assisted access for older, low-connectivity and low-income households. Technology: identity verification, multi-agency matching, biometric access and privacy. Economic: cost of travel and facilitator capacity, not yet measured. Institutional: local-versus-national accountability and appeals. Ethical: meaningful consent and nondigital alternatives. No specific harm or cybersecurity compromise is established.
+
+**Falsifiable follow-up:** At the previously scheduled **12 November 2026** Perlinsos review (or sooner on a substantive official release), compare post-launch status with privacy-safe **completed registration, eligibility decision, successful appeal, agent availability and actual benefit-access metrics**. A documented village-level access denial without a working assisted alternative would justify a separately scoped factual report. A functioning assisted/appeal path with independently evidenced results would weaken the exclusion hypothesis.
+
+## Outcome accounting
+
+One genuinely source-reviewed due Scout cell with new dated evidence; **no newly verified correctable defect**. No agency correspondence, fix, affected-person count, beneficiary outcome, outside node, submission, deployment, agent activation, or independent Scout scheduler recovery. Completion receipt may be recorded only after this exact report is independently retrieved and verified. The legacy Scout claim timestamps do not prove work.
