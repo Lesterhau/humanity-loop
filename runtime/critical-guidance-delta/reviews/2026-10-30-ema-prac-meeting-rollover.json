@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "sourceKey": "ema-prac",
+  "detectorRunAt": "2026-10-30T05:34:47.804074Z",
+  "reviewDate": "2026-10-30",
+  "reviewer": "Humanity Loop main worker",
+  "status": "reviewed-calendar-rollover-no-new-patient-guidance-in-detected-diff",
+  "materiality": "routine-upcoming-meeting-list-rotation",
+  "confidence": "high-for-calendar-diff; October committee outcomes still pending official highlights",
+  "detectedChange": {
+    "removed": "PRAC meeting 26–29 October 2026",
+    "added": "PRAC meeting 15–18 March 2027",
+    "oldFingerprint": "1b27373e1e13f28694e408ea13341d556f794f6c65a531341d51b6b3f4a4f825",
+    "newFingerprint": "1979010bdcf0ed54d541fe9374febc526a480e4b068281d5a279aebfa8b06954"
+  },
+  "verification": [
+    "The detector's October 30 diff consists only of upcoming-meeting dates/titles, not new medicine-risk recommendations or patient instructions.",
+    "Independent review of the official EMA PRAC committee page shows November 2026, January 2027, February 2027 and March 2027 as upcoming meetings. The 26–29 October meeting is no longer upcoming.",
+    "The same official page lists the 26–29 October draft agenda and, at review, the latest visible meeting highlights were for 28 September–1 October (published 2 October). This absence on the index does not prove October outcomes are unpublished elsewhere.",
+    "Separate October 26 source review identified a draft human immunoglobulin signal (EPITT 20318) and a flupentixol/melitracen referral (EMA/REF/0000382942). Neither can be classified as resolved or adopted from the calendar rollover; retain the earlier follow-up gate."
+  ],
+  "sourceUrls": [
+    "https://github.com/Lesterhau/humanity-loop/blob/main/runtime/critical-guidance-delta/events/20261030T053447.804074Z.json",
+    "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
+    "https://github.com/Lesterhau/humanity-loop/blob/main/runtime/critical-guidance-delta/reviews/2026-10-26-ema-prac-draft-agenda.json"
+  ],
+  "action": "No clinical advice, external contact or new incident from this date-list change. On or after 2026-10-31, check official October 26–29 PRAC meeting highlights and adopted recommendations for the two already-tracked identifiers, rather than repeatedly rereading the calendar; if no official outcome is available, keep status pending without making a new safety claim.",
+  "detectorImprovementCandidate": "Consider comparing only the PRAC meeting-highlights section for this source, while separately retaining agenda tracking. Validate on historical snapshots before altering detection so genuine new risk communications are not suppressed.",
+  "externalAction": "none",
+  "beneficiaryImpact": "none_verified"
+}
