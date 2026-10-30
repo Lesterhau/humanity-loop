@@ -1,3 +1,5 @@
+import { normalizeRiskPermissions, type PublicRiskPermission } from "./risk-permissions";
+
 const NODE_GATEWAY =
   "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node";
 
@@ -39,11 +41,15 @@ export function registerContributorNode(input: {
   user_agent_label?: string;
   email?: string;
   setup_email_consent?: boolean;
-  risk_permissions?: Array<"tier0" | "tier1-auto" | "tier2-review">;
+  risk_permissions?: PublicRiskPermission[];
   /** Legacy compatibility only. Prefer risk_permissions. */
   allow_tier1_review?: boolean;
 }) {
-  return callGateway({ action: "register", ...input });
+  return callGateway({
+    action: "register",
+    ...input,
+    risk_permissions: normalizeRiskPermissions(input.risk_permissions, input.allow_tier1_review),
+  });
 }
 
 export function contributorCheckin(

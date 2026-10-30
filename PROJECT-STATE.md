@@ -1,8 +1,20 @@
 # Humanity Loop Project State
 
-**State timestamp:** 2026-10-26 21:00 Central — AppDeploy credit reset, Foundry schedule safely paused, shared chats consolidated, launch blockers tracked
+**State timestamp:** 2026-10-29 22:40 UTC — verified readiness checkpoint appended; earlier sections retained as historical records
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
+
+## Latest verified readiness checkpoint — 2026-10-29 22:40 UTC
+
+**This checkpoint supersedes older operational assertions elsewhere in this historical snapshot** (especially old statements that the hourly-worker heartbeat is absent, Ops Sentinel issue #15 remains open, or the dependency audit has no tested repair). Detailed evidence remains in the linked issues, CI and canonical receipts; no external adoption or beneficiary impact is inferred.
+
+- **#33 — independent contributor acceptance still OPEN.** [Live production MCP protocol CI #40849752194](https://github.com/Lesterhau/humanity-loop/actions/runs/40849752194) passed both official SDK and independent raw Streamable HTTP clients, discovering 11 tools and invoking read-only `get_protocol`. This is *not* a consenting independent non-owner node registration/check-in/task submission/review. Fresh private read-only database check at 22:39 UTC: **0 contributor nodes, 0 submissions, 0 consented pending setup emails, 1 open work item**. The previously documented Tier-0 web-inspection pilot expires **2026-11-02T00:00Z**; confirm the item and its expiry before offering it to a real tester. No simulated participant or fake adoption.
+- **#26 — tested security repair, NOT deployed.** [Draft PR #45](https://github.com/Lesterhau/humanity-loop/pull/45) changes only the MCP server dependency manifest and npm-regenerated lockfile. [Exact-head CI #40966606698](https://github.com/Lesterhau/humanity-loop/actions/runs/40966606698) passed unchanged high-severity production audit, clean npm install, typecheck, Next build, local official SDK and raw HTTP MCP acceptance. Head `fe08957785e0ac07ff6519cf03939bb6ae477cc1`; still unmerged, pending maintainer review and authorized production deployment/verification. The production remediation claim remains **unverified**.
+- **#39 — public homepage draft, NOT deployed.** [Draft PR #40](https://github.com/Lesterhau/humanity-loop/pull/40) includes mobile and keyboard-focus source changes, Impact Passport, pilot limitations and funding disclosures. Build on its own unpatched dependency branch, rendered browser/accessibility acceptance, and authorized preview/production release remain unresolved. Preserve `/api/mcp`, `/join`, and the OpenAI challenge route.
+- **Operational receipts:** [`runtime/ops/hourly-worker.json`](runtime/ops/hourly-worker.json) was independently read back with `runAt=2026-10-29T22:35:10.308Z` and truthful draft-PR evidence. [Ops Sentinel scheduled run #40938108459](https://github.com/Lesterhau/humanity-loop/actions/runs/40938108459) passed at 19:13 UTC; its latest *persisted* [report](runtime/ops-sentinel/latest.json) is dated 00:22 UTC, status `healthy`, and [warning issue #15](https://github.com/Lesterhau/humanity-loop/issues/15) is closed. The persisted report's age does not establish missed hourly executions. Fresh read-only `hl_control.list_due_scout_cells(now(),6)` returned **0 due** at ~22:40 UTC; no new Scout scan is claimed in this checkpoint.
+- **Safety/launch:** Foundry remains under its documented safety hold; OpenAI plugin/domain verification is still unverified (support cases #16350435, #17565572 and #18377012). No unsupervised Foundry restart, spending, external recruitment, or production deployment is authorized by this checkpoint.
+
+**Next high-value gate:** an actually consenting, non-owner MCP client performs the #33 Tier-0 register → check-in → real assignment → submit → independent review sequence with private tokens and redacted evidence, before the pilot work item expires or is revalidated. Only then consider broader #34 recruitment. PR #45 maintainer review and PR #40 build/browser acceptance remain separate release gates.
 
 ## Verified outcome — VA Spanish rate links (2026-10-27)
 

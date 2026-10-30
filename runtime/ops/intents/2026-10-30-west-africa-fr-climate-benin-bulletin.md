@@ -1,0 +1,9 @@
+# INTEND — West Africa French climate Scout: Benin public weather bulletin review
+
+- Recorded: 2026-10-30 UTC, after read-only completion-based due selector returned `west-africa-fr-climate` due at 2026-10-30T01:54:59.974405Z.
+- Owner: Humanity Loop main Scout Owner. Tier 0, read-only primary-source research and a reversible project-repository documentation write.
+- Exact planned mutation: create `research/scout-mesh/2026-10-30-west-africa-fr-climate-benin-bulletin-cadence-no-signal.md` on main with a factual review of the official METEO-BENIN daily bulletin archive, October 27 daily bulletin, October 23 expired CAP alert and October agro-bulletin listing.
+- Findings to bound: official archive currently lists October 27 then October 2 daily bulletins, despite describing a daily product; this does **not** establish that the agency failed to issue daily forecasts, that the archive is complete, or that a public safety failure occurred. CAP example expired on its issue date. Decision `no_signal`, no external contact, no claim of correction/beneficiary impact.
+- Sources: https://www.meteobenin.bj/produits/bulletin-meteorologique-quotidien/ ; https://www.meteobenin.bj/produits/bulletin-meteorologique-quotidien/bulletin-m%C3%A9t%C3%A9o-quotidien-du-27-octobre-2026/ ; https://www.meteobenin.bj/alertes-meteorologiques/alerte-m%C3%A9t%C3%A9o-du-23-octobre-2026-%C3%A0-16h30/ ; https://www.meteobenin.bj/produits/bulletin-agrometeorologie-decadaire/
+- Verification: fetch the new GitHub file independently, then record a completion receipt through the existing private `record_completed_scout_review` function with truthful timestamp and canonical evidence URL; query receipt and due selector afterward. Do not call `claim_due_scout_cell()`.
+- Rollback: remove the research file if factual errors are found, while preserving the audit trail. No outreach, deployment, money, node registration or autonomous specialist activation.

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-22T23:54:00.962Z",
-  "status": "action-proposed",
-  "boundary": "Only the public Humanity Loop repository was read. No private Morrow files, APIs, tokens or business intelligence accessed.",
+  "runAt": "2026-10-30T02:55:13.127Z",
+  "status": "checks-passed",
+  "boundary": "Reads only public Humanity Loop files and a pinned PUBLIC methods release. No private Morrow files, APIs, tokens or business intelligence accessed.",
   "methodSource": "Owner-approved general principles; no private implementation transplanted",
   "methods": [
     "bounded-experiment",
@@ -12,20 +12,15 @@
     "privacy-boundary"
   ],
   "checksPerformed": 5,
-  "findings": [
-    {
-      "id": "case-delegation-absent",
-      "severity": "review",
-      "evidence": "No named Case Steward lane detected in the canonical operating prompt",
-      "action": "Define one bounded due-date-driven case owner; do not imply an independent Claude scheduler exists."
-    }
-  ],
-  "selectedAction": {
-    "id": "case-delegation-absent",
-    "scope": "Humanity Loop only",
-    "risk": "bounded internal review",
-    "status": "not-executed",
-    "next": "Define one bounded due-date-driven case owner; do not imply an independent Claude scheduler exists."
-  },
-  "evidenceLimit": "A local process scan is not proof of two-way model learning, an executed repair or real-world public benefit."
+  "findings": [],
+  "selectedAction": null,
+  "evidenceLimit": "A local process scan is not proof of two-way model learning, an executed repair or real-world public benefit.",
+  "publicMethods": {
+    "status": "verified",
+    "source": "https://raw.githubusercontent.com/Lesterhau/morrow-methods/f6fd07bac3eb42c5068d6d9c8e9dcc1e8e623109/METHODS.md",
+    "commit": "f6fd07bac3eb42c5068d6d9c8e9dcc1e8e623109",
+    "gitBlobSha": "b5378330d38a1e2d622d2270b8a457ad2924897c",
+    "bytes": 2533,
+    "scope": "provenance only; no new execution authority"
+  }
 }
