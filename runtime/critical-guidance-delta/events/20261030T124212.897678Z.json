@@ -1,0 +1,27 @@
+{
+  "baselinesCreated": 0,
+  "changes": [
+    {
+      "authority": "European Medicines Agency",
+      "detectedAt": "2026-10-30T12:42:12.897678Z",
+      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- Meeting highlights from the Pharmacovigilance Risk Assessment Committee (PRAC) 8-11 June 2026\n- PRAC concludes evaluation of new data regarding potential risk of neurodevelopmental disorders in children born to men treated with valproate\n- 12 June 2026\n\nADDED IN CURRENT VERSION:\n+ Meeting highlights from the Pharmacovigilance Risk Assessment Committee (PRAC) 26 - 29 October 2026\n+ PRAC starts review of depression and anxiety medicine Deanxit and a safety signal related to human normal immunoglobulin medicines\n+ 30 October 2026",
+      "materiality": "unreviewed",
+      "medicalAdvice": null,
+      "newFingerprint": "4cb03ec6f78d94b9a6fc3a8e4cbb3429fe4c4037577b048c61c8e8a24a286977",
+      "oldFingerprint": "1979010bdcf0ed54d541fe9374febc526a480e4b068281d5a279aebfa8b06954",
+      "severity": "unreviewed",
+      "sourceKey": "ema-prac",
+      "sourceName": "EMA PRAC Safety Highlights",
+      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
+      "verificationStatus": "needs-independent-source-review"
+    }
+  ],
+  "changesDetected": 1,
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-10-30T12:42:12.897678Z",
+  "schemaVersion": 1,
+  "sourcesChecked": 3,
+  "sourcesConfigured": 3,
+  "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
+}
