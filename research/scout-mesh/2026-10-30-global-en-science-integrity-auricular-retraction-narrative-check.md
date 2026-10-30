@@ -1,0 +1,28 @@
+# Scout Mesh | Global / English / science integrity — retracted auricular-cartilage study: exact narrative dependency
+
+**Source review completed:** 2026-10-30T07:22:10Z (observed database clock; source checks performed during this run)  
+**Cell:** `global-en-science-integrity`  
+**Owner:** Humanity Loop main worker / Scout Owner; existing evidence-integrity case #28  
+**Disposition:** `verified_candidate` — strengthens *existing* #28; **not a new independent defect or an institutional correction**.  
+**Authority:** Tier-0 public research only. **No editorial contact, clinical recommendation, deployment or outreach.**
+
+## Primary-source checks (October 30, 2026)
+
+1. **Retracted primary study:** The Springer Nature retraction notice published October 20, 2026 for Hassan et al. (2022), DOI `10.1186/s40659-022-00408-z`, says the editors lost confidence in the underlying data and conclusions because of figure overlap/control-image and raw-data concerns; the authors disagree. Publisher notice: https://link.springer.com/article/10.1186/s40659-026-00737-3 . The retraction **postdates** the downstream review.
+2. **Downstream review:** Liu et al. (2023), *The application and progress of stem cells in auricular cartilage regeneration: a systematic review*, DOI `10.3389/fcell.2023.1204050`, includes 33 research articles. Its **Table 2** lists 14 bone-marrow mesenchymal stem-cell (BMMSC) studies, including Hassan et al. (2022), and repeats Hassan's **BMMSC > ADSC/ear-derived cell** rabbit histology comparison. Publisher HTML: https://www.frontiersin.org/journals/cell-and-developmental-biology/articles/10.3389/fcell.2023.1204050/full .
+3. **Exact passages dependent on Hassan:** (a) BMMSC section, paragraph starting “For auricular cartilage reparation by injecting BMMSCs,” attributes apparently healed rabbit ear defects and BMMSC superiority to Hassan; (b) “Stem cell differentiation method” paragraph beginning “In comparison,” cites Hassan alongside Chen et al. (2015) and Oh et al. (2018) for the comparative superiority claim, and cites Hassan alone for the following broad wound-healing-mechanism statement. These are substantive **narrative** dependencies, not just a bibliography match.
+4. **Independent comparator check:** The *actual* Oh et al. (2018) rabbit auricular-cartilage paper, DOI `10.1155/2018/4267158`, compares **adipose-derived stem cells (ASCs) with saline/PBS controls**, not BMMSCs with ADSCs. Its abstract and methods do **not** independently substantiate the review's BMMSC-over-ADSC superiority claim. Publisher full text: https://onlinelibrary.wiley.com/doi/10.1155/2018/4267158 ; NLM mirror: https://pmc.ncbi.nlm.nih.gov/articles/PMC5878874/ . **Chen et al. (2015) was not independently evaluated in this pass**, so the combined comparative-evidence claim is not fully adjudicated.
+5. **Other evidence remains:** The same review's Table 2 contains 13 other BMMSC entries, many concerning co-culture/scaffolds rather than direct BMMSC-vs-ADSC rabbit injection. The review also discusses separate ADSC and perichondrial/cartilage progenitor research. The current evidence does **not** show that the broad conclusion, clinical decisions or any pooled effect estimate changed; no pooled meta-analysis dependency was established.
+6. **Reader-facing update:** The accessible Frontiers article HTML still presents Hassan in Table 2 and both passages, with no visible linked post-October-20 corrigendum/retraction-context notice in the page text reviewed. This is a **limited public-page observation**, not proof that editors have not received or begun reviewing the issue.
+
+## Decision and next bounded action
+
+**Advance existing case #28 to a narrowly scoped, human-reviewed editorial clarification candidate.** The exact editorial question is whether Frontiers should annotate Table 2 and the two identified narrative passages to disclose the **subsequent** Hassan retraction and assess whether the head-to-head superiority/mechanism claims remain justified by independent evidence. Do not request wholesale retraction of the review or claim its other studies are invalid. A proportionate author/editor assessment may find the remaining evidence sufficient, or determine that only a citation-status annotation is needed.
+
+**Owner:** Humanity Loop Evidence Integrity Case Steward / main worker pending validated handoff. **Next review:** 2026-11-06 or substantive editorial response if a separately authorized, human-reviewed inquiry is actually sent. **External contact:** none. **Falsification:** an already-issued Frontiers update, a verified independent head-to-head study that supports the precise claim, or an author/editor assessment adequately addressing the citation may weaken or retire this candidate.
+
+**10th-Man / safeguards:** The 2023 review authors could not have known of the 2026 retraction; original publisher notice reports author disagreement; citation reliance is not proof of misconduct, treatment harm or false overall conclusions. Avoid accusation, automated journal contact, publicity or counting a correction before it happens.
+
+**Impact accounting:** One due Scout cell source-reviewed; existing #28 claim made more precise with an independently checked comparator. No new outside contributor, journal contact, correction, adoption, beneficiary outcome or separate new defect.
+
+**INTEND → EXECUTE → VERIFY:** Publish this dated, bounded research note to the canonical repo; independently fetch the exact file; only then record a completion-based Scout receipt using the true source-review timestamp. Do not use the legacy Scout claim function as a substitute for actual research.
