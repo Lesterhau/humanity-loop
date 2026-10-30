@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-30T17:34:55.675Z",
+  "runAt": "2026-10-30T21:51:20.769Z",
   "status": "worked",
-  "summary": "Read and verified Bogotá Secretaría Distrital de Salud substantive acknowledgment of Humanity Loop's Oct 29 yellow-fever special-population vaccination-link clarification: petition 7834042026 registered in Bogotá Te Escucha, definitive response pending. Rechecked Oct 29 official article: special-population and general locations still point to the same general PDF; Oct 6 specialized list remains published but current authorizations are not independently confirmed. Independently verified the new case-steward receipt in issue #41. No new outreach, correction, beneficiary impact, contributor registration or submission. Read-only project DB at 17:31 UTC: 0 contributor nodes, 0 submissions, 0 consented pending onboarding emails. Scout completion receipts exist for all six cells in last ~22h; old next_due_at values are claim timestamps, not completion proof. Foundry remains paused.",
-  "lastVerifiedAt": "2026-10-30T17:34:55.675Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/41#issuecomment-6529184141"
+  "summary": "Independently verified the current Supabase private hl_control RLS/grant advisory: 14 tables have RLS disabled, but anon/authenticated lack schema USAGE and anon has direct SELECT on zero hl_control tables. Published and independently fetched the evidence and residual-risk boundary in GitHub issue #20. Read-only DB at 21:46 UTC: 0 contributor nodes, 0 submissions, 0 consented pending onboarding requests, 0 due Scout cells; two Tier-0 work items open/unclaimed (priority OT-004 expires Nov 6). Project inbox yielded no new substantive reply after earlier Alameda acknowledgment. No SQL permissions changed, no deployment, outreach, external contributor activation, institutional correction or beneficiary outcome. Foundry remains paused.",
+  "lastVerifiedAt": "2026-10-30T21:51:20.769Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/20#issuecomment-6534234523"
 }
