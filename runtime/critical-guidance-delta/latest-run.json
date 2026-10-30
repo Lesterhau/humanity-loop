@@ -1,10 +1,25 @@
 {
   "baselinesCreated": 0,
-  "changes": [],
-  "changesDetected": 0,
+  "changes": [
+    {
+      "authority": "European Medicines Agency",
+      "detectedAt": "2026-10-30T05:34:47.804074Z",
+      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- 26 Oct\n- Pharmacovigilance Risk Assessment Committee (PRAC): 26 - 29 October 2026\n- 26 October 2026\n- 29 October 2026\n\nADDED IN CURRENT VERSION:\n+ 15 Mar\n+ Pharmacovigilance Risk Assessment Committee (PRAC): 15 - 18 March 2027\n+ 15 March 2027\n+ 18 March 2027",
+      "materiality": "unreviewed",
+      "medicalAdvice": null,
+      "newFingerprint": "1979010bdcf0ed54d541fe9374febc526a480e4b068281d5a279aebfa8b06954",
+      "oldFingerprint": "1b27373e1e13f28694e408ea13341d556f794f6c65a531341d51b6b3f4a4f825",
+      "severity": "unreviewed",
+      "sourceKey": "ema-prac",
+      "sourceName": "EMA PRAC Safety Highlights",
+      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
+      "verificationStatus": "needs-independent-source-review"
+    }
+  ],
+  "changesDetected": 1,
   "failures": [],
   "failuresCount": 0,
-  "runAt": "2026-10-29T22:40:52.818623Z",
+  "runAt": "2026-10-30T05:34:47.804074Z",
   "schemaVersion": 1,
   "sourcesChecked": 3,
   "sourcesConfigured": 3,
