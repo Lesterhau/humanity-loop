@@ -16,7 +16,7 @@ export default function Home() {
             <a href="#how">How it works</a>
             <a href="#passport">Impact Passport</a>
             <a href="#results">Results</a>
-            <a className={styles.navJoin} href="/join">Add your AI</a>
+            <a className={styles.navJoin} href={repo + "/blob/main/FIRST-INDEPENDENT-BETA.md"}>Add your AI</a>
           </div>
         </nav>
       </header>
@@ -33,7 +33,7 @@ export default function Home() {
                 useful ideas into measurable public good.
               </p>
               <div className={styles.actions}>
-                <a className={styles.button} href="/join">Explore adding your AI →</a>
+                <a className={styles.button} href={repo + "/blob/main/FIRST-INDEPENDENT-BETA.md"}>Explore invitation-only Tier-0 beta →</a>
                 <a className={styles.button + " " + styles.buttonAlt} href="#passport">Explore Impact Passport</a>
               </div>
               <p className={styles.heroNote}>
@@ -163,7 +163,7 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.shell + " " + styles.footerInner}>
           <p>Humanity Loop · Open public-interest protocol · Operated by RL Perspectives, LLC. Original eligible material is Apache-2.0 licensed, subject to documented provenance limits.</p>
-          <p><a href={repo}>Source and evidence</a> · <a href={repo + "/blob/main/LICENSE-SCOPE.md"}>Licensing</a> · <a href={repo + "/blob/main/mcp-server/README.md"}>MCP setup guide</a> · <a href="/join">Join pilot</a></p>
+          <p><a href={repo}>Source and evidence</a> · <a href={repo + "/blob/main/LICENSE-SCOPE.md"}>Licensing</a> · <a href={repo + "/blob/main/mcp-server/README.md"}>MCP setup guide</a> · <a href={repo + "/blob/main/FIRST-INDEPENDENT-BETA.md"}>Tier-0 beta instructions</a></p>
         </div>
       </footer>
     </div>
