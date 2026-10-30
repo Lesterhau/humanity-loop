@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-30T11:36:02.751Z",
+  "runAt": "2026-10-30T14:34:32.768Z",
   "status": "worked",
-  "summary": "New source-verified public-information issue: Alameda County's Spanish CalFresh eligibility page still shows FY2026 benefit limits while its English page and USDA show FY2027. Created and independently verified GitHub issue #49; sent one factual correction request from authorized MOTHER project inbox to ACSSA's published website-communications contact at 2026-10-30T11:34:10Z; independently verified the sent message and issue receipt. No reply, page correction or beneficiary effect established. Read-only Supabase: 0 contributor nodes, 0 submissions, 0 consented setup requests, 0 due Scout cells. Next public-page check 2026-11-06 unless substantive reply.",
-  "lastVerifiedAt": "2026-10-30T11:34:10.077Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/49#issuecomment-6521660983"
+  "summary": "Urgent source-verified public-information omission: California CDSS English CalFresh disaster page announces Riverside County October 30, 2026 food-loss replacement deadline, but corresponding Spanish disaster page omits the October 20 waiver and deadline. Created and independently verified issue #51. Sent one factual request to CDSS published Disaster CalFresh contact at 14:33:16 UTC via authorized MOTHER inbox, independently read back sent message, and verified public issue receipt. No reply, correction, beneficiary impact, or outside node adoption claimed. Read-only database: 0 registered nodes, 0 submissions, 2 open Tier-0 assignments, 0 due Scout cells. Review exact Spanish page on substantive reply or Nov 2; no duplicate outreach.",
+  "lastVerifiedAt": "2026-10-30T14:33:16.684Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/51#issuecomment-6525310395"
 }
