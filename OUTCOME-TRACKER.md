@@ -74,10 +74,11 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Next step: verify live pages and follow `OUTCOME-ESCALATION.md` if stale.
 
 ### OT-006 — SSA 2026 Red Book examples using prior-year SSI rate
-- Original report: 2026-09-17/18
-- Status: **reported**
-- Personal Gmail scan through 2026-09-30 found no substantive agency response.
-- Next step: verify live pages and follow `OUTCOME-ESCALATION.md` if stale.
+- Original report: 2026-09-17/18; institution: U.S. Social Security Administration (SSA).
+- **Read-only public verification, 2026-10-31:** The current online Red Book's [SSI-only employment supports](https://www.ssa.gov/redbook/eng/ssi-only-employment-supports.htm) still displays two earned-income examples using the explicitly labeled **2025** individual federal benefit rate of **$967**, producing illustrative SSI payments of **$514** and **$778**. Its student earned-income exclusion illustration also explicitly states that it uses 2025 amounts (**$2,350** monthly, **$9,460** annually) and shows the 2025 **$967** benefit rate. The [same Red Book's 2026 update page](https://www.ssa.gov/redbook/eng/whatsnew.htm) correctly states **$994** individual SSI FBR and **$2,410** monthly/**$9,730** annual student exclusion for 2026. These are *year-labeled historical examples*, not evidence that SSA is asserting $967 is the 2026 rate; the remaining issue is whether examples in a current-year guide should be refreshed or more prominently identified as historical. Do not describe this as a proven benefit-calculation error.
+- **Status:** reported / current-year example-refresh request unresolved; **no verified correction, agency acknowledgment, or beneficiary effect**. The previously recorded personal Gmail scan through 2026-09-30 found no substantive agency response; no new Gmail scan or contact was performed in this review.
+- **Case Steward:** Humanity Loop main worker until verified handoff. **Next review:** 2026-11-14 or a substantive SSA response. **Stale threshold:** 2026-11-28. **One next action:** compare the original September report with the exact current example URLs and, if one authorized follow-up remains justified, prepare one narrow, factual request to update or clearly contextualize the 2025 examples; do not recontact hourly or claim the agency owes an update.
+- Source check: both linked official SSA pages were directly inspected on 2026-10-31; source visibility is not proof of an editorial change date.
 
 ### OT-007 — StudentAid.gov aid-offer article annual-update drift
 - Original report: 2026-09-18
