@@ -772,6 +772,21 @@
       "europePmcUrl": "https://europepmc.org/article/MED/36629031",
       "status": "unreviewed",
       "detectedAt": "2026-10-30T10:09:11.168772Z"
+    },
+    {
+      "retractedDoi": "10.3109/10428194.2011.591005",
+      "noticeDoi": "10.1080/10428194.2016.1210753",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "31235526",
+      "citingTitle": "Defining autoimmune hemolytic anemia: a systematic review of the terminology used for diagnosis and treatment.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/31235526",
+      "status": "unreviewed",
+      "detectedAt": "2026-10-31T09:44:54.983496Z"
     }
   ]
 }

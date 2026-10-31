@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-30T10:09:11.168772Z",
+  "runAt": "2026-10-31T09:44:54.983496Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,82 +8,72 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 4,
-  "citationsExamined": 100,
+  "newRetractionsChecked": 6,
+  "citationsExamined": 26,
   "candidateFindingsCount": 1,
   "candidateFindings": [
     {
-      "retractedDoi": "10.3389/fmed.2020.577578",
-      "noticeDoi": "10.3389/fmed.2026.2023218",
+      "retractedDoi": "10.3109/10428194.2011.591005",
+      "noticeDoi": "10.1080/10428194.2016.1210753",
       "crossrefUpdateSelfReferential": false,
       "noticeStatus": "unverified",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
-      "citingId": "36629031",
-      "citingTitle": "Prognostic and therapeutic potential of microRNAs for fracture healing processes and non-union fractures: A systematic review.",
+      "citingId": "31235526",
+      "citingTitle": "Defining autoimmune hemolytic anemia: a systematic review of the terminology used for diagnosis and treatment.",
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/36629031",
+      "europePmcUrl": "https://europepmc.org/article/MED/31235526",
       "status": "unreviewed"
     }
   ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 11,
+  "coverageGapsCount": 9,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.esr.2024.101590",
+      "doi": "10.1007/s11082-025-08251-8",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1007/s00706-022-02952-6",
+      "doi": "10.1007/s00445-026-01962-0",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.esr.2024.101622",
+      "doi": "10.1007/s11082-025-08579-1",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3390/app13084855",
+      "doi": "10.1016/j.jcsr.2026.110487",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/20479700.2023.2166206",
+      "doi": "10.1016/j.solener.2026.114317",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/20479700.2023.2175414",
+      "doi": "10.1016/j.ceramint.2025.05.042",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/20479700.2022.2157071",
+      "doi": "10.1016/j.ceramint.2022.02.103",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/20479700.2022.2097765",
+      "doi": "10.1016/j.jobe.2023.108167",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/20479700.2023.2170006",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1080/20479700.2022.2130631",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1080/20479700.2022.2161146",
+      "doi": "10.1016/j.jobe.2023.108154",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
