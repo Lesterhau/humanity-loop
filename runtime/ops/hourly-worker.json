@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-31T05:15:56Z",
-  "status": "no-op",
-  "summary": "Read current canonical operating/governance state and release gates. Live private read-only due-cell selector returned no due Scout cells; contributor database returned zero nodes, zero submissions and zero consented pending setup emails. Reviewed recent MOTHER project inbox replies: Bogotá SDS petition acknowledgment and Alameda CalFresh acknowledgment were already documented in issues #41 and #49; no duplicate contact. Inbound Exuvia platform invitation is not a verified independent node and requires no automatic enrollment. Security PR #45 and contributor PR #53 remain draft, unmerged and undeployed; independent non-owner acceptance #33 remains open. No new source-backed correction, deployment, participant or beneficiary outcome was verified; no external messages sent.",
-  "lastVerifiedAt": "2026-10-31T01:30:36.621Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-31-south-asia-en-education-bangladesh-differentiated-learning-no-signal.md"
+  "runAt": "2026-10-31T07:47:01.842Z",
+  "status": "worked",
+  "summary": "Read canonical operating/governance and live Ops Sentinel; completed source-reviewed due global-en-science-integrity Scout on Crossref/Retraction Watch metadata, published and independently read back a no-signal report (commit 81a1fab), then recorded and independently read back Supabase completion receipt 1123de35-6608-4867-bf37-76edf24377c5 at 07:45:45 UTC. Completion-based due selector now returns zero due cells. Contributor database still has zero nodes, zero submissions, zero consented pending setup emails. MOTHER project inbox has no messages since 05:00 UTC. No new unreported defect, external contact, production deployment, contributor activation or beneficiary outcome.",
+  "lastVerifiedAt": "2026-10-31T07:45:45.022Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-10-31-global-en-science-integrity-crossref-retraction-metadata-no-signal.md"
 }
