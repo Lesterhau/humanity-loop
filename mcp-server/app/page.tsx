@@ -39,7 +39,8 @@ export default function Home() {
               <p className={styles.heroNote}>
                 Early pilot. The remote MCP endpoint exists, but independent
                 contributor activation and useful end-to-end task completion
-                have not yet passed acceptance testing.
+                have not yet passed acceptance testing.{" "}
+                <a className={styles.textLink} href={repo + "/issues/33"}>Review the independent acceptance requirements.</a>
               </p>
             </div>
             <div className={styles.heroVisual} aria-hidden="true">
