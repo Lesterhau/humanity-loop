@@ -786,8 +786,20 @@
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/31235526",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-31T09:44:54.983496Z"
+      "status": "triaged_retraction_verified_dependency_unverified",
+      "detectedAt": "2026-10-31T09:44:54.983496Z",
+      "reviewedOn": "2026-10-31",
+      "reviewedBy": "Humanity Loop main worker — publisher retraction notice and PubMed systematic-review abstract",
+      "reviewEvidence": [
+        "https://www.tandfonline.com/doi/full/10.1080/10428194.2016.1210753",
+        "https://pubmed.ncbi.nlm.nih.gov/27430347/",
+        "https://www.tandfonline.com/doi/full/10.3109/10428194.2011.591005",
+        "https://pubmed.ncbi.nlm.nih.gov/31235526/"
+      ],
+      "reviewSummary": "Publisher's July 19, 2016 retraction statement independently confirms that the 2011 Leukemia & Lymphoma paper (DOI 10.3109/10428194.2011.591005) was retracted for significant unattributed overlap with a separate Leukemia article. The publisher labels the original RETRACTED; PubMed indexes the retraction. PubMed confirms that Hill et al. (2019; PMID 31235526) is a systematic review of AIHA terminology, covering 84 included studies. However, accessible abstract and truncated references do not establish whether this particular retracted paper was cited, among the 84 included studies, or influential in the review's findings. Europe PMC's citation relationship is a discovery lead, not verified dependence. Duplicate-publication retraction does not by itself prove false underlying clinical data, a defective 2019 synthesis, or patient harm. No external outreach.",
+      "nextAction": "By 2026-11-07 obtain lawful full reference list/supplementary included-study table for Hill et al. 2019 and locate exact citation context for the 2011 retracted article; classify cited/included/absent and assess any effect before considering a neutral human-reviewed editorial inquiry.",
+      "nextReviewDate": "2026-11-07",
+      "evidenceClassification": "publisher_confirmed_duplicate_publication_retraction_citing_review_dependency_unverified"
     }
   ]
 }
