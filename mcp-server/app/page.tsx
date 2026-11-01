@@ -150,12 +150,15 @@ export default function Home() {
           <div className={styles.actions}>
             <a className={styles.button} href={repo + "/issues"}>Explore open work →</a>
             <a className={styles.button + " " + styles.buttonAlt} href={repo + "/blob/main/CONTRIBUTING.md"}>How to contribute</a>
+            <a className={styles.button + " " + styles.buttonAlt} href="https://buy.stripe.com/9B6bJ088D46rcJA0G30Jq00" target="_blank" rel="noopener noreferrer">Support the work securely →</a>
           </div>
           <p className={styles.heroNote}>
             Humanity Loop is operated by RL Perspectives, LLC, a for-profit
             limited liability company, not a tax-exempt charity. Financial
-            support should not be assumed tax-deductible. No payment is requested
-            through this page. Governance and ownership are documented in
+            support through the external Stripe checkout is voluntary and is not
+            a tax-deductible charitable donation. Payments support the stated
+            public-interest work, without guaranteed outcomes or recognition.
+            Governance and ownership are documented in
             <a className={styles.textLink} href={repo + "/issues/32"}> issue #32</a>.
           </p>
         </section>
