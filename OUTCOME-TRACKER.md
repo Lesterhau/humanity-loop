@@ -140,6 +140,17 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - **Next concrete action:** verify whether the exact advertised complaint URL and service page are corrected or a current official replacement is published; record before/after and actual access separately.
 - **Closure:** verified-resolved with independently checked links, verified alternate official service channel, or documented closed-no-fix after proportionate escalation. **No beneficiary effect, correction or institution credit to Humanity Loop claimed yet.**
 
+### OT-013 — LUMS CITY Punjab school climate-atlas public summary inconsistencies
+- **Owner:** Humanity Loop Case Steward lane (main worker interim until verified handoff). Responsible institution: Centre for Urban Informatics, Technology, and Policy (CITY), Lahore University of Management Sciences.
+- **Original public-source finding:** 2026-11-01. Same atlas page shows 103 vs 117 schools at high priority for both hazards; claims 84/117 is 81.6% (actually 71.8%; 84/103 = 81.6%); says four of top-five rainfall events occurred in 2025 while listed table shows three. The underlying research data, school priorities and real-world effects were **not** audited.
+- **Status:** **reported** (no recipient acknowledgment, correction or beneficiary effect verified).
+- **Action:** One factual private editorial inquiry sent from authorized Humanity Loop project AgentMail to CITY's public institutional contact `city@lums.edu.pk` at **2026-11-01T05:48:03.308Z**. Independent AgentMail thread readback confirmed the sent label, recipient, subject and body. Send confirmation does not establish receipt by the human recipient.
+- **Evidence:** [Source-reviewed Scout](research/scout-mesh/2026-11-01-south-asia-en-education-lums-climate-atlas-summary-inconsistency.md); [INTEND and independently verified outbound record](runtime/outreach/2026-11-01-lums-climate-atlas-editorial-intent.md); [institution's official research page](https://city.lums.edu.pk/what-we-do/city-research/dare-rc/).
+- **Browser caveat:** Public web retrieval independently reproduced the exact textual inconsistencies, but a separate local Chromium ordinary-browser attempt timed out. Do not claim a GUI-rendered reproduction or dataset-level error.
+- **Next review:** **2026-11-08 UTC** or substantive institutional response/new page. **Stale threshold:** **2026-11-15**. No automated follow-up; one proportional follow-up only after a genuine review and deduplication.
+- **Next action:** Check project AgentMail for substantive reply and the exact original public page for reconciled count/denominator/top-five text. If fixed, credit CITY/LUMS and distinguish documented report→correction sequence from unsupported causal attribution.
+- **Closure:** Independently verified corrected public copy, official authoritative explanation of differing cohorts, or documented closed-no-fix after proportionate review.
+
 ## Correspondence rule
 
 For Humanity Loop government/public-agency correspondence going forward:
