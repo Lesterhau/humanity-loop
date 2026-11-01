@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-01T04:56:41.708784Z",
+  "runAt": "2026-11-01T08:06:46Z",
   "status": "worked",
-  "summary": "Read canonical operating/governance and Scout state. Completion-based selector showed west-africa-fr-climate due at 03:44:26Z. Source-reviewed Burkina Faso official October 9 vs October 21 irrigation plan: preparatory earthworks 62,500 vs 60,000 ha, unchanged 50,000 ha final target; no verified misinformation or unmet service, decision no_signal. Published canonical source note commit 0c609216 and independently fetched blob f6c3776. Private Scout completion receipt 799415ad-cb82-4ced-95a2-146acea31ee8 independently read back at 04:54:50Z; selector then zero due. Read-only database: zero contributor nodes, submissions, pending onboarding; two unexpired work items. MOTHER inbox: no messages since Oct 31 23:30Z. No external correspondence, deployment, correction or beneficiary outcome. Issue #33 remains open; Foundry OFF.",
-  "lastVerifiedAt": "2026-11-01T04:54:50.858216Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/0c609216209f1278464bd53faea32c58c02c2734"
+  "summary": "Read canonical operating/governance, active PR release gates, MOTHER inbox and read-only Scout selector. Due global-en-science-integrity cell was independently source-reviewed: Frontiers Oct 30 retraction of Jiang 2020; Wiley 2023 fracture-healing qualitative review includes the study in Table 1 and in a three-report miR-25 Table 3A tally. Published and independently fetched source note commit 67c5422; updated evidence-integrity queue commit 156d650 with exactly one of 36 entries changed; independently read back both. Private Scout receipt aefbaebd-39f7-4c49-b9af-87db3c3a4aa2 independently verified at 08:05Z, selector then 0 due. Database: 0 contributor nodes/submissions/pending onboarding; MOTHER inbox no new inbound after 05:48Z. No journal contact, deployment, external adoption, correction or beneficiary effect. #33 remains open; Foundry OFF.",
+  "lastVerifiedAt": "2026-11-01T08:05:08.065324Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/commit/67c5422b962873ae8c9850671cd210b14df3c656"
 }
