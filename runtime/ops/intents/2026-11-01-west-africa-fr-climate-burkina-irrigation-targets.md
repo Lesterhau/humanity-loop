@@ -1,0 +1,8 @@
+# INTEND — Burkina Faso irrigation planning source review (2026-11-01)
+
+- Observed due-cell check: 2026-11-01 04:51:15 UTC; `west-africa-fr-climate` due since 2026-11-01 03:44:26 UTC by completion-based selector.
+- Owner: Humanity Loop main worker / interim Scout Owner. Tier 0: public-source research and reversible canonical evidence note only.
+- Intended report: `research/scout-mesh/2026-11-01-west-africa-fr-climate-burkina-irrigation-targets-no-signal.md`.
+- Question: Does the Burkina Faso government’s October 9 vs October 21 French-language reporting of preparatory irrigation earthworks (62,500 vs 60,000 hectares) establish a new actionable public-information defect or reflect an ordinary revised plan? Assess against the unchanged 50,000-hectare final target, independent press repetition, and FEWS NET regional rainfall evidence.
+- Sources: https://gouvernement.gov.bf/actualites/campagne-seche-2026-2027-le-gouvernement-mise-sur-lirrigation-pour-accroitre-la-production-agricole/ ; https://gouvernement.gov.bf/actualites/offensive-agropastorale-le-premier-ministre-lance-lamenagement-de-50-000-hectares-irrigues/ ; https://fr.apanews.net/news/burkina-plus-de-254-milliards-pour-irriguer-50-000-hectares/ ; https://fews.net/global/special-report/october-2026 .
+- Guardrails: no claims of inaccurate government reporting, water-harm, corruption, delivered hectares, external outreach or beneficiary outcome without evidence. No claim_due_scout_cell() call. Independently read back report before any private completed-scan receipt; verify that receipt and due-cell state afterward. No spending, contact, deployment, new agents or personal data.
