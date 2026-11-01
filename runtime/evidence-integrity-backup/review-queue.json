@@ -658,7 +658,7 @@
       "retractedDoi": "10.1016/j.toxrep.2021.03.003",
       "noticeDoi": "10.1016/j.toxrep.2022.04.009",
       "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
+      "noticeStatus": "verified_retracted_primary_notice",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
       "citingId": "35870876",
@@ -666,8 +666,18 @@
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/35870876",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-29T10:07:06.966742Z"
+      "status": "closed_retracted_trial_explicitly_excluded_from_meta_analysis",
+      "detectedAt": "2026-10-29T10:07:06.966742Z",
+      "reviewedOn": "2026-11-01",
+      "reviewedBy": "Humanity Loop main worker — primary PubMed/PMC retraction notice and full-text publisher review",
+      "reviewEvidence": [
+        "https://pubmed.ncbi.nlm.nih.gov/35528725/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9060540/",
+        "https://link.springer.com/article/10.1186/s12879-022-07589-8"
+      ],
+      "reviewSummary": "Pott-Junior et al. 2021 pilot ivermectin trial (DOI 10.1016/j.toxrep.2021.03.003) was formally retracted in Toxicology Reports (notice DOI 10.1016/j.toxrep.2022.04.009; PubMed PMID 35528725). Marcolino et al. 2022 BMC Infectious Diseases systematic review (PMID 35870876, DOI 10.1186/s12879-022-07589-8) explicitly lists Pott-Junior as reference 24 and states that four retracted records [21–24] were excluded during full-text screening. It reports 25 included RCTs; Pott-Junior is not one of them. Its discussion cites the retraction as a reason earlier reviews may be unreliable. Therefore a citation exists but the trial was expressly excluded from this review's pooled data; no adverse evidence dependency or journal-correction request is established. Do not conflate with separate citing reviews or the same-title preprint record PPR607264, which remains unreviewed.",
+      "evidenceClassification": "verified_retracted_reference_explicitly_excluded_no_pooled_dependency",
+      "nextAction": "Closed for the published Marcolino et al. BMC review; no editorial outreach. Assess separately indexed PPR607264 only if its version identity and citation context are independently verified. Reopen this item only on contradictory primary evidence."
     },
     {
       "retractedDoi": "10.1016/j.toxrep.2021.03.003",
