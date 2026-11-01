@@ -752,7 +752,7 @@
       "retractedDoi": "10.1016/j.toxrep.2021.03.003",
       "noticeDoi": "10.1016/j.toxrep.2022.04.009",
       "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
+      "noticeStatus": "verified_formal_retraction",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
       "citingId": "34570241",
@@ -760,8 +760,21 @@
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/34570241",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-29T10:07:06.966742Z"
+      "status": "triaged_verified_included_study_retraction_postdates_review_effect_unquantified",
+      "detectedAt": "2026-10-29T10:07:06.966742Z",
+      "reviewedOn": "2026-11-01",
+      "reviewedBy": "Humanity Loop main worker — independent QJM full-text and PubMed retraction/correction review",
+      "reviewEvidence": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8500108/",
+        "https://pubmed.ncbi.nlm.nih.gov/35528725/",
+        "https://pubmed.ncbi.nlm.nih.gov/35325252/",
+        "https://github.com/Lesterhau/humanity-loop/blob/main/research/evidence-integrity/2026-11-01-deng-qjm-ivermectin-pott-retraction-dependency.md"
+      ],
+      "reviewSummary": "Deng et al. QJM 2021 Table 1 explicitly lists the Pott-Junior 2021 ivermectin pilot as an included randomized trial (ref 31). The pilot was formally retracted May 2, 2022, after the review was published. QJM's separate 2022 correction concerns an advance-access PDF date, not a documented trial-exclusion reanalysis. The pilot's contribution to any specific pooled endpoint or effect estimate remains unverified; no invalid overall conclusion, editorial response or clinical impact is claimed.",
+      "nextAction": "On 2026-11-08 inspect supplementary outcome-specific forest plots/extraction data and current QJM post-retraction correction history. Consider one factual human-reviewed editorial clarification only if a specific unresolved pooled dependency is verified; no immediate outreach.",
+      "nextReviewDate": "2026-11-08",
+      "evidenceClassification": "verified_included_study_characteristics_post_retraction_dependency_quantitative_effect_unverified",
+      "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/evidence-integrity/2026-11-01-deng-qjm-ivermectin-pott-retraction-dependency.md"
     },
     {
       "retractedDoi": "10.1016/j.toxrep.2021.03.003",
