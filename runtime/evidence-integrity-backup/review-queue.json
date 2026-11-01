@@ -683,7 +683,7 @@
       "retractedDoi": "10.1016/j.toxrep.2021.03.003",
       "noticeDoi": "10.1016/j.toxrep.2022.04.009",
       "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
+      "noticeStatus": "verified_formal_retraction",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
       "citingId": "35698151",
@@ -691,8 +691,20 @@
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/35698151",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-29T10:07:06.966742Z"
+      "status": "triaged_verified_included_in_two_virological_pooled_endpoints",
+      "detectedAt": "2026-10-29T10:07:06.966742Z",
+      "reviewedOn": "2026-11-01",
+      "reviewedBy": "Humanity Loop main worker — publisher outcome-specific citation lists and NLM retraction notice",
+      "reviewEvidence": [
+        "https://link.springer.com/article/10.1186/s12985-022-01829-8",
+        "https://pubmed.ncbi.nlm.nih.gov/35528725/",
+        "https://pubmed.ncbi.nlm.nih.gov/33723507/",
+        "https://github.com/Lesterhau/humanity-loop/blob/main/research/evidence-integrity/2026-11-01-shafiee-ivermectin-review-retracted-pott-trial.md"
+      ],
+      "reviewSummary": "Shafiee et al. 2022 Virology Journal (published June 13) lists Pott-Junior 2021 as ref [33] and explicitly includes [33] in pooled negative RT-PCR and time-to-negative RT-PCR endpoints. Pott-Junior was formally retracted May 2, 2022, after the review's search and submission but before acceptance/publication. The mortality analysis does not cite [33]; both implicated virological pooled effects are reported nonsignificant. No recalculation, editorial awareness, correction, clinical effect or beneficiary impact established. Human-reviewed narrow editorial clarification candidate only.",
+      "nextAction": "On 2026-11-08, verify whether publisher has a correction/supplementary reanalysis excluding [33]; if absent, assess one human-reviewed factual editorial inquiry. Do not automatically contact or allege invalid overall conclusions.",
+      "nextReviewDate": "2026-11-08",
+      "evidenceClassification": "verified_retracted_study_quantitative_inclusion_two_virological_endpoints_no_effect_recalculated"
     },
     {
       "retractedDoi": "10.1016/j.toxrep.2021.03.003",
