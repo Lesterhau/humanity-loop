@@ -63,3 +63,27 @@
 @media(max-width:800px){.heroInner{grid-template-columns:1fr;gap:0;padding-top:65px;padding-bottom:64px}.heroVisual{display:none}.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.navLinks{gap:12px}.section{padding-top:60px;padding-bottom:62px}}
 @media(max-width:520px){.nav{align-items:stretch;flex-direction:column;gap:16px}.brand{align-self:flex-start}.navLinks{font-size:.82rem;gap:10px;justify-content:flex-start}.navLinks a:first-child{display:inline}.navJoin{padding:9px 12px}.hero h1{font-size:clamp(2.5rem,11vw,3.05rem)}.shell{padding-left:18px;padding-right:18px}.actions{align-items:stretch;flex-direction:column}.button{width:100%}.card,.panel{padding:23px}.section h2{font-size:2.2rem}}
 @media(prefers-reduced-motion:no-preference){.button{transition:background .15s ease,transform .15s ease}.button:hover{transform:translateY(-1px)}}
+
+/* Visitor-first November 2026 pilot pages */
+.cardAction{display:inline-block;margin-top:23px;color:var(--green)!important;text-decoration:underline;text-underline-offset:5px;font-size:1rem;font-weight:800}
+.impact .cardAction{color:var(--lime)!important}
+.card p+.cardAction{margin-top:21px}
+.subpageTitle{font-size:clamp(2.6rem,6vw,4.7rem);letter-spacing:-.06em;line-height:1.07;max-width:850px;margin:0 0 23px}
+.chipRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.chipRow a{border:1px solid #c9d9d0;padding:11px 16px;border-radius:40px;text-decoration:none;background:#fff;color:var(--green);font-weight:750}
+.statGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin:22px 0 26px}
+.stat{background:white;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:9px}
+.stat strong{font-size:clamp(2.4rem,5vw,3.8rem);color:var(--green);letter-spacing:-.07em;line-height:1}
+.stat span{line-height:1.55;color:#364b4a;font-size:.96rem}
+.feature{display:grid;grid-template-columns:1.7fr 1fr;gap:40px;align-items:center}
+.featureAside{border-radius:23px;background:#e9f5e3;padding:30px;border:1px solid #d8e8d8}
+.featureAside strong{display:block;font-size:1.55rem;letter-spacing:-.04em;margin:14px 0}
+.featureAside p{line-height:1.65;color:#40594e}
+.topGap{margin-top:26px}
+.warning{background:#f4f8f6;border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:24px;max-width:840px;line-height:1.65}
+.warning strong{color:var(--green)}
+.warning p{margin-bottom:0}
+.panel .cardAction{margin-top:10px}
+.panel .badge{margin-bottom:12px}
+@media(max-width:800px){.feature{grid-template-columns:1fr}.statGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.statGrid{grid-template-columns:1fr}.stat{padding:20px}.subpageTitle{font-size:2.7rem}.chipRow a{flex:1;text-align:center}.featureAside{padding:24px}}
