@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-10-31T09:44:54.983496Z",
+  "runAt": "2026-11-01T10:35:37.194140Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,29 +8,29 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 6,
-  "citationsExamined": 26,
-  "candidateFindingsCount": 1,
-  "candidateFindings": [
-    {
-      "retractedDoi": "10.3109/10428194.2011.591005",
-      "noticeDoi": "10.1080/10428194.2016.1210753",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "31235526",
-      "citingTitle": "Defining autoimmune hemolytic anemia: a systematic review of the terminology used for diagnosis and treatment.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/31235526",
-      "status": "unreviewed"
-    }
-  ],
+  "newRetractionsChecked": 2,
+  "citationsExamined": 20,
+  "candidateFindingsCount": 0,
+  "candidateFindings": [],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 9,
+  "coverageGapsCount": 13,
   "coverageGaps": [
+    {
+      "stage": "not_indexed",
+      "doi": "10.28924/2291-8639-23-2025-70",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1155/2023/2313874",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1159/000551831",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
     {
       "stage": "not_indexed",
       "doi": "10.1007/s11082-025-08251-8",
@@ -74,6 +74,11 @@
     {
       "stage": "not_indexed",
       "doi": "10.1016/j.jobe.2023.108154",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.jobe.2023.107999",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
