@@ -27,6 +27,8 @@ jobs:
         run: npm ci
       - name: Reject high-severity production dependency vulnerabilities
         run: npm audit --omit=dev --audit-level=high
+      - name: Verify contributor risk-permission normalization
+        run: node --experimental-strip-types scripts/test-risk-permissions.mjs
       - run: npm run typecheck
       - run: npm run build
 
