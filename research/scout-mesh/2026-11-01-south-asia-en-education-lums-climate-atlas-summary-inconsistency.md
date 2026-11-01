@@ -42,3 +42,9 @@ The [UNICEF September 2026 climate-related school disruption analysis reproduced
 **One source-reviewed candidate**; zero independently confirmed underlying data defects, public corrections, outside contributors, external contacts, deployments, school interventions or beneficiary outcomes. No external party has credited Humanity Loop. This report is a reversible research artifact only.
 
 **Audit:** [Pre-write INTEND](../../runtime/ops/intents/2026-11-01-south-asia-lums-climate-atlas-consistency.md). Private completion receipt should be recorded **only after independent GitHub readback**; legacy claim timestamps do not prove a completed scan.
+
+## 2026-11-01 responsible private notification (post-research)
+
+Fresh independent public web retrieval on November 1 still displayed the three text/table discrepancies. CITY's official contact page lists its institutional address. An authorized project-inbox search found no previous LUMS/DARE-RC correspondence. A narrowly scoped, non-accusatory editorial inquiry was **sent at 2026-11-01T05:48:03.308Z** from Humanity Loop's AgentMail project inbox to CITY, asking the team to confirm the authoritative school count and reconcile the rainfall-event description. The sent message was independently read back with matching recipient, subject and content; **delivery, human acknowledgment and any correction remain unverified**. Local ordinary-browser Chromium verification timed out; the direct public web retrieval is evidence of the page's textual content, not of GUI rendering or underlying data validity.
+
+**Receipt:** [outreach INTEND and verified send record](../../runtime/outreach/2026-11-01-lums-climate-atlas-editorial-intent.md). **Next review:** November 8 UTC or substantive reply/new public version. No automated follow-up, no beneficiary outcome, and no causal attribution claimed.
