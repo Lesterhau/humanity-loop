@@ -786,20 +786,22 @@
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/31235526",
-      "status": "triaged_retraction_verified_dependency_unverified",
+      "status": "closed_citation_only_retracted_study_explicitly_excluded",
       "detectedAt": "2026-10-31T09:44:54.983496Z",
-      "reviewedOn": "2026-10-31",
-      "reviewedBy": "Humanity Loop main worker — publisher retraction notice and PubMed systematic-review abstract",
+      "reviewedOn": "2026-11-01",
+      "reviewedBy": "Humanity Loop main worker — independent full-text PMC and PubMed DOI cross-check",
       "reviewEvidence": [
         "https://www.tandfonline.com/doi/full/10.1080/10428194.2016.1210753",
         "https://pubmed.ncbi.nlm.nih.gov/27430347/",
         "https://www.tandfonline.com/doi/full/10.3109/10428194.2011.591005",
-        "https://pubmed.ncbi.nlm.nih.gov/31235526/"
+        "https://pubmed.ncbi.nlm.nih.gov/31235526/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6595261/",
+        "https://pubmed.ncbi.nlm.nih.gov/21699387/"
       ],
-      "reviewSummary": "Publisher's July 19, 2016 retraction statement independently confirms that the 2011 Leukemia & Lymphoma paper (DOI 10.3109/10428194.2011.591005) was retracted for significant unattributed overlap with a separate Leukemia article. The publisher labels the original RETRACTED; PubMed indexes the retraction. PubMed confirms that Hill et al. (2019; PMID 31235526) is a systematic review of AIHA terminology, covering 84 included studies. However, accessible abstract and truncated references do not establish whether this particular retracted paper was cited, among the 84 included studies, or influential in the review's findings. Europe PMC's citation relationship is a discovery lead, not verified dependence. Duplicate-publication retraction does not by itself prove false underlying clinical data, a defective 2019 synthesis, or patient harm. No external outreach.",
-      "nextAction": "By 2026-11-07 obtain lawful full reference list/supplementary included-study table for Hill et al. 2019 and locate exact citation context for the 2011 retracted article; classify cited/included/absent and assess any effect before considering a neutral human-reviewed editorial inquiry.",
-      "nextReviewDate": "2026-11-07",
-      "evidenceClassification": "publisher_confirmed_duplicate_publication_retraction_citing_review_dependency_unverified"
+      "reviewSummary": "The 2019 Hill et al. systematic review (PMCID PMC6595261) explicitly cites the exact Michallet et al. 2011 article as reference 7, labels it retracted, and states in Results that one retracted paper was excluded after full-paper review; reference 7 is the linked exclusion. The 84 eligible studies therefore do not include this retracted article. PubMed confirms DOI 10.3109/10428194.2011.591005 is the exact Michallet article and labels it Retracted Publication. This is a citation to document an exclusion, not evidence of dependence on retracted findings. No basis for contacting the 2019 review authors or claiming clinical impact. Other works citing the retracted study require separate assessment.",
+      "nextAction": "Closed for Hill et al. 2019; reopen only on contradictory primary evidence. Do not send editorial inquiry on this citation alone.",
+      "nextReviewDate": null,
+      "evidenceClassification": "verified_cited_as_retracted_and_explicitly_excluded_from_2019_review"
     }
   ]
 }
