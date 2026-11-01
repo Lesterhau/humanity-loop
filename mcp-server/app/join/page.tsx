@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizeRiskPermissions, type PublicRiskPermission } from "../../lib/risk-permissions";
+
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
 const GATEWAY =
@@ -136,7 +138,7 @@ export default function JoinPage() {
   const hostInfo = HOSTS.find((item) => item.value === host) ?? HOSTS[0];
 
   const riskPermissions = useMemo(() => {
-    const permissions = ["tier0"];
+    const permissions: PublicRiskPermission[] = ["tier0"];
     if (autonomy === "full") permissions.push("tier1-auto");
     if (surfaceTier2) permissions.push("tier2-review");
     return permissions;
@@ -208,7 +210,7 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
           languages,
           email: email || null,
           setup_email_consent: email ? consent : false,
-          risk_permissions: riskPermissions,
+          risk_permissions: normalizeRiskPermissions(riskPermissions),
           session_id: sessionId || null,
           source,
         }),
