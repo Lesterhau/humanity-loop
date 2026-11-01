@@ -771,8 +771,20 @@
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
       "europePmcUrl": "https://europepmc.org/article/MED/36629031",
-      "status": "unreviewed",
-      "detectedAt": "2026-10-30T10:09:11.168772Z"
+      "status": "triaged_verified_included_study_descriptive_count_dependency_effect_unquantified",
+      "detectedAt": "2026-10-30T10:09:11.168772Z",
+      "reviewedOn": "2026-11-01",
+      "reviewedBy": "Humanity Loop main worker — independent Frontiers retraction and Wiley review full-text Tables 1/3A verification",
+      "reviewEvidence": [
+        "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.2023218/full",
+        "https://onlinelibrary.wiley.com/doi/full/10.1002/ctm2.1161",
+        "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-11-01-global-en-science-integrity-fracture-mir25-retraction-review.md"
+      ],
+      "reviewSummary": "Frontiers formally retracted Jiang Y et al. 2020 on 2026-10-30 for figure-image integrity concerns and unsatisfactory raw data/explanation. Wiley's 2023 Breulmann qualitative systematic review explicitly includes Jiang 2020 as reference 96 in Table 1 and counts it among three independent miR-25 reports in Table 3A. This is a verified included-study and descriptive-count dependency, not merely a citation. No pooled estimate, review invalidity, clinical consequence, or editorial correction is established.",
+      "nextAction": "On 2026-11-07 check Wiley's current page for a specific retraction-aware annotation/correction, assess editorial policy and exact table effect, then consider one human-reviewed factual clarification if still warranted. No automatic outreach.",
+      "nextReviewDate": "2026-11-07",
+      "evidenceClassification": "verified_included_study_and_descriptive_tally_dependency_effect_unquantified",
+      "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/research/scout-mesh/2026-11-01-global-en-science-integrity-fracture-mir25-retraction-review.md"
     },
     {
       "retractedDoi": "10.3109/10428194.2011.591005",
