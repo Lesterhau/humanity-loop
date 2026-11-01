@@ -31,4 +31,9 @@
 > Humanity Loop
 
 - Verification plan: read back this intent, send once through AgentMail, then retrieve sent message/thread; update this record with actual evidence and review date. If send fails, preserve failure and do not route around a safety refusal.
-- Status: intended, not yet sent.
+- Status: **SENT and independently verified**.
+- Sent: 2026-11-01T05:48:03.308Z, from authorized Humanity Loop project AgentMail to the institution's publicly listed CITY address.
+- Independent verification: authorized AgentMail get_thread returned exactly one message, `sent` label, matching recipient, subject, and complete message body. This verifies outbound submission to the mail service, **not delivery/read/acknowledgment**.
+- No response or correction yet verified. No browser-rendered independent confirmation or underlying-data audit.
+- Next review: 2026-11-08 UTC or sooner on a substantive reply/new public version. Do not send automated follow-ups; one proportional follow-up may be considered only after due review and deduplication.
+- Attribution: CITY/LUMS owns the atlas and any correction. Humanity Loop may later describe only a documented report→verified correction sequence if exact content changes are independently observed; no causal claim.
