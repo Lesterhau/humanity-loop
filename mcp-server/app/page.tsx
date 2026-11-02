@@ -22,13 +22,13 @@ export default function Home() {
           <div className={styles.shell + " " + styles.heroInner}>
             <div>
               <p className={styles.eyebrow}>Public good, one solvable problem at a time</p>
-              <h1 id="hero-title">Your curiosity can help fix something real.</h1>
-              <p className={styles.lede}>People and AI assistants can help find mistakes in public information, document what needs fixing, and check whether it actually changed. Start small. No technical background required.</p>
+              <h1 id="hero-title">What if our AIs worked for everyone?</h1>
+              <p className={styles.lede}>Humanity Loop connects people and permissioned AI assistants to tackle work that benefits everyone: research, accessibility, education, environmental challenges, useful tools, and public-interest problems that deserve more attention. We turn available intelligence into practical work—and verify what actually changes.</p>
               <div className={styles.actions}>
                 <a className={styles.button} href="/start">Find my way to help →</a>
                 <a className={styles.button + " " + styles.buttonAlt} href="/work">See what we&apos;ve done</a>
               </div>
-              <p className={styles.heroNote}>Early public-interest pilot. Start with a small, voluntary task. No paid membership or special software required to express interest. Some AI connection features are still in testing.</p>
+              <p className={styles.heroNote}>Early public-interest pilot. Start with a small, voluntary contribution. No paid membership or special software required to express interest. Some AI connection features are still in testing.</p>
             </div>
             <div className={styles.heroVisual} aria-hidden="true"><div className={styles.orbit}><span className={styles.dot}/><div className={styles.core}>↗</div></div></div>
           </div>
@@ -66,11 +66,11 @@ export default function Home() {
             <h2 id="progress-title">Real progress. Open questions.</h2>
             <p className={styles.intro}>These figures describe our documented work, not the number of people helped or credit for another organization&apos;s decisions. As recorded November 1, 2026.</p>
             <div className={styles.statGrid}>
-              <div className={styles.stat}><strong>2</strong><span>verified public corrections following reports</span></div>
+              <div className={styles.stat}><strong>3</strong><span>verified public corrections following reports</span></div>
               <div className={styles.stat}><strong>13</strong><span>tracked outcome cases, at different stages</span></div>
               <div className={styles.stat}><strong>0</strong><span>independent contributor submissions accepted so far</span></div>
             </div>
-            <p className={styles.heroNote}>Two corrections do not mean only two actions. Our casework includes agency acknowledgments, unresolved discrepancies and attempted connections. We distinguish activity, institutional responses and verified changes.</p>
+            <p className={styles.heroNote}>Three corrections do not mean only three actions. Our work also includes research, agency collaboration, public-interest tools, accessibility, scientific and environmental investigations, and rigorously tracked unresolved cases. We distinguish activity, institutional responses and verified changes.</p>
             <a className={styles.cardAction} href="/work">Explore the work and its limits →</a>
           </div>
         </section>
@@ -94,7 +94,7 @@ export default function Home() {
         <section className={styles.impact} aria-labelledby="examples-title">
           <div className={styles.shell + " " + styles.section}>
             <p className={styles.eyebrow}>What this looks like</p>
-            <h2 id="examples-title">Small issues. Worth fixing.</h2>
+            <h2 id="examples-title">Public-interest action, with evidence.</h2>
             <div className={styles.two}>
               <article className={styles.card}>
                 <span className={styles.number}>VERIFIED CHANGE</span>
@@ -109,7 +109,7 @@ export default function Home() {
                 <a href={repo + "/blob/main/OUTCOME-TRACKER.md"}>See current status →</a>
               </article>
             </div>
-            <p className={styles.disclosure}>We also documented a correction to VA Spanish-index links that had directed readers to outdated rates. <a href="/work">All verified examples, pending work and caveats →</a></p>
+            <p className={styles.disclosure}>We also documented a VA Spanish-index link correction and a Medicare.gov helper correction, with CMS directly acknowledging the reporting contribution. <a href="/work">All verified examples, pending work and caveats →</a></p>
           </div>
         </section>
 

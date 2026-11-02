@@ -76,3 +76,16 @@ Wins are evidence that the loop works and should be communicated accordingly.
 - **Attribution confidence:** High for the documented **report → subsequently verified correction** sequence. **No evidence of exclusive causation or agency credit to Humanity Loop.** The VA deserves credit for implementing the fix. Public wording: “We flagged this issue; it was subsequently corrected.”
 - **Follow-on monitoring:** No routine follow-up; reopen on verified regression or a separately scoped new issue.
 - **MOTHER post status:** Human-review candidate only; no automatic publication.
+
+
+## WIN-003 — CMS corrected Medicare Prescription Payment Plan helper income limits
+- **Source Outcome Tracker item:** OT-008.
+- **Problem:** On 2026-09-19, the live Medicare.gov payment-plan decision helper asked whether an individual's annual income was below $22,590 (single) / $30,660 (married), the prior thresholds, while presenting other 2026 Medicare figures.
+- **Humanity Loop action:** Sent a specific factual correction request to CMS Beneficiary Advocacy on 2026-09-19, identifying the page, obsolete thresholds and 2026 comparison values.
+- **External actor:** Centers for Medicare & Medicaid Services (CMS), Medicare.gov publishing team.
+- **Verified change:** The public helper now shows the 2026 income figures of $23,940 (single) / $32,460 (married). CMS's Medicare Ombudsman Group explicitly confirmed in dated 2026-10-29 correspondence that the page information was updated on 2026-09-30 and acknowledged the report's role.
+- **Public verification:** https://www.medicare.gov/prescription-payment-plan/will-this-help-me (checked 2026-11-01); original report and CMS response were independently retrieved from authorized historical correspondence. The private email and attached letter are **not published**.
+- **Date independently verified:** 2026-11-01.
+- **Attribution confidence:** Direct agency acknowledgment of the report's contribution, stronger than a mere report-followed-by-correction temporal sequence. No exclusive causation or beneficiary usage quantity claimed.
+- **People/systems potentially helped:** Medicare beneficiaries using the payment-plan helper, especially those near the outdated income cutoffs. Actual usage and downstream decisions have not been measured.
+- **MOTHER post status:** Owner review required; no automatic publication of private correspondence.
