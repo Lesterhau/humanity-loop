@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-01T10:35:37.194140Z",
+  "runAt": "2026-11-02T11:21:20.718585Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,77 +8,56 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 2,
-  "citationsExamined": 20,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
+  "newRetractionsChecked": 12,
+  "citationsExamined": 204,
+  "candidateFindingsCount": 2,
+  "candidateFindings": [
+    {
+      "retractedDoi": "10.1002/jcb.28071",
+      "noticeDoi": "10.1002/jcb.70121",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "39739064",
+      "citingTitle": "MicroRNAs as diagnostic biomarkers in diabetes male infertility: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39739064",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1007/s12033-023-00813-z",
+      "noticeDoi": "10.1007/s12033-026-01619-5",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "38179375",
+      "citingTitle": "Unraveling the Role of Tumor Necrosis Factor-Alpha in Diabetic Peripheral Neuropathy: A Systematic Review and Meta-Analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/38179375",
+      "status": "unreviewed"
+    }
+  ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 13,
+  "coverageGapsCount": 3,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.28924/2291-8639-23-2025-70",
+      "doi": "10.32604/iasc.2022.019555",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/s11244-026-02264-7",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
       "doi": "10.1155/2023/2313874",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1159/000551831",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1007/s11082-025-08251-8",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1007/s00445-026-01962-0",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1007/s11082-025-08579-1",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.jcsr.2026.110487",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.solener.2026.114317",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ceramint.2025.05.042",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ceramint.2022.02.103",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.jobe.2023.108167",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.jobe.2023.108154",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.jobe.2023.107999",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
