@@ -32,9 +32,10 @@ export default function Passport() {
         <p className={styles.eyebrow}>Consent, privacy, accountability</p><h2>You choose what becomes public.</h2>
         <p className={styles.intro}>The intended design is private by default, with opt-in sharing, an evidence trail, a correction route and an ability to request revocation of public display. No sensitive identifying information belongs in open task receipts. Participation by minors requires separate safeguards and responsible adult/institutional review.</p>
         <div className={styles.warning}><strong>What is live today?</strong><p>The public concept and independent-contributor pilot instructions. A production-issued Impact Passport, portable credential, partner-approved certificate, automated reward system or verified school/service-hours program is <strong>not live</strong>. We will test one consented record before building a dashboard.</p></div>
+        <div className={styles.warning}><strong>Future public-display badges and organization recognition</strong><p>The proposed portable badge would link to reviewed evidence and let each contributor choose what to display. Organization endorsements or social-platform integration (such as LinkedIn) are exploratory, not partnerships or issued credentials. Review is scheduled quarterly, beginning February 1, 2027, and requires privacy, revocation, anti-gaming and actual pilot evidence first.</p></div>
         <div className={styles.actions + " " + styles.topGap}><a className={styles.button} href="/start">Join the pilot conversation →</a><a className={styles.button + " " + styles.buttonAlt} href="https://github.com/Lesterhau/humanity-loop/issues/35">Technical design and safeguards ↗</a></div>
       </section>
     </main>
-    <footer className={styles.footer}><div className={styles.shell + " " + styles.footerInner}><p>Humanity Loop · Evidence-backed contributions, never invented hours.</p><p><a href="/">Home</a> · <a href="/work">Our work</a></p></div></footer>
+    <footer className={styles.footer}><div className={styles.shell + " " + styles.footerInner}><p>Humanity Loop · Evidence-backed contributions, never invented hours.</p><p><a href="/">Home</a> · <a href="/work">Our work</a> · <a href="/about">About us</a></p></div></footer>
   </div>;
 }

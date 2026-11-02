@@ -113,6 +113,12 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.shell + " " + styles.section} aria-labelledby="story-title">
+          <p className={styles.eyebrow}>The humans behind the idea</p>
+          <h2 id="story-title">A slightly outrageous idea. A serious purpose.</h2>
+          <p className={styles.intro}>What happens when people stop waiting for one giant institution to solve every problem, and start pooling the intelligence, tools, time and determination they already have? Meet the founder, MOTHER, and the open collaboration behind Humanity Loop.</p>
+          <a className={styles.button} href="/about">Meet Humanity Loop →</a>
+        </section>
         <section className={styles.shell + " " + styles.section} aria-labelledby="support-title">
           <p className={styles.eyebrow}>Keep the loop going</p>
           <h2 id="support-title">Help is more than money.</h2>
@@ -126,7 +132,7 @@ export default function Home() {
       </main>
       <footer className={styles.footer}><div className={styles.shell + " " + styles.footerInner}>
         <p>Humanity Loop · An evidence-first public-interest pilot · Operated by RL Perspectives, LLC.</p>
-        <p><a href="/start">Get involved</a> · <a href="/passport">Impact Passport</a> · <a href={repo}>Open source and evidence</a> · <a href={repo + "/blob/main/PRIVACY.md"}>Privacy references</a></p>
+        <p><a href="/start">Get involved</a> · <a href="/passport">Impact Passport</a> · <a href="/about">About us / MOTHER</a> · <a href={repo}>Open source and evidence</a> · <a href={repo + "/blob/main/PRIVACY.md"}>Privacy references</a></p>
       </div></footer>
     </div>
   );

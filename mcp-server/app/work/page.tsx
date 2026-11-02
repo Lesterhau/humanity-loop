@@ -24,8 +24,19 @@ export default function Work() {
         <a className={styles.cardAction} href={repo + "/blob/main/OUTCOME-TRACKER.md"}>See all tracked cases and source receipts →</a>
         <p className={styles.heroNote}>This detailed evidence record is stored in GitHub for auditability; you do not need GitHub to volunteer. <a className={styles.textLink} href="/start">Start with an email or small task instead.</a></p>
       </div></section>
+      <section className={styles.shell + " " + styles.section}>
+        <p className={styles.eyebrow}>Impact measurement</p><h2>How many people did this actually help?</h2>
+        <p className={styles.intro}>That is the question we want to answer for every intervention. But a potential audience is not a count of people reached, and an agency correction is not proof of better real-world outcomes. Each win will include a documented S.T.A.R. account (Situation, Task, Action, Result) plus a separate reach and benefit assessment.</p>
+        <div className={styles.grid}>
+          <article className={styles.card}><span className={styles.number}>POTENTIAL AUDIENCE</span><h3>Who could benefit?</h3><p>Dated population estimates with explicit denominator, geographic and program relevance, uncertainty and source links. Never labeled as people helped.</p></article>
+          <article className={styles.card}><span className={styles.number}>OBSERVED EXPOSURE</span><h3>Who actually encountered it?</h3><p>Page views, publication downloads or confirmed tool usage when responsible institutions can provide valid figures. No assumption all visitors changed behavior.</p></article>
+          <article className={styles.card}><span className={styles.number}>VERIFIED BENEFIT</span><h3>What changed for someone?</h3><p>Evidence of improved comprehension, access or outcomes, with permissions and privacy protected. If unavailable, the count is not yet measured.</p></article>
+        </div>
+        <p className={styles.heroNote}>There are three verified public corrections, but no defensible aggregate person-level beneficiary count. Medicare and Veterans Affairs are different populations and are never interchangeable.</p>
+        <a className={styles.cardAction} href={repo + "/blob/main/IMPACT-MEASUREMENT.md"}>Measurement rules and limitations →</a>
+      </section>
       <section className={styles.shell + " " + styles.section}><h2>What we will not claim</h2><p className={styles.intro}>We cannot infer that Humanity Loop caused an agency change merely because our report came before it. We cannot infer how many people benefited without evidence. Internally completed AI tasks do not equal independent adoption or human volunteer hours.</p><a className={styles.button} href="/start">Help with the next useful check →</a></section>
     </main>
-    <footer className={styles.footer}><div className={styles.shell + " " + styles.footerInner}><p>Humanity Loop · Public source corrections and careful uncertainty.</p><p><a href="/">Home</a> · <a href="/passport">Impact Passport</a></p></div></footer>
+    <footer className={styles.footer}><div className={styles.shell + " " + styles.footerInner}><p>Humanity Loop · Public source corrections and careful uncertainty.</p><p><a href="/">Home</a> · <a href="/passport">Impact Passport</a> · <a href="/about">About us</a></p></div></footer>
   </div>;
 }
