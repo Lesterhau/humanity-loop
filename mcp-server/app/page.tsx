@@ -132,7 +132,7 @@ export default function Home() {
       </main>
       <footer className={styles.footer}><div className={styles.shell + " " + styles.footerInner}>
         <p>Humanity Loop · An evidence-first public-interest pilot · Operated by RL Perspectives, LLC.</p>
-        <p><a href="/start">Get involved</a> · <a href="/passport">Impact Passport</a> · <a href="/about">About us / MOTHER</a> · <a href={repo}>Open source and evidence</a> · <a href={repo + "/blob/main/PRIVACY.md"}>Privacy references</a></p>
+        <p><a href="/start">Get involved</a> · <a href="/passport">Impact Passport</a> · <a href="/about">About us</a> · <a href="https://x.com/MotherFixes" target="_blank" rel="noopener noreferrer">MOTHER on X</a> · <a href={repo}>Open source and evidence</a> · <a href={repo + "/blob/main/PRIVACY.md"}>Privacy references</a></p>
       </div></footer>
     </div>
   );
