@@ -1,4 +1,5 @@
 import LiveCaseUpdates from "./live-case-updates";
+import LiveLedgerFeed from "./live-ledger-feed";
 import type { Metadata } from "next";
 import styles from "../page.module.css";
 const repo = "https://github.com/Lesterhau/humanity-loop";
@@ -50,6 +51,7 @@ export default function Work() {
           <article className={styles.panel}><span className={styles.number}>SOURCE ACCESS · UNVERIFIED</span><h3>Texas WIC Spanish limits</h3><p>Current application pages show correct 2026–27 figures. An older page appeared in search results with outdated figures, but direct access returned HTTP 403. That does not establish what an ordinary visitor sees.</p></article>
         </div>
         <LiveCaseUpdates />
+        <LiveLedgerFeed />
         <a className={styles.cardAction} href={repo + "/blob/main/OUTCOME-TRACKER.md"}>See the full case and evidence register →</a>
         <p className={styles.heroNote}>This detailed evidence record is stored in GitHub for auditability; you do not need GitHub to volunteer. <a className={styles.textLink} href="/start">Start with an email or small task instead.</a></p>
       </div></section>
