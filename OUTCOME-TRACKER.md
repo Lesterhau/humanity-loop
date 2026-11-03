@@ -87,10 +87,11 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Next step: verify live page and follow `OUTCOME-ESCALATION.md` if stale.
 
 ### OT-008 — Medicare helper / Extra Help threshold drift
-- Original report: 2026-09-19
-- Status: **reported**
-- Personal Gmail scan through 2026-09-30 found no substantive agency response.
-- Next step: verify live tool/page and follow `OUTCOME-ESCALATION.md` if stale.
+- Original report: 2026-09-19 to CMS Beneficiary Advocacy. Observed public helper threshold: $22,590 single / $30,660 married; reported current 2026 values: $23,940 / $32,460.
+- **Agency confirmation, 2026-10-29:** CMS Medicare Ombudsman Group confirmed the Medicare Prescription Payment Plan Helper information was updated **2026-09-30** and directly acknowledged that the original reporting assisted correction. Private source correspondence was retrieved from the authorized Gmail thread; do not expose the raw email, signature, sender address or attachment in the public repository without review.
+- **2026-11-01 independent public check:** https://www.medicare.gov/prescription-payment-plan/will-this-help-me now asks about $23,940 single / $32,460 married, confirming the exact reported field changed to the intended 2026 values.
+- **Status: verified-resolved, with direct institutional attribution** for the specific helper-threshold discrepancy. **WIN-003** documented. No evidence of exclusive causation, actual beneficiary counts, or personal eligibility outcomes.
+- **Closure:** No routine follow-up needed; reopen on independently observed regression or materially new scope. The original 2026-09-30 Gmail response scan is superseded by the October 29 CMS response.
 
 ### OT-009 — DOL Fact Sheet #17D content error
 - Original report: 2026-09-25
