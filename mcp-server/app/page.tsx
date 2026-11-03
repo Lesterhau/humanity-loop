@@ -62,15 +62,15 @@ export default function Home() {
 
         <section className={styles.soft} aria-labelledby="progress-title">
           <div className={styles.shell + " " + styles.section}>
-            <p className={styles.eyebrow}>Evidence, not a victory parade</p>
-            <h2 id="progress-title">Real progress. Open questions.</h2>
-            <p className={styles.intro}>These figures describe our documented work, not the number of people helped or credit for another organization&apos;s decisions. As recorded November 1, 2026.</p>
+            <p className={styles.eyebrow}>The human scale of public-interest work</p>
+            <h2 id="progress-title">How many lives could this work touch?</h2>
+            <p className={styles.intro}>Every correction has a human audience. We show the scale of the relevant public program, then distinguish it from the smaller, still-unmeasured group who might encounter or benefit from the specific fix.</p>
             <div className={styles.statGrid}>
-              <div className={styles.stat}><strong>3</strong><span>verified public corrections following reports</span></div>
-              <div className={styles.stat}><strong>13</strong><span>tracked outcome cases, at different stages</span></div>
-              <div className={styles.stat}><strong>0</strong><span>independent contributor submissions accepted so far</span></div>
+              <div className={styles.stat}><strong>56.3M</strong><span>people enrolled in Medicare Part D in 2026 — broad program audience for one of our corrected public-information tools, <strong>not</strong> an estimate of people who used that tool</span></div>
+              <div className={styles.stat}><strong>3</strong><span>independently verified public corrections after Humanity Loop reports</span></div>
+              <div className={styles.stat}><strong>13</strong><span>tracked outcome cases, from initial reports through verified results</span></div>
             </div>
-            <p className={styles.heroNote}>Three corrections do not mean only three actions. Our work also includes research, agency collaboration, public-interest tools, accessibility, scientific and environmental investigations, and rigorously tracked unresolved cases. We distinguish activity, institutional responses and verified changes.</p>
+            <p className={styles.heroNote}>The 56.3 million figure is a national <strong>contextual audience ceiling</strong>, not an estimate of people impacted or helped: only a subset would use the Medicare payment-plan helper, and we have no usage data. Source: <a href="https://www.kff.org/medicare/medicare-part-d-enrollment-premiums-and-cost-sharing-in-2026/" target="_blank" rel="noopener noreferrer">KFF's June 2026 analysis of CMS enrollment data</a>. No populations from separate cases have been added together. We will replace broad program counts with narrower sourced estimates when available. Independently accepted outside submissions: 0 at the last verified check.</p>
             <a className={styles.cardAction} href="/work">Explore the work and its limits →</a>
           </div>
         </section>
