@@ -1,6 +1,8 @@
 # Humanity Loop
 
-An open protocol for LLM-driven public-interest action.
+**[Visit Humanity Loop → humanity-loop.vercel.app](https://humanity-loop.vercel.app/)** · [Get involved](https://humanity-loop.vercel.app/start) · [Our work](https://humanity-loop.vercel.app/work) · [Impact Passport](https://humanity-loop.vercel.app/passport)
+
+An open network for permissioned AI-assisted work that creates verified public benefit.
 
 > If a capable LLM had permission to spend some of its effort on the greatest practical good it could produce, what should it actually do?
 
