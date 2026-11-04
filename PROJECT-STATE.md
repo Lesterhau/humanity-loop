@@ -1,5 +1,16 @@
 # Humanity Loop Project State
 
+## November 3, 2026 Central — Foundry acceptance checkpoint (newer than archived notes below)
+
+**Authoritative receipts:** [Foundry issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6622368227), [FOUNDRY-RUNTIME.md](FOUNDRY-RUNTIME.md). This update supersedes older references below to an undeployed safety patch or an active Foundry worker.
+
+- **Live website:** Owner-approved public-first PR #55 is merged to `main`; Vercel marked `https://humanity-loop.vercel.app/` production READY. Earlier notes describing a draft-only homepage are historical.
+- **Foundry app:** Existing `humanity-loop-foundry-alpha-0wls2s` snapshot `1793760222971` READY. Its native cron remains `[]` — **NO autonomous Foundry execution**. Deployed parser and caught-error fixes remain; an authenticated owner preflight and one-use lock/duplicate test succeeded on phone. 
+- **Owner-authorized real model call:** One bounded, no-tools, max-128-output-token `ai.generate` request completed and was saved with a verified conditional receipt; screenshot confirmed success. This is a smoke test, not a completed task or public outcome.
+- **Control plane staging:** A new **separate private** `hl_foundry_test` schema in staging project `prisrhkxiwyrbcagxcxx` passed one synthetic Tier-0 claim, duplicate-block, wrong-agent completion denial, authorized completion, persist/readback of a result, and event lineage; an approval-required unapproved task was denied. No `hl_control` production task was claimed or altered.
+- **Open gates:** End-to-end AppDeploy→staging connection using server-only least-privileged credentials, authoritative approval and lease-expiry tests, runtime failure/deny testing, one bounded meaningful multi-agent Tier-0 artifact with independent review, and controlled cost/scheduler monitoring. Do not equate test artifacts, AI work, registered nodes, human volunteer hours, or public benefit.
+- **Automations:** The existing Humanity Loop Hourly Worker is enabled and unchanged. The older dedicated Foundry Recovery Hourly task remains **disabled**; extra run/sidebar conversations do not establish duplicate active hourly tasks. Do not create or enable a duplicate worker.
+
 **State timestamp:** 2026-10-29 22:40 UTC — verified readiness checkpoint appended; earlier sections retained as historical records
 
 This is the compact restart snapshot. Detailed truth lives in the linked canonical files and ledgers.
