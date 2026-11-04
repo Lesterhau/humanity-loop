@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-03T10:58:45.335053Z",
+  "runAt": "2026-11-04T11:04:44.082018Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,42 +8,52 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 9,
-  "citationsExamined": 55,
+  "newRetractionsChecked": 7,
+  "citationsExamined": 94,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 6,
+  "coverageGapsCount": 8,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.3390/agronomy9110680",
+      "doi": "10.1016/j.cej.2016.06.040",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.ijhydene.2017.11.063",
+      "doi": "10.1007/s44198-025-00293-6",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1111/coin.12588",
+      "doi": "10.64376/1egws861",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1002/gj.4742",
+      "doi": "10.3390/rs18030473",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1002/gj.4864",
+      "doi": "10.1029/2023wr034623",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1002/gj.4883",
+      "doi": "10.1109/appeec.2011.5748994",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1109/icmss.2009.5304084",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1155/2022/5670714",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
