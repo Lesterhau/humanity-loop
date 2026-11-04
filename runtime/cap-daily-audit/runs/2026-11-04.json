@@ -1,0 +1,13 @@
+{
+  "alertsChecked": 250,
+  "bySeverity": {
+    "advisory": 0,
+    "error": 0,
+    "warning": 0
+  },
+  "findings": [],
+  "findingsCount": 0,
+  "runAt": "2026-11-04T21:24:49.665806Z",
+  "schemaVersion": 1,
+  "source": "https://api.weather.gov/alerts/active"
+}
