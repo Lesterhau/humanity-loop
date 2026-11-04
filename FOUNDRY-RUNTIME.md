@@ -1,5 +1,17 @@
 # Foundry Runtime and Fallback
 
+## Latest source-verified checkpoint — November 3, 2026 (Central)
+
+**This checkpoint supersedes historical statements below about which Foundry repairs are still only proposed. It does not authorize scheduler activation.** Primary evidence: [issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6622368227).
+
+- **Existing AppDeploy Alpha app:** `humanity-loop-foundry-alpha-0wls2s`, current tested snapshot `1793760222971`, deployment READY. First-line verifier/governor parsing and original-error preservation fixes are deployed. Native `cron.json=[]` **remains disabled**, and no autonomous multi-agent cycle was executed.
+- **Owner identity / one-use gate:** Browser-positive authenticated owner preflight passed; first chosen-ID lock diagnostic persisted and read back; duplicate request produced expected HTTP 409 and did not start work.
+- **Single real model probe:** With explicit owner consent, one `ai.generate` request with `thinkingMode:'NONE'`, output cap 128, no tools and zero retries returned the expected marker. AppDeploy's conditional receipt write and consistent readback passed; owner UI displayed `Single AI probe verified and persisted`. This is **not** a Tier-0 artifact, verified external benefit, or complete Foundry cycle.
+- **Isolated task-control staging:** In separate staging Supabase project `prisrhkxiwyrbcagxcxx`, new private `hl_foundry_test` schema contains synthetic tasks, approvals, events, and invoker functions. Explicit deny-by-default for anon/authenticated, RLS on. Synthetic Tier-0 task accepted a claim once, rejected a duplicate and wrong-agent completion, allowed correct lease-holder completion, and persisted one claim/one completion event. Approval-required task without approval was denied. **No production task was touched.**
+- **Critical limitation:** AppDeploy's model receipt and Supabase's task/lease receipt are still **separate** test systems. There is no authorized server-to-server staging bridge, production control-plane task claim, approved independent deliverable, verified real-world impact, fully tested failure-path HTTP semantics, or bounded autonomous scheduler restart. Ignore any historical mode descriptions that might imply the disabled dedicated ChatGPT Foundry Recovery task is running.
+
+**Next:** Extend isolated staging approval/expiry/cancellation checks; establish least-privilege server-only AppDeploy→staging credential and test-only gateway, then prove one single-owner bounded Tier-0 task lifecycle with approvals/events and independent artifact review before any native cron rollout. Do not enable a second scheduled worker.
+
 This file defines how Humanity Loop keeps the bounded Foundry control spine available when one execution provider is unavailable.
 
 ## Goal
