@@ -1,5 +1,15 @@
 # Foundry Alpha — source repair accepted; autonomous execution still on hold
 
+## Acceptance evidence update — November 3, 2026 (Central)
+
+The original October 26 checklist below is preserved as historical test requirements. **Do not treat its early snapshot numbers or claims that fixes are only proposed as the latest deployed state.** See [issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6622368227), [FOUNDRY-RUNTIME.md](FOUNDRY-RUNTIME.md), and [PROJECT-STATE.md](PROJECT-STATE.md).
+
+**Now confirmed:** deployed `1793760222971` passes source/readback with strict first-line Verifier/Governor decisions, original-error preservation, owner-only preflight, one-use AppDeploy DB reservation, duplicate response 409, and **one actually executed, consented, 128-output-token, no-tools model probe** with a conditionally committed and consistently read-back receipt. User browser captures and AppDeploy source corroborate. AppDeploy native `cron.json=[]` remains off.
+
+**Separate staging validation:** isolated Supabase test-only `hl_foundry_test` in staging project `prisrhkxiwyrbcagxcxx` rejected unapproved or duplicate claims, rejected wrong-identity completion, and allowed a single authorized synthetic Tier-0 completion with persisted events. No production task claim or contributor work happened. This is NOT yet an AppDeploy-to-Supabase integration.
+
+**Still failing/not established:** deliberate live HTTP429/503 failure and failed-DB-record injection, unauthorized nonowner 401/403, complete multi-role Tier-0 output with independent external evidence, production-grade lease and approval/retry semantics, least-privileged server-to-server bridge, hard budget enforcement, and an authorized monitored autonomous scheduler. The native cron must not be enabled on these partial test passes.
+
 **Updated October 26, 2026.** Existing AppDeploy app: `humanity-loop-foundry-alpha-0wls2s`. This is a safety acceptance contract, not authorization to enable the cron.
 
 ## Verified production source facts
