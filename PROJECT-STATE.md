@@ -1,5 +1,14 @@
 # Humanity Loop Project State
 
+## VERIFIED November 5, 2026 CT — Foundry staging integration reconciled
+
+[Evidence: issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6669276686) and [FOUNDRY-RUNTIME.md](FOUNDRY-RUNTIME.md). This section **supersedes** the older November 3 note below about an unconnected staging bridge.
+
+- **AppDeploy Foundry Alpha:** `humanity-loop-foundry-alpha-0wls2s` snapshot `1793911810822`, READY; cron `[]` OFF. Existing Humanity Loop Hourly Worker unchanged. No new worker.
+- **Staging Supabase:** `prisrhkxiwyrbcagxcxx` custom-secret protected `foundry-staging-bridge` v6. One synthetic task `ftest_appdeploy_bridge_20261104` actually claimed and completed exactly once, lease released, result persisted (`model_calls=0`), 1 claim and 1 completion event. Owner verified a read-only reconciliation from AppDeploy, with local receipt updated and consistently read back. No production task touched. The earlier JSONB serialized-string verifier bug was corrected.
+- **Current acceptance:** Authenticated owner→AppDeploy→staging Supabase network/claim/complete/dual-receipt path passed. **NOT** a substantive multi-agent Tier-0 output, verified external impact, independent contributor acceptance, or production control plane.
+- **Next acceptance:** fresh, explicitly consented, hard-bounded manual Tier-0 artifact/draft lifecycle in staging (strict model tokens/call budget); prove failed-model + unauthorized access + expiry/cancellation paths; independent review; production permission model; only then consider an explicit, monitored autonomous scheduler decision. No paid topups authorized.
+
 ## November 3, 2026 Central — Foundry acceptance checkpoint (newer than archived notes below)
 
 **Authoritative receipts:** [Foundry issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6622368227), [FOUNDRY-RUNTIME.md](FOUNDRY-RUNTIME.md). This update supersedes older references below to an undeployed safety patch or an active Foundry worker.
