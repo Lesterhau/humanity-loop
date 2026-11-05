@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-04T11:04:44.082018Z",
+  "runAt": "2026-11-05T11:05:05.062685Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,52 +8,57 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 7,
-  "citationsExamined": 94,
+  "newRetractionsChecked": 6,
+  "citationsExamined": 136,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 8,
+  "coverageGapsCount": 9,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.cej.2016.06.040",
+      "doi": "10.1007/s10722-025-02344-9",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1007/s44198-025-00293-6",
+      "doi": "10.1016/j.jafr.2026.103336",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.64376/1egws861",
+      "doi": "10.1109/icebeg.2011.5881535",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.3390/rs18030473",
+      "doi": "10.1109/shuser.2012.6268845",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1029/2023wr034623",
+      "doi": "10.1109/icams.2010.5553023",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1109/appeec.2011.5748994",
+      "doi": "10.1109/icemms.2011.6015681",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1109/icmss.2009.5304084",
+      "doi": "10.1109/icams.2010.5553304",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1155/2022/5670714",
+      "doi": "10.1109/nano.2011.6144484",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1109/icbbe.2011.5781435",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
