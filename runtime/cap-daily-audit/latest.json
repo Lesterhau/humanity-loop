@@ -7,7 +7,7 @@
   },
   "findings": [],
   "findingsCount": 0,
-  "runAt": "2026-11-04T21:24:49.665806Z",
+  "runAt": "2026-11-05T21:30:42.494043Z",
   "schemaVersion": 1,
   "source": "https://api.weather.gov/alerts/active"
 }
