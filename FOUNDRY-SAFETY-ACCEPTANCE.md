@@ -1,5 +1,13 @@
 # Foundry Alpha — source repair accepted; autonomous execution still on hold
 
+## November 5, 2026 CT — cross-system staging acceptance PASS (narrow)
+
+[Verified receipt](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6669276686). Historical “not yet connected” clauses below are outdated.
+
+**Passed:** owner-only AppDeploy authenticated bridge, custom keyed staging Supabase function, fixed-ID synthetic claim once, completed once, released lease, saved result, exactly 1 claim and 1 completion event, read-only reconciliation after correcting JSONB string/object deserialization, and conditionally updated/consistently read-back AppDeploy local audit receipt. AppDeploy snapshot `1793911810822` READY, edge function v6 ACTIVE. Owner screenshot reports success. No AI/model call or production task touched in the bridge test; `cron.json=[]` remains OFF.
+
+**Not passed:** complete meaningful multi-role Tier-0 artifact, a strict enforceable total credit budget, live negative 401/403 and deliberately injected model failure 429/503, retry/lease/cancellation cross-system proof, independent evidence review, production `hl_control` approval/lease authorization, and one verified autonomous scheduled execution. No public-benefit, adoption or service-hours claims. DO NOT re-run `ftest_appdeploy_bridge_20261104` or enable cron.
+
 ## Acceptance evidence update — November 3, 2026 (Central)
 
 The original October 26 checklist below is preserved as historical test requirements. **Do not treat its early snapshot numbers or claims that fixes are only proposed as the latest deployed state.** See [issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6622368227), [FOUNDRY-RUNTIME.md](FOUNDRY-RUNTIME.md), and [PROJECT-STATE.md](PROJECT-STATE.md).
