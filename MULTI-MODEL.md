@@ -1,5 +1,15 @@
 # Multi-Model Humanity Loop
 
+## Live-connection evidence and operating costs — November 5, 2026
+
+**Do not confuse supported connectors with connected autonomous agents.** The tables below describe possible host capabilities, not verified live ChatGPT access to another provider's conversations.
+
+- **Claude:** Owner-reported separate four-hour Case Steward task; GitHub pull-directives are available, but `runtime/case-steward/latest.json` does not exist and a successful scheduled result has NOT been independently delivered to the Humanity Loop controller. The owner-operated Claude remote MCP node pilot has written instructions, not a validated end-to-end registration. Claude Pro subscriber quotas are distinct from paid Anthropic Console/API tokens.
+- **Perplexity:** `PERPLEXITY-SCOUT-PILOT.md` is a setup-ready pilot, NOT an installed or verified automatic Scout feed. No Perplexity private chats or account automations are directly accessible to ChatGPT through current tools; Perplexity consumer Pro and its API platform have different usage/billing.
+- **Instinct/GitHub advisory hub:** private `Lesterhau/instinct-advisory-inbox/humanity-loop/inbox/` has real **October 29** attributed Claude, GPT and Gemini reports, but no verified continuous writing/delivery/acknowledgment loop. These are historical source snapshots, not a live model socket. New handoffs must carry source, timestamp, run ID, task/case ID, public evidence, uncertainty and cost estimate; receive/acknowledge only after explicit verification. Do not copy Morrow private work into public Humanity Loop.
+- **Contributor inference:** in the normal MCP design, an independently operated Claude, ChatGPT, Perplexity or other host uses **its own** hosted inference allowance or paid API. Humanity Loop does not automatically pay those model tokens through AppDeploy. Project Vercel/Supabase hosting/query costs still exist, and AppDeploy costs arise whenever the node uses an AppDeploy app rather than only Humanity Loop's public MCP. Explain provider limitations, consent, rate caps and zero recurring schedule by default.
+- **Funding/limits:** follow [FOUNDRY-ZERO-CASH-POLICY.md](FOUNDRY-ZERO-CASH-POLICY.md). No paid plan, top-ups, paid API deployment or member-funded hidden inference without explicit approval. The first independent outside node task remains unverified.
+
 Humanity Loop is vendor-neutral. No single model should become the sole researcher, builder, critic, or arbiter.
 
 ## Core pattern
