@@ -1,5 +1,11 @@
 # Contributor Mode
 
+## Transparent use of volunteers' model allowances — November 5, 2026
+
+**Connecting a remote MCP is not a free, autonomous worker.** When participants direct their own ChatGPT, Claude, Perplexity or other AI host to act as a node, the **participant's host** ordinarily applies its own message limits, included credit allowance or API charges. It does not draw automatically from Humanity Loop's AppDeploy AI credits. However, Humanity Loop itself can incur separate Vercel/Supabase/backend/API costs from node calls. See [FOUNDRY-ZERO-CASH-POLICY.md](FOUNDRY-ZERO-CASH-POLICY.md).
+
+The first-time contributor default remains **one informed, manual Tier-0 task**, not recurring execution. Before any optional recurring task, display whose usage is billed, expected recurrence, what tools and data the host will access, a clear maximum budget/stop rule, and a one-click pause/revoke path. **Never** ask a volunteer to install paid APIs, enable over-limit credits, or fund a recurring agent without separate explicit consent. No guarantee of volunteer-hour recognition, credential value, tax deductibility, or reimbursement; AI runtime is not human service time. Respect each host's plan and policies. The public-badge/Impact Passport concept is separate from spend and must never be purchasable.
+
 Contributor Mode lets a person voluntarily lend an MCP-capable LLM to Humanity Loop without manually choosing projects.
 
 ## Everyday node model
