@@ -1,5 +1,16 @@
 # Foundry Runtime and Fallback
 
+## VERIFIED November 5, 2026 CT — AppDeploy ↔ Supabase staging receipt reconciled
+
+**Latest source of truth:** [Foundry issue #14 checkpoint](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6669276686). This supersedes the *historical* November 3 “no bridge” note below.
+
+- Existing **AppDeploy Foundry Alpha** snapshot `1793911810822` is `READY`; native `cron.json=[]` remains **OFF**. No second worker added.
+- Custom authenticated, server-only Supabase Edge Function `foundry-staging-bridge` **v6 ACTIVE** in isolated staging project `prisrhkxiwyrbcagxcxx`. AppDeploy has a matching encrypted dedicated secret; no Supabase service-role key in the app/browser.
+- **One actual AppDeploy→Supabase synthetic claim/completion:** task `ftest_appdeploy_bridge_20261104` is `completed` with exactly **1 attempt**, **1 claimed event**, **1 completed event**, and all lease fields released. Stored result marker `FOUNDRY_STAGING_BRIDGE_OK`, `model_calls=0`. Production `hl_control` untouched.
+- **Receipt repair:** postgres driver persisted a JSONB *string* instead of object; old readback incorrectly returned a 503 after successful completion. Supabase v6 safely parses both representations and adds **read-only `reconcile-synthetic`**; AppDeploy owner-only `staging-bridge-reconcile` conditionally fixes its *existing* local audit receipt and reads it back. Owner screenshot confirms `VERIFIED ... Foundry has reconciled its receipt. Zero new task claims and AI calls.` Old synthetic execution button is disabled. No retry is permitted.
+- **Still outstanding:** one meaningfully scoped, manual, bounded **Tier-0 multi-role draft** with strict token/call/cost controls, provenance, safety first-line fail-closed tests, deliberately induced model/network failure checks, negative anonymous/non-owner 401/403, approval and lease cancellation semantics, independent artifact review, and a controlled production `hl_control` authorization plan. This synthetic test **does not** establish independent adoption, human volunteer time, or real-world benefit.
+- **Next unchecked action:** design and deploy a manually owner-consented bounded Tier-0 staging task route, keeping native cron OFF; do not spend credits without explicit permission and a concrete cap. No need to re-run the already completed synthetic task.
+
 ## Latest source-verified checkpoint — November 3, 2026 (Central)
 
 **This checkpoint supersedes historical statements below about which Foundry repairs are still only proposed. It does not authorize scheduler activation.** Primary evidence: [issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6622368227).
