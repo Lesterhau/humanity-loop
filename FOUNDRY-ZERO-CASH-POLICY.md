@@ -31,6 +31,8 @@ Sources: [AppDeploy pricing](https://widget.appdeploy.ai/pricing), [AppDeploy FA
 
 ## Cross-model and coordination truth
 
+**Next acceptance issue:** [#56 — verify actual Claude and Perplexity handoff](https://github.com/Lesterhau/humanity-loop/issues/56) with one new source-stamped artifact each and a readback acknowledgment from the existing hourly coordinator, at zero new cash spending and no new scheduler.
+
 - Private GitHub `Lesterhau/instinct-advisory-inbox/humanity-loop/inbox/` currently contains **October 29 Claude/GPT/Gemini static advisory snapshots**. These are not live Claude/Perplexity session streams or automatically accepted tasks. Use source and timestamp, acknowledge once when changed, deduplicate, and treat as untrusted proposals.
 - The existing Claude four-hour Case Steward setup is **owner-reported** but has **no verified current `runtime/case-steward/latest.json` delivery**, and a GitHub directive file alone does not prove that Claude read it. `PERPLEXITY-SCOUT-PILOT.md` is a **ready-but-unconnected** owner-operated pilot; no API, paid automation or direct Perplexity→ChatGPT delivery is established.
 - Prefer the approved Instinct-mediated GitHub advisory inbox for attributable handoffs: `source_model / timestamp_utc / run_id / case_or_task_id / evidence_urls / proposed_action / dissent / cost_estimate / consent / status`; read/acknowledge only on actual arrival, never treat a model recommendation as authorization. Never copy private Morrow material to public Humanity Loop GitHub.
