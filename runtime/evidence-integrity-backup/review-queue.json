@@ -891,6 +891,21 @@
       "europePmcUrl": "https://europepmc.org/article/MED/38179375",
       "status": "unreviewed",
       "detectedAt": "2026-11-02T11:21:20.718585Z"
+    },
+    {
+      "retractedDoi": "10.1080/14767058.2018.1551352",
+      "noticeDoi": "10.1080/14767058.2026.2760605",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "39506738",
+      "citingTitle": "Providers' perspective on vaginal birth after cesarean birth: a qualitative systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39506738",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-06T11:01:51.649390Z"
     }
   ]
 }

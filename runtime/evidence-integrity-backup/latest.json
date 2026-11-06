@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-05T11:05:05.062685Z",
+  "runAt": "2026-11-06T11:01:51.649390Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,57 +8,32 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 6,
-  "citationsExamined": 136,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
+  "newRetractionsChecked": 14,
+  "citationsExamined": 170,
+  "candidateFindingsCount": 1,
+  "candidateFindings": [
+    {
+      "retractedDoi": "10.1080/14767058.2018.1551352",
+      "noticeDoi": "10.1080/14767058.2026.2760605",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "39506738",
+      "citingTitle": "Providers' perspective on vaginal birth after cesarean birth: a qualitative systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39506738",
+      "status": "unreviewed"
+    }
+  ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 9,
+  "coverageGapsCount": 1,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1007/s10722-025-02344-9",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.jafr.2026.103336",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/icebeg.2011.5881535",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/shuser.2012.6268845",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/icams.2010.5553023",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/icemms.2011.6015681",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/icams.2010.5553304",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/nano.2011.6144484",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/icbbe.2011.5781435",
+      "doi": "10.1007/s10751-024-02103-9",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
