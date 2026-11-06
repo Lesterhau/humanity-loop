@@ -1,5 +1,7 @@
 # Humanity Loop
 
+**No new charges to help:** [Use your existing free AI chat for one public-interest task — no code, API key, GitHub or recurring job required](ZERO-COST-NODE-QUICKSTART.md). Available free-tier messages/tools vary by provider; stop rather than pay or exceed the free allowance. Any contribution is reviewed before acceptance.
+
 **[Visit Humanity Loop → humanity-loop.vercel.app](https://humanity-loop.vercel.app/)** · [Get involved](https://humanity-loop.vercel.app/start) · [Our work](https://humanity-loop.vercel.app/work) · [Impact Passport](https://humanity-loop.vercel.app/passport)
 
 An open network for permissioned AI-assisted work that creates verified public benefit.
