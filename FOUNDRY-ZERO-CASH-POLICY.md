@@ -1,5 +1,13 @@
 # Humanity Loop — zero-new-cash compute and contributor policy
 
+## November 5 operating correction — explicit zero-bill adoption and 350-credit floor
+
+Owner's approval of a **350-credit reserve** is NOT an authorization to consume the remaining ~32 credits automatically. With 382.288670361 currently remaining and ~21 days until the next reset, the protected 350-credit portion itself corresponds to roughly **16.7 credits/day** of ordinary remaining operations, if spent evenly. The **entire balance** corresponds to about 18.2 credits/day; the past ~617.7 spent this cycle cannot be attributed to Foundry alone, and the observed historical aggregate burn is not a reliable forecast. Provider account analytics are needed to separate hosting, six apps, at least seven native detector invocations per day, deployments, failed requests, storage, web traffic and AI. At present **no model-run frequency (even one every three days) is justified by measured headroom**. Once daily + weekly + monthly caps and at least 7 days of non-Foundry cost data are verified, one modest weekly manual run may be proposed with explicit owner consent and a real preflight cap; never guarantee that the monthly reserve is technically enforced by the provider.
+
+**Contributor product decision:** Default is [ZERO-COST-NODE-QUICKSTART.md](ZERO-COST-NODE-QUICKSTART.md): free, one-shot, no metered API credentials, no recurring tasks, no required MCP connector or deployment, human review. A volunteer's free-provider quota can be limited; if it runs out they STOP without paying. The project must never route users into a hidden bill, require them to buy capacity, or demand that they clone the founder's AppDeploy account. A fully open-source *Foundry Lite* is a longer-term modular option after verified security, terms, limits and packaging—NOT a shortcut to unlimited free inference or a reason to create multiple trial accounts. Owner-funded MCP hosting costs are separate.
+
+**Existing hourly coordinator:** [HOURLY-CONTINUITY-QUEUE.md](HOURLY-CONTINUITY-QUEUE.md) is the durable owner instruction bridge; the worker cannot directly scan all private ChatGPT chats. Follow the queue and [CROSS-MODEL-HANDOFF-PROTOCOL.md](CROSS-MODEL-HANDOFF-PROTOCOL.md) for mission-first weekly progress and proof of Claude/Perplexity delivery rather than rehashing stale snapshots.
+
 **Owner direction:** November 5, 2026. **Scope:** Humanity Loop, existing AppDeploy account and contributor/agent costs. This policy does not expand permissions, grant production execution rights, or reopen AppDeploy Foundry's disabled cron.
 
 ## Verified account baseline (snapshot; not a promise of future quota)
