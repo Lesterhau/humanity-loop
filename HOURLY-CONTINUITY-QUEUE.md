@@ -29,6 +29,8 @@
 
 **D. Multi-model receipts (#56).** Claude Case Steward and Perplexity Scout must each produce a NEW time-stamped public-source-reviewed file into an authorized private handoff channel, then coordinator must acknowledge/dedupe. No direct access to their consumer chat sessions is established; do not fabricate. Prepare exact bounded prompts for owner/Instinct, verify once delivered. No new scheduler or paid credits.
 
+**F. Hosting terms/scale compliance (#57).** Vercel's Hobby tier is contractually limited to personal/non-commercial uses. The Humanity Loop website is operated by RL Perspectives, LLC and includes an LLC support link; actual Vercel team billing plan is NOT exposed by connected plan-inspection tools. Verify the real plan and provider-permitted use before mass onboarding; research zero-cash compliant hosting/sponsorship alternatives but **do not change live DNS, pause hosting, purchase upgrades or infer a legal violation**. Supabase Free may pause inactive projects. See https://github.com/Lesterhau/humanity-loop/issues/57 .
+
 **E. Contributor portability.** Keep `ZERO-COST-NODE-QUICKSTART.md` publicly available and improve friendly site onboarding in a batched release only when verified accessible, cost-safe and owner-approved. Consider Foundry Lite only after independent security and budget tests; don't clone private backend or distribute service secrets.
 
 ## How new chat instructions reach this hourly worker
