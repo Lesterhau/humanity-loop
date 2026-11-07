@@ -1,5 +1,13 @@
 # Humanity Loop External Action Reliability Protocol
 
+## November 7, 2026 — verified cost-containment cutover and rollback standard
+
+**Active official-source monitors:** GitHub Actions `critical-guidance-delta.yml` for WHO/FDA/EMA and `federal-policy-delta.yml` for 17 federal sources. Both have two independently verified scheduled runs, source-level receipt checks and official-source baselines. AppDeploy native crons removed after verified cutover: Critical Guidance `critical-guidance-delta-y7nzmd` snapshot `1794087830193` and Federal Policy `federal-policy-delta-p49z0b` snapshot `1794088040386`; each has `cron.json=[]`. Historical app-local read APIs and dashboards remain; browser-facing archive disclaimers link to current GitHub source receipts. Critical Guidance public POST scan returns HTTP 410 and no longer triggers via frontend boot.
+
+**Operational rollback if GitHub coverage degrades:** (1) inspect last saved `runtime/critical-guidance-delta/latest-run.json` / `runtime/federal-policy-delta/latest-run.json`, Actions run/job conclusions, source failures, and GitHub scheduling delays; (2) retain source snapshots and publish visible incomplete-coverage status, do not issue medical or legal claims; (3) consider manual deterministic GitHub `workflow_dispatch` for read-only scan only if supported without new cash; (4) restoring native AppDeploy cron requires separate risk-informed reauthorization, current credit-budget check, protection against duplicate processing, and a new deliberate deployment. Never silently reactivate native AI scanning while reserve breached. No outside publication/outreach from these monitors.
+
+**Feature/coverage tradeoff:** GitHub detects pages but does not replicate native AI `ai.extract` safety materiality or `ai.generate` legal-question summaries. Human/approved agent review is required. Federal legislative source is official GPO/LOC bulk feed vs native Congress.gov homepage. Other native CAP/Evidence Integrity schedules remain in service until independent parity and historical UI decisions.
+
 Every external write or action is treated as a transaction.
 
 ## Transaction lifecycle
