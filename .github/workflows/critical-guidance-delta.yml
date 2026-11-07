@@ -14,6 +14,13 @@ on:
     # GitHub schedules can be delayed/skipped: this is not a guaranteed SLA.
     - cron: '23 */3 * * *'
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/critical_guidance_delta.py'
+      - 'scripts/test_critical_guidance_delta.py'
+      - 'scripts/monitor_cadence_gate.py'
+      - 'scripts/test_monitor_cadence_gate.py'
+      - '.github/workflows/critical-guidance-delta.yml'
 
 permissions:
   contents: write
@@ -34,6 +41,7 @@ jobs:
           fetch-depth: 0
 
       - name: Refresh canonical main before deciding whether a scan is due
+        if: github.event_name != 'pull_request'
         run: |
           git fetch origin main
           git checkout -B main origin/main
@@ -60,7 +68,16 @@ jobs:
 
       - name: Detect authoritative guidance changes
         if: steps.cadence.outputs.due == 'true'
-        run: python3 scripts/critical_guidance_delta.py
+        run: |
+          set +e
+          python3 scripts/critical_guidance_delta.py
+          result=$?
+          set -e
+          if [ "$result" -eq 2 ]; then
+            echo "::warning::All sources failed; retaining receipt for audit and final failure status."
+          elif [ "$result" -ne 0 ]; then
+            exit "$result"
+          fi
 
       - name: Verify receipt
         if: steps.cadence.outputs.due == 'true'
@@ -98,3 +115,19 @@ jobs:
           git commit -m "runtime: record critical guidance scan"
           git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Fail visibly if source coverage was incomplete
+        if: steps.cadence.outputs.due == 'true'
+        run: |
+          PYTHONPATH=scripts python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from monitor_cadence_gate import receipt_coverage_complete
+          receipt = json.loads(Path("runtime/critical-guidance-delta/latest-run.json").read_text())
+          if not receipt_coverage_complete(receipt):
+              print(f"::error::Critical Guidance incomplete: {receipt.get('sourcesChecked')} of "
+                    f"{receipt.get('sourcesConfigured')} sources checked; "
+                    f"{receipt.get('failuresCount')} source failures. Durable receipt committed.")
+              raise SystemExit(1)
+          print("All configured sources were checked with zero failures.")
+          PY
