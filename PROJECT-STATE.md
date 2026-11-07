@@ -1,5 +1,14 @@
 # Humanity Loop Project State
 
+## NOVEMBER 7, 2026 — TWO VERIFIABLE ZERO-CASH MONITOR CUTOVERS
+
+Cost-containment result tracked at [issue #13](https://github.com/Lesterhau/humanity-loop/issues/13): independent GitHub Actions official-source checks took over **Critical Guidance Delta** and **Federal Policy Delta**, after two verified scheduled scan runs each.
+
+- **Critical Guidance Delta:** GitHub [#42376342949](https://github.com/Lesterhau/humanity-loop/actions/runs/42376342949) and [#42406494475](https://github.com/Lesterhau/humanity-loop/actions/runs/42406494475), both 3/3 WHO/FDA/EMA sources checked, zero failures, durable receipts. AppDeploy old UI `critical-guidance-delta-y7nzmd` snapshot `1794087830193`, READY, `cron=[]`, POST scan returns 410, frontend no auto-trigger, read-only history intact. **AI materiality classification not replicated**; changed items require independent review.
+- **Federal Policy Delta:** GitHub [#42297379373](https://github.com/Lesterhau/humanity-loop/actions/runs/42297379373) and [#42410163219](https://github.com/Lesterhau/humanity-loop/actions/runs/42410163219), each 17 configured sources, zero failures, durable receipts. AppDeploy archive `federal-policy-delta-p49z0b` snapshot `1794088040386`, READY, `cron=[]`, native AI handler disabled, past app-local policy analyses retained. **Congress.gov native homepage replaced by official GPO/LOC bill-status feed** in GitHub; no auto legal analysis.
+- Account has **282.116761529 Free credits remaining** at latest check, 350-protected reserve breached by 67.883238471, reset Nov 26. Two cost-containment deployments coincided with ~18.26 account-credit decrease. No new cash/top-ups. New recurring savings unknown. **Foundry remains manual/off** until verified provider spending control and budget allow.
+- Native CAP and Evidence Integrity schedules intentionally remain enabled; GitHub CAP matching source and Evidence Integrity metadata backup have different presentation/history and (for Evidence Integrity) narrower coverage. Do not impair those services without documented reversible decision. The original Humanity Loop ChatGPT Hourly Worker remains enabled and continues distinct external public-interest work.
+
 ## VERIFIED November 5, 2026 CT — Foundry staging integration reconciled
 
 [Evidence: issue #14](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6669276686) and [FOUNDRY-RUNTIME.md](FOUNDRY-RUNTIME.md). This section **supersedes** the older November 3 note below about an unconnected staging bridge.
