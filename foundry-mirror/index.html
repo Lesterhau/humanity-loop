@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Humanity Loop Foundry read-only continuity mirror. No AI executions or task claims.">
+<title>Humanity Loop · Foundry Continuity Mirror</title>
+<style>
+:root{font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;color:#e4e8f1;background:#10121b}
+*{box-sizing:border-box}body{margin:0}main{max-width:880px;margin:auto;padding:clamp(18px,4vw,52px)}
+h1{font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.12;letter-spacing:-.03em}
+h2{font-size:1.14rem}p{color:#b7bfd3}a{color:#a4c8ff}a:hover{color:#e8f3ff}
+.top{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.05em;font-size:.85rem}
+.mark{display:inline-grid;place-items:center;width:36px;height:36px;border:1px solid #757fa6;border-radius:10px}
+.tag{display:inline-block;padding:5px 11px;border:1px solid #5d677e;border-radius:30px;font-size:.78rem;color:#d8e0f3}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;margin:25px 0}
+.card{padding:21px;border:1px solid #33394f;border-radius:15px;background:#191e2b}
+.card p{font-size:.92rem;margin-bottom:0}.value{font-size:1.35rem;font-weight:750;color:#fff}
+.note{padding:18px;border-left:3px solid #9ac7ff;background:#1d2433;color:#dbe4f5;border-radius:0 12px 12px 0}
+.links{display:flex;flex-wrap:wrap;gap:9px}.link{padding:10px 15px;border:1px solid #505b78;border-radius:8px;text-decoration:none;font-weight:600}
+footer{margin-top:36px;border-top:1px solid #383e51;padding-top:16px;color:#929cb4;font-size:.83rem}
+@media(prefers-reduced-motion:no-preference){.link{transition:background .15s}.link:hover{background:#273653}}
+</style>
+</head>
+<body><main>
+<div class="top"><div class="mark" aria-hidden="true">HL</div> HUMANITY LOOP <span class="tag">Continuity mirror</span></div>
+<h1>Foundry, without a second worker.</h1>
+<p>This independently hosted, public-safe mirror shows the Foundry operating boundary and directs operators to the canonical records. It <strong>cannot execute AI, claim tasks, approve work, or change the database</strong>.</p>
+<div class="note"><strong>Execution status:</strong> PAUSED by policy. AppDeploy's native Foundry scheduler is disabled. This page is not a secondary task runner and does not represent verified public-benefit output.</div>
+<div class="cards">
+<section class="card"><h2>Canonical task ledger</h2><div class="value">Supabase (single writer)</div><p>One authoritative lease/approval/event system. No task writes from this mirror.</p></section>
+<section class="card"><h2>Primary Foundry host</h2><div class="value">AppDeploy Alpha</div><p>Staging connection and one synthetic completion verified. Autonomous model execution is still held.</p></section>
+<section class="card"><h2>Portable fallback</h2><div class="value">GitHub control plane</div><p>Offline safety tests and fail-closed cost policy are in the public repository.</p></section>
+<section class="card"><h2>Protected credit reserve</h2><div class="value">350 AppDeploy credits</div><p id="balance">Account balance must be freshly verified via the authorized account connector. This page does not have private account access.</p></section>
+</div>
+<h2>Inspect the source of truth</h2>
+<div class="links">
+<a class="link" href="https://github.com/Lesterhau/humanity-loop/blob/main/FOUNDRY-RUNTIME.md">Runtime history</a>
+<a class="link" href="https://github.com/Lesterhau/humanity-loop/blob/main/FOUNDRY-PORTABILITY.md">Mirror design</a>
+<a class="link" href="https://github.com/Lesterhau/humanity-loop/blob/main/FOUNDRY-ZERO-CASH-POLICY.md">Cost policy</a>
+<a class="link" href="https://github.com/Lesterhau/humanity-loop/issues/14">Acceptance checks</a>
+<a class="link" href="https://humanity-loop-foundry-alpha-0wls2s.v2.appdeploy.ai/">Existing Foundry UI</a>
+</div>
+<h2>What a future mirror must prove</h2>
+<p>Any new execution host must be authenticated, hold the canonical task lease, obey one-use idempotency, have a provider-enforced spending ceiling, persist auditable results, and never run concurrently on the same task with another host. Operator consent and independent review remain mandatory.</p>
+<footer>Public information only · No secrets · No contributor billing · No tracking, AI calls, cron jobs, or task execution from this mirror. For the mission, visit <a href="https://humanity-loop.vercel.app/">Humanity Loop</a>.</footer>
+</main></body></html>
