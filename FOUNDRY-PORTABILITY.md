@@ -1,5 +1,13 @@
 # Foundry portability and zero-cash mirror plan
 
+## VERIFIED November 6, 2026 — first independent mirror deployed
+
+- **Render static-site service:** `humanity-loop-foundry-mirror`, service ID `srv-dbn8arbm8hqs73c5t6lg`. Existing owner workspace, no new account. GitHub source `main/foundry-mirror/index.html` (PR [#62](https://github.com/Lesterhau/humanity-loop/pull/62), merged at `a20c3becaa27664af40085632f554454c091dd48`).
+- **URL:** https://humanity-loop-foundry-mirror.onrender.com/ — Render deploy `dep-dbn8arrm8hqs73c5t7a0` returned `status=live`. Automatic Git deployment is OFF; no cron, AI execution, secrets, task claims, or writes. **A separate web fetch could not confirm that the page loaded**, so do not describe this as browser-verified until independently checked.
+- **Cost:** Render's official docs state static-site deployments are free; bandwidth and build pipeline minutes draw from its included monthly workspace allowances. Workspace-level current usage and billing state were not independently read; the site does not have explicit overage billing enabled through this workflow. Monitor it before widespread traffic. Note `buildPlan:starter` refers to Render's default build pipeline tier, not a newly purchased compute plan.
+- **Scope:** status/recovery **page mirror**, NOT a backend/compute mirror, NOT a Supabase replacement or second source of truth. Cloudflare/D1 remain proposed; no Cloudflare account connector is installed.
+- **Latest AppDeploy account snapshot during this work:** `333.62773745` Free monthly credits, reset `2026-11-26T21:15:42.606Z`, no top-up. Protected reserve 350 => shortfall 16.37226255. Foundry native cron OFF and new AI runs remain disallowed. No AppDeploy deployment was performed in this work.
+
 **Status: DESIGN + OFFLINE BUDGET-GOVERNOR IMPLEMENTATION, NOT A SECOND LIVE WORKER.** Created November 6, 2026. Owner authorizes portability engineering and safe cost reduction; permission does **not** override the documented $0 new-cash and 350-AppDeploy-credit reserve controls.
 
 ## The operational topology
