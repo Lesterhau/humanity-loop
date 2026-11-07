@@ -82,10 +82,11 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Source check: both linked official SSA pages were directly inspected on 2026-10-31; source visibility is not proof of an editorial change date.
 
 ### OT-007 — StudentAid.gov aid-offer article annual-update drift
-- Original report: 2026-09-18
-- Status: **reported**
-- Personal Gmail scan through 2026-09-30 found no substantive agency response.
-- Next step: verify live page and follow `OUTCOME-ESCALATION.md` if stale.
+- Original report: **2026-09-18** to Federal Student Aid customer service; recovered from authorized personal Gmail on **2026-11-07**. The original sent thread contains one outgoing message and no response within that thread; other response channels not exhaustively checked.
+- **2026-11-07 independent source review:** The live [aid-offer comparison article](https://studentaid.gov/articles/evaluating-financial-aid-offers/) still labels Pell **2024–25** while showing the numerically correct **$7,395** 2026–27 maximum. More materially, it presents Direct Unsubsidized as universally “up to $20,500,” PLUS as cost of attendance minus other aid, and graduate/professional PLUS as generally available, without the July 2026 borrower distinctions. Official [2026–27 COD rules](https://fsapartners.ed.gov/sites/default/files/2026-04/CODSystemChanges2627.pdf) and [loan-limit FAQs](https://fsapartners.ed.gov/sites/default/files/2026-05/FrequentlyAskedQuestionsLoanLimits.pdf) distinguish **$20,500 ordinary graduate** and **$50,000 eligible professional** annual unsubsidized limits, eliminate new Grad PLUS for non-exception borrowers, impose **$20,000 annual Parent PLUS** limits and preserve defined interim exceptions. Do not imply all Grad PLUS borrowers lose eligibility or all students qualify for the higher professional cap.
+- **Durable receipts:** [original Pell/TEACH bounded check](runtime/case-steward/ot007-2026-11-07-studentaid-aid-offer-year-label-source-review.md); [original-report and 2026–27 loan-limit reconciliation](runtime/case-steward/ot007-2026-11-07-original-report-loan-limit-reconciliation.md), independently read back, commit `7d371d259644788d30c9ab7559d343191de7a050`.
+- **Status: reported / current public guidance incomplete; no agency correction, acknowledgment, borrower harm or causal effect verified.** Page carries a general update disclaimer. No new outreach sent.
+- **Case Steward:** Humanity Loop original hourly worker. **Next review:** **2026-11-14 UTC** or substantive reply; **stale threshold:** **2026-11-21 UTC**. **One next action:** obtain human editorial/program review of precise exception-aware replacement language before any separately authorized, proportionate institutional follow-up.
 
 ### OT-008 — Medicare helper / Extra Help threshold drift
 - Original report: 2026-09-19 to CMS Beneficiary Advocacy. Observed public helper threshold: $22,590 single / $30,660 married; reported current 2026 values: $23,940 / $32,460.
