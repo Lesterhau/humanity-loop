@@ -6,9 +6,13 @@ on:
     paths:
       - 'scripts/critical_guidance_delta.py'
       - 'scripts/test_critical_guidance_delta.py'
+      - 'scripts/monitor_cadence_gate.py'
+      - 'scripts/test_monitor_cadence_gate.py'
       - '.github/workflows/critical-guidance-delta.yml'
   schedule:
-    - cron: '7 */6 * * *'
+    # Catch-up slots: no more than once per five hours based on durable receipt.
+    # GitHub schedules can be delayed/skipped: this is not a guaranteed SLA.
+    - cron: '23 */3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -29,15 +33,37 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Refresh canonical main before deciding whether a scan is due
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+
       - name: Run deterministic tests
         env:
           PYTHONPATH: scripts
-        run: python3 -m unittest scripts/test_critical_guidance_delta.py
+        run: python3 -m unittest scripts/test_critical_guidance_delta.py scripts/test_monitor_cadence_gate.py
+
+      - name: Check time since the last durable receipt
+        id: cadence
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          PYTHONPATH=scripts python3 - <<'PY'
+          import os
+          from pathlib import Path
+          from monitor_cadence_gate import scan_due
+          due = scan_due(Path('runtime/critical-guidance-delta/latest-run.json'), os.environ['EVENT_NAME'])
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
+              out.write('due=' + ('true' if due else 'false') + '\n')
+          print('critical_guidance_scan_due=', due)
+          PY
 
       - name: Detect authoritative guidance changes
+        if: steps.cadence.outputs.due == 'true'
         run: python3 scripts/critical_guidance_delta.py
 
       - name: Verify receipt
+        if: steps.cadence.outputs.due == 'true'
         run: |
           python3 - <<'PY'
           import json
@@ -60,6 +86,7 @@ jobs:
           PY
 
       - name: Commit snapshots and receipts
+        if: steps.cadence.outputs.due == 'true'
         run: |
           if [ -z "$(git status --porcelain -- runtime/critical-guidance-delta)" ]; then
             echo "No guidance runtime changes to commit."
