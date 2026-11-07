@@ -68,10 +68,11 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - Next decision: mark verified-resolved only if the obsolete public entry point is inaccessible to normal users, redirects correctly, or has actually been updated; otherwise make one proportionate factual correction request under governance and outreach limits.
 
 ### OT-005 — IRS EITC / translated-page annual-update inconsistencies
-- Original report: 2026-09-17/18
-- Status: **reported**
-- Personal Gmail scan through 2026-09-30 found no substantive agency response.
-- Next step: verify live pages and follow `OUTCOME-ESCALATION.md` if stale.
+- Original report: 2026-09-17/18; multiple specific claims, not one interchangeable defect.
+- **2026-11-07 source-reviewed partial correction:** The IRS's 2025 EITC partner outreach page now states the correct **$11,950** investment-income limit (previously reported as incorrectly showing 2024's $11,600), and now describes the unclaimed EITC gap as **one in five** (previously one in four). The 2025 English, Spanish, simplified/traditional Chinese, Korean, Vietnamese and Haitian Creole *Refundable tax credits* pages now display 2025 EITC **$11,950** investment-income limit, **$19,104–$68,675** income endpoints and 2025 Child Tax Credit **$2,200**. The six translated pages had been reported as showing 2024 amounts. Direct official-page comparisons were independently performed and the [public-safe source receipt](runtime/case-steward/ot005-2026-11-07-irs-eitc-multilingual-correction-reconciliation.md) was written/read back.
+- **Disposition:** verified report→subsequent correction for the exact fields above. IRS implemented the present wording; **no proven causal attribution, IRS acknowledgment, beneficiary outcome or exact edit date**. The original correspondence's private identifiers remain private.
+- **Status: partially verified-resolved; other OT-005 allegations remain open.** The CP27/Form 15112 return-address guidance, Spanish Schedule 8812 instructions link and EITC prior-year claim-year list were **not** rechecked on November 7.
+- **Case Steward:** Humanity Loop main worker until verified handoff. **Next review:** one bounded review of the three unchecked IRS URLs on or after 2026-11-10, or on substantive institutional response. **One next action:** independently verify those three separate allegations before considering whole-case closure or proportionate human-approved follow-up. No routine outreach now.
 
 ### OT-006 — SSA 2026 Red Book examples using prior-year SSI rate
 - Original report: 2026-09-17/18; institution: U.S. Social Security Administration (SSA).
