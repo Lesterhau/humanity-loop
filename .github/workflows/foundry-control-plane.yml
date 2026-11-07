@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "scripts/foundry_control_plane.py"
+      - "scripts/foundry_budget_governor.py"
+      - "scripts/test_foundry_budget_governor.py"
       - "scripts/test_foundry_control_plane.py"
       - "scripts/foundry_status_api.py"
       - "FOUNDRY-RUNTIME.md"
@@ -11,6 +13,8 @@ on:
   pull_request:
     paths:
       - "scripts/foundry_control_plane.py"
+      - "scripts/foundry_budget_governor.py"
+      - "scripts/test_foundry_budget_governor.py"
       - "scripts/test_foundry_control_plane.py"
       - "scripts/foundry_status_api.py"
       - "FOUNDRY-RUNTIME.md"
@@ -28,3 +32,7 @@ jobs:
           python-version: "3.12"
       - name: Run Foundry control-plane tests
         run: python scripts/test_foundry_control_plane.py
+      - name: Run zero-cash budget governor tests (offline, no AI calls)
+        env:
+          PYTHONPATH: scripts
+        run: python3 -m unittest scripts/test_foundry_budget_governor.py -v
