@@ -1,4 +1,4 @@
-/** Public registration calls use tier1-auto; the current node database stores tier1. */
+/** Tier-0 is the only implicit permission. Tier-1 requires a deliberate explicit risk_permissions selection. */
 export type PublicRiskPermission = "tier0" | "tier1-auto" | "tier2-review";
 export type StoredRiskPermission = "tier0" | "tier1" | "tier2-review";
 
@@ -10,9 +10,9 @@ export function normalizeRiskPermissions(
     throw new Error("At least one risk permission is required.");
   }
 
-  const selected = requested ?? (allowTier1Review
-    ? (["tier0", "tier2-review"] as const)
-    : (["tier0", "tier1-auto", "tier2-review"] as const));
+  // Legacy allow_tier1_review must never silently elevate a new registration.
+  void allowTier1Review;
+  const selected = requested ?? (["tier0"] as const);
 
   return [...new Set(selected.map((permission) =>
     permission === "tier1-auto" ? "tier1" : permission,

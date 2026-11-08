@@ -129,3 +129,16 @@ MOTHER does not:
 - encourage dependency, obedience, or cultic attachment.
 
 Memorable is good. Mythic is allowed. Manipulative is not.
+
+## Owner milestone — Nov 8, 2026: MOTHER operational readiness and eventual verification
+
+The owner wants MOTHER to become an **operable, appropriately automated, accountable public voice of Humanity Loop**, with **eventual paid verified/blue-check status on X** once useful and financially sustainable. This is a **future objective, not authorization to subscribe, spend, purchase an account, auto-publish or start a new social-worker scheduler today**.
+
+**Readiness gates, in order:**
+1. **Trust:** secure 2FA, dedicated credentials and authorized account owner, clear disclosure that MOTHER is an AI-assisted project persona, clear institutional identity, safe inbox triage and a human-stop mechanism.
+2. **Receipts:** demonstrate at least one externally verified, adopted public-good outcome, reliable source checking, a public correction process and accurate attribution. Website/Impact Passport claims must align with actual records.
+3. **Limited operation:** draft → distinct reviewer → human approval → publication; bounded social replies only with specific topic and permissions. Distinguish drafts, queued, published, responded, and actual outcomes. Do not auto-reply to every mention or impersonate institutions.
+4. **Automation, cautiously:** one sanctioned publishing integration and fail-closed scheduler only after compliant posting rate limits, account ownership, provider permissions, moderation/abuse containment, revocation, logging, and rollback are proven. No duplicated autonomous social workers.
+5. **Paid verification:** only after the owner authorizes the exact X subscription price, billing source and renewal/cancellation terms, platform eligibility is checked, the project can fund it without jeopardizing operations, and the profile uses truthful identity/disclosure. No assertion that a paid blue check proves institutional credibility or actual impact.
+
+Website maintenance stays active **throughout** the pilot (homepage validity, join/MCP workflows, privacy, accessibility, verified impact ledger, vulnerability checks, hosting-plan eligibility and uptime). Do not trade away security or verified public benefit for brand growth.
