@@ -22,9 +22,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install pinned offline test libraries (no PolicyEngine or model APIs)
+        run: python -m pip install --disable-pip-version-check numpy==2.2.6 PyYAML==6.0.2
       - name: Compile the candidate and offline tests without importing PolicyEngine
-        run: python -m py_compile pilots/policyengine-nh-fanf/nh_fanf.py pilots/policyengine-nh-fanf/test_formula_offline.py pilots/policyengine-nh-fanf/test_candidate_formula_offline.py
-      - name: Run pure arithmetic and actual-candidate mocked scalar regression
+        run: python -m py_compile pilots/policyengine-nh-fanf/nh_fanf.py pilots/policyengine-nh-fanf/test_formula_offline.py pilots/policyengine-nh-fanf/test_candidate_formula_offline.py pilots/policyengine-nh-fanf/test_candidate_formula_contract.py
+      - name: Run pure arithmetic, actual-candidate scalar, vector, YAML and metadata regression
         run: python -m unittest discover -s pilots/policyengine-nh-fanf -p 'test*.py' -v
       - name: Scope note
-        run: echo "Offline scalar tests only; this is not PolicyEngine integration or program adoption."
+        run: echo "Offline unit + NumPy vector contract tests only; this is not PolicyEngine integration or program adoption."
