@@ -47,7 +47,13 @@ class PreserveUpstreamCap(unittest.TestCase):
     def calculate(self, standard, income):
         return self.formula(lambda name, period: {"nh_fanf_payment_standard": standard,
                                                  "nh_fanf_countable_income": income}[name],
-                            "2025-01", None)
+                            "2025-01", lambda period: types.SimpleNamespace(
+                                gov=types.SimpleNamespace(states=types.SimpleNamespace(
+                                    nh=types.SimpleNamespace(dhhs=types.SimpleNamespace(
+                                        fanf=types.SimpleNamespace(minimum_grant=10)
+                                    ))
+                                ))
+                            ))
 
     def test_negative_income_cannot_exceed_payment_standard(self):
         self.assertEqual(float(self.calculate(100.99, -50)), 100.0)

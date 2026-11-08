@@ -31,15 +31,26 @@ assert spec and spec.loader
 spec.loader.exec_module(module)
 
 
-def candidate(payment_standard, countable_income):
+def candidate(payment_standard, countable_income, minimum_grant=10):
     variables = {
         "nh_fanf_payment_standard": payment_standard,
         "nh_fanf_countable_income": countable_income,
     }
-    return module.nh_fanf.formula(lambda name, period: variables[name], "2025-01", None)
+    parameters = lambda period: types.SimpleNamespace(
+        gov=types.SimpleNamespace(states=types.SimpleNamespace(
+            nh=types.SimpleNamespace(dhhs=types.SimpleNamespace(
+                fanf=types.SimpleNamespace(minimum_grant=minimum_grant)
+            ))
+        ))
+    )
+    return module.nh_fanf.formula(lambda name, period: variables[name], "2025-01", parameters)
 
 
 class CandidateActualFormulaTests(unittest.TestCase):
+    def test_dated_minimum_parameter_used_not_hardcoded(self):
+        self.assertEqual(candidate(14.99, 0, minimum_grant=15), 0)
+        self.assertEqual(candidate(14.99, 0, minimum_grant=10), 14)
+
     def test_zero_income(self):
         self.assertEqual(candidate(753, 0), 753)
 
