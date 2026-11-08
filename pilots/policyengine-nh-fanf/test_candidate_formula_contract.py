@@ -57,11 +57,29 @@ class CandidateFormulaContract(unittest.TestCase):
     def setUpClass(cls):
         cls.candidate = load_candidate()
 
-    def compute(self, standard, income):
+    def compute(self, standard, income, minimum_grant=10):
         def spm_unit(variable, period):
             return {"nh_fanf_payment_standard": standard,
                     "nh_fanf_countable_income": income}[variable]
-        return self.candidate.formula(spm_unit, "2025-01", None)
+                parameters = lambda period: types.SimpleNamespace(
+            gov=types.SimpleNamespace(states=types.SimpleNamespace(
+                nh=types.SimpleNamespace(dhhs=types.SimpleNamespace(
+                    fanf=types.SimpleNamespace(minimum_grant=minimum_grant)
+                ))
+            ))
+        )
+        return self.candidate.formula(spm_unit, "2025-01", parameters)
+
+    def test_dated_minimum_parameter_yaml(self):
+        parameter_file = ROOT / "policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml"
+        data = yaml.safe_load(parameter_file.read_text(encoding="utf-8"))
+        self.assertEqual(next(v for k, v in data["values"].items() if str(k) == "2021-12-17"), 10)
+        self.assertEqual(data["metadata"]["unit"], "currency-USD")
+
+    def test_vectorized_override_proves_parameter_used(self):
+        np.testing.assert_array_equal(self.compute(
+            np.array([14.99, 15.99]), np.array([0, 0]), minimum_grant=15
+        ), [0, 15])
 
     def test_six_eligible_yaml_fixtures_call_real_candidate(self):
         fixtures = yaml.safe_load((ROOT / "nh_fanf.yaml").read_text(encoding="utf-8"))
