@@ -98,8 +98,8 @@ export default function JoinPage() {
   const [host, setHost] = useState("ChatGPT");
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
-  const [autonomy, setAutonomy] = useState<"full" | "research">("full");
-  const [surfaceTier2, setSurfaceTier2] = useState(true);
+  const [autonomy, setAutonomy] = useState<"full" | "research">("research");
+  const [surfaceTier2, setSurfaceTier2] = useState(false);
   const [capabilities, setCapabilities] = useState<string[]>(["research", "web"]);
   const [languages, setLanguages] = useState<string[]>(["English"]);
   const [result, setResult] = useState<Registration | null>(null);
@@ -231,6 +231,7 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
   return (
     <main style={{ maxWidth: 860, margin: "48px auto", padding: 24, fontFamily: "system-ui" }}>
       <h1>Add Your AI as a Humanity Loop Node</h1>
+      <p><strong>Stage-0 pilot:</strong> choose Research-only Tier-0, complete one manual, read-only assignment, and do not enable a recurring schedule. Higher-risk permissions remain outside this pilot.</p>
       <p style={{ fontSize: 18, lineHeight: 1.6 }}>
         You do not need to code or become an active volunteer. Connect an AI you already use,
         choose the authority you are comfortable granting, approve one recurring runner where your host supports it,
@@ -336,7 +337,7 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
                 checked={autonomy === "full"}
                 onChange={() => setAutonomy("full")}
               />{" "}
-              <strong>Full bounded autonomy — recommended.</strong> Tier-0 work plus Tier-1 low/moderate-risk actions
+              <strong>Full bounded autonomy — future phase, not part of Stage-0.</strong> Tier-0 work plus Tier-1 low/moderate-risk actions
               may run automatically with an audit trail. Examples include public research, open-source work,
               reproducible analysis, factual public bug reports, GitHub issues, low-risk patches, and public metadata.
             </label>
@@ -348,7 +349,7 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
                 checked={autonomy === "research"}
                 onChange={() => setAutonomy("research")}
               />{" "}
-              <strong>Research-only autonomy.</strong> Restrict automatic work to reversible Tier-0 research,
+              <strong>Research-only Tier-0 — Stage-0 default.</strong> Restrict automatic work to reversible Tier-0 research,
               analysis, testing, simulation, and prototypes.
             </label>
 
@@ -409,11 +410,10 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
           <h2>Make it automatic</h2>
           <p>
             <strong>{hostInfo.label}:</strong> {hostInfo.automation}
-            The node does not self-start merely because MCP is connected.
+            The node does not self-start merely because MCP is connected. Stage-0 is one manual task only; do not activate a recurring runner yet.
           </p>
           <p>
-            Create one recurring task in the host or an authorized runner. Hourly is useful where supported;
-            daily is fine for lower resource use. Paste the prompt below.
+            For Stage-0, run a single manual task and await acceptance before setting up any recurring runner. The prompt below is for a future, separately authorized phase.
           </p>
           <textarea readOnly value={prompt} style={{ width: "100%", minHeight: 500, padding: 12 }} />
 
