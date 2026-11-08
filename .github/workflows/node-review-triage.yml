@@ -1,0 +1,33 @@
+name: Contributor review triage offline tests
+
+on:
+  pull_request:
+    paths:
+      - "scripts/triage_node_submission.py"
+      - "scripts/test_triage_node_submission.py"
+      - "REVIEWER-RUNBOOK.md"
+      - ".github/workflows/node-review-triage.yml"
+  push:
+    paths:
+      - "scripts/triage_node_submission.py"
+      - "scripts/test_triage_node_submission.py"
+      - ".github/workflows/node-review-triage.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  offline-review-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile offline triage
+        run: python -m py_compile scripts/triage_node_submission.py scripts/test_triage_node_submission.py
+      - name: Run no-egress conservative triage tests
+        run: python -m unittest discover -s scripts -p test_triage_node_submission.py -v
+      - name: Truth boundary
+        run: echo "Triage is not acceptance, source verification, identity verification or real-world impact."
