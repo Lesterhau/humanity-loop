@@ -1,5 +1,19 @@
 # Humanity Loop — active continuity queue for the ORIGINAL hourly coordinator
 
+## NOVEMBER 8, 2026 — OWNER STRATEGIC PIVOT: DISTRIBUTED NETWORK SCALE, NOT ONE-OFF CASE COUNT
+
+**Highest-level direction (new owner request):** Scale Humanity Loop toward **hundreds/thousands of independently consenting, permissioned contributor AI nodes** capable of verifiable public benefit in parallel. Preserve the original hourly worker's useful case investigations, but stop treating its one-off cases as the primary growth engine. The new source-backed execution plan is [issue #66](https://github.com/Lesterhau/humanity-loop/issues/66). It is a scale *goal and staged work program*, not proof that hundreds of workers already exist and not blanket permission for spending, broad outreach, extra schedulers, provider model calls or deployment.
+
+**Fresh live production baseline (read-only Supabase, Nov 8):** `hl_control.contributor_nodes=0`, `node_submissions=0`, `node_work_items=2`; **both work items are expired** (Nov 2 and Nov 6). No currently valid contributor work is known. This is an immediate blocker for first independent acceptance [#33](https://github.com/Lesterhau/humanity-loop/issues/33) and meaningful federation. Do not count synthetic protocol tests as adoption or falsely say an outside node completed an assignment. Assess a safe **five-task Tier-0 reactivation** and non-owner beta route, but require scoped production-write approval before inserting/modifying tasks or changing permissions.
+
+**Execution priority for the existing hourly worker:** In each run, first check whether a useful, *new and authorized* action advances #66/#33: operational node onboarding readiness, expired-work repair proposal and verification, zero-cost independent-client usability, legitimate review capacity, or non-commercial hosting/quotas (#57). If such action is possible, deliver it with durable receipt; otherwise continue one verified source-backed public-interest case. Do not accumulate duplicated strategic memos, synthetic node registrations, or pretend to have added workers. Maintain source auditing and existing safety monitor obligations.
+
+**Read-only security clarification:** Supabase advisory flags 14 private `hl_control` tables without RLS, but SQL privilege check verified `anon` and `authenticated` lack schema `USAGE` and checked sensitive read/write table privileges. That advisor warning alone does not prove current anonymous access; harden with a tested migration only after validating exposed schemas, complete grants, reviewed policies and regression tests. No automatic blanket RLS change.
+
+**Scaling quotas:** 1,000 hourly nodes at one task/hour = 24,000 task attempts/day; even one serverless invocation per node/hour = 720,000/month. Free plan quotas and user-owned model allowances must be verified, not presumed unlimited. De-duplicate, stagger, batch, and require cost/abuse safety before capacity increases.
+
+---
+
 ## NOVEMBER 7, 2026 — AUTHORITATIVE OPERATING CHANGE: TWO AI-HEAVY APPDEPLOY CRONS RETIRED
 
 **NEW LAST VERIFIED ACCOUNT SNAPSHOT (supersedes all earlier balances):** AppDeploy Free **282.116761529 monthly credits remaining**; top-up=0; next free reset 2026-11-26T21:15:42.606Z. Protected reserve 350 is **breached by 67.883238471 credits**. No discretionary native Foundry AI execution or new paid resources. Two one-time AppDeploy archival deployments corresponded with ~18.26 lower account balance between pre/post reads; account-wide changes cannot prove exact per-deploy cost, and **future recurring savings have NOT been measured**.
