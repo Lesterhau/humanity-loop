@@ -48,16 +48,22 @@ jobs:
           cp humanity-loop/pilots/policyengine-nh-fanf/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml policyengine-us/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml
           cp humanity-loop/pilots/policyengine-nh-fanf/nh_fanf.yaml policyengine-us/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/humanity_loop_nh_fanf.yaml
           git -C policyengine-us diff --stat
+          echo "SOURCE ONLY: checks against pinned upstream commit; the integration runner never commits or pushes."
           echo "Upstream test pin: 92caead63eea36b15c6ca86edf3d79214459e7a9"
 
       - name: Synchronize pinned PolicyEngine dependencies
         working-directory: policyengine-us
         run: uv sync --locked --extra dev
 
-      - name: Run real PolicyEngine runner on original and new NH FANF YAML cases
+      - name: Run real PolicyEngine runner on ALL New Hampshire FANF YAML cases
         working-directory: policyengine-us
+        shell: bash
         run: |
-          uv run policyengine-core test             policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/nh_fanf.yaml             policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/humanity_loop_nh_fanf.yaml             -c policyengine_us
+          set -euo pipefail
+          files=(policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/*.yaml)
+          printf "Testing %s NH FANF files including real integration:\n" "${#files[@]}"
+          printf " - %s\n" "${files[@]}"
+          uv run policyengine-core test "${files[@]}" -c policyengine_us
 
       - name: Truth boundary
         run: |
