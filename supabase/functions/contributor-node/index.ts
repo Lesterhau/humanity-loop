@@ -102,9 +102,9 @@ Deno.serve(async (req: Request) => {
   if (req.method === "GET") {
     return json({
       service: "Humanity Loop Contributor Node Gateway",
-      version: "0.3.1-stage0",
-      automatic_after_opt_in: true,
-      note: "Installing Humanity Loop does not self-start an LLM. A person authorizes one recurring task in their host; after that, the node can check in automatically.",
+      version: "0.3.2-stage0",
+      automatic_after_opt_in: false,
+      note: "Stage-0 is one manually authorized task only. Connecting or registering does not create or authorize a recurring runner. Do not schedule background work.",
       actions: ["register", "checkin", "submit", "pause", "resume", "revoke"],
       telemetry: "Privacy-safe onboarding funnel telemetry records deduplicated join sessions and bounded node lifecycle events. Raw IP addresses, full user-agent strings, emails, and node tokens are not stored in funnel events.",
       permissions: "Stage-0 registration is Tier-0 only: manual reversible public-source work, no recurring scheduling or external action. Tier-1 and Tier-2 onboarding are on hold pending later authorization. Contributor submissions remain quarantined for review.",
