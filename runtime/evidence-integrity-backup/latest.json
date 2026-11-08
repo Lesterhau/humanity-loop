@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-07T10:22:34.022453Z",
+  "runAt": "2026-11-08T10:30:24.714863Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,14 +8,48 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 3,
-  "citationsExamined": 37,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
+  "newRetractionsChecked": 7,
+  "citationsExamined": 86,
+  "candidateFindingsCount": 2,
+  "candidateFindings": [
+    {
+      "retractedDoi": "10.3324/haematol.2010.022210",
+      "noticeDoi": "10.3324/haematol.2009.022210",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "25550914",
+      "citingTitle": "Prognostic value and efficacy evaluation of novel drugs for cytogenetic aberrations in multiple myeloma: a meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/25550914",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.3324/haematol.2010.021923",
+      "noticeDoi": "10.3324/haematol.2009.021923",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "25784135",
+      "citingTitle": "Natural anticoagulants deficiency and the risk of venous thromboembolism: a meta-analysis of observational studies.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/25784135",
+      "status": "unreviewed"
+    }
+  ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 12,
+  "coverageGapsCount": 8,
   "coverageGaps": [
+    {
+      "stage": "not_indexed",
+      "doi": "10.1159/000551831",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
     {
       "stage": "not_indexed",
       "doi": "10.1007/s12517-024-11897-5",
@@ -49,31 +83,6 @@
     {
       "stage": "not_indexed",
       "doi": "10.1016/j.cscm.2022.e01615",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2022.e01367",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2022.e01566",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2022.e01206",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2021.e00652",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2022.e00924",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],

@@ -906,6 +906,36 @@
       "europePmcUrl": "https://europepmc.org/article/MED/39506738",
       "status": "unreviewed",
       "detectedAt": "2026-11-06T11:01:51.649390Z"
+    },
+    {
+      "retractedDoi": "10.3324/haematol.2010.022210",
+      "noticeDoi": "10.3324/haematol.2009.022210",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "25550914",
+      "citingTitle": "Prognostic value and efficacy evaluation of novel drugs for cytogenetic aberrations in multiple myeloma: a meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/25550914",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-08T10:30:24.714863Z"
+    },
+    {
+      "retractedDoi": "10.3324/haematol.2010.021923",
+      "noticeDoi": "10.3324/haematol.2009.021923",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "25784135",
+      "citingTitle": "Natural anticoagulants deficiency and the risk of venous thromboembolism: a meta-analysis of observational studies.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/25784135",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-08T10:30:24.714863Z"
     }
   ]
 }
