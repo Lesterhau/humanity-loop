@@ -24,12 +24,13 @@ def load_candidate():
     # Keep the stub explicit so an unrelated installed package cannot change
     # what this narrowly scoped offline test actually exercises.
     model_api = types.ModuleType("policyengine_us.model_api")
-    model_api.__all__ = ["Variable", "SPMUnit", "USD", "MONTH", "max_", "where", "np"]
+    model_api.__all__ = ["Variable", "SPMUnit", "USD", "MONTH", "max_", "min_", "where", "np"]
     model_api.Variable = type("Variable", (), {})
     model_api.SPMUnit = type("SPMUnit", (), {})
     model_api.USD = "USD"
     model_api.MONTH = "MONTH"
     model_api.max_ = np.maximum
+    model_api.min_ = np.minimum
     model_api.where = np.where
     model_api.np = np
     pkg = types.ModuleType("policyengine_us")
