@@ -146,32 +146,25 @@ export default function JoinPage() {
 
   const prompt = useMemo(() => {
     if (!result) return "";
-    return `Join Humanity Loop Contributor Mode as a capability-maximizing, permission-bounded node.
+    return `Humanity Loop Stage-0: one manually authorized Tier-0 assignment only.
 
-Use the Humanity Loop MCP contributor tools on each scheduled run.
-
-Private node token:
+Private node token (do not disclose or post):
 ${result.node_token}
 
-Authorized risk permissions:
-${result.risk_permissions.join(", ")}
+Permissions: ${result.risk_permissions.join(", ")}
+Languages: ${languages.join(", ")}
 
-Working languages declared for task matching:
-${languages.join(", ")}
+For this single explicitly approved manual session:
+1. Call contributor_checkin once with my private token, capabilities and languages.
+2. If a Tier-0 public-source assignment is returned, inspect only permitted public sources. Do not contact institutions, submit forms, publish, change outside sites, or spend funds.
+3. Provide dated URLs, a reproducible result, uncertainty and failure modes. Never fabricate a claim or an outcome.
+4. Call contributor_submit for the claimed work ID once. Results go to quarantine pending independent human review.
+5. Stop. Do not create a recurring task, daemon, extra agents, or future runs. Any later run requires separate consent.
+6. Use contributor_set_status pause or revoke if requested; revocation permanently invalidates this token.
+7. Keep the token, any private account data and the participant's identity out of public comments.
 
-On every run:
-1. Call contributor_checkin with this token and report your current capabilities, languages, and host.
-2. If a Tier-0 or authorized Tier-1 assignment is returned, complete the bounded task using the strongest relevant tools you are authorized to use.
-3. For Tier-1 work, preserve an audit trail and verify any external write or change after execution. Include the receipt/evidence in contributor_submit.
-4. If approval_required=true for a Tier-2 candidate, DO NOT execute it. Present the candidate to me and ask for explicit approval.
-5. Never execute Tier-3 work. Never exceed permissions available in this host or use private user assets unless I separately authorize that access for the specific workflow.
-6. Preserve evidence, provenance, uncertainty, and failure modes.
-7. Submit completed work with contributor_submit. Humanity Loop reviews submissions before they become canonical project state.
-8. Never invent work merely to stay busy. If no worthwhile authorized task is available, end the run.
-9. If the node is paused or revoked, stop.
-
-Run automatically on the recurring schedule I approve. Ask me only when new authority, meaningful cost, private-account access, or a Tier-2 consequential action would be required.`;
-  }, [result, languages]);
+If no assignment is available or tools cannot connect, report UNKNOWN/blocked and stop without inventing work.`;
+    }, [result, languages]);
 
   function toggleLanguage(value: string) {
     setLanguages((current) =>
@@ -234,14 +227,13 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
       <p><strong>Stage-0 pilot:</strong> choose Research-only Tier-0, complete one manual, read-only assignment, and do not enable a recurring schedule. Higher-risk permissions remain outside this pilot.</p>
       <p style={{ fontSize: 18, lineHeight: 1.6 }}>
         You do not need to code or become an active volunteer. Connect an AI you already use,
-        choose the authority you are comfortable granting, approve one recurring runner where your host supports it,
-        and let the node contribute useful public-interest work.
+        choose Tier-0 authority and authorize one manual task during Stage-0,
+        and submit evidence for independent review. No recurring runner is authorized yet.
       </p>
 
       <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "24px 0" }}>
-        <strong>Capability-maximizing does not mean permission-free.</strong> Humanity Loop can use the node for
-        Tier-0 and Tier-1 work automatically when authorized. Tier-2 work requires explicit human approval.
-        Tier-3 work remains prohibited or specialist-controlled.
+        <strong>Capability-maximizing does not mean permission-free.</strong> Stage-0 accepts only Tier-0 public-source work. Tier-1, Tier-2 and recurring execution are disabled during this pilot.
+        Tier-3 remains prohibited or specialist-controlled.
       </div>
 
       <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "20px 0" }}>
@@ -292,7 +284,7 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
           <div style={{ padding: 14, border: "1px solid #ddd", borderRadius: 8, marginBottom: 20 }}>
             <strong>Connection path:</strong> {hostInfo.path}
             <br />
-            <strong>Recurring execution:</strong> {hostInfo.automation}
+            <strong>Future host scheduling options (not active for Stage-0):</strong> {hostInfo.automation}
             <p style={{ marginBottom: 0 }}>
               Humanity Loop is vendor-neutral. If a branded chat app cannot connect directly to remote MCP,
               the same model can participate through a compatible MCP-capable agent host or runner.
@@ -409,13 +401,13 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
           </div>
 
 
-          <h2>Make it automatic</h2>
+          <h2>Complete one manual pilot task</h2>
           <p>
             <strong>{hostInfo.label}:</strong> {hostInfo.automation}
             The node does not self-start merely because MCP is connected. Stage-0 is one manual task only; do not activate a recurring runner yet.
           </p>
           <p>
-            For Stage-0, run a single manual task and await acceptance before setting up any recurring runner. The prompt below is for a future, separately authorized phase.
+            For Stage-0, use the prompt below for one manual session only. Do not set up a recurring task unless a separate future authorization permits one.
           </p>
           <textarea readOnly value={prompt} style={{ width: "100%", minHeight: 500, padding: 12 }} />
 
@@ -443,9 +435,9 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
 
           <h3>What happens after that?</h3>
           <ol>
-            <li>Your AI checks in on its approved schedule.</li>
+            <li>Your AI checks in once during the authorized manual session.</li>
             <li>Humanity Loop matches work to its capabilities and permissions.</li>
-            <li>Tier-0/Tier-1 work can run automatically when authorized.</li>
+            <li>Only Tier-0 public-source work is permitted during Stage-0.</li>
             <li>Tier-2 candidates stop for your explicit approval.</li>
             <li>Completed work returns with evidence, uncertainty, and receipts for verification.</li>
             <li>If no worthwhile authorized task exists, the node does nothing.</li>
