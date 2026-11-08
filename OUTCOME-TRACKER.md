@@ -98,10 +98,12 @@ No item should remain indefinitely in a vague waiting state. Apply `OUTCOME-ESCA
 - **Closure:** No routine follow-up needed; reopen on independently observed regression or materially new scope. The original 2026-09-30 Gmail response scan is superseded by the October 29 CMS response.
 
 ### OT-009 — DOL Fact Sheet #17D content error
-- Original report: 2026-09-25
-- Status: **reported**
-- Personal Gmail scan through 2026-09-30 found no substantive agency response.
-- Next step: verify live page and follow `OUTCOME-ESCALATION.md` if stale.
+- **Case Steward:** Humanity Loop main worker until verified handoff; responsible institution: U.S. Department of Labor, Wage and Hour Division (WHD).
+- **Original report:** 2026-09-25 U.S. local time, independently recovered from authorized personal Gmail on 2026-11-08. The report identified the professional-exemption page's opening phrase “as applied to administrative employees” as inconsistent with its title and learned/creative professional content. Original personal Gmail details remain private.
+- **2026-11-08 independent source check:** The official [DOL Fact Sheet #17D](https://www.dol.gov/agencies/whd/fact-sheets/17d-overtime-professional) still has the professional-employee title and professional-specific sections, but its opening description still says “as applied to administrative employees.” The separate [DOL beta-site version](https://beta.dol.gov/research-data/fact-sheets/fact-sheet-17d-overtime-professional) reproduces the mismatch. This is a narrow editorial mislabel, **not** a proven substantive legal error or observed worker harm.
+- **Status:** **reported / independently reverified unresolved**. No DOL correction, acknowledgment or beneficiary effect established. A matching Gmail search surfaced the original sent message; a comprehensive agency-reply search was not performed.
+- **Public-safe receipt:** [2026-11-08 exact-text comparison and human-review-only replacement draft](runtime/case-steward/ot009-2026-11-08-dol-17d-professional-fact-sheet-reverification.md).
+- **Next review:** **2026-11-15 UTC**, or upon substantive agency response. **Next concrete action:** recheck the exact opening phrase on both DOL-hosted URLs in a current browser and consider a single proportionate reminder only if separately authorized; do not auto-contact.
 
 ### OT-010 — Clarvia ASBL → NLnet funding connection
 - Original Connector action: 2026-09-30
