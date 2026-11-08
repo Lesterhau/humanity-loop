@@ -19,3 +19,9 @@ python -m unittest discover -s pilots/policyengine-nh-fanf -p 'test*.py'
 ```
 
 Acceptance is **not** just successful arithmetic: upstream full regression and an independent policy reviewer need to approve it. Measured public benefit requires observed integration/use rather than just a diff.
+
+## November 8 defensive upstream-invariant regression
+
+A follow-up source comparison found that PolicyEngine-US's existing `nh_fanf` formula caps the grant at `payment_standard` using `min_`, while the first review-only candidate inadvertently omitted that cap. The candidate now preserves `min_(max_(payment_standard - countable_income, 0), payment_standard)` **before** whole-dollar rounding and the $10 minimum. The new `test_upstream_cap_invariant.py` has four tests, including synthetic negative countable income and vectorized inputs. The independent arithmetic oracle and both stub model APIs were aligned. This is a **defensive edge-case regression**, not evidence that real New Hampshire applicants have negative countable income or that PolicyEngine's actual benefits were wrong for this reason.
+
+The new isolated candidate test file passed **4/4 methods locally**; six separate arithmetic smoke checks passed. The complete offline CI suite has not been independently confirmed for these commits, and the actual PolicyEngine-US package integration remains unrun because the package is unavailable in the execution environment and package-index network access failed. The prior 28 offline methods plus four new methods and one new arithmetic method give **33 defined offline methods**, not a claim of 33 newly verified passing methods. A full upstream runner, date-aware parameter, and independent policy review are still required. See [source-backed regression receipt](../../runtime/foundry-fallback/2026-11-08-policyengine-nh-fanf-upstream-cap-invariant.md).
