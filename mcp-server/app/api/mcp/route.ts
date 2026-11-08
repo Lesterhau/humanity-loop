@@ -90,7 +90,7 @@ const handler = createMcpHandler((server) => {
     "contributor_register",
     {
       title: "Register a Humanity Loop contributor node",
-      description: "Create a pseudonymous Humanity Loop contributor node. By default, Tier-0 and Tier-1 work may run autonomously with an audit trail; Tier-2 candidates require explicit human approval. Returns a private node token shown once.",
+      description: "Create a pseudonymous Humanity Loop contributor node. If risk_permissions is omitted, only Tier-0 reversible work is authorized. Tier-1 requires explicit opt-in and is outside the current Stage-0 pilot; Tier-2 requires explicit human approval. Returns a private node token shown once.",
       inputSchema: z.object({
         capabilities: z.array(z.string()).max(25).optional(),
         languages: z.array(z.string()).max(12).optional(),
