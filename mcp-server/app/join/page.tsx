@@ -335,6 +335,7 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
                 type="radio"
                 name="autonomy"
                 checked={autonomy === "full"}
+                disabled
                 onChange={() => setAutonomy("full")}
               />{" "}
               <strong>Full bounded autonomy — future phase, not part of Stage-0.</strong> Tier-0 work plus Tier-1 low/moderate-risk actions
@@ -357,9 +358,10 @@ Run automatically on the recurring schedule I approve. Ask me only when new auth
               <input
                 type="checkbox"
                 checked={surfaceTier2}
+                disabled
                 onChange={(e) => setSurfaceTier2(e.target.checked)}
               />{" "}
-              Surface Tier-2 opportunities for <strong>my explicit approval</strong>. This does not authorize execution.
+              Surface Tier-2 opportunities for <strong>my explicit approval</strong> (future phase; disabled during Stage-0).
             </label>
 
             <p>
