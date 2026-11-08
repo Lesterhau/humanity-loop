@@ -47,6 +47,8 @@ jobs:
           cp humanity-loop/pilots/policyengine-nh-fanf/nh_fanf.py policyengine-us/policyengine_us/variables/gov/states/nh/dhhs/fanf/nh_fanf.py
           cp humanity-loop/pilots/policyengine-nh-fanf/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml policyengine-us/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml
           cp humanity-loop/pilots/policyengine-nh-fanf/nh_fanf.yaml policyengine-us/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/humanity_loop_nh_fanf.yaml
+          python humanity-loop/pilots/policyengine-nh-fanf/upstream/patch_outdated_integration_expected.py \
+            policyengine-us/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/integration.yaml
           git -C policyengine-us diff --stat
           echo "SOURCE ONLY: checks against pinned upstream commit; the integration runner never commits or pushes."
           echo "Upstream test pin: 92caead63eea36b15c6ca86edf3d79214459e7a9"
