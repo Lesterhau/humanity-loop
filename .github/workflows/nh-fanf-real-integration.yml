@@ -1,0 +1,65 @@
+name: NH FANF candidate — actual PolicyEngine integration
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/nh-fanf-real-integration.yml"
+      - "pilots/policyengine-nh-fanf/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-policyengine-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout Humanity Loop candidate
+        uses: actions/checkout@v4
+        with:
+          path: humanity-loop
+          persist-credentials: false
+
+      - name: Checkout pinned official PolicyEngine-US source
+        uses: actions/checkout@v4
+        with:
+          repository: PolicyEngine/policyengine-us
+          ref: 92caead63eea36b15c6ca86edf3d79214459e7a9
+          path: policyengine-us
+          persist-credentials: false
+
+      - name: Install Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pinned uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.13.4"
+          enable-cache: false
+
+      - name: Apply Humanity Loop proposal only to disposable local checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp humanity-loop/pilots/policyengine-nh-fanf/nh_fanf.py policyengine-us/policyengine_us/variables/gov/states/nh/dhhs/fanf/nh_fanf.py
+          cp humanity-loop/pilots/policyengine-nh-fanf/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml policyengine-us/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml
+          cp humanity-loop/pilots/policyengine-nh-fanf/nh_fanf.yaml policyengine-us/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/humanity_loop_nh_fanf.yaml
+          git -C policyengine-us diff --stat
+          echo "Upstream test pin: 92caead63eea36b15c6ca86edf3d79214459e7a9"
+
+      - name: Synchronize pinned PolicyEngine dependencies
+        working-directory: policyengine-us
+        run: uv sync --locked --extra dev
+
+      - name: Run real PolicyEngine runner on original and new NH FANF YAML cases
+        working-directory: policyengine-us
+        run: |
+          uv run policyengine-core test             policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/nh_fanf.yaml             policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/humanity_loop_nh_fanf.yaml             -c policyengine_us
+
+      - name: Truth boundary
+        run: |
+          echo "This is model-integration validation in a disposable CI checkout."
+          echo "Not upstream publication, policy approval, institution adoption, or verified benefit."
