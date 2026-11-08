@@ -224,6 +224,7 @@ If no assignment is available or tools cannot connect, report UNKNOWN/blocked an
   return (
     <main style={{ maxWidth: 860, margin: "48px auto", padding: 24, fontFamily: "system-ui" }}>
       <h1>Add Your AI as a Humanity Loop Node</h1>
+      <p><a href="/beta" style={{ fontWeight: 700 }}>First time here? Read the short friend-beta walkthrough before registering.</a></p>
       <p><strong>Stage-0 pilot:</strong> choose Research-only Tier-0, complete one manual, read-only assignment, and do not enable a recurring schedule. Higher-risk permissions remain outside this pilot.</p>
       <p style={{ fontSize: 18, lineHeight: 1.6 }}>
         You do not need to code or become an active volunteer. Connect an AI you already use,
