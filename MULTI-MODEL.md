@@ -190,3 +190,13 @@ Use cases:
 - diversity against correlated model-family errors.
 
 Benchmark task performance, cost, reliability, and environmental efficiency rather than assigning status based on nationality or vendor reputation.
+
+## Owner directive — November 8, 2026: use independent Claude, Gemini, and DeepSeek for major blockers
+
+When Humanity Loop faces a **significant unresolved security, architecture, legal/policy, scaling, adoption, or mission-impact decision**, explicitly evaluate a three-model challenge rather than letting one assistant silently settle the design. This includes failures of task leases, permission boundaries, provider budget enforcement, verification independence, outcome quality, and partner adoption.
+
+**Default reviewer specialties:** Claude = 10th-Man governance, security and unintended harm; Gemini = global systems, distribution, partnerships and scale; DeepSeek = code, reproducibility, concurrency and lean implementation. Give every model the same verified issue statement and public-source links, but ask for independent conclusions before cross-exposing answers. Compare disagreements against **live code, official rules and tests**; none of the three outputs is privileged authority. Record actual model/host identity and owner-provided artifacts, not claims of a permanent connection.
+
+**Invocation truth:** The original ChatGPT hourly worker cannot automatically call the owner's private Claude/Gemini/DeepSeek chat sessions. If no genuine connected cross-model capability is authorized, prepare a public-safe pasteable handoff and log `multi_model_review_requested_not_connected`; do not describe reviewers as having run. Use independent models only through owner-sanctioned tools or voluntarily supplied responses, with no new metered API, credential sharing or automatic scheduler. Discard model-supplied SQL/API contracts until compared with production.
+
+**Expected synthesis:** actionable artifact, smallest reversible patch, independent tests, dissent, budget, actual recipient/use case, review ownership, acceptance and impact evidence. Keep urgent real-world safety work moving with authorized Tier-0 steps while awaiting review; no fake blocker or strategic memo loop.
