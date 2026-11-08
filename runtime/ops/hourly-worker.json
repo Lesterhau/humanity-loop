@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-08T04:02:41Z",
+  "runAt": "2026-11-08T16:53:01Z",
   "status": "worked",
-  "summary": "Independently compared two current India National Scholarship Portal 2026–27 official pages. General announcements say 31 Oct 2026 for PM-USP CSSS and J&K/Ladakh renewals; scheme-specific listings say 30 Nov 2026 and later verification dates. Created and read back issue #65 with exact evidence, uncertainty and a neutral clarification draft. No institutional outreach, applicant outcome, Foundry AI, AppDeploy spending, deployment or schedule change.",
-  "lastVerifiedAt": "2026-11-08T04:02:41Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/65"
+  "summary": "Verified HOTOSM Field-TM #3060 and actual planner-input contract; created and independently read back a privacy-minimal StreetComplete project-AOI viewport-fit adapter, 12 offline tests, and eight-role single-model review receipt. No outside submission, AppDeploy AI, spending, deployment or scheduler change.",
+  "lastVerifiedAt": "2026-11-08T16:53:01Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/runtime/foundry-fallback/2026-11-08-hotosm-3060-planner-viewport-receipt.md"
 }
