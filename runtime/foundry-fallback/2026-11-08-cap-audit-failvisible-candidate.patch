@@ -1,0 +1,106 @@
+--- a/scripts/cap_daily_audit.py
++++ b/scripts/cap_daily_audit.py
+@@ -176,7 +176,13 @@
+     return findings
+ 
+ 
+-def fetch_active_alerts() -> list[dict[str, Any]]:
++def fetch_active_alerts_with_coverage() -> tuple[list[dict[str, Any]], dict[str, Any]]:
++    """Fetch one bounded NWS response; disclose sampling and response-shape limits.
++
++    `response_complete` means only that every feature in this HTTP response was
++    examined, not that the upstream national alert service was exhaustively read.
++    This deliberately does not follow next-page links or increase request volume.
++    """
+     request = Request(
+         SOURCE_URL,
+         headers={
+@@ -189,25 +195,54 @@
+             raise RuntimeError(f"NWS alerts fetch failed: {response.status}")
+         data = json.load(response)
+ 
+-    features = data.get("features") or []
+-    if not isinstance(features, list):
++    if not isinstance(data, dict) or not isinstance(data.get("features"), list):
+         raise RuntimeError("NWS alerts response does not contain a feature list")
+-    return [f for f in features[:MAX_ALERTS] if isinstance(f, dict)]
++
++    source_features = data["features"]
++    inspected = [f for f in source_features[:MAX_ALERTS] if isinstance(f, dict)]
++    invalid = sum(not isinstance(f, dict) for f in source_features)
++    pagination = data.get("pagination")
++    has_next = isinstance(pagination, dict) and bool(pagination.get("next"))
++    omitted = len(source_features) - len(inspected)
++    partial = bool(omitted or has_next)
++    coverage = {
++        "coverageStatus": "partial" if partial else "response_complete",
++        "sourceRecordsReturned": len(source_features),
++        "recordsNotInspected": omitted,
++        "recordsBeyondLimit": max(0, len(source_features) - MAX_ALERTS),
++        "invalidSourceRecords": invalid,
++        "hasNextPage": has_next,
++    }
++    return inspected, coverage
++
++
++def fetch_active_alerts() -> list[dict[str, Any]]:
++    """Backward-compatible list-only API; main() uses coverage-aware fetch."""
++    features, _coverage = fetch_active_alerts_with_coverage()
++    return features
+ 
+ 
+-def build_report(features: list[dict[str, Any]], now: str) -> dict[str, Any]:
++def build_report(
++    features: list[dict[str, Any]], now: str, coverage: dict[str, Any] | None = None
++) -> dict[str, Any]:
+     findings: list[dict[str, Any]] = []
+     for feature in features:
+         findings.extend(audit_feature(feature, now))
+ 
++    generated = len(findings)
+     findings = findings[:MAX_FINDINGS]
+     counts = Counter(item["severity"] for item in findings)
++    if coverage is None:
++        coverage = {"coverageStatus": "unknown"}
+     return {
+         "schemaVersion": 1,
+         "runAt": now,
+         "source": SOURCE_URL,
+         "alertsChecked": len(features),
++        **coverage,
+         "findingsCount": len(findings),
++        "findingsGenerated": generated,
++        "findingsNotReported": generated - len(findings),
+         "bySeverity": {
+             "error": counts.get("error", 0),
+             "warning": counts.get("warning", 0),
+@@ -241,14 +276,17 @@
+     args = parser.parse_args()
+ 
+     now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+-    features = fetch_active_alerts()
+-    report = build_report(features, now)
++    features, coverage = fetch_active_alerts_with_coverage()
++    report = build_report(features, now, coverage)
+     latest, archive = write_report(report, Path(args.output_dir))
+ 
+     print(
+         json.dumps(
+             {
+-                "status": "ok",
++                "status": "ok" if report["coverageStatus"] == "response_complete" and not report["findingsNotReported"] else "partial",
++                "coverageStatus": report["coverageStatus"],
++                "recordsNotInspected": report.get("recordsNotInspected"),
++                "findingsNotReported": report["findingsNotReported"],
+                 "runAt": report["runAt"],
+                 "alertsChecked": report["alertsChecked"],
+                 "findingsCount": report["findingsCount"],
+@@ -259,6 +297,8 @@
+             sort_keys=True,
+         )
+     )
++    if report["coverageStatus"] != "response_complete" or report["findingsNotReported"]:
++        print("::warning::CAP audit is partial; inspect the durable receipt before treating findings as complete.")
+     return 0
+ 
+ 
