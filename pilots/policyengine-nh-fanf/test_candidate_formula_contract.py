@@ -61,7 +61,7 @@ class CandidateFormulaContract(unittest.TestCase):
         def spm_unit(variable, period):
             return {"nh_fanf_payment_standard": standard,
                     "nh_fanf_countable_income": income}[variable]
-                parameters = lambda period: types.SimpleNamespace(
+        parameters = lambda period: types.SimpleNamespace(
             gov=types.SimpleNamespace(states=types.SimpleNamespace(
                 nh=types.SimpleNamespace(dhhs=types.SimpleNamespace(
                     fanf=types.SimpleNamespace(minimum_grant=minimum_grant)
