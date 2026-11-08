@@ -11,7 +11,7 @@
 - **Next:** obtain independent legal/policy and model review, run `policyengine_us` integration tests with the actual model/parameter registry and dates; update old affected test snapshots. Only then request the owner's permission for an external PR/issue reply. Never label this as an operational eligibility determination or a correction accepted by NH or PolicyEngine.
 - **No applicant data / outreach:** all inputs are synthetic, no external organization contact, production systems or model billing changed by this pilot.
 
-In addition to the 12 pure-arithmetic tests, `test_candidate_formula_offline.py` exercises the **actual candidate formula** under a minimal scalar stub of PolicyEngine's model API (10 separate test cases). The CI job runs these 22 offline tests on PRs. This is **not a full PolicyEngine integration test**, including vector arrays and period handling.
+In addition to the 12 pure-arithmetic tests, `test_candidate_formula_offline.py` exercises the **actual candidate formula** under a minimal scalar stub of PolicyEngine's model API (10 separate test cases). The CI job also runs the pre-existing six NumPy/YAML contract tests (including vector arithmetic, metadata and fixture checks), for **28 offline test methods** in total. NumPy and PyYAML are pinned in CI; this uses no paid AI inference. This is **not a full PolicyEngine integration test**, including vector arrays and period handling.
 
 Try offline tests:
 ```sh
