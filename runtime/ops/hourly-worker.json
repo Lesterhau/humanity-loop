@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-07T23:53:18.459Z",
+  "runAt": "2026-11-08T04:02:41Z",
   "status": "worked",
-  "summary": "Located the exact candidate SISPRO government-domain URL for Colombia's public Plan de Choque health dashboard via a dated El Espectador hyperlink and independent CONSULTORSALUD source attribution; direct web retrieval timed out, so ordinary-browser accessibility and current data remain unverified. Published and independently read back a public-safe correction/follow-up to Scout issue #19. No institution contact, credit spend, Foundry AI, deployment, production mutation, or schedule change.",
-  "lastVerifiedAt": "2026-11-07T23:53:18.459Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6714698219"
+  "summary": "Independently compared two current India National Scholarship Portal 2026–27 official pages. General announcements say 31 Oct 2026 for PM-USP CSSS and J&K/Ladakh renewals; scheme-specific listings say 30 Nov 2026 and later verification dates. Created and read back issue #65 with exact evidence, uncertainty and a neutral clarification draft. No institutional outreach, applicant outcome, Foundry AI, AppDeploy spending, deployment or schedule change.",
+  "lastVerifiedAt": "2026-11-08T04:02:41Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/65"
 }
