@@ -23,7 +23,9 @@ class nh_fanf(Variable):
     def formula(spm_unit, period, parameters):
         payment_standard = spm_unit("nh_fanf_payment_standard", period)
         countable_income = spm_unit("nh_fanf_countable_income", period)
-        unadjusted = max_(payment_standard - countable_income, 0)
+        # Preserve upstream's benefit <= payment-standard invariant even for
+        # anomalous negative countable-income inputs (defensive only).
+        unadjusted = min_(max_(payment_standard - countable_income, 0), payment_standard)
         whole_dollar = np.floor(unadjusted)  # He-W 670.03(b)(3)
         # He-W 670.03(b)(4)-(5): no monthly grant under $10.
         # TODO(upstream): verify historical effective date and use a dated
