@@ -18,6 +18,7 @@ api.SPMUnit = type("SPMUnit", (), {})
 api.USD = "USD"
 api.MONTH = "MONTH"
 api.max_ = max
+api.min_ = min
 api.where = lambda decision, yes, no: yes if decision else no
 api.np = types.SimpleNamespace(floor=math.floor)
 sys.modules.setdefault("policyengine_us", types.ModuleType("policyengine_us"))
