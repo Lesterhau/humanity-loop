@@ -1,65 +1,115 @@
 import Link from "next/link";
-
-const steps = [
-  {
-    title: "Check whether your AI can connect",
-    description: "Open your AI app and look for a way to add a remote MCP server or connector. Humanity Loop's public MCP address is https://humanity-loop.vercel.app/api/mcp. Before registering, confirm that contributor_checkin and contributor_submit appear as available tools. The current ChatGPT plugin is not yet verified for public installation, so ordinary ChatGPT chat may not work for this test.",
-  },
-  {
-    title: "If the tools appear, create one Tier-0 node",
-    description: "On the Join page, leave the Research-only Tier-0 choice selected. An email address is optional. Do not choose a paid upgrade, grant private account access, or start a scheduled task. Keep the node token private. If your host has no MCP connection, stop here and simply report where you got stuck.",
-  },
-  {
-    title: "Run one manual assignment",
-    description: "Paste the one-time Stage-0 prompt shown after registration into your connected AI host. Your AI can check in, claim one public-source assignment, and submit its sourced findings for review. The assignment may be unavailable; report that instead of inventing a result. Do not let it contact agencies, change accounts, post on your behalf, or run again automatically.",
-  },
-  {
-    title: "Tell us what happened",
-    description: "Tell the person who invited you your AI host, whether the contributor tools appeared, which step worked or failed, and whether a submission was returned. Do not send the private node token, private conversations, screenshots containing credentials, or identifying personal information. You can pause or revoke the token using contributor_set_status.",
-  },
-];
+import styles from "../pilot.module.css";
 
 export default function BetaPage() {
   return (
-    <main style={{ maxWidth: 820, margin: "0 auto", padding: "40px 20px 72px", fontFamily: "system-ui, sans-serif", lineHeight: 1.65 }}>
-      <nav aria-label="Breadcrumb"><Link href="/">Humanity Loop</Link> / Friend beta</nav>
-      <p style={{ fontWeight: 700, marginTop: 32 }}>SMALL, VOLUNTARY TEST · ADULTS 18+</p>
-      <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.1rem)", lineHeight: 1.14 }}>Help us see if one AI can do one useful thing.</h1>
-      <p style={{ fontSize: "1.17rem" }}>
-        We are looking for a handful of friends to try Humanity Loop and tell us what actually works.
-        The project wants to turn independently contributed AI work into <strong>verified improvements for people</strong>.
-        First we have to prove that somebody outside the founder can complete a task safely.
-      </p>
-      <div style={{ border: "1px solid #999", padding: 18, borderRadius: 10, margin: "22px 0" }}>
-        <strong>What's involved?</strong>
-        <p>One public-information task, one time. No coding required for the task itself, no fee, no need to share personal information, and <strong>nothing runs in the background</strong>. A compatible AI host is needed for the full connected-node test; not every chat app supports one today.</p>
-        <p style={{ marginBottom: 0 }}>If the connection is confusing or unavailable, that is useful feedback. Do not subscribe to anything or give away credentials just to finish this test.</p>
+    <main className={styles.page}>
+      <a className={styles.skip} href="#how-it-works">Skip to the details</a>
+      <header className={styles.topbar}>
+        <div className={styles.topbarInner}>
+          <Link href="/" className={styles.brand}>
+            <span className={styles.logo} aria-hidden="true">↗</span> Humanity Loop
+          </Link>
+          <Link href="/" className={styles.topLink}>About Humanity Loop</Link>
+        </div>
+      </header>
+
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <p className={styles.eyebrow}>Help us test something that could grow</p>
+          <h1>What if your AI could help the world a little?</h1>
+          <p className={styles.lede}>
+            We&apos;re inviting a few friends to test Humanity Loop.
+            The idea is to help people put the AI tools they already use toward
+            useful public projects, then check whether the work actually helps.
+            Right now, we&apos;re testing one small research task.
+          </p>
+          <div className={styles.pills}>
+            <span className={styles.pill}>About 20–30 minutes</span>
+            <span className={styles.pill}>No coding required</span>
+            <span className={styles.pill}>Free and voluntary</span>
+          </div>
+        </div>
+      </section>
+
+      <div className={styles.shell}>
+        <section className={styles.mainCard} id="how-it-works">
+          <div className={styles.sectionHead}>
+            <span className={styles.stepBubble} aria-hidden="true">1</span>
+            <div>
+              <h2>All we need is a little help testing it.</h2>
+              <p>You don&apos;t have to be a tech person. In fact, knowing where you get confused is useful feedback.</p>
+            </div>
+          </div>
+          <div className={styles.gridTwo}>
+            <div className={styles.tile}>
+              <strong>If your AI can connect</strong>
+              <p>Try one public-information research task. Your AI sends its findings back for someone else to check. Then you&apos;re done.</p>
+            </div>
+            <div className={styles.tile}>
+              <strong>If your AI can&apos;t connect</strong>
+              <p>Tell us which app you used and where you got stuck. That is still a useful test. You won&apos;t have to register.</p>
+            </div>
+          </div>
+          <div className={styles.ctaGroup}>
+            <Link className={styles.primary} href="/join">I&apos;ll give it a try</Link>
+            <span className={styles.muted}>One time. No money. No automatic tasks.</span>
+          </div>
+          <p className={styles.minor}>
+            Budget around 20–30 minutes, but you can stop at any point. Some
+            popular chat apps cannot make this connection yet, so the test
+            might be much shorter.
+          </p>
+
+          <hr className={styles.divider} />
+          <h2>What happens next?</h2>
+          <ol className={styles.listPlain}>
+            <li><strong>Tell us what AI you use.</strong> ChatGPT, Claude, Gemini or another app.</li>
+            <li><strong>See if it can connect.</strong> We&apos;ll show you what to look for. If it can&apos;t, you&apos;re done and can share feedback.</li>
+            <li><strong>If it can, try one small task.</strong> You&apos;ll get step-by-step instructions. Nobody gets control of your personal accounts.</li>
+          </ol>
+
+          <div className={styles.info}>
+            <strong>One important heads-up for ChatGPT users</strong>
+            <p>
+              The project&apos;s public ChatGPT connection is still pending
+              approval. Ordinary ChatGPT chat may not support this test today.
+              Please don&apos;t buy an upgrade or share login details to make it work.
+              Learning which apps don&apos;t connect is part of why we&apos;re testing.
+            </p>
+          </div>
+          <div className={styles.ctaGroup}>
+            <Link href="/join" className={styles.primary}>Start the quick check</Link>
+            <Link href="/" className={styles.secondary}>Learn about the project</Link>
+          </div>
+        </section>
+
+        <details className={styles.details}>
+          <summary>Wondering about safety or privacy?</summary>
+          <p>
+            Nothing runs automatically. You won&apos;t be asked to pay, provide
+            your legal name, share your AI password, or hand over private files.
+            The connected test uses a private one-time setup code and one
+            manually approved public-source research task. If you can&apos;t
+            connect, there is no need to create a code.
+          </p>
+          <p>
+            Only work that passes independent review can be counted as an
+            accepted contribution. Registering alone doesn&apos;t prove any
+            public benefit. You can leave at any time.
+          </p>
+          <p>
+            <a href="https://github.com/Lesterhau/humanity-loop/issues/33">
+              See the public record of what has and hasn&apos;t worked yet
+            </a>.
+          </p>
+        </details>
+
+        <footer className={styles.footer}>
+          <span>Humanity Loop · Real work. Verified results.</span>
+          <span><Link href="/">Home</Link> · <Link href="/join">Quick check</Link></span>
+        </footer>
       </div>
-      <h2>Four steps</h2>
-      <ol style={{ paddingLeft: 26 }}>
-        {steps.map((step, index) => (
-          <li key={step.title} style={{ marginBottom: 20 }}>
-            <h3 style={{ marginBottom: 5 }}>{index + 1}. {step.title}</h3>
-            <p style={{ marginTop: 0 }}>{step.description}</p>
-          </li>
-        ))}
-      </ol>
-      <p>
-        <Link href="/join" style={{ fontWeight: 700, textDecoration: "underline" }}>Go to the Stage-0 join page</Link>
-      </p>
-      <h2>What counts as success?</h2>
-      <p>
-        Signing up only proves that registration worked. A completed contributor cycle requires
-        real check-in, claim, evidence-backed submission and <strong>independent review</strong>.
-        We have not yet confirmed that outside cycle. This test is how we find out.
-      </p>
-      <h2>Privacy and stopping</h2>
-      <p>
-        Participation is optional. Never post your private node token, contact information, beneficiary data,
-        or private AI chat history publicly. You can use the contributor_set_status tool to pause or
-        permanently revoke your node. No recurring runs or external outreach are authorized by this pilot.
-      </p>
-      <p><Link href="/">What is Humanity Loop?</Link> · <Link href="/join">Join page</Link> · <a href="https://github.com/Lesterhau/humanity-loop/issues/33">Acceptance status and safety results</a></p>
     </main>
   );
 }

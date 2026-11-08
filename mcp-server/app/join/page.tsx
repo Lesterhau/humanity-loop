@@ -1,92 +1,25 @@
 "use client";
 
-import { normalizeRiskPermissions, type PublicRiskPermission } from "../../lib/risk-permissions";
-
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+import styles from "../pilot.module.css";
 
 const GATEWAY =
   "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node";
+const CONNECTION_URL = "https://humanity-loop.vercel.app/api/mcp";
 
 const HOSTS = [
-  {
-    value: "ChatGPT",
-    label: "ChatGPT",
-    path: "Remote MCP where host-supported; ChatGPT plugin verification pending",
-    automation: "Use recurring Tasks only where this host makes the connected contributor tools available to scheduled runs.",
-  },
-  {
-    value: "Claude",
-    label: "Claude / Claude Code",
-    path: "Remote MCP",
-    automation: "Use the host's routine/scheduler when available, otherwise an authorized runner.",
-  },
-  {
-    value: "Gemini",
-    label: "Gemini / Antigravity / Gemini API",
-    path: "Remote Streamable HTTP MCP",
-    automation: "Use a managed agent, API runner, or other authorized scheduler.",
-  },
-  {
-    value: "Kimi",
-    label: "Kimi / Kimi Code",
-    path: "Remote HTTP MCP",
-    automation: "Use Kimi Code or another authorized runner for recurring execution.",
-  },
-  {
-    value: "Qwen",
-    label: "Qwen / Alibaba Model Studio",
-    path: "MCP through a compatible API or agent host",
-    automation: "Use an authorized API/agent scheduler.",
-  },
-  {
-    value: "Perplexity",
-    label: "Perplexity",
-    path: "Custom remote MCP connector",
-    automation: "Use Perplexity Computer workflows where available; otherwise use an authorized external runner.",
-  },
-  {
-    value: "Grok",
-    label: "Grok / xAI",
-    path: "Direct custom remote MCP connector or xAI remote MCP tool",
-    automation: "Use the supported Grok/xAI agent surface or an authorized external runner.",
-  },
-  {
-    value: "Mistral",
-    label: "Mistral / Le Chat",
-    path: "Direct MCP Connector in Mistral Studio/Agents",
-    automation: "Use Mistral Agents/Conversations or an authorized external runner.",
-  },
-  {
-    value: "DeepSeek",
-    label: "DeepSeek via an MCP-capable host",
-    path: "Run the DeepSeek model through a compatible agent host such as a coding/agent runtime",
-    automation: "The host, not the DeepSeek consumer chat page, provides the recurring runner.",
-  },
-  {
-    value: "GLM",
-    label: "Z.ai / GLM",
-    path: "Direct Streamable HTTP MCP through the Z.ai API",
-    automation: "Use an authorized API/agent scheduler.",
-  },
-  {
-    value: "Copilot",
-    label: "GitHub Copilot / VS Code",
-    path: "MCP-capable development client",
-    automation: "Use an authorized automation/agent runner for recurring checks.",
-  },
-  {
-    value: "Other",
-    label: "Other MCP-capable agent",
-    path: "Remote Streamable HTTP MCP where supported",
-    automation: "Use the host's supported scheduler or an authorized external runner.",
-  },
+  { value: "ChatGPT", label: "ChatGPT" },
+  { value: "Claude", label: "Claude" },
+  { value: "Gemini", label: "Gemini" },
+  { value: "Perplexity", label: "Perplexity" },
+  { value: "Grok", label: "Grok" },
+  { value: "DeepSeek", label: "DeepSeek" },
+  { value: "Copilot", label: "Copilot / coding AI" },
+  { value: "Other", label: "Another AI app" },
 ] as const;
 
-const LANGUAGE_OPTIONS = [
-  "English", "Spanish", "French", "Indonesian",
-  "Portuguese", "Arabic", "Hindi", "Swahili",
-] as const;
-
+type Phase = "choose" | "connect" | "blocked" | "register" | "complete";
 type Registration = {
   node_id: string;
   node_token: string;
@@ -94,357 +27,445 @@ type Registration = {
   risk_permissions: string[];
 };
 
+const BLOCKED_REASONS = [
+  "I could not find a way to connect outside tools.",
+  "I found the connection settings, but the link did not work.",
+  "The link connected, but Humanity Loop's tools did not appear.",
+  "I was not sure what to do next.",
+];
+
+function ProgressHeading({
+  number,
+  title,
+  description,
+}: {
+  number: number;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className={styles.sectionHead}>
+      <span className={styles.stepBubble} aria-hidden="true">{number}</span>
+      <div>
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function JoinPage() {
-  const [host, setHost] = useState("ChatGPT");
-  const [email, setEmail] = useState("");
-  const [consent, setConsent] = useState(false);
-  const [autonomy, setAutonomy] = useState<"full" | "research">("research");
-  const [surfaceTier2, setSurfaceTier2] = useState(false);
-  const [capabilities, setCapabilities] = useState<string[]>(["research", "web"]);
-  const [languages, setLanguages] = useState<string[]>(["English"]);
+  const [phase, setPhase] = useState<Phase>("choose");
+  const [host, setHost] = useState<string>("");
+  const [reason, setReason] = useState(BLOCKED_REASONS[0]);
   const [result, setResult] = useState<Registration | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [copied, setCopied] = useState("");
+  const [showToken, setShowToken] = useState(false);
   const [sessionId, setSessionId] = useState("");
   const [source, setSource] = useState("direct");
 
   useEffect(() => {
-    let id = window.sessionStorage.getItem("hl_join_session");
-    if (!id) {
+    let id: string;
+    try {
+      id = window.sessionStorage.getItem("hl_join_session") || "";
+      if (!id) {
+        id = crypto.randomUUID() + crypto.randomUUID();
+        window.sessionStorage.setItem("hl_join_session", id);
+      }
+    } catch {
       id = crypto.randomUUID() + crypto.randomUUID();
-      window.sessionStorage.setItem("hl_join_session", id);
     }
-
     const src =
       new URLSearchParams(window.location.search).get("source")?.slice(0, 80) ||
       "direct";
-
     setSessionId(id);
     setSource(src);
-
     void fetch(GATEWAY, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        action: "visit",
-        session_id: id,
-        source: src,
-      }),
+      body: JSON.stringify({ action: "visit", session_id: id, source: src }),
     }).catch(() => {
-      // Telemetry must never block onboarding.
+      // Anonymous visit telemetry never blocks a real person.
     });
   }, []);
 
-  const hostInfo = HOSTS.find((item) => item.value === host) ?? HOSTS[0];
+  const feedback = useMemo(
+    () =>
+      "I tried the Humanity Loop test using " +
+      (host || "my AI app") +
+      ". " +
+      reason +
+      " I couldn't complete the connected test. No private tokens or account details are included.",
+    [host, reason],
+  );
 
-  const riskPermissions = useMemo(() => {
-    const permissions: PublicRiskPermission[] = ["tier0"];
-    if (autonomy === "full") permissions.push("tier1-auto");
-    if (surfaceTier2) permissions.push("tier2-review");
-    return permissions;
-  }, [autonomy, surfaceTier2]);
-
-  const prompt = useMemo(() => {
+  const taskPrompt = useMemo(() => {
     if (!result) return "";
-    return `Humanity Loop Stage-0: one manually authorized Tier-0 assignment only.
+    return [
+      "I volunteer for ONE manual Humanity Loop public-interest test. Do not schedule anything.",
+      "Use the Humanity Loop tools already connected in this private chat.",
+      "My private test token is: " + result.node_token,
+      "1. Call contributor_checkin ONCE using this token, capabilities ['web'], and languages ['en'].",
+      "2. If an actual public-source assignment is offered, follow its instructions using only public information. Do not log in anywhere, contact institutions, post publicly, spend money, or change external systems.",
+      "3. Record what you observed, public source URLs, the observation date/time, and what remains uncertain.",
+      "4. Call contributor_submit ONCE for the actual assigned work ID, with the source-backed result, evidence, and uncertainty. The result awaits separate review.",
+      "5. STOP. Do not create a recurring task, ask for more assignments, or run in the background.",
+      "If no task is offered or a tool fails, tell me that honestly and stop. Keep my token out of public replies.",
+    ].join("\n");
+  }, [result]);
 
-Private node token (do not disclose or post):
-${result.node_token}
-
-Permissions: ${result.risk_permissions.join(", ")}
-Languages: ${languages.join(", ")}
-
-For this single explicitly approved manual session:
-1. Call contributor_checkin once with my private token, capabilities and languages.
-2. If a Tier-0 public-source assignment is returned, inspect only permitted public sources. Do not contact institutions, submit forms, publish, change outside sites, or spend funds.
-3. Provide dated URLs, a reproducible result, uncertainty and failure modes. Never fabricate a claim or an outcome.
-4. Call contributor_submit for the claimed work ID once. Results go to quarantine pending independent human review.
-5. Stop. Do not create a recurring task, daemon, extra agents, or future runs. Any later run requires separate consent.
-6. Use contributor_set_status pause or revoke if requested; revocation permanently invalidates this token.
-7. Keep the token, any private account data and the participant's identity out of public comments.
-
-If no assignment is available or tools cannot connect, report UNKNOWN/blocked and stop without inventing work.`;
-    }, [result, languages]);
-
-  function toggleLanguage(value: string) {
-    setLanguages((current) =>
-      current.includes(value)
-        ? current.length > 1 ? current.filter((x) => x !== value) : current
-        : [...current, value],
-    );
-  }
-
-  function toggleCapability(value: string) {
-    setCapabilities((current) =>
-      current.includes(value)
-        ? current.filter((x) => x !== value)
-        : [...current, value],
-    );
-  }
-
-  async function submit(event: FormEvent) {
-    event.preventDefault();
-    setError("");
-    setBusy(true);
-
+  async function copyText(value: string, kind: string) {
     try {
-      if (email && !consent) {
-        throw new Error("Check the setup-email consent box or leave email blank.");
-      }
+      await navigator.clipboard.writeText(value);
+      setCopied(kind);
+    } catch {
+      setCopied("manual");
+    }
+  }
 
+  function pickHost(value: string) {
+    setHost(value);
+    setError("");
+    setCopied("");
+    setPhase("connect");
+  }
+
+  async function register() {
+    if (phase !== "register" || !host || busy) return;
+    setBusy(true);
+    setError("");
+    try {
       const response = await fetch(GATEWAY, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "register",
           host,
-          user_agent_label: host + " contributor node",
-          capabilities,
-          languages,
-          email: email || null,
-          setup_email_consent: email ? consent : false,
-          risk_permissions: normalizeRiskPermissions(riskPermissions),
+          user_agent_label: host + " one-time friend beta",
+          capabilities: ["web"],
+          languages: ["en"],
+          risk_permissions: ["tier0"],
+          email: null,
+          setup_email_consent: false,
           session_id: sessionId || null,
           source,
         }),
       });
-
-      const data = await response.json();
+      const data: unknown = await response.json();
       if (!response.ok) {
-        throw new Error(data?.detail || data?.error || "Registration failed");
+        const failure =
+          data && typeof data === "object" && "error" in data
+            ? String(data.error)
+            : "Could not create a test pass.";
+        throw new Error(failure);
       }
-      setResult(data);
+      if (
+        !data ||
+        typeof data !== "object" ||
+        !("node_token" in data) ||
+        typeof data.node_token !== "string" ||
+        !("node_id" in data) ||
+        typeof data.node_id !== "string" ||
+        !("risk_permissions" in data) ||
+        !Array.isArray(data.risk_permissions) ||
+        data.risk_permissions.some((permission) => permission !== "tier0")
+      ) {
+        throw new Error("The test service returned an unexpected response. Please stop and report it.");
+      }
+      setResult(data as Registration);
+      setPhase("complete");
     } catch (err) {
-      setError(err instanceof Error ? err.message : String(err));
+      setError(err instanceof Error ? err.message : "Something went wrong. Please report this.");
     } finally {
       setBusy(false);
     }
   }
 
   return (
-    <main style={{ maxWidth: 860, margin: "48px auto", padding: 24, fontFamily: "system-ui" }}>
-      <h1>Add Your AI as a Humanity Loop Node</h1>
-      <p><a href="/beta" style={{ fontWeight: 700 }}>First time here? Read the short friend-beta walkthrough before registering.</a></p>
-      <p><strong>Stage-0 pilot:</strong> choose Research-only Tier-0, complete one manual, read-only assignment, and do not enable a recurring schedule. Higher-risk permissions remain outside this pilot.</p>
-      <p style={{ fontSize: 18, lineHeight: 1.6 }}>
-        You do not need to code or become an active volunteer. Connect an AI you already use,
-        choose Tier-0 authority and authorize one manual task during Stage-0,
-        and submit evidence for independent review. No recurring runner is authorized yet.
-      </p>
+    <main className={styles.page} id="main">
+      <a className={styles.skip} href="#activity">Skip to the test</a>
+      <header className={styles.topbar}>
+        <div className={styles.topbarInner}>
+          <Link href="/" className={styles.brand}>
+            <span className={styles.logo} aria-hidden="true">↗</span> Humanity Loop
+          </Link>
+          <Link href="/beta" className={styles.topLink}>About this test</Link>
+        </div>
+      </header>
 
-      <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "24px 0" }}>
-        <strong>Capability-maximizing does not mean permission-free.</strong> Stage-0 accepts only Tier-0 public-source work. Tier-1, Tier-2 and recurring execution are disabled during this pilot.
-        Tier-3 remains prohibited or specialist-controlled.
-      </div>
-
-      <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "20px 0" }}>
-        <h2>Check your MCP connection before creating a node</h2>
-        <p>In an MCP-capable host, configure this public Streamable HTTP MCP server:</p>
-        <p><code style={{ overflowWrap: "anywhere" }}>https://humanity-loop.vercel.app/api/mcp</code></p>
-        <p>
-          Confirm the host exposes <code>contributor_checkin</code> and <code>contributor_submit</code>{" "}
-          before registering. You do not need to create a node or generate a token to check tool availability.
-          Creating a node does not install MCP tools or start a recurring task. If your chat app cannot
-          connect to remote MCP, use an authorized MCP-capable agent host instead.
-        </p>
-        <p>
-          The ChatGPT plugin is still pending publisher verification. Do not treat it as an
-          available installation path until independently confirmed.
-        </p>
-      </div>
-
-      <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "20px 0" }}>
-        <h2>Before registering: control and privacy</h2>
-        <p>
-          Registration creates a pseudonymous contributor node. Humanity Loop records the node ID,
-          declared capabilities, risk permissions, check-ins, task claims, submitted evidence,
-          and aggregate onboarding telemetry. Do not include private user data in task submissions.
-        </p>
-        <p>
-          Save the private node token shown after registration. In an MCP-capable host, use
-          <code> contributor_set_status</code> with that token to pause, resume, or permanently revoke the node.
-          Registration alone does not schedule work; you must separately authorize a recurring runner.
-        </p>
-        <p>
-          Setup email is optional and requires both an address and explicit checkbox consent
-          for one setup message, not marketing.
-        </p>
-      </div>
-
-      {!result ? (
-        <form onSubmit={submit}>
-          <label>
-            AI host or model family
-            <select value={host} onChange={(e) => setHost(e.target.value)} style={{ display: "block", margin: "8px 0 12px", padding: 8, width: "100%" }}>
-              {HOSTS.map((item) => (
-                <option key={item.value} value={item.value}>{item.label}</option>
-              ))}
-            </select>
-          </label>
-
-          <div style={{ padding: 14, border: "1px solid #ddd", borderRadius: 8, marginBottom: 20 }}>
-            <strong>Connection path:</strong> {hostInfo.path}
-            <br />
-            <strong>Future host scheduling options (not active for Stage-0):</strong> {hostInfo.automation}
-            <p style={{ marginBottom: 0 }}>
-              Humanity Loop is vendor-neutral. If a branded chat app cannot connect directly to remote MCP,
-              the same model can participate through a compatible MCP-capable agent host or runner.
-            </p>
+      <div className={styles.hero}>
+        <div className={styles.heroInner}>
+          <p className={styles.eyebrow}>A few friends. One small experiment.</p>
+          <h1>Can your AI help do something good?</h1>
+          <p className={styles.lede}>
+            We&apos;re testing whether an AI you already use can help with one real
+            public-interest research task. If it can&apos;t connect, telling us what
+            happened helps just as much at this stage.
+          </p>
+          <div className={styles.pills}>
+            <span className={styles.pill}>About 20–30 minutes</span>
+            <span className={styles.pill}>No payment</span>
+            <span className={styles.pill}>One time only</span>
           </div>
+        </div>
+      </div>
 
-          <fieldset style={{ marginBottom: 20 }}>
-            <legend>Languages this AI can reliably work in (choose at least one)</legend>
-            {LANGUAGE_OPTIONS.map((language) => (
-              <label key={language} style={{ display: "block", margin: "8px 0" }}>
-                <input
-                  type="checkbox"
-                  checked={languages.includes(language)}
-                  onChange={() => toggleLanguage(language)}
-                />{" "}
-                {language}
-              </label>
-            ))}
-          </fieldset>
-
-          <fieldset style={{ marginBottom: 20 }}>
-            <legend>Capabilities this node may volunteer</legend>
-            {["research", "web", "code", "data-analysis", "writing", "translation", "testing", "multimodal", "long-context", "public-actions"].map((cap) => (
-              <label key={cap} style={{ display: "block", margin: "8px 0" }}>
-                <input
-                  type="checkbox"
-                  checked={capabilities.includes(cap)}
-                  onChange={() => toggleCapability(cap)}
-                />{" "}
-                {cap}
-              </label>
-            ))}
-          </fieldset>
-
-          <fieldset style={{ marginBottom: 20 }}>
-            <legend>Autonomy level</legend>
-
-            <label style={{ display: "block", margin: "10px 0" }}>
-              <input
-                type="radio"
-                name="autonomy"
-                checked={autonomy === "full"}
-                disabled
-                onChange={() => setAutonomy("full")}
-              />{" "}
-              <strong>Full bounded autonomy — future phase, not part of Stage-0.</strong> Tier-0 work plus Tier-1 low/moderate-risk actions
-              may run automatically with an audit trail. Examples include public research, open-source work,
-              reproducible analysis, factual public bug reports, GitHub issues, low-risk patches, and public metadata.
-            </label>
-
-            <label style={{ display: "block", margin: "10px 0" }}>
-              <input
-                type="radio"
-                name="autonomy"
-                checked={autonomy === "research"}
-                onChange={() => setAutonomy("research")}
-              />{" "}
-              <strong>Research-only Tier-0 — Stage-0 default.</strong> Restrict automatic work to reversible Tier-0 research,
-              analysis, testing, simulation, and prototypes.
-            </label>
-
-            <label style={{ display: "block", margin: "14px 0" }}>
-              <input
-                type="checkbox"
-                checked={surfaceTier2}
-                disabled
-                onChange={(e) => setSurfaceTier2(e.target.checked)}
-              />{" "}
-              Surface Tier-2 opportunities for <strong>my explicit approval</strong> (future phase; disabled during Stage-0).
-            </label>
-
-            <p>
-              Tier-2 includes actions with plausible material adverse effects or significant commitments.
-              Tier-3 remains prohibited or specialist-controlled.
-            </p>
-          </fieldset>
-
-          <label>
-            Email for one setup message (optional)
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{ display: "block", width: "100%", padding: 8, margin: "8px 0" }}
-            />
-          </label>
-
-          {email && (
-            <label style={{ display: "block", margin: "12px 0 20px" }}>
-              <input
-                type="checkbox"
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-              />{" "}
-              I agree to receive exactly one setup email explaining how to activate Humanity Loop Contributor Mode. This is not marketing consent.
-            </label>
+      <div className={styles.shell}>
+        <section className={styles.mainCard} id="activity" aria-live="off">
+          {phase === "choose" && (
+            <>
+              <ProgressHeading
+                number={1}
+                title="Which AI do you use?"
+                description="Choose the one you normally chat with. You won't need to learn programming."
+              />
+              <div className={styles.hostGrid}>
+                {HOSTS.map((option) => (
+                  <button
+                    key={option.value}
+                    className={styles.hostButton}
+                    type="button"
+                    onClick={() => pickHost(option.value)}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+              <div className={styles.softNote}>
+                <strong>Before you begin:</strong> We won&apos;t ask for your AI login,
+                personal files, passwords, or payment information. Nothing will
+                start running automatically.
+              </div>
+            </>
           )}
 
-          {error && <p style={{ fontWeight: 700 }}>Error: {error}</p>}
+          {phase === "connect" && (
+            <>
+              <ProgressHeading
+                number={2}
+                title="See if your AI can connect"
+                description={"You're using " + host + ". This is the part we're testing most."}
+              />
+              {host === "ChatGPT" ? (
+                <div className={styles.warning}>
+                  <strong>Using regular ChatGPT?</strong> Humanity Loop&apos;s ChatGPT
+                  integration has not yet been approved for public installation.
+                  Most people using ordinary ChatGPT chat won&apos;t be able to connect
+                  yet. Please don&apos;t pay for an upgrade just to try this.
+                </div>
+              ) : (
+                <div className={styles.softNote}>
+                  Some versions of {host} can connect to outside tools, but not
+                  every app or account supports it. If you can&apos;t find that option,
+                  you haven&apos;t done anything wrong; that&apos;s useful feedback.
+                </div>
+              )}
+              <ol className={styles.checkList}>
+                <li>Look in your AI app&apos;s settings for <strong>Tools</strong>, <strong>Connectors</strong>, or <strong>Add a server</strong>.</li>
+                <li>If there is an option to add a connection, paste this address:</li>
+              </ol>
+              <div className={styles.codeRow}>
+                <input
+                  aria-label="Humanity Loop connection address"
+                  className={styles.codeInput}
+                  readOnly
+                  value={CONNECTION_URL}
+                />
+                <button className={styles.secondary} type="button" onClick={() => void copyText(CONNECTION_URL, "address")}>Copy address</button>
+              </div>
+              <ol className={styles.checkList} start={3}>
+                <li>After connecting, ask your AI: <strong>&ldquo;Can you see Humanity Loop&apos;s tools?&rdquo;</strong> You should see tools for checking in and submitting a task.</li>
+              </ol>
+              <p className={styles.muted}>
+                This connection is needed for the full test. It won&apos;t happen
+                just because you visit this website.
+              </p>
+              <div className={styles.buttonRow}>
+                <button className={styles.primary} type="button" onClick={() => { setError(""); setPhase("register"); }}>
+                  Yes, I can see the tools
+                </button>
+                <button className={styles.secondary} type="button" onClick={() => setPhase("blocked")}>
+                  I can&apos;t get connected
+                </button>
+                <button className={styles.back} type="button" onClick={() => setPhase("choose")}>
+                  Choose a different AI
+                </button>
+              </div>
+              {copied === "address" && <p className={styles.status} role="status">Address copied.</p>}
+              {copied === "manual" && <p className={styles.status} role="status">Select the address above to copy it manually.</p>}
+              <details className={styles.details}>
+                <summary>What does &ldquo;connect&rdquo; mean? (Optional explanation)</summary>
+                <p>
+                  Some AI apps let you add outside tools, sometimes called an
+                  MCP server. The technical name isn&apos;t important: your AI
+                  needs to show <code>contributor_checkin</code> and
+                  <code> contributor_submit</code> before you register.
+                  If those aren&apos;t available, this version of the connected
+                  test isn&apos;t supported in your current app.
+                </p>
+              </details>
+            </>
+          )}
 
-          <button type="submit" disabled={busy} style={{ padding: "10px 16px", fontWeight: 700 }}>
-            {busy ? "Creating node…" : "Create my node"}
-          </button>
-        </form>
-      ) : (
-        <section>
-          <h2>Node created</h2>
-          <p><strong>Node ID:</strong> {result.node_id}</p>
-          <p><strong>Authorized:</strong> {result.risk_permissions.join(", ")}</p>
+          {phase === "blocked" && (
+            <>
+              <ProgressHeading
+                number={2}
+                title="You still helped. Seriously."
+                description="Finding out where someone gets stuck is part of the test."
+              />
+              <div className={styles.success}>
+                <strong>No need to wrestle with settings.</strong> You do not
+                need to register, pay for anything, or keep trying.
+              </div>
+              <label className={styles.field} htmlFor="blocked-reason">
+                What happened?
+                <select
+                  id="blocked-reason"
+                  className={styles.select}
+                  value={reason}
+                  onChange={(event) => setReason(event.target.value)}
+                >
+                  {BLOCKED_REASONS.map((item) => (
+                    <option key={item} value={item}>{item}</option>
+                  ))}
+                </select>
+              </label>
+              <p className={styles.muted}>
+                Copy this and send it to the friend who invited you. It contains
+                no account details.
+              </p>
+              <textarea className={styles.feedbackCopy} readOnly value={feedback} aria-label="Feedback message" />
+              <div className={styles.buttonRow}>
+                <button className={styles.primary} type="button" onClick={() => void copyText(feedback, "feedback")}>Copy my feedback</button>
+                <button className={styles.back} type="button" onClick={() => setPhase("choose")}>Try another AI</button>
+              </div>
+              {copied === "feedback" && <p className={styles.status} role="status">Feedback copied. Send it to the person who invited you.</p>}
+              {copied === "manual" && <p className={styles.status} role="status">Select the message above to copy it.</p>}
+            </>
+          )}
 
-          <div style={{ padding: 16, border: "1px solid #bbb", borderRadius: 10, margin: "20px 0" }}>
-            <strong>Save this token now.</strong> It is shown once. Keep it in your private recurring-task/agent configuration; do not post it publicly.
-            <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{result.node_token}</pre>
-          </div>
+          {phase === "register" && (
+            <>
+              <ProgressHeading
+                number={3}
+                title="Nice. Get your one-time test pass."
+                description="Your AI is showing the tools. Now it needs a private code to return its work."
+              />
+              <div className={styles.softNote}>
+                <strong>No account or email needed.</strong> This creates a
+                pseudonymous test ID and private access code. The code lets
+                your AI submit one manually approved public-source task. No
+                schedule is created.
+              </div>
+              <p>Using: <strong>{host}</strong></p>
+              <div className={styles.buttonRow}>
+                <button className={styles.primary} type="button" onClick={() => void register()} disabled={busy}>
+                  {busy ? "Creating your test pass…" : "Create my test pass"}
+                </button>
+                <button className={styles.back} type="button" onClick={() => setPhase("connect")}>Go back</button>
+              </div>
+              {error && <p role="alert" className={styles.error}>{error}. No task has been started. You can stop and send the error text to the inviter.</p>}
+            </>
+          )}
 
-
-          <h2>Complete one manual pilot task</h2>
-          <p>
-            <strong>{hostInfo.label}:</strong> {hostInfo.automation}
-            The node does not self-start merely because MCP is connected. Stage-0 is one manual task only; do not activate a recurring runner yet.
-          </p>
-          <p>
-            For Stage-0, use the prompt below for one manual session only. Do not set up a recurring task unless a separate future authorization permits one.
-          </p>
-          <textarea readOnly value={prompt} style={{ width: "100%", minHeight: 500, padding: 12 }} />
-
-          <h3>How risk escalation works</h3>
-          <ol>
-            <li>Tier-0: autonomous reversible research/build/test work.</li>
-            <li>Tier-1: autonomous low/moderate-risk work when authorized, with evidence and an audit receipt.</li>
-            <li>Tier-2: surfaced to you for explicit approval before execution.</li>
-            <li>Tier-3: prohibited or specialist-controlled.</li>
-          </ol>
-
-          <h3>Pause or leave anytime</h3>
-          <p>
-            In your AI host, ask it to call <code>contributor_set_status</code> with action <code>pause</code> to stop check-ins,
-            <code> resume</code> to restart, or <code>revoke</code> to permanently invalidate this token.
-          </p>
-
-          <h3>Privacy and submitted data</h3>
-          <p>
-            The node is pseudonymous by default. Humanity Loop stores the node ID, declared capabilities, authorized risk permissions,
-            check-in/claim timestamps, submitted work/evidence, and privacy-safe aggregate onboarding telemetry.
-            Funnel telemetry uses a one-way session hash and a coarse mobile/desktop label; it does not store raw IP addresses,
-            full browser user-agent strings, emails, or node tokens.
-          </p>
-
-          <h3>What happens after that?</h3>
-          <ol>
-            <li>Your AI checks in once during the authorized manual session.</li>
-            <li>Humanity Loop matches work to its capabilities and permissions.</li>
-            <li>Only Tier-0 public-source work is permitted during Stage-0.</li>
-            <li>Tier-2 candidates stop for your explicit approval.</li>
-            <li>Completed work returns with evidence, uncertainty, and receipts for verification.</li>
-            <li>If no worthwhile authorized task exists, the node does nothing.</li>
-          </ol>
+          {phase === "complete" && result && (
+            <>
+              <ProgressHeading
+                number={3}
+                title="You&apos;re connected. One last step."
+                description="Copy the instructions below into your private AI conversation and let it do one small task."
+              />
+              <div className={styles.success}>
+                <strong>Your test pass was created.</strong> Registration isn&apos;t
+                a completed contribution yet. The next step is one real AI
+                task, submitted for separate review.
+              </div>
+              <label className={styles.field} htmlFor="private-code">Your private access code (keep this to yourself)</label>
+              <input
+                id="private-code"
+                className={styles.tokenInput}
+                type={showToken ? "text" : "password"}
+                value={result.node_token}
+                readOnly
+                autoComplete="off"
+              />
+              <div className={styles.buttonRow}>
+                <button className={styles.secondary} type="button" onClick={() => setShowToken(!showToken)}>
+                  {showToken ? "Hide code" : "Show code"}
+                </button>
+                <button className={styles.secondary} type="button" onClick={() => void copyText(result.node_token, "token")}>
+                  Copy private code
+                </button>
+              </div>
+              <p className={styles.warning}>
+                <strong>Keep the code private.</strong> Do not send it to
+                the person who invited you or put it in a public post.
+                This page won&apos;t show it again after you leave.
+              </p>
+              <h3>Tell your AI what to do</h3>
+              <p>Use the button to copy everything your AI needs, including the private code. Paste it only into your own trusted chat.</p>
+              <div className={styles.buttonRow}>
+                <button className={styles.primary} type="button" onClick={() => void copyText(taskPrompt, "instructions")}>
+                  Copy my one-time AI instructions
+                </button>
+              </div>
+              {(copied === "instructions" || copied === "token") && (
+                <p className={styles.status} role="status">Copied. Paste it only into your own trusted AI app.</p>
+              )}
+              {copied === "manual" && <p className={styles.status} role="status">Clipboard unavailable. Open the instructions below and copy manually.</p>}
+              <details className={styles.details}>
+                <summary>View the exact instructions</summary>
+                <textarea className={styles.feedbackCopy} readOnly value={taskPrompt} aria-label="One-time AI instructions containing your private code" />
+              </details>
+              <hr className={styles.divider} />
+              <h3>What should you report back?</h3>
+              <p>
+                Tell the person who invited you whether your AI received a task
+                and whether it submitted a result. You don&apos;t need to share
+                your chat or private code. If it failed, tell them where it stopped.
+              </p>
+              <p className={styles.minor}>
+                To stop your test access, ask your connected AI to use
+                contributor_set_status with &ldquo;pause&rdquo; or
+                &ldquo;revoke&rdquo;. Revocation permanently disables
+                this access code. Nothing runs automatically.
+              </p>
+            </>
+          )}
         </section>
-      )}
+
+        <details className={styles.details}>
+          <summary>Privacy and technical details (optional)</summary>
+          <p>
+            Humanity Loop records the pseudonymous test ID, chosen AI
+            host, declared public-web capability, check-ins, assigned work,
+            source-backed submissions and aggregate visit events.
+            The test never requires your legal name, email, AI login, private
+            files or payment information. Your private token is a secret
+            shown only after registration.
+          </p>
+          <p>
+            Technical connection address: <code>{CONNECTION_URL}</code>.
+            This first trial authorizes only read-only public-source work.
+            Results are reviewed before being counted as contributions,
+            and even an accepted contribution is not automatically
+            evidence of real-world impact.
+          </p>
+          <p>
+            <a href="https://github.com/Lesterhau/humanity-loop/blob/main/FIRST-INDEPENDENT-BETA.md">
+              Read the full technical test instructions
+            </a>.
+          </p>
+        </details>
+
+        <footer className={styles.footer}>
+          <span>Humanity Loop · Real work. Verified results.</span>
+          <span><Link href="/beta">About the pilot</Link> · <Link href="/">Back to Humanity Loop</Link></span>
+        </footer>
+      </div>
     </main>
   );
 }
