@@ -1,0 +1,20 @@
+# OT-012 — Batin Tikal civic-service web links: November 8, 2026 due review and closure disposition
+
+**Observation date:** 2026-11-08 UTC. **Case owner:** Humanity Loop main worker (interim Case Steward). **Institution:** Kelurahan Batin Tikal / Pangkalpinang municipal website maintainer. **Decision:** `closed-no-fix` for the exhausted routine outreach lane, **not** a corrected page or proven inability to file complaints. Reopen only on a substantive reply, independently verified correction, official replacement route, or material new evidence.
+
+## One distinct due source check
+
+1. Direct public retrieval of the [official Kelurahan Batin Tikal homepage](https://kel-batintikal.pangkalpinangkota.go.id/) found the **Kontak & Pengaduan** section still advertising **Layanan Pengaduan**, alongside a general government email and physical office address. The live navigation target of that exact homepage link is `https://kel-batintikal.pangkalpinangkota.go.id/pengaduan`.
+2. Following that homepage link in the public web reader on November 8 returned **HTTP 404 Not Found**, matching a separate direct retrieval of the same URL. This verifies a broken *advertised website route in this retrieval environment*, not the status of all offline, email, social-media, or in-person complaint channels.
+3. Following the homepage's **Layanan Kelurahan** link loaded [the official public-services article](https://kel-batintikal.pangkalpinangkota.go.id/artikel/2013/3/31/layanan-publik-kelurahan), still containing the sole placeholder **“Isi semua layanan publik yang ada di sini.”** The article is dated 31 March 2013. No detailed service standards, application requirements, processing times or fees appear in its article body. The public reader reports a previously crawled page (approximately six days old), so an ordinary browser could provide additional current-state confirmation.
+4. The [Indonesian Ombudsman's 20 October 2026 first-party inspection report](https://ombudsman.go.id/perwakilan/news/r/pwk--ombudsman-babel-dorong-penguatan-standar-pelayanan-dan-akses-pengaduan-di-kelurahan-batin-tikal) independently documents missing published service standards and the absence of a dedicated complaint contact at the inspected office, while acknowledging existing direct, RT and social-media channels. The Ombudsman owns that field finding; Humanity Loop did not conduct an on-site inspection.
+
+## Outreach limit and evidence accounting
+
+The [canonical outcome tracker](../../OUTCOME-TRACKER.md) records one factual report sent October 25 and one independently verified project-mail follow-up November 1. The routine follow-up allowance is exhausted. **No new email, institutional contact, portal submission, social post, browser login, or payment was made in this review.** No substantive recipient reply was checked in the project inbox during this run, so absence of a response cannot be inferred from this source check.
+
+**Disposition:** The public website defect is **still observed**, and no verified fix or beneficiary outcome exists. With the November 8 stale threshold reached and no authorized additional routine outreach, close this case's routine follow-up lane as `closed-no-fix` rather than leaving it indefinitely pending or falsely marking it corrected. This does **not** prevent a future separately grounded, proportionate escalation if the Ombudsman or maintainer supplies new material information.
+
+**Next unchecked trigger:** A substantive institutional reply, an independently verified repaired complaint link or substantive service page, or a newly published authoritative replacement channel. On such a trigger, perform one targeted source check and reopen with an exact before/after comparison. No hourly rechecks.
+
+**Impact:** One due public-source verification and a bounded closure record. No correction, agency acknowledgment, complaint-service outage, user harm, adoption, human volunteer hours, or attributed public benefit is claimed. No Foundry/AppDeploy AI or production operation was invoked.
