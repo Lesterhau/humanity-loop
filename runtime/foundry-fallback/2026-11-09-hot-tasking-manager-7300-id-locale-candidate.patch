@@ -1,0 +1,88 @@
+diff --git a/frontend/src/utils/idEditorContext.js b/frontend/src/utils/idEditorContext.js
+--- a/frontend/src/utils/idEditorContext.js
++++ b/frontend/src/utils/idEditorContext.js
+@@ -1,3 +1,15 @@
++// Tasking Manager stores some locales as xx_YY (e.g. nl_NL), but iD's
++// localizer passes its preferred locale to Intl.Locale (BCP 47: xx-YY).
++// Normalize only at the embedded iD boundary, not the TM/Transifex locale.
++export function normalizeIdEditorLocale(locale) {
++  if (typeof locale !== 'string' || !locale.trim()) return 'en';
++  try {
++    return Intl.getCanonicalLocales(locale.trim().replace(/_/g, '-'))[0] || 'en';
++  } catch {
++    return 'en';
++  }
++}
++
+ const backgroundsWithFilteredImagery = new WeakSet();
+ const unavailableImagerySourceIds = new Set(['OpenAerialMapMosaic']);
+ 
+diff --git a/frontend/src/components/editor.js b/frontend/src/components/editor.js
+--- a/frontend/src/components/editor.js
++++ b/frontend/src/components/editor.js
+@@ -12,5 +12,6 @@ import messages from './messages';
+ import {
+   captureIdEditorPackage,
++  normalizeIdEditorLocale,
+   removeUnavailableImagerySources,
+   resolveIdEditorContext,
+   setBackgroundHashParam,
+@@ -96,6 +97,6 @@ export default function Editor({ setDisable, comment, presets, imagery, gpxUrl, extraIdParams }) {
+       iDContext
+         .embed(true)
+         .assetPath('/static/id/')
+-        .locale(locale)
++        .locale(normalizeIdEditorLocale(locale))
+         .setsDocumentTitle(false)
+         .containerNode(document.getElementById('id-container'));
+diff --git a/frontend/src/components/sandboxEditor.js b/frontend/src/components/sandboxEditor.js
+--- a/frontend/src/components/sandboxEditor.js
++++ b/frontend/src/components/sandboxEditor.js
+@@ -18,5 +18,6 @@ import { useOsmFeaturesQuery } from '../api/projects';
+ import {
+   captureIdEditorPackage,
++  normalizeIdEditorLocale,
+   removeUnavailableImagerySources,
+   resolveIdEditorContext,
+ } from '../utils/idEditorContext';
+@@ -100,6 +101,6 @@ export default function SandboxEditor({
+           .embed(true)
+           .license(license)
+           .assetPath('/static/id/')
+-          .locale(locale)
++          .locale(normalizeIdEditorLocale(locale))
+           .setsDocumentTitle(false)
+           .containerNode(document.getElementById('id-container'));
+diff --git a/frontend/src/utils/tests/idEditorLocale.test.js b/frontend/src/utils/tests/idEditorLocale.test.js
+new file mode 100644
+--- /dev/null
++++ b/frontend/src/utils/tests/idEditorLocale.test.js
+@@ -0,0 +1,28 @@
++import { normalizeIdEditorLocale } from '../idEditorContext';
++
++describe('normalizeIdEditorLocale', () => {
++  test('converts HOT Dutch locale to BCP47 for iD', () => {
++    expect(normalizeIdEditorLocale('nl_NL')).toBe('nl-NL');
++    expect(new Intl.Locale(normalizeIdEditorLocale('nl_NL')).language).toBe('nl');
++  });
++
++  test('shows why the original identifier fails in iD 2.41.2', () => {
++    expect(() => new Intl.Locale('nl_NL')).toThrow(RangeError);
++  });
++
++  test('normalizes other underscore variants', () => {
++    expect(normalizeIdEditorLocale('zh_TW')).toBe('zh-TW');
++    expect(normalizeIdEditorLocale('fa_IR')).toBe('fa-IR');
++  });
++
++  test('preserves existing BCP47 identifiers and base locales', () => {
++    expect(normalizeIdEditorLocale('pt-BR')).toBe('pt-BR');
++    expect(normalizeIdEditorLocale('cs')).toBe('cs');
++  });
++
++  test('falls back to English on missing or malformed values', () => {
++    for (const value of [undefined, null, '', ' ', 'invalid_locale_!']) {
++      expect(normalizeIdEditorLocale(value)).toBe('en');
++    }
++  });
++});
