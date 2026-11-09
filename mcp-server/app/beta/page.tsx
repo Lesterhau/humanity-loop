@@ -78,6 +78,7 @@ export default function BetaPage() {
               Learning which apps don&apos;t connect is part of why we&apos;re testing.
             </p>
           </div>
+          <p className={styles.muted}>Curious how the beta is going? <Link href="/status">See the actual live results.</Link></p>
           <div className={styles.ctaGroup}>
             <Link href="/join" className={styles.primary}>Start the quick check</Link>
             <Link href="/" className={styles.secondary}>Learn about the project</Link>
