@@ -936,6 +936,36 @@
       "europePmcUrl": "https://europepmc.org/article/MED/25784135",
       "status": "unreviewed",
       "detectedAt": "2026-11-08T10:30:24.714863Z"
+    },
+    {
+      "retractedDoi": "10.1038/s41598-024-74430-4",
+      "noticeDoi": "10.1038/s41598-026-78867-7",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "41989535",
+      "citingTitle": "Efficacy and Safety of Topical Anticholinergics in the Treatment of Primary Axillary Hyperhidrosis: A Systematic Review and Meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41989535",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-09T11:43:31.471513Z"
+    },
+    {
+      "retractedDoi": "10.1186/s12893-025-02893-x",
+      "noticeDoi": "10.1186/s12893-026-04328-7",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "41572283",
+      "citingTitle": "Omental wrapping of the pancreaticojejunostomy during pancreatoduodenectomy to prevent clinically relevant POPF: a GRADE-assessed systematic review and meta-analysis featuring geographic subgroup analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41572283",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-09T11:43:31.471513Z"
     }
   ]
 }

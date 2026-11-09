@@ -1,88 +1,79 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-08T10:30:24.714863Z",
-  "status": "limited",
+  "runAt": "2026-11-09T11:43:31.471513Z",
+  "status": "partial",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 7,
-  "citationsExamined": 86,
+  "newRetractionsChecked": 9,
+  "citationsExamined": 112,
   "candidateFindingsCount": 2,
   "candidateFindings": [
     {
-      "retractedDoi": "10.3324/haematol.2010.022210",
-      "noticeDoi": "10.3324/haematol.2009.022210",
+      "retractedDoi": "10.1038/s41598-024-74430-4",
+      "noticeDoi": "10.1038/s41598-026-78867-7",
       "crossrefUpdateSelfReferential": false,
       "noticeStatus": "unverified",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
-      "citingId": "25550914",
-      "citingTitle": "Prognostic value and efficacy evaluation of novel drugs for cytogenetic aberrations in multiple myeloma: a meta-analysis.",
+      "citingId": "41989535",
+      "citingTitle": "Efficacy and Safety of Topical Anticholinergics in the Treatment of Primary Axillary Hyperhidrosis: A Systematic Review and Meta-analysis.",
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/25550914",
+      "europePmcUrl": "https://europepmc.org/article/MED/41989535",
       "status": "unreviewed"
     },
     {
-      "retractedDoi": "10.3324/haematol.2010.021923",
-      "noticeDoi": "10.3324/haematol.2009.021923",
+      "retractedDoi": "10.1186/s12893-025-02893-x",
+      "noticeDoi": "10.1186/s12893-026-04328-7",
       "crossrefUpdateSelfReferential": false,
       "noticeStatus": "unverified",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
-      "citingId": "25784135",
-      "citingTitle": "Natural anticoagulants deficiency and the risk of venous thromboembolism: a meta-analysis of observational studies.",
+      "citingId": "41572283",
+      "citingTitle": "Omental wrapping of the pancreaticojejunostomy during pancreatoduodenectomy to prevent clinically relevant POPF: a GRADE-assessed systematic review and meta-analysis featuring geographic subgroup analysis.",
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/25784135",
+      "europePmcUrl": "https://europepmc.org/article/MED/41572283",
       "status": "unreviewed"
     }
   ],
-  "failuresCount": 0,
-  "failures": [],
-  "coverageGapsCount": 8,
+  "failuresCount": 3,
+  "failures": [
+    {
+      "stage": "europepmc_http",
+      "doi": "10.4103/ijp.ijp_1228_26",
+      "reason": "HTTP 500: Europe PMC metadata lookup unavailable"
+    },
+    {
+      "stage": "europepmc_http",
+      "doi": "10.1111/joa.70126",
+      "reason": "HTTP 500: Europe PMC metadata lookup unavailable"
+    },
+    {
+      "stage": "europepmc_http",
+      "doi": "10.1186/s12934-024-02471-5",
+      "reason": "HTTP 500: Europe PMC metadata lookup unavailable"
+    }
+  ],
+  "coverageGapsCount": 3,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1159/000551831",
+      "doi": "10.1002/ejlt.70093",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1007/s12517-024-11897-5",
+      "doi": "10.1017/jsl.2025.10155",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1007/s13132-023-01358-x",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.wse.2026.06.005",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1007/s10665-025-10501-3",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.oceaneng.2025.123801",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2021.e00587",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2022.e01615",
+      "doi": "10.1007/s00170-025-16803-1",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
