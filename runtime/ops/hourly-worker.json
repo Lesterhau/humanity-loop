@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-09T20:23:19Z",
+  "runAt": "2026-11-09T23:34:43Z",
   "status": "worked",
-  "summary": "Source-verified Mississippi TANF SSI resource attribution subfix for existing PolicyEngine-US #10516; published and read back review-only patch, exact-source isolated regression and limitations. 11 resource cases plus membership-mask check passed, no full model/CI or upstream submission. No Foundry/AppDeploy AI spend or production mutation.",
-  "lastVerifiedAt": "2026-11-09T20:23:19Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6750521613"
+  "summary": "Independently compared Montana DPHHS SNAP six-person standard gross threshold ($1,806 printed) with USDA FY2027 $4,806 and verified mislabeled fiscal year. Public-safe source review and unsent editorial draft published/read back; ordinary-browser current-origin proof and any agency contact remain pending. No Foundry/AppDeploy AI spending or production mutation.",
+  "lastVerifiedAt": "2026-11-09T23:34:43Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6754417301"
 }
