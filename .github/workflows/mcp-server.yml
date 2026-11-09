@@ -46,6 +46,8 @@ jobs:
           done
           cat /tmp/humanity-loop-mcp.log
           exit 1
+      - name: Verify exact OpenAI domain challenge response and plugin test metadata
+        run: node scripts/test-domain-challenge.mjs
       - name: Validate with official MCP TypeScript client
         run: node scripts/test-mcp-sdk-client.mjs
       - name: Validate with independent raw Streamable HTTP client
