@@ -1,0 +1,68 @@
+--- a/policyengine_us/variables/gov/states/ms/dhs/tanf/eligibility/ms_tanf_resources_eligible.py
++++ b/policyengine_us/variables/gov/states/ms/dhs/tanf/eligibility/ms_tanf_resources_eligible.py
+@@ -1,19 +1,38 @@
+ from policyengine_us.model_api import *
+ 
+ 
+ class ms_tanf_resources_eligible(Variable):
+     value_type = bool
+     entity = SPMUnit
+     label = "Mississippi TANF resources eligibility"
+     definition_period = MONTH
+     defined_for = StateCode.MS
+     reference = (
+         "https://www.mdhs.ms.gov/wp-content/uploads/2018/02/MDHS_TANF-Eligibility-Flyer.pdf",
+         "https://www.law.cornell.edu/regulations/mississippi/Miss-Code-tit-18-pt-19",
+         "https://www.mdhs.ms.gov/help/tanf/",
++        "https://www.sos.ms.gov/adminsearch/ACCode/00000330c.pdf#page=458",
+     )
+ 
+     def formula(spm_unit, period, parameters):
+         p = parameters(period).gov.states.ms.dhs.tanf.resources
+         household_assets = spm_unit("spm_unit_cash_assets", period.this_year)
+-        return household_assets <= p.limit
++        person = spm_unit.members
++        is_member = person("ms_tanf_is_assistance_unit_member", period)
++
++        # spm_unit_cash_assets is the sum of these person-level components.
++        # When it is independently overridden, ownership cannot be inferred;
++        # retain the full aggregate rather than silently exempting assets.
++        person_assets = (
++            person("bank_account_assets", period.this_year)
++            + person("stock_assets", period.this_year)
++            + person("bond_assets", period.this_year)
++        )
++        all_person_assets = spm_unit.sum(person_assets)
++        included_assets = spm_unit.sum(person_assets * is_member)
++        countable_assets = where(
++            abs(all_person_assets - household_assets) <= 0.01,
++            included_assets,
++            household_assets,
++        )
++        return countable_assets <= p.limit
+--- /dev/null
++++ b/policyengine_us/variables/gov/states/ms/dhs/tanf/ms_tanf_is_assistance_unit_member.py
+@@ -0,0 +1,23 @@
++from policyengine_us.model_api import *
++
++
++class ms_tanf_is_assistance_unit_member(Variable):
++    value_type = bool
++    entity = Person
++    label = "Mississippi TANF assistance unit member"
++    definition_period = MONTH
++    default_value = True
++    defined_for = StateCode.MS
++    reference = (
++        "https://www.sos.ms.gov/adminsearch/ACCode/00000330c.pdf#page=192",
++        "https://www.sos.ms.gov/adminsearch/ACCode/00000330c.pdf#page=458",
++    )
++
++    def formula(person, period, parameters):
++        # SSI recipients are excluded even if their modeled payment is zero
++        # but receipt is reported. Other special exclusion codes are not yet
++        # represented by this variable; see the manual and issue #10516.
++        is_ssi_recipient = (person("ssi", period) > 0) | (
++            person("receives_ssi", period) > 0
++        )
++        return ~is_ssi_recipient
