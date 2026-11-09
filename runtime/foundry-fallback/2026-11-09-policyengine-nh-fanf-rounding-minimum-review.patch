@@ -1,0 +1,372 @@
+# REVIEW-ONLY candidate for PolicyEngine/policyengine-us issue #10517.
+# Upstream source verified on 2026-11-09; not submitted upstream.
+diff --git a/policyengine_us/variables/gov/states/nh/dhhs/fanf/nh_fanf.py b/policyengine_us/variables/gov/states/nh/dhhs/fanf/nh_fanf.py
+--- a/policyengine_us/variables/gov/states/nh/dhhs/fanf/nh_fanf.py
++++ b/policyengine_us/variables/gov/states/nh/dhhs/fanf/nh_fanf.py
+@@ -17,4 +17,8 @@
+         payment_standard = spm_unit("nh_fanf_payment_standard", period)
+         countable_income = spm_unit("nh_fanf_countable_income", period)
+         benefit = max_(payment_standard - countable_income, 0)
+-        return min_(benefit, payment_standard)
++        capped_benefit = min_(benefit, payment_standard)
++        # He-W 670.03(b)(3)-(5): round the grant down, then suppress grants below $10.
++        rounded_grant = np.floor(np.round(capped_benefit, 2))
++        minimum_grant = parameters(period).gov.states.nh.dhhs.fanf.minimum_grant
++        return where(rounded_grant >= minimum_grant, rounded_grant, 0)
+diff --git a/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml b/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml
+new file mode 100644
+--- /dev/null
++++ b/policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml
+@@ -0,0 +1,10 @@
++description: New Hampshire does not issue a monthly FANF grant below this amount before adjustments.
++values:
++  2021-12-17: 10
++metadata:
++  unit: currency-USD
++  period: month
++  label: New Hampshire FANF minimum monthly grant
++  reference:
++    - title: N.H. Admin. Rules He-W 670.03(b)(4)-(5)
++      href: https://gc.nh.gov/rules/state_agencies/he-w600.html
+diff --git a/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/nh_fanf.yaml b/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/nh_fanf.yaml
+--- a/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/nh_fanf.yaml
++++ b/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/nh_fanf.yaml
+@@ -56,3 +56,103 @@
+   output:
+     # max(753 - 800, 0) = 0
+     nh_fanf: 0
++
++- name: Case 6, fractional grant rounded down (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 750
++  output:
++    nh_fanf: 582
++
++- name: Case 7, below ten suppressed (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 1327
++  output:
++    nh_fanf: 0
++
++- name: Case 8, exact ten retained (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 1322.5
++  output:
++    nh_fanf: 10
++
++- name: Case 9, nine ninety nine suppressed (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 1322.51
++  output:
++    nh_fanf: 0
++
++- name: Case 10, ten and one cent floors to ten (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 1322.49
++  output:
++    nh_fanf: 10
++
++- name: Case 11, zero grant (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 1332.5
++  output:
++    nh_fanf: 0
++
++- name: Case 12, income exceeds standard (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 1332.51
++  output:
++    nh_fanf: 0
++
++- name: Case 13, maximum fractional standard rounds down (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1332.5
++    nh_fanf_countable_income: 0
++  output:
++    nh_fanf: 1332
++
++- name: Case 14, small positive amount suppressed (He-W 670.03(b)).
++  period: 2025-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 1000
++    nh_fanf_countable_income: 999.99
++  output:
++    nh_fanf: 0
++
++- name: Case 15, whole dollar partial grant unchanged (He-W 670.03(b)).
++  period: 2024-01
++  input:
++    state_code: NH
++    nh_fanf_eligible: true
++    nh_fanf_payment_standard: 753
++    nh_fanf_countable_income: 400
++  output:
++    nh_fanf: 353
+diff --git a/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/integration.yaml b/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/integration.yaml
+--- a/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/integration.yaml
++++ b/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/integration.yaml
+@@ -460,117 +460,117 @@
+     # He-W 654.13(e): 1,500 * 0.50 = 750
+     nh_fanf_countable_earned_income: 750
+     nh_fanf_income_eligible: true
+-    # 1,332.50 - 750 = 582.50
+-    nh_fanf: 582.50
+-
+-- name: Case 17, recipient with countable earnings above the payment standard is ineligible.
+-  period: 2025-01
+-  absolute_error_margin: 0.01
+-  input:
+-    people:
+-      person1:
+-        age: 30
+-        employment_income_before_lsr: 32_400  # $2,700/month
+-      person2:
+-        age: 5
+-      person3:
+-        age: 2
+-    spm_units:
+-      spm_unit:
+-        members: [person1, person2, person3]
+-        is_tanf_enrolled: true
+-    households:
+-      household:
+-        members: [person1, person2, person3]
+-        state_code: NH
+-  output:
+-    nh_fanf_payment_standard: 1_332.50
+-    # 2,700 * 0.50 = 1,350 > 1,332.50
+-    nh_fanf_countable_earned_income_for_eligibility: 1_350
+-    nh_fanf_countable_earned_income: 1_350
+-    nh_fanf_income_eligible: false
+-    nh_fanf: 0
+-
+-- name: Case 18, applicant fails the 20 percent test although the 50 percent income is below the payment standard.
+-  period: 2024-01
+-  input:
+-    people:
+-      person1:
+-        age: 30
+-        employment_income_before_lsr: 18_000  # $1,500/month
+-      person2:
+-        age: 5
+-    spm_units:
+-      spm_unit:
+-        members: [person1, person2]
+-        spm_unit_cash_assets: 500
+-        is_tanf_enrolled: false
+-    households:
+-      household:
+-        members: [person1, person2]
+-        state_code: NH
+-  output:
+-    nh_fanf_payment_standard: 1_022
+-    # He-W 654.13(c): 1,500 * 0.80 = 1,200 > 1,022
+-    nh_fanf_countable_earned_income_for_eligibility: 1_200
+-    nh_fanf_income_eligible: false
+-    nh_fanf_eligible: false
+-    # 1,500 * 0.50 = 750 is not used, because the applicant is ineligible
+-    nh_fanf_countable_earned_income: 750
+-    nh_fanf: 0
+-
+-- name: Case 19, applicant exactly at the 20 percent test limit is ineligible.
+-  period: 2024-01
+-  input:
+-    people:
+-      person1:
+-        age: 30
+-        employment_income_before_lsr: 15_330  # $1,277.50/month
+-      person2:
+-        age: 5
+-    spm_units:
+-      spm_unit:
+-        members: [person1, person2]
+-        spm_unit_cash_assets: 500
+-        is_tanf_enrolled: false
+-    households:
+-      household:
+-        members: [person1, person2]
+-        state_code: NH
+-  output:
+-    nh_fanf_payment_standard: 1_022
+-    # Eligibility: 1,277.50 * 0.80 = 1,022, not less than 1,022
+-    # (RSA 167:79 III(e); FAM 611.01)
+-    nh_fanf_countable_earned_income_for_eligibility: 1_022
+-    nh_fanf_income_eligible: false
+-    nh_fanf: 0
+-
+-- name: Case 20, applicant just below the 20 percent test limit gets the 50 percent benefit.
+-  period: 2024-01
+-  absolute_error_margin: 0.01
+-  input:
+-    people:
+-      person1:
+-        age: 30
+-        employment_income_before_lsr: 15_300  # $1,275/month
+-      person2:
+-        age: 5
+-    spm_units:
+-      spm_unit:
+-        members: [person1, person2]
+-        spm_unit_cash_assets: 500
+-        is_tanf_enrolled: false
+-    households:
+-      household:
+-        members: [person1, person2]
+-        state_code: NH
+-  output:
+-    nh_fanf_payment_standard: 1_022
+-    # Eligibility: 1,275 * 0.80 = 1,020 < 1,022
+-    nh_fanf_countable_earned_income_for_eligibility: 1_020
+-    nh_fanf_income_eligible: true
+-    nh_fanf_eligible: true
+-    # Benefit: 1,275 * 0.50 = 637.50
+-    nh_fanf_countable_earned_income: 637.50
+-    # 1,022 - 637.50 = 384.50
+-    nh_fanf: 384.50
++    # 1,332.50 - 750 = 582.50, rounded down to 582 under He-W 670.03(b)(3)
++    nh_fanf: 582
++
++- name: Case 17, recipient with countable earnings above the payment standard is ineligible.
++  period: 2025-01
++  absolute_error_margin: 0.01
++  input:
++    people:
++      person1:
++        age: 30
++        employment_income_before_lsr: 32_400  # $2,700/month
++      person2:
++        age: 5
++      person3:
++        age: 2
++    spm_units:
++      spm_unit:
++        members: [person1, person2, person3]
++        is_tanf_enrolled: true
++    households:
++      household:
++        members: [person1, person2, person3]
++        state_code: NH
++  output:
++    nh_fanf_payment_standard: 1_332.50
++    # 2,700 * 0.50 = 1,350 > 1,332.50
++    nh_fanf_countable_earned_income_for_eligibility: 1_350
++    nh_fanf_countable_earned_income: 1_350
++    nh_fanf_income_eligible: false
++    nh_fanf: 0
++
++- name: Case 18, applicant fails the 20 percent test although the 50 percent income is below the payment standard.
++  period: 2024-01
++  input:
++    people:
++      person1:
++        age: 30
++        employment_income_before_lsr: 18_000  # $1,500/month
++      person2:
++        age: 5
++    spm_units:
++      spm_unit:
++        members: [person1, person2]
++        spm_unit_cash_assets: 500
++        is_tanf_enrolled: false
++    households:
++      household:
++        members: [person1, person2]
++        state_code: NH
++  output:
++    nh_fanf_payment_standard: 1_022
++    # He-W 654.13(c): 1,500 * 0.80 = 1,200 > 1,022
++    nh_fanf_countable_earned_income_for_eligibility: 1_200
++    nh_fanf_income_eligible: false
++    nh_fanf_eligible: false
++    # 1,500 * 0.50 = 750 is not used, because the applicant is ineligible
++    nh_fanf_countable_earned_income: 750
++    nh_fanf: 0
++
++- name: Case 19, applicant exactly at the 20 percent test limit is ineligible.
++  period: 2024-01
++  input:
++    people:
++      person1:
++        age: 30
++        employment_income_before_lsr: 15_330  # $1,277.50/month
++      person2:
++        age: 5
++    spm_units:
++      spm_unit:
++        members: [person1, person2]
++        spm_unit_cash_assets: 500
++        is_tanf_enrolled: false
++    households:
++      household:
++        members: [person1, person2]
++        state_code: NH
++  output:
++    nh_fanf_payment_standard: 1_022
++    # Eligibility: 1,277.50 * 0.80 = 1,022, not less than 1,022
++    # (RSA 167:79 III(e); FAM 611.01)
++    nh_fanf_countable_earned_income_for_eligibility: 1_022
++    nh_fanf_income_eligible: false
++    nh_fanf: 0
++
++- name: Case 20, applicant just below the 20 percent test limit gets the 50 percent benefit.
++  period: 2024-01
++  absolute_error_margin: 0.01
++  input:
++    people:
++      person1:
++        age: 30
++        employment_income_before_lsr: 15_300  # $1,275/month
++      person2:
++        age: 5
++    spm_units:
++      spm_unit:
++        members: [person1, person2]
++        spm_unit_cash_assets: 500
++        is_tanf_enrolled: false
++    households:
++      household:
++        members: [person1, person2]
++        state_code: NH
++  output:
++    nh_fanf_payment_standard: 1_022
++    # Eligibility: 1,275 * 0.80 = 1,020 < 1,022
++    nh_fanf_countable_earned_income_for_eligibility: 1_020
++    nh_fanf_income_eligible: true
++    nh_fanf_eligible: true
++    # Benefit: 1,275 * 0.50 = 637.50
++    nh_fanf_countable_earned_income: 637.50
++    # 1,022 - 637.50 = 384.50, rounded down to 384 under He-W 670.03(b)(3)
++    nh_fanf: 384
