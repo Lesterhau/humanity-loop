@@ -1,0 +1,134 @@
+{
+  "alertsChecked": 250,
+  "bySeverity": {
+    "advisory": 1,
+    "error": 0,
+    "warning": 9
+  },
+  "findings": [
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.97e872d9a5c5a58c8ab14e36dd93a94507672111.001.1",
+      "detail": "At least one instruction sentence has 36 words; shorter sentences may reduce cognitive load during emergencies.",
+      "event": "Rip Current Statement",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T09:57:00-04:00",
+      "severity": "advisory",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.97e872d9a5c5a58c8ab14e36dd93a94507672111.001.1",
+      "status": "open",
+      "title": "Long sentence in instruction"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.740756c4273988fb4de6e6bdc87e5e5112690d12.003.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:28:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.740756c4273988fb4de6e6bdc87e5e5112690d12.003.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.740756c4273988fb4de6e6bdc87e5e5112690d12.002.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:28:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.740756c4273988fb4de6e6bdc87e5e5112690d12.002.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.009.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:19:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.009.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.006.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:19:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.006.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.003.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:19:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.003.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.008.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:19:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.008.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.004.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:19:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.004.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.017.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:19:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.017.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    },
+    {
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.002.1",
+      "detail": "The separate CAP instruction field is absent. Review the full alert text and linked guidance before concluding that protective advice is missing.",
+      "event": "Storm Warning",
+      "firstSeen": "2026-11-09T23:49:48.646204Z",
+      "sender": "w-nws.webmaster@noaa.gov",
+      "sent": "2026-11-09T04:19:00-09:00",
+      "severity": "warning",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.002.1",
+      "status": "open",
+      "title": "Immediate alert lacks separate CAP instruction field"
+    }
+  ],
+  "findingsCount": 10,
+  "runAt": "2026-11-09T23:49:48.646204Z",
+  "schemaVersion": 1,
+  "source": "https://api.weather.gov/alerts/active"
+}
