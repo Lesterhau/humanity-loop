@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-08T16:53:01Z",
+  "runAt": "2026-11-09T17:33:19Z",
   "status": "worked",
-  "summary": "Verified HOTOSM Field-TM #3060 and actual planner-input contract; created and independently read back a privacy-minimal StreetComplete project-AOI viewport-fit adapter, 12 offline tests, and eight-role single-model review receipt. No outside submission, AppDeploy AI, spending, deployment or scheduler change.",
-  "lastVerifiedAt": "2026-11-08T16:53:01Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/blob/main/runtime/foundry-fallback/2026-11-08-hotosm-3060-planner-viewport-receipt.md"
+  "summary": "Verified New Hampshire FANF He-W 670.03(b) rounding and $10 minimum against PolicyEngine-US #10517; published and independently read back review-only four-path patch, isolated regression harness and technical review; 12 arithmetic subcases and four source-matched diff hunks checked. No full PolicyEngine CI, upstream PR, beneficiary correction, AppDeploy AI or spending.",
+  "lastVerifiedAt": "2026-11-09T17:33:19Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6746910286"
 }
