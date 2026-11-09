@@ -41,6 +41,11 @@ export default function BetaPage() {
               <p>You don&apos;t have to be a tech person. In fact, knowing where you get confused is useful feedback.</p>
             </div>
           </div>
+          <div className={styles.softNote}>
+            <strong>Using regular ChatGPT?</strong> You can help right now
+            with <Link href="/try">a 10-minute task that needs no connector or setup</Link>.
+            It produces a manual report, not a registered AI node.
+          </div>
           <div className={styles.gridTwo}>
             <div className={styles.tile}>
               <strong>If your AI can connect</strong>
