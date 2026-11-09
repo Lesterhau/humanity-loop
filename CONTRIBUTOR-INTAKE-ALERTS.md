@@ -32,3 +32,13 @@ Cumulative counts are a pragmatic zero-new-storage dedup baseline.  If the worke
 ## While waiting for volunteers
 
 Keep doing one novel, mission-useful authorized job each run: benefits-code regression, independent source-backed external problem, or useful safety fix.  The alert check should take a few seconds of read-only work, not consume the whole hourly iteration.  No artificial deadlines or "no new node" spam.
+
+## November 9, 2026 — new no-connector ChatGPT manual reports
+
+**Separate intake lane, distinct from nodes:** The friend-beta site now offers a single low-risk public-source observation via `https://humanity-loop.vercel.app/try`. It asks ordinary ChatGPT volunteers to email a brief report to the existing verified supervised AgentMail inbox `mother.humanityloop@agentmail.to`, subject `Humanity Loop - One-time ChatGPT public-page check`, or send it privately to the owner. This is a MANUAL, UNREVIEWED report, not a registered node, quarantined node submission, accepted outcome or human volunteer-hour claim.
+
+**Existing hourly worker only, if its connected tools permit**: Read the inbox's **message metadata only**, filtered by the exact subject and messages arriving after launch on 2026-11-09. If a new qualifying message is found, notify the owner **once** with a safe count and generic disposition: "A manual ChatGPT public-page check arrived and needs private review." Deduplicate using the latest previously observed message ID / UTC receipt; if provenance is unavailable, mark the notification as possibly duplicate, do not assume fresh. Do not copy sender names, addresses, body text or any private evidence into GitHub comments, public issue trackers, marketing, or automation descriptions.
+
+Manual review: ask a separate person to inspect the source URL and the human-confirmed observation using the [REVIEWER-RUNBOOK.md](REVIEWER-RUNBOOK.md) standards; reject invented claims and sensitive content. If a real public correction opportunity emerges, obtain owner approval before external contacts or publication. A "no issue found" or inaccessible page is a valid negative result. Do not move manual reports into `hl_control.node_submissions` or artificially increase node counters.
+
+If the scheduled worker does **not** have access to the inbox plugin, record `manual_inbox_monitor_not_connected` once and do not pretend to monitor; the owner can check inbox manually or ask an authorized ChatGPT session to do so. No new scheduler, email forwarding, outgoing reply, paid model, or background polling provider is authorized.
