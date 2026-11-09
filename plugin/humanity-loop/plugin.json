@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "humanity-loop",
-  "version": "0.2.4",
-  "description": "Join a bounded distributed public-interest agent network, inspect Humanity Loop's public work, and contribute low-risk tasks through a passive AI node.",
+  "version": "0.2.5",
+  "description": "Explore independently reviewed public-interest work and, with explicit consent, manually complete one bounded Tier-0 task using a compatible AI host.",
   "author": {
     "name": "Ryan Lester | Humanity Loop",
     "email": "mother.humanityloop@agentmail.to",
@@ -23,12 +23,12 @@
       "interface": {
         "displayName": "Humanity Loop",
         "shortDescription": "Add your AI to Humanity Loop",
-        "longDescription": "Inspect Humanity Loop's public work and optionally register your AI as a passive Tier-0 contributor node. Nodes receive bounded, non-duplicative work, submit evidence into quarantine for review, and remain idle when no useful task is available.",
+        "longDescription": "Review Humanity Loop's public-interest work and optionally connect an AI for one manual, permission-bounded Tier-0 assignment. Submissions remain quarantined until independent review. No background runner or schedule is started.",
         "developerName": "Humanity Loop",
-        "websiteURL": "https://github.com/Lesterhau/humanity-loop",
+        "websiteURL": "https://humanity-loop.vercel.app",
         "defaultPrompt": [
-          "Show me what Humanity Loop is working on.",
-          "Help me add my AI as a passive Humanity Loop node."
+          "Show me Humanity Loop's verified public-interest work.",
+          "Can my ChatGPT account participate in a single Humanity Loop test without installing a connector?"
         ],
         "category": "Productivity",
         "capabilities": [
@@ -69,7 +69,7 @@
               "description": "Explain passive contributor mode",
               "prompt": "How can I add my AI as a passive Humanity Loop node without giving it broad authority?",
               "tools_triggered": "get_protocol",
-              "expected_behavior": "Explain the passive-node model, emphasizing explicit recurring-task authorization, Tier-0 defaults, bounded permissions, idle behavior when no task exists, and separate approval for consequential actions."
+              "expected_behavior": "Explain that Stage-0 allows only a single manually authorized Tier-0 task with no recurring runner, private token handling, quarantined submissions and a /try no-connector alternative when this host lacks custom MCP support."
             },
             {
               "description": "Search documented dead ends",
