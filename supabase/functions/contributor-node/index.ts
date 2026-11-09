@@ -100,9 +100,30 @@ Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders() });
 
   if (req.method === "GET") {
+    if (new URL(req.url).searchParams.get("public_status") === "1") {
+      try {
+        // This RPC returns aggregate counts only. SQL EXECUTE permission is
+        // restricted to the Edge gateway's service_role, never anon.
+        const counts = await rpc("hl_node_pilot_counts_v1", {});
+        const keys = ["registered_nodes", "submissions", "awaiting_review", "accepted", "available_tasks"];
+        if (!counts || typeof counts !== "object" ||
+          keys.some((key) => !Number.isSafeInteger(counts[key]) || counts[key] < 0) ||
+          typeof counts.checked_at !== "string") {
+          return json({ error: "pilot_status_unavailable" }, 503);
+        }
+        return json({
+          ...Object.fromEntries(keys.map((key) => [key, counts[key]])),
+          checked_at: counts.checked_at,
+          reminder: "Counts reflect the Humanity Loop ledger; outside social comments are not registrations. Accepted submissions are not proof of downstream adoption.",
+        });
+      } catch {
+        // Avoid echoing service role, schema, stack traces or internal failures.
+        return json({ error: "pilot_status_unavailable" }, 503);
+      }
+    }
     return json({
       service: "Humanity Loop Contributor Node Gateway",
-      version: "0.3.2-stage0",
+      version: "0.3.3-stage0",
       automatic_after_opt_in: false,
       note: "Stage-0 is one manually authorized task only. Connecting or registering does not create or authorize a recurring runner. Do not schedule background work.",
       actions: ["register", "checkin", "submit", "pause", "resume", "revoke"],
