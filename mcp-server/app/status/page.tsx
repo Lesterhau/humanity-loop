@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
 import styles from "../pilot.module.css";
+
+export const dynamic = "force-dynamic";
 
 const STATUS_URL =
   "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node?public_status=1";
@@ -27,40 +26,31 @@ const items: { key: keyof Omit<PilotStatus, "checked_at">; name: string; meaning
 function isStatus(value: unknown): value is PilotStatus {
   if (typeof value !== "object" || value === null) return false;
   const record = value as Record<string, unknown>;
-  return (
-    ["registered_nodes", "submissions", "awaiting_review", "accepted", "available_tasks"]
-      .every((key) => typeof record[key] === "number" &&
-        Number.isSafeInteger(record[key]) && Number(record[key]) >= 0) &&
-    typeof record.checked_at === "string" &&
-    !Number.isNaN(Date.parse(record.checked_at))
-  );
+  const validCounts = ["registered_nodes", "submissions", "awaiting_review", "accepted", "available_tasks"]
+    .every((key) => typeof record[key] === "number" &&
+      Number.isSafeInteger(record[key]) && Number(record[key]) >= 0);
+  return validCounts && typeof record.checked_at === "string" &&
+    !Number.isNaN(Date.parse(record.checked_at));
 }
 
-export default function PilotStatusPage() {
-  const [data, setData] = useState<PilotStatus | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+async function readStatus(): Promise<PilotStatus | null> {
+  try {
+    const response = await fetch(STATUS_URL, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) return null;
+    const value: unknown = await response.json();
+    return isStatus(value) ? value : null;
+  } catch {
+    return null;
+  }
+}
 
-  const refresh = useCallback(async () => {
-    setLoading(true);
-    setError(false);
-    try {
-      const response = await fetch(STATUS_URL, { cache: "no-store" });
-      if (!response.ok) throw new Error("unavailable");
-      const result: unknown = await response.json();
-      if (!isStatus(result)) throw new Error("unavailable");
-      setData(result);
-    } catch {
-      setError(true);
-      setData(null); // Never display stale numbers as current.
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    void refresh();
-  }, [refresh]);
+export default async function PilotStatusPage() {
+  // Render counts into the initial HTML. Browser-based asynchronous fetches
+  // previously showed a perpetual "checking..." state in read-only scrapers.
+  const data = await readStatus();
 
   return (
     <main className={styles.page}>
@@ -73,7 +63,7 @@ export default function PilotStatusPage() {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Real progress, no inflated numbers</p>
-          <h1>How's the pilot going?</h1>
+          <h1>How&apos;s the pilot going?</h1>
           <p className={styles.lede}>This is a live count of what Humanity Loop has actually received. Saying &ldquo;I&apos;m in&rdquo; on Facebook is appreciated, but it won&apos;t show here until a connected AI registers.</p>
           <div className={styles.pills}>
             <span className={styles.pill}>Anonymous totals only</span>
@@ -82,22 +72,15 @@ export default function PilotStatusPage() {
         </div>
       </section>
       <div className={styles.shell}>
-        <section className={styles.mainCard} aria-live="polite" aria-busy={loading}>
+        <section className={styles.mainCard}>
           <div className={styles.sectionHead}>
             <span className={styles.stepBubble} aria-hidden="true">↻</span>
             <div>
               <h2>Current test results</h2>
-              <p>Tap refresh to check again. These counts aren't the number of Facebook comments or page visits.</p>
+              <p>Refresh this page to check again. These counts aren&apos;t the number of Facebook comments or page visits.</p>
             </div>
           </div>
-          {loading && <p role="status">Checking the live contributor ledger…</p>}
-          {error && (
-            <p className={styles.warning} role="alert">
-              The live counts are unavailable right now. No numbers are shown rather than guessing.
-              You can retry in a moment.
-            </p>
-          )}
-          {data && !loading && (
+          {data ? (
             <>
               <div className={styles.gridTwo}>
                 {items.map((item) => (
@@ -111,17 +94,22 @@ export default function PilotStatusPage() {
                 ))}
               </div>
               <p className={styles.minor}>
-                Checked at {new Date(data.checked_at).toLocaleString()}. Reported directly from the project ledger.
+                Checked at {new Date(data.checked_at).toISOString().replace("T", " ").slice(0, 19)} UTC. Figures reflect the live project ledger.
               </p>
             </>
+          ) : (
+            <p className={styles.warning} role="alert">
+              The live counts are unavailable right now. No numbers are shown rather than guessing.
+              Please try refreshing this page.
+            </p>
           )}
           <div className={styles.buttonRow}>
-            <button className={styles.primary} type="button" onClick={() => void refresh()} disabled={loading}>Check latest numbers</button>
+            <a className={styles.primary} href="/status">Check latest numbers</a>
             <Link className={styles.secondary} href="/beta">I want to help test</Link>
           </div>
           <hr className={styles.divider} />
           <h2>What counts as real impact?</h2>
-          <p>Registering is not completing a task. Submitting is not independent acceptance. And an accepted result isn't proof that someone actually used it or benefited from it. We track those separately and won't pretend otherwise.</p>
+          <p>Registering is not completing a task. Submitting is not independent acceptance. And an accepted result isn&apos;t proof that someone actually used it or benefited from it. We track those separately and won&apos;t pretend otherwise.</p>
           <p className={styles.muted}>This page never displays names, emails, AI chat logs, private access tokens, task contents, or individual participant histories.</p>
         </section>
         <footer className={styles.footer}>
