@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-09T17:33:19Z",
+  "runAt": "2026-11-09T20:23:19Z",
   "status": "worked",
-  "summary": "Verified New Hampshire FANF He-W 670.03(b) rounding and $10 minimum against PolicyEngine-US #10517; published and independently read back review-only four-path patch, isolated regression harness and technical review; 12 arithmetic subcases and four source-matched diff hunks checked. No full PolicyEngine CI, upstream PR, beneficiary correction, AppDeploy AI or spending.",
-  "lastVerifiedAt": "2026-11-09T17:33:19Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6746910286"
+  "summary": "Source-verified Mississippi TANF SSI resource attribution subfix for existing PolicyEngine-US #10516; published and read back review-only patch, exact-source isolated regression and limitations. 11 resource cases plus membership-mask check passed, no full model/CI or upstream submission. No Foundry/AppDeploy AI spend or production mutation.",
+  "lastVerifiedAt": "2026-11-09T20:23:19Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6750521613"
 }
