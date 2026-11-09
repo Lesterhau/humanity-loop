@@ -60,6 +60,31 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.shell + " " + styles.section} aria-labelledby="resource-title">
+          <p className={styles.eyebrow}>Useful work should justify its footprint</p>
+          <h2 id="resource-title">Is the impact worth the energy?</h2>
+          <p className={styles.intro}>AI uses electricity, water, equipment and human labor. We shouldn't burn resources just because a task sounds interesting. Humanity Loop is building an open way to estimate the costs, discount uncertain benefits, and decide when to proceed, scale back or stop.</p>
+          <div className={styles.grid}>
+            <article className={styles.card}>
+              <span className={styles.number}>01 · ESTIMATE</span>
+              <h3>Count the cost</h3>
+              <p>Estimate task and model usage, energy, carbon and cooling water as separate quantities, with ranges rather than made-up precision.</p>
+            </article>
+            <article className={styles.card}>
+              <span className={styles.number}>02 · CHALLENGE</span>
+              <h3>Don't assume the payoff</h3>
+              <p>Discount claimed benefits for weak evidence, uncertain attribution, additionality and how long improvements last. A promising idea isn't a proven result.</p>
+            </article>
+            <article className={styles.card}>
+              <span className={styles.number}>03 · DECIDE</span>
+              <h3>Know when not to run</h3>
+              <p>Model environmental break-even scenarios and enforce separate spending limits. If the case doesn't hold up, keep work paused or choose a cheaper approach.</p>
+            </article>
+          </div>
+          <p className={styles.heroNote}><strong>Current status:</strong> The open-source environmental calculator provides modeled estimates, not measured proof of net-positive impact. It is not yet a universal per-task production gate. Foundry's hosted AI execution remains paused while hard budget and operational controls are unresolved. Carbon, water and ecological impacts cannot be reduced to one honest universal score.</p>
+          <p className={styles.heroNote}>Read and challenge the <a className={styles.textLink} href={repo + "/blob/main/ENVIRONMENTAL-BREAK-EVEN.md"}>environmental methodology</a>, <a className={styles.textLink} href={repo + "/blob/main/scripts/environmental_break_even.py"}>calculator code</a>, and <a className={styles.textLink} href={repo + "/blob/main/scripts/foundry_budget_governor.py"}>spending gate</a>.</p>
+        </section>
+
         <section className={styles.soft} aria-labelledby="progress-title">
           <div className={styles.shell + " " + styles.section}>
             <p className={styles.eyebrow}>The human scale of public-interest work</p>
