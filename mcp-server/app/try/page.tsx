@@ -6,7 +6,7 @@ import styles from "../pilot.module.css";
 
 const sourceUrl = "https://www.usa.gov/benefits";
 const reportEmail = "mother.humanityloop@agentmail.to";
-const reportSubject = "Humanity Loop - One-time ChatGPT public-page check";
+const reportSubject = "Humanity Loop - One-time public-page check";
 
 const prompt = [
   "I'm helping Humanity Loop with ONE optional, read-only public-interest task. Do not connect plugins, sign me up for anything, schedule tasks, contact agencies, submit forms, or spend money.",
@@ -24,7 +24,7 @@ const prompt = [
   "Be skeptical of your own suggestions. A plausible-sounding answer without a working public link and a human observation is not a verified issue."
 ].join("\n");
 
-export default function ChatGPTNoConnectorPage() {
+export default function AnyAIAssistantPage() {
   const [copied, setCopied] = useState(false);
   const [copyFailed, setCopyFailed] = useState(false);
 
@@ -52,12 +52,11 @@ export default function ChatGPTNoConnectorPage() {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>No plugins. No coding. One small task.</p>
-          <h1>Already use ChatGPT? You can help today.</h1>
+          <h1>Use any AI to help. Or do it yourself.</h1>
           <p className={styles.lede}>
-            Our public ChatGPT connection is still being approved.
-            You can do a useful one-time public-page check without connecting
-            anything. Just copy a prompt into your own ChatGPT and inspect
-            one official public website.
+            ChatGPT, Claude, Gemini, Copilot, Grok, Perplexity, or another AI?
+            You can use any of them for one public-page check. No plugin,
+            coding, or special setup. No AI at all? You can do the check yourself.
           </p>
           <div className={styles.pills}>
             <span className={styles.pill}>About 10–15 minutes</span>
@@ -73,19 +72,25 @@ export default function ChatGPTNoConnectorPage() {
             <span className={styles.stepBubble} aria-hidden="true">1</span>
             <div>
               <h2>Copy the one-time task</h2>
-              <p>Paste the instructions into the ChatGPT conversation you already use.</p>
+              <p>Use the AI you already chat with, or skip this step and check the page yourself.</p>
             </div>
+          </div>
+          <div className={styles.softNote}>
+            <strong>Not using ChatGPT?</strong> That's fine. This same prompt
+            works with other AI assistants too. <strong>Not using any AI?</strong>
+            Open the USA.gov link in step 2, pick one public link or instruction
+            to check, and email what you observed in step 3.
           </div>
           <div className={styles.buttonRow}>
             <button className={styles.primary} type="button" onClick={() => void copyPrompt()}>
-              Copy the ChatGPT prompt
+              Copy the one-time AI prompt
             </button>
           </div>
-          {copied && <p className={styles.status} role="status">Copied. Open ChatGPT and paste it into a new conversation.</p>}
+          {copied && <p className={styles.status} role="status">Copied. Open your preferred AI app and paste it into a new conversation.</p>}
           {copyFailed && <p className={styles.warning} role="status">Clipboard unavailable. You can select and copy the prompt in the box below.</p>}
           <details className={styles.details}>
             <summary>Read or manually copy the complete instructions</summary>
-            <textarea aria-label="One-time ChatGPT task instructions" className={styles.feedbackCopy} readOnly rows={16} value={prompt} />
+            <textarea aria-label="One-time AI task instructions" className={styles.feedbackCopy} readOnly rows={16} value={prompt} />
           </details>
 
           <hr className={styles.divider} />
@@ -93,7 +98,7 @@ export default function ChatGPTNoConnectorPage() {
             <span className={styles.stepBubble} aria-hidden="true">2</span>
             <div>
               <h2>Check the public page yourself</h2>
-              <p>Let ChatGPT help with the reading, but confirm the evidence with your own eyes.</p>
+              <p>If you use AI, let it help with the reading. Either way, check the evidence yourself.</p>
             </div>
           </div>
           <p>
@@ -113,16 +118,20 @@ export default function ChatGPTNoConnectorPage() {
             <span className={styles.stepBubble} aria-hidden="true">3</span>
             <div>
               <h2>Send us the short report</h2>
-              <p>Check ChatGPT&apos;s answer, then send just the public page finding or &ldquo;none found.&rdquo;</p>
+              <p>Send only the public-page finding you personally checked, or &ldquo;none found.&rdquo;</p>
             </div>
           </div>
-          <p>Copy the report from your AI and email it to the project, or send it privately to the friend who invited you.</p>
+          <p>Copy your checked report from your AI, or write a few sentences yourself. Email it to the project, or send it privately to the friend who invited you.</p>
           <div className={styles.buttonRow}>
             <a className={styles.primary} href={"mailto:" + reportEmail + "?subject=" + encodeURIComponent(reportSubject)}>
               Email my report
             </a>
             <Link className={styles.secondary} href="/beta">Back to friend beta</Link>
           </div>
+          <p className={styles.minor}>
+            Any AI app is optional. A manual check is equally welcome, and
+            "nothing wrong found" is an acceptable result.
+          </p>
           <p className={styles.minor}>
             Emailing reveals your email address to the project; a private message to your friend
             is another option. Don&apos;t include private conversations, accounts, names,

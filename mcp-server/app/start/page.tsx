@@ -28,9 +28,9 @@ export default function Start() {
         <p className={styles.heroNote}>Email links open your own mail app. Messages go to the project inbox for supervised review. No one is required to create a GitHub account or provide their AI credentials just to express interest.</p>
       </section>
       <section id="ai" className={styles.soft}><div className={styles.shell + " " + styles.section}>
-        <p className={styles.eyebrow}>Path 2 · Bring your assistant</p><h2>Which AI do you use?</h2><p className={styles.intro}>You don&apos;t need to know what MCP stands for. It&apos;s simply a way to connect an AI assistant to outside tools. Choose yours and we&apos;ll point you toward the next step.</p>
+        <p className={styles.eyebrow}>Path 2 · Bring your assistant</p><h2>Which AI do you use?</h2><p className={styles.intro}>Use whichever assistant you already have, or skip AI entirely. The easiest volunteer task needs no plugins, accounts, or technical setup. If you want to test a full connection, that&apos;s an optional next step.</p>
         <div className={styles.grid}>
-          <article className={styles.card}><span className={styles.number}>CLAUDE · CUSTOM CONNECTION SUPPORTED</span><h3>I use Claude</h3><p>Claude supports custom remote tool connections. Our Humanity Loop connection is still an invitation-only test, so use a private chat and Tier-0 permissions.</p><a className={styles.cardAction} href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities" target="_blank" rel="noopener noreferrer">How to add a connector in Claude →</a></article>
+          <article className={styles.card}><span className={styles.number}>CLAUDE · CUSTOM CONNECTION SUPPORTED</span><h3>I use Claude</h3><p>Claude supports custom remote tool connections. Our Humanity Loop connection is still an invitation-only test, so use a private chat and Tier-0 permissions.</p><a className={styles.cardAction} href="/try">Try the easy task with Claude →</a><p>Already use a compatible connector? <a href="/join">Try the technical network pilot</a>.</p></article>
           <article className={styles.card}>
             <span className={styles.number}>CHATGPT · CONNECT DIRECTLY WHERE SUPPORTED</span>
             <h3>I use ChatGPT</h3>
@@ -38,11 +38,11 @@ export default function Start() {
             <p>Open <strong>Plugins → + → Add custom MCP server</strong>, name it Humanity Loop, and enter <code>https://humanity-loop.vercel.app/api/mcp</code>. Review the tool permissions and security warning before testing only a Tier-0 task.</p>
             <a className={styles.cardAction} href="https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt" target="_blank" rel="noopener noreferrer">Official ChatGPT connection instructions →</a>
             <p>On a personal Free, Go, Plus or other plan without full custom MCP access? No upgrade is necessary to contribute. You can use the no-technical-setup path or ask about a supported pilot.</p>
-            <a className={styles.cardAction} href={email("I use ChatGPT and want to help","I use ChatGPT. Please let me know when a suitable Humanity Loop pilot is ready.\nNo private account details are necessary.")}>Ask about another way to help →</a>
+            <a className={styles.cardAction} href="/try">Try the easy task with ChatGPT →</a>
           </article>
-          <article className={styles.card}><span className={styles.number}>GEMINI / OTHER / NOT SURE</span><h3>Something else?</h3><p>That&apos;s fine. We&apos;ll check compatibility with you rather than ask you to figure out technical jargon. You can still help without connecting an AI.</p><a className={styles.cardAction} href={email("Help me connect my AI","My AI app is:\nI'm on a phone / computer:\nI want to help in the Humanity Loop pilot.\nPlease send the safest appropriate next step.")}>Get a human-readable next step →</a></article>
+          <article className={styles.card}><span className={styles.number}>GEMINI / OTHER / NOT SURE</span><h3>Something else?</h3><p>That&apos;s fine. We&apos;ll check compatibility with you rather than ask you to figure out technical jargon. You can still help without connecting an AI.</p><a className={styles.cardAction} href="/try">Try the easy task with any AI →</a></article>
         </div>
-        <div className={styles.actions + " " + styles.topGap}><a className={styles.button} href="/join">Already know how to connect? →</a><a className={styles.button + " " + styles.buttonAlt} href={repo + "/blob/main/FIRST-INDEPENDENT-BETA.md"}>Technical beta instructions</a></div>
+        <div className={styles.actions + " " + styles.topGap}><a className={styles.button} href="/try">Do the simple task now →</a><a className={styles.button + " " + styles.buttonAlt} href="/join">Optional: test a live AI connection →</a><a className={styles.button + " " + styles.buttonAlt} href={repo + "/blob/main/FIRST-INDEPENDENT-BETA.md"}>Technical beta instructions</a></div>
         <p className={styles.heroNote}>Early pilot: connecting an assistant never authorizes background automation. Start with one read-only test and keep any registration token private. No verified independent contributor acceptance yet.</p>
       </div></section>
       <section id="supporter" className={styles.shell + " " + styles.section}>
