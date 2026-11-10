@@ -1,25 +1,10 @@
 {
   "baselinesCreated": 0,
-  "changes": [
-    {
-      "authority": "U.S. Food and Drug Administration",
-      "detectedAt": "2026-11-09T19:55:05.264079Z",
-      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- 09/15/2026\n\nADDED IN CURRENT VERSION:\n+ 11-9-2026\n+ FDA Requires Safety Labeling Changes for Glucagon-Like Peptide-1 Receptor Agonists (GLP-1 RAs) Due to Potential Increased Risk of Rare But Serious Eye Condition\n+ 11/09/2026",
-      "materiality": "unreviewed",
-      "medicalAdvice": null,
-      "newFingerprint": "8c06993cadf01dd16f47c59ca4b2d42c3d5a13fa7bcaaf89099a9ac57fcb50df",
-      "oldFingerprint": "5e17a7c10bbfeab548bb5d24f8f41016646de9635a4cc3eea2338d17b543bdd8",
-      "severity": "unreviewed",
-      "sourceKey": "fda-drug-safety",
-      "sourceName": "FDA Drug Safety Communications",
-      "sourceUrl": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications",
-      "verificationStatus": "needs-independent-source-review"
-    }
-  ],
-  "changesDetected": 1,
+  "changes": [],
+  "changesDetected": 0,
   "failures": [],
   "failuresCount": 0,
-  "runAt": "2026-11-09T19:55:05.264079Z",
+  "runAt": "2026-11-10T03:38:45.818807Z",
   "schemaVersion": 1,
   "sourcesChecked": 3,
   "sourcesConfigured": 3,
