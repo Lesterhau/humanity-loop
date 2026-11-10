@@ -14,6 +14,10 @@ As of Nov 9, **ordinary ChatGPT Free/Go/Plus users cannot rely on adding arbitra
 - New CI `mcp-server/scripts/test-domain-challenge.mjs` checks **both** routes under the built Next.js server: HTTP 200 without redirect, `text/plain`, exact raw bytes, no newline, and the five required positive/three negative plugin review cases. It prints no token. Any CI failure is a concrete compatibility defect to fix.
 - Public plugin manifest v0.2.5 and onboarding skill now match Stage-0: a single manual Tier-0 task, quarantined result, no recurring runs; personal ChatGPT alternative `/try`.
 
+## Verified portal URL (November 9, 2026)
+
+Official publisher dashboard: **https://platform.openai.com/plugins**. OpenAI's [submission documentation](https://developers.openai.com/plugins/deploy/submission) links to this exact address for the existing draft, MCPs verification and issues. Do **not** confuse it with the app's public **https://humanity-loop.vercel.app/api/mcp** endpoint, which volunteers should not enter into the publisher portal themselves.
+
 ## Publication blocker and owner action
 
 GitHub [issue #37](https://github.com/Lesterhau/humanity-loop/issues/37) records OpenAI Support cases **#16350435, #17565572, #18377012**. As of its Oct 28 record, support asked for current **exact token**, raw challenge response including newline, Incognito and alternate-network checks. We cannot confirm those portal-specific checks were completed or that the publisher status has changed. No fresh reply is sent from this file.
