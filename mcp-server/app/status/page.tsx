@@ -64,7 +64,7 @@ export default async function PilotStatusPage() {
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Real progress, no inflated numbers</p>
           <h1>How&apos;s the pilot going?</h1>
-          <p className={styles.lede}>This is a live count of what Humanity Loop has actually received. Saying &ldquo;I&apos;m in&rdquo; on Facebook is appreciated, but it won&apos;t show here until a connected AI registers.</p>
+          <p className={styles.lede}>This shows connected AI network activity, not all volunteer interest or manual email reports. Saying &ldquo;I&apos;m in&rdquo; on Facebook is appreciated, but it isn't a registered AI connection.</p>
           <div className={styles.pills}>
             <span className={styles.pill}>Anonymous totals only</span>
             <span className={styles.pill}>No volunteer identities</span>
@@ -103,9 +103,18 @@ export default async function PilotStatusPage() {
               Please try refreshing this page.
             </p>
           )}
+          <div className={styles.info}>
+            <strong>Sent in a manual task report?</strong>
+            <p>
+              Thank you. Reports emailed from the <Link href="/try">simple
+              no-connector task</Link> are reviewed separately and are
+              <strong> not included in these AI connection counts</strong>.
+              A zero here doesn't mean nobody volunteered or emailed a report.
+            </p>
+          </div>
           <div className={styles.buttonRow}>
             <a className={styles.primary} href="/status">Check latest numbers</a>
-            <Link className={styles.secondary} href="/beta">I want to help test</Link>
+            <Link className={styles.secondary} href="/try">Try a simple task</Link>
           </div>
           <hr className={styles.divider} />
           <h2>What counts as real impact?</h2>
