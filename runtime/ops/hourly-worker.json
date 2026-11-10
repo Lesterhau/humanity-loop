@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-10T07:13:04Z",
+  "runAt": "2026-11-10T12:47:20.624Z",
   "status": "worked",
-  "summary": "Verified Pennsylvania DHS LIHEAP 2026–27 season banner and Nov 2 press release conflict with expired 2025–26 FAQ on the same official application page; published and independently read back source crosswalk, unsent correction draft, issue #19 receipt and continuity queue. Production aggregate 0 registrations/0 submissions/0 accepted; 5 open Tier-0. No outreach, Foundry/AppDeploy model spend, production mutation or scheduler change.",
-  "lastVerifiedAt": "2026-11-10T07:12:35Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6761389220"
+  "summary": "Completed distinct PolicyEngine-US NH FANF #10517 external benefits-code review: executed upstream source-shaped formula with stubbed model API, 4/4 local tests passed; identified sub-cent boundary defect in Humanity Loop's prior review-only candidate, independently verified official NH rule #13308 effective 2021-12-17, and published read-back-verified public-safe evidence, issue #19 receipt and queue checkpoint. Supabase aggregate: 0 registrations/submissions/accepted, 5 available Tier-0. No upstream contact, Foundry/AppDeploy AI spend, production change or schedule change.",
+  "lastVerifiedAt": "2026-11-10T12:47:20.624Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6767702567"
 }
