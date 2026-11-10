@@ -1,0 +1,55 @@
+--- a/policyengine_us/parameters/gov/states/ia/tax/income/modified_income/sources.yaml
++++ b/policyengine_us/parameters/gov/states/ia/tax/income/modified_income/sources.yaml
+@@ -7,7 +7,6 @@
+   2023-01-01:
+     - ia_taxable_income_consolidated
+     - taxable_income_deductions
+-    - qualified_business_income_deduction
+ 
+ 
+ metadata:
+--- /dev/null
++++ b/policyengine_us/tests/policy/baseline/gov/states/ia/tax/income/ia_modified_income.yaml
+@@ -0,0 +1,42 @@
++# Review-only candidate for PolicyEngine/policyengine-us#10512.
++# Inputs deliberately pin both the aggregate deduction and the separate QBI
++# component, making duplicate addition observable without a full tax return.
++- name: Iowa 2024 QBI is already included in taxable income deductions
++  period: 2024
++  input:
++    state_code: IA
++    ia_taxable_income_consolidated: 5_718.79
++    taxable_income_deductions: 17_979.70
++    qualified_business_income_deduction: 1_429.70
++  output:
++    ia_modified_income: 23_698.49
++
++- name: Iowa 2024 zero QBI does not change modified income
++  period: 2024
++  input:
++    state_code: IA
++    ia_taxable_income_consolidated: 8_000
++    taxable_income_deductions: 14_600
++    qualified_business_income_deduction: 0
++  output:
++    ia_modified_income: 22_600
++
++- name: Iowa 2023 QBI addback is once, not twice
++  period: 2023
++  input:
++    state_code: IA
++    ia_taxable_income_consolidated: 9_000
++    taxable_income_deductions: 17_000
++    qualified_business_income_deduction: 2_000
++  output:
++    ia_modified_income: 26_000
++
++- name: Iowa 2022 legacy source list is unchanged
++  period: 2022
++  input:
++    state_code: IA
++    ia_net_income: 1_000
++    ia_pension_exclusion: 200
++    ia_reportable_social_security: 300
++  output:
++    ia_modified_income: 1_500
