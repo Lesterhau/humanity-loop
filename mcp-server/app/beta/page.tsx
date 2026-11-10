@@ -25,7 +25,7 @@ export default function BetaPage() {
             Right now, we&apos;re testing one small research task.
           </p>
           <div className={styles.pills}>
-            <span className={styles.pill}>About 20–30 minutes</span>
+            <span className={styles.pill}>10–15 minutes for the simple check</span>
             <span className={styles.pill}>No coding required</span>
             <span className={styles.pill}>Free and voluntary</span>
           </div>
@@ -42,50 +42,52 @@ export default function BetaPage() {
             </div>
           </div>
           <div className={styles.softNote}>
-            <strong>Using regular ChatGPT?</strong> You can help right now
-            with <Link href="/try">a 10-minute task that needs no connector or setup</Link>.
-            It produces a manual report, not a registered AI node.
+            <strong>ChatGPT, Claude, Gemini, another AI, or no AI at all?</strong>
+            {" "}Everyone can try <Link href="/try">the same 10–15-minute public-page check</Link>
+            {" "}without installing anything. No special account needed.
+            This produces an independently reviewable manual report, not a registered AI node.
           </div>
           <div className={styles.gridTwo}>
             <div className={styles.tile}>
-              <strong>If your AI can connect</strong>
-              <p>Try one public-information research task. Your AI sends its findings back for someone else to check. Then you&apos;re done.</p>
+              <strong>Easy option: anyone can help</strong>
+              <p>Open one public website, check a link or instruction with or without AI, then email a short report. No connection required.</p>
             </div>
             <div className={styles.tile}>
-              <strong>If your AI can&apos;t connect</strong>
-              <p>Tell us which app you used and where you got stuck. That is still a useful test. You won&apos;t have to register.</p>
+              <strong>Advanced option: connect an AI</strong>
+              <p>Some AI apps support an optional connection to claim an actual network assignment. This requires extra setup and a compatible account.</p>
             </div>
           </div>
           <div className={styles.ctaGroup}>
-            <Link className={styles.primary} href="/join">I&apos;ll give it a try</Link>
-            <span className={styles.muted}>One time. No money. No automatic tasks.</span>
+            <Link className={styles.primary} href="/try">Try the easy 10-minute task</Link>
+            <Link className={styles.secondary} href="/join">Test an AI connection instead</Link>
           </div>
           <p className={styles.minor}>
-            Budget around 20–30 minutes, but you can stop at any point. Some
-            popular chat apps cannot make this connection yet, so the test
-            might be much shorter.
+            The no-setup check takes roughly 10–15 minutes. An optional AI
+            connection can take longer and may not work in every app. You
+            can stop whenever you want.
           </p>
 
           <hr className={styles.divider} />
           <h2>What happens next?</h2>
           <ol className={styles.listPlain}>
-            <li><strong>Tell us what AI you use.</strong> ChatGPT, Claude, Gemini or another app.</li>
-            <li><strong>See if it can connect.</strong> We&apos;ll show you what to look for. If it can&apos;t, you&apos;re done and can share feedback.</li>
-            <li><strong>If it can, try one small task.</strong> You&apos;ll get step-by-step instructions. Nobody gets control of your personal accounts.</li>
+            <li><strong>Choose your AI, or skip AI completely.</strong> Any popular chat assistant works for the simple check.</li>
+            <li><strong>Check one official public page.</strong> Look for a confusing instruction or broken link, and confirm the observation yourself.</li>
+            <li><strong>Send a short report.</strong> &ldquo;Nothing wrong found&rdquo; counts. Nobody gets access to your accounts.</li>
           </ol>
 
-          <div className={styles.info}>
-            <strong>One important heads-up for ChatGPT users</strong>
+          <details className={styles.details}>
+            <summary>Want to connect your AI to the network instead?</summary>
             <p>
-              The project&apos;s public ChatGPT connection is still pending
-              approval. Ordinary ChatGPT chat may not support this test today.
-              Please don&apos;t buy an upgrade or share login details to make it work.
-              Learning which apps don&apos;t connect is part of why we&apos;re testing.
+              That separate technical pilot requires an AI app that supports
+              outside tools. The public ChatGPT plugin still needs approval.
+              Other apps differ by plan and host. You don&apos;t need a paid upgrade,
+              a new account, or a connection to help with the simple task.
             </p>
-          </div>
+            <Link href="/join">See if your AI supports the connection</Link>
+          </details>
           <p className={styles.muted}>Curious how the beta is going? <Link href="/status">See the actual live results.</Link></p>
           <div className={styles.ctaGroup}>
-            <Link href="/join" className={styles.primary}>Start the quick check</Link>
+            <Link href="/try" className={styles.primary}>Start the simple task</Link>
             <Link href="/" className={styles.secondary}>Learn about the project</Link>
           </div>
         </section>
