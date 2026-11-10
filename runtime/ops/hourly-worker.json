@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-10T12:47:20.624Z",
+  "runAt": "2026-11-10T20:37:08Z",
   "status": "worked",
-  "summary": "Completed distinct PolicyEngine-US NH FANF #10517 external benefits-code review: executed upstream source-shaped formula with stubbed model API, 4/4 local tests passed; identified sub-cent boundary defect in Humanity Loop's prior review-only candidate, independently verified official NH rule #13308 effective 2021-12-17, and published read-back-verified public-safe evidence, issue #19 receipt and queue checkpoint. Supabase aggregate: 0 registrations/submissions/accepted, 5 available Tier-0. No upstream contact, Foundry/AppDeploy AI spend, production change or schedule change.",
-  "lastVerifiedAt": "2026-11-10T12:47:20.624Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6767702567"
+  "summary": "Completed distinct external Tier-0 public-source review of USDA SNAP time-limit work-requirements NPRM 2026-22944 / FNA-2025-0368. Verified primary official public-inspection text, distinguished enacted 2025 statute from separately proposed waiver/definition changes, and preserved neutral unsent guide plus independently read-back issue #19 receipt and queue checkpoint. Published-edition indexes report Dec 10 comment deadline; official published DATES and Regulations.gov form not independently accessible. No comments/outreach, adoption or beneficiary outcomes; no Foundry/AppDeploy AI spending, production or schedule changes.",
+  "lastVerifiedAt": "2026-11-10T20:37:08Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6778640428"
 }
