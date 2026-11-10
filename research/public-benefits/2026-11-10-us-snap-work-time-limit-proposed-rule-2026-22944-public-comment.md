@@ -2,6 +2,16 @@
 
 **Observed:** 2026-11-10 UTC. **Scope:** United States, public-source review only. **Status:** human-review-only neutral explainer; **not submitted, distributed, or an individual eligibility determination**.
 
+## November 10 postpublication follow-up — official deadline and routing caution
+
+**Verified against official primary sources (2026-11-10 UTC):** The legally authoritative [GovInfo Federal Register PDF](https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf), page 72439, states in its DATES paragraph that written comments **must be received on or before December 10, 2026**. The [FederalRegister.gov published document](https://www.federalregister.gov/documents/2026/11/10/2026-22944/modification-to-work-requirements-for-able-bodied-adults) repeats that deadline, and USDA's own [FNA proposed-rule page](https://fns-prod.azureedge.us/snap/fr-111026b), updated November 10, independently states the same date. **The earlier secondary-only deadline uncertainty is resolved.**
+
+**Separate, unresolved portal-routing question:** The FederalRegister.gov embedded Regulations.gov comment link visibly points to [FNA-2026-0628-0001](https://www.regulations.gov/commenton/FNA-2026-0628-0001), whereas the printed notice and USDA instructions identify agency docket **FNA-2025-0368**. These identifiers may refer to different agency and portal record namespaces; the discrepancy alone does **not** prove misrouting. Direct retrieval of the linked Regulations.gov comment form returned **HTTP 403** in this research environment. Thus the portal document-to-agency-docket mapping, form functionality and successful submissions are **not verified**. Do not publish a claim of a broken or incorrect form; an ordinary browser review must compare the portal document title, agency, RIN 0584-AF09, docket association and closing date before recommending that particular link.
+
+**Alternative officially published participation path:** USDA and the GovInfo PDF explicitly provide the agency email `SNAPCPBRules@usda.gov` with the subject line `Docket ID Number FNA-2025-0368, Modification to Work Requirements for Able-Bodied Adults`, as well as mail instructions. This is a *published method*, not evidence of message delivery or acceptance. The notice warns comments and submitter identity may be publicly disclosed. No comment was sent.
+
+**Next unchecked:** independent ordinary-browser Regulations.gov record association/availability and amendments, followed by qualified editorial review; separately authorize any external distribution or filing. No agency contact, applicant outcome, independent adoption, Foundry AI/AppDeploy spending, production mutation or schedule change.
+
 ## Distinct public-interest finding
 
 A second USDA SNAP proposal was published on November 10, 2026, separate from the same-day categorical-eligibility proposal already recorded by Humanity Loop.
@@ -13,7 +23,7 @@ A second USDA SNAP proposal was published on November 10, 2026, separate from th
 | Docket | **FNA-2025-0368** | **FNA-2026-0661** |
 | RIN | **0584-AF09** | **0584-AF10** |
 | Federal Register citation | **91 FR 72439** | **91 FR 72454** |
-| Public-comment window | Published November 10; published-edition indexes reproduce **December 10, 2026** receipt deadline. Official public-inspection PDF still contains a prepublication date placeholder. | Separate December 10 deadline verified in the earlier Humanity Loop guide. |
+| Public-comment window | **December 10, 2026 receipt deadline now independently confirmed** by official GovInfo PDF, FederalRegister.gov and USDA FNA (see postpublication follow-up above). | Separate December 10 deadline verified in the earlier Humanity Loop guide. |
 
 **Never combine the two docket IDs or assume a comment on one automatically reaches the other.**
 
@@ -29,12 +39,12 @@ USDA's own November 10 public-inspection text describes a proposed regulatory co
 ## Public participation: neutral, unsent information
 
 - **Official prepublication primary text:** https://public-inspection.federalregister.gov/2026-22944.pdf (filed November 9, scheduled/published November 10).
-- **Official published document destination:** https://www.federalregister.gov/d/2026-22944 (reader access failed in this review; do not claim live page contents were retrieved).
+- **Official published document:** https://www.federalregister.gov/documents/2026/11/10/2026-22944/modification-to-work-requirements-for-able-bodied-adults (now retrieved). **Official legal PDF:** https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf.
 - **Published-edition secondary crosschecks:** https://frtracker.app/fr/2026-22944 and https://federalstatelaw.com/federal-register/2026-22944 (both reproduce **December 10, 2026** comment deadline and 91 FR 72439; these are not substitutes for official docket verification).
 - **Docket identifier:** FNA-2025-0368. USDA lists the Federal eRulemaking Portal, postal mail, and email **SNAPCPBRules@usda.gov** with the docket number and exact rule title in the subject line. The notice warns that comment content and submitter identity can be made public.
 - **Separate same-day docket:** FNA-2026-0661 / 2026-22936. Do not use its comment form for this rule.
 
-**No comment submitted.** Regulations.gov docket status, actual form operation, amendments, and the final official published DATES line were **not independently retrieved** in this pass. The December 10 date is strongly supported by two published-edition indexes, but must be rechecked on the official docket or Federal Register before any public-facing deadline claim is distributed.
+**No comment submitted.** The official DATES line is now independently verified as December 10, 2026. Regulations.gov portal mapping, actual form operation and amendments remain unverified (see postpublication follow-up).
 
 ## Editorial/eligibility guardrails
 
@@ -44,6 +54,6 @@ This is a public rulemaking access brief, not legal advice, a case-specific work
 
 **Completed Tier-0 action:** independent primary-text review, second published-source crosscheck, comparison against Humanity Loop's previously logged *other* SNAP docket, and preservation of a neutral access guide.
 
-**Next unchecked by 2026-11-11 UTC:** verify the live official Federal Register **2026-22944** published DATES line and Regulations.gov **FNA-2025-0368** docket/comment interface; check for correction/amendment or extension; obtain qualified benefits-policy/editorial review before any separately owner-authorized distribution. If live sources remain blocked, retain **access unverified** and do not manufacture a submission result.
+**Next unchecked by 2026-11-11 UTC:** independently review the portal-linked **FNA-2026-0628-0001** document against the printed agency docket **FNA-2025-0368**, confirm title/RIN/deadline and any amendments, then obtain qualified editorial review. The official December 10 deadline is verified; portal access and submission are not.
 
 **Impact accounting:** one public-source review artifact; **0 comments filed, 0 external contacts, 0 confirmed applicant outcomes, 0 independent adoption**. No Foundry model calls, AppDeploy operations/credits, production mutations or schedule changes.
