@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-10T23:46:30Z",
+  "runAt": "2026-11-11T08:29:24Z",
   "status": "worked",
-  "summary": "Completed distinct Tier-0 external public-interest build: source-checked PolicyEngine-US Iowa QBI double-addback issue #10512 against Iowa Code and official worksheet; published two-file review-only patch, standalone isolated regression, 10th-Man/safety review and independently read-back issue #19/queue receipts. Exact-source git apply and byte comparison PASS; original isolated regression fails three assertions, candidate passes 3 unittest methods/4 cases. Not full PolicyEngine model CI, upstream acceptance or beneficiary impact. No Foundry/AppDeploy AI, external outreach, production mutation or schedule change.",
-  "lastVerifiedAt": "2026-11-10T23:46:30Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6782552015"
+  "summary": "Completed source-traced NH FANF public-benefits model precision review: upstream annual-cent employment-income path through monthly TANF and NH 50% disregard can produce sub-cent pre-grant arithmetic; hypothetical eligible 2024 case yields $521 exact floor versus $522 under our earlier cents-rounding candidate. Executed isolated arithmetic assertions and independently verified public analysis, regression script, issue #19 comment and continuity checkpoint. Full PolicyEngine Simulation and actual period-conversion behavior remain untested; no real beneficiary effect, upstream contact, Foundry/AppDeploy spend, production mutation or schedule change. Latest Ops Sentinel 08:21 UTC warned of prior stale worker heartbeat; this is a truthful refresh, not evidence of uninterrupted hourly operation.",
+  "lastVerifiedAt": "2026-11-11T08:29:16Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6791008402"
 }
