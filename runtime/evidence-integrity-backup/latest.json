@@ -1,241 +1,75 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-10T11:21:14.801431Z",
-  "status": "limited",
+  "runAt": "2026-11-11T11:07:40.952746Z",
+  "status": "partial",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 10,
-  "citationsExamined": 341,
-  "candidateFindingsCount": 14,
-  "candidateFindings": [
+  "newRetractionsChecked": 4,
+  "citationsExamined": 98,
+  "candidateFindingsCount": 0,
+  "candidateFindings": [],
+  "failuresCount": 8,
+  "failures": [
     {
-      "retractedDoi": "10.17179/excli2019-1136",
-      "noticeDoi": "10.17179/excli2024-7418",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "38783034",
-      "citingTitle": "Joining up the scattered anticancer knowledge on auraptene and umbelliprenin: a meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/38783034",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.3389/fphar.2025.1678247",
+      "reason": "The read operation timed out"
     },
     {
-      "retractedDoi": "10.1155/2017/8370593",
-      "noticeDoi": "10.1155/omcl/9843608",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "39519561",
-      "citingTitle": "Efficacy of Myricetin Supplementation on Glucose and Lipid Metabolism: A Systematic Review and Meta-Analysis of In Vivo Mice Studies.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/39519561",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.3389/fphar.2019.00584",
+      "reason": "The read operation timed out"
     },
     {
-      "retractedDoi": "10.1155/2017/8370593",
-      "noticeDoi": "10.1155/omcl/9843608",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "37849730",
-      "citingTitle": "Efficacy of traditional Chinese medicine on diabetic cardiomyopathy in animal models: a systematic review and meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/37849730",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.3389/fphar.2025.1678215",
+      "reason": "The read operation timed out"
     },
     {
-      "retractedDoi": "10.1155/2017/8370593",
-      "noticeDoi": "10.1155/omcl/9843608",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "36297345",
-      "citingTitle": "Unravelling Potential Health-Beneficial Properties of <i>Corema album</i> Phenolic Compounds: A Systematic Review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/36297345",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.3389/fphar.2018.01028",
+      "reason": "The read operation timed out"
     },
     {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "38249392",
-      "citingTitle": "Prevalence of depression, anxiety in China during the COVID-19 pandemic: an updated systematic review and meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/38249392",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.eclinm.2025.103681",
+      "reason": "The read operation timed out"
     },
     {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "40477694",
-      "citingTitle": "Suicide related to the COVID-19 pandemic in India: A systematic review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/40477694",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.medcli.2024.12.002",
+      "reason": "The read operation timed out"
     },
     {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "35791727",
-      "citingTitle": "A systematic review of fear, stigma, and mental health outcomes of pandemics.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/35791727",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jenvman.2023.119759",
+      "reason": "The read operation timed out"
     },
     {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "35106271",
-      "citingTitle": "Covid-19-Related Suicides in Pakistan, India, and Bangladesh: Can we Rely on Reporting System? A Rapid Systematic Review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/35106271",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "PPR",
-      "citingId": "PPR358163",
-      "citingTitle": "The impact of the COVID-19 pandemic on self-harm and suicidal behaviour: update of living systematic review",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/PPR/PPR358163",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "33910325",
-      "citingTitle": "The Prevalence of Post-Traumatic Stress Disorder in the General Population during the COVID-19 Pandemic: A Systematic Review and Single-Arm Meta-Analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/33910325",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "33243029",
-      "citingTitle": "Prevalence of depression, anxiety and stress in china during COVID-19 pandemic: A systematic review with meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/33243029",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "33329106",
-      "citingTitle": "A Systematic Review of the Impact of Viral Respiratory Epidemics on Mental Health: An Implication on the Coronavirus Disease 2019 Pandemic.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/33329106",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "33604025",
-      "citingTitle": "The impact of the COVID-19 pandemic on self-harm and suicidal behaviour: update of living systematic review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/33604025",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1016/j.bbi.2020.04.062",
-      "noticeDoi": "10.1016/j.bbi.2023.10.024",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "32799105",
-      "citingTitle": "Impact of COVID-19 pandemic on mental health in the general population: A systematic review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/32799105",
-      "status": "unreviewed"
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.jenvman.2023.119616",
+      "reason": "The read operation timed out"
     }
   ],
-  "failuresCount": 0,
-  "failures": [],
-  "coverageGapsCount": 5,
+  "coverageGapsCount": 3,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1155/2022/8930472",
+      "doi": "10.3390/math14010062",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1155/2022/7420641",
+      "doi": "10.1155/2021/4492480",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1155/2022/8077424",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.4102/sajs.v108i11/12.1107",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1159/000551831",
+      "doi": "10.1155/2022/3386198",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
