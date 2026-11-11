@@ -1,0 +1,38 @@
+# OPM 2026 Open Season: verification timing and safe document pathway — supplemental public-source check (UNSENT)
+
+**Observed:** 2026-11-11 08:52 UTC. **Case:** Follow-on to [the earlier OPM FEHB Handbook discrepancy](2026-11-11-opm-fehb-handbook-open-season-family-verification-guidance-conflict.md). **Status:** Same-day public-source recheck plus a materially new deadline/implementation clarification; editorial draft only. No agency contact, benefits election, personal records, or verified beneficiary outcome.
+
+## Why this separate check matters
+
+The earlier review established that the OPM FEHB Handbook says employing offices need not verify family members during Open Season, while the 2026 regulation and OPM BAL 26-202 require verification for **newly added** family members. This follow-on review checks a different practical risk: an overbroad correction might mistakenly tell enrollees that all existing dependents need re-verification or that all eligibility documents are due by the **December 14 election deadline**. The current OPM FAQ distinguishes those cases and deadlines.
+
+## Same-day official evidence and exact distinctions
+
+1. [OPM FEHB Handbook — Family Members](https://www.opm.gov/healthcare-insurance/healthcare/reference-materials/reference/family-members/) under **Employing Office Responsibilities** still says employing offices are not required to verify family member eligibility during annual Open Season. The public web reader showed this text with a **2026-11-11 crawl**. This is not an uncached GUI-browser test or proof of OPM's exact last edit time.
+2. [OPM Family Member Eligibility Verification FAQ](https://www.opm.gov/healthcare-insurance/special-initiatives/family-member-eligibility-verification/) says verification applies when family members are **added** during IOE, QLE or Open Season; it also says previously acceptable documentation from the **same plan year** need not be submitted again in the described circumstances. Existing family members are not automatically all new additions.
+3. The same OPM FAQ says the employing office should verify the **final** Open Season election when processing it, and does not need to repeat verification already performed for the same family member during an earlier election in the same Open Season. It separately states the existing **60-day enrollee document-submission period** remains unchanged, administrative review should occur within **30 days after receipt**, and no later than **90 days from initial notice**. This is agency guidance; individual notice and employing-office instructions govern specific deadlines. It is **not** permission to submit an Open Season election after December 14.
+4. [OPM 2026 Open Season announcement](https://www.opm.gov/news/news-releases/opm-announces-2026-federal-benefits-open-season-as-premium-growth-slows-for-second-consecutive-year/) confirms **November 9–December 14, 2026** is the election window for 2027 benefits. Do not confuse this with the separately described eligibility-document review process.
+5. [OPM BAL 26-202, July 15](https://www.opm.gov/retirement-center/publications-forms/benefits-administration-letters/2026/26-202a.pdf) requires employing offices to verify **100% of elections that add a family member**, and to request/evaluate proof of relationship. Its instruction that eligibility be verified before finalization must be read alongside the later FAQ's discussion of review after coverage effective; no assumption about any individual's effective date or interim coverage is warranted.
+6. [Federal Register final rule, June 2, 2026](https://www.govinfo.gov/content/pkg/FR-2026-06-02/pdf/2026-11022.pdf) effective **July 2** amends 5 CFR 890.302(a)(1) and covers FEHB **including PSHB**. It applies when an enrollee adds a family member during Open Season, IOE or QLE. The rule does not state that every unchanged existing covered person must be newly verified for every Open Season election.
+7. The OPM Handbook also says Social Security numbers and personal financial information **may be redacted** from acceptable supporting documents. Documents must go only through the employing office's/carrier's/OPM's **official designated secure process**, never to Humanity Loop or an unsolicited email address. Actual workflow varies by agency and PSHB status.
+
+## Scenario-level public guidance for qualified editorial review — NOT PUBLISHED OR SENT
+
+| Scenario | Source-grounded guidance | Do not imply |
+| --- | --- | --- |
+| Add spouse or child to FEHB/PSHB for 2027 | Expect proof of relationship/eligibility, follow employing-office or PSHB instructions; verification is mandatory for additions. | That the Handbook's general discretionary sentence overrides the new rule. |
+| Retain the same already-covered family members with no new addition | No blanket new-addition requirement merely from an unchanged election; existing eligibility audits and requests may still apply. | That unchanged coverage can never be reviewed. |
+| Add a person whose acceptable documentation was already supplied during the plan year | Ask the employing office whether the existing verified record satisfies the FAQ's no-duplicate-document provision. | That a prior document automatically excuses all verification or all future requests. |
+| Unsure when documents are due | Make the Open Season election within **Nov 9–Dec 14**; separately follow the specific verification request and its deadlines. | That the 60-day documentation period extends the Open Season election deadline, or that all documents must invariably be received by Dec 14. |
+
+**Suggested narrow replacement for Handbook editor (UNSENT):**
+
+> For an Open Season election that **adds** a family member, the employing office must verify eligibility under the FEHB Protection Act of 2025 and 5 CFR 890.302(a)(1), including for PSHB where applicable. The requirement is distinct from the agency's ongoing authority to verify existing family members. Follow OPM's Family Member Eligibility Verification guidance for previously verified family members, documentation review and deadlines, and consult your employing office for its secure submission procedure.
+
+## Falsification, uncertainty and next gate
+
+- **Verified in this review:** Publicly retrieved Handbook sentence remains, OPM's own current FAQ distinguishes added/existing/already-verified family members and document timing, and OPM's 2026 election deadline is separate.
+- **Not verified:** A normal uncached browser rendering. Local Chromium and curl attempted on 2026-11-11 but the execution environment could not resolve `www.opm.gov`; this is an **environment/network limitation**, not evidence the OPM site is unavailable. Public web retrieval did succeed. No legal/benefits-editor review, new OPM acknowledgment, specific enrollee delay, or beneficiary impact.
+- **Next unchecked action (by 2026-11-12 UTC):** Obtain independent ordinary-browser screenshot/HTML confirmation and qualified federal-benefits editorial review, especially reconciling BAL pre-finalization language with FAQ post-effective-date processing. Then request **separate owner authorization** before a single targeted OPM web-content correction inquiry. If the Handbook changes, compare the exact sentence and credit OPM; do not infer causation.
+- **Case owner:** Humanity Loop Case Steward lane (original hourly worker until verified handoff).
+- **Accounting:** One bounded read-only public-interest follow-up and one new public-safe source/decision matrix. Zero external outreach, real benefit decisions, outside contributor submissions, Foundry/AppDeploy model spending, production mutation, new automation, or human volunteer hours.
