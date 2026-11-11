@@ -1,5 +1,10 @@
 # Humanity Loop — active continuity queue for the ORIGINAL hourly coordinator
 
+## NOVEMBER 11, 2026 UTC — WHO CHAD WEEK-40 COUNTRY BULLETIN VS GLOBAL WER44 (DUE SOURCE RECONCILIATION)
+
+**Completed the next unchecked external public-interest source check from the prior Lake Chad receipt:** Directly read [WHO Chad's week-40 PDF](https://www.afro.who.int/sites/default/files/2026-10/Bulletin%20hebdo%20int%C3%A9gr%C3%A9%20Urgences%20de%20sant%C3%A9%20publique_S40_19102026.pdf) including page images: Ministry SITREP 0044 **as of 1 Oct** shows **1,329 cumulative cholera cases / 58 deaths (4.3% reported CFR)**, with **139/7 during 21 Sep–1 Oct**, Lac principal focus, 14 districts/4 provinces. This is a newer surveillance **cutoff** than the [WHO global WER44](https://www.who.int/publications/journals/weekly-epidemiological-record/wer101-44/) **published 6 Nov** but reporting **as of 27 Sep** (**867/42**; last 28 days **168/22**). The arithmetic difference **462/16 cannot be assigned to four days of new incidence**; backfill, case definitions and scope unverified. **Durable independently fetched:** [source crosswalk and UNSENT French note](research/scout-mesh/2026-11-11-chad-cholera-who-week40-local-global-reconciliation.md), blob `b1659ddeac02e544563be294a8bae002a16b5f14`, commit `350f4f764df4800b69ed9627eaf0609a29638b84`; [issue #19 receipt](https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6785417363) independently fetched. **NEXT unchecked by Nov 17 UTC:** locate later-than-Oct1 official local cholera SITREP, reconcile definitions and specific WASH site needs and seek named partner request before considering assistance. **Production intake read-only:** 0 registrations, 0 submissions, 0 awaiting, 0 accepted, 5 available Tier-0. No outside contact, clinical advice, independent Scout specialist completion, verified patient outcome, Foundry/AppDeploy spend, production mutation or scheduling change. **Advisory inbox:** no private files read or new Claude/Perplexity handoff checked in this run.
+
+
 
 ## NOVEMBER 11, 2026 UTC — WHO CHOLERA WER44 LAKE CHAD FOLLOW-UP (DISTINCT SOURCE REVIEW)
 
