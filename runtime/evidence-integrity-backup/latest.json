@@ -1,75 +1,78 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-11T11:07:40.952746Z",
-  "status": "partial",
+  "runAt": "2026-11-12T11:25:44.657849Z",
+  "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 4,
-  "citationsExamined": 98,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
-  "failuresCount": 8,
-  "failures": [
+  "newRetractionsChecked": 9,
+  "citationsExamined": 157,
+  "candidateFindingsCount": 2,
+  "candidateFindings": [
     {
-      "stage": "citation_lookup",
-      "doi": "10.3389/fphar.2025.1678247",
-      "reason": "The read operation timed out"
+      "retractedDoi": "10.3390/v14122688",
+      "noticeDoi": "10.3390/v18111258",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "39511961",
+      "citingTitle": "Methodology of comparative studies on the relative effectiveness of COVID-19 vaccines: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39511961",
+      "status": "unreviewed"
     },
     {
-      "stage": "citation_lookup",
-      "doi": "10.3389/fphar.2019.00584",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.3389/fphar.2025.1678215",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.3389/fphar.2018.01028",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.eclinm.2025.103681",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.medcli.2024.12.002",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jenvman.2023.119759",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.jenvman.2023.119616",
-      "reason": "The read operation timed out"
+      "retractedDoi": "10.3390/ijms25179574",
+      "noticeDoi": "10.3390/ijms272210123",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "41493368",
+      "citingTitle": "Effectiveness and safety of meropenem-vaborbactam versus ceftazidime-avibactam in multidrug-resistant Gram-negative infections: a systematic review and meta-analysis with trial sequential analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41493368",
+      "status": "unreviewed"
     }
   ],
-  "coverageGapsCount": 3,
+  "failuresCount": 0,
+  "failures": [],
+  "coverageGapsCount": 6,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.3390/math14010062",
+      "doi": "10.3390/su14020906",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1155/2021/4492480",
+      "doi": "10.1016/j.cscm.2026.e05783",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1155/2022/3386198",
+      "doi": "10.1016/j.ijans.2026.101084",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2022.02.108",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ssci.2019.04.013",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2023.01.175",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],

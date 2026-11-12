@@ -1176,6 +1176,36 @@
       "europePmcUrl": "https://europepmc.org/article/MED/32799105",
       "status": "unreviewed",
       "detectedAt": "2026-11-10T11:21:14.801431Z"
+    },
+    {
+      "retractedDoi": "10.3390/v14122688",
+      "noticeDoi": "10.3390/v18111258",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "39511961",
+      "citingTitle": "Methodology of comparative studies on the relative effectiveness of COVID-19 vaccines: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39511961",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-12T11:25:44.657849Z"
+    },
+    {
+      "retractedDoi": "10.3390/ijms25179574",
+      "noticeDoi": "10.3390/ijms272210123",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "41493368",
+      "citingTitle": "Effectiveness and safety of meropenem-vaborbactam versus ceftazidime-avibactam in multidrug-resistant Gram-negative infections: a systematic review and meta-analysis with trial sequential analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41493368",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-12T11:25:44.657849Z"
     }
   ]
 }
