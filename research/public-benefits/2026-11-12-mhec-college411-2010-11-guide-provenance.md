@@ -1,0 +1,24 @@
+# Maryland MHEC College411 FAFSA guidance: 2010–11 source provenance and current public-page mismatch
+
+**Observed:** 2026-11-12 UTC. **Status:** independent read-only public-source comparison; proposed editorial correction only, **UNSENT**. **Case:** [Humanity Loop issue #60](https://github.com/Lesterhau/humanity-loop/issues/60). This is a *new archival-source provenance check*, not a new claim that the SAR terminology mismatch was first discovered today.
+
+## Primary sources checked
+
+1. MHEC public HTML, *Additional Financial Aid Resources*, federal aid section: https://mhec.maryland.gov/preparing/pages/college411/addfinaidreso.aspx . Fresh web-reader retrieval 2026-11-12, lines 40–45. Still tells applicants to request a **Student Aid Report (SAR)** by telephone, and lists `www.ed.gov/finaid.html` and `www.fafsa.ed.gov`.
+2. MHEC's own **2010–2011** *A Student Guide to Higher Education & Financial Aid in Maryland* PDF, **printed page 75**, under *Additional Financial Aid Resources / Sources of Federal Student Aid*: https://mhec.maryland.gov/publications/Documents/StudentOutreachKit/411Guide10-11.pdf . PDF extracted lines 9616–9641 contain the **same federal-aid website names, SAR-by-phone instruction, FSAIC telephone numbers, and Federal Methodology Workbook / Title IV codes / campus security report follow-on** as the 2026 HTML. This is direct textual provenance evidence that the affected paragraph is substantially carried forward from an official 2010–11 guide. It does **not** prove when the HTML was first published, that every HTML paragraph is unchanged, or that the 2010–11 PDF is itself intended as current advice.
+3. MHEC's own historical 2024 *Important FAFSA Changes*, section 7: https://mhec.maryland.gov/Pages/FAFSA-changes.aspx . Explicitly explains that **Student Aid Report (SAR) becomes FAFSA Submission Summary (FSS)**. The page contains historical 2024 deadline information and must **not** be treated as a current-year deadline authority.
+4. Federal Student Aid, *FAFSA Submission Summary: What You Need To Know*: https://studentaid.gov/articles/fafsa-submission-summary/ . Describes the current processed-record name, account Dashboard access and contents.
+5. Federal Student Aid, *7 Things To Do After Submitting Your FAFSA*: https://studentaid.gov/articles/things-after-fafsa/ . Describes Dashboard → My Activity → processed FAFSA for the current form.
+6. FSAIC phone **1-800-433-3243** is still cited on an accessible StudentAid.gov exit-counseling page: https://studentaid.gov/exit-counseling/demo/prepare-to-repay/loan-forgiveness . This is **not** a live call test. The separate old TTY **1-800-730-8913** appears in an FSA PDF **printed November 2014** (https://studentaid.gov/sa/sites/default/files/funding-your-education.pdf, lines 233–254), which cannot establish its current status. Do **not** claim either number is disconnected.
+
+## Narrow finding and novel value
+
+The live MHEC College411 federal-aid section closely matches the **official 2010–11 MHEC guide** down to ancillary contact and document-request instructions. This provides an evidence-based explanation for the breadth of outdated terms and URLs, and supports **a section-level modernization / clear archival labeling decision** rather than an isolated find-and-replace of “SAR.” The MHEC agency already acknowledged the new term on another page, so this is a content-maintenance inconsistency, not an assertion that the agency lacks knowledge of the change.
+
+**What is NOT established:** Whether the old domains redirect for normal browsers (automated web-reader checks of `www.fafsa.ed.gov` and `www.ed.gov/finaid.html` returned 502 and 403 respectively on 2026-11-12, not proof of ordinary-browser failure); whether telephone or TTY lines work; that a student was denied aid, misled, or harmed; that an agency corrected anything; or that Humanity Loop contacted MHEC.
+
+## Proposed human-reviewed, unsent editorial action
+
+Ask MHEC's responsible web editor, **only after separate outreach authorization**, to decide whether College411 *Additional Financial Aid Resources* is an archival reproduction or a live advice page. If archival, label it conspicuously with its award-year context and link to the current MHEC aid entry point. If live, modernize the entire *Sources of Federal Student Aid* paragraph with the current StudentAid.gov FAFSA application and Dashboard / My Activity / FAFSA Submission Summary instructions, check all legacy external links and contact methods, and preserve any relevant historic SAR terminology only for old records. Do not transplant 2010–11 or 2024 deadlines.
+
+**Next unchecked:** Qualified ordinary-browser/editorial review of the exact HTML and old links, then human decision on archival labeling versus replacement; separately authorize any MHEC contact. No external posting, agency contact, spending, production change, node adoption, or beneficiary effect in this action.
