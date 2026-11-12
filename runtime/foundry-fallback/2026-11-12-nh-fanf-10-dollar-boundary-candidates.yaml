@@ -1,0 +1,101 @@
+# HUMANITY LOOP REVIEW-ONLY candidate for PolicyEngine-US #10517.
+# NOT merged upstream, NOT executed in the full PolicyEngine Simulation.
+# NH He-W 670.03(b)(3)-(5): round FANF grant down to whole dollars;
+# suppress a pre-adjustment monthly grant below $10.
+# Sources:
+# https://gc.nh.gov/rules/state_agencies/he-w600.html
+# https://github.com/PolicyEngine/policyengine-us/issues/10517
+# https://github.com/PolicyEngine/policyengine-us/blob/main/policyengine_us/tests/policy/baseline/gov/states/nh/dhhs/fanf/integration.yaml
+
+- name: Review candidate A - enrolled two-person NH family, pre-adjustment grant 9.99 is suppressed.
+  period: 2024-01
+  input:
+    people:
+      person1:
+        age: 30
+        employment_income_before_lsr: 24288.24  # annual; monthly/2 = 1012.01
+      person2:
+        age: 5
+    spm_units:
+      spm_unit:
+        members: [person1, person2]
+        spm_unit_cash_assets: 0
+        is_tanf_enrolled: true
+    households:
+      household:
+        members: [person1, person2]
+        state_code: NH
+  output:
+    nh_fanf_payment_standard: 1022
+    nh_fanf_eligible: true
+    nh_fanf: 0
+
+- name: Review candidate B - enrolled two-person NH family, grant exactly 10.00 is paid.
+  period: 2024-01
+  input:
+    people:
+      person1:
+        age: 30
+        employment_income_before_lsr: 24288.00
+      person2:
+        age: 5
+    spm_units:
+      spm_unit:
+        members: [person1, person2]
+        spm_unit_cash_assets: 0
+        is_tanf_enrolled: true
+    households:
+      household:
+        members: [person1, person2]
+        state_code: NH
+  output:
+    nh_fanf_payment_standard: 1022
+    nh_fanf_eligible: true
+    nh_fanf: 10
+
+- name: Review candidate C - enrolled two-person NH family, grant 10.01 rounds down to 10.
+  period: 2024-01
+  input:
+    people:
+      person1:
+        age: 30
+        employment_income_before_lsr: 24287.76
+      person2:
+        age: 5
+    spm_units:
+      spm_unit:
+        members: [person1, person2]
+        spm_unit_cash_assets: 0
+        is_tanf_enrolled: true
+    households:
+      household:
+        members: [person1, person2]
+        state_code: NH
+  output:
+    nh_fanf_payment_standard: 1022
+    nh_fanf_eligible: true
+    nh_fanf: 10
+
+- name: Review candidate D - existing 2025 three-person integration Case 16 rounds 582.50 down to 582.
+  period: 2025-01
+  input:
+    people:
+      person1:
+        age: 30
+        employment_income_before_lsr: 18000
+      person2:
+        age: 5
+      person3:
+        age: 2
+    spm_units:
+      spm_unit:
+        members: [person1, person2, person3]
+        is_tanf_enrolled: true
+    households:
+      household:
+        members: [person1, person2, person3]
+        state_code: NH
+  output:
+    nh_fanf_payment_standard: 1332.50
+    nh_fanf_eligible: true
+    nh_fanf: 582
