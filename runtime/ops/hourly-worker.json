@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-11T08:29:24Z",
+  "runAt": "2026-11-12T20:49:43.617Z",
   "status": "worked",
-  "summary": "Completed source-traced NH FANF public-benefits model precision review: upstream annual-cent employment-income path through monthly TANF and NH 50% disregard can produce sub-cent pre-grant arithmetic; hypothetical eligible 2024 case yields $521 exact floor versus $522 under our earlier cents-rounding candidate. Executed isolated arithmetic assertions and independently verified public analysis, regression script, issue #19 comment and continuity checkpoint. Full PolicyEngine Simulation and actual period-conversion behavior remain untested; no real beneficiary effect, upstream contact, Foundry/AppDeploy spend, production mutation or schedule change. Latest Ops Sentinel 08:21 UTC warned of prior stale worker heartbeat; this is a truthful refresh, not evidence of uninterrupted hourly operation.",
-  "lastVerifiedAt": "2026-11-11T08:29:16Z",
-  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6791008402"
+  "summary": "Completed distinct Nov 12 FDA-hosted 10 Day Forecast all-lots undeclared sildenafil+acetaminophen recall source review, cross-checked FDA drug-safety references, distinguished unrelated same-day tadalafil product, created and independently read back public-safe unsent consumer card, issue #19 receipt, and continuity queue checkpoint. Production intake read-only 0 registrations/0 submissions/0 accepted and 5 Tier-0; manual AgentMail subject-filtered checks 0 reports. No outreach, provider AI spend, production mutation or scheduling change. Heartbeat does not prove autonomous Scout rotation or downstream benefit.",
+  "lastVerifiedAt": "2026-11-12T20:49:43.617Z",
+  "evidenceUrl": "https://github.com/Lesterhau/humanity-loop/issues/19#issuecomment-6835553179"
 }
