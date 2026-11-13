@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-12T11:25:44.657849Z",
+  "runAt": "2026-11-13T11:09:06.840132Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,71 +8,93 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 9,
-  "citationsExamined": 157,
-  "candidateFindingsCount": 2,
+  "newRetractionsChecked": 13,
+  "citationsExamined": 74,
+  "candidateFindingsCount": 5,
   "candidateFindings": [
     {
-      "retractedDoi": "10.3390/v14122688",
-      "noticeDoi": "10.3390/v18111258",
-      "crossrefUpdateSelfReferential": false,
+      "retractedDoi": "10.1016/j.eclinm.2025.103452",
+      "noticeDoi": "10.1016/j.eclinm.2025.103452",
+      "crossrefUpdateSelfReferential": true,
       "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "39511961",
-      "citingTitle": "Methodology of comparative studies on the relative effectiveness of COVID-19 vaccines: a systematic review.",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "PPR",
+      "citingId": "PPR1328655",
+      "citingTitle": "Artificial Intelligence for MRI-Based Identification of Autism Spectrum Disorder: A Systematic Review of Methods, Performance, and Clinical Translation",
       "candidateType": "Possible systematic review",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/39511961",
+      "europePmcUrl": "https://europepmc.org/article/PPR/PPR1328655",
       "status": "unreviewed"
     },
     {
-      "retractedDoi": "10.3390/ijms25179574",
-      "noticeDoi": "10.3390/ijms272210123",
+      "retractedDoi": "10.1016/j.eclinm.2025.103452",
+      "noticeDoi": "10.1016/j.eclinm.2025.103452",
+      "crossrefUpdateSelfReferential": true,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "MED",
+      "citingId": "41422645",
+      "citingTitle": "Meta-analysis of aberrant white matter microstructure and gray matter volume in autism spectrum disorder.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41422645",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.1016/j.gerinurse.2025.103637",
+      "noticeDoi": "10.1016/j.gerinurse.2025.103637",
+      "crossrefUpdateSelfReferential": true,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "MED",
+      "citingId": "42629591",
+      "citingTitle": "Psychosocial coping with intensive care delirium: a mixed-methods systematic review of patient and family perspectives.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/42629591",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.2217/fon-2020-0300",
+      "noticeDoi": "10.2217/fon-2020-0300r1",
       "crossrefUpdateSelfReferential": false,
       "noticeStatus": "unverified",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
-      "citingId": "41493368",
-      "citingTitle": "Effectiveness and safety of meropenem-vaborbactam versus ceftazidime-avibactam in multidrug-resistant Gram-negative infections: a systematic review and meta-analysis with trial sequential analysis.",
+      "citingId": "39925756",
+      "citingTitle": "The prolonged health sequelae \"of the COVID-19 pandemic\" in sub-Saharan Africa: a systematic review and meta-analysis.",
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/41493368",
+      "europePmcUrl": "https://europepmc.org/article/MED/39925756",
+      "status": "unreviewed"
+    },
+    {
+      "retractedDoi": "10.2217/fon-2020-0300",
+      "noticeDoi": "10.2217/fon-2020-0300r1",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "33631340",
+      "citingTitle": "COVID-19 sequelae in adults aged less than 50 years: A systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/33631340",
       "status": "unreviewed"
     }
   ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 6,
+  "coverageGapsCount": 2,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.3390/su14020906",
+      "doi": "10.1177/27541258241245112",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.cscm.2026.e05783",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ijans.2026.101084",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ijhydene.2022.02.108",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ssci.2019.04.013",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ijhydene.2023.01.175",
+      "doi": "10.1007/s10854-026-17250-8",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
