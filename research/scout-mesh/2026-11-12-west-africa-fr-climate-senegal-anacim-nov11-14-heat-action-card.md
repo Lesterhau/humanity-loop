@@ -1,5 +1,7 @@
 # Sénégal — prévisions de fortes températures du 11 au 14 novembre 2026 : fiche pratique non diffusée
 
+> **SUPERSEDED FOR ANY FUTURE USE (2026-11-13):** ANACIM's newer official-domain indexed forecast is valid **12–15 November** and revises Bakel's 13 November maximum from **42°C to 43°C**. This historical UNSENT draft must **not** be distributed unchanged. See the [new dated source-delta receipt](2026-11-13-west-africa-fr-climate-senegal-anacim-nov12-15-forecast-supersession.md). Direct uncached ANACIM browser confirmation remains pending.
+
 **Humanity Loop | Scout:** `west-africa-fr-climate` | **Source review:** 2026-11-12 UTC | **Status:** evidence-backed, **UNSENT** public-service draft; independent local editorial and ordinary-browser checks pending.
 
 ## Finding and precise limits
