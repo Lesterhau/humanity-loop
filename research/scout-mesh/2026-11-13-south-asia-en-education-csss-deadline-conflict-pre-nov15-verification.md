@@ -1,0 +1,27 @@
+# PM-USP CSSS 2026–27 — pre-November-15 official-source deadline and escalation check
+
+**Review:** 2026-11-13 UTC. **Status:** completed bounded public-source re-verification, no authoritative resolution found; public-safe **UNSENT** applicant/editorial note. This is a due follow-up to the Nov 12 [applicant recourse crosswalk](2026-11-12-south-asia-en-education-csss-renewal-applicant-recourse-official-guidelines.md), not a newly discovered scholarship program or a verified extension.
+
+## Primary-source readback
+
+1. **NSP Students announcement (live public page, checked Nov 13):** https://scholarships.gov.in/Students still says CSSS *and* the separate J&K/Ladakh special scheme are “currently open,” but lists **31 October 2026** student renewal cutoff, **15 November 2026** institute verification, and **30 November 2026** L2 verification. Its “currently open” wording is internally confusing after the listed October 31 date; the site does not expose individual logged-in application eligibility to this public review.
+2. **NSP All Scholarships, Department of Higher Education → PM-USP CSSS (checked Nov 13):** https://scholarships.gov.in/All-Scholarships separately displays CSSS renewal **30 November 2026** student application, **15 December 2026** institute/defective verification, and **31 December 2026** DNO/SNO/MNO verification. These are different from the general announcement for the same CSSS renewal program.
+3. **Scheme-linked official guidelines (checked Nov 13):** https://scholarships.gov.in/public/schemeGuidelines/CSSS_GUIDLINES_07022024_updated.pdf, sections 6(ii), 6(vi), 6(vii): NSP supplies current opening/closing timelines; missing the controlling cutoff can prevent *that year's* renewal but does not permanently debar an otherwise eligible student. This document does **not** select between NSP's two public deadlines.
+4. **Scheme-linked official FAQ (checked Nov 13):** https://scholarships.gov.in/public/schemeGuidelines/FAQ_DOHE_CSSS.pdf is explicitly headed **2025–26**, not 2026–27. Q10 says apply/verify before portal closure, Q24 explains checking application status via personal login, Q26 distinguishes NSP technical grievances from Department of Higher Education CSSS grievances, Q33 permits a subsequent-year renewal subject to eligibility, and Q34 says **direct NSP scholarship application is free**. The FAQ's example and 2025 application start cannot be used to determine a 2026–27 cutoff.
+5. **Official officer routes (checked Nov 13):** https://scholarships.gov.in/Officers lists scheme-wise nodal and grievance-redressal officer search. No individual officer was contacted or identified in this review.
+
+## Bounded search for controlling 2026–27 order
+
+On Nov 13, official-domain searches for a PM-USP CSSS **2026–27 extension/corrigendum** and a dated Ministry/NSP clarification did **not locate a controlling order**. This is a bounded negative search, **not proof no order exists**. No authenticated NSP applicant session, direct backend status, institution verification, or ordinary logged-in browser was accessed. No public-page correction was observed.
+
+## Decision and time-sensitive safe next step
+
+**Finding:** The official public deadline conflict remains **unresolved as of Nov 13**, less than two days before the earlier listed institute-verification date, **15 November**. No basis exists to tell an applicant that Nov 30/Dec 15 is guaranteed, or that Oct 31/Nov 15 controls. The 2025–26 FAQ is not a 2026–27 extension notice.
+
+**UNSENT applicant-facing editorial guidance:** An existing applicant should immediately check their own NSP login status and contact their institute nodal officer about verification, rather than assume either public deadline controls. A prospective renewal applicant should check whether the actual scheme application remains available in their own NSP login and seek scheme-owner clarification through official NSP/Department of Higher Education grievance routes. Never share Aadhaar, OTR, passwords, bank data or private screenshots with Humanity Loop. Direct NSP application is officially free; optional CSC assisted-service charges are a distinct service, not a required scholarship fee.
+
+**UNSENT narrow institutional correction request:** “Your public Students announcement lists PM-USP CSSS renewal as open but says 31 October student / 15 November institute deadlines; the same scheme's All Scholarships entry lists 30 November / 15 December. The linked FAQ is headed 2025–26. Please identify the controlling dated 2026–27 order, update both public views and clarify current renewal and institute-verification availability.”
+
+**Next unchecked:** By 2026-11-14 UTC, check for a dated Ministry/NSP controlling order or visible public correction; obtain qualified India scholarship-policy review before separately authorized agency outreach or wider distribution. If no order, retain the contradiction as unresolved; do not manufacture a resolution.
+
+**Scope/outcome:** Official source review and GitHub evidence only. No student account, application, grievance submission, agency contact, public social distribution, actual beneficiary outcome, independent contributor adoption, Foundry model call, AppDeploy deployment, production mutation or schedule change.
