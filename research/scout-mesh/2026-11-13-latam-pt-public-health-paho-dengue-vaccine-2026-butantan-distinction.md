@@ -1,0 +1,32 @@
+# Public-source safety clarification — PAHO November 2026 dengue-vaccine recommendations versus Brazil's Butantan-DV suspension
+
+**Observed:** 2026-11-13 UTC. **Status:** Tier-0 research / UNSENT editorial correction candidate; no medical advice, external outreach, published patient guidance, institutional fix or beneficiary outcome. **Geography/language:** Brazil / Portuguese (cross-cutting Latin America); this is NOT a verified completion of the private `latam-es-public-health` Scout cell.
+
+## Distinct finding and why it matters
+
+The Pan American Health Organization's **4 November 2026** regional dengue-vaccine recommendations specifically concern **TAK-003** (Takeda/Qdenga) and separately acknowledge Brazil's **June 2026 precautionary pause of Butantan-DV** pending a safety investigation. These are **different vaccines** and **different levels of authority**: PAHO's regional recommendations do not automatically change Brazil's national SUS eligibility rules or restart the paused Butantan-DV strategy.
+
+The Brazilian Ministry of Health's separate **6 April 2026 Butantan-DV FAQ** remains publicly readable with present-tense wording that vaccination is **currently** prioritized for SUS primary-care workers. That statement is inconsistent in time with the Ministry's **8 June 2026 pause announcement, updated 26 October 2026**, which states Butantan-DV administration was halted as a precaution. This older FAQ was already flagged by Humanity Loop on **9 November**; the **new, distinct contribution here** is a primary-source, product-specific PAHO November crosswalk that prevents readers from treating PAHO's TAK-003 guidance as permission to resume Butantan-DV.
+
+## Original sources independently checked
+
+1. **PAHO/WHO, 4 Nov 2026**, `Recommendations on the use of dengue vaccine in the region of the Americas`, PDF pp. 1–2: https://www.paho.org/sites/default/files/2026/11/recommendations-use-dengue-vaccine-region-americas-2026.pdf . The PDF text was directly readable. PAHO says TAK-003 **may be used for ages 6–59 in high-burden, sustained-transmission areas**, with countries deciding precise areas and target populations. PAHO does **not currently support coadministration during introduction** pending stronger evidence and surveillance; this is not a claim of a universal permanent contraindication. It asks for robust postmarketing safety/effectiveness surveillance. Page 2 explicitly notes Brazil's **Butantan-DV safety alert and temporary suspension** and says PAHO awaits consolidated evidence for any future Butantan-DV assessment.
+2. **Brazil Ministry of Health, 8 Jun 2026, updated 26 Oct 2026**, `Ministério da Saúde descontinua temporariamente estratégia atual de vacinação do Butantan contra dengue`: https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-descontinua-temporariamente-estrategia-atual-de-vacinacao-do-butantan-contra-dengue . It documents precautionary suspension after 42 reports with warning signs, including three serious cases and two deaths under investigation. **Causation was not established**. Its FAQ distinguishes Qdenga (Takeda), a two-dose product still offered through SUS to ages 10–14 under the described national program, from one-dose Butantan-DV. These statements are time-specific and subject to change.
+3. **Brazil Ministry of Health, 6 Apr 2026**, `Quem pode receber a vacina contra a dengue do Instituto Butantan?`: https://www.gov.br/saude/pt-br/vacinacao/esavi/faq/faq/vacina-contra-dengue-butantan/quem-pode-receber-a-vacina . The directly retrieved page says `Neste momento, a vacinação está sendo priorizada...` for primary-care workers, with no suspension clarification in the retrieved article body. It does not itself establish live clinical practice or actual misinformation-related harm.
+4. **Anvisa, 8 Jun 2026**, safety investigation and other-product distinction: https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2026/anvisa-tera-painel-de-especialistas-para-aprofundar-investigacao-epidemiologica-sobre-vacina-butantan-dv . The regulator says the precautionary Butantan-DV measure does **not affect other dengue vaccines registered in Brazil**.
+
+## Public-safe Portuguese correction candidate — UNSENT
+
+> **Esclarecimento editorial proposto, sujeito à revisão técnica:** A resposta sobre quem pode receber a Butantan-DV foi publicada em abril de 2026 e descreve a priorização que existia naquela data. Em 8 de junho de 2026, o Ministério da Saúde anunciou a interrupção temporária da estratégia de aplicação da **Butantan-DV**, por precaução, enquanto investiga sinais de segurança; a relação causal com os eventos notificados ainda não estava estabelecida na atualização oficial consultada. A vacina **Qdenga/TAK-003**, de outro fabricante, não é a Butantan-DV e não foi abrangida por essa suspensão. As recomendações regionais da OPAS publicadas em novembro de 2026 sobre a TAK-003 não substituem as regras nacionais do SUS. Consulte as orientações atuais do Ministério da Saúde e da unidade de saúde responsável.
+
+**Do not publish as current medical advice without qualified Brazilian public-health/vaccine-safety review and a fresh check for any newer Ministry/Anvisa restart or policy change.** No individual vaccine recommendation or dosing instruction is being made.
+
+## Limits, risk and next step
+
+- PAHO's document is a **regional recommendation**, not proof that every Brazilian resident aged 6–59 is eligible for TAK-003 through SUS.
+- A safety signal is **not** proof the vaccine caused the reported events; the suspension is a precautionary administrative status, not a general verdict about vaccine efficacy or safety.
+- The old FAQ may be accompanied by dynamic navigation notices not visible to a text reader; ordinary-browser presentation remains unverified.
+- **Next unchecked by 2026-11-16 UTC:** qualified Brazilian clinical/public-health editorial review; check current Ministry/Anvisa Butantan-DV status and uncached FAQ banner in an ordinary browser. Only then seek separately authorized factual clarification outreach, if still warranted. Reopen sooner on an official substantive restart announcement.
+- **Action boundary:** no email, form submission, public distribution, account mutation, spending, Foundry/AppDeploy execution, scheduled-agent change or private Scout receipt created.
+
+**Disposition:** Verified new authoritative source crosswalk and unsent clarification supplement to the existing November 9 FAQ candidate; no external correction or patient outcome.
