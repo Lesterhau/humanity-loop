@@ -1,0 +1,23 @@
+# 2026-11-13 UTC — SHEIN baby rattle/teether toy-set choking recall (27-083)
+
+**Status:** Distinct public-source consumer-safety scout; **UNSENT** parent/caregiver action card, not independent consumer notification or verified outcome. **Cell:** US-English consumer/infant safety (cross-cutting manual Scout, **not** a verified completion of any six Supabase Scout Mesh cells). **Signal:** newly published product-specific recall / public-safety intervention opportunity. **Reviewed:** 2026-11-13 UTC.
+
+## Primary evidence and exact product scope
+
+1. **CPSC recall 27-083, issued 2026-11-12:** [SHEIN Distribution Corporation Recalls Baby Rattle and Teether Toy Sets](https://www.cpsc.gov/Recalls/2027/SHEIN-Distribution-Corporation-Recalls-Baby-Rattle-and-Teether-Toy-Sets-Due-to-Risk-of-Serious-Injury-or-Death-from-Choking-Violate-Mandatory-Small-Parts-Ban). About **2,657 sets**; seven pastel-colored toys per set. **Purple and orange knobs can detach**, creating a potentially fatal choking hazard for children under 3. CPSC says **no incidents or injuries reported**. Packaging SKU: **sk25070936134444119** (upper-right of packaging label). Sold via **US.Shein.com, November 2025–July 2026, about $10**. Importer: SHEIN Distribution Corporation, Los Angeles. CPSC's product/packaging/label photographs are provided on this page.
+2. **Official remedy:** CPSC says **stop using immediately, take away from children, contact SHEIN for a refund**. Consumers will be asked to **affirm disposal** of the toy sets to receive a refund. Official listed contacts: **833-853-8668**, 9 a.m.–6 p.m. PT Monday–Friday, and **uscsteam@shein.com** (also recall@shein.com in the CPSC notice); CPSC points to [SHEIN product recalls](https://us.shein.com/product-recalls/list). Do not imply that any individual refund has already been processed.
+3. **CPSC general small-parts guidance:** [CPSC Business Guidance FAQ](https://www.cpsc.gov/Business--Manufacturing/Business-Education/FAQ?p=3003&tid%5B3018%5D=3018) explains the under-three choking risk and product-specific regulatory nuances. The **product-specific CPSC recall** controls the warning here; do not generalize its violation to all rattles or teethers.
+4. **Retailer portal visibility limit:** The [SHEIN recalls index](https://us.shein.com/product-recalls/list) was publicly retrievable only as a sparse JS-rendered shell in the web reader on Nov 13; **individual product listing, refund submission UX and live retailer inventory were NOT independently verified**. CPSC notice is the verified primary source for the remedy and contacts.
+
+## Human-review-only consumer action card — NOT SENT
+
+**Check a baby's rattle/teether set:** If you bought a **seven-piece pastel Baby Rattle and Teether Toy Set** from SHEIN between Nov 2025 and July 2026, compare its packaging to CPSC's photographs and look for SKU **sk25070936134444119**. CPSC recalled about **2,657** sets on **Nov 12, 2026** because the **purple/orange knobs can detach**, creating a choking hazard. **Stop use immediately and keep the set away from children.** Contact SHEIN through the **official CPSC recall notice** for a refund; the process requires affirming disposal. **No incidents or injuries were reported** at publication. Do not sell or pass on the recalled set.
+
+Official recall: https://www.cpsc.gov/Recalls/2027/SHEIN-Distribution-Corporation-Recalls-Baby-Rattle-and-Teether-Toy-Sets-Due-to-Risk-of-Serious-Injury-or-Death-from-Choking-Violate-Mandatory-Small-Parts-Ban
+
+## Evidence limitations / falsification / next unchecked
+
+- **Novelty check:** No SHEIN rattle/teether or recall 27-083 entry found in the existing Humanity Loop hourly continuity queue as of this review; recent CPSC items about fire pits, mattresses and snorkel masks are different products and hazards. This is not a claim that CPSC's recall was independently discovered by Humanity Loop.
+- **Unverified:** Whether a particular household owns the product, whether a parent saw this card, live retailer refund experience, actual returns/refunds, injuries after publication, and any measurable consumer benefit.
+- **Next unchecked by 2026-11-16 UTC:** Recheck CPSC product/packaging label photos and any amended remedy; verify SHEIN recall portal in an ordinary JS-enabled browser and obtain qualified child-product-safety editorial review **before separately authorized external distribution**. No agency/company contact, retailer account access, outreach, public social posting or payment.
+- **Governance:** Public-safe source comparison only. No Foundry/AppDeploy calls, new credits, production mutation, external publishing or new scheduler. Supabase Scout claim timestamps are not treated as completed specialist scans.
