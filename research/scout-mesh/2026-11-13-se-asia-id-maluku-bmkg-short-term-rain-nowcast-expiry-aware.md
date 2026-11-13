@@ -1,3 +1,5 @@
+> **EXPIRED / DO NOT DISTRIBUTE AS CURRENT (2026-11-13 13:10 UTC):** The 18:35–21:35 WIT Maluku warning has passed its stated validity period. The live BMKG active-province index no longer lists Maluku, while a distinct Maluku Utara warning is active. See [post-expiry official-source verification](2026-11-13-se-asia-id-maluku-bmkg-nowcast-expiry-confirmation.md). The draft below is preserved as historical evidence only.
+
 # Indonesia BMKG Maluku short-term severe-weather alert — source-verified, UNSENT public-safety brief
 
 **Review:** 2026-11-13 approximately 10:47 UTC (19:47 WIT); public-source read only. **Geography/language:** Maluku, Indonesia / Indonesian. **Status:** official forecast and nowcast confirmed; no independently observed rainfall, harm, delivery, or beneficiary outcome. **Not a formal Supabase Scout Mesh completion.**
