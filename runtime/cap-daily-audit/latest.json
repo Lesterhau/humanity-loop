@@ -7,44 +7,44 @@
   },
   "findings": [
     {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.077037a7628509dce262ff0735c97faeb3f88bea.001.2",
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4f82c5a420c08f12b8e626154086d335b1500ecc.003.1",
       "detail": "At least one instruction sentence has 34 words; shorter sentences may reduce cognitive load during emergencies.",
       "event": "Wind Advisory",
-      "firstSeen": "2026-11-12T21:53:34.287347Z",
+      "firstSeen": "2026-11-13T21:29:46.737878Z",
       "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-11-12T12:40:00-08:00",
+      "sent": "2026-11-13T10:43:00-08:00",
       "severity": "advisory",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.077037a7628509dce262ff0735c97faeb3f88bea.001.2",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4f82c5a420c08f12b8e626154086d335b1500ecc.003.1",
       "status": "open",
       "title": "Long sentence in instruction"
     },
     {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.077037a7628509dce262ff0735c97faeb3f88bea.002.1",
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4f82c5a420c08f12b8e626154086d335b1500ecc.002.1",
       "detail": "At least one instruction sentence has 34 words; shorter sentences may reduce cognitive load during emergencies.",
       "event": "Wind Advisory",
-      "firstSeen": "2026-11-12T21:53:34.287347Z",
+      "firstSeen": "2026-11-13T21:29:46.737878Z",
       "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-11-12T12:40:00-08:00",
+      "sent": "2026-11-13T10:43:00-08:00",
       "severity": "advisory",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.077037a7628509dce262ff0735c97faeb3f88bea.002.1",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4f82c5a420c08f12b8e626154086d335b1500ecc.002.1",
       "status": "open",
       "title": "Long sentence in instruction"
     },
     {
-      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.077037a7628509dce262ff0735c97faeb3f88bea.003.1",
+      "alertId": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4f82c5a420c08f12b8e626154086d335b1500ecc.001.1",
       "detail": "At least one instruction sentence has 34 words; shorter sentences may reduce cognitive load during emergencies.",
       "event": "Wind Advisory",
-      "firstSeen": "2026-11-12T21:53:34.287347Z",
+      "firstSeen": "2026-11-13T21:29:46.737878Z",
       "sender": "w-nws.webmaster@noaa.gov",
-      "sent": "2026-11-12T12:40:00-08:00",
+      "sent": "2026-11-13T10:43:00-08:00",
       "severity": "advisory",
-      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.077037a7628509dce262ff0735c97faeb3f88bea.003.1",
+      "sourceUrl": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4f82c5a420c08f12b8e626154086d335b1500ecc.001.1",
       "status": "open",
       "title": "Long sentence in instruction"
     }
   ],
   "findingsCount": 3,
-  "runAt": "2026-11-12T21:53:34.287347Z",
+  "runAt": "2026-11-13T21:29:46.737878Z",
   "schemaVersion": 1,
   "source": "https://api.weather.gov/alerts/active"
 }
