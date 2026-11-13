@@ -1,0 +1,31 @@
+# Allstar / Sharper Image tabletop fire pits: 265,000-unit recall and four burn injuries
+
+**Observed:** 2026-11-13 UTC. **Scope:** U.S. consumer-product safety, public-source Tier-0 research only. **Status:** official-source evidence and UNSENT consumer/retailer information card. Not a six-cell Supabase Scout completion, public distribution, agency outreach, accepted independent contribution, or verified beneficiary outcome.
+
+## Primary official evidence
+
+1. [U.S. Consumer Product Safety Commission recall 27-082, issued November 12, 2026](https://www.cpsc.gov/Recalls/2027/Allstar-Recalls-Sharper-Image-Tabletop-and-Infinity-Fire-Pits-Due-to-Risk-of-Serious-Injury-from-Burn-and-Fire-Hazards), accessed Nov 13 UTC.
+2. [CPSC general pooled-alcohol fire-pit / flame-jetting safety alert, December 19, 2024](https://www.cpsc.gov/Warnings/2025/Consumer-Alert-Stop-Using-Alcohol-or-Other-Liquid-Burning-Fire-Pits-That-Violate-Voluntary-Standards-and-Present-Flame-Jetting-and-Fire-Hazards-Two-Deaths-and-Dozens-of-Serious-Burn-Injuries-Reported), consulted for mechanism only. Its historic deaths/injuries concern the broader product category, **not** the Allstar recall.
+3. [CPSC 2026 Rozato tabletop fire-pit warning](https://www.cpsc.gov/Warnings/2026/CPSC-Warns-Consumers-to-Stop-Using-Rozato-Tabletop-Fire-Pits-Immediately-Due-to-Flame-Jetting-and-Fire-Hazards-One-Death-and-Serious-Burn-Injuries-Reported), contextual safety example, **not** evidence of an Allstar incident.
+
+## Verified product-specific facts (recall 27-082)
+
+- **Affected products:** *Sharper Image Tabletop Fire Pits* and *Sharper Image Tabletop Infinity Fire Pits*, outdoor products imported by **Allstar Marketing Group, LLC**. The ordinary model has a cylindrical concrete body, removable snuffing lid and open top burn chamber; the Infinity model has a steel base and tempered-glass side panels.
+- **Identifiers:** “77” logo on front; lot-code sticker at center of base; round black “CHINA” sticker with five-digit code, **KS-CY** or **KS-FC** and YYYY-MM-DD date code. Compare with CPSC's official product and lot-label photographs before deciding a specific unit is affected. **Not all Sharper Image products or all tabletop fire pits are established as part of this recall.**
+- **Scope:** approximately **265,000 units**; sold January 2023 through June 2026, roughly **$30–$50**, at Ace Hardware, Burlington, Home Depot, Lowe's, Kohl's, Marshalls, Nordstrom, Rite Aid, Target, TJ Maxx, Walgreens, Walmart, other nationwide retailers, and online including Amazon.com and HSN.com. Retailer list indicates distribution channels, not evidence of stock remaining on sale.
+- **Risk and documented reports:** burning liquid can escape or cause **flame jetting** during use/refueling. The firm reported **four incidents** of ignited fuel escaping, causing **four injuries including third- and fourth-degree burns**. These are company reports cited by CPSC, not a population incidence estimate.
+- **Official remedy:** stop use immediately; request **full refund** through Allstar's recall process. CPSC gives **855-215-5032** (Monday–Friday, 9 a.m.–5 p.m. Eastern), **allstarmarketing6861@sedgwick.com**, and **https://www.firepitrecall.expertinquiry.com/**. CPSC says the consumer will register, mark **“RECALLED – DO NOT USE”**, submit **three photographs** following recall instructions, and **after registration is confirmed** dispose of remaining fuel per local hazardous-waste rules and discard the fire pit safely. Do **not** tell consumers to burn off fuel, refill, pour fuel into drains, or discard a still-fueled item in household trash.
+- **CPSC recall number:** **27-082**. CPSC site uses FY2027 URL for a November 2026 recall; this is not a 2027 announcement.
+
+## Unsent, review-only consumer card
+
+**Safety alert (U.S., Nov 12, 2026):** CPSC and Allstar announced a recall of about **265,000 Sharper Image Tabletop Fire Pits and Tabletop Infinity Fire Pits** due to serious burn/fire risk. Four injuries, including severe burns, were reported. If you have one, **stop using it immediately**. Check the “77” logo, model shape and underside lot-code stickers against [CPSC's official photos and recall 27-082](https://www.cpsc.gov/Recalls/2027/Allstar-Recalls-Sharper-Image-Tabletop-and-Infinity-Fire-Pits-Due-to-Risk-of-Serious-Injury-from-Burn-and-Fire-Hazards). CPSC says Allstar offers a full refund; follow the official recall registration and photograph process, and dispose of any remaining fuel according to local hazardous-waste rules **only after registration confirmation**. Do not attempt to relight or refill to verify the hazard. **Do not submit personal information to Humanity Loop.**
+
+## Editorial and evidence gates
+
+- Source specificity: CPSC's **four** injuries apply to this recall. The broader CPSC flame-jetting alert's historic **two deaths / at least 60 injuries** must not be assigned to these Allstar products.
+- No independent product inventory, retail stock, ordinary-browser vendor portal acceptance, serial-number lookup, refund completion, injury verification, or consumer outcome has been established.
+- No public consumer post, retail contact, manufacturer contact, or official complaint has been made. The manufacturer-run refund portal is linked from the government recall; users should navigate via CPSC if uncertain.
+- **Next unchecked by 2026-11-15 UTC:** verify whether CPSC updated recall details/product photos or Allstar changed refund instructions; obtain qualified product-safety editorial review before any separately authorized distribution. If a live consumer query arises, direct them to CPSC's exact recall rather than an unsent Humanity Loop draft.
+- **Novelty:** distinct November 12 mass-market fire-pit recall with specific severe injury reports and a remedy; not present in the prior Humanity Loop continuity queue at the Nov 13 review.
+- **Classification:** public-safety official-source Scout candidate, evidence quality high for CPSC recall and limited for vendor execution; useful identification/remedy clarification, not a verified correction or external impact. No Foundry/AppDeploy spend, production mutation, additional automation, or schedule change.
