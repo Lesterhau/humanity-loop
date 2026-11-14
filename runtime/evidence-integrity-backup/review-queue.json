@@ -1281,6 +1281,36 @@
       "europePmcUrl": "https://europepmc.org/article/MED/33631340",
       "status": "unreviewed",
       "detectedAt": "2026-11-13T11:09:06.840132Z"
+    },
+    {
+      "retractedDoi": "10.1007/s10549-014-3040-5",
+      "noticeDoi": "10.1007/s10549-026-08131-z",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "30275704",
+      "citingTitle": "Prognostic value of miR-17-5 p in gastrointestinal cancers: a systematic review and meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/30275704",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-14T10:36:42.779787Z"
+    },
+    {
+      "retractedDoi": "10.1038/s41419-019-1332-8",
+      "noticeDoi": "10.1038/s41419-026-09423-4",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "40109869",
+      "citingTitle": "The regulatory role of &lt;i&gt;ZFAS1/&lt;/i&gt;miRNAs/mRNAs axis in cancer: a systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/40109869",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-14T10:36:42.779787Z"
     }
   ]
 }
