@@ -2,18 +2,11 @@
   "baselinesCreated": 0,
   "changes": [],
   "changesDetected": 0,
-  "failures": [
-    {
-      "error": "HTTPError: HTTP Error 404: Not Found",
-      "sourceKey": "fda-drug-safety",
-      "sourceName": "FDA Drug Safety Communications",
-      "sourceUrl": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications"
-    }
-  ],
-  "failuresCount": 1,
-  "runAt": "2026-11-14T10:40:29.700643Z",
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-11-14T18:17:37.473916Z",
   "schemaVersion": 1,
-  "sourcesChecked": 2,
+  "sourcesChecked": 3,
   "sourcesConfigured": 3,
   "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
 }
