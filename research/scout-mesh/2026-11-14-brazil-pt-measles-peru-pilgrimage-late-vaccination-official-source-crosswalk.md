@@ -1,0 +1,35 @@
+# Brazil (PT) — measles travel guidance for Peru pilgrimage: late vaccination option omitted from Nov 13 Goiás summary
+
+**Observation date:** 2026-11-14 UTC  
+**Status:** source-verified public-interest editorial candidate; UNSENT; human review required  
+**Scope:** Brazil/Portuguese travel-health information; cross-cutting public-health Scout, **not** a formally completed private Supabase Scout cell or verified agency defect.
+
+## Exact primary sources inspected
+
+1. Goiás State Health Secretariat, published/updated **2026-11-13**, [Saúde orienta atualização da vacina contra o sarampo para fiéis e viajantes com destino ao Peru](https://goias.gov.br/saude/saude-orienta-atualizacao-da-vacina-contra-o-sarampo-para-fieis-e-viajantes-com-destino-ao-peru/). The page refers to the Peru papal visit **Nov 11–17**, recommends vaccination **at least 15 days before travel**, gives Brazil's age-based schedule, and says people uncertain of their status should visit a UBS. It cites **Nota Técnica Conjunta nº 405/2026**; the underlying document was **not independently located in a bounded official-domain search**, so do not assert its exact contents.
+2. Brazilian Ministry of Health, [Nota Técnica Conjunta nº 80/2026-DPNI/SVSA/MS](https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/notas-tecnicas/2026/nota-tecnica-conjunta-no-80-2026-dpni-svsa-ms.pdf/@@download/file), **p. 4 / §5.1.1**, originally addressing international travel to FIFA 2026 host countries. It distinguishes ideal timing (15 days for one dose, 45 days before travel to finish two doses where indicated) and explicitly says that **if the ideal period was missed, it is still advisable to receive at least one indicated dose before traveling, even on departure day**. This does **not** imply full immunity by departure.
+3. Paraná State Health Secretariat, [2026-05-05 official traveler-immunity-window tool announcement](https://www.saude.pr.gov.br/Noticia/Saude-lanca-calculadora-digital-para-auxiliar-viajantes-na-prevencao-contra-o-sarampo), confirms the same **late-traveler option** (as early as possible, including departure day) and advises extra precautions when the ideal interval is unavailable.
+4. PAHO, [2026-11-03 recommendations for travelers/pilgrims](https://www.paho.org/es/documentos/recomendaciones-salud-para-viajeros-peregrinos-noviembre-2026), specifically for large religious events in **Argentina, Peru and Uruguay**, and [2026-11-06 announcement](https://www.paho.org/es/noticias/6-11-2026-ops-emite-recomendaciones-para-viajeros-ante-visita-papa-leon-xiv-america-latina). Indexed official source confirms event scope; direct PAHO webpage open returned **403**, so do not claim the full linked PDF was read from that page.
+5. PAHO [2026-11-06 measles situation report #15](https://www.paho.org/es/documentos/informe-situacion-15-sarampion-region-americas-6-noviembre-2026) indexed official abstract: **57,666 confirmed cases, 81 deaths in 17 countries/territories** through epidemiological week 43 (ending Oct 31). The Goiás page's **“more than 56,000”** is directionally consistent, not a verified numerical defect.
+6. CDC [Plan for Travel, updated 2026-04-29](https://www.cdc.gov/measles/travel/index.html), independently says a dose can still be given if international departure is under two weeks away. This is **supporting international guidance, not authority for Brazil's age-based schedule**.
+
+## Narrow, useful finding
+
+The Goiás November 13 article's **15-day recommendation is correct as ideal planning guidance**, but the article was published while the November 11–17 Peru event was already underway. It **does not mention** the Ministry of Health's explicitly documented late-traveler option for people who missed the ideal window. Readers might wrongly conclude vaccination is pointless or unavailable if they cannot meet the 15-day lead time. This is a **potential editorial omission/clarification opportunity**, not evidence of an incorrect Goiás vaccination policy or any resulting infection.
+
+The Ministry's Nota 80 is FIFA-context guidance; avoid representing it as the cited Nota 405/2026 or as a newly issued Peru-specific order. Paraná's official May guidance independently confirms the general late-vaccination principle. No personalized medical advice, assurance of protection, or vaccine recommendation for contraindicated individuals should be given.
+
+## Unsent, qualified-review-only Portuguese clarification
+
+> **Se a viagem já está próxima e você não conseguiu se vacinar com os 15 dias de antecedência recomendados, não presuma que perdeu a oportunidade.** Orientações do Ministério da Saúde para viajantes internacionais e da Secretaria de Saúde do Paraná indicam que, quando houver indicação de vacina e não for possível cumprir o prazo ideal, a dose deve ser avaliada e aplicada o quanto antes, inclusive no dia do embarque. **Isso não garante proteção imediata**. Procure uma UBS para conferir sua caderneta, indicação e contraindicações; siga as orientações de prevenção durante a viagem e avise o serviço de saúde previamente se tiver febre e manchas no corpo após exposição/retorno. Para a viagem ao Peru, confirme orientações específicas atualizadas com a autoridade sanitária.
+
+This is a candidate **for a qualified Brazilian immunization/travel-health editor**, not text approved for external publication. The source page itself already says to seek a UBS and supplies other precautions; do not imply it discourages vaccination or lacks all traveler safety advice.
+
+## Verification, uncertainty and next action
+
+- **Novelty/deduplication:** no matching Goiás/Nota 80/late-travel note in the queue as checked 2026-11-14 UTC. A previous Latin America measles report covers regional surveillance but not this Brazil/PT timing omission.
+- **Evidence:** high for the two directly read Brazilian official sources; moderate for PAHO event context due to direct 403; low for the contents of Goiás-cited Nota 405/2026, not retrieved.
+- **Potential benefit:** time-sensitive clarification for people leaving late or already planning travel; **no verified reader, vaccination, health outcome or agency correction**.
+- **Falsification:** a newer Goiás clarification, a retrieved Nota 405/2026 expressly superseding the general late-dose option, or a verified local contraindication/protocol exception.
+- **NEXT unchecked by 2026-11-15 UTC:** have a qualified Brazilian vaccination/travel-health reviewer verify the exact current guidance and seek the actual Nota 405/2026; recheck the Goiás page for an added late-traveler sentence. Only with separate owner approval consider a single proportionate, nonduplicative agency editorial inquiry or reviewed public distribution. No contact/publication was made.
+- **Governance:** $0 new cash; no AppDeploy/Foundry model calls, deployment, production mutations, autonomous external posting, or formal Supabase completion claim. Native Foundry cron remains off. Contributor/impact counts unchanged and unverified this run.
