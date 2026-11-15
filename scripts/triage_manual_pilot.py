@@ -100,7 +100,7 @@ def triage(record: object, *, trusted_origin: str = "unknown") -> dict:
         if human_checked:
             warnings.add("unable_outcome_conflicts_with_human_check")
 
-    if web_access in {"limited", "blocked"}:
+    if isinstance(web_access, str) and web_access in {"limited", "blocked"}:
         warnings.add("model_access_limitation_not_public_site_failure")
     if source_check == "conflicting":
         blockers.add("source_conflict_needs_manual_resolution")
