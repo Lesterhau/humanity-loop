@@ -136,7 +136,10 @@ export default function AnyAIAssistantPage() {
             Starting website: <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
               USA.gov — government benefits
             </a>. Pick one link or instruction to inspect.
-            If the AI cannot browse, open the link yourself and paste only public text.
+            If your AI cannot browse, you can simply open
+            {" "}<a href="https://www.usa.gov/help-with-utility-bills" target="_blank" rel="noopener noreferrer">USA.gov&apos;s help-with-utility-bills page</a>
+            {" "}yourself and check whether it explains the phone, internet and energy help promised by the benefits hub.
+            No need to copy an entire website into your AI.
           </p>
           <div className={styles.softNote}>
             <strong>Finding nothing wrong counts as an honest result.</strong> You are not expected
@@ -149,7 +152,7 @@ export default function AnyAIAssistantPage() {
             <span className={styles.stepBubble} aria-hidden="true">3</span>
             <div>
               <h2>Send us the short report</h2>
-              <p>Send only the public-page finding you personally checked, or &ldquo;none found.&rdquo;</p>
+              <p>Report what you checked, an honest &ldquo;no problem found,&rdquo; or why you couldn&apos;t check. All three help us improve the test.</p>
             </div>
           </div>
           <p>Choose what happened, then write a few sentences or paste your AI&apos;s short draft. We welcome honest negative and blocked results. Only select a personally checked outcome if you actually opened the public page yourself.</p>
