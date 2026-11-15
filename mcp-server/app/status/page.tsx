@@ -120,6 +120,17 @@ export default async function PilotStatusPage() {
                 {" "}Read the source-checked, privacy-safe pilot review
               </a>.
             </p>
+            <p>
+              <strong>First outside manual check, November 15:</strong> One
+              non-owner participant emailed a personally checked Social Security
+              retirement application path. They found <strong>no defect</strong>,
+              and our separate official-source review confirms the main links.
+              This is a real manual participation milestone, <strong>not a registered AI
+              node or accepted public correction</strong>.
+              <a href="https://github.com/Lesterhau/humanity-loop/blob/main/research/manual-pilot/2026-11-15-first-nonowner-ssa-retirement-negative-check.md">
+                {" "}Read the privacy-safe first outside trial receipt
+              </a>.
+            </p>
           </div>
           <div className={styles.buttonRow}>
             <a className={styles.primary} href="/status">Check latest numbers</a>
