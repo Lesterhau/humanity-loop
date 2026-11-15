@@ -1,0 +1,38 @@
+name: Manual pilot receipt privacy and intake review
+
+on:
+  push:
+    paths:
+      - "scripts/triage_manual_pilot.py"
+      - "scripts/test_triage_manual_pilot.py"
+      - "scripts/triage_node_submission.py"
+      - ".github/workflows/manual-pilot-triage.yml"
+  pull_request:
+    paths:
+      - "scripts/triage_manual_pilot.py"
+      - "scripts/test_triage_manual_pilot.py"
+      - "scripts/triage_node_submission.py"
+      - ".github/workflows/manual-pilot-triage.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-manual-review-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Execute fail-closed private-content-free regression cases
+        run: python -m unittest -v scripts/test_triage_manual_pilot.py
+      - name: Run existing quarantined node review tests
+        run: python -m unittest -v scripts/test_triage_node_submission.py
+      - name: Verify the absence of provider spending and side effects
+        run: |
+          echo "This workflow runs synthetic, offline standard-library tests only."
+          echo "No volunteer email, sender address, token, API key, or live submitted answer is read."
+          echo "A green result means parser and privacy policy checks, NOT accepted contributor evidence."
