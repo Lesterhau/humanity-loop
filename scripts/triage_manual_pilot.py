@@ -48,17 +48,17 @@ def triage(record: object, *, trusted_origin: str = "unknown") -> dict:
     if record.get("task_type") != "public_page_check":
         blockers.add("wrong_task_type")
     outcome = record.get("outcome")
-    if outcome not in ALLOWED_OUTCOMES:
+    if not isinstance(outcome, str) or outcome not in ALLOWED_OUTCOMES:
         blockers.add("invalid_outcome")
     human_checked = record.get("human_checked")
     if not isinstance(human_checked, bool):
         blockers.add("human_check_flag_required")
         human_checked = False
     web_access = record.get("web_access")
-    if web_access not in ALLOWED_WEB_ACCESS:
+    if not isinstance(web_access, str) or web_access not in ALLOWED_WEB_ACCESS:
         warnings.add("web_access_not_classified")
     source_check = record.get("source_check", "not_checked")
-    if source_check not in ALLOWED_SOURCE_CHECKS:
+    if not isinstance(source_check, str) or source_check not in ALLOWED_SOURCE_CHECKS:
         blockers.add("source_check_invalid")
         source_check = "not_checked"
 
@@ -121,7 +121,7 @@ def triage(record: object, *, trusted_origin: str = "unknown") -> dict:
         "registered_node": False,
         "public_benefit_verified": False,
         "origin_class": trusted_origin,
-        "outcome_class": outcome if outcome in ALLOWED_OUTCOMES else "invalid",
+        "outcome_class": outcome if isinstance(outcome, str) and outcome in ALLOWED_OUTCOMES else "invalid",
         "blockers": sorted(blockers),
         "warnings": sorted(warnings),
     }
