@@ -9,24 +9,55 @@ const reportEmail = "mother.humanityloop@agentmail.to";
 const reportSubject = "Humanity Loop - One-time public-page check";
 
 const prompt = [
-  "I'm helping Humanity Loop with ONE optional, read-only public-interest task. Do not connect plugins, sign me up for anything, schedule tasks, contact agencies, submit forms, or spend money.",
+  "I'm helping Humanity Loop with ONE optional, read-only public-interest task. Do not connect plugins, sign me up, schedule tasks, contact agencies, submit forms, or spend money.",
   "",
-  "Task: Help me check how understandable one public government-benefits page is for someone seeking information.",
-  "Official starting page: https://www.usa.gov/benefits",
+  "Starting official page: https://www.usa.gov/benefits",
+  "Goal: Check ONE public government-benefits page link for clarity or a real navigation problem. A valid outcome can also be NO ISSUE FOUND or COULD NOT VERIFY.",
   "",
-  "1. Open the official page if browsing is available. If you cannot open it, ask me to open it in my browser and paste just the public text or link details you need. Never pretend you read it.",
-  "2. Help me select ONE link or instruction on that page. Do not ask for my income, health, identity, location, account access, or benefit eligibility.",
-  "3. Flag only something you can support with direct evidence: a broken link, unclear instruction, missing next step, contradiction with another cited official source, or a confirmed 'none found'. Do not claim policy is wrong on the basis of wording alone.",
-  "4. Ask me to personally open and confirm the link or wording in my own browser. If I cannot verify it, label the observation UNVERIFIED.",
-  "5. Write a report under 180 words with: PAGE URL, EXACT LINK OR WORDING, WHAT I PERSONALLY CONFIRMED, WHY IT MAY CONFUSE PEOPLE (or NONE FOUND), DATE CHECKED, SECOND OFFICIAL SOURCE (if relevant), and UNCERTAINTY.",
-  "6. Stop after the one report. Do not send it anywhere yourself. I decide whether to email Humanity Loop.",
+  "1. If live browsing works, open the official page and select ONE link. State the exact official URLs actually accessed. Never claim that you visited a page if a text reader only returned a shell or an automated browser was blocked.",
+  "2. If you CANNOT browse, do NOT request that I paste the entire page or abandon the test. Give me one simple human-check alternative: I can open https://www.usa.gov/help-with-utility-bills and check whether its official phone/internet/energy assistance information matches the 'Help with utility bills' link on https://www.usa.gov/benefits. Ask me to reply with 'Looks accurate', 'Something confusing: [public wording]', or 'Couldn't check'. You may use this suggestion without pretending to have opened either site.",
+  "3. Do not ask for income, health, identity, location, benefits eligibility, passwords or private records. Do not log in, file complaints or contact agencies.",
+  "4. After this one attempt, ALWAYS provide a short report under 180 words, even if the site was inaccessible. Include PAGE URL, EXACT LINK OR WORDING (if observed), AI READING STATUS (live page / cached page / blocked), HUMAN CHECK (confirmed by me / not confirmed), FINDING (possible issue / no issue observed / unable to verify), OFFICIAL SOURCE URLs, DATE, and UNCERTAINTY.",
+  "5. Do not write that I personally confirmed anything unless I explicitly tell you I did. A model's reading is not a human check. If I have not confirmed, clearly mark NOT HUMAN-VERIFIED. This is an honest test outcome, not an accepted correction.",
+  "6. Stop after the single report. I choose whether to email it or submit a brief account of where I got stuck.",
   "",
-  "Be skeptical of your own suggestions. A plausible-sounding answer without a working public link and a human observation is not a verified issue."
+  "Don't force a problem, inflate evidence, or infer that an automated 403 means ordinary visitors are blocked."
 ].join("\n");
 
 export default function AnyAIAssistantPage() {
   const [copied, setCopied] = useState(false);
   const [copyFailed, setCopyFailed] = useState(false);
+  const [outcome, setOutcome] = useState<"" | "no_issue" | "possible_issue" | "unable">("");
+  const [notes, setNotes] = useState("");
+  const [reportCopied, setReportCopied] = useState(false);
+  const outcomeText = {
+    no_issue: "I personally checked the public page and found no issue.",
+    possible_issue: "I personally checked the public page and have a possible issue for independent review.",
+    unable: "I could not personally verify the page or the AI could not retrieve it.",
+  };
+  const reportReady = outcome !== "" && (outcome !== "possible_issue" || notes.trim().length >= 15);
+  const reportBody = [
+    "Humanity Loop manual friend-beta report",
+    "Task: one public-page check (not a connected AI node).",
+    "Starting source: " + sourceUrl,
+    "Outcome: " + (outcome ? outcomeText[outcome] : "(not selected)"),
+    "Observation / checked URL / exact public wording:",
+    notes.trim() || "(no further details)",
+    "Review status: UNREVIEWED. No independent acceptance or measured outcome claimed.",
+    "No private information or full AI chat log is needed.",
+  ].join("\n");
+  const mailto = "mailto:" + reportEmail + "?subject=" +
+    encodeURIComponent(reportSubject) + "&body=" + encodeURIComponent(reportBody);
+
+  async function copyReport() {
+    if (!reportReady) return;
+    try {
+      await navigator.clipboard.writeText(reportBody);
+      setReportCopied(true);
+    } catch {
+      setReportCopied(false);
+    }
+  }
 
   async function copyPrompt() {
     try {
@@ -105,7 +136,10 @@ export default function AnyAIAssistantPage() {
             Starting website: <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
               USA.gov — government benefits
             </a>. Pick one link or instruction to inspect.
-            If the AI cannot browse, open the link yourself and paste only public text.
+            If your AI cannot browse, you can simply open
+            {" "}<a href="https://www.usa.gov/help-with-utility-bills" target="_blank" rel="noopener noreferrer">USA.gov&apos;s help-with-utility-bills page</a>
+            {" "}yourself and check whether it explains the phone, internet and energy help promised by the benefits hub.
+            No need to copy an entire website into your AI.
           </p>
           <div className={styles.softNote}>
             <strong>Finding nothing wrong counts as an honest result.</strong> You are not expected
@@ -118,19 +152,58 @@ export default function AnyAIAssistantPage() {
             <span className={styles.stepBubble} aria-hidden="true">3</span>
             <div>
               <h2>Send us the short report</h2>
-              <p>Send only the public-page finding you personally checked, or &ldquo;none found.&rdquo;</p>
+              <p>Report what you checked, an honest &ldquo;no problem found,&rdquo; or why you couldn&apos;t check. All three help us improve the test.</p>
             </div>
           </div>
-          <p>Copy your checked report from your AI, or write a few sentences yourself. Email it to the project, or send it privately to the friend who invited you.</p>
+          <p>Choose what happened, then write a few sentences or paste your AI&apos;s short draft. We welcome honest negative and blocked results. Only select a personally checked outcome if you actually opened the public page yourself.</p>
+          <label className={styles.field} htmlFor="report-outcome">
+            What happened?
+            <select
+              id="report-outcome"
+              className={styles.select}
+              value={outcome}
+              onChange={(event) => { setOutcome(event.target.value as typeof outcome); setReportCopied(false); }}
+            >
+              <option value="">Choose one result</option>
+              <option value="no_issue">I checked the public page. No issue found.</option>
+              <option value="possible_issue">I checked the public page. Something may need fixing.</option>
+              <option value="unable">I couldn't check, or my AI couldn't read the page.</option>
+            </select>
+          </label>
+          <label className={styles.field} htmlFor="report-notes">
+            Short report or obstacle (public information only)
+            <textarea
+              id="report-notes"
+              className={styles.feedbackCopy}
+              rows={5}
+              maxLength={1200}
+              value={notes}
+              onChange={(event) => { setNotes(event.target.value); setReportCopied(false); }}
+              placeholder="For a possible issue: include the official page URL, exact wording, what you saw, and why it might confuse someone. For no issue or a blocked test: one sentence is enough."
+            />
+          </label>
+          {outcome === "possible_issue" && notes.trim().length < 15 && (
+            <p className={styles.warning}>Include at least a short description and the public URL or wording before emailing a possible issue.</p>
+          )}
           <div className={styles.buttonRow}>
-            <a className={styles.primary} href={"mailto:" + reportEmail + "?subject=" + encodeURIComponent(reportSubject)}>
-              Email my report
-            </a>
-            <Link className={styles.secondary} href="/beta">Back to friend beta</Link>
+            {reportReady ? (
+              <a className={styles.primary} href={mailto}>Open email with my report</a>
+            ) : (
+              <span className={styles.secondary} aria-disabled="true">Choose a result to prepare email</span>
+            )}
+            <button className={styles.secondary} type="button" disabled={!reportReady} onClick={() => void copyReport()}>
+              Copy my report instead
+            </button>
           </div>
+          {reportCopied && <p className={styles.status} role="status">Report copied. You can send it privately to the person who invited you.</p>}
+          <p className={styles.muted}>The email button opens your mail app; it does not send anything until you review and send it. If you need to stop, just choose &ldquo;couldn&apos;t check&rdquo;. No fabricated findings required.</p>
           <p className={styles.minor}>
             Any AI app is optional. A manual check is equally welcome, and
             "nothing wrong found" is an acceptable result.
+          </p>
+          <p className={styles.minor}>
+            This form stays in your browser until you choose to use your own email or copy the text.
+            It creates no node, background task, account or automatic submission.
           </p>
           <p className={styles.minor}>
             Emailing reveals your email address to the project; a private message to your friend

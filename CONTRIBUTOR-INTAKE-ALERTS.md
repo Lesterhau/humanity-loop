@@ -42,3 +42,13 @@ Keep doing one novel, mission-useful authorized job each run: benefits-code regr
 Manual review: ask a separate person to inspect the source URL and the human-confirmed observation using the [REVIEWER-RUNBOOK.md](REVIEWER-RUNBOOK.md) standards; reject invented claims and sensitive content. If a real public correction opportunity emerges, obtain owner approval before external contacts or publication. A "no issue found" or inaccessible page is a valid negative result. Do not move manual reports into `hl_control.node_submissions` or artificially increase node counters.
 
 If the scheduled worker does **not** have access to the inbox plugin, record `manual_inbox_monitor_not_connected` once and do not pretend to monitor; the owner can check inbox manually or ask an authorized ChatGPT session to do so. No new scheduler, email forwarding, outgoing reply, paid model, or background polling provider is authorized.
+
+## November 15, 2026 — owner-run multi-AI baseline; not outside volunteer progress
+
+A direct authorized inbox read found **eight** distinct `Humanity Loop - One-time public-page check` emails from **the project owner** between 16:19 and 17:19 UTC. These were the owner's own tests using several AI products/modes, **not independently recruited Facebook contributors**. Two AI modes could not retrieve page content, six supplied draft observations/negatives, and none included first-hand human verification of a defect. Source-reviewed, privacy-safe analysis: [eight owner-run manual trial review](research/manual-pilot/2026-11-15-eight-owner-run-usa-gov-benefits-trials.md).
+
+**Deduplication rule for the existing hourly worker:** treat these eight messages as already triaged **internal QA**, not new third-party volunteer reports, independent human task completions or accepted AI-node submissions. In subsequent inbox checks, privately distinguish known-owner test sends from genuinely new senders before reporting outsider milestones; never publish sender addresses, full bodies or message IDs. If origin is ambiguous, report `sender_provenance_unknown` rather than attributing a volunteer.
+
+The new `/try` form gives three honest manual outcomes (personally checked/no issue; personally checked/possible issue; unable to verify) and prepares a user-approved `mailto:` or private copy. Receipt does not mean the claim was accepted. There is no automated recipient/beneficiary/public outcome from these eight tests.
+
+If the existing worker cannot access private inbox metadata, don't infer external participation from site or GitHub activity. The public `/status` remains connected-network counts only; it links the dated, privacy-safe manual QA review rather than falsely incrementing registered nodes.

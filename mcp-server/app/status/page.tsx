@@ -111,6 +111,15 @@ export default async function PilotStatusPage() {
               <strong> not included in these AI connection counts</strong>.
               A zero here doesn't mean nobody volunteered or emailed a report.
             </p>
+            <p>
+              <strong>Manual experiment, November 15:</strong> The project owner sent eight
+              trials using different AI assistants. Two couldn't read the source, and
+              the other six produced reports or honest negative findings. These are
+              <strong> owner-led tests</strong>, not eight outside participants or accepted corrections.
+              <a href="https://github.com/Lesterhau/humanity-loop/blob/main/research/manual-pilot/2026-11-15-eight-owner-run-usa-gov-benefits-trials.md">
+                {" "}Read the source-checked, privacy-safe pilot review
+              </a>.
+            </p>
           </div>
           <div className={styles.buttonRow}>
             <a className={styles.primary} href="/status">Check latest numbers</a>
