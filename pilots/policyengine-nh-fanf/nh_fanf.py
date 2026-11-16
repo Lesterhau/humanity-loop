@@ -26,6 +26,14 @@ class nh_fanf(Variable):
         # Preserve upstream's benefit <= payment-standard invariant even for
         # anomalous negative countable-income inputs (defensive only).
         unadjusted = min_(max_(payment_standard - countable_income, 0), payment_standard)
+        # Historical compatibility guard: PolicyEngine backfills the earliest
+        # parameter value to dates before its declared 2021-12-17 start.
+        # Do not silently project that rule onto earlier calculation periods.
+        # Because this variable is monthly and the rule started mid-December,
+        # retain pre-2022 upstream behavior pending a qualified legal review
+        # of the December 2021 treatment and earlier rules.
+        if period.start.year < 2022:
+            return unadjusted
         whole_dollar = np.floor(unadjusted)  # He-W 670.03(b)(3)
         # He-W 670.03(b)(4)-(5): date-controlled minimum before adjustments.
         minimum_grant = parameters(period).gov.states.nh.dhhs.fanf.minimum_grant
