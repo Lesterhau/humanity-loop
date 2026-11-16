@@ -1701,6 +1701,21 @@
       "europePmcUrl": "https://europepmc.org/article/MED/37957032",
       "status": "unreviewed",
       "detectedAt": "2026-11-15T11:06:18.648141Z"
+    },
+    {
+      "retractedDoi": "10.1016/j.bbagen.2017.03.007",
+      "noticeDoi": "10.1016/j.bbagen.2017.03.007",
+      "crossrefUpdateSelfReferential": true,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "MED",
+      "citingId": "32755613",
+      "citingTitle": "The effects of astaxanthin supplementation on obesity, blood pressure, CRP, glycemic biomarkers, and lipid profile: A meta-analysis of randomized controlled trials.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/32755613",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-16T11:35:17.062034Z"
     }
   ]
 }
