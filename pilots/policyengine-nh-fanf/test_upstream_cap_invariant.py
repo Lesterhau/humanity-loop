@@ -47,7 +47,7 @@ class PreserveUpstreamCap(unittest.TestCase):
     def calculate(self, standard, income):
         return self.formula(lambda name, period: {"nh_fanf_payment_standard": standard,
                                                  "nh_fanf_countable_income": income}[name],
-                            "2025-01", lambda period: types.SimpleNamespace(
+                            types.SimpleNamespace(start=types.SimpleNamespace(year=2025)), lambda period: types.SimpleNamespace(
                                 gov=types.SimpleNamespace(states=types.SimpleNamespace(
                                     nh=types.SimpleNamespace(dhhs=types.SimpleNamespace(
                                         fanf=types.SimpleNamespace(minimum_grant=10)

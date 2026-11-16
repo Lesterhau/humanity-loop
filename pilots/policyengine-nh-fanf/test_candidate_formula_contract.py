@@ -57,7 +57,7 @@ class CandidateFormulaContract(unittest.TestCase):
     def setUpClass(cls):
         cls.candidate = load_candidate()
 
-    def compute(self, standard, income, minimum_grant=10):
+    def compute(self, standard, income, minimum_grant=10, year=2025):
         def spm_unit(variable, period):
             return {"nh_fanf_payment_standard": standard,
                     "nh_fanf_countable_income": income}[variable]
@@ -68,7 +68,13 @@ class CandidateFormulaContract(unittest.TestCase):
                 ))
             ))
         )
-        return self.candidate.formula(spm_unit, "2025-01", parameters)
+        return self.candidate.formula(spm_unit, types.SimpleNamespace(start=types.SimpleNamespace(year=year)), parameters)
+
+    def test_prior_year_vector_outputs_do_not_inherit_2021_minimum(self):
+        standard = np.array([1332.5, 1332.5])
+        income = np.array([750.0, 1327.0])
+        np.testing.assert_array_equal(self.compute(standard, income, year=2020), [582.5, 5.5])
+        np.testing.assert_array_equal(self.compute(standard, income, year=2022), [582.0, 0.0])
 
     def test_dated_minimum_parameter_yaml(self):
         parameter_file = ROOT / "policyengine_us/parameters/gov/states/nh/dhhs/fanf/minimum_grant.yaml"
@@ -81,9 +87,9 @@ class CandidateFormulaContract(unittest.TestCase):
             np.array([14.99, 15.99]), np.array([0, 0]), minimum_grant=15
         ), [0, 15])
 
-    def test_six_eligible_yaml_fixtures_call_real_candidate(self):
+    def test_eight_eligible_yaml_fixtures_call_real_candidate(self):
         fixtures = yaml.safe_load((ROOT / "nh_fanf.yaml").read_text(encoding="utf-8"))
-        self.assertEqual(len(fixtures), 7)
+        self.assertEqual(len(fixtures), 9)
         checked = 0
         for case in fixtures:
             # Ineligibility is enforced by PolicyEngine's `defined_for` engine,
@@ -93,10 +99,11 @@ class CandidateFormulaContract(unittest.TestCase):
             with self.subTest(case=case["name"]):
                 self.assertEqual(float(self.compute(
                     case["input"]["nh_fanf_payment_standard"],
-                    case["input"]["nh_fanf_countable_income"])),
+                    case["input"]["nh_fanf_countable_income"],
+                    year=int(str(case["period"])[:4]))),
                     float(case["output"]["nh_fanf"]))
                 checked += 1
-        self.assertEqual(checked, 6)
+        self.assertEqual(checked, 8)
 
     def test_vectorized_monthly_grants_and_exact_boundary(self):
         standard = np.array([1332.5, 1332.5, 1332.5, 110.99, 109.99, 753.0, 753.0])

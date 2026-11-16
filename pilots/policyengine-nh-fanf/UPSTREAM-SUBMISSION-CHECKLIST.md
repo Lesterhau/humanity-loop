@@ -29,3 +29,7 @@
 ## Related long-term work
 
 The first genuine independent Humanity Loop node still requires register → checkin/claim → submit/quarantine → independent reviewer disposition, and later verified adoption. This benefits-code candidate was produced and tested by the authorized owner/assistant team, **not** by one of the yet-unregistered volunteer nodes.
+
+## Newly identified upstream gate — pre-2022 parameter backfill (Nov 15)
+
+Actual PolicyEngine-US access to `gov.states.nh.dhhs.fanf.minimum_grant` returned **$10 even for 2019 and 2020** in the disposable integration checkout, despite the parameter YAML's first source date `2021-12-17`. Thus date-aware YAML by itself **does not prevent** a new current rule being applied in unsupported historical simulation years. Before an external PR, the candidate's conservative `period.start.year < 2022` branch must receive domain and maintainer review, including mid-month December 2021 handling, evidence for prior 2012-era law, and intended earlier-year compatibility. The code *preserves prior software outputs*, not historically verified eligibility law. Even after historical and current synthetic tests pass, this remains a separate external-review blocker. See [README](README.md) and the pinned GitHub Actions `probe_historical_parameter.py` readback.

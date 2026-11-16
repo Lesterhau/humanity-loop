@@ -31,7 +31,7 @@ assert spec and spec.loader
 spec.loader.exec_module(module)
 
 
-def candidate(payment_standard, countable_income, minimum_grant=10):
+def candidate(payment_standard, countable_income, minimum_grant=10, year=2025):
     variables = {
         "nh_fanf_payment_standard": payment_standard,
         "nh_fanf_countable_income": countable_income,
@@ -43,10 +43,16 @@ def candidate(payment_standard, countable_income, minimum_grant=10):
             ))
         ))
     )
-    return module.nh_fanf.formula(lambda name, period: variables[name], "2025-01", parameters)
+    return module.nh_fanf.formula(lambda name, period: variables[name], types.SimpleNamespace(start=types.SimpleNamespace(year=year)), parameters)
 
 
 class CandidateActualFormulaTests(unittest.TestCase):
+    def test_historical_compatibility_preserves_upstream_outputs(self):
+        self.assertEqual(candidate(1332.5, 750, year=2019), 582.5)
+        self.assertEqual(candidate(1332.5, 1327, year=2021), 5.5)
+        self.assertEqual(candidate(1332.5, 750, year=2022), 582)
+        self.assertEqual(candidate(1332.5, 1327, year=2022), 0)
+
     def test_dated_minimum_parameter_used_not_hardcoded(self):
         self.assertEqual(candidate(14.99, 0, minimum_grant=15), 0)
         self.assertEqual(candidate(14.99, 0, minimum_grant=10), 14)

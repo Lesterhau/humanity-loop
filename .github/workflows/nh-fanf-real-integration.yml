@@ -57,6 +57,10 @@ jobs:
         working-directory: policyengine-us
         run: uv sync --locked --extra dev
 
+      - name: Probe NH FANF minimum parameter historical dates in real package
+        working-directory: policyengine-us
+        run: uv run python ../humanity-loop/pilots/policyengine-nh-fanf/upstream/probe_historical_parameter.py
+
       - name: Run real PolicyEngine runner on ALL New Hampshire FANF YAML cases
         working-directory: policyengine-us
         shell: bash
