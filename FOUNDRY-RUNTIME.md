@@ -1,5 +1,7 @@
 # Foundry Runtime and Fallback
 
+> **November 15, 2026 — staging inactivity warning:** Supabase isolated staging project `prisrhkxiwyrbcagxcxx` is still `ACTIVE_HEALTHY` but Supabase warned it may automatically pause after inactivity. Production `jxtcccrlnhkcjfnwlfea` is separate and `ACTIVE_HEALTHY`. Full source-backed, no-spend [staging pause/recovery checklist](STAGING-PAUSE-RECOVERY.md) documents the available synthetic test inventory, restoration, private backup requirements, and fail-safe pause behavior. **Foundry native cron remains `[]` OFF**; do not create keepalive traffic, upgrade billing, retry one-use bridge claims or infer uninterrupted staging availability. The warning is not permission to execute paid AI.
+
 ## VERIFIED November 5, 2026 CT — AppDeploy ↔ Supabase staging receipt reconciled
 
 **Latest source of truth:** [Foundry issue #14 checkpoint](https://github.com/Lesterhau/humanity-loop/issues/14#issuecomment-6669276686). This supersedes the *historical* November 3 “no bridge” note below.
