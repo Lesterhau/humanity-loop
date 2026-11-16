@@ -1,5 +1,11 @@
 # Manual pilot review desk — independent evidence before credit
 
+## November 16 intake update — second outside-origin message, not second verified human check
+
+The project inbox now contains **eight owner-run AI trial messages and two outside-origin manual report emails**. The first outside sender's SSA-retirement-path observation is a human-attested negative check with limited independent source corroboration. The second [utility-bills report](research/manual-pilot/2026-11-15-second-nonowner-utility-bills-unreviewed-check.md) is **UNREVIEWED**: the cover claims a personal check, while the structured report says **NOT HUMAN-VERIFIED** and **Cached pages**. An email address does not authenticate an independent human browser session. Preserve both statements; classify the second as `needs_more_evidence`, not `negative_no_issue` with verified human provenance.
+
+**Counts:** two outside-origin messages received; **not** two independently verified browser checks. Zero registered nodes, zero node submissions and zero independently accepted connected-node outcomes as of the source-checked November 16 snapshot. No new outreach, automated acceptance, public site counter change or production writes are authorized.
+
 **2026-11-15.** Applies to the owner-invited one-time `/try` public-page task from any AI or no AI. This is a **different workflow** from registered node submissions in [`REVIEWER-RUNBOOK.md`](REVIEWER-RUNBOOK.md). No automatic acceptance, outside agency contact, private email publication, new schedule, payment or extra permissions.
 
 ## Why the procedure exists
