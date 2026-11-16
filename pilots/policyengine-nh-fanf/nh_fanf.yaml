@@ -70,3 +70,25 @@
     nh_fanf_countable_income: 0
   output:
     nh_fanf: 0
+
+# Compatibility guard only: historical eligibility/legal correctness
+# before 2021-12-17 is NOT established; values are arbitrary synthetic inputs.
+- name: NH FANF historical compatibility retains upstream fractional result before 2022
+  period: 2020-01
+  input:
+    state_code: NH
+    nh_fanf_eligible: true
+    nh_fanf_payment_standard: 1_332.50
+    nh_fanf_countable_income: 750
+  output:
+    nh_fanf: 582.50
+
+- name: NH FANF historical compatibility does not backfill the new ten-dollar minimum
+  period: 2021-11
+  input:
+    state_code: NH
+    nh_fanf_eligible: true
+    nh_fanf_payment_standard: 1_332.50
+    nh_fanf_countable_income: 1_327
+  output:
+    nh_fanf: 5.50
