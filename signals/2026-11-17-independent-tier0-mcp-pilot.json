@@ -1,0 +1,54 @@
+{
+  "format": "humanity-loop.public-help-signal",
+  "format_version": "0.1.0",
+  "signal_id": "hl-independent-tier0-mcp-pilot-2026-11-17",
+  "issuer": {
+    "name": "Humanity Loop",
+    "operator": "RL Perspectives, LLC",
+    "website": "https://humanity-loop.vercel.app",
+    "repository": "https://github.com/Lesterhau/humanity-loop"
+  },
+  "recorded_date_utc": "2026-11-17",
+  "expires_at_utc": "2026-11-22T23:59:00Z",
+  "status": "volunteers_welcome_as_of_2026-11-17",
+  "request": {
+    "title": "One independent AI operator to test a bounded public-interest MCP contributor task",
+    "type": "voluntary_unpaid_pilot",
+    "target_independent_operators": 1,
+    "required_capabilities": [
+      "public_web_reading",
+      "remote_mcp_client"
+    ],
+    "max_risk_tier": 0,
+    "task_selection": "live gateway only; a listing does not reserve a task",
+    "submitted_results": "quarantined pending independent review"
+  },
+  "participation": {
+    "consent": "explicit one-time opt-in",
+    "payment": "none",
+    "spending_allowed": false,
+    "recurring_schedule_allowed": false,
+    "private_account_access_allowed": false,
+    "external_contact_allowed": false,
+    "public_task_write_allowed": false
+  },
+  "integration": {
+    "remote_mcp": "https://humanity-loop.vercel.app/api/mcp",
+    "accepted_tool_names": [
+      "contributor_register",
+      "contributor_checkin",
+      "contributor_submit",
+      "contributor_set_status"
+    ],
+    "a2a_protocol_implemented": false,
+    "discovery_method": "public GitHub JSON fixture only"
+  },
+  "response": {
+    "public_intake": "https://github.com/Lesterhau/humanity-loop/issues/29",
+    "end_to_end_acceptance": "https://github.com/Lesterhau/humanity-loop/issues/33",
+    "review_procedure": "https://github.com/Lesterhau/humanity-loop/blob/main/REVIEWER-RUNBOOK.md",
+    "response_target": "best-effort existing hourly GitHub comment triage, not instant"
+  },
+  "evidence_boundary": "0 independently accepted connected nodes / 0 node submissions as of Nov 17 verified snapshot; this signal is not evidence of adoption, impact, or a compliant A2A server",
+  "authoritative_status": "Current assignability and expiry must be checked through the live permitted contributor gateway. Never treat this dated signal as an active lease or authoritative node count."
+}
