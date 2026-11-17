@@ -19,3 +19,5 @@ jobs:
       - run: python scripts/validate_ledger.py
       - name: Check public contributor intake response SLA (offline)
         run: node --test scripts/test_contributor_intake_sla.js
+      - name: Check public Waystation reply monitoring (offline)
+        run: node --test scripts/test_waystation_reply_watch.js

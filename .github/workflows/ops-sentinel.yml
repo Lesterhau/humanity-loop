@@ -134,6 +134,65 @@ jobs:
               console.log('No outside comment older than two hours needs triage.');
             }
 
+      - name: Offline Waystation reply-monitor tests
+        run: node --test scripts/test_waystation_reply_watch.js
+
+      - name: Waystation public REQUEST reply triage (same watchdog, no secret)
+        continue-on-error: true
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const path=require('node:path');
+            const {API,ALERT_TITLE,pendingReplies,alertBody}=require(
+              path.join(process.env.GITHUB_WORKSPACE,'scripts/waystation_reply_watch.js')
+            );
+            const {owner,repo}=context.repo;
+            const controller=new AbortController();
+            const timer=setTimeout(()=>controller.abort(),8000);
+            let response,bytes=0,parts=[];
+            try {
+              response=await fetch(API,{signal:controller.signal,headers:{accept:'application/json'}});
+              if(!response.ok)throw Error('waystation_public_http_'+response.status);
+              if(!response.body)throw Error('waystation_public_body_missing');
+              const reader=response.body.getReader();
+              while(true){
+                const {done,value}=await reader.read();
+                if(done)break;
+                bytes+=value.byteLength;
+                if(bytes>65536)throw Error('waystation_public_body_too_large');
+                parts.push(Buffer.from(value));
+              }
+            } catch(e) {
+              core.warning('Waystation read-only response monitoring UNKNOWN: '+String(e.message).slice(0,140));
+              throw e; // continue-on-error: true keeps existing watchdog, but never equates failure to 0 replies
+            } finally {clearTimeout(timer)}
+            let board;
+            try {board=JSON.parse(Buffer.concat(parts).toString('utf8'))}
+            catch {throw Error('waystation_public_json_invalid')}
+            const comments=await github.paginate(github.rest.issues.listComments,{
+              owner,repo,issue_number:34,per_page:100
+            });
+            const acknowledgements=comments.filter(x=>x.user?.login?.toLowerCase()===owner.toLowerCase())
+              .map(x=>x.body||'');
+            const pending=pendingReplies(board,acknowledgements,Date.now());
+            const alerts=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'all',per_page:100});
+            const alert=alerts.find(x=>x.title===ALERT_TITLE && !x.pull_request);
+            const marker='<!-- waystation-pending:'+pending.map(x=>x.id).sort().join(',')+' -->';
+            if(pending.length){
+              const body=alertBody(pending,new Date().toISOString())+'\\n\\n'+marker;
+              if(!alert)await github.rest.issues.create({owner,repo,title:ALERT_TITLE,body,assignees:[owner]});
+              else if(alert.state==='closed')await github.rest.issues.update({owner,repo,issue_number:alert.number,state:'open',body});
+              else if(!(alert.body||'').includes(marker))await github.rest.issues.update({
+                owner,repo,issue_number:alert.number,body
+              });
+              core.warning(pending.length+' untriaged public Waystation reply(s); linked in one owner issue.');
+            } else if(alert && alert.state==='open'){
+              await github.rest.issues.createComment({owner,repo,issue_number:alert.number,
+                body:'No untriaged Waystation reply currently passes the latency threshold. This does NOT establish a direct Waystation response or accepted participant.'});
+              await github.rest.issues.update({owner,repo,issue_number:alert.number,state:'closed',state_reason:'completed'});
+            } else console.log('Waystation public thread read: no untriaged response older than 2 hours.');
+
       - name: Persist daily or changed-state watchdog report
         run: |
           if [ -z "$(git status --porcelain -- runtime/ops-sentinel/latest.json runtime/reciprocal-audit/latest.json)" ]; then
