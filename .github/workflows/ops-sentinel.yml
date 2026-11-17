@@ -87,6 +87,53 @@ jobs:
             }
             console.log('Canonical daily/transition receipt changed: ' + persistReport(r));
 
+      - name: Offline contributor response-latency tests
+        run: node --test scripts/test_contributor_intake_sla.js
+
+      - name: External contributor response SLA (existing hourly job, public issues only)
+        continue-on-error: true
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const path = require('node:path');
+            const {scan, body, WATCH, TITLE} = require(
+              path.join(process.env.GITHUB_WORKSPACE, 'scripts/contributor_intake_sla.js')
+            );
+            const {owner, repo} = context.repo;
+            const observations = [];
+            for (const number of WATCH) {
+              const issue = await github.rest.issues.get({owner,repo,issue_number:number});
+              if (issue.data.state !== 'open') continue;
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner,repo,issue_number:number,per_page:100
+              });
+              observations.push({number,state:issue.data.state,comments});
+            }
+            const pending=scan(observations,Date.now(),owner);
+            const items=await github.paginate(github.rest.issues.listForRepo,{
+              owner,repo,state:'all',per_page:100
+            });
+            const alert=items.find(x=>x.title===TITLE && !x.pull_request);
+            const marker='<!-- intake-sla:'+pending.map(x=>x.commentId||x.id).sort().join(',')+' -->';
+            if (pending.length) {
+              const detail=body(pending,new Date().toISOString())+'\\n\\n'+marker;
+              if (!alert) {
+                await github.rest.issues.create({owner,repo,title:TITLE,body:detail,assignees:[owner]});
+              } else if (alert.state==='closed') {
+                await github.rest.issues.update({owner,repo,issue_number:alert.number,state:'open',body:detail});
+              } else if (!(alert.body||'').includes(marker)) {
+                await github.rest.issues.update({owner,repo,issue_number:alert.number,body:detail});
+              }
+              core.warning(pending.length+' public outside-contributor comment(s) require review; see one GitHub issue.');
+            } else if (alert && alert.state==='open') {
+              await github.rest.issues.createComment({owner,repo,issue_number:alert.number,
+                body:'No aged, unaddressed public contributor comments remain in issues #29, #33 and #34. Closing this narrow alert; no acceptance is implied.'});
+              await github.rest.issues.update({owner,repo,issue_number:alert.number,state:'closed',state_reason:'completed'});
+            } else {
+              console.log('No outside comment older than two hours needs triage.');
+            }
+
       - name: Persist daily or changed-state watchdog report
         run: |
           if [ -z "$(git status --porcelain -- runtime/ops-sentinel/latest.json runtime/reciprocal-audit/latest.json)" ]; then
