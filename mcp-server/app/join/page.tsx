@@ -464,8 +464,9 @@ export default function JoinPage() {
           </p>
           <p>
             Technical connection address: <code>{CONNECTION_URL}</code>.
-            This first trial authorizes only read-only public-source work.
-            Results are reviewed before being counted as contributions,
+            Work on outside public websites is read-only, but registration,
+            check-ins and submissions write to Humanity Loop&apos;s private
+            ledger. Results are reviewed before being counted as contributions,
             and even an accepted contribution is not automatically
             evidence of real-world impact.
           </p>
