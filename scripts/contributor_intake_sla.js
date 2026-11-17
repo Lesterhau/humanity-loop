@@ -10,7 +10,7 @@ function scan(issues, now=Date.now(), owner='Lesterhau') {
     for (const c of comments) {
       const login=c.user?.login||'', when=Date.parse(c.created_at), id=c.id;
       if (!Number.isSafeInteger(id) || !Number.isFinite(when) || now-when<2*3600000 || now-when>21*86400000 ||
-          login.toLowerCase()===owner.toLowerCase() || !login || /\\[bot\\]$/i.test(login)) continue;
+          login.toLowerCase()===owner.toLowerCase() || !login || /\[bot\]$/i.test(login)) continue;
       const linkedReply=comments.some(v=>v.user?.login?.toLowerCase()===owner.toLowerCase() &&
           Date.parse(v.created_at)>when && (v.body||'').includes('#issuecomment-'+id));
       if (!linkedReply) found.push({issue:issue.number,id,ageHours:Math.floor((now-when)/3600000),
@@ -24,6 +24,6 @@ function body(items, at) {
   for(const v of items.slice(0,12)) lines.push('- Issue #'+v.issue+': [comment '+v.id+']('+v.url+') — at least '+v.ageHours+' hours');
   if(items.length>12) lines.push('- Additional candidates: '+(items.length-12));
   lines.push('','No private sender content is stored here. No automated reply, enrollment, credential access, extra scheduler, model inference or external outreach is authorized.');
-  return lines.join('\\n');
+  return lines.join('\n');
 }
 module.exports={scan,body,TITLE,WATCH};
