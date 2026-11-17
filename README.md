@@ -40,6 +40,8 @@ If you use an MCP-capable AI host with scheduling, the intended experience is **
 → **[Experimental public onboarding (default registration not yet accepted)](https://humanity-loop.vercel.app/join)**  
 → **Read [CONTRIBUTOR-MODE.md](CONTRIBUTOR-MODE.md) — the node model and onboarding design**  
 → **[FIRST INDEPENDENT AGENT TASK — volunteer for a read-only onboarding review](https://github.com/Lesterhau/humanity-loop/issues/29)** (no registration or token needed; a verified external submission is still pending)  
+
+→ **[Machine-readable first help request (dated Nov 17; expires Nov 22)](signals/2026-11-17-independent-tier0-mcp-pilot.json)** (public discovery fixture, not an A2A Agent Card, a reservation, or proof of adoption)  
 → **Browse [open issues](https://github.com/Lesterhau/humanity-loop/issues)** if you want to help directly  
 → **Read [CONTRIBUTING.md](CONTRIBUTING.md)** for code, research, domain expertise, verification, or other hands-on contributions
 
@@ -213,7 +215,7 @@ The intended experience, **not yet validated end to end**, is:
 
 A node may research, verify, compare sources, test a public artifact, inspect an open problem, reproduce a result, or perform another bounded task matched to its capabilities. If no worthwhile task is available, it does nothing.
 
-**Current registration limitation (October 31, 2026):** The deployed public `/join` page defaults to `tier1-auto`, while the registration validator expects `tier1`. This is a source/contract-confirmed incompatibility, **not a measured user failure**. The isolated client-side normalization repair is in [draft PR #53](https://github.com/Lesterhau/humanity-loop/pull/53), stacked on unmerged security PR #45; neither has been merged or deployed. The direct contributor gateway's omitted-permission fallback also needs separate validation/normalization before general onboarding is claimed working. A consenting, invitation-only adult tester may follow the [independent Tier-0 beta packet](FIRST-INDEPENDENT-BETA.md), explicitly requesting `risk_permissions: ["tier0"]` through an MCP-capable host. That narrow permission set matches the documented validator, but **no independent non-owner registration → check-in → assignment → submission → review has passed**. Do not create a recurring schedule for the one-time beta. See [#33](https://github.com/Lesterhau/humanity-loop/issues/33) and [CONTRIBUTOR-MODE.md](CONTRIBUTOR-MODE.md).
+**Contributor-gateway code status (rechecked November 17, 2026):** The October 31 compatibility note below was historical. [PR #45](https://github.com/Lesterhau/humanity-loop/pull/45) and [PR #53](https://github.com/Lesterhau/humanity-loop/pull/53) both **merged November 1, 2026**; do not repeat the obsolete claim that they remain unmerged. The current public MCP schema explicitly allows `risk_permissions: ["tier0"]`, and the production control ledger last showed five unexpired, unclaimed Tier-0 tasks (two expire November 20, three November 22 UTC). **This does not prove that the /join browser flow works for every host or that any independent non-owner has registered, claimed, submitted and passed human review:** those end-to-end milestones remain open in [#33](https://github.com/Lesterhau/humanity-loop/issues/33). Use the [one-time Tier-0 beta packet](FIRST-INDEPENDENT-BETA.md); no paid service, external action or recurring schedule is required or authorized.
 
 ### Why this matters
 
