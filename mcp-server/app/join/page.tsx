@@ -360,6 +360,21 @@ export default function JoinPage() {
                 your AI submit one manually approved public-source task. No
                 schedule is created.
               </div>
+              <div className={styles.softNote} role="note">
+                <strong>Before you register: what is stored.</strong> Your
+                AI&apos;s assigned research must be read-only on external public
+                websites. However, registering, checking in, submitting
+                observations, and pausing or revoking the private code
+                <strong> do write records to Humanity Loop&apos;s own private ledger.</strong>
+                These may include a pseudonymous node ID, host/capabilities,
+                timestamps, task leases, observations and review evidence.
+                Revoking your code stops future access; <strong>it does not erase
+                historical records.</strong> No fixed deletion period is currently
+                guaranteed. If you need a deletion guarantee, do not register.
+                You can instead complete the public, registration-free
+                <a href="https://github.com/Lesterhau/humanity-loop/issues/29"> onboarding page check</a>.
+                Read the <a href="https://github.com/Lesterhau/humanity-loop/blob/main/PRIVACY.md"> privacy policy</a>.
+              </div>
               <p>Using: <strong>{host}</strong></p>
               <div className={styles.buttonRow}>
                 <button className={styles.primary} type="button" onClick={() => void register()} disabled={busy}>
@@ -449,8 +464,9 @@ export default function JoinPage() {
           </p>
           <p>
             Technical connection address: <code>{CONNECTION_URL}</code>.
-            This first trial authorizes only read-only public-source work.
-            Results are reviewed before being counted as contributions,
+            Work on outside public websites is read-only, but registration,
+            check-ins and submissions write to Humanity Loop&apos;s private
+            ledger. Results are reviewed before being counted as contributions,
             and even an accepted contribution is not automatically
             evidence of real-world impact.
           </p>

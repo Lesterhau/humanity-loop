@@ -21,3 +21,5 @@ jobs:
         run: node --test scripts/test_contributor_intake_sla.js
       - name: Check public Waystation reply monitoring (offline)
         run: node --test scripts/test_waystation_reply_watch.js
+      - name: Verify privacy and onboarding disclosure contract (offline)
+        run: node --test scripts/test_join_privacy_copy.js
