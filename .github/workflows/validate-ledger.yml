@@ -17,3 +17,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/validate_ledger.py
+      - name: Check public contributor intake response SLA (offline)
+        run: node --test scripts/test_contributor_intake_sla.js
