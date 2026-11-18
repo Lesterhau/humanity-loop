@@ -33,7 +33,9 @@ test('all 25 input parameters have agent-friendly metadata',()=>{
 test('operations that modify the private ledger are not labeled read-only',()=>{
  for(const name of ['contributor_register','contributor_checkin','contributor_submit','contributor_set_status']){
   assert.match(blocks[name],/readOnlyHint:\s*false/);
-  assert.match(blocks[name],/Writes? to Humanity Loop/);
+  const expected={contributor_register:/private ledger/,contributor_checkin:/Humanity Loop's ledger/,
+   contributor_submit:/quarantined review record/,contributor_set_status:/private ledger/};
+  assert.match(blocks[name],expected[name]);
  }
 });
 test('revoke is destructive and retention limitations remain explicit',()=>{
