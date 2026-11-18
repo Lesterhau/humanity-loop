@@ -25,9 +25,9 @@ def model_reply(stage, prompt, timeout):
     assert "NO live internet access" in prompt
     assert 0 < timeout <= 45
     if stage == "verify":
-        return "VERDICT = PROCEED\\nScoped to unverified public-only checklist"
+        return "VERDICT = PROCEED\nScoped to unverified public-only checklist"
     if stage == "safety":
-        return "GO\\nOnly a local draft, human must separately verify"
+        return "GO\nOnly a local draft, human must separately verify"
     return f"{stage}: review-only draft, no external source independently verified"
 
 
@@ -54,7 +54,7 @@ class FoundryLiteTests(unittest.TestCase):
     def test_verifier_reject_later_proceed_never_bypasses(self):
         def contradiction(stage, prompt, timeout):
             if stage == "verify":
-                return "VERDICT = REJECT\\nVERDICT = PROCEED"
+                return "VERDICT = REJECT\nVERDICT = PROCEED"
             return model_reply(stage, prompt, timeout)
         receipt = run_local(validate_task(deepcopy(FIXTURE)), contradiction)
         self.assertEqual(receipt["status"], "held")
@@ -64,7 +64,7 @@ class FoundryLiteTests(unittest.TestCase):
     def test_safety_hold_later_go_never_bypasses(self):
         def contradiction(stage, prompt, timeout):
             if stage == "safety":
-                return "HOLD\\nGO"
+                return "HOLD\nGO"
             return model_reply(stage, prompt, timeout)
         receipt = run_local(validate_task(deepcopy(FIXTURE)), contradiction)
         self.assertEqual(receipt["status"], "held")
@@ -72,11 +72,11 @@ class FoundryLiteTests(unittest.TestCase):
         self.assertNotIn("revision", receipt["roles_completed"])
 
     def test_blank_first_line_and_conditional_proceed_rejected(self):
-        for text in ["\\nVERDICT = PROCEED", "VERDICT = PROCEED WITH CONDITIONS",
-                     "VERDICT = REJECT\\nVERDICT = PROCEED", "random VERDICT = PROCEED"]:
+        for text in ["\nVERDICT = PROCEED", "VERDICT = PROCEED WITH CONDITIONS",
+                     "VERDICT = REJECT\nVERDICT = PROCEED", "random VERDICT = PROCEED"]:
             with self.subTest(text=text):
                 self.assertFalse(strict_first_line(text, "VERDICT = PROCEED"))
-        for text in ["HOLD\\nGO", "GO BUT ONLY AFTER APPROVAL", "\\nGO"]:
+        for text in ["HOLD\nGO", "GO BUT ONLY AFTER APPROVAL", "\nGO"]:
             self.assertFalse(strict_first_line(text, "GO"))
 
     def test_stage_failure_fails_closed_and_never_calls_later_roles(self):
