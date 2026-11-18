@@ -25,3 +25,9 @@ jobs:
         run: node --test scripts/test_join_privacy_copy.js
       - name: Verify MCP tool metadata and permission hints (offline)
         run: node --test scripts/test_mcp_tool_metadata.js
+      - name: Foundry Lite local-only eight-stage safety tests
+        run: python -m unittest discover -s scripts -p test_foundry_lite.py -v
+      - name: Foundry Lite zero-inference manifest preflight
+        run: |
+          python scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode inspect --output /tmp/foundry-lite-preflight.json
+          python -c 'import json; p=json.load(open("/tmp/foundry-lite-preflight.json")); assert p["status"]=="preflight_only" and p["model_calls"]==0 and p["external_actions"]==0 and p["appdeploy_credits_used"]==0'
