@@ -1806,6 +1806,36 @@
       "europePmcUrl": "https://europepmc.org/article/MED/26244535",
       "status": "unreviewed",
       "detectedAt": "2026-11-17T11:59:45.302157Z"
+    },
+    {
+      "retractedDoi": "10.21037/tp-21-220",
+      "noticeDoi": "10.21037/tp-20262-03",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "41982163",
+      "citingTitle": "Evidence for a perinatal origin of childhood obesity: a systematic review and meta-analysis of risk and protective factors.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/41982163",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-18T11:52:18.238129Z"
+    },
+    {
+      "retractedDoi": "10.21037/tp-21-220",
+      "noticeDoi": "10.21037/tp-20262-03",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "39675435",
+      "citingTitle": "The association between prenatal antibiotic exposure and adverse long-term health outcomes in children: A systematic review and meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/39675435",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-18T11:52:18.238129Z"
     }
   ]
 }

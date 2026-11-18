@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-17T11:59:45.302157Z",
+  "runAt": "2026-11-18T11:52:18.238129Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,137 +8,86 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 7,
-  "citationsExamined": 63,
-  "candidateFindingsCount": 6,
+  "newRetractionsChecked": 6,
+  "citationsExamined": 60,
+  "candidateFindingsCount": 2,
   "candidateFindings": [
     {
-      "retractedDoi": "10.1007/s00404-012-2292-8",
-      "noticeDoi": "10.1007/s00404-026-08621-x",
+      "retractedDoi": "10.21037/tp-21-220",
+      "noticeDoi": "10.21037/tp-20262-03",
       "crossrefUpdateSelfReferential": false,
       "noticeStatus": "unverified",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
-      "citingId": "36068489",
-      "citingTitle": "Safety and efficacy of double-balloon catheter for\u00a0cervical\u00a0ripening: a Bayesian network meta-analysis of randomized controlled trials.",
+      "citingId": "41982163",
+      "citingTitle": "Evidence for a perinatal origin of childhood obesity: a systematic review and meta-analysis of risk and protective factors.",
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/36068489",
+      "europePmcUrl": "https://europepmc.org/article/MED/41982163",
       "status": "unreviewed"
     },
     {
-      "retractedDoi": "10.1007/s00404-012-2292-8",
-      "noticeDoi": "10.1007/s00404-026-08621-x",
+      "retractedDoi": "10.21037/tp-21-220",
+      "noticeDoi": "10.21037/tp-20262-03",
       "crossrefUpdateSelfReferential": false,
       "noticeStatus": "unverified",
       "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
       "citingSource": "MED",
-      "citingId": "30741051",
-      "citingTitle": "Misoprostol combined with cervical single or double balloon catheters versus misoprostol alone for labor induction of singleton pregnancies: a meta-analysis of randomized trials.",
+      "citingId": "39675435",
+      "citingTitle": "The association between prenatal antibiotic exposure and adverse long-term health outcomes in children: A systematic review and meta-analysis.",
       "candidateType": "Possible meta-analysis",
       "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/30741051",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1007/s00404-012-2292-8",
-      "noticeDoi": "10.1007/s00404-026-08621-x",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "28963922",
-      "citingTitle": "Risk of maternal, fetal and neonatal complications associated with the use of the transcervical balloon catheter in induction of labour: A systematic review.",
-      "candidateType": "Possible systematic review",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/28963922",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1007/s00404-012-2292-8",
-      "noticeDoi": "10.1007/s00404-026-08621-x",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "27770132",
-      "citingTitle": "Induction of Labor Using a Foley Catheter or Misoprostol: A Systematic Review and Meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/27770132",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1007/s00404-012-2292-8",
-      "noticeDoi": "10.1007/s00404-026-08621-x",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "27587290",
-      "citingTitle": "Which method is best for the induction of labour? A systematic review, network meta-analysis and cost-effectiveness analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/27587290",
-      "status": "unreviewed"
-    },
-    {
-      "retractedDoi": "10.1007/s00404-012-2292-8",
-      "noticeDoi": "10.1007/s00404-026-08621-x",
-      "crossrefUpdateSelfReferential": false,
-      "noticeStatus": "unverified",
-      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
-      "citingSource": "MED",
-      "citingId": "26244535",
-      "citingTitle": "Evaluation of a Transcervical Foley Catheter as a Source of Infection: A Systematic Review and Meta-analysis.",
-      "candidateType": "Possible meta-analysis",
-      "reason": "Title keyword only; needs human verification",
-      "europePmcUrl": "https://europepmc.org/article/MED/26244535",
+      "europePmcUrl": "https://europepmc.org/article/MED/39675435",
       "status": "unreviewed"
     }
   ],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 8,
+  "coverageGapsCount": 9,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.envexpbot.2026.106464",
+      "doi": "10.1155/2023/6455106",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.jmaa.2026.131015",
+      "doi": "10.1016/j.rinp.2022.105647",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.32604/ijmhp.2022.022536",
+      "doi": "10.1016/j.rinp.2019.102777",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.ijhydene.2018.10.224",
+      "doi": "10.1016/j.rinp.2022.105589",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.32604/phyton.2022.022363",
+      "doi": "10.1007/s13201-025-02384-7",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.32604/ijmhp.2023.026440",
+      "doi": "10.1007/s10853-023-09176-x",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.energy.2026.141762",
+      "doi": "10.1002/cpe.5945",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.engfailanal.2026.110999",
+      "doi": "10.1002/pat.5931",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/s00704-026-06425-2",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
