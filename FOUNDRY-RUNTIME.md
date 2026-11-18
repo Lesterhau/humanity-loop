@@ -1,5 +1,9 @@
 # Foundry Runtime and Fallback
 
+> **November 18, 2026 — NEW ZERO-API-CREDIT LOCAL OPTION (SOURCE + CI ONLY):**
+> [Foundry Lite](foundry-lite/README.md) now offers an offline zero-model manifest preflight and an explicitly operator-initiated local Ollama text adapter using the existing FoundryControlPlane logical eight-role stages. No cloud model, secret, payment, cron, production task lease, or participant was activated. Deterministic stage/safety tests pass. A real local model-generated artifact has **not** yet been executed and independently reviewed; native AppDeploy Foundry cron remains [] OFF. This is a constrained local implementation, not a verified autonomous production Foundry or independent multi-model fleet. Historical paragraphs describing fallback workers must not be used to enable extra schedules.
+
+
 > **November 15, 2026 — staging inactivity warning:** Supabase isolated staging project `prisrhkxiwyrbcagxcxx` is still `ACTIVE_HEALTHY` but Supabase warned it may automatically pause after inactivity. Production `jxtcccrlnhkcjfnwlfea` is separate and `ACTIVE_HEALTHY`. Full source-backed, no-spend [staging pause/recovery checklist](STAGING-PAUSE-RECOVERY.md) documents the available synthetic test inventory, restoration, private backup requirements, and fail-safe pause behavior. **Foundry native cron remains `[]` OFF**; do not create keepalive traffic, upgrade billing, retry one-use bridge claims or infer uninterrupted staging availability. The warning is not permission to execute paid AI.
 
 ## VERIFIED November 5, 2026 CT — AppDeploy ↔ Supabase staging receipt reconciled
