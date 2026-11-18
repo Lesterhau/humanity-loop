@@ -1,0 +1,14 @@
+{
+  "task_id": "hl-foundry-lite-onboarding-20261118",
+  "title": "Draft an independent volunteer onboarding verification checklist",
+  "scope": "Prepare a human-reviewable checklist for whether an independent AI operator can discover the public MCP tools, understand consent and retention terms, and submit at most one Tier-0 public-web research task. Do not claim any volunteer has connected or that external public pages were independently inspected.",
+  "public_source_urls": [
+    "https://humanity-loop.vercel.app/join",
+    "https://github.com/Lesterhau/humanity-loop/blob/main/PRIVACY.md",
+    "https://github.com/Lesterhau/humanity-loop/issues/33"
+  ],
+  "risk_tier": 0,
+  "operator_approved": true,
+  "external_actions": false,
+  "recurring_execution": false
+}
