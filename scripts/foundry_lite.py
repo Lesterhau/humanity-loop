@@ -149,6 +149,7 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
     run = cp.submit_task(project_id="humanity-loop", stages=list(STAGES),
                          task_id=task["task_id"], max_attempts=1)
     responses: dict[str, str] = {}
+    attempted_calls = 0
     status = "held"
     failure = None
     for stage in STAGES:
@@ -160,7 +161,10 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
         cp.claim_task(run.task_id, agent.agent_id, lease_seconds=min(max_seconds, 300))
         try:
             prompt = make_prompt(stage, task, responses)
+            attempted_calls += 1
             response = invoke(stage, prompt, min(45.0, remaining))
+            if clock() - started > max_seconds:
+                raise TimeoutError("run_deadline_exhausted")
             if not isinstance(response, str) or not response.strip():
                 raise ValueError("empty_model_result")
             if len(response) > MAX_OUTPUT_CHARS:
@@ -185,7 +189,7 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
     return {
         "task_id": task["task_id"], "status": status,
         "reason": failure, "model_provider": "operator_local_ollama",
-        "model_calls": len(responses), "appdeploy_credits_used": 0,
+        "model_calls": attempted_calls, "appdeploy_credits_used": 0,
         "external_actions": 0, "scheduled": False,
         "roles_completed": list(responses), "role_drafts": responses,
         "independently_verified": False, "human_review": "required",
