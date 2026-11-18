@@ -1,0 +1,35 @@
+name: Foundry Lite - zero-model manual preflight
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundry-lite-offline-preflight
+  cancel-in-progress: false
+
+jobs:
+  verify-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Foundry Lite unit tests
+        run: python -m unittest discover -s scripts -p test_foundry_lite.py -v
+      - name: Validate sample manifest without AI or external writes
+        run: |
+          python scripts/foundry_lite.py \
+            --input foundry-lite/fixtures/public-onboarding-review.json \
+            --mode inspect --output "$RUNNER_TEMP/foundry-lite-preflight.json"
+          python -c 'import json,os; p=json.load(open(os.environ["RUNNER_TEMP"]+"/foundry-lite-preflight.json")); assert p["status"]=="preflight_only" and p["model_calls"]==0 and p["external_actions"]==0 and p["appdeploy_credits_used"]==0'
+      - name: Archive zero-inference diagnostic (NOT an impact receipt)
+        uses: actions/upload-artifact@v4
+        with:
+          name: foundry-lite-preflight-only
+          path: ${{ runner.temp }}/foundry-lite-preflight.json
+          retention-days: 3
