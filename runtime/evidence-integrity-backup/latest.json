@@ -1,35 +1,75 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-19T11:49:20.741655Z",
-  "status": "failed",
+  "runAt": "2026-11-20T11:50:08.064429Z",
+  "status": "partial",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 0,
-  "citationsExamined": 0,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
-  "failuresCount": 2,
+  "newRetractionsChecked": 7,
+  "citationsExamined": 126,
+  "candidateFindingsCount": 1,
+  "candidateFindings": [
+    {
+      "retractedDoi": "10.1080/21655979.2022.2079256",
+      "noticeDoi": "10.1080/21655979.2026.2749385",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "38539867",
+      "citingTitle": "Beyond Mortality: Exploring the Influence of Plant Phenolics on Modulating Ferroptosis-A Systematic Review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/38539867",
+      "status": "unreviewed"
+    }
+  ],
+  "failuresCount": 4,
   "failures": [
     {
       "stage": "citation_lookup",
-      "doi": "10.1016/j.jpag.2025.04.010",
+      "doi": "10.3390/dj13110516",
       "reason": "The read operation timed out"
     },
     {
-      "stage": "europepmc_http",
-      "doi": "10.1007/s44196-025-01069-y",
-      "reason": "HTTP 503: Europe PMC metadata lookup unavailable"
+      "stage": "citation_lookup",
+      "doi": "10.1136/jme-2025-110913",
+      "reason": "The read operation timed out"
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1080/10255842.2026.2751469",
+      "reason": "The read operation timed out"
+    },
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1080/21655979.2022.2080413",
+      "reason": "The read operation timed out"
     }
   ],
-  "coverageGapsCount": 1,
+  "coverageGapsCount": 4,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.insi.2025.100170",
+      "doi": "10.1134/s2075113318020090",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/23743670.2026.2714361",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1080/23743670.2026.2705508",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1039/d1re00422k",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],

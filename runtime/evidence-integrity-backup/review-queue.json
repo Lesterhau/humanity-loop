@@ -1836,6 +1836,21 @@
       "europePmcUrl": "https://europepmc.org/article/MED/39675435",
       "status": "unreviewed",
       "detectedAt": "2026-11-18T11:52:18.238129Z"
+    },
+    {
+      "retractedDoi": "10.1080/21655979.2022.2079256",
+      "noticeDoi": "10.1080/21655979.2026.2749385",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "38539867",
+      "citingTitle": "Beyond Mortality: Exploring the Influence of Plant Phenolics on Modulating Ferroptosis-A Systematic Review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/38539867",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-20T11:50:08.064429Z"
     }
   ]
 }
