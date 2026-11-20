@@ -1,0 +1,27 @@
+{
+  "baselinesCreated": 0,
+  "changes": [
+    {
+      "authority": "U.S. Food and Drug Administration",
+      "detectedAt": "2026-11-20T11:55:01.712500Z",
+      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n\nADDED IN CURRENT VERSION:\n+ Per\n+ Executive Order 14434\n+ , federal agencies are now using \"Super Intelligence\" (SI) in place of \"Artificial Intelligence\" (AI). You may see both terms across FDA content during this transition. Learn more at\n+ FDA\u2019s Use of \u201cSuper Intelligence\u201d and \u201cSI\u201d Under Executive Order 14434",
+      "materiality": "unreviewed",
+      "medicalAdvice": null,
+      "newFingerprint": "235ef7435a370ea40a367c7d37abe4b823eea76c2ff13a94cb4503e7da34e80e",
+      "oldFingerprint": "8c06993cadf01dd16f47c59ca4b2d42c3d5a13fa7bcaaf89099a9ac57fcb50df",
+      "severity": "unreviewed",
+      "sourceKey": "fda-drug-safety",
+      "sourceName": "FDA Drug Safety Communications",
+      "sourceUrl": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-safety-communications",
+      "verificationStatus": "needs-independent-source-review"
+    }
+  ],
+  "changesDetected": 1,
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-11-20T11:55:01.712500Z",
+  "schemaVersion": 1,
+  "sourcesChecked": 3,
+  "sourcesConfigured": 3,
+  "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
+}
