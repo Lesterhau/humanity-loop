@@ -16,7 +16,7 @@ test('consent, retention and safe one-off work remain explicit',()=>{
  assert.match(s,/no verified fixed retention or full-erasure deadline/);
  assert.match(s,/no-registration issue #29/);
  assert.match(s,/independently validate|separate review/);
- assert.match(s,/Do \*\*not\*\* schedule/);
+ assert.match(s,/Do not schedule anything for this one-time beta/);
 });
 
 test('no invented permanent availability or impact from extension',()=>{
