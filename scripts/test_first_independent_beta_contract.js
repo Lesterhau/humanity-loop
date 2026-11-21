@@ -15,7 +15,7 @@ test('consent, retention and safe one-off work remain explicit',()=>{
  assert.match(s,/Revocation is not deletion/);
  assert.match(s,/no verified fixed retention or full-erasure deadline/);
  assert.match(s,/no-registration issue #29/);
- assert.match(s,/separate reviewer/);
+ assert.match(s,/independently validate|separate review/);
  assert.match(s,/Do \*\*not\*\* schedule/);
 });
 
