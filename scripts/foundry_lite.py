@@ -111,6 +111,7 @@ def make_prompt(stage: str, task: dict[str, Any], earlier: dict[str, str]) -> st
 
 
 def inspect(task: dict[str, Any]) -> dict[str, Any]:
+    task = validate_task(task)
     permission = deterministic_only(task_id=task["task_id"], external_actions=False)
     if not permission.permitted:
         raise ValueError("zero_model_preflight_failed")
@@ -129,6 +130,9 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
               *, max_seconds: int = MAX_LOCAL_SECONDS) -> dict[str, Any]:
     if type(max_seconds) is not int or max_seconds < 10 or max_seconds > MAX_LOCAL_SECONDS:
         raise ValueError("runtime_budget_exceeded")
+    # Enforce Tier-0 and explicit operator consent even when imported directly.
+    # Do not rely on the CLI caller having validated the manifest.
+    task = validate_task(task)
     clock = time.monotonic
     started = clock()
     cp = FoundryControlPlane()
@@ -155,6 +159,9 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
     for stage in STAGES:
         remaining = max_seconds - (clock() - started)
         if remaining <= 0:
+            agent = children[stage]
+            cp.claim_task(run.task_id, agent.agent_id, lease_seconds=1)
+            cp.fail_task(run.task_id, agent.agent_id, "run_deadline_exhausted")
             failure = "run_deadline_exhausted"
             break
         agent = children[stage]
