@@ -136,5 +136,42 @@ class FoundryLiteTests(unittest.TestCase):
         self.assertEqual(result["control_plane_task_status"],"dead_letter")
 
 
+    def test_direct_api_cannot_bypass_consent_or_tier_validation(self):
+        for field, value in [("operator_approved", False), ("risk_tier", 2),
+                             ("external_actions", True), ("recurring_execution", True)]:
+            bad = deepcopy(FIXTURE)
+            bad[field] = value
+            with self.subTest(field=field):
+                with self.assertRaises(ValueError):
+                    run_local(bad, model_reply)
+                with self.assertRaises(ValueError):
+                    inspect(bad)
+
+    def test_deadline_exhaustion_before_next_role_is_persisted_as_failure(self):
+        from unittest.mock import patch
+        import foundry_lite
+        # start, stage 1 preflight, model response, stage 2 preflight
+        with patch.object(foundry_lite.time, "monotonic", side_effect=[0, 0, 0, 11]):
+            receipt = run_local(validate_task(deepcopy(FIXTURE)), model_reply,
+                                max_seconds=10)
+        self.assertEqual(receipt["status"], "held")
+        self.assertEqual(receipt["reason"], "run_deadline_exhausted")
+        self.assertEqual(receipt["control_plane_task_status"], "dead_letter")
+        self.assertEqual(receipt["model_calls"], 1)
+        self.assertEqual(receipt["roles_completed"], ["scout"])
+
+    def test_overrun_during_model_call_does_not_advance_stage(self):
+        from unittest.mock import patch
+        import foundry_lite
+        # start, scout preflight, model reply takes too long
+        with patch.object(foundry_lite.time, "monotonic", side_effect=[0, 0, 11]):
+            receipt = run_local(validate_task(deepcopy(FIXTURE)), model_reply,
+                                max_seconds=10)
+        self.assertEqual(receipt["status"], "held")
+        self.assertEqual(receipt["control_plane_task_status"], "dead_letter")
+        self.assertEqual(receipt["model_calls"], 1)
+        self.assertEqual(receipt["roles_completed"], [])
+
+
 if __name__=="__main__":
     unittest.main()
