@@ -23,10 +23,16 @@ jobs:
         run: node --test scripts/test_waystation_reply_watch.js
       - name: Verify privacy and onboarding disclosure contract (offline)
         run: node --test scripts/test_join_privacy_copy.js
+      - name: Reject stale beta invitation and retention misconceptions (offline)
+        run: node --test scripts/test_first_independent_beta_contract.js
       - name: Verify MCP tool metadata and permission hints (offline)
         run: node --test scripts/test_mcp_tool_metadata.js
       - name: Foundry Lite local-only eight-stage safety tests
         run: python -m unittest discover -s scripts -p test_foundry_lite.py -v
+      - name: Foundry Lite cross-platform laptop readiness safety tests
+        run: python -m unittest discover -s scripts -p test_foundry_lite_doctor.py -v
+      - name: Foundry Lite doctor (no model, no network)
+        run: python scripts/foundry_lite_doctor.py --json
       - name: Foundry Lite zero-inference manifest preflight
         run: |
           python scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode inspect --output /tmp/foundry-lite-preflight.json

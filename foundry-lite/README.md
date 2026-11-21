@@ -6,6 +6,32 @@
 
 AppDeploy Foundry native cron stays OFF. This runner makes **no AppDeploy, Supabase, GitHub or third-party site writes** and needs **no paid inference keys**. Optional text inference is sent only to an operator-owned Ollama instance at http://127.0.0.1:11434. No public listener, remote API fallback or automatic retries. Local models use hardware, memory, disk, electricity and bandwidth; open-weight model licenses vary.
 
+## Laptop readiness: one safe command before any download
+
+The new `scripts/foundry_lite_doctor.py` inspects OS, Python version, physical RAM, free disk and whether the Ollama executable exists. By default **it makes no network requests or AI calls, downloads nothing, changes no files or schedules, and uses zero AppDeploy credits.** The optional `--check-local` switch makes a **loopback-only** Ollama GET to `127.0.0.1:11434/api/tags` to see which models are already installed (no inference).
+
+**Windows / PowerShell, from the cloned repository:**
+
+~~~powershell
+py -3 scripts/foundry_lite_doctor.py
+py -3 scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode inspect --output "$env:TEMP/foundry-lite-inspection.json"
+~~~
+
+**macOS or Linux / Terminal:**
+
+~~~bash
+python3 scripts/foundry_lite_doctor.py
+python3 scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode inspect --output /tmp/foundry-lite-inspection.json
+~~~
+
+The first command is read-only diagnosis; the second is a zero-model local preflight. If Python, Ollama, or RAM is insufficient, **stop** and check before downloading models. No laptop setup is required to keep Humanity Loop's current public intake and CI running.
+
+For a **later, expressly approved local model test** only:
+
+1. Install the official [Ollama app](https://ollama.com/download) if missing and confirm available RAM/disk before selecting a local model. Small open-weight models may be more suitable on memory-constrained machines; don't assume the earlier Qwen3 4B suggestion fits.
+2. Run `ollama list` to confirm which model is actually installed. `ollama pull <model-id>` is an **optional multi-gigabyte download**, not a free cloud-hosted service; only the laptop owner should choose to run it.
+3. Run `py -3 scripts/foundry_lite.py ... --mode ollama --allow-local-model --model ACTUAL_INSTALLED_MODEL --output "$env:TEMP/foundry-lite-review-packet.json"` on Windows, or the analogous `python3` command on macOS/Linux. Full flags are documented below. Do not share a raw local review packet publicly until checked for sensitive material.
+
 ## From the repository root
 
 Zero-model validation (no external HTTP, no AI inference):
