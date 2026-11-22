@@ -39,6 +39,8 @@ def utc_timestamp(value: Any, *, now: datetime | None = None) -> datetime:
 def public_https(url: Any) -> str:
     if not isinstance(url, str) or not 1 <= len(url) <= 800:
         raise ValueError("invalid_public_url")
+    if any(ord(char) < 32 or ord(char) == 127 for char in url):
+        raise ValueError("control_character_in_source_url")
     parsed = urllib.parse.urlsplit(url)
     host = (parsed.hostname or "").lower()
     if parsed.scheme != "https" or not host or parsed.username or parsed.password:
@@ -51,6 +53,8 @@ def public_https(url: Any) -> str:
         pass
     else:
         raise ValueError("numeric_source_host_forbidden")
+    if parsed.fragment:
+        raise ValueError("fragment_in_source_url_forbidden")
     if any(key in k.lower() for k,_ in urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
            for key in SENSITIVE_KEYS):
         raise ValueError("secret_bearing_url_forbidden")
