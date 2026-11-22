@@ -22,13 +22,23 @@ class MissionTests(unittest.TestCase):
     def test_current_canonical_file_valid_and_wins_ledger_consistent(self):
         r=self.call()
         self.assertTrue(r["validated"])
-        self.assertEqual(r["active_gate"],"G1")
-        self.assertEqual(r["verified_win_records"],3)
+        self.assertEqual(r["active_gate"],"G2")
+        self.assertEqual(r["verified_win_records"],4)
         self.assertEqual(r["focus_case_count"],2)
         self.assertFalse(r["external_volunteers_required"])
         self.assertFalse(r["can_autocontact_institutions"])
         self.assertEqual(r["new_model_calls"],0)
         self.assertEqual(r["new_scheduled_jobs"],0)
+
+    def test_fourth_win_is_irs_partial_outcome_not_a_fifth_or_whole_case_closure(self):
+        self.assertIn("WIN-004 — IRS corrected tax-year-2025 EITC",WINS)
+        self.assertEqual(WINS.count("## WIN-004"),1)
+        cfg=deepcopy(CONFIG)
+        self.assertEqual(cfg["milestones"][0]["status"],"achieved")
+        self.assertEqual(cfg["milestones"][1]["status"],"active")
+        self.assertEqual(cfg["milestones"][1]["measured_case_completions_under_gate"],0)
+        self.assertTrue(any("ot005-2026-11-22-irs-outcome-adjudication" in url
+                            for url in cfg["milestones"][0]["proof_urls"]))
 
     def test_no_due_research_does_not_manufacture_activity(self):
         r=self.call()
@@ -48,7 +58,7 @@ class MissionTests(unittest.TestCase):
 
     def test_unverified_win_count_is_rejected(self):
         cfg=deepcopy(CONFIG)
-        cfg["baseline"]["verified_outcomes"]=4
+        cfg["baseline"]["verified_outcomes"]=5
         with self.assertRaisesRegex(ValueError,"win_count_mismatch"):
             self.call(cfg)
 
@@ -59,13 +69,14 @@ class MissionTests(unittest.TestCase):
 
     def test_milestone_cannot_be_marked_achieved_without_verification(self):
         cfg=deepcopy(CONFIG)
-        cfg["milestones"][0]["status"]="achieved"
-        cfg["milestones"][1]["status"]="active"
+        cfg["milestones"][0].pop("proof_urls",None)
         with self.assertRaisesRegex(ValueError,"achieved_gate_missing_proof"):
             self.call(cfg)
-        cfg["milestones"][0]["proof_urls"]=["https://example.org/unconfirmed"]
+        cfg=deepcopy(CONFIG)
+        cfg["baseline"]["verified_outcomes"]=3
+        prior_to_fourth=WINS.split("## WIN-004",1)[0]
         with self.assertRaisesRegex(ValueError,"outcome_gate_without_external_win"):
-            self.call(cfg)
+            self.call(cfg,wins=prior_to_fourth)
 
     def test_gate_cannot_skip_prerequisite(self):
         cfg=deepcopy(CONFIG)
