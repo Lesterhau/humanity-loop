@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-22T07:11:00Z",
+  "updated_utc": "2026-11-22T19:30:00Z",
   "scope": "humanity-loop-public-interest-only",
   "end_state": {
     "definition": "Autonomous, accountable, affordable public-interest operation that repeatedly produces independently verified external outcomes across regions without depending on recruited external contributors or constant owner direction.",
@@ -69,7 +69,28 @@
         "G2"
       ],
       "acceptance": "One genuine model-generated bounded public-safe artifact, independent evidence review, tested authorization/failure/budget ceilings, canonical leases and no duplicate scheduler; a laptop/volunteer must not be required to keep the ordinary case pipeline operating.",
-      "independent_volunteer_required": false
+      "independent_volunteer_required": false,
+      "development": {
+        "status": "in_progress",
+        "evidence_artifacts": [
+          "scripts/foundry_source_evidence.py",
+          "scripts/foundry_lite.py",
+          "scripts/test_foundry_source_evidence.py"
+        ],
+        "acceptance_tests": [
+          "Strict country and language/task binding",
+          "No model/browser/institutional writes from source packet compilation",
+          "Local draft may consume an untrusted candidate packet without treating it as independently verified",
+          "A genuine full-model run and provider/lease hard-stop testing still required"
+        ],
+        "next_verifiable_result": "Validate linked source-candidate packet in offline Foundry CLI, with receipt showing zero model calls and source verification still pending",
+        "remaining_blockers": [
+          "No independently verified full eight-stage live artifact",
+          "No verified canonical distributed lease/budget hard-stop for real provider",
+          "No independent domain/country-language reviewer acceptance"
+        ],
+        "note": "Implementation and test readiness only, not G3 release acceptance or actual model inference."
+      }
     },
     {
       "id": "G4",
@@ -79,7 +100,40 @@
         "G3"
       ],
       "acceptance": "Independently verified outcomes across at least two countries with local-source provenance and reviewed language/context, repeatable without new paid inference accounts.",
-      "independent_volunteer_required": false
+      "independent_volunteer_required": false,
+      "development": {
+        "status": "in_progress",
+        "evidence_artifacts": [
+          "foundry-lite/fixtures/ot003-us-bilingual-review.json",
+          "foundry-lite/fixtures/ot003-us-bilingual-source-candidate.json",
+          "foundry-lite/fixtures/ot013-pk-climate-review.json",
+          "foundry-lite/fixtures/ot013-pk-climate-source-candidate.json",
+          "scripts/test_foundry_source_evidence.py"
+        ],
+        "candidate_countries": [
+          "US",
+          "PK"
+        ],
+        "reviewed_languages": [
+          "en"
+        ],
+        "additional_review_required_languages": [
+          "es"
+        ],
+        "acceptance_tests": [
+          "Country ID cannot be swapped between signed-off task and packet",
+          "A U.S. bilingual packet requires language competence review",
+          "Pakistan numeric-check detects 84/117=71.8 versus displayed 81.6 without alleging a dataset error",
+          "All cross-border cases stay pending independent original-source review"
+        ],
+        "next_verifiable_result": "Run both country fixtures through the same no-inference local planner and reject forged locale/source data",
+        "remaining_blockers": [
+          "No independently confirmed external public correction outside the United States",
+          "No qualified Spanish/Urdu language and jurisdiction review",
+          "No locally validated G4 operating costs or privacy cross-border compliance"
+        ],
+        "note": "Two-country fixture/test coverage only, NOT verified multinational outcomes."
+      }
     },
     {
       "id": "G5",
@@ -89,7 +143,28 @@
         "G4"
       ],
       "acceptance": "Meet end_state.acceptance over a rolling 28-day measurement window, including qualified review, privacy/deletion controls, credible operational uptime and zero unapproved cost.",
-      "independent_volunteer_required": false
+      "independent_volunteer_required": false,
+      "development": {
+        "status": "scoped",
+        "evidence_artifacts": [
+          "GLOBAL-ROLLOUT-GATES.md",
+          "MISSION-CONTROL.md"
+        ],
+        "acceptance_tests": [
+          "Sustainable 28-day verified-outcome rate",
+          "30 founder-independent days",
+          "Three regions and three reviewed languages",
+          "Privacy/deletion, branch integrity, cost cap and incident recovery"
+        ],
+        "next_verifiable_result": "Do not expand hosting/schedulers; use G3/G4 results to establish real throughput, independent review and cost-per-verified-outcome baselines",
+        "remaining_blockers": [
+          "Issue #96 privacy/retention workflow",
+          "Issue #68 GitHub main branch protection",
+          "Model budget/scheduler acceptance",
+          "Regional independent outcomes and measurable 28-day throughput"
+        ],
+        "note": "No G5 acceptance metric has yet been reached."
+      }
     }
   ],
   "focus_cases": [
@@ -143,6 +218,18 @@
     "permission_boundary": "Safe read-only checking, evidence capture, public project code fixes and bounded authorized factual replies may proceed without redundant owner re-confirmation. Higher-risk external publication, spending, account creation, new recurring workers, private-data processing and governance changes retain specific existing safeguards.",
     "independent_volunteer_blocking": false,
     "worker_source": "Original enabled Humanity Loop hourly coordinator; do not create a second worker.",
-    "next_action_without_due_signal": "inspect_incoming_replies_or_one_demonstrated_g2_case_cycle_blocker_only; do_not_repeat_no_change_checks_or_create_activity_artifacts"
+    "next_action_without_due_signal": "inspect_incoming_replies_or_one_demonstrated_g2_case_cycle_blocker_only; do_not_repeat_no_change_checks_or_create_activity_artifacts",
+    "parallel_track_policy": {
+      "development_is_allowed_before_prerequisites": true,
+      "release_gate_completion_still_requires_prerequisites": true,
+      "allowed_parallel_tracks": [
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "selection_rule": "When G2 cases are waiting on outside action, advance at most one testable G3 or G4 readiness item without opening a third external case, enabling a scheduler, spending credits, or claiming an accepted outcome.",
+      "score_readiness_by": "executable source-bound artifacts and passing independent CI, not by number of documentation files",
+      "no_new_scheduled_workers": true
+    }
   }
 }
