@@ -108,9 +108,9 @@ def proposal_is_actionable(response: str) -> bool:
     """A refusal or bare disclaimer is not a useful Scout deliverable."""
     if not isinstance(response, str):
         return False
-    question = re.search(r"(?im)^QUESTION:\\s*\\S.{9,}$", response)
-    checks = re.findall(r"(?im)^CHECK:\\s*\\S.{9,}$", response)
-    review = re.search(r"(?im)^HUMAN_REVIEW:\\s*required\\s*$", response)
+    question = re.search(r"(?im)^QUESTION:\s*\S.{9,}$", response)
+    checks = re.findall(r"(?im)^CHECK:\s*\S.{9,}$", response)
+    review = re.search(r"(?im)^HUMAN_REVIEW:\s*required\s*$", response)
     return bool(question and len(checks) >= 2 and review)
 
 
