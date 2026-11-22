@@ -242,6 +242,7 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
     # Enforce Tier-0 and explicit operator consent even when imported directly.
     # Do not rely on the CLI caller having validated the manifest.
     task = validate_task(task)
+    raw_source_packet = source_packet
     source_packet = (validate_source_packet(source_packet, task)
                      if source_packet is not None else None)
     clock = time.monotonic
@@ -314,7 +315,7 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
         "model_calls": attempted_calls, "appdeploy_credits_used": 0,
         "external_actions": 0, "scheduled": False,
         "roles_completed": list(responses), "role_drafts": responses,
-        "offline_fallback": offline_review_plan(task, source_packet),
+        "offline_fallback": offline_review_plan(task, raw_source_packet),
         "source_candidate_status": (
             "operator_supplied_not_independently_verified"
             if source_packet is not None else "not_provided"
@@ -387,10 +388,10 @@ def main(argv: list[str] | None = None) -> int:
             evidence_path = Path(args.source_packet)
             if evidence_path.stat().st_size > MAX_TASK_BYTES:
                 raise ValueError("source_packet_file_too_large")
-            source_packet = validate_source_packet(
-                json.loads(evidence_path.read_text(encoding="utf-8")), task
-            )
+            source_packet = json.loads(evidence_path.read_text(encoding="utf-8"))
         if args.mode == "inspect":
+            if source_packet is not None:
+                validate_source_packet(source_packet, task)
             result = inspect(task)
         elif args.mode == "plan":
             result = offline_review_plan(task, source_packet)
