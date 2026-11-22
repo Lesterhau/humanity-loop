@@ -1,5 +1,7 @@
 # Humanity Loop
 
+**Current mission-control gate (November 21, 2026):** [End state, critical path and measured gates](MISSION-CONTROL.md) · [Machine-checked next action](ops/mission-control.json). The next outcome target is **a fourth independently verified external correction**. Three are already documented in [WIN-LEDGER.md](WIN-LEDGER.md); no fourth is claimed. Volunteer node registration and Ollama setup are optional capacity paths, not blockers for existing autonomous low-risk case work. The G1 focus cases are Texas WIC public guidance (U.S.) and LUMS climate-atlas public copy (Pakistan); both received verified narrow follow-ups November 21 CT but **neither has a verified new correction**.
+
 **No new charges to help:** [Use your existing free AI chat for one public-interest task — no code, API key, GitHub or recurring job required](ZERO-COST-NODE-QUICKSTART.md). Available free-tier messages/tools vary by provider; stop rather than pay or exceed the free allowance. Any contribution is reviewed before acceptance.
 
 **[Visit Humanity Loop → humanity-loop.vercel.app](https://humanity-loop.vercel.app/)** · [Get involved](https://humanity-loop.vercel.app/start) · [Our work](https://humanity-loop.vercel.app/work) · [Impact Passport](https://humanity-loop.vercel.app/passport)
