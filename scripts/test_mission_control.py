@@ -40,6 +40,46 @@ class MissionTests(unittest.TestCase):
         self.assertTrue(any("ot005-2026-11-22-irs-outcome-adjudication" in url
                             for url in cfg["milestones"][0]["proof_urls"]))
 
+    def test_parallel_readiness_is_visible_without_premature_release(self):
+        r=self.call()
+        self.assertEqual(r["active_gate"],"G2")
+        self.assertTrue(r["parallel_build_does_not_advance_release_gates"])
+        tracks={t["gate"]:t for t in r["parallel_readiness"]}
+        self.assertEqual(set(tracks),{"G3","G4","G5"})
+        self.assertEqual(tracks["G3"]["development_status"],"in_progress")
+        self.assertEqual(tracks["G4"]["development_status"],"in_progress")
+        self.assertEqual(tracks["G5"]["development_status"],"scoped")
+        for t in tracks.values():
+            self.assertEqual(t["gate_status"],"not_started")
+            self.assertFalse(t["release_accepted"])
+
+    def test_development_readiness_cannot_bypass_sequential_gate_acceptance(self):
+        cfg=deepcopy(CONFIG)
+        cfg["milestones"][2]["status"]="achieved"
+        cfg["milestones"][2]["proof_urls"]=["https://example.org/mock"]
+        with self.assertRaisesRegex(ValueError,"achieved_without_prerequisite"):
+            self.call(cfg)
+
+    def test_no_simulated_international_outcome_or_model_run(self):
+        for gate,field,err in [("G3","complete_eight_stage_model_runs_independently_reviewed","invented_model_acceptance"),
+                               ("G4","independently_verified_non_us_outcomes","invented_international_outcome"),
+                               ("G5","acceptance_metrics_all_met","invented_global_readiness")]:
+            cfg=deepcopy(CONFIG)
+            row=next(x for x in cfg["milestones"] if x["id"]==gate)
+            row["development"][field]=True
+            with self.subTest(gate=gate),self.assertRaisesRegex(ValueError,err):
+                self.call(cfg)
+
+    def test_no_parallel_schedulers_or_fake_release_claims(self):
+        cfg=deepcopy(CONFIG)
+        cfg["operating_rules"]["parallel_track_policy"]["no_new_scheduled_workers"]=False
+        with self.assertRaisesRegex(ValueError,"new_schedulers_not_authorized"):
+            self.call(cfg)
+        cfg=deepcopy(CONFIG)
+        cfg["milestones"][2]["development"]["release_claimed"]=True
+        with self.assertRaisesRegex(ValueError,"premature_release_claim"):
+            self.call(cfg)
+
     def test_no_due_research_does_not_manufacture_activity(self):
         r=self.call()
         self.assertEqual(r["status"],"wait_for_due_or_new_evidence")
