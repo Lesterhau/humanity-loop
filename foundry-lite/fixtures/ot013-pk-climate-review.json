@@ -8,5 +8,10 @@
   "recurring_execution": false,
   "public_source_urls": [
     "https://city.lums.edu.pk/what-we-do/city-research/dare-rc/"
+  ],
+  "case_id": "OT-013",
+  "country": "PK",
+  "languages": [
+    "en"
   ]
 }
