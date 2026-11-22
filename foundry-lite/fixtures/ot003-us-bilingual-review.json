@@ -8,5 +8,11 @@
   "recurring_execution": false,
   "public_source_urls": [
     "https://texaswic.cart.com/Shared/PDF-Downloads/13-06-12103.pdf"
+  ],
+  "case_id": "OT-003",
+  "country": "US",
+  "languages": [
+    "en",
+    "es"
   ]
 }
