@@ -94,6 +94,10 @@ def validate_source_packet(raw: Any, task: dict[str, Any], *,
         raise ValueError("unsupported_source_packet")
     if raw.get("task_id") != task.get("task_id"):
         raise ValueError("packet_task_mismatch")
+    if not all(k in task for k in ("case_id", "country", "languages")):
+        raise ValueError("task_jurisdiction_not_declared")
+    if any(raw.get(k) != task[k] for k in ("case_id", "country", "languages")):
+        raise ValueError("packet_jurisdiction_mismatch")
     case_id, country = raw.get("case_id"), raw.get("country")
     if not isinstance(case_id, str) or not CASE_RE.fullmatch(case_id):
         raise ValueError("invalid_case_id")
