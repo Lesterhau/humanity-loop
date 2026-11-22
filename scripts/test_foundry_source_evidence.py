@@ -90,6 +90,18 @@ class SourceCandidateTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"numeric_source_host_forbidden"):
             validate_source_packet(p,t,now=NOW)
 
+    def test_control_characters_and_fragments_rejected_even_if_task_lists_url(self):
+        for suffix, error in [("\n", "control_character_in_source_url"),
+                              ("\r", "control_character_in_source_url"),
+                              ("\t", "control_character_in_source_url"),
+                              ("#access_token=secret", "fragment_in_source_url_forbidden")]:
+            t,p=fixture("PK")
+            url=p["observations"][0]["source_url"]+suffix
+            p["observations"][0]["source_url"]=url
+            t["public_source_urls"].append(url)
+            with self.subTest(suffix=repr(suffix)), self.assertRaisesRegex(ValueError,error):
+                validate_source_packet(p,t,now=NOW)
+
     def test_future_timestamp_rejected(self):
         t,p=fixture("PK")
         p["observations"][0]["observed_at_utc"]="2026-12-01T00:00:00Z"
