@@ -108,6 +108,13 @@ def proposal_is_actionable(response: str) -> bool:
     """A refusal or bare disclaimer is not a useful Scout deliverable."""
     if not isinstance(response, str):
         return False
+    # Even a well-formatted checklist may smuggle a claim of completed source work.
+    # This catches common first-person false-observation patterns; a distinct
+    # reviewer remains responsible for contextual/source validity.
+    if re.search(r"(?i)\b(?:I|we)\s+(?:have\s+)?"
+                 r"(?:visited|fetched|opened|verified|checked|browsed)\b",
+                 response):
+        return False
     question = re.search(r"(?im)^QUESTION:\s*\S.{9,}$", response)
     checks = re.findall(r"(?im)^CHECK:\s*\S.{9,}$", response)
     review = re.search(r"(?im)^HUMAN_REVIEW:\s*required\s*$", response)
