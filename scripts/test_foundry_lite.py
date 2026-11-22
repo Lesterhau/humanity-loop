@@ -198,6 +198,8 @@ class FoundryLiteTests(unittest.TestCase):
     def test_actionable_scout_requires_two_checks_and_future_human_review(self):
         self.assertTrue(proposal_is_actionable(model_reply("scout", "", 20)))
         self.assertFalse(proposal_is_actionable("I cannot access the internet"))
+        self.assertFalse(proposal_is_actionable(
+            model_reply("scout", "", 20) + "\nI verified the public URL."))
         self.assertFalse(proposal_is_actionable("QUESTION: Should we check the URL?"))
         self.assertFalse(proposal_is_actionable(
             "QUESTION: What should reviewers find?\\nCHECK: Check the public page.\\nHUMAN_REVIEW: required"))
