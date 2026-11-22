@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-21T11:16:17.576803Z",
+  "runAt": "2026-11-22T11:35:49.208275Z",
   "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,14 +8,34 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 3,
-  "citationsExamined": 91,
+  "newRetractionsChecked": 1,
+  "citationsExamined": 17,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
   "failuresCount": 0,
   "failures": [],
-  "coverageGapsCount": 12,
+  "coverageGapsCount": 14,
   "coverageGaps": [
+    {
+      "stage": "not_indexed",
+      "doi": "10.1159/000551831",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.sftr.2025.101434",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.sftr.2024.100182",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.sftr.2025.100904",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
     {
       "stage": "not_indexed",
       "doi": "10.1109/temc.2017.2731783",
@@ -64,16 +84,6 @@
     {
       "stage": "not_indexed",
       "doi": "10.1007/s10665-025-10501-3",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.sbsr.2026.101055",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.ijhydene.2019.05.137",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
