@@ -88,6 +88,47 @@ def validate_and_select(config: dict[str, Any], win_ledger: str,
             achieved.add(stage["id"])
         if stage.get("status") == "active" and set(stage["prerequisites"]) - achieved:
             raise ValueError("active_gate_before_prerequisite")
+    # Development work can happen in parallel; RELEASE acceptance remains sequential.
+    # Treat readiness as independently testable artifacts, not achieved outcome gates.
+    parallel_readiness = []
+    for stage in stages[2:]:
+        dev = stage.get("development")
+        if not isinstance(dev, dict):
+            raise ValueError("parallel_development_missing")
+        if dev.get("status") not in {"not_started", "scoped", "in_progress", "ready_for_acceptance_review"}:
+            raise ValueError("invalid_development_state")
+        if dev.get("release_claimed") is not False:
+            raise ValueError("premature_release_claim")
+        artifacts = dev.get("evidence_artifacts")
+        if not isinstance(artifacts, list) or not artifacts or any(
+            not isinstance(x, str) or not x or x.startswith("/") or ".." in x.split("/")
+            for x in artifacts
+        ):
+            raise ValueError("invalid_development_artifacts")
+        if not isinstance(dev.get("next_verifiable_result"), str) or len(dev["next_verifiable_result"]) < 20:
+            raise ValueError("development_has_no_next_test")
+        if stage["id"] == "G3" and dev.get("complete_eight_stage_model_runs_independently_reviewed") != 0:
+            raise ValueError("invented_model_acceptance")
+        if stage["id"] == "G4" and dev.get("independently_verified_non_us_outcomes") != 0:
+            raise ValueError("invented_international_outcome")
+        if stage["id"] == "G5" and dev.get("acceptance_metrics_all_met") is not False:
+            raise ValueError("invented_global_readiness")
+        parallel_readiness.append({
+            "gate": stage["id"], "gate_status": stage["status"],
+            "development_status": dev["status"],
+            "artifact_count_not_an_outcome": len(artifacts),
+            "next_test": dev["next_verifiable_result"],
+            "release_accepted": stage["status"] == "achieved",
+        })
+    policy = config.get("operating_rules", {}).get("parallel_track_policy")
+    if not isinstance(policy, dict) or policy.get("development_is_allowed_before_prerequisites") is not True:
+        raise ValueError("parallel_build_policy_missing")
+    if policy.get("release_gate_completion_still_requires_prerequisites") is not True:
+        raise ValueError("gate_precedence_bypassed")
+    if policy.get("allowed_parallel_tracks") != ["G3", "G4", "G5"]:
+        raise ValueError("parallel_track_scope_changed")
+    if policy.get("no_new_scheduled_workers") is not True:
+        raise ValueError("new_schedulers_not_authorized")
     rules = config.get("operating_rules")
     if not isinstance(rules, dict) or rules.get("wip_case_limit") != 2:
         raise ValueError("wip_limit_changed_without_review")
@@ -137,6 +178,8 @@ def validate_and_select(config: dict[str, Any], win_ledger: str,
         "external_volunteers_required": False,
         "new_model_calls": 0, "new_scheduled_jobs": 0,
         "can_autocontact_institutions": False,
+        "parallel_readiness": parallel_readiness,
+        "parallel_build_does_not_advance_release_gates": True,
     }
     if runnable:
         case = runnable[0][1]

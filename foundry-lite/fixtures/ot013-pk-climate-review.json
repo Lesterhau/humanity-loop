@@ -1,0 +1,17 @@
+{
+  "task_id": "hl-ot013-pakistan-climate-page-review",
+  "title": "Review Pakistan school climate-atlas public arithmetic and source wording",
+  "scope": "Prepare a public text-only review plan for the published Punjab School Climate-Exposure Atlas summary, comparing displayed 103 and 117 school counts and assessing an arithmetic percentage mismatch. Do not infer which source count is authoritative or audit the underlying research dataset.",
+  "risk_tier": 0,
+  "operator_approved": true,
+  "external_actions": false,
+  "recurring_execution": false,
+  "public_source_urls": [
+    "https://city.lums.edu.pk/what-we-do/city-research/dare-rc/"
+  ],
+  "case_id": "OT-013",
+  "country": "PK",
+  "languages": [
+    "en"
+  ]
+}

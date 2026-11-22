@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "task_id": "hl-ot003-bilingual-prepublication-review",
+  "case_id": "OT-003",
+  "country": "US",
+  "languages": [
+    "en",
+    "es"
+  ],
+  "tier": 0,
+  "external_actions": false,
+  "consent_to_publish": false,
+  "review_state": "pending_independent_review",
+  "fixture_only": true,
+  "observations": [
+    {
+      "source_url": "https://texaswic.cart.com/Shared/PDF-Downloads/13-06-12103.pdf",
+      "observed_at_utc": "2026-11-21T12:00:00Z",
+      "method": "official_pdf_text",
+      "language": "en",
+      "status": "candidate",
+      "excerpt": "A lawyer will be assigned by Health and Human Services.",
+      "review_question": "Does the current official PDF still imply that the agency-provided lawyer represents the appellant, or has the text been removed?"
+    },
+    {
+      "source_url": "https://texaswic.cart.com/Shared/PDF-Downloads/13-06-12103.pdf",
+      "observed_at_utc": "2026-11-21T12:00:00Z",
+      "method": "official_pdf_text",
+      "language": "es",
+      "status": "candidate",
+      "excerpt": "Salud y Servicios Humanos te asignará un abogado.",
+      "review_question": "Is the Spanish attorney wording still present in the current official PDF, and is any replacement translation accurate?"
+    }
+  ],
+  "arithmetic_checks": []
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "task_id": "hl-ot013-pakistan-climate-page-review",
+  "case_id": "OT-013",
+  "country": "PK",
+  "languages": [
+    "en"
+  ],
+  "tier": 0,
+  "external_actions": false,
+  "consent_to_publish": false,
+  "review_state": "pending_independent_review",
+  "fixture_only": true,
+  "observations": [
+    {
+      "source_url": "https://city.lums.edu.pk/what-we-do/city-research/dare-rc/",
+      "observed_at_utc": "2026-11-22T19:20:00Z",
+      "method": "public_text_retrieval",
+      "language": "en",
+      "status": "candidate",
+      "excerpt": "Gujrat, Sialkot, Sheikhupura, and Gujranwala contain 84 of the 117 schools at Priority 1–2 for both hazards (81.6%).",
+      "review_question": "Can an independent reviewer confirm these current public figures and determine which cohort definition or count underlies the percent?"
+    },
+    {
+      "source_url": "https://city.lums.edu.pk/what-we-do/city-research/dare-rc/",
+      "observed_at_utc": "2026-11-22T19:20:00Z",
+      "method": "public_text_retrieval",
+      "language": "en",
+      "status": "candidate",
+      "excerpt": "103 (0.2%) schools at Priority 1–2 for both heatwave and flooding.",
+      "review_question": "Is the official summary count 103, and is that the same cohort the 117 and 84 numerator statements intend to describe?"
+    }
+  ],
+  "arithmetic_checks": [
+    {
+      "kind": "percentage",
+      "source_index": 0,
+      "part": 84,
+      "whole": 117,
+      "claimed_percent": 81.6
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 # Humanity Loop — active continuity queue for the ORIGINAL hourly coordinator
 
+## NOVEMBER 22, 2026 — PARALLEL-TRACK DEVELOPMENT DIRECTIVE (SUPERSEDES STRICTLY SEQUENTIAL WORK SELECTION)
+
+Only **release acceptance** is sequential. G2 stays the single active acceptance gate, focused on OT-003/OT-013 and actual externally checked case dispositions; both may be waiting on outside publication and have contact limits. After safety/urgent reply triage and any due G2 action, use spare execution to advance **one bounded, testable G3 or G4 prerequisite** without a third external case, another worker, paid AI calls, cloud account or unreviewed public messaging. Concrete new implementation: source-candidate packet validator `scripts/foundry_source_evidence.py`, Foundry Lite optional `--source-packet`, and offline U.S. bilingual/Pakistan numerical cross-country review fixtures. All operator snippets are untrusted, not independently verified; 84/117 = 71.8% mathematically does not resolve whether 103 or 117 is authoritative. Record G3/G4 development artifacts and test evidence separately from release gates. The state/selector is [ops/mission-control.json](ops/mission-control.json) / [MISSION-CONTROL.md](MISSION-CONTROL.md). G5 privacy/retention and source integrity controls remain blockers; do not claim a global service. Preserve all stricter prior safety and budget rules.
+
+
 ## NOVEMBER 22, 2026 — LATEST OWNER-END-STATE GATE: G2, REPEATABLE CASE CYCLES (READ FIRST)
 
 **G1 ACHIEVED:** [WIN-004 IRS tax-year-2025 EITC multilingual source correction](WIN-LEDGER.md) has an independent original-September-report / November-source-after-recheck receipt: [OT-005 adjudication](runtime/case-steward/ot005-2026-11-22-irs-outcome-adjudication.md). Correct all stale references to **three historical wins**: now **FOUR** (WIN-001 through WIN-004). The IRS made the public changes, causal contribution of our September report is **UNPROVEN**, no 2026 new IRS agency revision is claimed, six translations are **one** correction, and other OT-005 claims are still unresolved. A total of four historical outcomes does **not** satisfy the target four within 28 days.
