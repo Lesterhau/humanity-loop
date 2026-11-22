@@ -89,7 +89,9 @@
           "No verified canonical distributed lease/budget hard-stop for real provider",
           "No independent domain/country-language reviewer acceptance"
         ],
-        "note": "Implementation and test readiness only, not G3 release acceptance or actual model inference."
+        "note": "Implementation and test readiness only, not G3 release acceptance or actual model inference.",
+        "release_claimed": false,
+        "complete_eight_stage_model_runs_independently_reviewed": 0
       }
     },
     {
@@ -132,7 +134,9 @@
           "No qualified Spanish/Urdu language and jurisdiction review",
           "No locally validated G4 operating costs or privacy cross-border compliance"
         ],
-        "note": "Two-country fixture/test coverage only, NOT verified multinational outcomes."
+        "note": "Two-country fixture/test coverage only, NOT verified multinational outcomes.",
+        "release_claimed": false,
+        "independently_verified_non_us_outcomes": 0
       }
     },
     {
@@ -163,7 +167,9 @@
           "Model budget/scheduler acceptance",
           "Regional independent outcomes and measurable 28-day throughput"
         ],
-        "note": "No G5 acceptance metric has yet been reached."
+        "note": "No G5 acceptance metric has yet been reached.",
+        "release_claimed": false,
+        "acceptance_metrics_all_met": false
       }
     }
   ],
