@@ -1,0 +1,12 @@
+{
+  "task_id": "hl-ot003-bilingual-prepublication-review",
+  "title": "Review one bilingual Texas WIC publication discrepancy",
+  "scope": "Prepare a bilingual public-document text comparison checklist for the Texas WIC fair-hearing handout. Do not give legal advice or assume an agency revision is already implemented. A qualified reviewer must assess the English and Spanish meaning.",
+  "risk_tier": 0,
+  "operator_approved": true,
+  "external_actions": false,
+  "recurring_execution": false,
+  "public_source_urls": [
+    "https://texaswic.cart.com/Shared/PDF-Downloads/13-06-12103.pdf"
+  ]
+}
