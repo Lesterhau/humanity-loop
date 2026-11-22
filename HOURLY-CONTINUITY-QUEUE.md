@@ -1,5 +1,14 @@
 # Humanity Loop — active continuity queue for the ORIGINAL hourly coordinator
 
+## NOVEMBER 22, 2026 — LATEST OWNER-END-STATE GATE: G2, REPEATABLE CASE CYCLES (READ FIRST)
+
+**G1 ACHIEVED:** [WIN-004 IRS tax-year-2025 EITC multilingual source correction](WIN-LEDGER.md) has an independent original-September-report / November-source-after-recheck receipt: [OT-005 adjudication](runtime/case-steward/ot005-2026-11-22-irs-outcome-adjudication.md). Correct all stale references to **three historical wins**: now **FOUR** (WIN-001 through WIN-004). The IRS made the public changes, causal contribution of our September report is **UNPROVEN**, no 2026 new IRS agency revision is claimed, six translations are **one** correction, and other OT-005 claims are still unresolved. A total of four historical outcomes does **not** satisfy the target four within 28 days.
+
+**G2 ACTIVE:** See [MISSION-CONTROL.md](MISSION-CONTROL.md) and [ops/mission-control.json](ops/mission-control.json). Need **TWO** separate repeatable authorized case cycles with independent final outside-source disposition and zero unapproved new cash, at least one without founder manually acting at every step. **0 qualifying G2 cycles** so far. WIP max two active cases: OT-003 Texas WIC, OT-013 LUMS CITY Pakistan, each already source-checked and agency/institution follow-up **sent/read-back** November 21 CT. Recheck official WIC PDF by **Nov30 UTC** and official LUMS page by **Dec2 UTC**, or act sooner only on a substantive reply/material source change. No repeated routine contacts, no using other people's FB participation as a dependency, and no equating an email/LLM role/test with external impact.
+
+**Single hourly action after critical intake/safety triage:** choose one due G2 case step with verifiable public source/action/outcome receipt, or an independently confirmed reply, or one proven bottleneck to completing the two cases. Otherwise honestly mark no_new_evidence; don't manufacture tasks or launch a separate agent. Keep source-based privacy, existing permissions, AppDeploy reserve, human-consequential safety gates, and current original worker schedule unchanged.
+
+
 ## NOVEMBER 21, 2026 OWNER'S END-STATE PRIORITY (READ FIRST; ALL HISTORICAL QUEUE ITEMS BELOW ARE CONTEXT, NOT A NEW TODO STACK)
 
 **ONE active measurable gate:** [MISSION-CONTROL.md](MISSION-CONTROL.md) / [ops/mission-control.json](ops/mission-control.json), **G1 = FOURTH externally implemented and independently verified correction**. Baseline: WIN-001/002/003 are three verified public corrections. No other artifact/CI run/research draft/AgentMail send counts as a win. Volunteer node acquisition is **optional and nonblocking**, not the current daily dependency. The user explicitly requests autonomy on already-permitted low-risk work, with no repeated confirmation questions; existing consent, spending, privacy, high-impact, external publication and tool limits are still binding.
