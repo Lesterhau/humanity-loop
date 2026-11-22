@@ -58,6 +58,32 @@ The original `verify` model instruction said **reject without reliable evidence*
 
 **No rerun recommended on the current laptop while memory remains nearly exhausted.** Don't pull a larger model to solve this. The source and offline tests can be developed on GitHub without spending AppDeploy credits or consuming the laptop's RAM.
 
+## Parallel G3/G4: source-candidate review packets (offline, no credits)
+
+This is the **first executable cross-country evidence preparation contract** for the optional Foundry runner. The packet is operator-supplied and contains a case ID, jurisdiction, language(s), exact task-approved HTTPS URLs, dated candidate observations, reviewer questions, and optional arithmetic checks. The runner validates country and language against the reviewed task manifest before creating a review plan or any local model prompt. A different country, fabricated future timestamp, private URL or unapproved action fails closed.
+
+Two sample source packets are included and explicitly set `fixture_only: true`. They are **not** an independently verified source snapshot or accepted public-benefit outcome. The Pakistan packet records the public-page arithmetic candidate: 84/117 = **71.8%**, not the displayed 81.6%; this is math, not verification that 117 is the correct cohort. The Texas WIC packet requires human competence in **English and Spanish** to assess changes or legal meaning.
+
+From the repository root, with Python 3.10+ (no Ollama required):
+
+**Windows PowerShell**
+~~~powershell
+py -3 scripts/foundry_lite.py --input foundry-lite/fixtures/ot003-us-bilingual-review.json --source-packet foundry-lite/fixtures/ot003-us-bilingual-source-candidate.json --mode plan --output "$env:TEMP/ot003-review-plan.json"
+py -3 scripts/foundry_lite.py --input foundry-lite/fixtures/ot013-pk-climate-review.json --source-packet foundry-lite/fixtures/ot013-pk-climate-source-candidate.json --mode plan --output "$env:TEMP/ot013-review-plan.json"
+~~~
+
+**macOS/Linux**
+~~~bash
+python3 scripts/foundry_lite.py --input foundry-lite/fixtures/ot003-us-bilingual-review.json --source-packet foundry-lite/fixtures/ot003-us-bilingual-source-candidate.json --mode plan --output /tmp/ot003-review-plan.json
+python3 scripts/foundry_lite.py --input foundry-lite/fixtures/ot013-pk-climate-review.json --source-packet foundry-lite/fixtures/ot013-pk-climate-source-candidate.json --mode plan --output /tmp/ot013-review-plan.json
+~~~
+
+This produces local `offline_review_plan_only` files. No web retrieval is made, no private data are accepted, no inference runs, no GitHub/Supabase/AppDeploy external writes occur, and no independent verification is claimed. `--source-packet` is also accepted in the existing **manually approved** `--mode ollama` path, where the limited evidence candidate is explicitly included as *untrusted reference text*—not as proof the model fetched or validated a source.
+
+For future *real* source evidence, do not flip `fixture_only` merely to pass a test. Retrieve the actual original public page, record exact visible source text, timestamp/method, obtain independent review and qualified language/context review as needed. The packet format and static validation cannot attest retrieval independently or remove human responsibility.
+
+**Current readiness:** G3 and G4 **development in progress**, neither release gate achieved. Acceptance still requires real bounded inference with a reliable canonical lease and cost stop (G3) and an independently verified useful real-world outcome outside the U.S. (G4). See [Mission Control](../MISSION-CONTROL.md).
+
 ## From the repository root
 
 Zero-model validation (no external HTTP, no AI inference):
