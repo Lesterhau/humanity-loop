@@ -196,17 +196,17 @@ class FoundryLiteTests(unittest.TestCase):
         self.assertFalse(receipt["offline_fallback"]["independently_verified"])
 
     def test_actionable_scout_requires_two_checks_and_future_human_review(self):
-        self.assertTrue(proposal_is_actionable(model_reply("scout", "", 20)))
+        self.assertTrue(proposal_is_actionable(model_reply("scout", "NO live internet access", 20)))
         self.assertFalse(proposal_is_actionable("I cannot access the internet"))
         self.assertFalse(proposal_is_actionable(
-            model_reply("scout", "", 20) + "\nI verified the public URL."))
+            model_reply("scout", "NO live internet access", 20) + "\nI verified the public URL."))
         self.assertFalse(proposal_is_actionable("QUESTION: Should we check the URL?"))
         self.assertFalse(proposal_is_actionable(
             "QUESTION: What should reviewers find?\\nCHECK: Check the public page.\\nHUMAN_REVIEW: required"))
 
     def test_verifier_prompt_can_allow_draft_without_false_source_verification(self):
         s = make_prompt("verify", validate_task(deepcopy(FIXTURE)),
-                        {"scout": model_reply("scout", "", 20)})
+                        {"scout": model_reply("scout", "NO live internet access", 20)})
         self.assertIn("No live evidence is available to verify", s)
         self.assertIn("PROCEED and GO", s)
         self.assertIn("Do not refuse because you cannot browse", s)
