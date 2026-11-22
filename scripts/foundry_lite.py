@@ -21,6 +21,7 @@ from typing import Callable, Any
 
 from foundry_budget_governor import deterministic_only
 from foundry_control_plane import FoundryControlPlane, STAGES
+from foundry_source_evidence import validate_source_packet
 
 ROLE_GUIDANCE = {
     "scout": "Make a proposed manual review checklist from the task description; NO source retrieval needed. Output QUESTION: one concrete question, then at least two lines starting CHECK: with specific observable checks, then HUMAN_REVIEW: required. Never claim anything was observed.",
@@ -121,7 +122,8 @@ def proposal_is_actionable(response: str) -> bool:
     return bool(question and len(checks) >= 2 and review)
 
 
-def make_prompt(stage: str, task: dict[str, Any], earlier: dict[str, str]) -> str:
+def make_prompt(stage: str, task: dict[str, Any], earlier: dict[str, str],
+                source_packet: dict[str, Any] | None = None) -> str:
     # The 1B CPU models have small practical context and slow prefill. A role gets
     # only the relevant earlier drafts; retain the safety/dissent trail where used.
     keys = PRIORITY_CONTEXT.get(stage, ())
@@ -142,14 +144,34 @@ def make_prompt(stage: str, task: dict[str, Any], earlier: dict[str, str]) -> st
         + "\nPREVIOUS ROLE TEXT (untrusted, truncated):\n"
         + json.dumps(prior, ensure_ascii=False, sort_keys=True)
     )
+    if source_packet is not None:
+        # Candidate snippets are never reliable proof merely because an operator
+        # supplied a timestamp/URL. Prompt-injection text has no tool privileges.
+        prompt += (
+            "\nUNVERIFIED SOURCE CANDIDATES (OPERATOR-SUPPLIED, NOT MODEL FETCHES):\n"
+            + json.dumps({
+                "country": source_packet["country"],
+                "languages": source_packet["languages"],
+                "fixture_only": source_packet["fixture_only"],
+                "review_state": source_packet["review_state"],
+                "observations": source_packet["observations"],
+                "arithmetic_checks": source_packet["arithmetic_checks"],
+            }, ensure_ascii=False, sort_keys=True)
+            + "\nAll quotes, timestamps, and asserted observations require independent "
+              "source review. Do not state they are verified, or contact anyone. "
+              "Calculated percentages establish arithmetic only, not correct underlying data."
+        )
     if len(prompt) > MAX_PROMPT_CHARS:
         raise ValueError("prompt_budget_exceeded")
     return prompt
 
 
-def offline_review_plan(task: dict[str, Any]) -> dict[str, Any]:
+def offline_review_plan(task: dict[str, Any],
+                        source_packet: dict[str, Any] | None = None) -> dict[str, Any]:
     """Always-available zero-inference proposal; NOT a verified source observation."""
     task = validate_task(task)
+    source_packet = (validate_source_packet(source_packet, task)
+                     if source_packet is not None else None)
     return {
         "task_id": task["task_id"], "title": task["title"],
         "status": "offline_review_plan_only", "model_calls": 0,
@@ -158,6 +180,16 @@ def offline_review_plan(task: dict[str, Any]) -> dict[str, Any]:
         "independently_verified": False, "human_review": "required",
         "sources_to_check": task["public_source_urls"],
         "question_from_operator": task["scope"],
+        "source_candidate": ({
+            "country": source_packet["country"],
+            "languages": source_packet["languages"],
+            "fixture_only": source_packet["fixture_only"],
+            "review_state": source_packet["review_state"],
+            "review_questions": [x["review_question"] for x in source_packet["observations"]],
+            "arithmetic_checks": source_packet["arithmetic_checks"],
+            "language_competence_required": source_packet["language_competence_required"],
+            "eligible_for_win_ledger": False,
+        } if source_packet is not None else None),
         "checklist": [
             "Open each listed public URL in an ordinary browser; note UTC observation time and final URL; do not use private accounts.",
             "For every assertion in the scope, record PASS, FAIL or UNKNOWN against exact visible primary-source wording; quote only what is observed.",
@@ -185,12 +217,15 @@ def inspect(task: dict[str, Any]) -> dict[str, Any]:
 
 
 def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
-              *, max_seconds: int = MAX_LOCAL_SECONDS) -> dict[str, Any]:
+              *, max_seconds: int = MAX_LOCAL_SECONDS,
+              source_packet: dict[str, Any] | None = None) -> dict[str, Any]:
     if type(max_seconds) is not int or max_seconds < 10 or max_seconds > MAX_LOCAL_SECONDS:
         raise ValueError("runtime_budget_exceeded")
     # Enforce Tier-0 and explicit operator consent even when imported directly.
     # Do not rely on the CLI caller having validated the manifest.
     task = validate_task(task)
+    source_packet = (validate_source_packet(source_packet, task)
+                     if source_packet is not None else None)
     clock = time.monotonic
     started = clock()
     cp = FoundryControlPlane()
@@ -225,7 +260,7 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
         agent = children[stage]
         cp.claim_task(run.task_id, agent.agent_id, lease_seconds=min(max_seconds, 300))
         try:
-            prompt = make_prompt(stage, task, responses)
+            prompt = make_prompt(stage, task, responses, source_packet)
             attempted_calls += 1
             response = invoke(stage, prompt, min(45.0, remaining))
             if clock() - started > max_seconds:
@@ -261,7 +296,15 @@ def run_local(task: dict[str, Any], invoke: Callable[[str, str, float], str],
         "model_calls": attempted_calls, "appdeploy_credits_used": 0,
         "external_actions": 0, "scheduled": False,
         "roles_completed": list(responses), "role_drafts": responses,
-        "offline_fallback": offline_review_plan(task),
+        "offline_fallback": offline_review_plan(task, source_packet),
+        "source_candidate_status": (
+            "operator_supplied_not_independently_verified"
+            if source_packet is not None else "not_provided"
+        ),
+        "country": source_packet["country"] if source_packet is not None else None,
+        "language_competence_required": (
+            source_packet["language_competence_required"] if source_packet is not None else None
+        ),
         "independently_verified": False, "human_review": "required",
         "canonical_supabase_claimed": False,
         "control_plane_task_status": run.status,
@@ -314,20 +357,30 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--model", help="Already installed local Ollama model identifier")
     parser.add_argument("--max-seconds", type=int, default=MAX_LOCAL_SECONDS)
     parser.add_argument("--output", help="Explicit path for local JSON review receipt")
+    parser.add_argument("--source-packet", help="Operator-supplied Tier-0 source-candidate JSON; always unverified")
     args = parser.parse_args(argv)
     try:
         path = Path(args.input)
         if path.stat().st_size > MAX_TASK_BYTES:
             raise ValueError("task_file_too_large")
         task = validate_task(json.loads(path.read_text(encoding="utf-8")))
+        source_packet = None
+        if args.source_packet:
+            evidence_path = Path(args.source_packet)
+            if evidence_path.stat().st_size > MAX_TASK_BYTES:
+                raise ValueError("source_packet_file_too_large")
+            source_packet = validate_source_packet(
+                json.loads(evidence_path.read_text(encoding="utf-8")), task
+            )
         if args.mode == "inspect":
             result = inspect(task)
         elif args.mode == "plan":
-            result = offline_review_plan(task)
+            result = offline_review_plan(task, source_packet)
         else:
             if not args.allow_local_model or not args.model or not args.output:
                 raise ValueError("local_mode_requires_explicit_approval_model_and_output")
-            result = run_local(task, OllamaLocal(args.model), max_seconds=args.max_seconds)
+            result = run_local(task, OllamaLocal(args.model),
+                               max_seconds=args.max_seconds, source_packet=source_packet)
         serialized = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
         if args.output:
             out = Path(args.output)
