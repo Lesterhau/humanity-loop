@@ -1,6 +1,6 @@
 # Foundry Lite — manual zero-AppDeploy-credit execution
 
-**Implemented source + offline tests; a real local-Ollama eight-role model run has not yet been verified.** This is an optional local adapter over existing FoundryControlPlane and budget-governor components, not a second scheduled worker or a replacement for consented outside nodes.
+**Implemented source + offline tests; first real owner-run local Ollama attempt was reported November 21, 2026 and safely HELD at stage 2.** The model was `llama3.2:1b` on a Windows 10 HP EliteBook 820 G3 (i7-6600U, 16 GB physical RAM; 4.7 GB free before model load, approximately 0.1 GB afterward). The owner-provided Claude Code report records 2 runner model calls, about 21 seconds, a Scout refusal and `VERDICT = REJECT` at Verify. No useful eight-stage model draft, cloud fallback, public-site write, accepted contribution or public outcome. The local packet itself has not been independently examined by this maintainer; do not treat a client report as a verified 8-stage run. This is an optional local adapter over existing FoundryControlPlane and budget-governor components, not a second scheduled worker.
 
 ## Costs and controls
 
@@ -32,6 +32,32 @@ For a **later, expressly approved local model test** only:
 2. Run `ollama list` to confirm which model is actually installed. `ollama pull <model-id>` is an **optional multi-gigabyte download**, not a free cloud-hosted service; only the laptop owner should choose to run it.
 3. Run `py -3 scripts/foundry_lite.py ... --mode ollama --allow-local-model --model ACTUAL_INSTALLED_MODEL --output "$env:TEMP/foundry-lite-review-packet.json"` on Windows, or the analogous `python3` command on macOS/Linux. Full flags are documented below. Do not share a raw local review packet publicly until checked for sensitive material.
 
+## Zero-model draft (recommended before another Ollama attempt)
+
+The CLI now supports a **useful offline review checklist without ANY model**. It is a deterministic planning artifact from the supplied task scope, clearly labeled `offline_review_plan_only`: **no URLs fetched, no facts independently verified, no actual external impact**. This allows task scoping to proceed even if a 1B model refuses to speculate or the machine cannot run inference.
+
+**Windows / PowerShell, from the downloaded repo:**
+
+~~~powershell
+py -3 scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode plan --output "$env:TEMP/foundry-lite-plan.json"
+~~~
+
+**macOS/Linux:**
+
+~~~bash
+python3 scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode plan --output /tmp/foundry-lite-plan.json
+~~~
+
+`plan` is separate from `inspect`, which still only checks permissions/inputs. It is not an Ollama test and does not satisfy the model-production acceptance gate.
+
+## Why the verifier held on the first local run
+
+The original `verify` model instruction said **reject without reliable evidence** but `scout` had no retrieval capability: a self-contradictory requirement for a task that only asked for a proposed review checklist. The first 1B model refused to invent a source check, and the verifier correctly held. This proves the safety stop but reveals a planning-vs-evidence design error.
+
+**Repair:** `scout` must output one concrete `QUESTION:`, two or more `CHECK:` lines and `HUMAN_REVIEW: required` without claiming any web visit. No-action refusals stop immediately as `scout_no_actionable_proposal`. The `verify` and `safety` first-line gates continue to fail closed but can allow a **bounded draft** without pretending to verify any source. `PROCEED` and `GO` apply **only to drafting permission**; all evidence and public-benefit claims remain independently unverified. Reduced prior-stage context and a 2,048-token Ollama context aim to help small CPU models, but do not guarantee good output or fit on low-memory devices.
+
+**No rerun recommended on the current laptop while memory remains nearly exhausted.** Don't pull a larger model to solve this. The source and offline tests can be developed on GitHub without spending AppDeploy credits or consuming the laptop's RAM.
+
 ## From the repository root
 
 Zero-model validation (no external HTTP, no AI inference):
@@ -51,7 +77,7 @@ python3 scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-
 
 Ollama homepage: https://github.com/ollama/ollama . Confirm chosen model's hardware needs and license. Do not expose Ollama to the public internet.
 
-The runner uses eight logically distinct stages from the existing control-plane contract: scout, verify, assign, build_act, dissent, safety, revision and outcome. The strict first-line verifier/governor gates fail closed. Eight roles using the **same local model** are NOT eight independent AI models. One capped text output per stage (up to 256 predicted tokens), at most eight model calls and a maximum 240-second wall-clock limit. No model tools or source-fetching capability. Model-generated source claims remain UNVERIFIED. A complete cycle has status draft_review_pending, never accepted or public benefit.
+The runner uses eight logically distinct stages from the existing control-plane contract: scout, verify, assign, build_act, dissent, safety, revision and outcome. The strict first-line verifier/governor gates fail closed on *draft permissibility*, not independently verified claims. Eight roles using the **same local model** are NOT eight independent AI models. One capped text output per stage (up to 256 predicted tokens), at most eight model calls and a maximum 240-second wall-clock limit. No model tools or source-fetching capability. Model-generated source claims remain UNVERIFIED. A complete cycle has status draft_review_pending, never accepted or public benefit.
 
 ## GitHub fallback without a scheduler
 
@@ -67,8 +93,8 @@ A new manual-only GitHub Actions workflow performs offline fixture validation an
 
 ## Acceptance
 
-1. Offline tests and GitHub CI pass.
-2. A voluntary operator runs one capped local model cycle and supplies a review packet.
+1. Offline tests and GitHub CI pass; deterministic `plan` output can be used without Ollama.
+2. A voluntary operator runs one capped local model cycle and supplies a review packet. The Nov 21 run stopped after the verifier; an eight-stage model-generated draft has not been achieved.
 3. An independent human checks source claims and accepts/rejects the output.
 4. Only then consider a dedicated inference adapter (e.g. Cloudflare Workers AI Free, if accessible), after enforcing a real quota and canonical atomic lease.
 5. Before worldwide rollout, verify privacy and retention terms, source-language coverage, regional constraints, opt-in consent, reviewer capacity and abuse handling.
