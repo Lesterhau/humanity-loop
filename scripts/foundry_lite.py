@@ -79,11 +79,29 @@ def validate_task(raw: Any) -> dict[str, Any]:
             pass
         else:
             raise ValueError("numeric_source_host_forbidden")
+    optional = ("case_id", "country", "languages")
+    context = {}
+    if any(k in raw for k in optional):
+        if not all(k in raw for k in optional):
+            raise ValueError("partial_cross_border_context")
+        case, country, languages = (raw[k] for k in optional)
+        if not isinstance(case, str) or not re.fullmatch(r"OT-[0-9]{3}", case):
+            raise ValueError("invalid_case_id")
+        if not isinstance(country, str) or not re.fullmatch(r"[A-Z]{2}", country):
+            raise ValueError("invalid_country")
+        if not isinstance(languages, list) or not 1 <= len(languages) <= 3:
+            raise ValueError("invalid_languages")
+        if any(not isinstance(v, str) or not re.fullmatch(r"[a-z]{2,3}(?:-[A-Za-z]{2,8})?", v) for v in languages):
+            raise ValueError("invalid_languages")
+        if len(set(languages)) != len(languages):
+            raise ValueError("duplicate_languages")
+        context = {"case_id": case, "country": country, "languages": list(languages)}
     return {
         "task_id": tid, "title": title.strip(), "scope": scope.strip(),
         "risk_tier": 0, "public_source_urls": sources,
         "operator_approved": True, "external_actions": False,
         "recurring_execution": False,
+        **context,
     }
 
 
