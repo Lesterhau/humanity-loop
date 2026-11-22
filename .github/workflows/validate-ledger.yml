@@ -38,6 +38,12 @@ jobs:
         run: python -m unittest discover -s scripts -p test_foundry_lite_doctor.py -v
       - name: Foundry Lite doctor (no model, no network)
         run: python scripts/foundry_lite_doctor.py --json
+      - name: G3/G4 source-grounded two-country execution tests (no model, network or writes)
+        run: |
+          python -m unittest discover -s scripts -p test_foundry_source_evidence.py -v
+          python scripts/foundry_lite.py --input foundry-lite/fixtures/ot003-us-bilingual-review.json --source-packet foundry-lite/fixtures/ot003-us-bilingual-source-candidate.json --mode plan --output /tmp/ot003-source-review-plan.json
+          python scripts/foundry_lite.py --input foundry-lite/fixtures/ot013-pk-climate-review.json --source-packet foundry-lite/fixtures/ot013-pk-climate-source-candidate.json --mode plan --output /tmp/ot013-source-review-plan.json
+          python -c 'import json; a=json.load(open("/tmp/ot003-source-review-plan.json")); b=json.load(open("/tmp/ot013-source-review-plan.json")); assert a["status"]=="offline_review_plan_only" and b["status"]=="offline_review_plan_only" and a["source_candidate"]["country"]=="US" and b["source_candidate"]["country"]=="PK" and a["source_candidate"]["language_competence_required"] is True and b["source_candidate"]["arithmetic_checks"][0]["calculated_percent_1dp"]=="71.8" and all(x["model_calls"]==0 and x["independently_verified"] is False and x["public_sources_fetched"]==0 and x["appdeploy_credits_used"]==0 for x in (a,b))'
       - name: Foundry Lite deterministic review plan (no inference or source access)
         run: |
           python scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode plan --output /tmp/foundry-lite-plan.json
