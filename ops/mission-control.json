@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-22T04:47:53Z",
+  "updated_utc": "2026-11-22T07:11:00Z",
   "scope": "humanity-loop-public-interest-only",
   "end_state": {
     "definition": "Autonomous, accountable, affordable public-interest operation that repeatedly produces independently verified external outcomes across regions without depending on recruited external contributors or constant owner direction.",
@@ -21,31 +21,45 @@
     "note": "This is the target state, not current observed performance or a guaranteed delivery date."
   },
   "baseline": {
-    "verified_outcomes": 3,
+    "verified_outcomes": 4,
     "ledger": "WIN-LEDGER.md",
-    "verified_at_utc": "2026-11-21T00:00:00Z",
-    "note": "Three documented WIN records, not measured beneficiaries or sole causal credit."
+    "verified_at_utc": "2026-11-22T07:11:00Z",
+    "note": "Four reported-before-correction, independently public-source verified WIN records; WIN-004's link to the IRS's edit is temporal only, not proven causal. Total historical wins, not four in the rolling 28-day window."
   },
   "milestones": [
     {
       "id": "G1",
       "name": "Fourth verified external correction",
-      "status": "active",
+      "status": "achieved",
       "target_outcomes": 4,
       "prerequisites": [],
       "acceptance": "A fourth independently verified external implementation documented in WIN-LEDGER.md with original public source, dated after-state, agency/maintainer attribution and limits.",
-      "blocked_on": "Awaiting agency/maintainer public changes, not waiting on a volunteer.",
-      "independent_volunteer_required": false
+      "blocked_on": null,
+      "independent_volunteer_required": false,
+      "completed_utc": "2026-11-22T07:11:00Z",
+      "proof_urls": [
+        "https://github.com/Lesterhau/humanity-loop/blob/main/WIN-LEDGER.md",
+        "https://github.com/Lesterhau/humanity-loop/blob/main/runtime/case-steward/ot005-2026-11-22-irs-outcome-adjudication.md",
+        "https://www.irs.gov/es/credits-deductions/individuals/refundable-tax-credits"
+      ],
+      "evidence_scope": "IRS 2025 EITC translated numeric corrections verified Nov7, readback Nov22, after Sep18 report; no proof of causal attribution or taxpayer outcomes."
     },
     {
       "id": "G2",
       "name": "Repeatable low-cost owner-operated case cycle",
-      "status": "not_started",
+      "status": "active",
       "prerequisites": [
         "G1"
       ],
       "acceptance": "Two distinct cases moved through primary-source verification, bounded permitted action and independently checked final dispositions, with zero new paid API calls; at least one full case advanced without the founder performing each step.",
-      "independent_volunteer_required": false
+      "independent_volunteer_required": false,
+      "blocked_on": "Need two distinct owner-independent, zero-new-cash case cycles with verified outside source dispositions; four total WIN records do not prove operational repeatability.",
+      "next_steps": [
+        "Retain OT-003 and OT-013 as two active case cycles; only respond to new material correspondence or due Nov30/Dec2 source checks.",
+        "For every case log evidence snapshot, reviewed permitted action, live external disposition, human/independent source check, and cycle time.",
+        "Re-use existing hourly coordinator for scheduling; do not require new volunteers or Ollama on a memory-constrained laptop."
+      ],
+      "measured_case_completions_under_gate": 0
     },
     {
       "id": "G3",
@@ -110,13 +124,13 @@
   ],
   "operating_rules": {
     "wip_case_limit": 2,
-    "primary_metric": "new independently verified external corrections over rolling 28 days; zero synthetic outcomes",
+    "primary_metric": "verified case cycle completions with independent external disposition and measured owner effort/cost; WIN-004 already counts historically once, not a new November 22 IRS edit",
     "secondary_metric": "completed legitimate source checks and verified external actions, each distinct from outcomes",
     "priority_order": [
-      "Unreviewed material safety/privacy incident or fresh substantive reply",
-      "Source-check due focus case tied to G1",
-      "Previously authorized action that can move an active case toward verified implementation",
-      "Only if no due case: source-backed new candidate with explicit reason it outranks current focus"
+      "Urgent safety/incident or substantive institutional reply with directly relevant evidence",
+      "Due OT-003 or OT-013 public-source recheck tied to active G2 cycle",
+      "Within WIP=2, resolve a documented bottleneck in repeatable zero-cost discovery→verification→permitted action→external disposition, with executable or outcome receipt",
+      "Only if no due case and a clearly superior official-source opportunity is proven: replace one focus case with explanation and maintain WIP=2"
     ],
     "disallowed_as_progress": [
       "Only creating plans, tests, diagrams or roles",
@@ -129,6 +143,6 @@
     "permission_boundary": "Safe read-only checking, evidence capture, public project code fixes and bounded authorized factual replies may proceed without redundant owner re-confirmation. Higher-risk external publication, spending, account creation, new recurring workers, private-data processing and governance changes retain specific existing safeguards.",
     "independent_volunteer_blocking": false,
     "worker_source": "Original enabled Humanity Loop hourly coordinator; do not create a second worker.",
-    "next_action_without_due_signal": "idle_or_do_one_new_candidate_only_if_it_displaces_a_focus_case_and_has_primary_source_evidence"
+    "next_action_without_due_signal": "inspect_incoming_replies_or_one_demonstrated_g2_case_cycle_blocker_only; do_not_repeat_no_change_checks_or_create_activity_artifacts"
   }
 }
