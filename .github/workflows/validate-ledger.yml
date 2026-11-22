@@ -38,6 +38,10 @@ jobs:
         run: python -m unittest discover -s scripts -p test_foundry_lite_doctor.py -v
       - name: Foundry Lite doctor (no model, no network)
         run: python scripts/foundry_lite_doctor.py --json
+      - name: Foundry Lite deterministic review plan (no inference or source access)
+        run: |
+          python scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode plan --output /tmp/foundry-lite-plan.json
+          python -c 'import json; p=json.load(open("/tmp/foundry-lite-plan.json")); assert p["status"]=="offline_review_plan_only" and p["model_calls"]==0 and p["appdeploy_credits_used"]==0 and p["public_sources_fetched"]==0 and p["independently_verified"] is False and p["human_review"]=="required" and len(p["checklist"])>=3'
       - name: Foundry Lite zero-inference manifest preflight
         run: |
           python scripts/foundry_lite.py --input foundry-lite/fixtures/public-onboarding-review.json --mode inspect --output /tmp/foundry-lite-preflight.json
