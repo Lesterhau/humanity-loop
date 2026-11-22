@@ -17,6 +17,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/validate_ledger.py
+      - name: Enforce mission finish line and real win-ledger count (offline)
+        run: |
+          python -m unittest discover -s scripts -p test_mission_control.py -v
+          python scripts/mission_control.py --at 2026-11-22T05:00:00Z > /tmp/mission-gate.json
+          python -c 'import json; m=json.load(open("/tmp/mission-gate.json")); assert m["active_gate"]=="G1" and m["verified_win_records"]==3 and m["external_volunteers_required"] is False and m["can_autocontact_institutions"] is False and m["new_model_calls"]==0'
       - name: Check public contributor intake response SLA (offline)
         run: node --test scripts/test_contributor_intake_sla.js
       - name: Check public Waystation reply monitoring (offline)
