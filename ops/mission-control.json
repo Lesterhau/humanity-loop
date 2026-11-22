@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-11-22T04:47:53Z",
+  "scope": "humanity-loop-public-interest-only",
+  "end_state": {
+    "definition": "Autonomous, accountable, affordable public-interest operation that repeatedly produces independently verified external outcomes across regions without depending on recruited external contributors or constant owner direction.",
+    "acceptance": {
+      "verified_outcomes_per_rolling_28_days": 4,
+      "independently_checked_regions": 3,
+      "reviewed_languages": 3,
+      "consecutive_days_operating_without_owner_manual_steps": 30,
+      "unapproved_spend_usd": 0,
+      "unapproved_high_risk_actions": 0,
+      "requirements": [
+        "All reported outcomes have public primary-source before/after evidence and attribution caveats",
+        "At least two separate reviewers or methods on consequential claims; qualified domain review when required",
+        "One canonical task/lease owner; bounded and observable execution; demonstrable privacy and revocation",
+        "No dependency on volunteer registration to keep the core outcome pipeline active"
+      ]
+    },
+    "note": "This is the target state, not current observed performance or a guaranteed delivery date."
+  },
+  "baseline": {
+    "verified_outcomes": 3,
+    "ledger": "WIN-LEDGER.md",
+    "verified_at_utc": "2026-11-21T00:00:00Z",
+    "note": "Three documented WIN records, not measured beneficiaries or sole causal credit."
+  },
+  "milestones": [
+    {
+      "id": "G1",
+      "name": "Fourth verified external correction",
+      "status": "active",
+      "target_outcomes": 4,
+      "prerequisites": [],
+      "acceptance": "A fourth independently verified external implementation documented in WIN-LEDGER.md with original public source, dated after-state, agency/maintainer attribution and limits.",
+      "blocked_on": "Awaiting agency/maintainer public changes, not waiting on a volunteer.",
+      "independent_volunteer_required": false
+    },
+    {
+      "id": "G2",
+      "name": "Repeatable low-cost owner-operated case cycle",
+      "status": "not_started",
+      "prerequisites": [
+        "G1"
+      ],
+      "acceptance": "Two distinct cases moved through primary-source verification, bounded permitted action and independently checked final dispositions, with zero new paid API calls; at least one full case advanced without the founder performing each step.",
+      "independent_volunteer_required": false
+    },
+    {
+      "id": "G3",
+      "name": "Portable Foundry executor with verified safeguards",
+      "status": "not_started",
+      "prerequisites": [
+        "G2"
+      ],
+      "acceptance": "One genuine model-generated bounded public-safe artifact, independent evidence review, tested authorization/failure/budget ceilings, canonical leases and no duplicate scheduler; a laptop/volunteer must not be required to keep the ordinary case pipeline operating.",
+      "independent_volunteer_required": false
+    },
+    {
+      "id": "G4",
+      "name": "Cross-border replication",
+      "status": "not_started",
+      "prerequisites": [
+        "G3"
+      ],
+      "acceptance": "Independently verified outcomes across at least two countries with local-source provenance and reviewed language/context, repeatable without new paid inference accounts.",
+      "independent_volunteer_required": false
+    },
+    {
+      "id": "G5",
+      "name": "Worldwide sustainable operation",
+      "status": "not_started",
+      "prerequisites": [
+        "G4"
+      ],
+      "acceptance": "Meet end_state.acceptance over a rolling 28-day measurement window, including qualified review, privacy/deletion controls, credible operational uptime and zero unapproved cost.",
+      "independent_volunteer_required": false
+    }
+  ],
+  "focus_cases": [
+    {
+      "id": "OT-003",
+      "country": "US",
+      "language": "en+es",
+      "scope": "Texas WIC bilingual fair-hearing handout lawyer assignment wording",
+      "status": "pending_external_publication",
+      "source_url": "https://texaswic.cart.com/Shared/PDF-Downloads/13-06-12103.pdf",
+      "next_due_utc": "2026-11-30T18:00:00Z",
+      "next_action": "Read actual updated bilingual PDF; independently verify lawyer-assignment sentence removal in both languages and document edit date/source. If corrected prepare verified WIN evidence; if unchanged log no change, do not resend routine follow-up.",
+      "last_contact_utc": "2026-11-22T04:46:50Z",
+      "contact_limit_exhausted": true,
+      "do_not_count_as_win": true,
+      "notes": "On Nov 21 PDF still retained both old sentences; Nov 2 agency promised removal; one factual follow-up sent and verified Nov21."
+    },
+    {
+      "id": "OT-013",
+      "country": "PK",
+      "language": "en",
+      "scope": "LUMS Punjab school climate-atlas summary count and percentage consistency",
+      "status": "pending_external_publication",
+      "source_url": "https://city.lums.edu.pk/what-we-do/city-research/dare-rc/",
+      "next_due_utc": "2026-12-02T18:00:00Z",
+      "next_action": "Check 103/117 denominator, 84 percentage, top-five rainfall event dates on live original source. If corrected verify independent before/after and credit CITY; if unchanged do not send second routine follow-up.",
+      "last_contact_utc": "2026-11-22T04:47:53Z",
+      "contact_limit_exhausted": true,
+      "do_not_count_as_win": true,
+      "notes": "Public site still had conflicting 103 vs 117 and 84/117 vs 81.6%, three of five listed events 2025; factual follow-up sent and verified Nov21."
+    }
+  ],
+  "operating_rules": {
+    "wip_case_limit": 2,
+    "primary_metric": "new independently verified external corrections over rolling 28 days; zero synthetic outcomes",
+    "secondary_metric": "completed legitimate source checks and verified external actions, each distinct from outcomes",
+    "priority_order": [
+      "Unreviewed material safety/privacy incident or fresh substantive reply",
+      "Source-check due focus case tied to G1",
+      "Previously authorized action that can move an active case toward verified implementation",
+      "Only if no due case: source-backed new candidate with explicit reason it outranks current focus"
+    ],
+    "disallowed_as_progress": [
+      "Only creating plans, tests, diagrams or roles",
+      "Unverified LLM messages, social reactions or unscreened volunteer responses",
+      "Unanswered email or report sent without verified public change",
+      "Stale repeat source checks absent a changed trigger",
+      "Automatic model usage without proven hard provider stop and budget"
+    ],
+    "routine_external_contact": "No repeat contact after the single dated follow-up for either focus case absent new material evidence or the recipient requesting it.",
+    "permission_boundary": "Safe read-only checking, evidence capture, public project code fixes and bounded authorized factual replies may proceed without redundant owner re-confirmation. Higher-risk external publication, spending, account creation, new recurring workers, private-data processing and governance changes retain specific existing safeguards.",
+    "independent_volunteer_blocking": false,
+    "worker_source": "Original enabled Humanity Loop hourly coordinator; do not create a second worker.",
+    "next_action_without_due_signal": "idle_or_do_one_new_candidate_only_if_it_displaces_a_focus_case_and_has_primary_source_evidence"
+  }
+}
