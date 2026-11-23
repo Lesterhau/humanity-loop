@@ -51,6 +51,6 @@ jobs:
       - name: Assert no real provider or outside data touched
         run: |
           psql -X -v ON_ERROR_STOP=1 -Atqc "SELECT public.assert_true(
-            (SELECT COUNT(*) FROM hl_control.tasks WHERE project_id='humanity-loop') = 7,
+            (SELECT COUNT(*) FROM hl_control.tasks WHERE project_id='humanity-loop') = 9,
             'ephemeral_fixture_only');"
           echo "G3_FENCING_EPHEMERAL_INTEGRATION_SUCCESS: no production database connection or model calls"
