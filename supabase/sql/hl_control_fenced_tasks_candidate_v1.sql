@@ -144,7 +144,7 @@ BEGIN
   IF v_ord IS NULL OR jsonb_typeof(t.stages)<>'array' THEN
     RAISE EXCEPTION 'fenced_stage_not_in_sequence';
   END IF;
-  expected_next := t.stages->>v_ord;  -- JSON index 1 denotes second stage.
+  expected_next := t.stages->>(v_ord::integer);  -- JSON index 1 denotes second stage.
   IF (expected_next IS NULL AND (p_complete IS DISTINCT FROM true OR p_next_stage IS NOT NULL))
   OR (expected_next IS NOT NULL AND (p_complete IS DISTINCT FROM false OR
        p_next_stage IS DISTINCT FROM expected_next)) THEN
