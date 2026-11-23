@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-22T19:30:00Z",
+  "updated_utc": "2026-11-23T00:16:11Z",
   "scope": "humanity-loop-public-interest-only",
   "end_state": {
     "definition": "Autonomous, accountable, affordable public-interest operation that repeatedly produces independently verified external outcomes across regions without depending on recruited external contributors or constant owner direction.",
@@ -75,7 +75,10 @@
         "evidence_artifacts": [
           "scripts/foundry_source_evidence.py",
           "scripts/foundry_lite.py",
-          "scripts/test_foundry_source_evidence.py"
+          "scripts/test_foundry_source_evidence.py",
+          "scripts/public_source_snapshot.py",
+          ".github/workflows/g3-official-source-snapshot-manual.yml",
+          "runtime/mission/2026-11-23-ot013-official-live-source-acceptance.md"
         ],
         "acceptance_tests": [
           "Strict country and language/task binding",
@@ -83,15 +86,18 @@
           "Local draft may consume an untrusted candidate packet without treating it as independently verified",
           "A genuine full-model run and provider/lease hard-stop testing still required"
         ],
-        "next_verifiable_result": "Validate linked source-candidate packet in offline Foundry CLI, with receipt showing zero model calls and source verification still pending",
+        "next_verifiable_result": "Connect the acquired, independently rechecked public-source hash/snippets to bounded Foundry review packets, without granting source truth; separately test canonical leases and real AI provider budget hard-stop before live model execution.",
         "remaining_blockers": [
           "No independently verified full eight-stage live artifact",
           "No verified canonical distributed lease/budget hard-stop for real provider",
           "No independent domain/country-language reviewer acceptance"
         ],
-        "note": "Implementation and test readiness only, not G3 release acceptance or actual model inference.",
+        "note": "One bounded GitHub Actions machine-read of official Pakistani HTML passed November 23 00:16Z, source hash and archive independently retrieved. This is NOT the required 8-stage model-generated reviewer-accepted artifact or a verifiable external outcome.",
         "release_claimed": false,
-        "complete_eight_stage_model_runs_independently_reviewed": 0
+        "complete_eight_stage_model_runs_independently_reviewed": 0,
+        "public_official_source_acquisition_passed": 1,
+        "public_official_source_trial_url": "https://github.com/Lesterhau/humanity-loop/actions/runs/45087747120",
+        "verified_source_snapshot_digest": "5d6ec6ba6dd7e1eadcab550c040249aa049aacef20fcbdca756c52a470878a95"
       }
     },
     {
@@ -128,15 +134,16 @@
           "Pakistan numeric-check detects 84/117=71.8 versus displayed 81.6 without alleging a dataset error",
           "All cross-border cases stay pending independent original-source review"
         ],
-        "next_verifiable_result": "Run both country fixtures through the same no-inference local planner and reject forged locale/source data",
+        "next_verifiable_result": "Preserve source-level trace, obtain institution confirmation or qualified local review, and eventually verify a real implemented Pakistani change; existing 103/117 discrepancy remains uncorrected.",
         "remaining_blockers": [
           "No independently confirmed external public correction outside the United States",
           "No qualified Spanish/Urdu language and jurisdiction review",
           "No locally validated G4 operating costs or privacy cross-border compliance"
         ],
-        "note": "Two-country fixture/test coverage only, NOT verified multinational outcomes.",
+        "note": "One verified original-source public HTML acquisition succeeded in Pakistan. Independent domain interpretation and real outside-U.S. public correction remain entirely unproven; existing G4 outcome counter remains zero.",
         "release_claimed": false,
-        "independently_verified_non_us_outcomes": 0
+        "independently_verified_non_us_outcomes": 0,
+        "official_public_html_source_acquisitions_in_pk": 1
       }
     },
     {
