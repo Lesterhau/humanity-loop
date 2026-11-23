@@ -86,6 +86,20 @@ INSERT INTO hl_control.tasks (
   0,'held','["scout","outcome"]','scout',3,5),
  ('legacy_queue','humanity-loop','Legacy unfenced candidate',
   '{}',0,'queued','["scout","outcome"]','scout',3,1);
+-- Every gated work item must explicitly opt into no-model, no-credit,
+-- no-outreach execution; a lease token NEVER authorizes provider inference.
+UPDATE hl_control.tasks
+SET payload=payload||'{"execution_mode":"deterministic_only","external_actions":false,"model_calls":0,"max_provider_credits":0}'::jsonb
+WHERE payload->>'fencing_required'='true';
+
+INSERT INTO hl_control.tasks(task_id,project_id,title,payload,risk_tier,status,
+                            stages,current_stage,max_attempts,priority) VALUES
+ ('fenced_paid','humanity-loop','Attempt paid inference',
+ '{"fencing_required":"true","idempotency_key":"paid-operation-key-2026","execution_mode":"deterministic_only","external_actions":false,"model_calls":1,"max_provider_credits":0}',
+ 0,'held','["scout","outcome"]','scout',3,5),
+ ('fenced_outreach','humanity-loop','Attempt outside outreach',
+ '{"fencing_required":"true","idempotency_key":"outreach-operation-key-2026","execution_mode":"deterministic_only","external_actions":true,"model_calls":0,"max_provider_credits":0}',
+ 0,'held','["scout","outcome"]','scout',3,5);
 UPDATE hl_control.tasks SET human_approval_required=true,human_approval_received=false
 WHERE task_id='fenced_needs_approval';
 CREATE OR REPLACE FUNCTION public.assert_true(ok boolean,msg text)
