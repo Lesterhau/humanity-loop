@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-23T01:50:00Z",
+  "updated_utc": "2026-11-23T04:55:10.556Z",
   "scope": "humanity-loop-public-interest-only",
   "end_state": {
     "definition": "Autonomous, accountable, affordable public-interest operation that repeatedly produces independently verified external outcomes across regions without depending on recruited external contributors or constant owner direction.",
@@ -87,7 +87,10 @@
           "scripts/sql/test_fenced_canonical_lease.sql",
           "scripts/sql/test_fenced_concurrent_claim.sh",
           ".github/workflows/g3-canonical-lease-postgres.yml",
-          "G3-FENCED-LEASE-ACCEPTANCE.md"
+          "G3-FENCED-LEASE-ACCEPTANCE.md",
+          "supabase/sql/hl_fenced_executor_restricted_candidate_v1.sql",
+          "scripts/sql/test_restricted_fenced_executor.sql",
+          "STAGING-PAUSE-RECOVERY.md"
         ],
         "acceptance_tests": [
           "Strict country and language/task binding",
@@ -95,13 +98,13 @@
           "Local draft may consume an untrusted candidate packet without treating it as independently verified",
           "A genuine full-model run and provider/lease hard-stop testing still required"
         ],
-        "next_verifiable_result": "Re-establish existing Supabase staging access; test the canonical-task fence with a least-privileged backend caller and negative ACL, legacy-compatibility and rollback checks. Keep production schema unmodified and all paid model calls denied until provider hard-spend control is independently proven.",
+        "next_verifiable_result": "Perform a protected, staging-only test of the new canonical fenced executor under a real independently authenticated limited SQL login, with private credentials and negative direct-table/public-RPC checks. No production DDL, paid model calls or autonomous worker scheduling before acceptance.",
         "remaining_blockers": [
           "No independently verified full eight-stage live artifact",
           "No verified canonical distributed lease/budget hard-stop for real provider",
           "No independent domain/country-language reviewer acceptance"
         ],
-        "note": "Real PostgreSQL 17 isolated CI passed atomic duplicate-claim race, stale same-identity generation, legacy-path bypass and deterministic zero-credit admission. No production Supabase schema change, new runner, model call or live provider budget stop.",
+        "note": "Existing free Supabase staging project restored ACTIVE_HEALTHY without paid upgrade; original staging UUID-token claim/complete checked in rolled-back transaction, residual tasks/events 0. New SESSION_USER-bound private wrapper completed isolated PostgreSQL 17 role-isolation CI, but has no real hosted executor login or live deployment.",
         "release_claimed": false,
         "complete_eight_stage_model_runs_independently_reviewed": 0,
         "public_official_source_acquisition_passed": 1,
@@ -112,7 +115,13 @@
         "fenced_real_concurrent_claim_test_passed": true,
         "production_fenced_lease_deployed": false,
         "provider_spending_hard_stop_verified": false,
-        "staging_least_privilege_acceptance_passed": false
+        "staging_least_privilege_acceptance_passed": false,
+        "staging_restored_active_healthy": true,
+        "staging_existing_lease_rollback_test_passed": true,
+        "staging_synthetic_test_residual_tasks": 0,
+        "least_privileged_session_executor_postgres17_ci_passed": true,
+        "new_fencing_protocol_deployed_in_hosted_staging": false,
+        "restricted_executor_live_login_test_passed": false
       }
     },
     {
