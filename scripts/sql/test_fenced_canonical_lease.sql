@@ -235,5 +235,50 @@ SELECT public.assert_true(
   'each_distinct_abandoned_generation_is_logged_once'
 );
 
+-- Backward-compatibility proof: legitimate UNFENCED legacy work retains
+-- renewal, stage progression, prior retry semantics, expiry handling and v2 role.
+SELECT public.assert_true(
+  (hl_control.renew_task_lease('legacy_queue','fenced_worker_b',60)).status='leased',
+  'legacy_unfenced_renew_must_remain_available'
+);
+SELECT public.assert_true(
+  (hl_control.advance_task_stage('legacy_queue','fenced_worker_b','scout',
+    '{"legacy":true}'::jsonb,'outcome',false)).current_stage='outcome',
+  'legacy_unfenced_advance_must_remain_available'
+);
+SELECT public.assert_true(
+  (hl_control.fail_task('legacy_queue','fenced_worker_b','synthetic_legacy_retry')).status='queued',
+  'legacy_unfenced_fail_must_requeue_when_attempts_remain'
+);
+SELECT public.assert_true(
+  (hl_control.claim_next_task('fenced_worker_a',60)).task_id='legacy_queue',
+  'legacy_unfenced_reclaim_must_remain_available'
+);
+UPDATE hl_control.tasks SET lease_expires_at=clock_timestamp()-interval '2 seconds'
+WHERE task_id='legacy_queue';
+SELECT public.assert_true(
+  hl_control.release_expired_leases()=1,
+  'legacy_unfenced_expiry_compatibility_must_remain'
+);
+SELECT public.assert_true(
+  (SELECT status='queued' AND attempts=2 FROM hl_control.tasks
+    WHERE task_id='legacy_queue'),
+  'legacy_expiry_retains_prior_attempt_accounting'
+);
+SELECT public.assert_true(
+  (hl_control.claim_next_task('fenced_worker_a',60)).task_id='legacy_queue',
+  'legacy_unfenced_claim_after_expiry_remains'
+);
+SELECT public.assert_true(
+  (hl_control.advance_task_stage_v2('legacy_queue','fenced_worker_a',
+     'fenced_child_a','outcome','{"legacy_v2":true}'::jsonb,NULL,true)).status='completed',
+  'legacy_unfenced_role_v2_completion_remains'
+);
+SELECT public.assert_true(
+  (SELECT count(*)=1 FROM hl_control.events
+    WHERE task_id='legacy_queue' AND event_type='task_completed'),
+  'legacy_unfenced_completion_audit_retained'
+);
+
 -- Never claim any outside impact or real model acceptance from synthetic DB.
 SELECT 'FENCED_CANONICAL_LEASE_SQL_TESTS_PASSED' AS result;
