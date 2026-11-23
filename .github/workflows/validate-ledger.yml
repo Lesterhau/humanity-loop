@@ -38,6 +38,8 @@ jobs:
         run: python -m unittest discover -s scripts -p test_foundry_lite_doctor.py -v
       - name: Foundry Lite doctor (no model, no network)
         run: python scripts/foundry_lite_doctor.py --json
+      - name: G3 official-source snapshot security tests (offline, no HTTP requests)
+        run: python -m unittest discover -s scripts -p test_public_source_snapshot.py -v
       - name: G3/G4 source-grounded two-country execution tests (no model, network or writes)
         run: |
           python -m unittest discover -s scripts -p test_foundry_source_evidence.py -v
