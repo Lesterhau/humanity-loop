@@ -61,8 +61,9 @@ SET SESSION AUTHORIZATION hl_test_executor_a;
 DO $test$
 DECLARE l record; advanced record; finished record;
 BEGIN
-  PERFORM CASE WHEN session_user='hl_test_executor_a' THEN 1
-    ELSE 1/0 END;
+  IF session_user IS DISTINCT FROM 'hl_test_executor_a' THEN
+    RAISE EXCEPTION 'ASSERTION_FAILED: wrong session user %', session_user;
+  END IF;
   -- The role cannot read direct data despite schema USAGE.
   BEGIN
     PERFORM 1 FROM hl_control.tasks LIMIT 1;
