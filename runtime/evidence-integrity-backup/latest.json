@@ -1,89 +1,35 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-22T11:35:49.208275Z",
-  "status": "limited",
+  "runAt": "2026-11-23T13:01:28.034735Z",
+  "status": "partial",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 1,
-  "citationsExamined": 17,
+  "newRetractionsChecked": 12,
+  "citationsExamined": 38,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
-  "failuresCount": 0,
-  "failures": [],
-  "coverageGapsCount": 14,
+  "failuresCount": 1,
+  "failures": [
+    {
+      "stage": "citation_lookup",
+      "doi": "10.1016/j.ijbiomac.2024.136176",
+      "reason": "The read operation timed out"
+    }
+  ],
+  "coverageGapsCount": 2,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1159/000551831",
+      "doi": "10.1080/15324982.2025.2608762",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.sftr.2025.101434",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.sftr.2024.100182",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.sftr.2025.100904",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1109/temc.2017.2731783",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.107268",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.107269",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.107298",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.107219",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.106674",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.106667",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.106576",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1016/j.rinp.2023.106647",
-      "reason": "No Europe PMC match; scientific coverage limited; retry later"
-    },
-    {
-      "stage": "not_indexed",
-      "doi": "10.1007/s10665-025-10501-3",
+      "doi": "10.1007/s11696-024-03618-9",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
