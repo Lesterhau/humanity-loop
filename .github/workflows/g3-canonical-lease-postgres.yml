@@ -48,9 +48,13 @@ jobs:
         run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/test_fenced_canonical_lease.sql
       - name: Test two truly concurrent database claimants
         run: bash scripts/sql/test_fenced_concurrent_claim.sh
+      - name: Install restricted session-authorized executor facade in disposable DB
+        run: psql -X -v ON_ERROR_STOP=1 -f supabase/sql/hl_fenced_executor_restricted_candidate_v1.sql
+      - name: Verify identity binding and no direct table rights under restricted SQL roles
+        run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/test_restricted_fenced_executor.sql
       - name: Assert no real provider or outside data touched
         run: |
           psql -X -v ON_ERROR_STOP=1 -Atqc "SELECT public.assert_true(
-            (SELECT COUNT(*) FROM hl_control.tasks WHERE project_id='humanity-loop') = 9,
+            (SELECT COUNT(*) FROM hl_control.tasks WHERE project_id='humanity-loop') = 11,
             'ephemeral_fixture_only');"
           echo "G3_FENCING_EPHEMERAL_INTEGRATION_SUCCESS: no production database connection or model calls"
