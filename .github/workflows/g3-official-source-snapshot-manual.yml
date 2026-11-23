@@ -1,0 +1,49 @@
+name: G3 Official Source Snapshot (manual and read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_public_get:
+        description: "I approve ONE read-only GET to the fixed official LUMS public page; no external writes"
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: humanity-loop-official-source-single-get
+  cancel-in-progress: false
+
+jobs:
+  public-source-snapshot:
+    if: ${{ inputs.confirm_public_get == true }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline policy and source evidence regression tests first
+        run: |
+          python -m unittest discover -s scripts -p test_public_source_snapshot.py -v
+          python -m unittest discover -s scripts -p test_foundry_source_evidence.py -v
+      - name: Perform exactly one allowlisted public HTTPS GET (no AI, no secrets)
+        run: |
+          python scripts/public_source_snapshot.py \
+            --case OT-013 \
+            --task foundry-lite/fixtures/ot013-pk-climate-review.json \
+            --allow-live-get \
+            --output "$RUNNER_TEMP/ot013-official-snapshot.json"
+      - name: Verify snapshot still explicitly requires independent review
+        run: |
+          python -c 'import json,os; p=json.load(open(os.environ["RUNNER_TEMP"]+"/ot013-official-snapshot.json")); assert p["case_id"]=="OT-013" and p["source_url"]=="https://city.lums.edu.pk/what-we-do/city-research/dare-rc/" and p["record_type"]=="direct_public_html_snapshot" and p["model_calls"]==0 and p["independently_reviewed"] is False and p["confirmed_public_correction"] is False and p["eligible_for_win_ledger"] is False and p["external_write_actions"]==0 and len(p["raw_sha256"])==64'
+      - name: Archive source snapshot for separate human review (not a win)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ot013-public-html-snapshot-review-only
+          path: ${{ runner.temp }}/ot013-official-snapshot.json
+          retention-days: 3
+          if-no-files-found: error
