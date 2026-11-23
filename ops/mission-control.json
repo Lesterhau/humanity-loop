@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-23T00:16:11Z",
+  "updated_utc": "2026-11-23T01:50:00Z",
   "scope": "humanity-loop-public-interest-only",
   "end_state": {
     "definition": "Autonomous, accountable, affordable public-interest operation that repeatedly produces independently verified external outcomes across regions without depending on recruited external contributors or constant owner direction.",
@@ -81,7 +81,13 @@
           "runtime/mission/2026-11-23-ot013-official-live-source-acceptance.md",
           "scripts/public_source_handoff.py",
           "scripts/test_public_source_handoff.py",
-          "runtime/mission/2026-11-23-ot013-official-html-snapshot.json"
+          "runtime/mission/2026-11-23-ot013-official-html-snapshot.json",
+          "supabase/sql/hl_control_fenced_tasks_candidate_v1.sql",
+          "scripts/sql/fenced_task_test_fixture.sql",
+          "scripts/sql/test_fenced_canonical_lease.sql",
+          "scripts/sql/test_fenced_concurrent_claim.sh",
+          ".github/workflows/g3-canonical-lease-postgres.yml",
+          "G3-FENCED-LEASE-ACCEPTANCE.md"
         ],
         "acceptance_tests": [
           "Strict country and language/task binding",
@@ -89,19 +95,24 @@
           "Local draft may consume an untrusted candidate packet without treating it as independently verified",
           "A genuine full-model run and provider/lease hard-stop testing still required"
         ],
-        "next_verifiable_result": "Run a genuinely bounded local-model review using the already acquired public source packet, independently adjudicate the model output; separately prove canonical cross-provider task lease and hard cost stop before any automatic execution.",
+        "next_verifiable_result": "Re-establish existing Supabase staging access; test the canonical-task fence with a least-privileged backend caller and negative ACL, legacy-compatibility and rollback checks. Keep production schema unmodified and all paid model calls denied until provider hard-spend control is independently proven.",
         "remaining_blockers": [
           "No independently verified full eight-stage live artifact",
           "No verified canonical distributed lease/budget hard-stop for real provider",
           "No independent domain/country-language reviewer acceptance"
         ],
-        "note": "Real single GET from GitHub CI run #45087747120 and artifact readback proved live public-source acquisition; later offline CI proved saved genuine snapshot -> source-bound, human-review-required Foundry draft, 0 inference. No independently reviewed 8-stage model run or platform budget/lease acceptance.",
+        "note": "Real PostgreSQL 17 isolated CI passed atomic duplicate-claim race, stale same-identity generation, legacy-path bypass and deterministic zero-credit admission. No production Supabase schema change, new runner, model call or live provider budget stop.",
         "release_claimed": false,
         "complete_eight_stage_model_runs_independently_reviewed": 0,
         "public_official_source_acquisition_passed": 1,
         "public_official_source_trial_url": "https://github.com/Lesterhau/humanity-loop/actions/runs/45087747120",
         "verified_source_snapshot_digest": "5d6ec6ba6dd7e1eadcab550c040249aa049aacef20fcbdca756c52a470878a95",
-        "public_source_to_foundry_review_plan_offline_ci_passed": true
+        "public_source_to_foundry_review_plan_offline_ci_passed": true,
+        "fenced_lease_candidate_postgres17_integration_passed": true,
+        "fenced_real_concurrent_claim_test_passed": true,
+        "production_fenced_lease_deployed": false,
+        "provider_spending_hard_stop_verified": false,
+        "staging_least_privilege_acceptance_passed": false
       }
     },
     {
