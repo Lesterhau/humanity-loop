@@ -78,7 +78,10 @@
           "scripts/test_foundry_source_evidence.py",
           "scripts/public_source_snapshot.py",
           ".github/workflows/g3-official-source-snapshot-manual.yml",
-          "runtime/mission/2026-11-23-ot013-official-live-source-acceptance.md"
+          "runtime/mission/2026-11-23-ot013-official-live-source-acceptance.md",
+          "scripts/public_source_handoff.py",
+          "scripts/test_public_source_handoff.py",
+          "runtime/mission/2026-11-23-ot013-official-html-snapshot.json"
         ],
         "acceptance_tests": [
           "Strict country and language/task binding",
@@ -86,18 +89,19 @@
           "Local draft may consume an untrusted candidate packet without treating it as independently verified",
           "A genuine full-model run and provider/lease hard-stop testing still required"
         ],
-        "next_verifiable_result": "Connect the acquired, independently rechecked public-source hash/snippets to bounded Foundry review packets, without granting source truth; separately test canonical leases and real AI provider budget hard-stop before live model execution.",
+        "next_verifiable_result": "Run a genuinely bounded local-model review using the already acquired public source packet, independently adjudicate the model output; separately prove canonical cross-provider task lease and hard cost stop before any automatic execution.",
         "remaining_blockers": [
           "No independently verified full eight-stage live artifact",
           "No verified canonical distributed lease/budget hard-stop for real provider",
           "No independent domain/country-language reviewer acceptance"
         ],
-        "note": "One bounded GitHub Actions machine-read of official Pakistani HTML passed November 23 00:16Z, source hash and archive independently retrieved. This is NOT the required 8-stage model-generated reviewer-accepted artifact or a verifiable external outcome.",
+        "note": "Real single GET from GitHub CI run #45087747120 and artifact readback proved live public-source acquisition; later offline CI proved saved genuine snapshot -> source-bound, human-review-required Foundry draft, 0 inference. No independently reviewed 8-stage model run or platform budget/lease acceptance.",
         "release_claimed": false,
         "complete_eight_stage_model_runs_independently_reviewed": 0,
         "public_official_source_acquisition_passed": 1,
         "public_official_source_trial_url": "https://github.com/Lesterhau/humanity-loop/actions/runs/45087747120",
-        "verified_source_snapshot_digest": "5d6ec6ba6dd7e1eadcab550c040249aa049aacef20fcbdca756c52a470878a95"
+        "verified_source_snapshot_digest": "5d6ec6ba6dd7e1eadcab550c040249aa049aacef20fcbdca756c52a470878a95",
+        "public_source_to_foundry_review_plan_offline_ci_passed": true
       }
     },
     {
