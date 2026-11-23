@@ -1,0 +1,56 @@
+name: G3 canonical fenced leases — isolated PostgreSQL
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  fenced-lease-protocol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test_only_ephemeral_local_db
+          POSTGRES_DB: foundry_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d foundry_ci"
+          --health-interval 4s
+          --health-timeout 3s
+          --health-retries 12
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: 5432
+      PGDATABASE: foundry_ci
+      PGUSER: postgres
+      PGPASSWORD: test_only_ephemeral_local_db
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PostgreSQL client in disposable CI runner
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq postgresql-client
+          fi
+      - name: Create exact-shape synthetic canonical task fixture
+        run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/fenced_task_test_fixture.sql
+      - name: Apply migration candidate to EPHEMERAL database ONLY
+        run: psql -X -v ON_ERROR_STOP=1 -f supabase/sql/hl_control_fenced_tasks_candidate_v1.sql
+      - name: Test fake claims, expired leases, stale owner/token and legacy guards
+        run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/test_fenced_canonical_lease.sql
+      - name: Test two truly concurrent database claimants
+        run: bash scripts/sql/test_fenced_concurrent_claim.sh
+      - name: Assert no real provider or outside data touched
+        run: |
+          psql -X -v ON_ERROR_STOP=1 -Atqc "SELECT public.assert_true(
+            (SELECT COUNT(*) FROM hl_control.tasks WHERE project_id='humanity-loop') = 7,
+            'ephemeral_fixture_only');"
+          echo "G3_FENCING_EPHEMERAL_INTEGRATION_SUCCESS: no production database connection or model calls"
