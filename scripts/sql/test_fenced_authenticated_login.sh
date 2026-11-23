@@ -58,6 +58,13 @@ if PGUSER=hl_test_executor_a PGPASSWORD="$password_a" \
   exit 1
 fi
 
+# An actual LOGIN may not change the immutable session principal either.
+if PGUSER=hl_test_executor_a PGPASSWORD="$password_a" \
+   psql -X -v ON_ERROR_STOP=1 -Atqc 'SET SESSION AUTHORIZATION hl_test_executor_b' >/dev/null 2>&1; then
+  echo "FAIL: executor switched session authorization to a different worker" >&2
+  exit 1
+fi
+
 # Genuine authenticated connection as the only bound A principal. The session
 # cannot SELECT or UPDATE private task data, cannot call underlying functions,
 # cannot claim B's project, cannot call any paid-model task, but can complete
