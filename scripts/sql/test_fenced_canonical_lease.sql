@@ -27,11 +27,11 @@ SELECT public.assert_rejected(
 );
 -- A valid task lease never grants access to paid models or external actions.
 SELECT public.assert_rejected(
- $SELECT hl_control.claim_fenced_task_v1('fenced_paid','fenced_worker_a','paid-operation-key-2026',60)$,
+ $$SELECT hl_control.claim_fenced_task_v1('fenced_paid','fenced_worker_a','paid-operation-key-2026',60)$$,
  'fenced_task_unavailable'
 );
 SELECT public.assert_rejected(
- $SELECT hl_control.claim_fenced_task_v1('fenced_outreach','fenced_worker_a','outreach-operation-key-2026',60)$,
+ $$SELECT hl_control.claim_fenced_task_v1('fenced_outreach','fenced_worker_a','outreach-operation-key-2026',60)$$,
  'fenced_task_unavailable'
 );
 SELECT public.assert_true(
