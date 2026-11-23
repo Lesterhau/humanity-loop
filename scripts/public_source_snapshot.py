@@ -38,7 +38,6 @@ ALLOWED_HOSTS = {"city.lums.edu.pk"}
 MAX_BYTES = 1_500_000
 MAX_CHARS = 450_000
 CONNECT_TIMEOUT_SECONDS = 6
-TOTAL_TIMEOUT_SECONDS = 10
 MAX_SOURCE_EXCERPT_CHARS = 240
 ALLOWED_CONTENT_TYPES = {"text/html"}
 EXPECTED_INDICATORS = {
@@ -244,10 +243,14 @@ def main(argv: list[str] | None = None) -> int:
         if task_path.stat().st_size > 12_000:
             raise ValueError("task_file_too_large")
         task = json.loads(task_path.read_text(encoding="utf-8"))
-        result = source_snapshot(args.case, task, allow_live_get=args.allow_live_get)
         target = Path(args.output)
+        # Check output constraints BEFORE any network activity, and still open
+        # exclusively afterward to prevent clobbering a concurrent receipt.
         if target.is_symlink():
             raise ValueError("output_symlink_refused")
+        if target.exists():
+            raise ValueError("output_already_exists")
+        result = source_snapshot(args.case, task, allow_live_get=args.allow_live_get)
         with target.open("x", encoding="utf-8") as file:
             json.dump(result, file, indent=2, ensure_ascii=False)
             file.write("\n")
