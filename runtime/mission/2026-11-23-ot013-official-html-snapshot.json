@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "record_type": "direct_public_html_snapshot",
+  "case_id": "OT-013",
+  "country": "PK",
+  "languages": [
+    "en"
+  ],
+  "source_url": "https://city.lums.edu.pk/what-we-do/city-research/dare-rc/",
+  "retrieval_method": "one_explicit_direct_https_get",
+  "observed_at_utc": "2026-11-23T00:16:07.103715Z",
+  "http_status": 200,
+  "content_type": "text/html",
+  "raw_sha256": "5d6ec6ba6dd7e1eadcab550c040249aa049aacef20fcbdca756c52a470878a95",
+  "raw_bytes": 95675,
+  "visible_text_chars": 12845,
+  "indicators": {
+    "headline_103": {
+      "observed_in_visible_html": true,
+      "source_excerpt": "ere the more severe of the two hazard priorities is urgent. 103 (0.2%) Compounding high risk Schools independently at Priority 1–2 for both heatwave and flooding. 4,528 (8.7%) Capa"
+    },
+    "narrative_117": {
+      "observed_in_visible_html": true,
+      "source_excerpt": "h-east Gujrat, Sialkot, Sheikhupura, and Gujranwala contain 84 of the 117 schools at Priority 1–2 for both hazards (81.6%). Heat and rainfall are not the same story Average cumulative heat ex"
+    },
+    "narrative_81_6": {
+      "observed_in_visible_html": true,
+      "source_excerpt": "ain 84 of the 117 schools at Priority 1–2 for both hazards (81.6%). Heat and rainfall are not the same story Average cumulative heat exposure is highest in Gujrat, Hafizabad, "
+    },
+    "district_count_117": {
+      "observed_in_visible_html": true,
+      "source_excerpt": "ble. Evidence behind the findings The chart shows where the 117 compounding Priority 1–2 schools are concentrated. The timeline compares how many schools were exposed in each recorded rainfall event. TEAM D"
+    }
+  },
+  "arithmetic": {
+    "numerator": "84",
+    "denominator": "117",
+    "source_claim_percent": "81.6",
+    "computed_percent_1dp": "71.8",
+    "arithmetic_discrepancy_candidate": true,
+    "underlying_cohort_truth_verified": false
+  },
+  "model_calls": 0,
+  "appdeploy_credits_used": 0,
+  "external_write_actions": 0,
+  "scheduled": false,
+  "independently_reviewed": false,
+  "confirmed_public_correction": false,
+  "eligible_for_win_ledger": false,
+  "review_required": "Reopen and independently confirm the original public source, context, underlying cohort and qualified local analysis; the raw hash is only a reproducibility handle.",
+  "limitations": "This machine retrieved one public HTML response. It did not run a browser, audit underlying datasets, validate localization, contact the institution or establish real-world public benefit."
+}
