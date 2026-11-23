@@ -58,6 +58,25 @@ The original `verify` model instruction said **reject without reliable evidence*
 
 **No rerun recommended on the current laptop while memory remains nearly exhausted.** Don't pull a larger model to solve this. The source and offline tests can be developed on GitHub without spending AppDeploy credits or consuming the laptop's RAM.
 
+## November 22–23 G3 proof: an actual machine-retrieved source can now become an offline review plan
+
+A real **one-time** GitHub Actions run [#45087747120](https://github.com/Lesterhau/humanity-loop/actions/runs/45087747120) acquired the approved [LUMS CITY Pakistan public HTML page](https://city.lums.edu.pk/what-we-do/city-research/dare-rc/) at **2026-11-23T00:16:07Z** (November 22 Central). The [review-only original artifact](https://github.com/Lesterhau/humanity-loop/actions/runs/45087747120/artifacts/14779857530) was downloaded and read back. It reported HTTP 200, **95,675 bytes**, SHA-256 `5d6ec6ba6dd7e1eadcab550c040249aa049aacef20fcbdca756c52a470878a95`, the visible 103/117 values and **84/117 = 71.8%** versus the public 81.6% description. The original site's copy was separately corroborated through public web retrieval. Neither raw-page hash nor text retrieval independently validates the underlying study or an institution-made correction. [Durable public-safe receipt](../runtime/mission/2026-11-23-ot013-official-live-source-acceptance.md) and [machine JSON](../runtime/mission/2026-11-23-ot013-official-html-snapshot.json).
+
+**Acquisition is strictly bounded:** `scripts/public_source_snapshot.py` performs **no networking by default**. `--allow-live-get` enables exactly one public GET to the compile-time allowlisted LUMS URL (Tier-0 Pakistan English task and URL must match), using public DNS checks, numeric-IP TLS hostname validation, no proxies, cookies, credentials, redirects, or broad web crawling. Only HTML is supported, capped at 1.5 MB. A second automatic check, task poll, AppDeploy call or unapproved model inference is not part of the workflow. The one-off live CI acceptance step was **removed** after its success, and ordinary PR/push CI is entirely offline.
+
+**Offline handoff of that real saved observation to a bounded Foundry review plan:**
+
+~~~bash
+python3 scripts/public_source_handoff.py --task foundry-lite/fixtures/ot013-pk-climate-review.json --snapshot runtime/mission/2026-11-23-ot013-official-html-snapshot.json --output /tmp/ot013-source-candidate.json
+python3 scripts/foundry_lite.py --input foundry-lite/fixtures/ot013-pk-climate-review.json --source-packet /tmp/ot013-source-candidate.json --mode plan --output /tmp/ot013-review-plan.json
+~~~
+
+The first script checks the archived provenance shape, exact task/case/country/source, UTC timestamp, read-only flags and arithmetic before producing an **unreviewed** source candidate. The second constructs a human review checklist, **zero model calls, zero newly retrieved sources**. A JSON file can be forged by its holder: this handoff is a trusted-repository artifact plus review workflow, **not cryptographic remote attestation or independent academic review**. Neither step grants publication or official correction status.
+
+A **separate opt-in only** GitHub Action, [G3 Official Source Snapshot](../.github/workflows/g3-official-source-snapshot-manual.yml), uses `workflow_dispatch`, a boolean confirmation, and requires no secrets. It performs one approved official-source GET **only when manually invoked**, then retains an unreviewed artifact for three days. It is not a cron or a global web crawler. For Windows, use `py -3` and a local output path such as `"$env:TEMP/ot013-source-candidate.json"` instead of `/tmp`.
+
+**G3 remains unreleased** until full real-model inference, independent review, cost and canonical lease enforcement are demonstrated. **G4 remains unreleased** until an actual independently verified useful public outcome outside the United States, qualified regional review and applicable data controls exist.
+
 ## Parallel G3/G4: source-candidate review packets (offline, no credits)
 
 This is the **first executable cross-country evidence preparation contract** for the optional Foundry runner. The packet is operator-supplied and contains a case ID, jurisdiction, language(s), exact task-approved HTTPS URLs, dated candidate observations, reviewer questions, and optional arithmetic checks. The runner validates country and language against the reviewed task manifest before creating a review plan or any local model prompt. A different country, fabricated future timestamp, private URL or unapproved action fails closed.
