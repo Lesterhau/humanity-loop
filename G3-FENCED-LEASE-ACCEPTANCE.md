@@ -20,6 +20,9 @@ Legacy `claim_next_task` is excluded from fenced tasks; existing legacy advance,
 
 ## Actual isolated acceptance
 
+**Independently checked GitHub execution:** [run #45097124531](https://github.com/Lesterhau/humanity-loop/actions/runs/45097124531), isolated PostgreSQL 17 job, **success**. Earlier isolated run #45096569416 also passed initial atomic-claim and stale-worker assertions; subsequent tightened scenarios were rerun and corrected before the passing final run. This final run includes explicit zero-model/zero-credit, denied unauthorized institutional outreach, and unchanged legitimate **unfenced** renew/advance/fail/retry/expiry/child-role completion. The concurrency step runs **two distinct overlapping real psql sessions** against the disposable DB. An ordinary repository ledger/governance CI run also passed; **neither run connected to Supabase production**.
+
+
 The [PostgreSQL 17 CI workflow](.github/workflows/g3-canonical-lease-postgres.yml) runs in **a disposable GitHub Actions PostgreSQL service**, not Supabase production. It builds minimal canonical-shape synthetic tasks and agents, applies this migration there, and tests:
 
 - Two genuinely overlapping SQL sessions claiming the same task: **one wins, one is rejected**.
