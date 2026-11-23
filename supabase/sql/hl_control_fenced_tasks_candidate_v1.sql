@@ -90,6 +90,11 @@ BEGIN
     AND risk_tier=0
     AND payload->>'fencing_required'='true'
     AND payload->>'idempotency_key'=p_idempotency_key
+    -- V1 is deterministic only: a valid lease is NEVER paid-model authority.
+    AND payload->>'execution_mode'='deterministic_only'
+    AND payload->>'external_actions'='false'
+    AND payload->>'model_calls'='0'
+    AND payload->>'max_provider_credits'='0'
     AND (human_approval_required=false OR human_approval_received=true)
     AND lease_owner IS NULL
     AND fenced_token IS NULL
