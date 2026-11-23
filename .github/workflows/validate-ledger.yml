@@ -40,6 +40,20 @@ jobs:
         run: python scripts/foundry_lite_doctor.py --json
       - name: G3 official-source snapshot security tests (offline, no HTTP requests)
         run: python -m unittest discover -s scripts -p test_public_source_snapshot.py -v
+      # ONE-TIME G3 acceptance only on PR #108; remove before merge.
+      - name: One-time official Pakistan source GET acceptance (PR 108 only)
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.number == 108 }}
+        run: |
+          python scripts/public_source_snapshot.py --case OT-013 --task foundry-lite/fixtures/ot013-pk-climate-review.json --allow-live-get --output /tmp/ot013-one-time-acceptance.json
+          python -c 'import json; x=json.load(open("/tmp/ot013-one-time-acceptance.json")); assert x["record_type"]=="direct_public_html_snapshot" and x["case_id"]=="OT-013" and x["raw_bytes"]>0 and x["independently_reviewed"] is False and x["eligible_for_win_ledger"] is False'
+      - name: Archive one-time acceptance receipt (NOT source review)
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.number == 108 }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ot013-one-time-official-source-snapshot-pr108
+          path: /tmp/ot013-one-time-acceptance.json
+          retention-days: 3
+          if-no-files-found: error
       - name: G3/G4 source-grounded two-country execution tests (no model, network or writes)
         run: |
           python -m unittest discover -s scripts -p test_foundry_source_evidence.py -v
