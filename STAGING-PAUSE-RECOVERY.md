@@ -2,6 +2,18 @@
 
 **Verified November 15, 2026, 18:13 Central / November 16, 00:13 UTC. Status: staging `ACTIVE_HEALTHY`; production `ACTIVE_HEALTHY`. No Supabase plan upgrade, synthetic new traffic, backup export, scheduler, cron change, or production write occurred during this assessment.**
 
+## November 22–23 restoration and real hosted recheck
+
+**New owner-provided Supabase screenshot:** the existing Free-tier project was actually **paused** after inactivity. This supersedes the November 15 *pre-pause* status in the historical entry below. The precise pause timestamp cannot be established from the image alone; no arbitrary 90-day deadline is invented.
+
+**Actual recovery performed, with no plan upgrade or new project:** the project's authorized Supabase connector confirmed `INACTIVE`, accepted a `restore_project` action, progressed through `COMING_UP` and then returned **`ACTIVE_HEALTHY`**. Production `Humanity Loop Control Plane` remained a separate `ACTIVE_HEALTHY` project; neither project was replaced.
+
+**Actual hosted synthetic acceptance:** In isolated staging `hl_foundry_test` (NOT production), ran a single SQL transaction that inserted one unique `ftest_...` Tier-0 queued task, atomically claimed it with the existing `claim_task` function, proved a **wrong lease token cannot complete it**, proved the right token succeeds, and checked its `completed` status. The whole transaction was **ROLLBACK**. A separate read-back query confirmed **0 residual tasks, 0 residual events** for that test identifier and **no new production-schema task table** in staging. No external report, contributor registration, model call, institutional message or paid service occurred.
+
+**Staging compatibility finding:** `hl_foundry_test.claim_task/complete_task` already implements a test-only UUID lease-token check against expiry. This is **NOT** the full new production-canonical fenced-generation protocol, which includes an epoch and session-bound executor authorization. That [review-only code](G3-FENCED-LEASE-ACCEPTANCE.md) is still in isolated GitHub CI. Do not describe this hosted test as a deployed new fencing migration, G3 release or a public outcome.
+
+**Vercel notifications from owner screenshots:** PR #108 and #109 each produced a Vercel `Ready` **preview**. The notifications do not prove a live database migration or external outcome and do not require action. Avoid deploying an independent new worker to resolve a preview notification.
+
 ## Immediate warning and impact
 
 The project owner received a Supabase inactivity warning at approximately 18:07 Central November 15: **Humanity Loop Staging – Isolated**, ref `prisrhkxiwyrbcagxcxx`, would be automatically paused if sufficient project activity did not resume. The email states it was **not paused at send time**, and the current project management API separately confirms `ACTIVE_HEALTHY`. Supabase organization **RL Perspectives** is on the **Free** plan; low-activity projects may pause after a seven-day observation window.
