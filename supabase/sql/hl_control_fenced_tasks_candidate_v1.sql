@@ -450,4 +450,13 @@ REVOKE ALL ON FUNCTION hl_control.advance_fenced_stage_v1(text,text,bigint,uuid,
 REVOKE ALL ON FUNCTION hl_control.renew_fenced_lease_v1(text,text,bigint,uuid,integer) FROM PUBLIC;
 REVOKE ALL ON FUNCTION hl_control.fail_fenced_task_v1(text,text,bigint,uuid,text) FROM PUBLIC;
 REVOKE ALL ON FUNCTION hl_control.expire_fenced_task_v1(text) FROM PUBLIC;
+-- Legacy functions may predate this migration with private ACLs in Supabase,
+-- but a fresh staging fixture creates them with PostgreSQL's PUBLIC default.
+-- Explicitly preserve a deny-by-default RPC boundary in both environments.
+REVOKE ALL ON FUNCTION hl_control.claim_next_task(text,integer) FROM PUBLIC;
+REVOKE ALL ON FUNCTION hl_control.advance_task_stage(text,text,text,jsonb,text,boolean) FROM PUBLIC;
+REVOKE ALL ON FUNCTION hl_control.advance_task_stage_v2(text,text,text,text,jsonb,text,boolean) FROM PUBLIC;
+REVOKE ALL ON FUNCTION hl_control.renew_task_lease(text,text,integer) FROM PUBLIC;
+REVOKE ALL ON FUNCTION hl_control.fail_task(text,text,text,jsonb) FROM PUBLIC;
+REVOKE ALL ON FUNCTION hl_control.release_expired_leases() FROM PUBLIC;
 COMMIT;
