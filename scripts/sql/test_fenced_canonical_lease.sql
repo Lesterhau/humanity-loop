@@ -22,8 +22,22 @@ SELECT public.assert_true(
 
 -- Tier, manual approval, agent permissions, strict idempotency and TTL.
 SELECT public.assert_rejected(
- $$SELECT hl_control.claim_fenced_task_v1('fenced_unsafe','fenced_worker_a','unsafe-operation-key-2026',60)$$,
+ $SELECT hl_control.claim_fenced_task_v1('fenced_unsafe','fenced_worker_a','unsafe-operation-key-2026',60)$,
  'fenced_task_unavailable'
+);
+-- A valid task lease never grants access to paid models or external actions.
+SELECT public.assert_rejected(
+ $SELECT hl_control.claim_fenced_task_v1('fenced_paid','fenced_worker_a','paid-operation-key-2026',60)$,
+ 'fenced_task_unavailable'
+);
+SELECT public.assert_rejected(
+ $SELECT hl_control.claim_fenced_task_v1('fenced_outreach','fenced_worker_a','outreach-operation-key-2026',60)$,
+ 'fenced_task_unavailable'
+);
+SELECT public.assert_true(
+  (SELECT COUNT(*)=0 FROM hl_control.events
+   WHERE event_type='fenced_task_claimed' AND task_id IN ('fenced_paid','fenced_outreach')),
+  'no_paid_or_outside_claim_event_may_be_recorded'
 );
 SELECT public.assert_rejected(
  $$SELECT hl_control.claim_fenced_task_v1('fenced_needs_approval','fenced_worker_a','approval-operation-key-2026',60)$$,
