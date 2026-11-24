@@ -1,25 +1,10 @@
 {
   "baselinesCreated": 0,
-  "changes": [
-    {
-      "authority": "European Medicines Agency",
-      "detectedAt": "2026-11-24T13:57:36.827114Z",
-      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- Reference Number:\n- English (EN)\n- (233.1 KB - PDF)\n- View\n- Reference Number:\n- English (EN)\n- (552.49 KB - PDF)\n- View\n- Reference Number:\n- English (EN)\n- (98.44 KB - PDF)\n- View\n- Reference Number:\n- English (EN)\n- (90.96 KB - PDF)\n- View\n- Reference Number:\n- English (EN)\n- (528.31 KB - PDF)\n- View\n- Reference Number:\n- English (EN)\n- (490.55 KB - PDF)\n- View\n- Reference Number:\n- English (EN)\n- (478.42 KB - PDF)\n- View\n- Reference Number:\n- English (EN)\n\nADDED IN CURRENT VERSION:\n+ Reference number:\n+ Opens in a new window\n+ (en)\n+ (PDF - 233.1 KB)\n+ Reference number:\n+ Opens in a new window\n+ (en)\n+ (PDF - 552.49 KB)\n+ Reference number:\n+ Opens in a new window\n+ (en)\n+ (PDF - 98.44 KB)\n+ Reference number:\n+ Opens in a new window\n+ (en)\n+ (PDF - 90.96 KB)\n+ Reference number:\n+ Opens in a new window\n+ (en)\n+ (PDF - 528.31 KB)\n+ Reference number:\n+ Opens in a new window\n+ (en)\n+ (PDF - 490.55 KB)\n+ Reference number:\n+ Opens in a new window\n+ (en)\n+ (PDF - 478.42 KB)\n+ Reference number:\n+ Opens in a new window",
-      "materiality": "unreviewed",
-      "medicalAdvice": null,
-      "newFingerprint": "e8d7474b73cea64ccde599a2f80f8bdf42436a0fc45d8dc8ee177d3d3d29309a",
-      "oldFingerprint": "6231ff41133adf071deefb997308d5cf7b6d7af916481db9b2423b7880627027",
-      "severity": "unreviewed",
-      "sourceKey": "ema-prac",
-      "sourceName": "EMA PRAC Safety Highlights",
-      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
-      "verificationStatus": "needs-independent-source-review"
-    }
-  ],
-  "changesDetected": 1,
+  "changes": [],
+  "changesDetected": 0,
   "failures": [],
   "failuresCount": 0,
-  "runAt": "2026-11-24T13:57:36.827114Z",
+  "runAt": "2026-11-24T23:57:08.641100Z",
   "schemaVersion": 1,
   "sourcesChecked": 3,
   "sourcesConfigured": 3,
