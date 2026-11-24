@@ -1851,6 +1851,21 @@
       "europePmcUrl": "https://europepmc.org/article/MED/38539867",
       "status": "unreviewed",
       "detectedAt": "2026-11-20T11:50:08.064429Z"
+    },
+    {
+      "retractedDoi": "10.1038/s41467-026-69695-4",
+      "noticeDoi": "10.1038/s41467-026-80283-4",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "42882835",
+      "citingTitle": "Allele-Stratified Activity of RAS Inhibitors in Pancreatic Ductal Adenocarcinoma: A Systematic Review and Exploratory Meta-Analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/42882835",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-24T13:52:17.449319Z"
     }
   ]
 }

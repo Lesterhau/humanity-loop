@@ -1,35 +1,104 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-23T13:01:28.034735Z",
-  "status": "partial",
+  "runAt": "2026-11-24T13:52:17.449319Z",
+  "status": "limited",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
     "crossrefRows": 25,
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 12,
-  "citationsExamined": 38,
-  "candidateFindingsCount": 0,
-  "candidateFindings": [],
-  "failuresCount": 1,
-  "failures": [
+  "newRetractionsChecked": 1,
+  "citationsExamined": 6,
+  "candidateFindingsCount": 1,
+  "candidateFindings": [
     {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.ijbiomac.2024.136176",
-      "reason": "The read operation timed out"
+      "retractedDoi": "10.1038/s41467-026-69695-4",
+      "noticeDoi": "10.1038/s41467-026-80283-4",
+      "crossrefUpdateSelfReferential": false,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Crossref retraction-type metadata is a discovery lead, not independent verification of the publisher notice or status.",
+      "citingSource": "MED",
+      "citingId": "42882835",
+      "citingTitle": "Allele-Stratified Activity of RAS Inhibitors in Pancreatic Ductal Adenocarcinoma: A Systematic Review and Exploratory Meta-Analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/42882835",
+      "status": "unreviewed"
     }
   ],
-  "coverageGapsCount": 2,
+  "failuresCount": 0,
+  "failures": [],
+  "coverageGapsCount": 14,
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1080/15324982.2025.2608762",
+      "doi": "10.1007/978-981-96-7473-2_21",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1007/s11696-024-03618-9",
+      "doi": "10.1007/978-981-96-7473-2_10",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_11",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_12",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_13",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_9",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_22",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_32",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_33",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_35",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1007/978-981-96-7473-2_3",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1039/d5pm00235d",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2023.06.083",
+      "reason": "No Europe PMC match; scientific coverage limited; retry later"
+    },
+    {
+      "stage": "not_indexed",
+      "doi": "10.1016/j.ijhydene.2023.06.161",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
