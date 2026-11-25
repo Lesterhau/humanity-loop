@@ -1,0 +1,54 @@
+name: MOTHER admission cap — disposable PostgreSQL rehearsal
+on:
+  pull_request:
+    paths:
+      - 'supabase/sql/hl_node_admission_candidate.sql'
+      - 'scripts/sql/admission_fixture.sql'
+      - 'scripts/sql/test_admission_candidate.sql'
+      - 'scripts/test_admission_burst.py'
+      - '.github/workflows/mother-admission-rehearsal.yml'
+permissions:
+  contents: read
+jobs:
+  admission:
+    if: github.repository == 'Lesterhau/humanity-loop' && github.event.pull_request.head.repo.full_name == 'Lesterhau/humanity-loop' && github.head_ref == 'test/mother-admission-cap-20261125'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test_only_ephemeral_local_db
+          POSTGRES_DB: admission_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d admission_ci"
+          --health-interval 4s
+          --health-timeout 3s
+          --health-retries 12
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: 5432
+      PGDATABASE: admission_ci
+      PGUSER: postgres
+      PGPASSWORD: test_only_ephemeral_local_db
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Prepare disposable client
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq postgresql-client
+          fi
+      - name: Apply candidate to synthetic fixture only
+        run: |
+          psql -X -v ON_ERROR_STOP=1 -f scripts/sql/admission_fixture.sql
+          psql -X -v ON_ERROR_STOP=1 -f supabase/sql/hl_node_admission_candidate.sql
+          psql -X -v ON_ERROR_STOP=1 -f scripts/sql/test_admission_candidate.sql
+      - name: Run concurrent synthetic admission rehearsal
+        run: python3 scripts/test_admission_burst.py
