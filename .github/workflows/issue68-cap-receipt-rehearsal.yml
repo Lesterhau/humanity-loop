@@ -1,0 +1,22 @@
+name: Issue 68 CAP receipt cutover rehearsal (offline only)
+on:
+  pull_request:
+    paths:
+      - 'scripts/cap_receipt_pilot.py'
+      - 'scripts/test_cap_receipt_pilot.py'
+      - 'scripts/cap_daily_audit.py'
+      - '.github/workflows/issue68-cap-receipt-rehearsal.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-cap:
+    if: github.repository == 'Lesterhau/humanity-loop' && github.event.pull_request.head.repo.full_name == 'Lesterhau/humanity-loop' && github.head_ref == 'test/issue68-cap-receipt-pilot-20261125'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Offline CAP producer and receipt candidate tests
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_cap_daily_audit.py scripts/test_cap_receipt_pilot.py -v
