@@ -61,6 +61,7 @@ export default function JoinPage() {
   const [result, setResult] = useState<Registration | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [registrationStopped, setRegistrationStopped] = useState(false);
   const [copied, setCopied] = useState("");
   const [showToken, setShowToken] = useState(false);
   const [sessionId, setSessionId] = useState("");
@@ -133,7 +134,7 @@ export default function JoinPage() {
   }
 
   async function register() {
-    if (phase !== "register" || !host || busy) return;
+    if (phase !== "register" || !host || busy || registrationStopped) return;
     setBusy(true);
     setError("");
     try {
@@ -155,11 +156,13 @@ export default function JoinPage() {
       });
       const data: unknown = await response.json();
       if (!response.ok) {
-        const failure =
-          data && typeof data === "object" && "error" in data
-            ? String(data.error)
-            : "Could not create a test pass.";
-        throw new Error(failure);
+        if (response.status === 503 && data && typeof data === "object" &&
+            "error" in data && data.error === "admission_capacity_unavailable") {
+          setRegistrationStopped(true);
+          setError("The current pilot cohort is full or closed. No node was admitted by this request. Please wait for a new invitation; no automatic retry.");
+          return;
+        }
+        throw new Error("Registration was not confirmed. Stop and ask your inviter to reconcile the result before trying again.");
       }
       if (
         !data ||
@@ -176,8 +179,9 @@ export default function JoinPage() {
       }
       setResult(data as Registration);
       setPhase("complete");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please report this.");
+    } catch {
+      setRegistrationStopped(true);
+      setError("Registration was not confirmed. A node may have been created. Please stop and ask your inviter to reconcile the result; do not try another identity.");
     } finally {
       setBusy(false);
     }
@@ -377,12 +381,12 @@ export default function JoinPage() {
               </div>
               <p>Using: <strong>{host}</strong></p>
               <div className={styles.buttonRow}>
-                <button className={styles.primary} type="button" onClick={() => void register()} disabled={busy}>
+                <button className={styles.primary} type="button" onClick={() => void register()} disabled={busy || registrationStopped}>
                   {busy ? "Creating your test pass…" : "Create my test pass"}
                 </button>
                 <button className={styles.back} type="button" onClick={() => setPhase("connect")}>Go back</button>
               </div>
-              {error && <p role="alert" className={styles.error}>{error}. No task has been started. You can stop and send the error text to the inviter.</p>}
+              {error && <p role="alert" className={styles.error}>{error} No task has been started by this page. Do not share private tokens.</p>}
             </>
           )}
 

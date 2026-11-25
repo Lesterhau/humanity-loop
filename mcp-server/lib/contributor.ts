@@ -22,6 +22,12 @@ async function callGateway(
   }));
 
   if (!response.ok) {
+    if (body.action === "register") {
+      if (response.status === 503 && data?.error === "admission_capacity_unavailable") {
+        throw new Error("Humanity Loop's current pilot cohort is full or closed. No node was admitted by this request. Stop; do not retry automatically or create another identity. Wait for a new invitation.");
+      }
+      throw new Error("Registration was not confirmed. Stop and ask the pilot maintainer to reconcile the result; do not retry or create another identity.");
+    }
     throw new Error(
       typeof data?.detail === "string"
         ? data.detail
