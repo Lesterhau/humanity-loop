@@ -187,7 +187,9 @@
         "evidence_artifacts": [
           "GLOBAL-ROLLOUT-GATES.md",
           "MISSION-CONTROL.md",
-          "IMPACT-PASSPORT-FIRST-RECORD.md"
+          "IMPACT-PASSPORT-FIRST-RECORD.md",
+          "MOTHER-LAUNCH-READINESS.md",
+          "ops/mother-launch-readiness.json"
         ],
         "acceptance_tests": [
           "Sustainable 28-day verified-outcome rate",
@@ -207,7 +209,8 @@
         ],
         "note": "No G5 acceptance metric has yet been reached.",
         "release_claimed": false,
-        "acceptance_metrics_all_met": false
+        "acceptance_metrics_all_met": false,
+        "launch_gate": "Separate release checkpoint after G4, before broad public launch and mature G5. Explicit owner go decision; blue check required; no G5 completion claim. See ops/mother-launch-readiness.json."
       },
       "maturity_targets": {
         "active_independent_nodes_rolling_28_days": 20000,

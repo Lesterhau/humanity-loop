@@ -30,6 +30,8 @@ Registration counts are not impact. The core case pipeline must succeed with *ze
 
 Impact Passport is a primary G5 adoption and recognition lane: an operational, portable, revocable, consented contribution credential, real user-controlled display, and actual institutional recognition. LinkedIn credential sharing and a potential formal LinkedIn or equivalent partnership are distinct work items; no official endorsement is implied. Preserve the February 1, 2027 quarterly review and the evidence gate in issues #35/#38. No new outreach, credential issuance, fundraising, publication or paid activity is authorized by this target.
 
+**MOTHER launch checkpoint:** [MOTHER-LAUNCH-READINESS.md](MOTHER-LAUNCH-READINESS.md) and [release checklist](ops/mother-launch-readiness.json) define closed beta, controlled admission, synthetic 10,000-interest burst acceptance, X blue check, compliant engagement and an explicit owner release decision. MOTHER stays publicly quiet until the checkpoint is satisfied. Mature G5 scale is not a prerequisite for this bounded launch. No new spending, publication or production load is authorized.
+
 **Milestone-driven work:** prioritize an accepted independent node and its first private consented Passport record, an independently accepted genuine Foundry artifact, an international correction, and approved first recurring support. Work in parallel while preserving release prerequisites and WIP=2. Stop optional refinement once the relevant release test passes; record remaining blockers explicitly instead of treating additional tests as impact.
 
 ## Parallel development policy — G2 operations, G3/G4 engineering, G5 safeguards
