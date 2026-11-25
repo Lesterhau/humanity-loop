@@ -180,13 +180,14 @@
       "prerequisites": [
         "G4"
       ],
-      "acceptance": "Meet end_state.acceptance over a rolling 28-day measurement window, including qualified review, privacy/deletion controls, credible operational uptime and zero unapproved cost.",
+      "acceptance": "G5-A operational viability: meet end_state.acceptance with qualified review, privacy/deletion controls, uptime and zero unapproved cost. G5-B mature global scale: separately meet maturity_targets with independently auditable measured evidence. Neither submilestone may substitute for the other.",
       "independent_volunteer_required": false,
       "development": {
         "status": "scoped",
         "evidence_artifacts": [
           "GLOBAL-ROLLOUT-GATES.md",
-          "MISSION-CONTROL.md"
+          "MISSION-CONTROL.md",
+          "IMPACT-PASSPORT-FIRST-RECORD.md"
         ],
         "acceptance_tests": [
           "Sustainable 28-day verified-outcome rate",
@@ -194,16 +195,48 @@
           "Three regions and three reviewed languages",
           "Privacy/deletion, branch integrity, cost cap and incident recovery"
         ],
-        "next_verifiable_result": "Do not expand hosting/schedulers; use G3/G4 results to establish real throughput, independent review and cost-per-verified-outcome baselines",
+        "next_verifiable_result": "Obtain one genuine independently operated Tier-0 submission, separate review and optional private Impact Passport pilot record; in parallel resolve only release-critical Foundry, privacy and governance blockers.",
         "remaining_blockers": [
           "Issue #96 privacy/retention workflow",
           "Issue #68 GitHub main branch protection",
           "Model budget/scheduler acceptance",
-          "Regional independent outcomes and measurable 28-day throughput"
+          "Regional independent outcomes and measurable 28-day throughput",
+          "No accepted independent node or consented Impact Passport pilot",
+          "No operational portable badge or institutional recognition agreement",
+          "No verified recurring donor baseline or sustained active-node growth"
         ],
         "note": "No G5 acceptance metric has yet been reached.",
         "release_claimed": false,
         "acceptance_metrics_all_met": false
+      },
+      "maturity_targets": {
+        "active_independent_nodes_rolling_28_days": 20000,
+        "verified_recurring_monthly_donors": 1000,
+        "node_checkpoints": [
+          1,
+          5,
+          25,
+          100,
+          1000,
+          5000,
+          20000
+        ],
+        "active_node_definition": "Independently operated, consenting, not founder-controlled or duplicate; at least one accepted useful contribution in rolling 28 days. Distinct consenting operators separately counted; no token-registration proxy.",
+        "funding_definition": "Distinct verified recurring donors with successful payments in the reporting month; separately report net receipts, refunds, cancellations, cost and runway. No fundraising authorization or assumed tax deduction.",
+        "growth_definition": "Report monthly net active-node growth, retention, unique verified external resolutions, review capacity and observed resolution growth rates; claim exponential growth only if longitudinal evidence supports it.",
+        "impact_passport": {
+          "required": true,
+          "first_milestone": "One adult non-owner accepted contribution and private consented record, distinct from downstream outcome and documented human hours.",
+          "mature_acceptance": "Operational portable verifiable credential with public display off by default, correction/revocation, privacy/deletion, independently checked contribution provenance and anti-gaming; independently verified real participant share and actual institutional recognition agreement.",
+          "linkedin": "Explore user-controlled credential sharing and a formal partnership or equivalent appropriate credential/social-platform partner; neither platform integration nor partnership claimed without actual acceptance. No partner branding without permission.",
+          "issue_refs": [
+            33,
+            35,
+            38,
+            96
+          ]
+        },
+        "mother": "Continuous evidence-backed updates; authorized transparent relevant engagement with leaders; no unsolicited automated replies, impersonation, spam or covert influence."
       }
     }
   ],
@@ -267,8 +300,8 @@
         "G4",
         "G5"
       ],
-      "selection_rule": "When G2 cases are waiting on outside action, advance at most one testable G3 or G4 readiness item without opening a third external case, enabling a scheduler, spending credits, or claiming an accepted outcome.",
-      "score_readiness_by": "executable source-bound artifacts and passing independent CI, not by number of documentation files",
+      "selection_rule": "When G2 waits on outside action, pursue the next concrete G3/G4/G5 milestone in parallel: independently accepted Foundry artifact, accepted node, consented Passport record, international outcome, or approved funding readiness. Freeze optional engineering refinements; retain safety-critical blockers, WIP=2, zero new spend, no unsolicited outreach, no new scheduler and sequential release acceptance.",
+      "score_readiness_by": "Milestone acceptance evidence, not test count or document count; tests are valuable only when tied to a release blocker.",
       "no_new_scheduled_workers": true
     }
   }
