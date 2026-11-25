@@ -42,21 +42,47 @@
       "name": "Mobile and no-MCP intake",
       "required_evidence": "Supported mobile plugin path independently accepted under existing gate; no-account fallback independently tested",
       "satisfied": false,
-      "evidence": []
+      "evidence": [
+        {
+          "source_commit": "c5c906fe76920ca644ddf937b8ff9d61275dc025",
+          "pull_request": "https://github.com/Lesterhau/humanity-loop/pull/116",
+          "run": "https://github.com/Lesterhau/humanity-loop/actions/runs/45723651321",
+          "scope": "Next.js build only",
+          "result": "Static /capacity fallback built; no mobile plugin acceptance or genuine independent participant."
+        }
+      ]
     },
     {
       "id": "L03",
       "name": "Capacity controlled registration and work",
       "required_evidence": "Both direct MCP and web register share atomic server-side admission budget, reviewer/assignment ceiling; exhausted/unknown fails safely; current per-fingerprint 5/hour alone is insufficient",
       "satisfied": false,
-      "evidence": []
+      "evidence": [
+        {
+          "source_commit": "c5c906fe76920ca644ddf937b8ff9d61275dc025",
+          "pull_request": "https://github.com/Lesterhau/humanity-loop/pull/116",
+          "run": "https://github.com/Lesterhau/humanity-loop/actions/runs/45723651027",
+          "scope": "disposable PostgreSQL fixture; NOT production or HTTP load acceptance",
+          "result": "10,000 synthetic insert attempts, 20 concurrent sessions, 4 admitted, 9,996 deferred, 1 existing, total cap 5, zero over-cap admissions. Full/unknown outcomes surfaced in draft browser and MCP clients; static overflow page added.",
+          "remaining": "Actual hosted relation/RPC/schema privileges, least-privilege trigger owner, durable retry protection, work and review ceilings, isolated hosted acceptance."
+        }
+      ]
     },
     {
       "id": "L04",
       "name": "Burst interest and privacy",
       "required_evidence": "10,000 synthetic interest requests with bounded writes, explicit consent, minimization/retention/deletion, retry/idempotency, overload status and no participant impersonation",
       "satisfied": false,
-      "evidence": []
+      "evidence": [
+        {
+          "source_commit": "c5c906fe76920ca644ddf937b8ff9d61275dc025",
+          "pull_request": "https://github.com/Lesterhau/humanity-loop/pull/116",
+          "run": "https://github.com/Lesterhau/humanity-loop/actions/runs/45723651027",
+          "scope": "disposable PostgreSQL fixture; NOT production or HTTP load acceptance",
+          "result": "10,000 distinct synthetic interest tickets, 100 duplicate retries, one overflow correctly deferred, withdrawal and expiration purge tested, node count unchanged. No-data overflow page draft build passed.",
+          "remaining": "HTTP endpoint/load rehearsal, proof-of-possession, abuse limits, consent/withdrawal UI, actual retention/backups/provider limitations and independently reviewed privacy acceptance. No new real data collection."
+        }
+      ]
     },
     {
       "id": "L05",
@@ -125,6 +151,8 @@
     "last_verified_node_count_as_of": "2026-11-21",
     "last_verified_node_count": 0,
     "actual_current_capacity": null,
-    "actual_current_interest": null
+    "actual_current_interest": null,
+    "last_reviewed_draft_pr": 116,
+    "latest_worker_scout": "2026-11-25T23:43:00.878757+00:00; older-persons grant discrepancy prospect, not activated; intake truncation resolved by separate master comment filtering, zero new MOTHER inbox threads."
   }
 }
