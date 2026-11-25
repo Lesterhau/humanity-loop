@@ -5,6 +5,7 @@ import time
 import urllib.request
 from pathlib import Path
 from structured_scout import RESPONSE_FORMAT
+from structured_decisions import response_format as decision_format
 
 STAGES=('scout','verify','assign','build_act','dissent','safety','revision','outcome')
 MODEL_SHA256='decd2598bc2c8ed08c19adc3c8fdd461ee19ed5708679d1c54ef54a5a30d4f33'
@@ -86,6 +87,8 @@ class IsolatedLlama:
             payload={'model':'hl-pinned-smollm2','messages':[{'role':'user','content':prompt}],'max_tokens':MAX_PREDICT,'temperature':0,'stream':False}
             if stage=='scout':
                 payload['response_format']=RESPONSE_FORMAT
+            elif stage in ('verify','safety'):
+                payload['response_format']=decision_format(stage)
             r=self.transport(payload,min(timeout,45,remaining))
             phase='deadline'
             if self.clock()-self.started>MAX_TOTAL_SECONDS: raise TimeoutError('deadline_exhausted')

@@ -51,6 +51,6 @@ class StructuredScoutTests(unittest.TestCase):
         a=IsolatedLlama(transport=transport)
         a('scout','p',5);a('verify','p',5)
         self.assertEqual(requests[0]['response_format'],RESPONSE_FORMAT)
-        self.assertNotIn('response_format',requests[1])
+        self.assertEqual(requests[1]['response_format']['schema']['properties']['decision']['enum'],['PROCEED','REJECT'])
         self.assertEqual(len(a.attempted),2)
         self.assertEqual(requests[0]['max_tokens'],256)
