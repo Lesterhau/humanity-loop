@@ -4,7 +4,7 @@ DO $$ BEGIN
  current_setting('server_version_num')::int NOT BETWEEN 170000 AND 179999 OR
  inet_server_addr() IS NULL OR inet_client_addr() IS NULL OR
  EXISTS(SELECT 1 FROM pg_namespace WHERE nspname IN ('hl_control','hl_foundry_test','hl_g3_rehearsal')) OR
- EXISTS(SELECT 1 FROM pg_roles WHERE rolname IN ('anon','authenticated','service_role','hl_g3_rehearsal_a','hl_g3_rehearsal_b','hl_g3_rehearsal_unbound'))
+ EXISTS(SELECT 1 FROM pg_roles WHERE rolname IN ('anon','authenticated','service_role','hl_g3_rehearsal_a','hl_g3_rehearsal_b','hl_g3_rehearsal_unbound','hl_g3_rehearsal_definer','hl_fenced_definer'))
  THEN RAISE EXCEPTION 'not a fresh synthetic test database'; END IF;
 END $$;
 CREATE ROLE anon NOLOGIN;

@@ -34,5 +34,9 @@ psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/test_restricted_fenced_executor.s
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/check.sql"
 bash "$work/review/test_fenced_authenticated_login.sh"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/check.sql"
+export HL_FENCED_SCHEMA=hl_g3_rehearsal HL_FENCED_ROLE_PREFIX=hl_g3_rehearsal_ HL_FENCED_DEFINER=hl_g3_rehearsal_definer
+bash "$here/../test_fenced_namespace_boundary.sh"
+bash "$here/../test_fenced_acl_checker_mutations.sh"
+psql -X -v ON_ERROR_STOP=1 -q -f "$here/check.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/cleanup.sql"
 echo 'DISPOSABLE_STAGING_SHAPE_REHEARSAL_PASSED (not hosted login acceptance)'

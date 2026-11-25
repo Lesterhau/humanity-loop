@@ -3,7 +3,9 @@ on:
   pull_request:
     paths:
       - '.github/workflows/g3-staging-shape-rehearsal.yml'
-      - 'scripts/sql/g3-staging-rehearsal/**'
+      - 'scripts/sql/**'
+      - 'supabase/sql/hl_control_fenced_tasks_candidate_v1.sql'
+      - 'supabase/sql/hl_fenced_executor_restricted_candidate_v1.sql'
 permissions:
   contents: read
 jobs:

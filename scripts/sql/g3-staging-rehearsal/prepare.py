@@ -14,8 +14,9 @@ CANDIDATES = {
 }
 SOURCES = {
     'scripts/sql/fenced_task_test_fixture.sql': 'e58132df8c7e31fc43654d41ce251fef34a98bed',
-    'supabase/sql/hl_control_fenced_tasks_candidate_v1.sql': 'd0956214af455b0a3528d2965a26f9a1dd70c205',
-    'supabase/sql/hl_fenced_executor_restricted_candidate_v1.sql': '8d025627896f3cd504a57a656e3dfebfaa78db14',
+    # Candidates are read from the checked-out commit (see CANDIDATES); no blob pin applies.
+    'supabase/sql/hl_control_fenced_tasks_candidate_v1.sql': None,
+    'supabase/sql/hl_fenced_executor_restricted_candidate_v1.sql': None,
     'scripts/sql/test_fenced_canonical_lease.sql': '447f13adde8d9a57fcb8635b3ed11d856b6b47d3',
     'scripts/sql/test_restricted_fenced_executor.sql': '0998f331a60d9e6fa48da925711575080396c400',
     'scripts/sql/test_fenced_authenticated_login.sh': '87e9936d97c376b5d318d051d824e709da3beaaa',
@@ -26,11 +27,12 @@ def transform(path, source):
     s = re.sub(r'\bhl_control\b', SCHEMA, source)
     s = re.sub(r'\bpublic\.(assert_true|assert_rejected)\b', rf'{SCHEMA}.\1', s)
     s = re.sub(r'\bhl_test_executor_(a|b|unbound)\b', r'hl_g3_rehearsal_\1', s)
+    s = re.sub(r'\bhl_fenced_definer\b', 'hl_g3_rehearsal_definer', s)
     if path.endswith('fenced_task_test_fixture.sql'):
         s, n = re.subn(r'^CREATE ROLE (anon|authenticated|service_role) NOLOGIN;[ \t]*$', '', s, flags=re.M)
         if n != 3:
             raise ValueError('Unexpected fixture role declarations')
-    if re.search(r'\bhl_control\b|\bpublic\.|\bhl_test_executor_(?:a|b|unbound)\b', s):
+    if re.search(r'\bhl_control\b|\bpublic\.|\bhl_test_executor_(?:a|b|unbound)\b|\bhl_fenced_definer\b', s):
         raise ValueError(f'Unexpected original schema/role or public reference: {path}')
     if re.search(r'^\s*CREATE ROLE (anon|authenticated|service_role)\b', s, flags=re.M|re.I):
         raise ValueError('Existing API role creation detected')

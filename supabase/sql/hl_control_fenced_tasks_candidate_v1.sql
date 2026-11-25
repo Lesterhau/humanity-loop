@@ -10,6 +10,34 @@
 BEGIN;
 SET LOCAL search_path TO pg_catalog, pg_temp;
 
+
+-- Enabling row level security hides every row from a non-owner role that has
+-- no policy, without raising an error. Refuse to do that silently to a role
+-- that can read or write these tables today; it needs a reviewed policy or an
+-- explicit decision first.
+DO $rls_guard$
+DECLARE hit record;
+BEGIN
+  SELECT c.relname, r.rolname INTO hit
+  FROM pg_catalog.pg_class c
+  JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+  CROSS JOIN pg_catalog.pg_roles r
+  WHERE n.nspname = 'hl_control'
+    AND c.relname IN ('agents', 'tasks', 'events', 'dead_letters')
+    AND NOT c.relrowsecurity
+    AND NOT r.rolsuper AND NOT r.rolbypassrls
+    AND r.oid <> c.relowner AND r.rolname !~ '^pg_'
+    AND (pg_catalog.has_any_column_privilege(r.oid, c.oid, 'SELECT')
+         OR pg_catalog.has_any_column_privilege(r.oid, c.oid, 'INSERT')
+         OR pg_catalog.has_any_column_privilege(r.oid, c.oid, 'UPDATE')
+         OR pg_catalog.has_table_privilege(r.oid, c.oid, 'DELETE'))
+  LIMIT 1;
+  IF FOUND THEN
+    RAISE EXCEPTION 'fenced_migration_rls_would_hide_rows: role % on table %',
+      hit.rolname, hit.relname;
+  END IF;
+END $rls_guard$;
+
 -- Explicit private relation boundary; deployment requires separate ACL compatibility review.
 REVOKE ALL ON SCHEMA hl_control FROM PUBLIC, anon, authenticated, service_role;
 REVOKE ALL ON hl_control.agents, hl_control.tasks, hl_control.events, hl_control.dead_letters FROM PUBLIC, anon, authenticated, service_role;

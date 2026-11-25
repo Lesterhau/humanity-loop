@@ -66,3 +66,9 @@ jobs:
         run: bash scripts/sql/test_fenced_authenticated_login.sh
       - name: Recheck candidate attributes after authenticated exercise
         run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/check_fenced_candidate_attributes.sql
+      - name: Probe the wrapper namespace boundary over real logins (non-destructive)
+        run: bash scripts/sql/test_fenced_namespace_boundary.sh
+      - name: Prove the privilege checker fails on unsafe configurations (rolled back)
+        run: bash scripts/sql/test_fenced_acl_checker_mutations.sh
+      - name: Final candidate attribute check
+        run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/check_fenced_candidate_attributes.sql
