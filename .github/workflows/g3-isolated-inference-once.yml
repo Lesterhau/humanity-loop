@@ -23,9 +23,8 @@ jobs:
       - name: Offline adapter regression
         run: python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
       - name: Execute at most one network-isolated fixture run
-        # One explicitly approved diagnostic retry, only on the transition from the reviewed head.
-        # Subsequent pushes and Actions reruns cannot invoke inference.
-        if: github.event.action == 'synchronize' && github.event.before == '77b0ef1cd836c6a7fed407582e262832b26bed0f'
+        # Inference remains disabled until a separate bounded attempt is authorized.
+        if: ${{ false }}
         env:
           HL_APPROVED_ONE_SHOT: 'true'
         run: bash scripts/g3-isolated-inference/run-ci.sh
