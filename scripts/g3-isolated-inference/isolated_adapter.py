@@ -8,7 +8,10 @@ from structured_scout import RESPONSE_FORMAT
 from structured_decisions import response_format as decision_format
 
 STAGES=('scout','verify','assign','build_act','dissent','safety','revision','outcome')
-MODEL_SHA256='decd2598bc2c8ed08c19adc3c8fdd461ee19ed5708679d1c54ef54a5a30d4f33'
+MODEL_SHA256='2fde00ce69dd4899c70d020845e2638353015bba0fdf161b3eb965f2bca4464e'
+MODEL_ID='Qwen/Qwen3-4B-Instruct-2507'
+MODEL_ALIAS='hl-pinned-qwen3-4b-instruct-2507'
+MODEL_BYTES=2497280736
 IMAGE='ghcr.io/ggml-org/llama.cpp:server-b9519@sha256:abaf7899e16b638411096f6db42563dffa876119037458b7986f2a6bde3df41e'
 MAX_PREDICT=256
 MAX_CONTEXT=4096
@@ -46,7 +49,7 @@ def safe_diagnostic(stage, phase, response, exc):
         'http_status':bounded_int(getattr(exc,'code',None)) if type(getattr(exc,'code',None)) is int and 100<=exc.code<=599 else None,
         'response_object':isinstance(response,dict),
         'choice_count':bounded_int(len(choices)) if isinstance(choices,list) else None,
-        'model_alias_matches':r.get('model')=='hl-pinned-smollm2',
+        'model_alias_matches':r.get('model')=='hl-pinned-qwen3-4b-instruct-2507',
         'finish_reason':finish if isinstance(finish,str) and finish in ('stop','length','tool_calls','content_filter') else 'missing_or_other',
         'prompt_tokens':bounded_int(usage.get('prompt_tokens')),
         'completion_tokens':bounded_int(usage.get('completion_tokens')),
@@ -84,7 +87,7 @@ class IsolatedLlama:
         r=None
         phase='transport'
         try:
-            payload={'model':'hl-pinned-smollm2','messages':[{'role':'user','content':prompt}],'max_tokens':MAX_PREDICT,'temperature':0,'stream':False}
+            payload={'model':'hl-pinned-qwen3-4b-instruct-2507','messages':[{'role':'user','content':prompt}],'max_tokens':MAX_PREDICT,'temperature':0,'stream':False}
             if stage=='scout':
                 payload['response_format']=RESPONSE_FORMAT
             elif stage in ('verify','safety'):
@@ -99,7 +102,7 @@ class IsolatedLlama:
             if any(type(n) is not int for n in (inp,out,total)) or not 0<inp<=MAX_CONTEXT or not 0<out<=MAX_PREDICT or total!=inp+out or total>MAX_CONTEXT:
                 raise ValueError('invalid_token_receipt')
             phase='model_identity'
-            if r.get('model')!='hl-pinned-smollm2' or len(r['choices'])!=1:
+            if r.get('model')!='hl-pinned-qwen3-4b-instruct-2507' or len(r['choices'])!=1:
                 raise ValueError('wrong_model_or_choice_count')
             phase='finish_reason'
             if choice.get('finish_reason')!='stop':

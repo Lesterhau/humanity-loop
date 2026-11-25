@@ -3,7 +3,7 @@ from isolated_adapter import *
 from tempfile import TemporaryDirectory
 
 def good():
-    return {'model':'hl-pinned-smollm2','choices':[{'finish_reason':'stop','message':{'role':'assistant','content':'Review draft'}}],'usage':{'prompt_tokens':500,'completion_tokens':10,'total_tokens':510}}
+    return {'model':'hl-pinned-qwen3-4b-instruct-2507','choices':[{'finish_reason':'stop','message':{'role':'assistant','content':'Review draft'}}],'usage':{'prompt_tokens':500,'completion_tokens':10,'total_tokens':510}}
 class TestAdapter(unittest.TestCase):
     def test_eight_calls_and_ninth_denied(self):
         a=IsolatedLlama(transport=lambda p,t:good())
@@ -28,7 +28,7 @@ class TestAdapter(unittest.TestCase):
             self.assertEqual(a.receipts,[])
     def test_payload_limit(self):
         def t(p,timeout):
-            self.assertEqual(p['max_tokens'],256);self.assertEqual(p['model'],'hl-pinned-smollm2');self.assertFalse(p['stream']);self.assertNotIn('tools',p);return good()
+            self.assertEqual(p['max_tokens'],256);self.assertEqual(p['model'],'hl-pinned-qwen3-4b-instruct-2507');self.assertFalse(p['stream']);self.assertNotIn('tools',p);return good()
         IsolatedLlama(transport=t)('scout','p',5)
     def test_invalid_prompt_and_time(self):
         for prompt,timeout in [('',5),('x'*12001,5),('p',float('nan')),('p',True),('p',-1)]:

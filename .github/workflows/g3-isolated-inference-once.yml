@@ -23,8 +23,8 @@ jobs:
       - name: Offline adapter regression
         run: python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
       - name: Execute at most one network-isolated fixture run
-        # Single bounded structured decision acceptance attempt; no automatic retry.
-        if: github.event.action == 'synchronize' && github.event.before == 'e7546258136c3910c3c28bd869370e197f87c11e'
+        # Model migration candidate: offline validation only until separately authorized.
+        if: ${{ false }}
         env:
           HL_APPROVED_ONE_SHOT: 'true'
         run: bash scripts/g3-isolated-inference/run-ci.sh

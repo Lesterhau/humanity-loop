@@ -12,13 +12,15 @@ trap cleanup EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
 image='ghcr.io/ggml-org/llama.cpp:server-b9519@sha256:abaf7899e16b638411096f6db42563dffa876119037458b7986f2a6bde3df41e'
-url='https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct-GGUF/resolve/2d4a76a30b4af41ecd395c35725ac11688d4cfe4/smollm2-1.7b-instruct-q4_k_m.gguf'
-expected='decd2598bc2c8ed08c19adc3c8fdd461ee19ed5708679d1c54ef54a5a30d4f33'
-curl -q --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --max-redirs 5 --max-time 180 --max-filesize 1200000000 "$url" -o "$work/model.gguf"
+url='https://huggingface.co/bartowski/Qwen_Qwen3-4B-Instruct-2507-GGUF/resolve/5ba9dff45461e5bab86959be7d585609fe9e6bc3/Qwen_Qwen3-4B-Instruct-2507-Q4_K_M.gguf'
+expected='2fde00ce69dd4899c70d020845e2638353015bba0fdf161b3eb965f2bca4464e'
+expected_bytes=2497280736
+curl -q --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --max-redirs 5 --max-time 180 --max-filesize 2497280736 "$url" -o "$work/model.gguf"
+[[ "$(wc -c < "$work/model.gguf")" == "$expected_bytes" ]] || { echo "Model size mismatch"; exit 2; }
 printf '%s  %s\n' "$expected" "$work/model.gguf" | sha256sum -c -
 chmod 0444 "$work/model.gguf"
 docker pull --platform linux/amd64 "$image"
-cid=$(docker run -d --pull never --platform linux/amd64 --network none --cap-drop ALL --security-opt no-new-privileges --read-only --tmpfs /tmp:rw,noexec,nosuid,size=128m --user 65534:65534 --memory 6g --cpus 4 --pids-limit 128 --mount "type=bind,src=$work/model.gguf,dst=/model.gguf,readonly" "$image" --model /model.gguf --alias hl-pinned-smollm2 --host 127.0.0.1 --port 8080 --ctx-size 4096 --parallel 1 --threads 4 --n-gpu-layers 0 --n-predict 256)
+cid=$(docker run -d --pull never --platform linux/amd64 --network none --cap-drop ALL --security-opt no-new-privileges --read-only --tmpfs /tmp:rw,noexec,nosuid,size=128m --user 65534:65534 --memory 6g --cpus 4 --pids-limit 128 --mount "type=bind,src=$work/model.gguf,dst=/model.gguf,readonly" "$image" --model /model.gguf --alias hl-pinned-qwen3-4b-instruct-2507 --host 127.0.0.1 --port 8080 --ctx-size 4096 --parallel 1 --threads 4 --n-gpu-layers 0 --n-predict 256)
 [[ $(docker inspect -f '{{.HostConfig.NetworkMode}}' "$cid") == none ]] || exit 2
 [[ $(docker inspect -f '{{.HostConfig.Privileged}}' "$cid") == false ]] || exit 2
 pid=$(docker inspect -f '{{.State.Pid}}' "$cid")

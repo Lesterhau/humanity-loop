@@ -47,7 +47,7 @@ class StructuredScoutTests(unittest.TestCase):
         requests=[]
         def transport(p,t):
             requests.append(p)
-            return {'model':'hl-pinned-smollm2','choices':[{'finish_reason':'stop','message':{'role':'assistant','content':payload(GOOD)}}],'usage':{'prompt_tokens':500,'completion_tokens':100,'total_tokens':600}}
+            return {'model':'hl-pinned-qwen3-4b-instruct-2507','choices':[{'finish_reason':'stop','message':{'role':'assistant','content':payload(GOOD)}}],'usage':{'prompt_tokens':500,'completion_tokens':100,'total_tokens':600}}
         a=IsolatedLlama(transport=transport)
         a('scout','p',5);a('verify','p',5)
         self.assertEqual(requests[0]['response_format'],RESPONSE_FORMAT)
