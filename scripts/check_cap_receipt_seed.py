@@ -13,7 +13,7 @@ BASE='e15ad3f8257187648a73decc235342be8e509ef2'
 def main(repo):
     assert git(repo,'rev-parse','HEAD').decode().strip()==BASE
     assert git(repo,'status','--porcelain')==b''
-    refs=git(repo,'show-ref')
+    refs=git(repo,'for-each-ref','--format=%(objectname) %(refname)')
     original=load(repo,BASE,only=False)
     assert len(original)==56 # 55 historical machine archives and latest; review remains on main.
     start=seed(repo,BASE)
@@ -25,7 +25,7 @@ def main(repo):
     assert len(final)==57
     assert all(final[k]==v for k,v in original.items() if k!=LATEST)
     assert read_latest(repo,updated)==raw
-    assert git(repo,'show-ref')==refs
+    assert git(repo,'for-each-ref','--format=%(objectname) %(refname)')==refs
     assert git(repo,'status','--porcelain')==b''
     assert git(repo,'rev-parse','HEAD').decode().strip()==BASE
     print('CAP_HISTORICAL_SEED_REHEARSAL_PASSED archives=55 latest=1 preserved_archives=55 new_archive=1')

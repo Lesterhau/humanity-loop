@@ -106,5 +106,15 @@ class PilotTests(unittest.TestCase):
         with self.assertRaisesRegex(Hold,'unexpected_seed_path'):
             seed(self.repo,self.g('rev-parse','HEAD'))
 
+    def test_historical_rehearsal_detached_checkout_without_refs(self):
+        self.g('checkout','--detach',self.main)
+        self.g('update-ref','-d','refs/heads/main',self.main)
+        self.assertEqual(git(self.repo,'for-each-ref','--format=%(objectname) %(refname)'),b'')
+        self.assertEqual(load(self.repo,seed(self.repo,self.main),only=True),
+                         load(self.repo,self.main,only=False))
+        self.assertEqual(git(self.repo,'for-each-ref','--format=%(objectname) %(refname)'),b'')
+        self.assertEqual(self.g('rev-parse','HEAD'),self.main)
+        self.assertEqual(self.g('status','--porcelain'),'')
+        
 if __name__=='__main__':unittest.main()
 
