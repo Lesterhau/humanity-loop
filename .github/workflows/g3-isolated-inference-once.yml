@@ -1,7 +1,7 @@
 name: G3 one-shot isolated inference acceptance (fixture only)
 on:
   pull_request:
-    types: [opened]
+    types: [opened, synchronize]
     paths:
       - '.github/workflows/g3-isolated-inference-once.yml'
       - 'scripts/g3-isolated-inference/**'
@@ -23,6 +23,7 @@ jobs:
       - name: Offline adapter regression
         run: python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
       - name: Execute at most one network-isolated fixture run
+        if: github.event.action == 'opened'
         env:
           HL_APPROVED_ONE_SHOT: 'true'
         run: bash scripts/g3-isolated-inference/run-ci.sh

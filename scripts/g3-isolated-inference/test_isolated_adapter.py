@@ -43,3 +43,35 @@ class TestAdapter(unittest.TestCase):
             with self.assertRaises(ValueError):verify_namespace(net,route,v6)
     def test_redirect(self):
         with self.assertRaises(ValueError):NoRedirects().redirect_request(None,None,None,None,None,None)
+
+    def test_finish_length_reason_preserved_without_text(self):
+        r=good()
+        r['choices'][0]['finish_reason']='length'
+        r['choices'][0]['message']['content']='PRIVATE_DIAGNOSTIC_SENTINEL'
+        a=IsolatedLlama(transport=lambda p,t:r)
+        with self.assertRaises(ValueError): a('scout','p',5)
+        self.assertEqual(a.last_failure['phase'],'finish_reason')
+        self.assertEqual(a.last_failure['finish_reason'],'length')
+        self.assertEqual(a.last_failure['completion_tokens'],10)
+        self.assertNotIn('PRIVATE_DIAGNOSTIC_SENTINEL',json.dumps(a.last_failure))
+        self.assertTrue(a.failed)
+        self.assertEqual(a.receipts,[])
+    def test_identity_and_token_failures_distinct(self):
+        for mutate,phase in [(lambda r:r.update(model='PRIVATE_SENTINEL'),'model_identity'),(lambda r:r['usage'].update(total_tokens=0),'token_receipt')]:
+            r=good();mutate(r);a=IsolatedLlama(transport=lambda p,t:r)
+            with self.assertRaises(ValueError):a('scout','p',5)
+            self.assertEqual(a.last_failure['phase'],phase)
+            self.assertNotIn('PRIVATE_SENTINEL',json.dumps(a.last_failure))
+    def test_exception_message_not_logged(self):
+        def fail(p,t):raise ValueError('PRIVATE_TRANSPORT_SENTINEL')
+        a=IsolatedLlama(transport=fail)
+        with self.assertRaises(ValueError):a('scout','p',5)
+        self.assertEqual(a.last_failure['phase'],'transport')
+        self.assertNotIn('PRIVATE_TRANSPORT_SENTINEL',json.dumps(a.last_failure))
+    def test_malformed_diagnostic_fields_safe(self):
+        r={'choices':[{'finish_reason':{'private':'SENTINEL'},'message':{'content':{'private':'SENTINEL'}}}],'usage':{'prompt_tokens':True,'completion_tokens':9999999,'total_tokens':'SENTINEL'}}
+        d=safe_diagnostic('scout','token_receipt',r,ValueError('SENTINEL'))
+        self.assertIsNone(d['prompt_tokens'])
+        self.assertIsNone(d['completion_tokens'])
+        self.assertIsNone(d['total_tokens'])
+        self.assertNotIn('SENTINEL',json.dumps(d))

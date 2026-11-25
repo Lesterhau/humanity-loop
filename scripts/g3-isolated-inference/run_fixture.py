@@ -31,12 +31,12 @@ def main():
     a=IsolatedLlama()
     result=run_local(task,a,max_seconds=240)
     complete=(result['status']=='draft_review_pending' and result['model_calls']==8 and tuple(result['roles_completed'])==STAGES and tuple(x['stage'] for x in a.receipts)==STAGES and result['control_plane_task_status']=='completed')
-    result.update(model_provider='isolated_llama_cpp_cpu',inference_acceptance_candidate=complete,stage_token_receipts=a.receipts,model_sha256=MODEL_SHA256,container_image=IMAGE,independent_review_completed=False,provider_account_cap_verified=False,canonical_supabase_claimed=False,eligible_for_win_ledger=False,network_boundary='isolated namespace, only loopback observed')
+    result.update(model_provider='isolated_llama_cpp_cpu',inference_acceptance_candidate=complete,stage_token_receipts=a.receipts,adapter_failure=a.last_failure,model_sha256=MODEL_SHA256,container_image=IMAGE,independent_review_completed=False,provider_account_cap_verified=False,canonical_supabase_claimed=False,eligible_for_win_ledger=False,network_boundary='isolated namespace, only loopback observed')
     result['note']='Synthetic fixture only; no source retrieval, external action, hosted authentication, provider cap or release claim.'
     data=(json.dumps(result,indent=2,ensure_ascii=False)+'\n').encode()
     fd=os.open(out,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
     with os.fdopen(fd,'wb') as f: f.write(data)
     # Public log is metadata only; no generated text, task payload or credentials.
-    print(json.dumps({'status':result['status'],'reason':result['reason'],'complete_candidate':complete,'attempted_calls':len(a.attempted),'valid_responses':len(a.receipts),'stage_token_receipts':a.receipts,'receipt_sha256':hashlib.sha256(data).hexdigest(),'human_review_required':True}))
+    print(json.dumps({'status':result['status'],'reason':result['reason'],'complete_candidate':complete,'attempted_calls':len(a.attempted),'valid_responses':len(a.receipts),'stage_token_receipts':a.receipts,'adapter_failure':a.last_failure,'receipt_sha256':hashlib.sha256(data).hexdigest(),'human_review_required':True}))
     return 0 if complete else 2
 if __name__=='__main__':raise SystemExit(main())
