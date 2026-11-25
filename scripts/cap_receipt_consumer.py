@@ -6,6 +6,7 @@ fallback to main, credential access, or changes to repository refs.
 """
 import json
 import subprocess
+import shutil
 from pathlib import Path
 from cap_receipt_pilot import git,load,parse,LATEST,require,Hold
 
@@ -36,7 +37,11 @@ const s=require(process.argv[1]);
 const now=Number(process.argv[2]);
 const result=s.receiptCheck(...s.CHECKS[0],now,()=>JSON.parse(fs.readFileSync(0,'utf8')));
 process.stdout.write(JSON.stringify(result));"""
-    proc=subprocess.run(['/usr/bin/env','node','-e',source,str(script),str(now_ms)],
+    # Resolve the trusted CI runner's installed Node executable before clearing
+    # the child environment. Do not forward runner credentials or NODE_OPTIONS.
+    node=shutil.which('node')
+    require(node is not None and Path(node).is_absolute(),'node_runtime_unavailable')
+    proc=subprocess.run([node,'-e',source,str(script),str(now_ms)],
         input=raw,stdout=subprocess.PIPE,stderr=subprocess.PIPE,
         timeout=10,check=True,env={'PATH':'/usr/bin:/bin','LANG':'C'})
     result=json.loads(proc.stdout)

@@ -54,4 +54,10 @@ class ConsumerTests(unittest.TestCase):
         head=propose(self.repo,self.head,self.report(self.time+timedelta(hours=4)))
         self.assertEqual(self.check(head)['status'],'critical')
 
+    def test_missing_node_is_explicit_failure(self):
+        from unittest.mock import patch
+        with patch('cap_receipt_consumer.shutil.which',return_value=None):
+            with self.assertRaisesRegex(Hold,'node_runtime_unavailable'):
+                self.check(self.head)
+
 if __name__=='__main__': unittest.main()
