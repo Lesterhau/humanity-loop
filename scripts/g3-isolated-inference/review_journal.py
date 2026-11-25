@@ -18,7 +18,7 @@ from review_retention import (open_private,inspect,store,retrieve,remove,require
     id_ok,now_utc,MAX_TTL_HOURS,RetentionHold)
 
 DB='review-ledger.sqlite3'
-STATES=('storing','retained','deleting','deleted','hold')
+STATES=('storing','retained','deleting','deleted','hold','purging','purged_unverified')
 
 @contextmanager
 def journal(root):
@@ -45,7 +45,7 @@ def journal(root):
         with db:
             db.execute("""CREATE TABLE IF NOT EXISTS bundles(
                 id TEXT PRIMARY KEY, manifest TEXT NOT NULL,
-                state TEXT NOT NULL CHECK(state IN ('storing','retained','deleting','deleted','hold')))""")
+                state TEXT NOT NULL CHECK(state IN ('storing','retained','deleting','deleted','hold','purging','purged_unverified')))""")
             db.execute("""CREATE TABLE IF NOT EXISTS transitions(
                 seq INTEGER PRIMARY KEY, id TEXT NOT NULL,
                 state TEXT NOT NULL, at_utc TEXT NOT NULL, reason TEXT NOT NULL)""")
@@ -129,7 +129,7 @@ def reconcile(root,bid,*,now):
                 return 'hold'
             transition(db,bid,state,'retained',now,'interrupted_storage_verified')
             return 'retained'
-        if state=='deleting':
+        if state in ('deleting','purging'):
             transition(db,bid,state,'hold',now,'interrupted_deletion_unconfirmed')
             return 'hold'
         return state
@@ -168,3 +168,42 @@ def state(root,bid):
         return {'bundle_id':bid,'state':s,'manifest':m,
             'transitions':[dict(state=a,at_utc=b,reason=c) for a,b,c in db.execute(
                 'SELECT state,at_utc,reason FROM transitions WHERE id=? ORDER BY seq',(bid,))]}
+
+
+def purge_expired_held(root,bid,*,now,purge_authorized=False):
+    """Remove only the exact ciphertext entry of an expired held bundle.
+
+    The trusted journal, not the possibly corrupt on-disk manifest, supplies
+    the identity and expiry. Never recurse or remove unrelated files. The
+    result deliberately does not certify secure erasure, other copies, or
+    identity of tampered bytes. A missing or unsafe entry remains a hold.
+    Requires a trusted clock and explicit separate purge authorization.
+    """
+    require(purge_authorized is True,'held_purge_approval_missing')
+    now=now_utc(now)
+    with journal(root) as (db,fd):
+        m,state=row(db,bid)
+        _,expires=validate(m)
+        require(state=='hold' and now>=expires,'held_purge_not_eligible')
+        transition(db,bid,'hold','purging',now,'expired_held_ciphertext_purge_intent')
+        child=None
+        try:
+            child=open_private(bid,parent_fd=fd)
+            st=os.stat('review.cms',dir_fd=child,follow_symlinks=False)
+            require(stat.S_ISREG(st.st_mode) and st.st_uid==os.geteuid()
+                and st.st_nlink==1,'unsafe_ciphertext_entry')
+            # Remove the named ciphertext entry, not a caller-supplied path.
+            os.unlink('review.cms',dir_fd=child)
+            os.fsync(child)
+            os.fsync(fd)
+            try: os.stat('review.cms',dir_fd=child,follow_symlinks=False)
+            except FileNotFoundError: pass
+            else: raise RetentionHold('ciphertext_entry_still_present')
+        except (OSError,RetentionHold):
+            transition(db,bid,'purging','hold',now,'expired_held_purge_unconfirmed')
+            return {'bundle_id':bid,'status':'hold','deletion_verified':False,'retention_incident':True}
+        finally:
+            if child is not None: os.close(child)
+        transition(db,bid,'purging','purged_unverified',now,'named_ciphertext_entry_removed')
+        return {'bundle_id':bid,'status':'purged_unverified','deletion_verified':False,
+                'retention_incident':True,'independent_review_completed':False}

@@ -129,7 +129,8 @@ def remove(parent,bundle_id,*,now,revocation_authorized=False,expected_manifest=
             if expected_manifest is not None:
                 require(m==expected_manifest,'trusted_manifest_mismatch')
             require(now>=expires or revocation_authorized is True,'not_expired_or_revoked')
-            for name in FILES: os.unlink(name,dir_fd=fd)
+            # Ciphertext first, even if the process dies before manifest removal.
+            for name in ('review.cms','manifest.json'): os.unlink(name,dir_fd=fd)
             os.fsync(fd)
             os.rmdir(bundle_id,dir_fd=pfd);os.fsync(pfd)
             return {'bundle_id':bundle_id,'envelope_sha256':m['envelope_sha256'],'deleted':True,'reason':'expired' if now>=expires else 'revoked','independent_review_completed':False}

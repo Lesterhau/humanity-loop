@@ -115,3 +115,72 @@ class JournalTests(unittest.TestCase):
         with self.assertRaises(RetentionHold):self.recover(m)
         self.assertEqual(self.clean()['results'][0]['status'],'hold')
         self.assertTrue(p.exists())
+
+
+    def test_held_expired_ciphertext_purge_preserves_unrelated_files(self):
+        self.retain()
+        p=self.root/self.bid
+        (p/'manifest.json').write_text('corrupt')
+        (p/'unrelated').write_text('preserve')
+        self.assertEqual(self.clean()['results'][0]['status'],'hold')
+        result=j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        self.assertEqual(result['status'],'purged_unverified')
+        self.assertFalse(result['deletion_verified'])
+        self.assertFalse((p/'review.cms').exists())
+        self.assertEqual((p/'manifest.json').read_text(),'corrupt')
+        self.assertEqual((p/'unrelated').read_text(),'preserve')
+        self.assertEqual(j.state(self.root,self.bid)['state'],'purged_unverified')
+        with self.assertRaises(RetentionHold):self.retain()
+
+    def test_held_purge_needs_expiry_and_exact_approval(self):
+        self.retain()
+        (self.root/self.bid/'manifest.json').write_text('corrupt')
+        self.clean()
+        for v in (False,1,'true',None):
+            with self.assertRaises(RetentionHold):
+                j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=v)
+        with self.assertRaises(RetentionHold):
+            j.purge_expired_held(self.root,self.bid,now=self.now,purge_authorized=True)
+        self.assertTrue((self.root/self.bid/'review.cms').exists())
+
+    def test_missing_ciphertext_not_certified_as_purged(self):
+        self.retain()
+        p=self.root/self.bid/'review.cms';p.unlink()
+        self.clean()
+        r=j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        self.assertEqual(r['status'],'hold')
+        self.assertFalse(r['deletion_verified'])
+
+    def test_purge_does_not_follow_ciphertext_symlink(self):
+        self.retain()
+        p=self.root/self.bid/'review.cms'
+        p.unlink()
+        sentinel=self.root/'unrelated';sentinel.write_text('preserve')
+        p.symlink_to(sentinel)
+        self.clean()
+        r=j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        self.assertEqual(r['status'],'hold')
+        self.assertTrue(p.is_symlink())
+        self.assertEqual(sentinel.read_text(),'preserve')
+
+    def test_interrupted_purge_never_certifies_deletion(self):
+        self.retain()
+        p=self.root/self.bid/'manifest.json';p.unlink()
+        self.clean()
+        import os
+        original=os.unlink
+        def crash(*args,**kwargs):
+            original(*args,**kwargs)
+            raise SimulatedCrash()
+        with patch('review_journal.os.unlink',side_effect=crash):
+            with self.assertRaises(SimulatedCrash):
+                j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        self.assertEqual(j.state(self.root,self.bid)['state'],'purging')
+        self.assertEqual(j.reconcile(self.root,self.bid,now=self.expiry),'hold')
+        self.assertNotIn('purged_unverified',[t['state'] for t in j.state(self.root,self.bid)['transitions']])
+
+    def test_unexpired_or_retained_bundle_not_purge_eligible(self):
+        self.retain()
+        with self.assertRaises(RetentionHold):
+            j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        self.assertTrue((self.root/self.bid/'review.cms').exists())
