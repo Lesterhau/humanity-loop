@@ -7,6 +7,11 @@ from pathlib import Path
 
 PIN = '3eb9b7f16ab3294854780acdcfdc58959032c8d1'
 SCHEMA = 'hl_g3_rehearsal'
+# Exercise candidate SQL from the exact checked-out commit, not the superseded baseline.
+CANDIDATES = {
+    'supabase/sql/hl_control_fenced_tasks_candidate_v1.sql',
+    'supabase/sql/hl_fenced_executor_restricted_candidate_v1.sql',
+}
 SOURCES = {
     'scripts/sql/fenced_task_test_fixture.sql': 'e58132df8c7e31fc43654d41ce251fef34a98bed',
     'supabase/sql/hl_control_fenced_tasks_candidate_v1.sql': 'd0956214af455b0a3528d2965a26f9a1dd70c205',
@@ -37,10 +42,15 @@ def main():
         raise ValueError('Output must be new and outside repository')
     results = {}
     for path, expected in SOURCES.items():
-        data = subprocess.check_output(['git', '-C', str(root), 'show', f'{PIN}:{path}'])
+        candidate = path in CANDIDATES
+        commit = 'HEAD' if candidate else PIN
+        data = subprocess.check_output(['git', '-C', str(root), 'show', f'{commit}:{path}'])
         actual = hashlib.sha1(f'blob {len(data)}\0'.encode() + data).hexdigest()
-        if actual != expected:
-            raise ValueError(f'Pinned blob mismatch: {path}')
+        if candidate:
+            if (root / path).read_bytes() != data:
+                raise ValueError(f'Candidate working tree mismatch: {path}')
+        elif actual != expected:
+            raise ValueError(f'Pinned fixture blob mismatch: {path}')
         results[Path(path).name] = transform(path, data.decode('utf-8'))
     out.mkdir(mode=0o700)
     for name, content in results.items():

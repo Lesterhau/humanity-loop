@@ -28,6 +28,8 @@ export HL_REHEARSAL_WORK="$work"
 bash "$work/review/test_fenced_concurrent_claim.sh"
 psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/hl_fenced_executor_restricted_candidate_v1.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/harden.sql"
+# Disposable database only; hosted TEMP policy must be separately reviewed.
+psql -X -v ON_ERROR_STOP=1 -q -c 'REVOKE TEMPORARY ON DATABASE foundry_ci FROM PUBLIC'
 psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/test_restricted_fenced_executor.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/check.sql"
 bash "$work/review/test_fenced_authenticated_login.sh"
