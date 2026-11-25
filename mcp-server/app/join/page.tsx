@@ -62,6 +62,7 @@ export default function JoinPage() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [registrationStopped, setRegistrationStopped] = useState(false);
+  const [cohortClosed, setCohortClosed] = useState(false);
   const [copied, setCopied] = useState("");
   const [showToken, setShowToken] = useState(false);
   const [sessionId, setSessionId] = useState("");
@@ -159,6 +160,7 @@ export default function JoinPage() {
         if (response.status === 503 && data && typeof data === "object" &&
             "error" in data && data.error === "admission_capacity_unavailable") {
           setRegistrationStopped(true);
+          setCohortClosed(true);
           setError("The current pilot cohort is full or closed. No node was admitted by this request. Please wait for a new invitation; no automatic retry.");
           return;
         }
@@ -387,6 +389,11 @@ export default function JoinPage() {
                 <button className={styles.back} type="button" onClick={() => setPhase("connect")}>Go back</button>
               </div>
               {error && <p role="alert" className={styles.error}>{error} No task has been started by this page. Do not share private tokens.</p>}
+              {cohortClosed && <div className={styles.softNote}>
+                <strong>You can stay interested without creating an account.</strong>
+                <p>See what to do while the cohort is closed. This does not register you for a waitlist or start any work.</p>
+                <a href="/capacity" className={styles.secondary}>Read the pilot capacity notice</a>
+              </div>}
             </>
           )}
 
