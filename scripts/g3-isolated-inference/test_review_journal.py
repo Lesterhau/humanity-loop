@@ -97,7 +97,7 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(self.clean()['results'][0]['status'],'hold')
     def test_duplicate_id_rejected_even_after_deletion(self):
         self.retain();self.clean()
-        with self.assertRaisesRegex(RetentionHold,'bundle_id_already_recorded'):self.retain()
+        with self.assertRaisesRegex(RetentionHold,'bundle_id_already_recorded'):self.retain(now=self.expiry)
     def test_unrecorded_existing_directory_preserved(self):
         p=self.root/self.bid;p.mkdir();(p/'sentinel').write_text('preserve')
         with self.assertRaises(RetentionHold):self.retain()
@@ -224,3 +224,53 @@ class JournalTests(unittest.TestCase):
                 j.recover(self.root,self.bid,self.cert,self.cpin,self.key,self.ppin,m['envelope_sha256'])
         with self.assertRaisesRegex(RetentionHold,'clock_rollback_detected'):
             self.recover(m)
+
+
+    def test_revocation_before_expiry_is_durable(self):
+        m=self.retain()
+        result=at(j.revoke,self.root,self.bid,now=self.now,revocation_authorized=True)
+        self.assertEqual(result['status'],'revoked')
+        self.assertTrue(result['local_removal_confirmed'])
+        self.assertFalse((self.root/self.bid).exists())
+        with self.assertRaisesRegex(RetentionHold,'not_retained'):self.recover(m)
+        self.assertEqual([x['state'] for x in j.state(self.root,self.bid)['transitions']],
+                         ['storing','retained','revoking','revoked'])
+        with self.assertRaisesRegex(RetentionHold,'bundle_id_already_recorded'):self.retain()
+
+    def test_revocation_requires_exact_approval(self):
+        m=self.retain()
+        for v in (False,1,'true',None):
+            with self.assertRaisesRegex(RetentionHold,'revocation_approval_missing'):
+                at(j.revoke,self.root,self.bid,now=self.now,revocation_authorized=v)
+        self.assertEqual(self.recover(m)[0],self.data)
+
+    def test_revocation_corrupt_manifest_denies_recovery(self):
+        m=self.retain()
+        p=self.root/self.bid
+        (p/'manifest.json').write_text('corrupt')
+        result=at(j.revoke,self.root,self.bid,now=self.now,revocation_authorized=True)
+        self.assertEqual(result['status'],'hold')
+        self.assertFalse(result['local_removal_confirmed'])
+        self.assertTrue(result['journal_access_revoked'])
+        with self.assertRaisesRegex(RetentionHold,'not_retained'):self.recover(m)
+        self.assertTrue((p/'review.cms').exists())
+        self.assertEqual(at(j.purge_expired_held,self.root,self.bid,now=self.expiry,
+                         purge_authorized=True)['status'],'purged_unverified')
+
+    def test_interrupted_revocation_not_recovered_as_retained(self):
+        m=self.retain()
+        with patch('review_journal.remove',side_effect=SimulatedCrash):
+            with self.assertRaises(SimulatedCrash):
+                at(j.revoke,self.root,self.bid,now=self.now,revocation_authorized=True)
+        self.assertEqual(j.state(self.root,self.bid)['state'],'revoking')
+        with self.assertRaisesRegex(RetentionHold,'not_retained'):self.recover(m)
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.now),'hold')
+        with self.assertRaisesRegex(RetentionHold,'not_retained'):self.recover(m)
+
+    def test_revocation_after_expiry_no_false_review_claim(self):
+        self.retain()
+        result=at(j.revoke,self.root,self.bid,now=self.expiry,revocation_authorized=True)
+        self.assertEqual(result['status'],'revoked')
+        self.assertFalse(result['independent_review_completed'])
+        with self.assertRaisesRegex(RetentionHold,'revocation_not_eligible'):
+            at(j.revoke,self.root,self.bid,now=self.expiry,revocation_authorized=True)

@@ -18,7 +18,7 @@ from review_retention import (open_private,inspect,store,retrieve,remove,require
     id_ok,now_utc,MAX_TTL_HOURS,RetentionHold)
 
 DB='review-ledger.sqlite3'
-STATES=('storing','retained','deleting','deleted','hold','purging','purged_unverified')
+STATES=('storing','retained','deleting','deleted','hold','purging','purged_unverified','revoking','revoked')
 
 @contextmanager
 def journal(root):
@@ -45,7 +45,7 @@ def journal(root):
         with db:
             db.execute("""CREATE TABLE IF NOT EXISTS bundles(
                 id TEXT PRIMARY KEY, manifest TEXT NOT NULL,
-                state TEXT NOT NULL CHECK(state IN ('storing','retained','deleting','deleted','hold','purging','purged_unverified')))""")
+                state TEXT NOT NULL CHECK(state IN ('storing','retained','deleting','deleted','hold','purging','purged_unverified','revoking','revoked')))""")
             db.execute("""CREATE TABLE IF NOT EXISTS transitions(
                 seq INTEGER PRIMARY KEY, id TEXT NOT NULL,
                 state TEXT NOT NULL, at_utc TEXT NOT NULL, reason TEXT NOT NULL)""")
@@ -149,7 +149,7 @@ def reconcile(root,bid):
                 return 'hold'
             transition(db,bid,state,'retained',now,'interrupted_storage_verified')
             return 'retained'
-        if state in ('deleting','purging'):
+        if state in ('deleting','purging','revoking'):
             transition(db,bid,state,'hold',now,'interrupted_deletion_unconfirmed')
             return 'hold'
         return state
@@ -227,3 +227,31 @@ def purge_expired_held(root,bid,*,purge_authorized=False):
         transition(db,bid,'purging','purged_unverified',now,'named_ciphertext_entry_removed')
         return {'bundle_id':bid,'status':'purged_unverified','deletion_verified':False,
                 'retention_incident':True,'independent_review_completed':False}
+
+
+def revoke(root,bid,*,revocation_authorized=False):
+    """Revoke one retained artifact before or after expiry through the journal.
+
+    The durable intent denies retrieval before unlinking. An interrupted or
+    unverifiable removal holds the artifact; it cannot become retained again.
+    This revokes access through this journal only, not previously exported
+    ciphertext/plaintext, certificates, keys, backups or other copies.
+    """
+    require(revocation_authorized is True,'revocation_approval_missing')
+    with journal(root) as (db,fd):
+        now=_trusted_now(db)
+        m,s=row(db,bid)
+        created,_=validate(m)
+        require(now>=created and s=='retained','revocation_not_eligible')
+        transition(db,bid,'retained','revoking',now,'revocation_intent')
+        try:
+            receipt=remove(root,bid,now=now,expected_manifest=m,revocation_authorized=True)
+            require(receipt.get('deleted') is True and receipt.get('bundle_id')==bid
+                and receipt.get('envelope_sha256')==m['envelope_sha256'],'invalid_revocation_receipt')
+        except (OSError,RetentionHold):
+            transition(db,bid,'revoking','hold',now,'revocation_removal_unconfirmed')
+            return {'bundle_id':bid,'status':'hold','journal_access_revoked':True,
+                    'local_removal_confirmed':False,'independent_review_completed':False}
+        transition(db,bid,'revoking','revoked',now,'revocation_local_removal_verified')
+        return {'bundle_id':bid,'status':'revoked','journal_access_revoked':True,
+                'local_removal_confirmed':True,'independent_review_completed':False}
