@@ -5,7 +5,8 @@ import os
 import sys
 from pathlib import Path
 from isolated_adapter import IsolatedLlama, STAGES, MODEL_SHA256, IMAGE, verify_namespace
-from scout_prompt import scout_prompt, scout_diagnostic
+from scout_prompt import scout_diagnostic
+from structured_scout import structured_prompt, parse_scout, raw_receipt, ScoutFormatHold
 
 PINS={
     'scripts/foundry_lite.py':'bcc0bffa0638d8cacc665363bfe8d4f67244ee62',
@@ -34,9 +35,15 @@ def main():
     scout_meta=None
     def invoke(stage,prompt,timeout):
         nonlocal scout_meta
-        response=a(stage,scout_prompt(task) if stage=='scout' else prompt,timeout)
+        response=a(stage,structured_prompt(task) if stage=='scout' else prompt,timeout)
         if stage=='scout':
-            scout_meta=scout_diagnostic(response,proposal_is_actionable)
+            scout_meta=raw_receipt(response)
+            try:
+                response=parse_scout(response)
+            except ScoutFormatHold as exc:
+                scout_meta.update(structured_pass=False,format_failure=exc.code)
+                raise
+            scout_meta.update(structured_pass=True,**scout_diagnostic(response,proposal_is_actionable))
             # Reject copied placeholders and duplicate checks as well as upstream failures.
             # Never normalize, fabricate or repair model-generated text.
             if scout_meta['placeholder_present'] or not scout_meta['distinct_checks']:
