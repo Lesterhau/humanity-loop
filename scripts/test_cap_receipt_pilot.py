@@ -85,4 +85,26 @@ class PilotTests(unittest.TestCase):
         with self.assertRaisesRegex(Hold,'immutable_commit_required'):
             propose(self.repo,'main',self.later())
 
+    def test_wrong_dated_archive_rejected(self):
+        self.put(PREFIX+'runs/2026-11-23.json',self.raw)
+        self.g('add','-A');self.g('commit','-qm','incorrect archive date')
+        with self.assertRaisesRegex(Hold,'archive_date_mismatch'):
+            seed(self.repo,self.g('rev-parse','HEAD'))
+    def test_wrong_versioned_archive_rejected(self):
+        self.put(PREFIX+'runs/20261125T120000000000Z-'+'a'*64+'.json',self.raw)
+        self.g('add','-A');self.g('commit','-qm','incorrect archive digest')
+        with self.assertRaisesRegex(Hold,'archive_digest_or_time_mismatch'):
+            seed(self.repo,self.g('rev-parse','HEAD'))
+    def test_latest_not_archived_rejected(self):
+        self.put(LATEST,self.later())
+        self.g('add','-A');self.g('commit','-qm','latest missing archive')
+        with self.assertRaisesRegex(Hold,'latest_not_archived'):
+            seed(self.repo,self.g('rev-parse','HEAD'))
+    def test_unknown_machine_path_rejected(self):
+        self.put(PREFIX+'unclassified.json',self.raw)
+        self.g('add','-A');self.g('commit','-qm','unclassified receipt')
+        with self.assertRaisesRegex(Hold,'unexpected_seed_path'):
+            seed(self.repo,self.g('rev-parse','HEAD'))
+
 if __name__=='__main__':unittest.main()
+

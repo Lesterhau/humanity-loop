@@ -81,15 +81,31 @@ def load(repo,head,*,only):
         meta,path=row.split(b'\t',1);path=path.decode('utf-8')
         if not scoped(path):
             require(not only,'unexpected_receipt_path')
+            require(not path.startswith(PREFIX) or path.startswith(PREFIX+'reviews/'),'unexpected_seed_path')
             continue
         mode,kind,oid=meta.decode('ascii').split()
         require(mode=='100644' and kind=='blob','unsafe_receipt_mode')
         size=int(git(repo,'cat-file','-s',oid))
         total+=size
         require(len(entries)<MAX_FILES and size<=MAX_FILE and total<=MAX_TOTAL,'tree_limit')
-        raw=git(repo,'cat-file','blob',oid);parse(raw)
+        raw=git(repo,'cat-file','blob',oid)
+        try:
+            dt=parse(raw)
+            if path!=LATEST:
+                name=path.rsplit('/',1)[-1]
+                if len(name)==15: # YYYY-MM-DD.json
+                    require(name==dt.date().isoformat()+'.json','archive_date_mismatch')
+                else:
+                    expected=dt.strftime('%Y%m%dT%H%M%S%fZ')+'-'+hashlib.sha256(raw).hexdigest()+'.json'
+                    require(name==expected,'archive_digest_or_time_mismatch')
+        except (ValueError,TypeError,KeyError) as exc:
+            raise Hold('invalid_receipt:'+path+':'+type(exc).__name__+':'+str(exc)[:90]) from None
         entries[path]=(oid,raw)
     require(LATEST in entries,'missing_latest')
+    latest_raw=entries[LATEST][1]
+    archives=[raw for path,(_,raw) in entries.items() if path!=LATEST]
+    require(any(raw==latest_raw for raw in archives),'latest_not_archived')
+    require(all(parse(raw)<=parse(latest_raw) for raw in archives),'archive_newer_than_latest')
     return entries
 
 def commit(repo,entries,parent=None):

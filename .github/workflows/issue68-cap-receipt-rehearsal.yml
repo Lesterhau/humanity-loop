@@ -4,6 +4,7 @@ on:
     paths:
       - 'scripts/cap_receipt_pilot.py'
       - 'scripts/test_cap_receipt_pilot.py'
+      - 'scripts/check_cap_receipt_seed.py'
       - 'scripts/cap_daily_audit.py'
       - '.github/workflows/issue68-cap-receipt-rehearsal.yml'
 permissions:
@@ -20,3 +21,11 @@ jobs:
           persist-credentials: false
       - name: Offline CAP producer and receipt candidate tests
         run: PYTHONPATH=scripts python3 -m unittest scripts/test_cap_daily_audit.py scripts/test_cap_receipt_pilot.py -v
+      - name: Checkout exact historical public receipt seed (no credentials)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: e15ad3f8257187648a73decc235342be8e509ef2
+          path: _historical_seed
+          persist-credentials: false
+      - name: Rehearse historical receipt migration without changing refs
+        run: PYTHONPATH=scripts python3 scripts/check_cap_receipt_seed.py _historical_seed
