@@ -13,6 +13,12 @@ from test_review_packet import packet
 
 class SimulatedCrash(BaseException): pass
 
+def at(fn,*args,now,**kwargs):
+    # Test-only clock substitution; no public time argument.
+    with patch('review_journal._wall_clock',return_value=now):
+        return fn(*args,**kwargs)
+
+
 class JournalTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -35,12 +41,12 @@ class JournalTests(unittest.TestCase):
         self.bid='review-journal-01'
     def retain(self,**kw):
         args=dict(now=self.now,ttl_hours=1,storage_authorized=True);args.update(kw)
-        return j.retain(self.root,self.bid,self.data,self.cert,self.cpin,self.ppin,**args)
+        return at(j.retain,self.root,self.bid,self.data,self.cert,self.cpin,self.ppin,**args)
     def recover(self,m,now=None):
-        return j.recover(self.root,self.bid,self.cert,self.cpin,self.key,self.ppin,m['envelope_sha256'],now=now or self.now)
+        return at(j.recover,self.root,self.bid,self.cert,self.cpin,self.key,self.ppin,m['envelope_sha256'],now=now or self.now)
     def clean(self,**kw):
         args=dict(now=self.expiry,deletion_authorized=True);args.update(kw)
-        return j.cleanup(self.root,[self.bid],**args)
+        return at(j.cleanup,self.root,[self.bid],**args)
     def test_durable_full_lifecycle(self):
         m=self.retain()
         self.assertEqual(j.state(self.root,self.bid)['state'],'retained')
@@ -63,12 +69,12 @@ class JournalTests(unittest.TestCase):
         s=j.state(self.root,self.bid)
         self.assertEqual(s['state'],'storing')
         with self.assertRaises(RetentionHold):self.recover(s['manifest'])
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.now),'retained')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.now),'retained')
         self.assertEqual(self.recover(s['manifest'])[0],self.data)
     def test_crash_before_storage_is_hold(self):
         with patch('review_journal.store',side_effect=SimulatedCrash):
             with self.assertRaises(SimulatedCrash):self.retain()
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.now),'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.now),'hold')
         self.assertEqual(self.clean()['results'][0]['status'],'hold')
     def test_crash_after_delete_not_false_success(self):
         self.retain()
@@ -80,13 +86,13 @@ class JournalTests(unittest.TestCase):
             with self.assertRaises(SimulatedCrash):self.clean()
         self.assertFalse((self.root/self.bid).exists())
         self.assertEqual(j.state(self.root,self.bid)['state'],'deleting')
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.expiry),'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.expiry),'hold')
         self.assertNotIn('deleted',[x['state'] for x in j.state(self.root,self.bid)['transitions']])
     def test_crash_before_delete_no_automatic_retry(self):
         self.retain()
         with patch('review_journal.remove',side_effect=SimulatedCrash):
             with self.assertRaises(SimulatedCrash):self.clean()
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.expiry),'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.expiry),'hold')
         self.assertTrue((self.root/self.bid/'review.cms').exists())
         self.assertEqual(self.clean()['results'][0]['status'],'hold')
     def test_duplicate_id_rejected_even_after_deletion(self):
@@ -112,7 +118,7 @@ class JournalTests(unittest.TestCase):
         p=self.root/self.bid/'manifest.json'
         altered=dict(m,expires_utc=(self.expiry+timedelta(hours=1)).isoformat())
         p.write_text(json.dumps(altered))
-        with self.assertRaises(RetentionHold):self.recover(m)
+        with self.assertRaisesRegex(RetentionHold,'clock_rollback_detected'):self.recover(m)
         self.assertEqual(self.clean()['results'][0]['status'],'hold')
         self.assertTrue(p.exists())
 
@@ -123,7 +129,7 @@ class JournalTests(unittest.TestCase):
         (p/'manifest.json').write_text('corrupt')
         (p/'unrelated').write_text('preserve')
         self.assertEqual(self.clean()['results'][0]['status'],'hold')
-        result=j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        result=at(j.purge_expired_held,self.root,self.bid,now=self.expiry,purge_authorized=True)
         self.assertEqual(result['status'],'purged_unverified')
         self.assertFalse(result['deletion_verified'])
         self.assertFalse((p/'review.cms').exists())
@@ -138,16 +144,16 @@ class JournalTests(unittest.TestCase):
         self.clean()
         for v in (False,1,'true',None):
             with self.assertRaises(RetentionHold):
-                j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=v)
+                at(j.purge_expired_held,self.root,self.bid,now=self.expiry,purge_authorized=v)
         with self.assertRaises(RetentionHold):
-            j.purge_expired_held(self.root,self.bid,now=self.now,purge_authorized=True)
+            at(j.purge_expired_held,self.root,self.bid,now=self.now,purge_authorized=True)
         self.assertTrue((self.root/self.bid/'review.cms').exists())
 
     def test_missing_ciphertext_not_certified_as_purged(self):
         self.retain()
         p=self.root/self.bid/'review.cms';p.unlink()
         self.clean()
-        r=j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        r=at(j.purge_expired_held,self.root,self.bid,now=self.expiry,purge_authorized=True)
         self.assertEqual(r['status'],'hold')
         self.assertFalse(r['deletion_verified'])
 
@@ -158,7 +164,7 @@ class JournalTests(unittest.TestCase):
         sentinel=self.root/'unrelated';sentinel.write_text('preserve')
         p.symlink_to(sentinel)
         self.clean()
-        r=j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+        r=at(j.purge_expired_held,self.root,self.bid,now=self.expiry,purge_authorized=True)
         self.assertEqual(r['status'],'hold')
         self.assertTrue(p.is_symlink())
         self.assertEqual(sentinel.read_text(),'preserve')
@@ -174,13 +180,47 @@ class JournalTests(unittest.TestCase):
             raise SimulatedCrash()
         with patch('review_journal.os.unlink',side_effect=crash):
             with self.assertRaises(SimulatedCrash):
-                j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+                at(j.purge_expired_held,self.root,self.bid,now=self.expiry,purge_authorized=True)
         self.assertEqual(j.state(self.root,self.bid)['state'],'purging')
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.expiry),'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.expiry),'hold')
         self.assertNotIn('purged_unverified',[t['state'] for t in j.state(self.root,self.bid)['transitions']])
 
     def test_unexpired_or_retained_bundle_not_purge_eligible(self):
         self.retain()
         with self.assertRaises(RetentionHold):
-            j.purge_expired_held(self.root,self.bid,now=self.expiry,purge_authorized=True)
+            at(j.purge_expired_held,self.root,self.bid,now=self.expiry,purge_authorized=True)
         self.assertTrue((self.root/self.bid/'review.cms').exists())
+
+    def test_expired_recovery_cannot_rewind_clock(self):
+        m=self.retain()
+        with self.assertRaisesRegex(RetentionHold,'expired'):
+            self.recover(m,self.expiry)
+        with self.assertRaisesRegex(RetentionHold,'clock_rollback_detected'):
+            self.recover(m,self.now)
+        self.assertEqual(self.clean()['results'][0]['status'],'deleted')
+
+    def test_public_api_rejects_caller_time(self):
+        m=self.retain()
+        with self.assertRaises(TypeError):
+            j.recover(self.root,self.bid,self.cert,self.cpin,self.key,self.ppin,m['envelope_sha256'],now=self.now)
+
+    def test_clock_rollback_prevents_mutation(self):
+        self.retain()
+        with self.assertRaisesRegex(RetentionHold,'clock_rollback_detected'):
+            self.clean(now=self.now-timedelta(seconds=1))
+        self.assertEqual(j.state(self.root,self.bid)['state'],'retained')
+
+    def test_clock_watermark_missing_existing_journal_fails_closed(self):
+        m=self.retain()
+        with j.journal(self.root) as (db,fd):
+            with db: db.execute('DELETE FROM clock_watermark')
+        with self.assertRaisesRegex(RetentionHold,'clock_watermark_missing'):
+            self.recover(m)
+
+    def test_expiry_during_decryption_refuses_plaintext(self):
+        m=self.retain()
+        with patch('review_journal._wall_clock',side_effect=[self.now,self.expiry]):
+            with self.assertRaisesRegex(RetentionHold,'expired_during_recovery'):
+                j.recover(self.root,self.bid,self.cert,self.cpin,self.key,self.ppin,m['envelope_sha256'])
+        with self.assertRaisesRegex(RetentionHold,'clock_rollback_detected'):
+            self.recover(m)

@@ -4,7 +4,7 @@ Assumes trusted local host, owner-only root and trusted ancestor paths/clock.
 All operational callers must use this journal instead of direct file helpers.
 """
 from contextlib import contextmanager
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 import fcntl
 import json
 import os
@@ -40,7 +40,7 @@ def journal(root):
         # Private trusted local root; SQLite rollback journal, full synchronization.
         db=sqlite3.connect(str(root/DB),timeout=1)
         require(db.execute('PRAGMA journal_mode=DELETE').fetchone()[0]=='delete','journal_mode')
-        db.execute('PRAGMA synchronous=FULL')
+        db.execute('PRAGMA synchronous=EXTRA')
         db.execute('PRAGMA trusted_schema=OFF')
         with db:
             db.execute("""CREATE TABLE IF NOT EXISTS bundles(
@@ -49,11 +49,28 @@ def journal(root):
             db.execute("""CREATE TABLE IF NOT EXISTS transitions(
                 seq INTEGER PRIMARY KEY, id TEXT NOT NULL,
                 state TEXT NOT NULL, at_utc TEXT NOT NULL, reason TEXT NOT NULL)""")
+            db.execute('CREATE TABLE IF NOT EXISTS clock_watermark(singleton INTEGER PRIMARY KEY CHECK(singleton=1), seen_utc TEXT NOT NULL)')
         os.fsync(fd)
         yield db,fd
     finally:
         if db is not None: db.close()
         os.close(fd)
+
+def _wall_clock():
+    """Trusted host UTC; no public clock override or environment override."""
+    return datetime.now(timezone.utc)
+
+def _trusted_now(db):
+    now=now_utc(_wall_clock())
+    old=db.execute('SELECT seen_utc FROM clock_watermark WHERE singleton=1').fetchone()
+    if old is None:
+        require(db.execute('SELECT count(*) FROM bundles').fetchone()[0]==0,'clock_watermark_missing')
+    else:
+        require(now>=now_utc(datetime.fromisoformat(old[0])),'clock_rollback_detected')
+    # Commit before acting, even if the operation later fails or observes expiry.
+    with db:
+        db.execute('INSERT INTO clock_watermark VALUES(1,?) ON CONFLICT(singleton) DO UPDATE SET seen_utc=excluded.seen_utc',(now.isoformat(),))
+    return now
 
 def row(db,bid):
     require(id_ok(bid),'invalid_bundle_id')
@@ -71,12 +88,12 @@ def transition(db,bid,old,new,now,reason):
         require(cur.rowcount==1,'unexpected_journal_state')
         db.execute('INSERT INTO transitions(id,state,at_utc,reason) VALUES(?,?,?,?)',(bid,new,now.isoformat(),reason))
 
-def retain(root,bid,packet,certificate,cert_pin,receipt_pin,*,now,ttl_hours,storage_authorized=False):
+def retain(root,bid,packet,certificate,cert_pin,receipt_pin,*,ttl_hours,storage_authorized=False):
     require(storage_authorized is True,'storage_approval_missing')
     require(id_ok(bid),'invalid_bundle_id')
     require(type(ttl_hours) is int and 1<=ttl_hours<=MAX_TTL_HOURS,'retention_limit')
-    now=now_utc(now)
     with journal(root) as (db,fd):
+        now=_trusted_now(db)
         require(db.execute('SELECT 1 FROM bundles WHERE id=?',(bid,)).fetchone() is None,'bundle_id_already_recorded')
         try: os.stat(bid,dir_fd=fd,follow_symlinks=False)
         except FileNotFoundError: pass
@@ -100,21 +117,24 @@ def retain(root,bid,packet,certificate,cert_pin,receipt_pin,*,now,ttl_hours,stor
         transition(db,bid,'storing','retained',now,'storage_verified')
         return m
 
-def recover(root,bid,certificate,cert_pin,key,receipt_pin,envelope_pin,*,now):
-    now=now_utc(now)
+def recover(root,bid,certificate,cert_pin,key,receipt_pin,envelope_pin):
     with journal(root) as (db,fd):
+        now=_trusted_now(db)
         m,state=row(db,bid)
         require(state=='retained','not_retained')
         require((cert_pin,receipt_pin,envelope_pin)==(m['recipient_cert_sha256'],m['packet_sha256'],m['envelope_sha256']),'journal_pin_mismatch')
         sealed,actual=retrieve(root,bid,now=now,expected_envelope_sha256=envelope_pin,
             expected_packet_sha256=receipt_pin,expected_recipient_cert_sha256=cert_pin)
         require(actual==m,'journal_manifest_mismatch')
-        return open_review(sealed,certificate,cert_pin,key,receipt_pin,envelope_pin)
+        clear,summary=open_review(sealed,certificate,cert_pin,key,receipt_pin,envelope_pin)
+        _,expires=validate(m)
+        require(_trusted_now(db)<expires,'expired_during_recovery')
+        return clear,summary
 
-def reconcile(root,bid,*,now):
+def reconcile(root,bid):
     """Only interrupted intents may be reconciled. Never infers deletion from absence."""
-    now=now_utc(now)
     with journal(root) as (db,fd):
+        now=_trusted_now(db)
         m,state=row(db,bid)
         created,_=validate(m)
         require(now>=created,'clock_before_creation')
@@ -134,11 +154,11 @@ def reconcile(root,bid,*,now):
             return 'hold'
         return state
 
-def cleanup(root,ids,*,now,deletion_authorized=False):
+def cleanup(root,ids,*,deletion_authorized=False):
     require(deletion_authorized is True,'cleanup_approval_missing')
     require(type(ids) is list and len(ids)<=MAX_BATCH and all(id_ok(x) for x in ids) and len(set(ids))==len(ids),'cleanup_batch_limit')
-    now=now_utc(now)
     with journal(root) as (db,fd):
+        now=_trusted_now(db)
         prepared=[]
         for bid in ids:
             m,state=row(db,bid)
@@ -170,7 +190,7 @@ def state(root,bid):
                 'SELECT state,at_utc,reason FROM transitions WHERE id=? ORDER BY seq',(bid,))]}
 
 
-def purge_expired_held(root,bid,*,now,purge_authorized=False):
+def purge_expired_held(root,bid,*,purge_authorized=False):
     """Remove only the exact ciphertext entry of an expired held bundle.
 
     The trusted journal, not the possibly corrupt on-disk manifest, supplies
@@ -180,8 +200,8 @@ def purge_expired_held(root,bid,*,now,purge_authorized=False):
     Requires a trusted clock and explicit separate purge authorization.
     """
     require(purge_authorized is True,'held_purge_approval_missing')
-    now=now_utc(now)
     with journal(root) as (db,fd):
+        now=_trusted_now(db)
         m,state=row(db,bid)
         _,expires=validate(m)
         require(state=='hold' and now>=expires,'held_purge_not_eligible')

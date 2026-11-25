@@ -9,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import datetime,timedelta,timezone
 from pathlib import Path
 
@@ -16,6 +17,12 @@ import review_journal as j
 from review_envelope import digest,run
 from review_retention import RetentionHold
 from test_review_packet import packet
+
+
+def at(fn,*args,now,**kwargs):
+    # Test-only clock substitution; no public time argument.
+    with patch('review_journal._wall_clock',return_value=now):
+        return fn(*args,**kwargs)
 
 CHILD = r"""
 import json,signal,sys
@@ -27,6 +34,7 @@ from review_envelope import digest,run
 from test_review_packet import packet
 root,bid,certpath,when,mode=sys.argv[1:]
 now=datetime.fromisoformat(when)
+j._wall_clock=lambda: now if mode.endswith('store') else now+timedelta(hours=1)
 def stop():
     print('CHECKPOINT',flush=True)
     while True: signal.pause()
@@ -53,9 +61,9 @@ if mode.endswith('store'):
     cert=Path(certpath).read_bytes()
     data=json.dumps(packet()).encode()
     j.retain(root,bid,data,cert,digest(run(['x509','-outform','DER'],cert)),digest(data),
-        now=now,ttl_hours=1,storage_authorized=True)
+        ttl_hours=1,storage_authorized=True)
 else:
-    j.cleanup(root,[bid],now=now+timedelta(hours=1),deletion_authorized=True)
+    j.cleanup(root,[bid],deletion_authorized=True)
 raise SystemExit('checkpoint was not reached')
 """
 
@@ -84,7 +92,7 @@ class JournalProcessTests(unittest.TestCase):
         (self.root/'sentinel').write_text('unrelated')
 
     def retain(self):
-        return j.retain(self.root,self.bid,self.data,self.cert,self.cpin,self.ppin,
+        return at(j.retain,self.root,self.bid,self.data,self.cert,self.cpin,self.ppin,
             now=self.now,ttl_hours=1,storage_authorized=True)
 
     def kill_at(self,mode):
@@ -111,24 +119,24 @@ class JournalProcessTests(unittest.TestCase):
     def test_sigkill_before_store(self):
         self.kill_at('before_store')
         self.assertEqual(j.state(self.root,self.bid)['state'],'storing')
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.now),'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.now),'hold')
         self.assertFalse((self.root/self.bid).exists())
 
     def test_sigkill_after_ciphertext_before_manifest(self):
         self.kill_at('partial_store')
         self.assertTrue((self.root/self.bid/'review.cms').is_file())
         self.assertFalse((self.root/self.bid/'manifest.json').exists())
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.now),'hold')
-        self.assertEqual(j.cleanup(self.root,[self.bid],now=self.expiry,deletion_authorized=True)['results'][0]['status'],'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.now),'hold')
+        self.assertEqual(at(j.cleanup,self.root,[self.bid],now=self.expiry,deletion_authorized=True)['results'][0]['status'],'hold')
         self.assertTrue((self.root/self.bid/'review.cms').exists())
 
     def test_sigkill_after_complete_storage(self):
         self.kill_at('after_store')
         s=j.state(self.root,self.bid)
         self.assertEqual(s['state'],'storing')
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.now),'retained')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.now),'retained')
         m=s['manifest']
-        clear,summary=j.recover(self.root,self.bid,self.cert,self.cpin,self.key,self.ppin,m['envelope_sha256'],now=self.now)
+        clear,summary=at(j.recover,self.root,self.bid,self.cert,self.cpin,self.key,self.ppin,m['envelope_sha256'],now=self.now)
         self.assertEqual(clear,self.data)
         self.assertFalse(summary['independent_review_completed'])
 
@@ -136,7 +144,7 @@ class JournalProcessTests(unittest.TestCase):
         self.retain()
         self.kill_at('before_delete')
         self.assertEqual(j.state(self.root,self.bid)['state'],'deleting')
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.expiry),'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.expiry),'hold')
         self.assertTrue((self.root/self.bid/'review.cms').exists())
 
     def test_sigkill_after_deletion(self):
@@ -144,5 +152,5 @@ class JournalProcessTests(unittest.TestCase):
         self.kill_at('after_delete')
         self.assertFalse((self.root/self.bid).exists())
         self.assertEqual(j.state(self.root,self.bid)['state'],'deleting')
-        self.assertEqual(j.reconcile(self.root,self.bid,now=self.expiry),'hold')
+        self.assertEqual(at(j.reconcile,self.root,self.bid,now=self.expiry),'hold')
         self.assertNotIn('deleted',[t['state'] for t in j.state(self.root,self.bid)['transitions']])
