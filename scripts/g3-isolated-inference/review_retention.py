@@ -115,7 +115,7 @@ def retrieve(parent,bundle_id,*,now,expected_envelope_sha256,expected_packet_sha
         finally: os.close(fd)
     finally: os.close(pfd)
 
-def remove(parent,bundle_id,*,now,revocation_authorized=False):
+def remove(parent,bundle_id,*,now,revocation_authorized=False,expected_manifest=None):
     """Delete only verified bundle entries after expiry or explicit revocation.
     No secure overwrite guarantee, backups or remote copy deletion.
     Corrupt bundles require authorized manual quarantine/removal.
@@ -126,6 +126,8 @@ def remove(parent,bundle_id,*,now,revocation_authorized=False):
         fd=open_private(bundle_id,parent_fd=pfd)
         try:
             _,m,expires=inspect(fd,bundle_id,now=now,check_expiry=False)
+            if expected_manifest is not None:
+                require(m==expected_manifest,'trusted_manifest_mismatch')
             require(now>=expires or revocation_authorized is True,'not_expired_or_revoked')
             for name in FILES: os.unlink(name,dir_fd=fd)
             os.fsync(fd)
