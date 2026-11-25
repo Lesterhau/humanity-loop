@@ -14,17 +14,19 @@ jobs:
   isolated-inference:
     if: github.repository == 'Lesterhau/humanity-loop' && github.event.pull_request.head.repo.full_name == 'Lesterhau/humanity-loop' && github.head_ref == 'test/g3-isolated-inference-20261124' && github.run_attempt == 1
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 17
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
       - name: Offline adapter regression
-        run: python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
+        run: |
+          bash -n scripts/g3-isolated-inference/run-ci.sh
+          python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
       - name: Execute at most one network-isolated fixture run
-        # Single bounded Qwen3 acceptance attempt; no automatic retry.
-        if: github.event.action == 'synchronize' && github.event.before == 'aefa36760edd99ce9f5f3b63628913c036b57b1e'
+        # Download timeout repair: offline validation only until separately authorized.
+        if: ${{ false }}
         env:
           HL_APPROVED_ONE_SHOT: 'true'
         run: bash scripts/g3-isolated-inference/run-ci.sh

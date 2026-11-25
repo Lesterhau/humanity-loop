@@ -16,3 +16,13 @@ class ModelPinTests(unittest.TestCase):
         self.assertEqual(MAX_PREDICT,256)
         self.assertEqual(MAX_TOTAL_SECONDS,240)
         self.assertEqual(len(STAGES),8)
+
+    def test_download_bound_separate_from_inference(self):
+        shell=(HERE/'run-ci.sh').read_text()
+        self.assertIn('--max-time 480 --max-filesize 2497280736',shell)
+        self.assertIn('timeout --kill-after=5s 240s',shell)
+        self.assertNotIn('--retry',shell)
+        self.assertIn('--n-predict 256',shell)
+        workflow=(HERE.parents[1]/'.github/workflows/g3-isolated-inference-once.yml').read_text()
+        self.assertIn('timeout-minutes: 17',workflow)
+        self.assertIn('github.run_attempt == 1',workflow)

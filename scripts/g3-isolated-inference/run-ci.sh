@@ -15,7 +15,7 @@ image='ghcr.io/ggml-org/llama.cpp:server-b9519@sha256:abaf7899e16b638411096f6db4
 url='https://huggingface.co/bartowski/Qwen_Qwen3-4B-Instruct-2507-GGUF/resolve/5ba9dff45461e5bab86959be7d585609fe9e6bc3/Qwen_Qwen3-4B-Instruct-2507-Q4_K_M.gguf'
 expected='2fde00ce69dd4899c70d020845e2638353015bba0fdf161b3eb965f2bca4464e'
 expected_bytes=2497280736
-curl -q --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --max-redirs 5 --max-time 180 --max-filesize 2497280736 "$url" -o "$work/model.gguf"
+curl -q --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --max-redirs 5 --max-time 480 --max-filesize 2497280736 "$url" -o "$work/model.gguf"
 [[ "$(wc -c < "$work/model.gguf")" == "$expected_bytes" ]] || { echo "Model size mismatch"; exit 2; }
 printf '%s  %s\n' "$expected" "$work/model.gguf" | sha256sum -c -
 chmod 0444 "$work/model.gguf"
