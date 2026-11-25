@@ -8,6 +8,7 @@ from isolated_adapter import IsolatedLlama, STAGES, MODEL_SHA256, MODEL_ID, MODE
 from scout_prompt import scout_diagnostic
 from structured_scout import structured_prompt, parse_scout, raw_receipt, ScoutFormatHold
 from structured_decisions import decision_prompt, parse_decision, DecisionHold
+from compact_roles import compact_prompt
 
 PINS={
     'scripts/foundry_lite.py':'bcc0bffa0638d8cacc665363bfe8d4f67244ee62',
@@ -37,7 +38,7 @@ def main():
     decisions={}
     def invoke(stage,prompt,timeout):
         nonlocal scout_meta
-        actual_prompt=structured_prompt(task) if stage=='scout' else decision_prompt(stage,prompt) if stage in ('verify','safety') else prompt
+        actual_prompt=structured_prompt(task) if stage=='scout' else decision_prompt(stage,prompt) if stage in ('verify','safety') else compact_prompt(stage,prompt)
         response=a(stage,actual_prompt,timeout)
         if stage=='scout':
             scout_meta=raw_receipt(response)

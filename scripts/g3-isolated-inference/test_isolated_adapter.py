@@ -75,3 +75,23 @@ class TestAdapter(unittest.TestCase):
         self.assertIsNone(d['completion_tokens'])
         self.assertIsNone(d['total_tokens'])
         self.assertNotIn('SENTINEL',json.dumps(d))
+
+    def test_per_call_elapsed_limit_fails_closed(self):
+        times=iter([0,0,46,46])
+        a=IsolatedLlama(transport=lambda p,t:good(),clock=lambda:next(times))
+        with self.assertRaises(TimeoutError): a('scout','p',45)
+        self.assertEqual(a.receipts,[])
+        self.assertEqual(a.last_failure['elapsed_ms'],46000)
+        self.assertEqual(a.last_failure['call_limit_ms'],45000)
+        self.assertTrue(a.failed)
+    def test_success_timing_and_remaining_budget(self):
+        times=iter([0,230,238])
+        limits=[]
+        def transport(p,t):
+            limits.append(t)
+            return good()
+        a=IsolatedLlama(transport=transport,clock=lambda:next(times))
+        a('scout','p',45)
+        self.assertEqual(limits,[10])
+        self.assertEqual(a.receipts[0]['elapsed_ms'],8000)
+        self.assertEqual(a.receipts[0]['call_limit_ms'],10000)

@@ -81,8 +81,10 @@ class IsolatedLlama:
             raise ValueError('duplicate_or_out_of_order_call')
         if not isinstance(prompt,str) or not 0<len(prompt)<=12000: raise ValueError('invalid_prompt')
         if type(timeout) not in (int,float) or not math.isfinite(timeout) or timeout<=0: raise ValueError('invalid_timeout')
-        remaining=MAX_TOTAL_SECONDS-(self.clock()-self.started)
+        call_started=self.clock()
+        remaining=MAX_TOTAL_SECONDS-(call_started-self.started)
         if remaining<=0: raise TimeoutError('deadline_exhausted')
+        call_limit=min(timeout,45,remaining)
         self.attempted.append(stage)
         r=None
         phase='transport'
@@ -92,9 +94,11 @@ class IsolatedLlama:
                 payload['response_format']=RESPONSE_FORMAT
             elif stage in ('verify','safety'):
                 payload['response_format']=decision_format(stage)
-            r=self.transport(payload,min(timeout,45,remaining))
+            r=self.transport(payload,call_limit)
             phase='deadline'
-            if self.clock()-self.started>MAX_TOTAL_SECONDS: raise TimeoutError('deadline_exhausted')
+            finished=self.clock()
+            if finished-self.started>MAX_TOTAL_SECONDS: raise TimeoutError('deadline_exhausted')
+            if finished-call_started>call_limit: raise TimeoutError('call_deadline_exhausted')
             phase='response_shape'
             choice=r['choices'][0]
             phase='token_receipt'
@@ -111,9 +115,10 @@ class IsolatedLlama:
             msg=choice['message']; response=msg.get('content')
             if msg.get('role')!='assistant' or msg.get('tool_calls') or not isinstance(response,str) or not 0<len(response.strip())<=8000:
                 raise ValueError('invalid_model_text')
-            self.receipts.append({'stage':stage,'input_tokens':inp,'output_tokens':out,'total_tokens':total,'finish_reason':'stop'})
+            self.receipts.append({'stage':stage,'input_tokens':inp,'output_tokens':out,'total_tokens':total,'finish_reason':'stop','elapsed_ms':round((finished-call_started)*1000),'call_limit_ms':int(call_limit*1000)})
             return response
         except Exception as exc:
             self.failed=True
             self.last_failure=safe_diagnostic(stage,phase,r,exc)
+            self.last_failure.update(elapsed_ms=round((self.clock()-call_started)*1000),call_limit_ms=int(call_limit*1000))
             raise

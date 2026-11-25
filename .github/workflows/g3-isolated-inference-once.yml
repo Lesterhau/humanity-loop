@@ -25,8 +25,8 @@ jobs:
           bash -n scripts/g3-isolated-inference/run-ci.sh
           python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
       - name: Execute at most one network-isolated fixture run
-        # Single bounded Qwen3 download-repair acceptance attempt; no automatic retry.
-        if: github.event.action == 'synchronize' && github.event.before == '42c709ef6a2ba832d9028bbbc59a07cb7b7aeea1'
+        # Offline latency-guidance and timing validation only.
+        if: ${{ false }}
         env:
           HL_APPROVED_ONE_SHOT: 'true'
         run: bash scripts/g3-isolated-inference/run-ci.sh
