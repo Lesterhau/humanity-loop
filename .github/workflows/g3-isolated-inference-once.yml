@@ -23,8 +23,8 @@ jobs:
       - name: Offline adapter regression
         run: python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
       - name: Execute at most one network-isolated fixture run
-        # Inference remains disabled until a separate bounded attempt is authorized.
-        if: ${{ false }}
+        # Single explicitly authorized Scout revision attempt; no automatic retry.
+        if: github.event.action == 'synchronize' && github.event.before == 'be761486128ddd2058f5ca5c5ec1aacb2682c949'
         env:
           HL_APPROVED_ONE_SHOT: 'true'
         run: bash scripts/g3-isolated-inference/run-ci.sh
