@@ -110,7 +110,15 @@
       "name": "MOTHER account and content",
       "required_evidence": "Actual blue check on finalized account; clear AI identity; owner-approved evidence-backed initial posts and verified manual posting path",
       "satisfied": false,
-      "evidence": []
+      "evidence": [
+        {
+          "source_commit": "b898ecbec9ee259b0aa7112efe69c93c239c3da1",
+          "artifact": "MOTHER-LAUNCH-PACK-2026-11-25.md",
+          "scope": "source-ledger-grounded private review draft; not live posting or approval",
+          "result": "New pinned introduction and six-post sequence cover four historical corrections with causal caveats; all estimated lengths <=280.",
+          "remaining": "Actual account profile, blue check, owner review, source recheck, composer length and authorized publication path."
+        }
+      ]
     },
     {
       "id": "L09",

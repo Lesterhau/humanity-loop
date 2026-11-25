@@ -1,5 +1,7 @@
 # MOTHER launch pack — owner-review drafts, October 27, 2026
 
+**Historical draft:** See [November 25 four-correction launch assets](MOTHER-LAUNCH-PACK-2026-11-25.md) for the updated review-only sequence. The earlier copy is preserved below for provenance.
+
 **Status:** DRAFT ONLY. Not approved, scheduled or published. Do not purchase X Premium, connect Stripe/Mercury, contact philanthropists or create/operate social accounts without an explicit owner action and provider confirmation. This pack is independent of the full public ChatGPT plugin release, which remains blocked by domain verification.
 
 ## Decision: two separate launch assets, not one overloaded thread
