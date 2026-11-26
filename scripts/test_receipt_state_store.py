@@ -152,14 +152,29 @@ process.stdout.write(JSON.stringify(s.evaluateVerified(now,process.argv[3],proce
         git(repo,'add','-A');git(repo,'commit','-qm','synthetic canonical seed')
         main=git(repo,'rev-parse','main').decode().strip()
         refs={w:'refs/heads/receipt-test-'+w for w in ('cap',*initial)}
+        import contextlib,io,sys
+        def cli(operation,writer,*args):
+            output=io.StringIO()
+            argv=['receipt_state_store.py',operation,'--repo',str(repo),'--writer',writer,*map(str,args)]
+            with patch.object(sys,'argv',argv),contextlib.redirect_stdout(output):
+                store.main()
+            return output.getvalue().strip()
+        def pinned(w):
+            return ['--anchor',anchors[w],'--head',anchors[w]]
         with patch.object(store,'datetime',Fixed),patch.object(cap,'trusted_now',return_value=now):
-            anchors={'cap':cap.seed(repo,main),**{w:store.seed(repo,w,main) for w in initial}}
+            before_refs=git(repo,'for-each-ref','--format=%(objectname) %(refname)')
+            seeds={w:json.loads(cli('seed',w,'--canonical',main)) for w in refs}
+            self.assertTrue(all(s['canonical']==main and s['remote_promoted'] is False and s['writer']==w for w,s in seeds.items()))
+            self.assertEqual(git(repo,'for-each-ref','--format=%(objectname) %(refname)'),before_refs)
+            anchors={w:s['candidate_anchor'] for w,s in seeds.items()}
             for w,a in anchors.items():git(repo,'update-ref',refs[w],a,'0'*40)
             # Generate real producer updates from the seeded state, without
             # any live network requests or production data.
             workspaces={w:root/('workspace-'+w) for w in anchors}
             for w,a in anchors.items():
-                store.hydrate_lane(repo,w,a,a,workspaces[w])
+                hydrated=json.loads(cli('hydrate',w,*pinned(w),'--workspace',workspaces[w]))
+                self.assertEqual(hydrated['head'],a)
+                self.assertEqual(hydrated['files'],seeds[w]['files'])
             with self.assertRaisesRegex(Hold,'workspace_must_be_new'):
                 store.hydrate_lane(repo,'cap',anchors['cap'],anchors['cap'],workspaces['cap'])
             next_time=datetime(2026,11,26,12,tzinfo=timezone.utc)
@@ -173,7 +188,9 @@ process.stdout.write(JSON.stringify(s.evaluateVerified(now,process.argv[3],proce
             cap_next=cap_latest.read_bytes()
             heads={}
             for w in ('cap','critical','federal','evidence'):
-                candidate=store.prepare_lane(repo,w,anchors[w],anchors[w],workspaces[w])
+                candidate=cli('candidate',w,*pinned(w),'--workspace',workspaces[w])
+                check=json.loads(cli('verify',w,'--anchor',anchors[w],'--head',candidate))
+                self.assertEqual(check['head'],candidate)
                 self.assertEqual(git(repo,'rev-parse',refs[w]).decode().strip(),anchors[w])
                 git(repo,'update-ref',refs[w],candidate,anchors[w])
                 heads[w]=candidate
@@ -221,7 +238,8 @@ process.stdout.write(JSON.stringify(s.evaluateVerified(now,process.argv[3],proce
                       remaining.RECIPROCAL:(workspaces['sentinel']/remaining.RECIPROCAL).read_bytes()}
             self.assertNotEqual(sentinel[remaining.RECIPROCAL],initial['sentinel'][remaining.RECIPROCAL])
             materialize(sentinel,workspaces['sentinel'])
-            heads['sentinel']=store.prepare_lane(repo,'sentinel',anchors['sentinel'],anchors['sentinel'],workspaces['sentinel'])
+            heads['sentinel']=cli('candidate','sentinel',*pinned('sentinel'),'--workspace',workspaces['sentinel'])
+            self.assertEqual(json.loads(cli('verify','sentinel','--anchor',anchors['sentinel'],'--head',heads['sentinel']))['head'],heads['sentinel'])
             self.assertEqual(git(repo,'rev-parse',refs['sentinel']).decode().strip(),anchors['sentinel'])
             git(repo,'update-ref',refs['sentinel'],heads['sentinel'],anchors['sentinel'])
             self.assertEqual(store.verified_lane(repo,'sentinel',anchors['sentinel'],heads['sentinel']),sentinel)
@@ -239,7 +257,7 @@ process.stdout.write(JSON.stringify(s.evaluateVerified(now,process.argv[3],proce
             self.assertEqual(git(repo,'status','--porcelain'),b'')
             self.assertEqual(git(repo,'remote'),b'')
             for w,h in heads.items():self.assertEqual(git(repo,'rev-parse',refs[w]).decode().strip(),h)
-        print('INTEGRATED_FIVE_WRITER_SHADOW_REHEARSAL_PASSED writers=5 watchdog=healthy missing_lane=critical stale_lane=critical main_unchanged=true remote=false heartbeat_canonical=true reciprocal_real_producer=true')
+        print('INTEGRATED_FIVE_WRITER_SHADOW_REHEARSAL_PASSED writers=5 watchdog=healthy missing_lane=critical stale_lane=critical main_unchanged=true remote=false heartbeat_canonical=true reciprocal_real_producer=true workflow_cli=true seed_refs_unchanged=true')
 
 class HistoryScalingTests(unittest.TestCase):
     def test_fifty_transitions_read_only_changed_blobs(self):
