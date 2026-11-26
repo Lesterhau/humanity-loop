@@ -27,7 +27,7 @@ class StorageTests(unittest.TestCase):
             shutil.rmtree(case.repo/store.R,ignore_errors=True)
         for path,raw in initial.items():
             p=case.repo/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
-        git(case.repo,'add','-A');git(case.repo,'commit','-qm','seed canonical state')
+        git(case.repo,'add','-A');git(case.repo,'commit','--allow-empty','-qm','seed canonical state')
         main=git(case.repo,'rev-parse','HEAD').decode().strip()
         anchor=store.seed(case.repo,writer,main)
         ref='refs/heads/receipt-test-'+writer
