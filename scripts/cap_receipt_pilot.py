@@ -119,14 +119,25 @@ def commit(repo,entries,parent=None):
         if parent: args.extend(['-p',parent])
         return git(repo,*args,data=b'Synthetic CAP receipt candidate\n').decode().strip()
 
+def trusted_now():
+    # Offline rehearsal uses the local UTC host clock. A live writer must
+    # establish independent clock/anchor custody; report timestamps are not authority.
+    return datetime.now(timezone.utc)
+
 def seed(repo,main):
     """Extract scoped receipts from exact reviewed code commit, no other files."""
-    return commit(repo,load(repo,main,only=False))
+    now=trusted_now()
+    entries=load(repo,main,only=False)
+    require(parse(entries[LATEST][1])<=now,'future_seed_receipt')
+    return commit(repo,entries)
 
 def propose(repo,prior,report):
     """Consume actual producer report bytes, not an arbitrary code-tree diff."""
+    now=trusted_now()
     entries=load(repo,prior,only=True)
     dt=parse(report);previous=parse(entries[LATEST][1])
+    require(previous<=now,'future_prior_receipt_hold')
+    require(dt<=now,'future_receipt')
     require(dt>=previous,'receipt_time_regression')
     if dt==previous:
         require(report==entries[LATEST][1],'conflicting_same_timestamp')

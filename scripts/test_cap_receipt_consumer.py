@@ -2,6 +2,7 @@
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import datetime,timezone,timedelta
 from pathlib import Path
 from cap_daily_audit import build_report
@@ -15,6 +16,8 @@ class ConsumerTests(unittest.TestCase):
         self.repo=Path(self.tmp.name)
         git(self.repo,'init','-q','-b','main')
         self.time=datetime(2026,11,25,12,tzinfo=timezone.utc)
+        clock=patch('cap_receipt_pilot.trusted_now',return_value=self.time+timedelta(hours=4))
+        clock.start();self.addCleanup(clock.stop)
         self.now=int((self.time+timedelta(hours=2)).timestamp()*1000)
         self.old=self.report(self.time)
         for name in (LATEST,PREFIX+'runs/2026-11-25.json'):

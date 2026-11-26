@@ -3,6 +3,8 @@ import json
 import subprocess
 import tempfile
 import unittest
+from datetime import datetime,timezone
+from unittest.mock import patch
 from pathlib import Path
 from cap_daily_audit import build_report,write_report
 from cap_receipt_pilot import git,seed,propose,load,read_latest,Hold,LATEST,PREFIX
@@ -14,6 +16,8 @@ class PilotTests(unittest.TestCase):
         self.root=Path(self.tmp.name)
         self.repo=self.root/'repo';self.repo.mkdir()
         self.g('init','-q','-b','main')
+        clock=patch('cap_receipt_pilot.trusted_now',return_value=datetime(2026,11,25,16,tzinfo=timezone.utc))
+        clock.start();self.addCleanup(clock.stop)
         self.day='2026-11-25'
         self.stamp=self.day+'T12:00:00Z'
         self.raw=self.produce(self.stamp)
@@ -53,6 +57,25 @@ class PilotTests(unittest.TestCase):
     def test_clock_regression(self):
         with self.assertRaisesRegex(Hold,'receipt_time_regression'):
             propose(self.repo,self.prior,self.produce(self.day+'T11:00:00Z'))
+    def test_future_report_rejected_and_valid_report_still_accepted(self):
+        self.g('update-ref','refs/heads/receipt-test',self.prior,'0'*40)
+        with self.assertRaisesRegex(Hold,'future_receipt'):
+            propose(self.repo,self.prior,self.produce('2099-01-01T00:00:00Z'))
+        self.assertEqual(self.g('rev-parse','receipt-test'),self.prior)
+        valid=self.later()
+        self.assertEqual(read_latest(self.repo,propose(self.repo,self.prior,valid)),valid)
+    def test_future_seed_rejected(self):
+        raw=self.produce('2099-01-01T00:00:00Z')
+        self.put(LATEST,raw);self.put(PREFIX+'runs/2099-01-01.json',raw)
+        self.g('add','-A');self.g('commit','-qm','future seed')
+        with self.assertRaisesRegex(Hold,'future_seed_receipt'):
+            seed(self.repo,self.g('rev-parse','HEAD'))
+    def test_preexisting_future_prior_holds(self):
+        raw=self.produce('2099-01-01T00:00:00Z')
+        with patch('cap_receipt_pilot.trusted_now',return_value=datetime(2099,1,1,tzinfo=timezone.utc)):
+            poisoned=propose(self.repo,self.prior,raw)
+        with self.assertRaisesRegex(Hold,'future_prior_receipt_hold'):
+            propose(self.repo,poisoned,self.later())
     def test_same_timestamp_conflict(self):
         with self.assertRaisesRegex(Hold,'conflicting_same_timestamp'):
             propose(self.repo,self.prior,self.produce(self.stamp,[{'properties':{'event':'Synthetic'}}]))
