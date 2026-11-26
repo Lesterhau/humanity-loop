@@ -58,12 +58,16 @@ def check_counts(obj,pairs):
     for count,items in pairs:
         require(type(obj.get(count)) is int and isinstance(obj.get(items),list) and obj[count]==len(obj[items]),'receipt_totals')
 
-def validate(writer,state,now):
+def validate(writer,state,now,*,_cache=None):
     require(writer in REQUIRED,'unknown_writer')
     require(type(state) is dict and REQUIRED[writer]<=set(state),'missing_writer_state')
     require(len(state)<=MAX_FILES and all(scoped(writer,p) for p in state),'unexpected_receipt_path')
     require(sum(len(v) for v in state.values())<=MAX_TOTAL,'tree_limit')
-    parsed={p:parse(v) for p,v in state.items()}
+    parsed={};next_cache={}
+    for p,v in state.items():
+        prior=_cache.get(p) if _cache is not None else None
+        obj=prior[1] if prior is not None and prior[0]==v else parse(v)
+        parsed[p]=obj;next_cache[p]=(v,obj)
     latest=parsed[latest_path(writer)]
     t=stamp(latest.get('runAt'));require(t<=now,'future_receipt')
     if writer in SOURCE_KEYS:
@@ -100,6 +104,8 @@ def validate(writer,state,now):
         require(latest.get('status') in ('healthy','warning','critical') and isinstance(latest.get('checks'),list),'sentinel_shape')
         reciprocal=parsed[R+'latest.json']
         require(stamp(reciprocal.get('runAt'))<=now and reciprocal.get('status') in ('checks-passed','action-proposed') and isinstance(reciprocal.get('findings'),list),'reciprocal_shape')
+    if _cache is not None:
+        _cache.clear();_cache.update(next_cache)
     return parsed
 
 def queue_keys(q):
@@ -113,6 +119,9 @@ def queue_keys(q):
 
 def transition(writer,old,new,now):
     a=validate(writer,old,now);b=validate(writer,new,now)
+    return _transition_validated(writer,old,new,a,b)
+
+def _transition_validated(writer,old,new,a,b):
     require(set(old)<=set(new),'receipt_history_removed')
     for path in old:
         if '/events/' in path:require(old[path]==new[path],'historical_event_changed')
@@ -135,22 +144,28 @@ def transition(writer,old,new,now):
     if writer!='sentinel' and new!=old:
         require(stamp(b[latest_path(writer)]['runAt'])>stamp(a[latest_path(writer)]['runAt']),'state_change_without_new_run')
 
-def load(repo,writer,head,*,seed=False):
+def load(repo,writer,head,*,seed=False,_cache=None):
     require(writer in REQUIRED,'unknown_writer')
     require(isinstance(head,str) and SHA.fullmatch(head),'immutable_commit_required')
     require(git(repo,'cat-file','-t',head)==b'commit\n','commit_required')
-    result={};total=0
-    for row in git(repo,'ls-tree','-r','-z',head).split(b'\0'):
+    result={};total=0;next_cache={}
+    for row in git(repo,'ls-tree','-r','-l','-z',head).split(b'\0'):
         if not row:continue
         meta,path=row.split(b'\t',1);path=path.decode()
         if not scoped(writer,path):
             require(seed and (not in_scope(writer,path) or manual_path(writer,path)),'unexpected_receipt_path')
             continue
-        mode,kind,oid=meta.decode().split()
+        mode,kind,oid,size_text=meta.decode().split()
         require(mode=='100644' and kind=='blob','unsafe_receipt_mode')
-        size=int(git(repo,'cat-file','-s',oid));total+=size
-        require(size<=MAX_FILE and len(result)<MAX_FILES and total<=MAX_TOTAL,'tree_limit')
-        result[path]=git(repo,'cat-file','blob',oid)
+        size=int(size_text);total+=size
+        require(0<size<=MAX_FILE and len(result)<MAX_FILES and total<=MAX_TOTAL,'tree_limit')
+        raw=next_cache.get(oid)
+        if raw is None and _cache is not None:raw=_cache.get(oid)
+        if raw is None:raw=git(repo,'cat-file','blob',oid)
+        require(len(raw)==size,'blob_size_mismatch')
+        result[path]=raw;next_cache[oid]=raw
+    if _cache is not None:
+        _cache.clear();_cache.update(next_cache)
     return result
 
 def write(repo,state,parent=None):
@@ -169,8 +184,9 @@ def propose(repo,writer,prior,state):
 def verified_state(repo,writer,anchor,head):
     # Validate every first-parent transition from the separately trusted
     # anchor; no fallback or merge-history ambiguity.
-    base=load(repo,writer,anchor)
-    now=datetime.now(timezone.utc);validate(writer,base,now)
+    blob_cache={};parsed_cache={}
+    base=load(repo,writer,anchor,_cache=blob_cache)
+    now=datetime.now(timezone.utc);parsed=validate(writer,base,now,_cache=parsed_cache)
     require(isinstance(head,str) and SHA.fullmatch(head),'immutable_commit_required')
     try:
         git(repo,'merge-base','--is-ancestor',anchor,head)
@@ -182,9 +198,10 @@ def verified_state(repo,writer,anchor,head):
     for current in chain:
         parents=git(repo,'show','-s','--format=%P',current).decode().split()
         require(parents==[previous],'nonlinear_receipt_history')
-        state=load(repo,writer,current)
-        transition(writer,base,state,now)
-        previous=current;base=state
+        state=load(repo,writer,current,_cache=blob_cache)
+        new_parsed=validate(writer,state,now,_cache=parsed_cache)
+        _transition_validated(writer,base,state,parsed,new_parsed)
+        previous=current;base=state;parsed=new_parsed
     require(previous==head,'untrusted_ancestry')
     return base
 
@@ -203,28 +220,7 @@ def verified_lane(repo,writer,anchor,head):
     if writer!='cap':
         return verified_state(repo,writer,anchor,head)
     import cap_receipt_pilot as cap
-    from cap_receipt_consumer import verified_latest
-    base=cap.load(repo,anchor,only=True)
-    require(cap.parse(base[cap.LATEST][1])<=cap.trusted_now(),'future_seed_receipt')
-    require(isinstance(head,str) and SHA.fullmatch(head),'immutable_commit_required')
-    try:
-        git(repo,'merge-base','--is-ancestor',anchor,head)
-    except subprocess.CalledProcessError:
-        raise Hold('untrusted_ancestry') from None
-    chain=git(repo,'rev-list','--reverse','--first-parent','--max-count=1001',anchor+'..'+head).decode().splitlines()
-    require(len(chain)<=1000,'anchor_rotation_required')
-    previous=anchor
-    for current in chain:
-        require(git(repo,'show','-s','--format=%P',current).decode().split()==[previous],
-                'nonlinear_receipt_history')
-        raw=verified_latest(repo,previous,current)
-        old_raw=base[cap.LATEST][1]
-        require(cap.parse(raw)<=cap.trusted_now(),'future_receipt')
-        require(cap.parse(raw)!=cap.parse(old_raw) or raw==old_raw,'conflicting_same_timestamp')
-        base=cap.load(repo,current,only=True)
-        previous=current
-    require(previous==head,'untrusted_ancestry')
-    return {p:raw for p,(_,raw) in base.items()}
+    return {p:raw for p,(_,raw) in cap.verified_history(repo,anchor,head).items()}
 
 def hydrate_lane(repo,writer,anchor,head,workspace):
     """Restore independently pinned state into a NEW producer workspace."""
