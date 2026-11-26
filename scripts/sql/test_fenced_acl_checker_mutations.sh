@@ -31,7 +31,7 @@ trap 'rm -rf -- "$work"' EXIT
 
 admin() {
   PGUSER=postgres psql -X -q -At -v ON_ERROR_STOP=1 \
-    -v hl_schema="$schema" -v hl_role_prefix="$prefix" -v hl_definer="$definer" \
+    -v hl_schema="$schema" -v hl_role_prefix="$prefix" -v hl_definer="$definer" -v hl_allow_public_temp="${HL_FENCED_ALLOW_PUBLIC_TEMP:-false}" \
     -v exec_a="${prefix}a" -v exec_b="${prefix}b" -v exec_unbound="${prefix}unbound" \
     -v db="$PGDATABASE" -v owner="$owner" "$@"
 }
@@ -99,8 +99,10 @@ run_case executor_member_of_owner 'member of another role' \
   'GRANT :"owner" TO :"exec_b";'
 run_case executor_bypassrls 'unsafe role attributes' \
   'ALTER ROLE :"exec_b" BYPASSRLS;'
-run_case executor_temp 'database TEMP or CREATE allowed' \
-  'GRANT TEMPORARY ON DATABASE :"db" TO :"exec_unbound";'
+if [[ "${HL_FENCED_ALLOW_PUBLIC_TEMP:-false}" == false ]]; then
+  run_case executor_temp 'database TEMP or CREATE allowed' \
+    'GRANT TEMPORARY ON DATABASE :"db" TO :"exec_unbound";'
+fi
 run_case wrapper_owner_login 'wrapper owner role can log in' \
   'ALTER ROLE :"hl_definer" LOGIN;'
 run_case wrapper_owner_assumable 'can assume or inherit' \

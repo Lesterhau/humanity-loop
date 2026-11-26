@@ -41,8 +41,12 @@ admin() {
     -v schema="$schema" -v role_a="$role_a" -v role_unbound="$role_unbound" "$@"
 }
 fail() { echo "BOUNDARY_FAILURE: $1" >&2; exit 1; }
-revoke_temp() { # psql does not interpolate variables in -c, so read from stdin
-  admin -v db="$PGDATABASE" <<<'REVOKE TEMPORARY ON DATABASE :"db" FROM :"role_a", :"role_unbound";'
+public_temp="${HL_FENCED_ALLOW_PUBLIC_TEMP:-false}"
+[[ "$public_temp" == true || "$public_temp" == false ]] || exit 2
+revoke_temp() { # Never change database ACL in the public-TEMP rehearsal.
+  if [[ "$public_temp" == false ]]; then
+    admin -v db="$PGDATABASE" <<<'REVOKE TEMPORARY ON DATABASE :"db" FROM :"role_a", :"role_unbound";'
+  fi
 }
 restore() {
   revoke_temp >/dev/null 2>&1 || true
@@ -72,10 +76,14 @@ SQL
 
 before="$(fingerprint)"
 
+if [[ "$public_temp" == false ]]; then
+  admin -v db="$PGDATABASE" <<<'GRANT TEMPORARY ON DATABASE :"db" TO :"role_a", :"role_unbound";'
+else
+  [[ "$(admin <<<"SELECT has_database_privilege(:'role_a',current_database(),'TEMP') AND has_database_privilege(:'role_unbound',current_database(),'TEMP');")" == t ]] || fail 'public TEMP fixture unavailable'
+fi
 admin -v db="$PGDATABASE" -v pass_a="$pass_a" -v pass_unbound="$pass_unbound" <<'SQL'
 ALTER ROLE :"role_a" PASSWORD :'pass_a';
 ALTER ROLE :"role_unbound" PASSWORD :'pass_unbound';
-GRANT TEMPORARY ON DATABASE :"db" TO :"role_a", :"role_unbound";
 INSERT INTO :"schema".tasks (task_id, project_id, payload, risk_tier, status, stages, current_stage, max_attempts)
 SELECT v.task_id, b.project_id,
        pg_catalog.jsonb_build_object('fencing_required', 'true', 'idempotency_key', v.operation_key,
@@ -195,7 +203,10 @@ revoke_temp >/dev/null
 [[ "$(fingerprint)" == "$before" ]] || fail 'state outside the two probe tasks changed'
 
 # 4. With the temporary grant removed, the database-level defense holds as well.
-if as_role "$role_unbound" "$pass_unbound" -c 'CREATE TEMP TABLE hl_boundary_denied (x pg_catalog.int4)' >/dev/null 2>&1; then
+if [[ "$public_temp" == true ]]; then
+  as_role "$role_unbound" "$pass_unbound" -c 'CREATE TEMP TABLE hl_boundary_allowed (x pg_catalog.int4)' >/dev/null 2>&1 || fail 'baseline TEMP unexpectedly unavailable'
+  echo 'G3_PUBLIC_TEMP_NAMESPACE_PROBE_PASSED'
+elif as_role "$role_unbound" "$pass_unbound" -c 'CREATE TEMP TABLE hl_boundary_denied (x pg_catalog.int4)' >/dev/null 2>&1; then
   fail 'test executor can still create temporary objects'
 fi
 

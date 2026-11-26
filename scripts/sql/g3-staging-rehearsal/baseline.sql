@@ -21,3 +21,13 @@ ALTER TABLE hl_foundry_test.tasks ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON SCHEMA hl_control,hl_foundry_test FROM PUBLIC,anon,authenticated,service_role;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON FUNCTIONS TO anon,authenticated,service_role;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT,INSERT,UPDATE,DELETE ON TABLES TO anon,authenticated,service_role;
+
+-- Existing unrelated objects, including admission-like names, must survive.
+CREATE TABLE hl_control.contributor_nodes(node_id uuid PRIMARY KEY, status text NOT NULL);
+INSERT INTO hl_control.contributor_nodes VALUES ('00000000-0000-0000-0000-000000000001','synthetic');
+ALTER TABLE hl_control.contributor_nodes ENABLE ROW LEVEL SECURITY;
+CREATE FUNCTION hl_control.enforce_admission_candidate() RETURNS trigger LANGUAGE plpgsql SECURITY INVOKER SET search_path=pg_catalog,pg_temp AS $$ BEGIN RETURN NEW; END $$;
+REVOKE ALL ON FUNCTION hl_control.enforce_admission_candidate() FROM PUBLIC,anon,authenticated,service_role;
+DO $$ BEGIN
+ IF NOT EXISTS (SELECT 1 FROM pg_database d CROSS JOIN LATERAL aclexplode(COALESCE(d.datacl,acldefault('d',d.datdba))) a WHERE d.datname=current_database() AND a.grantee=0 AND a.privilege_type='TEMPORARY') THEN RAISE EXCEPTION 'expected synthetic baseline PUBLIC TEMP'; END IF;
+END $$;

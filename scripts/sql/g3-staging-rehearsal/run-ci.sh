@@ -12,6 +12,9 @@ work=$(mktemp -d)
 trap 'rm -rf -- "$work"' EXIT
 python3 "$here/prepare.py" "$(git rev-parse --show-toplevel)" "$work/review"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/baseline.sql"
+# Compare the selected persistent catalog state and baseline rows byte-for-byte.
+psql -X -Atq -v ON_ERROR_STOP=1 -f "$here/fingerprint.sql" > "$work/before"
+export HL_FENCED_ALLOW_PUBLIC_TEMP=true
 psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/fenced_task_test_fixture.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/hl_control_fenced_tasks_candidate_v1.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/test_fenced_canonical_lease.sql"
@@ -28,8 +31,8 @@ export HL_REHEARSAL_WORK="$work"
 bash "$work/review/test_fenced_concurrent_claim.sh"
 psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/hl_fenced_executor_restricted_candidate_v1.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/harden.sql"
-# Disposable database only; hosted TEMP policy must be separately reviewed.
-psql -X -v ON_ERROR_STOP=1 -q -c 'REVOKE TEMPORARY ON DATABASE foundry_ci FROM PUBLIC'
+# Preserve existing database-wide TEMP policy. The public-TEMP namespace probe
+# below must prove that caller-owned objects cannot affect wrapper execution.
 psql -X -v ON_ERROR_STOP=1 -q -f "$work/review/test_restricted_fenced_executor.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/check.sql"
 bash "$work/review/test_fenced_authenticated_login.sh"
@@ -39,4 +42,7 @@ bash "$here/../test_fenced_namespace_boundary.sh"
 bash "$here/../test_fenced_acl_checker_mutations.sh"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/check.sql"
 psql -X -v ON_ERROR_STOP=1 -q -f "$here/cleanup.sql"
+psql -X -Atq -v ON_ERROR_STOP=1 -f "$here/fingerprint.sql" > "$work/after"
+cmp -s "$work/before" "$work/after" || { echo 'ROLLBACK_CATALOG_MISMATCH'; exit 1; }
+echo 'G3_REHEARSAL_CATALOG_ROLLBACK_PASSED public_temp_unchanged=true'
 echo 'DISPOSABLE_STAGING_SHAPE_REHEARSAL_PASSED (not hosted login acceptance)'

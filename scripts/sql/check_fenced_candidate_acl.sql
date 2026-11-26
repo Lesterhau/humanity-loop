@@ -12,6 +12,11 @@
 -- grant to a role nobody thought of is still found. Privileges reached through
 -- PUBLIC or inherited membership count. A hosted database with other objects
 -- in the schema needs its own reviewed allowlist before this check applies.
+\if :{?hl_allow_public_temp}
+\else
+\set hl_allow_public_temp false
+\endif
+SELECT pg_catalog.set_config('hl_check.allow_public_temp', :'hl_allow_public_temp', false) AS hl_check_temp \gset
 SELECT pg_catalog.set_config('hl_check.schema', :'hl_schema', false) AS hl_check_1,
        pg_catalog.set_config('hl_check.role_prefix', :'hl_role_prefix', false) AS hl_check_2,
        pg_catalog.set_config('hl_check.definer', :'hl_definer', false) AS hl_check_3 \gset
@@ -60,7 +65,10 @@ BEGIN
                WHERE m.roleid = r.oid AND (m.set_option OR m.inherit_option)) THEN
       RAISE EXCEPTION 'ACL_CHECK another role can assume or inherit: %', r.rolname;
     END IF;
-    IF pg_catalog.has_database_privilege(r.oid, pg_catalog.current_database(), 'TEMP')
+    -- Only the explicitly selected disposable hosted-shaped test permits TEMP.
+    -- CREATE on the database remains forbidden; canonical checks remain strict.
+    IF (pg_catalog.current_setting('hl_check.allow_public_temp') <> 'true'
+        AND pg_catalog.has_database_privilege(r.oid, pg_catalog.current_database(), 'TEMP'))
        OR pg_catalog.has_database_privilege(r.oid, pg_catalog.current_database(), 'CREATE') THEN
       RAISE EXCEPTION 'ACL_CHECK database TEMP or CREATE allowed: %', r.rolname;
     END IF;
