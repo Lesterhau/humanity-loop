@@ -194,3 +194,113 @@ def advance_local(repo,writer,ref,prior,state):
     head=propose(repo,writer,prior,state)
     git(repo,'update-ref',ref,head,prior)
     return head
+
+
+# Workflow-facing interface. Only local immutable Git objects are accepted.
+# This layer deliberately cannot fetch, push, change a ref, or choose an anchor.
+# The approved deployment workflow must supply these independently.
+def verified_lane(repo,writer,anchor,head):
+    if writer!='cap':
+        return verified_state(repo,writer,anchor,head)
+    import cap_receipt_pilot as cap
+    from cap_receipt_consumer import verified_latest
+    base=cap.load(repo,anchor,only=True)
+    require(cap.parse(base[cap.LATEST][1])<=cap.trusted_now(),'future_seed_receipt')
+    require(isinstance(head,str) and SHA.fullmatch(head),'immutable_commit_required')
+    try:
+        git(repo,'merge-base','--is-ancestor',anchor,head)
+    except subprocess.CalledProcessError:
+        raise Hold('untrusted_ancestry') from None
+    chain=git(repo,'rev-list','--reverse','--first-parent','--max-count=1001',anchor+'..'+head).decode().splitlines()
+    require(len(chain)<=1000,'anchor_rotation_required')
+    previous=anchor
+    for current in chain:
+        require(git(repo,'show','-s','--format=%P',current).decode().split()==[previous],
+                'nonlinear_receipt_history')
+        raw=verified_latest(repo,previous,current)
+        old_raw=base[cap.LATEST][1]
+        require(cap.parse(raw)<=cap.trusted_now(),'future_receipt')
+        require(cap.parse(raw)!=cap.parse(old_raw) or raw==old_raw,'conflicting_same_timestamp')
+        base=cap.load(repo,current,only=True)
+        previous=current
+    require(previous==head,'untrusted_ancestry')
+    return {p:raw for p,(_,raw) in base.items()}
+
+def hydrate_lane(repo,writer,anchor,head,workspace):
+    """Restore independently pinned state into a NEW producer workspace."""
+    from pathlib import Path
+    workspace=Path(workspace)
+    state=verified_lane(repo,writer,anchor,head)
+    require(not workspace.exists() and not workspace.is_symlink(),'workspace_must_be_new')
+    workspace.mkdir(mode=0o700,parents=False)
+    for name,raw in state.items():
+        dest=workspace/name
+        dest.parent.mkdir(parents=True,exist_ok=True)
+        with dest.open('xb') as f:f.write(raw)
+    return state
+
+def _workspace_file(root,name):
+    from pathlib import Path
+    root=Path(root)
+    require(root.is_dir() and not root.is_symlink(),'workspace_required')
+    p=root
+    for component in Path(name).parts:
+        p=p/component
+        require(not p.is_symlink(),'unsafe_workspace_path')
+    require(p.is_file() and p.stat().st_size<=MAX_FILE,'workspace_file_required')
+    return p.read_bytes()
+
+def prepare_lane(repo,writer,anchor,head,workspace):
+    """Validate producer output and make an unreferenced local candidate.
+    No destination ref is accepted; caller must separately authorize promotion.
+    """
+    from pathlib import Path
+    import cap_receipt_pilot as cap
+    root=Path(workspace)
+    prior=verified_lane(repo,writer,anchor,head)
+    if writer=='cap':
+        return cap.propose(repo,head,_workspace_file(root,cap.LATEST))
+    require(writer in REQUIRED,'unknown_writer')
+    names=set()
+    for prefix in ([PREFIX[writer],R] if writer=='sentinel' else [PREFIX[writer]]):
+        directory=root/prefix
+        require(directory.is_dir() and not directory.is_symlink(),'workspace_required')
+        for p in directory.rglob('*'):
+            require(not p.is_symlink(),'unsafe_workspace_path')
+            if p.is_dir():continue
+            name=p.relative_to(root).as_posix()
+            require(scoped(writer,name),'unexpected_receipt_path')
+            names.add(name)
+            require(len(names)<=MAX_FILES,'tree_limit')
+    require(set(prior)<=names,'receipt_history_removed')
+    state={}
+    size=0
+    for name in sorted(names):
+        raw=_workspace_file(root,name);size+=len(raw)
+        require(size<=MAX_TOTAL,'tree_limit')
+        state[name]=raw
+    return propose(repo,writer,head,state)
+
+def main():
+    import argparse
+    from pathlib import Path
+    parser=argparse.ArgumentParser(description='Local receipt cutover interface; never fetches, pushes or changes refs')
+    parser.add_argument('operation',choices=('hydrate','candidate','verify'))
+    parser.add_argument('--repo',required=True,type=Path)
+    parser.add_argument('--writer',required=True,choices=('cap','critical','federal','evidence','sentinel'))
+    parser.add_argument('--anchor',required=True)
+    parser.add_argument('--head',required=True)
+    parser.add_argument('--workspace',type=Path)
+    args=parser.parse_args()
+    if args.operation=='verify':
+        state=verified_lane(args.repo,args.writer,args.anchor,args.head)
+        print(json.dumps({'writer':args.writer,'head':args.head,'files':len(state)}))
+    else:
+        if args.workspace is None:parser.error('--workspace is required')
+        if args.operation=='hydrate':
+            state=hydrate_lane(args.repo,args.writer,args.anchor,args.head,args.workspace)
+            print(json.dumps({'writer':args.writer,'head':args.head,'files':len(state)}))
+        else:
+            print(prepare_lane(args.repo,args.writer,args.anchor,args.head,args.workspace))
+
+if __name__=='__main__':main()
