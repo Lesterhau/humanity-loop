@@ -15,6 +15,16 @@ from test_evidence_integrity_backup import lookup
 class StorageTests(unittest.TestCase):
     def exercise(self,writer,case,initial,updated):
         # Seed exact synthetic canonical commit, then only local data-only refs.
+        # The real-producer fixture may already have written the updated event
+        # into its working tree. Restore the exact initial state before seeding.
+        for path in store.PREFIX.values():
+            # Only the selected writer's local fixture namespace is cleared.
+            if path==store.PREFIX[writer]:
+                import shutil
+                shutil.rmtree(case.repo/path,ignore_errors=True)
+        if writer=='sentinel':
+            import shutil
+            shutil.rmtree(case.repo/store.R,ignore_errors=True)
         for path,raw in initial.items():
             p=case.repo/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
         git(case.repo,'add','-A');git(case.repo,'commit','-qm','seed canonical state')
