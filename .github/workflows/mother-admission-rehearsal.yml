@@ -8,6 +8,8 @@ on:
       - 'scripts/test_admission_burst.py'
       - 'scripts/sql/interest_intake_candidate.sql'
       - 'scripts/test_interest_intake_burst.py'
+      - 'scripts/sql/invitation_admission_candidate.sql'
+      - 'scripts/test_invitation_admission.py'
       - '.github/workflows/mother-admission-rehearsal.yml'
 permissions:
   contents: read
@@ -58,3 +60,7 @@ jobs:
         run: |
           psql -X -v ON_ERROR_STOP=1 -f scripts/sql/interest_intake_candidate.sql
           python3 scripts/test_interest_intake_burst.py
+      - name: Rehearse invitation-bound and retry-safe admission (synthetic only)
+        run: |
+          psql -X -v ON_ERROR_STOP=1 -f scripts/sql/invitation_admission_candidate.sql
+          python3 scripts/test_invitation_admission.py
