@@ -29,7 +29,7 @@ def scoped(writer,path):
     return path in REQUIRED[writer] or (writer in SOURCE_KEYS and path.startswith(PREFIX[writer]) and EVENT.fullmatch(path[len(PREFIX[writer]):]) is not None)
 
 def manual_path(writer,path):
-    return (writer=='critical' and path.startswith(G+'reviews/')) or (writer=='sentinel' and path.startswith(R+'resolutions/'))
+    return (writer=='critical' and path.startswith(G+'reviews/')) or (writer=='evidence' and path.startswith(E+'reviews/')) or (writer=='sentinel' and path.startswith(R+'resolutions/'))
 
 def in_scope(writer,path):
     return path.startswith(PREFIX[writer]) or (writer=='sentinel' and path.startswith(R))
