@@ -29,6 +29,8 @@ jobs:
         run: npm audit --omit=dev --audit-level=high
       - name: Verify contributor risk-permission normalization
         run: node --experimental-strip-types scripts/test-risk-permissions.mjs
+      - name: Verify gateway configuration fails closed outside explicit environment
+        run: node --experimental-strip-types scripts/test-gateway-config.mjs
       - run: npm run typecheck
       - run: npm run build
 

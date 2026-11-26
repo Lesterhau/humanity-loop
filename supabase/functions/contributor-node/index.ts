@@ -211,8 +211,14 @@ Deno.serve(async (req: Request) => {
         p_risk_permissions: ["tier0"],
       });
 
+      // A successful HTTP response from the RPC is not proof of registration.
+      // Never mint a usable-looking receipt for a missing or malformed node.
+      if (!registered || typeof registered.node_id !== "string" ||
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(registered.node_id)) {
+        return json({ error: "registration_outcome_unknown", retry_automatically: false }, 503);
+      }
       const sessionId = cleanString(body.session_id, 200);
-      if (sessionId && sessionId.length >= 16 && registered?.node_id) {
+      if (sessionId && sessionId.length >= 16) {
         // Optional telemetry cannot suppress the once-only token from a
         // successful registration or induce a second registration.
         try {

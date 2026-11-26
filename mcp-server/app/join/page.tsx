@@ -4,9 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import styles from "../pilot.module.css";
 
-const GATEWAY =
-  "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node";
-const CONNECTION_URL = "https://humanity-loop.vercel.app/api/mcp";
+import { gatewayUrl } from "../../lib/gateway-config";
 
 const HOSTS = [
   { value: "ChatGPT", label: "ChatGPT" },
@@ -67,8 +65,12 @@ export default function JoinPage() {
   const [showToken, setShowToken] = useState(false);
   const [sessionId, setSessionId] = useState("");
   const [source, setSource] = useState("direct");
+  const [connectionUrl, setConnectionUrl] = useState("");
 
   useEffect(() => {
+    const gateway = gatewayUrl();
+    if (!gateway) return;
+    setConnectionUrl(window.location.origin + "/api/mcp");
     let id: string;
     try {
       id = window.sessionStorage.getItem("hl_join_session") || "";
@@ -84,7 +86,8 @@ export default function JoinPage() {
       "direct";
     setSessionId(id);
     setSource(src);
-    void fetch(GATEWAY, {
+    void fetch(gateway, {
+      redirect: "error",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "visit", session_id: id, source: src }),
@@ -136,10 +139,13 @@ export default function JoinPage() {
 
   async function register() {
     if (phase !== "register" || !host || busy || registrationStopped) return;
+    const gateway = gatewayUrl();
+    if (!gateway) { setRegistrationStopped(true); setError("Contributor gateway is not configured in this environment. No request was sent."); return; }
     setBusy(true);
     setError("");
     try {
-      const response = await fetch(GATEWAY, {
+      const response = await fetch(gateway, {
+        redirect: "error",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -277,9 +283,9 @@ export default function JoinPage() {
                   aria-label="Humanity Loop connection address"
                   className={styles.codeInput}
                   readOnly
-                  value={CONNECTION_URL}
+                  value={connectionUrl}
                 />
-                <button className={styles.secondary} type="button" onClick={() => void copyText(CONNECTION_URL, "address")}>Copy address</button>
+                <button className={styles.secondary} type="button" disabled={!connectionUrl} onClick={() => void copyText(connectionUrl, "address")}>Copy address</button>
               </div>
               <ol className={styles.checkList} start={3}>
                 <li>After connecting, ask your AI: <strong>&ldquo;Can you see Humanity Loop&apos;s tools?&rdquo;</strong> You should see tools for checking in and submitting a task.</li>
@@ -474,7 +480,7 @@ export default function JoinPage() {
             shown only after registration.
           </p>
           <p>
-            Technical connection address: <code>{CONNECTION_URL}</code>.
+            Technical connection address: <code>{connectionUrl}</code>.
             Work on outside public websites is read-only, but registration,
             check-ins and submissions write to Humanity Loop&apos;s private
             ledger. Results are reviewed before being counted as contributions,

@@ -1,13 +1,15 @@
 import { normalizeRiskPermissions, type PublicRiskPermission } from "./risk-permissions";
 
-const NODE_GATEWAY =
-  "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node";
+import { gatewayUrl } from "./gateway-config";
 
 async function callGateway(
   body: Record<string, unknown>,
   nodeToken?: string,
 ) {
-  const response = await fetch(NODE_GATEWAY, {
+  const gateway = gatewayUrl();
+  if (!gateway) throw new Error("Contributor gateway is not configured in this environment; no request was sent.");
+  const response = await fetch(gateway, {
+    redirect: "error",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
