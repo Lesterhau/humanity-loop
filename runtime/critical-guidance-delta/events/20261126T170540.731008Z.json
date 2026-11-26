@@ -1,0 +1,27 @@
+{
+  "baselinesCreated": 0,
+  "changes": [
+    {
+      "authority": "European Medicines Agency",
+      "detectedAt": "2026-11-26T17:05:40.731008Z",
+      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n\nADDED IN CURRENT VERSION:\n+ Minutes of PRAC meeting on 28 September - 1 October 2026\n+ EMA/PRAC/256164/2026\n+ (PDF - 893.8 KB)\n+ 26/11/2026",
+      "materiality": "unreviewed",
+      "medicalAdvice": null,
+      "newFingerprint": "b24addabeb05f58f39fd2e2effabf2b5f9b452c3959264abe1e6fd0de8741f45",
+      "oldFingerprint": "e8d7474b73cea64ccde599a2f80f8bdf42436a0fc45d8dc8ee177d3d3d29309a",
+      "severity": "unreviewed",
+      "sourceKey": "ema-prac",
+      "sourceName": "EMA PRAC Safety Highlights",
+      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
+      "verificationStatus": "needs-independent-source-review"
+    }
+  ],
+  "changesDetected": 1,
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-11-26T17:05:40.731008Z",
+  "schemaVersion": 1,
+  "sourcesChecked": 3,
+  "sourcesConfigured": 3,
+  "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
+}
