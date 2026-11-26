@@ -281,14 +281,27 @@ def main():
     import argparse
     from pathlib import Path
     parser=argparse.ArgumentParser(description='Local receipt cutover interface; never fetches, pushes or changes refs')
-    parser.add_argument('operation',choices=('hydrate','candidate','verify'))
+    parser.add_argument('operation',choices=('seed','hydrate','candidate','verify'))
     parser.add_argument('--repo',required=True,type=Path)
     parser.add_argument('--writer',required=True,choices=('cap','critical','federal','evidence','sentinel'))
-    parser.add_argument('--anchor',required=True)
-    parser.add_argument('--head',required=True)
+    parser.add_argument('--canonical')
+    parser.add_argument('--anchor')
+    parser.add_argument('--head')
     parser.add_argument('--workspace',type=Path)
     args=parser.parse_args()
+    if args.operation=='seed':
+        if args.canonical is None or any(v is not None for v in (args.anchor,args.head,args.workspace)):
+            parser.error('seed requires only --canonical exact commit; creates no ref')
+        import cap_receipt_pilot as cap
+        anchor=cap.seed(args.repo,args.canonical) if args.writer=='cap' else seed(args.repo,args.writer,args.canonical)
+        state=verified_lane(args.repo,args.writer,anchor,anchor)
+        print(json.dumps({'writer':args.writer,'canonical':args.canonical,'candidate_anchor':anchor,
+                          'files':len(state),'remote_promoted':False}))
+        return
+    if args.canonical is not None or args.anchor is None or args.head is None:
+        parser.error('operation requires exact --anchor and --head, not --canonical')
     if args.operation=='verify':
+        if args.workspace is not None:parser.error('verify does not accept --workspace')
         state=verified_lane(args.repo,args.writer,args.anchor,args.head)
         print(json.dumps({'writer':args.writer,'head':args.head,'files':len(state)}))
     else:
@@ -298,5 +311,6 @@ def main():
             print(json.dumps({'writer':args.writer,'head':args.head,'files':len(state)}))
         else:
             print(prepare_lane(args.repo,args.writer,args.anchor,args.head,args.workspace))
+
 
 if __name__=='__main__':main()
