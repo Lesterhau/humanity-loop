@@ -212,7 +212,7 @@ def scan(fetch=get_json, previous=None, now=None) -> tuple[dict, dict]:
     return report, state
 
 
-def merge_review_queue(existing: dict, candidates: list[dict], detected_at: str) -> dict:
+def merge_review_queue(existing: dict, candidates: list[dict], detected_at: str, *, append_only: bool = False) -> dict:
     items = list(existing.get("items") or [])
     keys = {(f.get("retractedDoi"), f.get("citingSource"), f.get("citingId")) for f in items}
     for finding in candidates:
@@ -222,27 +222,34 @@ def merge_review_queue(existing: dict, candidates: list[dict], detected_at: str)
             keys.add(key)
     return {"schemaVersion": 1,
             "description": "Unreviewed citation candidates, not verified clinical or misconduct findings",
-            "items": items[-500:]}
+            "items": items if append_only else items[-500:]}
 
 
-def main() -> None:
-    ROOT.mkdir(parents=True, exist_ok=True)
-    state_path = ROOT / "state.json"
+def main(*, append_only: bool = False, root: Path | None = None) -> None:
+    # The existing scheduled command retains its historical behavior until cutover.
+    root = ROOT if root is None else root
+    root.mkdir(parents=True, exist_ok=True)
+    state_path = root / "state.json"
     try:
         previous = json.loads(state_path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         previous = {}
     report, state = scan(previous=previous)
-    queue_path = ROOT / "review-queue.json"
+    queue_path = root / "review-queue.json"
     try:
         queue = json.loads(queue_path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         queue = {"schemaVersion": 1, "items": []}
-    merged_queue = merge_review_queue(queue, report["candidateFindings"], report["runAt"])
+    merged_queue = merge_review_queue(queue, report["candidateFindings"], report["runAt"], append_only=append_only)
+    queue_text = json.dumps(merged_queue, indent=2) + "\n"
+    # Match the receipt store file ceiling. Hold BEFORE persisting any receipt
+    # or marking new DOIs seen. No machine eviction, silent loss or auto-rotation.
+    if append_only and len(queue_text.encode("utf-8")) > 4 * 1024 * 1024:
+        raise ValueError("evidence_queue_capacity_hold: custodian review required")
     # Preserve the candidate queue before marking DOIs fully seen.
-    queue_path.write_text(json.dumps(merged_queue, indent=2) + "\n", encoding="utf-8")
+    queue_path.write_text(queue_text, encoding="utf-8")
     # State changes only after successful, fully checked DOI lookups.
-    (ROOT / "latest.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    (root / "latest.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"status": report["status"], "newRetractionsChecked": report["newRetractionsChecked"],
                       "candidateFindingsCount": report["candidateFindingsCount"],
@@ -251,4 +258,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path, default=ROOT)
+    parser.add_argument("--append-only-queue", action="store_true")
+    args = parser.parse_args()
+    main(append_only=args.append_only_queue, root=args.output_dir)
