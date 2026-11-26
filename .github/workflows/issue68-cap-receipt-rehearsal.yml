@@ -8,6 +8,7 @@ on:
       - 'scripts/cap_daily_audit.py'
       - 'scripts/cap_receipt_consumer.py'
       - 'scripts/test_cap_receipt_consumer.py'
+      - 'scripts/test_critical_guidance_cutover.py'
       - 'scripts/ops_sentinel.js'
       - '.github/workflows/issue68-cap-receipt-rehearsal.yml'
 permissions:
@@ -24,6 +25,8 @@ jobs:
           persist-credentials: false
       - name: Offline CAP producer and receipt candidate tests
         run: PYTHONPATH=scripts python3 -m unittest scripts/test_cap_daily_audit.py scripts/test_cap_receipt_pilot.py scripts/test_cap_receipt_consumer.py -v
+      - name: Critical guidance dual-write compatibility (offline only)
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_critical_guidance_cutover.py -v
       - name: Checkout exact historical public receipt seed (no credentials)
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
