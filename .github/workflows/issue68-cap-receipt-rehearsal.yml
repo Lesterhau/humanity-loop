@@ -10,6 +10,10 @@ on:
       - 'scripts/test_cap_receipt_consumer.py'
       - 'scripts/test_critical_guidance_cutover.py'
       - 'scripts/test_federal_policy_cutover.py'
+      - 'scripts/test_remaining_receipt_cutover.py'
+      - 'scripts/evidence_integrity_backup.py'
+      - 'scripts/reciprocal_audit.js'
+      - 'scripts/public_methods_source.js'
       - 'scripts/federal_policy_delta.py'
       - 'scripts/critical_guidance_delta.py'
       - 'scripts/monitor_cadence_gate.py'
@@ -33,6 +37,8 @@ jobs:
         run: PYTHONPATH=scripts python3 -m unittest scripts/test_critical_guidance_cutover.py -v
       - name: Federal policy dual-write compatibility (offline only)
         run: PYTHONPATH=scripts python3 -m unittest scripts/test_federal_policy_cutover.py -v
+      - name: Evidence integrity and Sentinel dual-write compatibility (offline only)
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_remaining_receipt_cutover.py -v
       - name: Checkout exact historical public receipt seed (no credentials)
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:

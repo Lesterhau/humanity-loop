@@ -15,7 +15,7 @@ from unittest.mock import patch
 from cap_receipt_pilot import git,commit
 from federal_policy_delta import SOURCES,run,digest,MAX_EXCERPT
 
-PREFIX='runtime/critical-guidance-delta/'
+PREFIX='runtime/federal-policy-delta/'
 LATEST=PREFIX+'latest-run.json'
 KEYS={s['key']:s for s in SOURCES}
 class FederalCutover(unittest.TestCase):
