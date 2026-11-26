@@ -8,21 +8,11 @@ import json
 import subprocess
 import shutil
 from pathlib import Path
-from cap_receipt_pilot import git,load,parse,LATEST,require,Hold
+from cap_receipt_pilot import LATEST,require,Hold
 
 def verified_latest(repo,anchor,head):
-    baseline=load(repo,anchor,only=True)
-    candidate=load(repo,head,only=True)
-    try:
-        git(repo,'merge-base','--is-ancestor',anchor,head)
-    except subprocess.CalledProcessError:
-        raise Hold('receipt_ancestry_unverified') from None
-    require(all(candidate.get(k)==v for k,v in baseline.items() if k!=LATEST),
-            'historical_archive_changed')
-    require(parse(candidate[LATEST][1])>=parse(baseline[LATEST][1]),'receipt_time_regression')
-    require(any(v==baseline[LATEST] for k,v in candidate.items() if k!=LATEST),
-            'prior_latest_not_archived')
-    return candidate[LATEST][1]
+    from cap_receipt_pilot import verified_history
+    return verified_history(repo,anchor,head)[LATEST][1]
 
 def assess(repo,anchor,head,now_ms):
     # Test-only fixed clock. Invoke the existing watchdog's real CAP check.
