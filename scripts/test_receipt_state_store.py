@@ -150,18 +150,29 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
             for w,a in anchors.items():git(repo,'update-ref',refs[w],a,'0'*40)
             # Generate real producer updates from the seeded state, without
             # any live network requests or production data.
+            workspaces={w:root/('workspace-'+w) for w in anchors}
+            for w,a in anchors.items():
+                store.hydrate_lane(repo,w,a,a,workspaces[w])
+            with self.assertRaisesRegex(Hold,'workspace_must_be_new'):
+                store.hydrate_lane(repo,'cap',anchors['cap'],anchors['cap'],workspaces['cap'])
             next_time=datetime(2026,11,26,12,tzinfo=timezone.utc)
-            g.produce(g.root,next_time,lambda url:'Synthetic revised '+url)
-            f.produce(f.root,next_time,lambda url:'Synthetic revised '+url)
-            e.produce(e.a,lookup(),'2026-11-26T12:00:00Z')
-            updated={'critical':g.read_state(g.root),'federal':f.read_state(f.root),'evidence':e.read(e.a,names)}
-            cap_next=cap_report(next_time)
-            heads={'cap':cap.propose(repo,anchors['cap'],cap_next)}
-            git(repo,'update-ref',refs['cap'],heads['cap'],anchors['cap'])
-            for w,state in updated.items():heads[w]=store.advance_local(repo,w,refs[w],anchors[w],state)
-            verified={cap.LATEST:verified_latest(repo,anchors['cap'],heads['cap'])}
+            gdir=workspaces['critical']/store.G
+            fdir=workspaces['federal']/store.F
+            g.produce(gdir,next_time,lambda url:'Synthetic revised '+url)
+            f.produce(fdir,next_time,lambda url:'Synthetic revised '+url)
+            e.produce(workspaces['evidence'],lookup(),'2026-11-26T12:00:00Z')
+            updated={'critical':g.read_state(gdir),'federal':f.read_state(fdir),'evidence':e.read(workspaces['evidence'],names)}
+            cap_latest,_=write_report(build_report([],next_time.isoformat().replace('+00:00','Z')),workspaces['cap']/cap.PREFIX)
+            cap_next=cap_latest.read_bytes()
+            heads={}
+            for w in ('cap','critical','federal','evidence'):
+                candidate=store.prepare_lane(repo,w,anchors[w],anchors[w],workspaces[w])
+                self.assertEqual(git(repo,'rev-parse',refs[w]).decode().strip(),anchors[w])
+                git(repo,'update-ref',refs[w],candidate,anchors[w])
+                heads[w]=candidate
+            verified={cap.LATEST:store.verified_lane(repo,'cap',anchors['cap'],heads['cap'])[cap.LATEST]}
             for w,state in updated.items():
-                readback=store.verified_state(repo,w,anchors[w],heads[w])
+                readback=store.verified_lane(repo,w,anchors[w],heads[w])
                 self.assertEqual(readback,state)
                 verified[store.latest_path(w)]=readback[store.latest_path(w)]
                 materialize(readback,root/'verified-consumer')
@@ -185,8 +196,17 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
             # adapter, retaining the separately produced reciprocal audit.
             sentinel={remaining.SENTINEL:(json.dumps(healthy,indent=2)+'\n').encode(),
                       remaining.RECIPROCAL:initial['sentinel'][remaining.RECIPROCAL]}
-            heads['sentinel']=store.advance_local(repo,'sentinel',refs['sentinel'],anchors['sentinel'],sentinel)
-            self.assertEqual(store.verified_state(repo,'sentinel',anchors['sentinel'],heads['sentinel']),sentinel)
+            materialize(sentinel,workspaces['sentinel'])
+            heads['sentinel']=store.prepare_lane(repo,'sentinel',anchors['sentinel'],anchors['sentinel'],workspaces['sentinel'])
+            self.assertEqual(git(repo,'rev-parse',refs['sentinel']).decode().strip(),anchors['sentinel'])
+            git(repo,'update-ref',refs['sentinel'],heads['sentinel'],anchors['sentinel'])
+            self.assertEqual(store.verified_lane(repo,'sentinel',anchors['sentinel'],heads['sentinel']),sentinel)
+            # A symlink cannot substitute producer data in the candidate path.
+            bad=workspaces['sentinel']/remaining.SENTINEL
+            bad.unlink()
+            bad.symlink_to(repo/'AGENTS.md')
+            with self.assertRaisesRegex(Hold,'unsafe_workspace_path'):
+                store.prepare_lane(repo,'sentinel',anchors['sentinel'],heads['sentinel'],workspaces['sentinel'])
             # Known good seed is still readable; no destructive rollback.
             for w,state in initial.items():
                 self.assertEqual(store.verified_state(repo,w,anchors[w],anchors[w]),state)
