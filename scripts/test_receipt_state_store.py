@@ -217,4 +217,69 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
             for w,h in heads.items():self.assertEqual(git(repo,'rev-parse',refs[w]).decode().strip(),h)
         print('INTEGRATED_FIVE_WRITER_SHADOW_REHEARSAL_PASSED writers=5 watchdog=healthy missing_lane=critical stale_lane=critical main_unchanged=true remote=false')
 
+class HistoryScalingTests(unittest.TestCase):
+    def test_fifty_transitions_read_only_changed_blobs(self):
+        import tempfile
+        import cap_receipt_pilot as cap
+        from cap_daily_audit import build_report
+        from cap_receipt_consumer import verified_latest
+        tmp=tempfile.TemporaryDirectory();self.addCleanup(tmp.cleanup)
+        repo=Path(tmp.name)
+        git(repo,'init','-q','-b','main')
+        first=datetime(2026,11,25,12,tzinfo=timezone.utc)
+        now=first+timedelta(days=1)
+        def raw(when):
+            return (json.dumps(build_report([],when.isoformat().replace('+00:00','Z')),sort_keys=True)+'\n').encode()
+        initial=raw(first)
+        for path in (cap.LATEST,cap.PREFIX+'runs/2026-11-25.json'):
+            file=repo/path;file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(initial)
+        git(repo,'add','-A');git(repo,'commit','-qm','synthetic seed')
+        main=git(repo,'rev-parse','main').decode().strip()
+        with patch.object(cap,'trusted_now',return_value=now):
+            anchor=cap.seed(repo,main);head=anchor
+            for i in range(1,51):
+                head=cap.propose(repo,head,raw(first+timedelta(minutes=i)))
+            with patch.object(cap,'git',wraps=git) as measured,patch.object(cap,'parse',wraps=cap.parse) as parses:
+                state=cap.verified_history(repo,anchor,head)
+                reads=sum(c.args[1:3]==('cat-file','blob') for c in measured.call_args_list)
+                sizes=sum(c.args[1:3]==('cat-file','-s') for c in measured.call_args_list)
+                self.assertEqual(reads,51)
+                self.assertEqual(sizes,0)
+                self.assertEqual(parses.call_count,51)
+            self.assertEqual(len(state),52)
+            self.assertEqual(verified_latest(repo,anchor,head),raw(first+timedelta(minutes=50)))
+            # A later apparently healthy endpoint cannot conceal an invalid intermediate tree.
+            bad=dict(state);bad.pop(cap.PREFIX+'runs/2026-11-25.json')
+            broken=cap.commit(repo,bad,head)
+            restored=cap.commit(repo,state,broken)
+            with self.assertRaisesRegex(Hold,'historical_archive_changed'):
+                verified_latest(repo,anchor,restored)
+        self.assertEqual(git(repo,'rev-parse','main').decode().strip(),main)
+        self.assertEqual(git(repo,'remote'),b'')
+
+        # A shared-lane history with one unchanged and one changed object per run.
+        case=remaining.RemainingCutover();case.setUp();self.addCleanup(case.doCleanups)
+        case.sentinel(case.a,'2026-11-25T12:00:00Z',False)
+        case.reciprocal(case.a,'2026-11-25T12:00:00Z')
+        state=case.read(case.a,{remaining.SENTINEL,remaining.RECIPROCAL})
+        anchor=store.write(case.repo,state);head=anchor
+        class Fixed(datetime):
+            @classmethod
+            def now(cls,tz=None):return now
+        with patch.object(store,'datetime',Fixed):
+            for i in range(1,51):
+                updated=dict(state);report=json.loads(state[remaining.SENTINEL])
+                report['runAt']=(first+timedelta(minutes=i)).isoformat().replace('+00:00','Z')
+                updated[remaining.SENTINEL]=json.dumps(report).encode()
+                head=store.propose(case.repo,'sentinel',head,updated);state=updated
+            with patch.object(store,'git',wraps=git) as measured,patch.object(store,'parse',wraps=store.parse) as parses:
+                self.assertEqual(store.verified_state(case.repo,'sentinel',anchor,head),state)
+                reads=sum(c.args[1:3]==('cat-file','blob') for c in measured.call_args_list)
+                sizes=sum(c.args[1:3]==('cat-file','-s') for c in measured.call_args_list)
+                self.assertEqual(reads,52)
+                self.assertEqual(sizes,0)
+                self.assertEqual(parses.call_count,52)
+        print('RECEIPT_HISTORY_SCALING_PASSED transitions_per_lane=50 cap_blob_reads=51 shared_blob_reads=52 per_blob_size_calls=0 intermediate_tamper_rejected=true')
+
+
 if __name__=='__main__':unittest.main()
