@@ -1,0 +1,32 @@
+name: G3 one-shot isolated inference acceptance (fixture only)
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '.github/workflows/g3-isolated-inference-once.yml'
+      - 'scripts/g3-isolated-inference/**'
+permissions:
+  contents: read
+concurrency:
+  group: g3-isolated-inference-once
+  cancel-in-progress: false
+jobs:
+  isolated-inference:
+    if: github.repository == 'Lesterhau/humanity-loop' && github.event.pull_request.head.repo.full_name == 'Lesterhau/humanity-loop' && github.head_ref == 'test/g3-isolated-inference-20261124' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Offline adapter regression
+        run: |
+          bash -n scripts/g3-isolated-inference/run-ci.sh
+          python3 -m unittest discover -s scripts/g3-isolated-inference -p 'test_*.py' -v
+      - name: Execute at most one network-isolated fixture run
+        # Offline review-packet validation only; no new inference or public artifact upload.
+        if: ${{ false }}
+        env:
+          HL_APPROVED_ONE_SHOT: 'true'
+        run: bash scripts/g3-isolated-inference/run-ci.sh
