@@ -68,3 +68,7 @@ Official provider references:
 - https://replit.com/pricing
 
 **North star:** one more independently reviewed helpful outcome for people or ecosystems, not one more agent name or repo artifact.
+
+## Mature G5 scale and recognition (owner target, November 25)
+
+Extend checkpoints to 5,000 and 20,000 active independent nodes, not raw registrations. Count distinct consenting operators, meaningful accepted work in rolling 28 days, retention, unique verified outcomes, actual monthly recurring donors (target 1,000), net receipts and review capacity. No assumed exponential growth; evaluate observed longitudinal growth. G5-A retains the operational viability thresholds; G5-B requires measured mature scale and operational Impact Passport, actual institutional recognition and transparent authorized MOTHER engagement. Portable user-shared credentials and formal platform partnership (LinkedIn or appropriate equivalent) are separate milestones. No partner agreement, issued credential, funding, outreach or release is implied. First step: one genuine accepted contribution, separate review and optional private consented Passport record. See IMPACT-PASSPORT-FIRST-RECORD.md.

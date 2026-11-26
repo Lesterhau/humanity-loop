@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "status": "hold",
+  "scope": "proposed_mother_public_launch_release_checkpoint",
+  "note": "Targets and required evidence, not live capabilities or authority. No action triggered by this file.",
+  "prerequisite": "G4 release acceptance; preserve any stricter existing mobile-plugin and governance requirements until explicitly reconciled by owner",
+  "owner_approval": false,
+  "stages": [
+    {
+      "id": "closed_beta",
+      "target_independent_accepted_nodes": 5,
+      "minimum_distinct_hosts": 2,
+      "admission": "Target: invitation-bound adult admission, NOT implemented. Existing gateway does not enforce invitations; do not open a new cohort or claim invite-only enforcement until an atomic invitation-bound retry-safe registration path passes review. First independent acceptance only under existing separately approved limited pilot policy; one private consented Passport record; expand only after review."
+    },
+    {
+      "id": "controlled_expansion",
+      "target_independent_accepted_nodes": 25,
+      "upper_initial_cohort": 100,
+      "admission": "server-enforced capacity, explicit cohorts, reviewer backlog and abuse limits; stop before capacity exceeded"
+    },
+    {
+      "id": "public_launch",
+      "target_burst_interest": 10000,
+      "burst_evidence": "disposable non-production synthetic test; no production stress, real messages, real registrations, personal data or paid service; prove no active admission above approved capacity"
+    },
+    {
+      "id": "global_growth",
+      "target_active_nodes_rolling_28_days": 20000,
+      "target_recurring_monthly_donors": 1000
+    }
+  ],
+  "gates": [
+    {
+      "id": "L01",
+      "name": "Independent first cohort",
+      "required_evidence": "Actual consented distinct adult operators and reviewed eligible submissions; real pause/revoke proof",
+      "satisfied": false,
+      "evidence": []
+    },
+    {
+      "id": "L02",
+      "name": "Mobile and no-MCP intake",
+      "required_evidence": "Supported mobile plugin path independently accepted under existing gate; no-account fallback independently tested",
+      "satisfied": false,
+      "evidence": [
+        {
+          "source_commit": "c5c906fe76920ca644ddf937b8ff9d61275dc025",
+          "pull_request": "https://github.com/Lesterhau/humanity-loop/pull/116",
+          "run": "https://github.com/Lesterhau/humanity-loop/actions/runs/45723651321",
+          "scope": "Next.js build only",
+          "result": "Static /capacity fallback built; no mobile plugin acceptance or genuine independent participant."
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "name": "Capacity controlled registration and work",
+      "required_evidence": "Both direct MCP and web register share atomic server-side admission budget, reviewer/assignment ceiling; exhausted/unknown fails safely; current per-fingerprint 5/hour alone is insufficient Bind owner-issued invitations and retries to the same transaction and node; no registration token for a missing/invalid node response. Isolate test endpoints from production; no hosted write without separate approval.",
+      "satisfied": false,
+      "evidence": [
+        {
+          "source_commit": "c5c906fe76920ca644ddf937b8ff9d61275dc025",
+          "pull_request": "https://github.com/Lesterhau/humanity-loop/pull/116",
+          "run": "https://github.com/Lesterhau/humanity-loop/actions/runs/45723651027",
+          "scope": "disposable PostgreSQL fixture; NOT production or HTTP load acceptance",
+          "result": "10,000 synthetic insert attempts, 20 concurrent sessions, 4 admitted, 9,996 deferred, 1 existing, total cap 5, zero over-cap admissions. Full/unknown outcomes surfaced in draft browser and MCP clients; static overflow page added.",
+          "remaining": "Actual hosted relation/RPC/schema privileges, least-privilege trigger owner, durable retry protection, work and review ceilings, isolated hosted acceptance."
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "name": "Burst interest and privacy",
+      "required_evidence": "10,000 synthetic interest requests with bounded writes, explicit consent, minimization/retention/deletion, retry/idempotency, overload status and no participant impersonation",
+      "satisfied": false,
+      "evidence": [
+        {
+          "source_commit": "c5c906fe76920ca644ddf937b8ff9d61275dc025",
+          "pull_request": "https://github.com/Lesterhau/humanity-loop/pull/116",
+          "run": "https://github.com/Lesterhau/humanity-loop/actions/runs/45723651027",
+          "scope": "disposable PostgreSQL fixture; NOT production or HTTP load acceptance",
+          "result": "10,000 distinct synthetic interest tickets, 100 duplicate retries, one overflow correctly deferred, withdrawal and expiration purge tested, node count unchanged. No-data overflow page draft build passed.",
+          "remaining": "HTTP endpoint/load rehearsal, proof-of-possession, abuse limits, consent/withdrawal UI, actual retention/backups/provider limitations and independently reviewed privacy acceptance. No new real data collection."
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "Governed Foundry and operational continuity",
+      "required_evidence": "Real independently reviewed artifact, canonical leases, hard provider cap, verified monitoring and incident rollback",
+      "satisfied": false,
+      "evidence": []
+    },
+    {
+      "id": "L06",
+      "name": "Security and data governance",
+      "required_evidence": "Issue 68 protected main with separate identity, issue 96 tested deletion/revocation, no unsafe credential disclosure, security review",
+      "satisfied": false,
+      "evidence": []
+    },
+    {
+      "id": "L07",
+      "name": "Impact Passport",
+      "required_evidence": "One actual accepted contribution and separately consented private record; portable badge, verification/revocation and actual user-controlled sharing tested; no partnership claim",
+      "satisfied": false,
+      "evidence": []
+    },
+    {
+      "id": "L08",
+      "name": "MOTHER account and content",
+      "required_evidence": "Actual blue check on finalized account; clear AI identity; owner-approved evidence-backed initial posts and verified manual posting path",
+      "satisfied": false,
+      "evidence": [
+        {
+          "source_commit": "b898ecbec9ee259b0aa7112efe69c93c239c3da1",
+          "artifact": "MOTHER-LAUNCH-PACK-2026-11-25.md",
+          "scope": "source-ledger-grounded private review draft; not live posting or approval",
+          "result": "New pinned introduction and six-post sequence cover four historical corrections with causal caveats; all estimated lengths <=280.",
+          "remaining": "Actual account profile, blue check, owner review, source recheck, composer length and authorized publication path."
+        },
+        {
+          "source_commit": "ccc707294444dd29281ff00faf1f1e94eee9edd2",
+          "artifact": "MOTHER-LAUNCH-PACK-2026-11-25.md",
+          "scope": "supplemental AI review wording correction, not human approval",
+          "result": "Public CMS claim restricted to report and dated verified change; private correspondence not used as public receipt."
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "name": "Engagement scope",
+      "required_evidence": "If AI replies are intended, actual prior written explicit approval from X, compliant opt-in behavior and automated account label connected to human account; otherwise no automated replies",
+      "satisfied": false,
+      "evidence": []
+    },
+    {
+      "id": "L10",
+      "name": "Funding and incident response",
+      "required_evidence": "Verified recurring support mechanism, operator/tax disclosure and accounting, refund/cancel path, approved budget and review capacity; no payment test without separate approval",
+      "satisfied": false,
+      "evidence": []
+    },
+    {
+      "id": "L11",
+      "name": "Explicit release decision",
+      "required_evidence": "Independent review of current evidence and human owner GO for bounded launch; stop switch and named accountable maintainer",
+      "satisfied": false,
+      "evidence": []
+    }
+  ],
+  "authorizations": {
+    "public_post": false,
+    "automatic_reply": false,
+    "spend": false,
+    "production_load_test": false,
+    "new_personal_data_collection": false,
+    "deploy": false,
+    "merge": false
+  },
+  "current_observations": {
+    "as_of": "2026-11-25",
+    "source_ref": "e15ad3f8257187648a73decc235342be8e509ef2",
+    "registration_rate_limit": "Repository gateway source invokes hl_node_registration_gate with 60-minute window and max_attempts=5 per fingerprint; not verified live enforcement or aggregate cap.",
+    "website": "/join sends anonymous visit POST on mount; direct /api/mcp registration uses same gateway. /start has email intake and existing support link; recurring payment, payout and tax classification not verified.",
+    "last_verified_node_count_as_of": "2026-11-21",
+    "last_verified_node_count": 0,
+    "actual_current_capacity": null,
+    "actual_current_interest": null,
+    "last_reviewed_draft_pr": 116,
+    "latest_worker_scout": "2026-11-25T23:43:00.878757+00:00; older-persons grant discrepancy prospect, not activated; intake truncation resolved by separate master comment filtering, zero new MOTHER inbox threads."
+  }
+}
