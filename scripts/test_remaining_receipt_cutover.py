@@ -64,10 +64,10 @@ class RemainingCutover(unittest.TestCase):
         self.assertEqual(git(self.repo,'rev-parse','main').decode().strip(),self.main)
         return head
 
-    def produce(self,root,fetch,now):
+    def produce(self,root,fetch,now,*,append_only=False):
         original=evidence.scan
         with patch.object(evidence,'ROOT',root/EVIDENCE),patch.object(evidence,'scan',side_effect=lambda previous:original(fetch=fetch,previous=previous,now=now)),contextlib.redirect_stdout(io.StringIO()):
-            evidence.main()
+            evidence.main(append_only=append_only)
 
     def js(self,source,*args,raw=b''):
         return subprocess.run([self.node,'-e',source,*map(str,args)],input=raw,capture_output=True,check=True,timeout=15).stdout
@@ -103,6 +103,57 @@ class RemainingCutover(unittest.TestCase):
         self.advance(ref,head,final)
         self.assertEqual(self.restore(head,self.root/'evidence-recovery',names),failed)
         print('EVIDENCE_INTEGRITY_DUAL_WRITE_REHEARSAL_PASSED queue_preserved=true failed_doi_retry=true stale_threshold=42h')
+
+    def test_append_only_queue_and_canonical_review_boundary(self):
+        import receipt_state_store as store
+        from datetime import datetime,timezone
+        names={n for n in FILES if n.startswith(EVIDENCE)}
+        self.produce(self.a,lookup(),'2026-11-25T03:23:00Z',append_only=True)
+        path=self.a/EVIDENCE/'review-queue.json'
+        queue=json.loads(path.read_bytes())
+        queue['items'][0]['status']='under-review'
+        # Existing historical decisions and 499 additional synthetic leads.
+        queue['items'].extend({'retractedDoi':'10.1000/old-'+str(i),'citingSource':'MED',
+            'citingId':str(i),'status':'unreviewed'} for i in range(499))
+        path.write_text(json.dumps(queue)+'\n')
+        old=self.read(self.a,names)
+        for name,raw in old.items():
+            target=self.repo/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
+        review_path=EVIDENCE+'reviews/synthetic-disposition.json'
+        review=self.repo/review_path;review.parent.mkdir(parents=True,exist_ok=True)
+        review.write_text('{"fixture":true,"status":"under-review"}\n')
+        git(self.repo,'add','-A');git(self.repo,'commit','-qm','synthetic historical queue and separate review')
+        main=git(self.repo,'rev-parse','main').decode().strip()
+        class Fixed(datetime):
+            @classmethod
+            def now(cls,tz=None):return datetime(2026,12,3,tzinfo=timezone.utc)
+        with patch.object(store,'datetime',Fixed):
+            anchor=store.seed(self.repo,'evidence',main)
+            self.assertEqual(store.verified_state(self.repo,'evidence',anchor,anchor),old)
+            workspace=self.root/'append-only-workspace'
+            store.hydrate_lane(self.repo,'evidence',anchor,anchor,workspace)
+            self.assertFalse((workspace/review_path).exists())
+            second={'message':{'items':RETRACTION['message']['items']+[{'DOI':'10.1000/notice-two',
+                'update-to':[{'DOI':'10.1000/original-two','type':'retraction'}]}]}}
+            self.produce(workspace,lookup(crossref=second),'2026-11-26T03:23:00Z',append_only=True)
+            new=self.read(workspace,names)
+            items=json.loads(new[EVIDENCE+'review-queue.json'])['items']
+            self.assertEqual(len(items),501)
+            self.assertEqual(items[:500],queue['items'])
+            self.assertEqual(items[-1]['status'],'unreviewed')
+            head=store.prepare_lane(self.repo,'evidence',anchor,anchor,workspace)
+            self.assertEqual(store.verified_state(self.repo,'evidence',anchor,head),new)
+            with self.assertRaisesRegex(store.Hold,'unexpected_receipt_path'):
+                store.propose(self.repo,'evidence',head,{**new,review_path:b'{}'})
+            self.assertEqual(review.read_text(),'{"fixture":true,"status":"under-review"}\n')
+            # Capacity failure must occur before any file write or seen-DOI advance.
+            oversized={'schemaVersion':1,'items':[{'synthetic':'x'*(4*1024*1024)}]}
+            with patch.object(evidence,'merge_review_queue',return_value=oversized):
+                with self.assertRaisesRegex(ValueError,'evidence_queue_capacity_hold'):
+                    self.produce(workspace,lookup(),'2026-11-27T03:23:00Z',append_only=True)
+            self.assertEqual(self.read(workspace,names),new)
+            self.assertEqual(git(self.repo,'rev-parse','main').decode().strip(),main)
+        print('EVIDENCE_APPEND_ONLY_QUEUE_PASSED existing=500 retained=501 independent_review_excluded=true capacity_hold_preserves_state=true')
 
     def sentinel(self,root,stamp,broken):
         cmd="""const fs=require('node:fs'),path=require('node:path'),s=require(process.argv[1]),root=process.argv[2],now=Date.parse(process.argv[3]),broken=process.argv[4]==='true';
