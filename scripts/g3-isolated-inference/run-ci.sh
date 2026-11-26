@@ -5,6 +5,9 @@ umask 077
 [[ "${GITHUB_ACTIONS:-}" == true && "${CI:-}" == true && "${HL_APPROVED_ONE_SHOT:-}" == true && "${GITHUB_REPOSITORY:-}" == Lesterhau/humanity-loop && "${GITHUB_EVENT_NAME:-}" == pull_request && "${GITHUB_HEAD_REF:-}" == test/g3-isolated-inference-20261124 && "${GITHUB_RUN_ATTEMPT:-}" == 1 ]] || exit 2
 here=$(cd -- "$(dirname -- "$0")" && pwd)
 root=$(git -C "$here" rev-parse --show-toplevel)
+# No inference, download or container start until the review destination is valid.
+[[ -n "${HL_REVIEW_CERT_PATH:-}" && -n "${HL_REVIEW_CERT_SHA256:-}" && -n "${HL_REVIEW_OUT_DIR:-}" ]] || { echo 'Reviewer configuration missing; no inference authorized'; exit 2; }
+/usr/bin/python3 "$here/seal_receipt.py" preflight "$HL_REVIEW_CERT_PATH" "$HL_REVIEW_CERT_SHA256" "$HL_REVIEW_OUT_DIR"
 work=$(mktemp -d)
 cid=''
 cleanup(){ if [[ -n "$cid" ]]; then docker rm -f "$cid" >/dev/null 2>&1 || true; fi; rm -rf -- "$work"; }
@@ -35,4 +38,6 @@ done
 [[ "$ready" == 1 ]] || { echo 'Model readiness not established; no inference authorized'; exit 2; }
 # Independent wall-clock watchdog supplements the adapter's deadline.
 sudo timeout --kill-after=5s 240s nsenter -t "$pid" -n -- sudo -u "$user" env -i PATH=/usr/bin:/bin HL_APPROVED_ONE_SHOT=true /usr/bin/python3 "$here/run_fixture.py" "$root" "$work/receipt.json"
-sha256sum "$work/receipt.json" | cut -d' ' -f1
+# Seal while the raw receipt still exists. A failed seal is a failed run.
+# Only the CMS ciphertext and hash manifest survive in the supplied private directory.
+/usr/bin/python3 "$here/seal_receipt.py" seal "$work/receipt.json" "$HL_REVIEW_CERT_PATH" "$HL_REVIEW_CERT_SHA256" "$HL_REVIEW_OUT_DIR"

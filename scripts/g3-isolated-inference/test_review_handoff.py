@@ -2,6 +2,9 @@
 import json
 import tempfile
 import unittest
+import subprocess
+import sys
+from seal_receipt import seal_file
 from pathlib import Path
 from unittest.mock import patch
 from review_envelope import EnvelopeHold,digest,run,encrypt
@@ -80,3 +83,38 @@ class ReviewHandoffTests(unittest.TestCase):
         try:
             with self.assertRaises(EnvelopeHold):self.open(e,m)
         finally:k.chmod(0o600)
+
+class ProducerHandoffTests(ReviewHandoffTests):
+    def test_actual_sealing_cli_survives_producer_cleanup(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            out=root/'handoff';out.mkdir(mode=0o700)
+            script=Path(__file__).with_name('seal_receipt.py')
+            with tempfile.TemporaryDirectory(dir=root) as producer:
+                raw=Path(producer)/'receipt.json';raw.write_bytes(self.clear)
+                args=[sys.executable,str(script)]
+                pre=subprocess.run(args+['preflight',str(self.root/'a.pem'),self.cert_pin,str(out)],capture_output=True,check=True)
+                self.assertIn(b'REVIEW_DESTINATION_PREFLIGHT_PASSED',pre.stdout)
+                res=subprocess.run(args+['seal',str(raw),str(self.root/'a.pem'),self.cert_pin,str(out)],capture_output=True,check=True)
+                self.assertNotIn(b'Synthetic test text',res.stdout+res.stderr)
+            self.assertFalse(raw.exists())
+            self.assertEqual({p.name for p in out.iterdir()},{'review.cms','manifest.json'})
+            m=json.loads((out/'manifest.json').read_bytes())
+            clear,summary=self.open((out/'review.cms').read_bytes(),m)
+            self.assertEqual(clear,self.clear)
+            self.assertFalse(summary['independent_review_completed'])
+            self.assertFalse(m['storage_authorized'])
+            self.assertFalse(m['release_authorized'])
+            self.assertNotIn(b'Synthetic test text',(out/'review.cms').read_bytes())
+            self.assertEqual((out/'review.cms').stat().st_mode & 0o777,0o600)
+            print('G3_SYNTHETIC_PRODUCER_SEAL_SURVIVES_CLEANUP_PASSED')
+    def test_failed_preflight_or_packet_leaves_no_output(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);out=root/'handoff';out.mkdir(mode=0o700)
+            raw=root/'receipt.json';raw.write_bytes(b'{}')
+            with self.assertRaises(EnvelopeHold):
+                seal_file(raw,self.root/'a.pem','0'*64,out)
+            self.assertEqual(list(out.iterdir()),[])
+            with self.assertRaises(ReviewHold):
+                seal_file(raw,self.root/'a.pem',self.cert_pin,out)
+            self.assertEqual(list(out.iterdir()),[])
