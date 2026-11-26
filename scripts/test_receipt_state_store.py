@@ -112,15 +112,22 @@ class IntegratedCutoverTests(unittest.TestCase):
         def materialize(state,target):
             for path,raw in state.items():
                 f=target/path;f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes(raw)
+        canonical=root/'canonical-heartbeat';canonical.mkdir()
+        worker='runtime/ops/hourly-worker.json'
+        def heartbeat(when):
+            stamp=when.isoformat().replace('+00:00','Z')
+            materialize({worker:json.dumps({'schemaVersion':1,'status':'worked',
+                'runAt':stamp,'lastVerifiedAt':stamp}).encode()},canonical)
+        heartbeat(first)
         def watchdog(receipts,when):
-            # Missing/invalid receipt is not replaced by a canonical fallback.
-            cmd="""const fs=require('node:fs'),s=require(process.argv[1]),now=Number(process.argv[2]);
-const data=JSON.parse(fs.readFileSync(0,'utf8'));
-const read=p=>{if(p===s.WORKER)return {schemaVersion:1,status:'worked',runAt:new Date(now).toISOString(),lastVerifiedAt:new Date(now).toISOString()};if(!Object.hasOwn(data,p))throw Error('verified receipt unavailable');return data[p]};
-process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
-            data={k:json.loads(v) for k,v in receipts.items()}
-            return json.loads(subprocess.run([node,'-e',cmd,str(script),str(int(when.timestamp()*1000))],
-                input=json.dumps(data).encode(),capture_output=True,check=True,timeout=15,
+            # Separate on-disk synthetic heartbeat and verified detector paths.
+            # A missing detector cannot fall back to a canonical old receipt.
+            target=Path(tempfile.mkdtemp(dir=root))
+            materialize(receipts,target)
+            cmd="""const s=require(process.argv[1]),now=Number(process.argv[2]);
+process.stdout.write(JSON.stringify(s.evaluateVerified(now,process.argv[3],process.argv[4])));"""
+            return json.loads(subprocess.run([node,'-e',cmd,str(script),str(int(when.timestamp()*1000)),
+                str(canonical),str(target)],capture_output=True,check=True,timeout=15,
                 env={'PATH':'/usr/bin:/bin','LANG':'C'}).stdout)
         def cap_report(when):
             stamp=when.isoformat().replace('+00:00','Z')
@@ -136,11 +143,11 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
         cap_initial=cap_report(first)
         materialize({cap.LATEST:cap_initial,cap.PREFIX+'runs/2026-11-25.json':cap_initial},repo)
         for state in initial.values():materialize(state,repo)
-        e.reciprocal(e.a,'2026-11-25T12:00:00Z')
+        e.reciprocal(repo,'2026-11-18T12:00:00Z')
         baseline=watchdog({cap.LATEST:cap_initial,**{store.latest_path(k):v[store.latest_path(k)] for k,v in initial.items()}},first)
         self.assertEqual(baseline['status'],'healthy')
         initial['sentinel']={remaining.SENTINEL:(json.dumps(baseline,indent=2)+'\n').encode(),
-                            remaining.RECIPROCAL:(e.a/remaining.RECIPROCAL).read_bytes()}
+                            remaining.RECIPROCAL:(repo/remaining.RECIPROCAL).read_bytes()}
         materialize(initial['sentinel'],repo)
         git(repo,'add','-A');git(repo,'commit','-qm','synthetic canonical seed')
         main=git(repo,'rev-parse','main').decode().strip()
@@ -160,7 +167,7 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
             fdir=workspaces['federal']/store.F
             g.produce(gdir,next_time,lambda url:'Synthetic revised '+url)
             f.produce(fdir,next_time,lambda url:'Synthetic revised '+url)
-            e.produce(workspaces['evidence'],lookup(),'2026-11-26T12:00:00Z')
+            e.produce(workspaces['evidence'],lookup(),'2026-11-26T12:00:00Z',append_only=True)
             updated={'critical':g.read_state(gdir),'federal':f.read_state(fdir),'evidence':e.read(workspaces['evidence'],names)}
             cap_latest,_=write_report(build_report([],next_time.isoformat().replace('+00:00','Z')),workspaces['cap']/cap.PREFIX)
             cap_next=cap_latest.read_bytes()
@@ -180,6 +187,13 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
                     store.advance_local(repo,w,refs[w],anchors[w],state)
             self.assertEqual(verified[cap.LATEST],cap_next)
             self.assertFalse(scan_due(root/'verified-consumer'/store.latest_path('critical'),'schedule',next_time+timedelta(hours=4)))
+            heartbeat(now)
+            # Even a plausible worker report in the migrated workspace cannot
+            # substitute for the separate canonical self-report.
+            worker_bytes=(canonical/worker).read_bytes()
+            (canonical/worker).unlink()
+            self.assertEqual(watchdog({**verified,worker:worker_bytes},now)['checks'][4]['status'],'warning')
+            heartbeat(now)
             healthy=watchdog(verified,now)
             self.assertEqual(healthy['status'],'healthy')
             self.assertEqual([x['status'] for x in healthy['checks']],['ok']*5)
@@ -188,14 +202,24 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
             with self.assertRaises(Hold):
                 store.verified_state(repo,'critical',anchors['critical'],heads['federal'])
             unavailable=dict(verified);unavailable.pop(store.latest_path('critical'))
+            materialize({store.latest_path('critical'):verified[store.latest_path('critical')]},canonical)
             failure=watchdog(unavailable,now)
             self.assertEqual(failure['status'],'critical')
             self.assertEqual(failure['checks'][2]['status'],'critical')
             self.assertEqual(watchdog(verified,now+timedelta(hours=13))['checks'][2]['status'],'critical')
-            # Persist the real combined watchdog result through the fifth
-            # adapter, retaining the separately produced reciprocal audit.
+            # Execute the real weekly producer using canonical documents and
+            # the hydrated receipt workspace; no external source fetch.
+            reciprocal=Path(__file__).with_name('reciprocal_audit.js').resolve()
+            cmd="""const r=require(process.argv[1]);r.main(new Date(process.argv[4]),process.argv[2],async()=>{throw Error('synthetic unavailable')},process.argv[3]).then(x=>process.stdout.write(JSON.stringify({ran:x.ran,status:x.receipt.publicMethods.status}))).catch(e=>{console.error(e);process.exitCode=1})"""
+            def run_reciprocal():
+                out=subprocess.run([node,'-e',cmd,str(reciprocal),str(repo),str(workspaces['sentinel']),now.isoformat()],capture_output=True,check=True,timeout=15,env={'PATH':'/usr/bin:/bin','LANG':'C'}).stdout
+                return json.loads(out.splitlines()[-1])
+            self.assertEqual(run_reciprocal(),{'ran':True,'status':'unverified'})
+            self.assertEqual(run_reciprocal(),{'ran':False,'status':'unverified'})
+            self.assertEqual((repo/remaining.RECIPROCAL).read_bytes(),initial['sentinel'][remaining.RECIPROCAL])
             sentinel={remaining.SENTINEL:(json.dumps(healthy,indent=2)+'\n').encode(),
-                      remaining.RECIPROCAL:initial['sentinel'][remaining.RECIPROCAL]}
+                      remaining.RECIPROCAL:(workspaces['sentinel']/remaining.RECIPROCAL).read_bytes()}
+            self.assertNotEqual(sentinel[remaining.RECIPROCAL],initial['sentinel'][remaining.RECIPROCAL])
             materialize(sentinel,workspaces['sentinel'])
             heads['sentinel']=store.prepare_lane(repo,'sentinel',anchors['sentinel'],anchors['sentinel'],workspaces['sentinel'])
             self.assertEqual(git(repo,'rev-parse',refs['sentinel']).decode().strip(),anchors['sentinel'])
@@ -215,7 +239,7 @@ process.stdout.write(JSON.stringify(s.evaluate(now,read)));"""
             self.assertEqual(git(repo,'status','--porcelain'),b'')
             self.assertEqual(git(repo,'remote'),b'')
             for w,h in heads.items():self.assertEqual(git(repo,'rev-parse',refs[w]).decode().strip(),h)
-        print('INTEGRATED_FIVE_WRITER_SHADOW_REHEARSAL_PASSED writers=5 watchdog=healthy missing_lane=critical stale_lane=critical main_unchanged=true remote=false')
+        print('INTEGRATED_FIVE_WRITER_SHADOW_REHEARSAL_PASSED writers=5 watchdog=healthy missing_lane=critical stale_lane=critical main_unchanged=true remote=false heartbeat_canonical=true reciprocal_real_producer=true')
 
 class HistoryScalingTests(unittest.TestCase):
     def test_fifty_transitions_read_only_changed_blobs(self):
