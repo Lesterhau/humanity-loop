@@ -51,8 +51,11 @@ function evaluate(files,now=new Date()) {
   evidenceLimit:'A local process scan is not proof of two-way model learning, an executed repair or real-world public benefit.'
  };
 }
-async function main(now=new Date(),root='.',verifySource=verifyPublishedMethods) {
- const p=path.join(root,RECEIPT);let prev;
+async function main(now=new Date(),root='.',verifySource=verifyPublishedMethods,receiptRoot=root) {
+ // The read-only canonical checkout supplies policy documents; a separate
+ // hydrated receipt workspace supplies prior state and receives the result.
+ // The default invocation retains its existing behavior until live cutover.
+ const p=path.join(receiptRoot,RECEIPT);let prev;
  try{prev=JSON.parse(fs.readFileSync(p,'utf8'));}catch(_){prev=null;}
  if(!due(prev,now.getTime())){console.log('Cross-audit already completed within seven days; no new receipt.');return {ran:false,receipt:prev};}
  // Fixed, local PUBLIC Humanity Loop file allowlist. No arbitrary paths or private-repo source.
