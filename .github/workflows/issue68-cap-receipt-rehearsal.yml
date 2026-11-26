@@ -26,7 +26,7 @@ permissions:
   contents: read
 jobs:
   synthetic-cap:
-    if: github.repository == 'Lesterhau/humanity-loop' && github.event.pull_request.head.repo.full_name == 'Lesterhau/humanity-loop' && github.head_ref == 'test/issue68-cap-receipt-pilot-20261125'
+    if: github.repository == 'Lesterhau/humanity-loop' && github.event.pull_request.head.repo.full_name == 'Lesterhau/humanity-loop'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
