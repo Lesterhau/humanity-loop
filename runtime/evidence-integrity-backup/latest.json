@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "runAt": "2026-11-25T13:05:56.228506Z",
+  "runAt": "2026-11-26T12:46:21.470531Z",
   "status": "partial",
   "source": "Crossref retraction-type update metadata + Europe PMC citation metadata",
   "sourceLimit": {
@@ -8,45 +8,30 @@
     "newDoisPerRun": 15,
     "citationsPerDoi": 1000
   },
-  "newRetractionsChecked": 2,
-  "citationsExamined": 25,
+  "newRetractionsChecked": 5,
+  "citationsExamined": 65,
   "candidateFindingsCount": 0,
   "candidateFindings": [],
-  "failuresCount": 7,
+  "failuresCount": 4,
   "failures": [
     {
       "stage": "citation_lookup",
-      "doi": "10.3390/nano11113081",
+      "doi": "10.3390/nano9020187",
       "reason": "The read operation timed out"
     },
     {
       "stage": "citation_lookup",
-      "doi": "10.1186/s11658-020-00246-5",
+      "doi": "10.1111/phen.12475",
       "reason": "The read operation timed out"
     },
     {
       "stage": "citation_lookup",
-      "doi": "10.1002/brb3.1187",
+      "doi": "10.1016/s0301-2115(01)00419-5",
       "reason": "The read operation timed out"
     },
     {
       "stage": "citation_lookup",
-      "doi": "10.1007/s00425-018-3046-z",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1016/j.neulet.2019.03.053",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1002/ece3.74052",
-      "reason": "The read operation timed out"
-    },
-    {
-      "stage": "citation_lookup",
-      "doi": "10.1002/num.22611",
+      "doi": "10.3727/096504018x15252202178408",
       "reason": "The read operation timed out"
     }
   ],
@@ -54,32 +39,32 @@
   "coverageGaps": [
     {
       "stage": "not_indexed",
-      "doi": "10.1155/2022/4359535",
+      "doi": "10.1080/17455030.2022.2072532",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1007/s13206-025-00245-8",
+      "doi": "10.1080/17455030.2021.2003478",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1177/21582440251357239",
+      "doi": "10.1108/ijhrh-06-2021-0134",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.32604/iasc.2022.019555",
+      "doi": "10.1016/j.frl.2024.105842",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1016/j.jvcir.2019.02.024",
+      "doi": "10.1007/s10854-026-17250-8",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     },
     {
       "stage": "not_indexed",
-      "doi": "10.1080/1023666x.2025.2477557",
+      "doi": "10.1016/j.iref.2024.103612",
       "reason": "No Europe PMC match; scientific coverage limited; retry later"
     }
   ],
