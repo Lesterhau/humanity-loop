@@ -10,7 +10,7 @@
       "id": "closed_beta",
       "target_independent_accepted_nodes": 5,
       "minimum_distinct_hosts": 2,
-      "admission": "invite-only adults; first acceptance and one private consented Passport record; expand only after review"
+      "admission": "Target: invitation-bound adult admission, NOT implemented. Existing gateway does not enforce invitations; do not open a new cohort or claim invite-only enforcement until an atomic invitation-bound retry-safe registration path passes review. First independent acceptance only under existing separately approved limited pilot policy; one private consented Passport record; expand only after review."
     },
     {
       "id": "controlled_expansion",
@@ -55,7 +55,7 @@
     {
       "id": "L03",
       "name": "Capacity controlled registration and work",
-      "required_evidence": "Both direct MCP and web register share atomic server-side admission budget, reviewer/assignment ceiling; exhausted/unknown fails safely; current per-fingerprint 5/hour alone is insufficient",
+      "required_evidence": "Both direct MCP and web register share atomic server-side admission budget, reviewer/assignment ceiling; exhausted/unknown fails safely; current per-fingerprint 5/hour alone is insufficient Bind owner-issued invitations and retries to the same transaction and node; no registration token for a missing/invalid node response. Isolate test endpoints from production; no hosted write without separate approval.",
       "satisfied": false,
       "evidence": [
         {
@@ -117,6 +117,12 @@
           "scope": "source-ledger-grounded private review draft; not live posting or approval",
           "result": "New pinned introduction and six-post sequence cover four historical corrections with causal caveats; all estimated lengths <=280.",
           "remaining": "Actual account profile, blue check, owner review, source recheck, composer length and authorized publication path."
+        },
+        {
+          "source_commit": "ccc707294444dd29281ff00faf1f1e94eee9edd2",
+          "artifact": "MOTHER-LAUNCH-PACK-2026-11-25.md",
+          "scope": "supplemental AI review wording correction, not human approval",
+          "result": "Public CMS claim restricted to report and dated verified change; private correspondence not used as public receipt."
         }
       ]
     },

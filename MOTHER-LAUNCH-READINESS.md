@@ -4,7 +4,7 @@ Owner-approved direction, November 25, 2026: MOTHER stays publicly quiet until b
 
 ## Deliver the smallest safe release
 
-1. Closed beta: first accepted independent adult node, private consented Passport record; grow to five accepted nodes over at least two hosts. No mass recruitment.
+1. Closed beta: first accepted independent adult node, private consented Passport record; grow to five accepted nodes over at least two hosts. Invitation-bound admission is a required future control, not an implemented restriction. The current gateway cannot reserve a slot for an invitee. Do not open a new cohort before independent acceptance of that control; any existing limited pilot must retain its separate authorization and consent boundaries. No mass recruitment.
 2. Controlled expansion: target 25 accepted independent nodes, staged toward 100 only when review/assignment capacity permits. Distinct consenting operators and actually reviewed contributions, not registrations.
 3. Launch checkpoint: withstand a **synthetic 10,000-interest-request burst** in disposable isolated rehearsal. Interest does not equal an active node. Actual activation is capped by available reviewed tasks, review throughput, cost and operator-approved concurrent capacity. No real-person contact, production load test or paid resource in this rehearsal.
 4. MOTHER public launch: only after explicit owner GO, all applicable evidence gates, real blue check, approved content and a safe intake route. Initial publication is human-reviewed and manually authorized. No automated replies without prior explicit written X approval. Long-term target 20k active nodes and 1k monthly recurring donors is G5-B, not required before first publication.

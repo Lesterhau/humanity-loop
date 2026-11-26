@@ -303,7 +303,7 @@
         "G4",
         "G5"
       ],
-      "selection_rule": "When G2 waits on outside action, pursue the next concrete G3/G4/G5 milestone in parallel: independently accepted Foundry artifact, accepted node, consented Passport record, international outcome, or approved funding readiness. Freeze optional engineering refinements; retain safety-critical blockers, WIP=2, zero new spend, no unsolicited outreach, no new scheduler and sequential release acceptance.",
+      "selection_rule": "When G2 waits on outside action, pursue the next concrete G3/G4/G5 milestone in parallel: independently accepted Foundry artifact, accepted node, consented Passport record, international outcome, or approved funding readiness. Freeze optional engineering refinements; retain safety-critical blockers, WIP=2, no third external case, no claimed accepted outcome without actual independent acceptance, zero new spend, no unsolicited outreach, no new scheduler and sequential release acceptance.",
       "score_readiness_by": "Milestone acceptance evidence, not test count or document count; tests are valuable only when tied to a release blocker.",
       "no_new_scheduled_workers": true
     }
