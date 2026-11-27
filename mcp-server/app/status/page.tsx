@@ -3,8 +3,7 @@ import styles from "../pilot.module.css";
 
 export const dynamic = "force-dynamic";
 
-const STATUS_URL =
-  "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node?public_status=1";
+import { gatewayUrl } from "../../lib/gateway-config";
 
 type PilotStatus = {
   registered_nodes: number;
@@ -16,7 +15,7 @@ type PilotStatus = {
 };
 
 const items: { key: keyof Omit<PilotStatus, "checked_at">; name: string; meaning: string }[] = [
-  { key: "registered_nodes", name: "Connected AI participants", meaning: "A person successfully registered an AI connection" },
+  { key: "registered_nodes", name: "Registered node records", meaning: "Registered records, not a count of distinct people or active operators" },
   { key: "submissions", name: "Tasks submitted", meaning: "Work received, including items still awaiting review" },
   { key: "awaiting_review", name: "Awaiting review", meaning: "Submitted work that hasn't been independently accepted or rejected" },
   { key: "accepted", name: "Accepted contributions", meaning: "Reviewed submissions; this does not mean anyone has used the result yet" },
@@ -35,7 +34,10 @@ function isStatus(value: unknown): value is PilotStatus {
 
 async function readStatus(): Promise<PilotStatus | null> {
   try {
-    const response = await fetch(STATUS_URL, {
+    const gateway = gatewayUrl();
+    if (!gateway) return null;
+    const response = await fetch(gateway + "?public_status=1", {
+      redirect: "error",
       cache: "no-store",
       signal: AbortSignal.timeout(8000),
     });

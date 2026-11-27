@@ -1,13 +1,15 @@
 import { normalizeRiskPermissions, type PublicRiskPermission } from "./risk-permissions";
 
-const NODE_GATEWAY =
-  "https://jxtcccrlnhkcjfnwlfea.supabase.co/functions/v1/contributor-node";
+import { gatewayUrl } from "./gateway-config";
 
 async function callGateway(
   body: Record<string, unknown>,
   nodeToken?: string,
 ) {
-  const response = await fetch(NODE_GATEWAY, {
+  const gateway = gatewayUrl();
+  if (!gateway) throw new Error("Contributor gateway is not configured in this environment; no request was sent.");
+  const response = await fetch(gateway, {
+    redirect: "error",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,6 +24,12 @@ async function callGateway(
   }));
 
   if (!response.ok) {
+    if (body.action === "register") {
+      if (response.status === 503 && data?.error === "admission_capacity_unavailable") {
+        throw new Error("Humanity Loop's current pilot cohort is full or closed. No node was admitted by this request. Stop; do not retry automatically or create another identity. Wait for a new invitation.");
+      }
+      throw new Error("Registration was not confirmed. Stop and ask the pilot maintainer to reconcile the result; do not retry or create another identity.");
+    }
     throw new Error(
       typeof data?.detail === "string"
         ? data.detail

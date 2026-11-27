@@ -25,3 +25,13 @@ test('privacy policy contains no false erasure guarantee',()=>{
  assert.match(privacy,/Revocation blocks use/);
  assert.match(privacy,/does not promise deletion/);
 });
+
+test('closed cohort provides a static no-data fallback without a waitlist claim',()=>{
+ const capacity=fs.readFileSync('mcp-server/app/capacity/page.tsx','utf8');
+ assert.match(join,/cohortClosed &&/);
+ assert.match(join,/href="\/capacity"/);
+ assert.match(capacity,/force-static/);
+ assert.match(capacity,/interest-ticket service is not live/);
+ assert.match(capacity,/technical access logs/);
+ assert.doesNotMatch(capacity,/\bfetch\s*\(|<form\b|<input\b|useEffect\s*\(|"use client"/);
+});

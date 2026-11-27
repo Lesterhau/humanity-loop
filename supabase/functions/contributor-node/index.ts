@@ -79,6 +79,8 @@ function randomToken() {
   return "hl_node_" + b64;
 }
 
+class AdmissionCapacityUnavailable extends Error {}
+
 async function rpc(name: string, body: Record<string, unknown>) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${name}`, {
     method: "POST",
@@ -91,6 +93,18 @@ async function rpc(name: string, body: Record<string, unknown>) {
   });
   const text = await res.text();
   if (!res.ok) {
+    if (name === "hl_node_register") {
+      // Match only the exact typed transaction rejection; unrelated errors
+      // may mean registration committed but its response was lost.
+      let failure: unknown;
+      try { failure = JSON.parse(text); } catch { /* unknown outcome */ }
+      if (failure && typeof failure === "object" &&
+          "code" in failure && failure.code === "P0001" &&
+          "message" in failure && failure.message === "admission_capacity_unavailable") {
+        throw new AdmissionCapacityUnavailable();
+      }
+      throw new Error("registration_outcome_unknown");
+    }
     throw new Error(text || `RPC ${name} failed`);
   }
   return text ? JSON.parse(text) : null;
@@ -197,15 +211,27 @@ Deno.serve(async (req: Request) => {
         p_risk_permissions: ["tier0"],
       });
 
+      // A successful HTTP response from the RPC is not proof of registration.
+      // Never mint a usable-looking receipt for a missing or malformed node.
+      if (!registered || typeof registered.node_id !== "string" ||
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(registered.node_id)) {
+        return json({ error: "registration_outcome_unknown", retry_automatically: false }, 503);
+      }
       const sessionId = cleanString(body.session_id, 200);
-      if (sessionId && sessionId.length >= 16 && registered?.node_id) {
-        const sessionHash = await hmac("join-session:" + sessionId);
-        await rpc("hl_node_attach_registration_session", {
-          p_node_id: registered.node_id,
-          p_session_hash: sessionHash,
-          p_source: cleanString(body.source, 80),
-          p_client_surface: clientSurface(req),
-        });
+      if (sessionId && sessionId.length >= 16) {
+        // Optional telemetry cannot suppress the once-only token from a
+        // successful registration or induce a second registration.
+        try {
+          const sessionHash = await hmac("join-session:" + sessionId);
+          await rpc("hl_node_attach_registration_session", {
+            p_node_id: registered.node_id,
+            p_session_hash: sessionHash,
+            p_source: cleanString(body.source, 80),
+            p_client_surface: clientSurface(req),
+          });
+        } catch {
+          console.warn("registration telemetry attachment unavailable");
+        }
       }
 
       return json({
@@ -259,6 +285,15 @@ Deno.serve(async (req: Request) => {
 
     return json({ error: "unknown_action" }, 400);
   } catch (err) {
+    if (action === "register") {
+      if (err instanceof AdmissionCapacityUnavailable) {
+        return json({ error: "admission_capacity_unavailable", retry_automatically: false }, 503);
+      }
+      // Do not expose SQL, identifiers, credentials or raw errors, and
+      // never promise no node was created when a response may have failed.
+      console.warn("registration outcome unavailable");
+      return json({ error: "registration_outcome_unknown", retry_automatically: false }, 503);
+    }
     const message = err instanceof Error ? err.message : String(err);
     console.error("node-gateway error", { action, message: message.slice(0, 500) });
     return json({ error: "request_failed", detail: message.slice(0, 300) }, 400);
