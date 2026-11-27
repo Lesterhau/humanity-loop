@@ -1866,6 +1866,66 @@
       "europePmcUrl": "https://europepmc.org/article/MED/42882835",
       "status": "unreviewed",
       "detectedAt": "2026-11-24T13:52:17.449319Z"
+    },
+    {
+      "retractedDoi": "10.1016/j.scitotenv.2019.134664",
+      "noticeDoi": "10.1016/j.scitotenv.2019.134664",
+      "crossrefUpdateSelfReferential": true,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "MED",
+      "citingId": "38622434",
+      "citingTitle": "Interventions to improve symptomatology in patients with hypothyroidism and persistent symptoms: A systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/38622434",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-27T12:38:12.164477Z"
+    },
+    {
+      "retractedDoi": "10.1016/j.scitotenv.2019.134664",
+      "noticeDoi": "10.1016/j.scitotenv.2019.134664",
+      "crossrefUpdateSelfReferential": true,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "PPR",
+      "citingId": "PPR746548",
+      "citingTitle": "Interventions to improve symptomatology in patients with hypothyroidism and persistent symptoms: A systematic review.",
+      "candidateType": "Possible systematic review",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/PPR/PPR746548",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-27T12:38:12.164477Z"
+    },
+    {
+      "retractedDoi": "10.1016/j.scitotenv.2019.134664",
+      "noticeDoi": "10.1016/j.scitotenv.2019.134664",
+      "crossrefUpdateSelfReferential": true,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "MED",
+      "citingId": "34742820",
+      "citingTitle": "The association between bisphenol A exposure and oxidative damage in rats/mice: A systematic review and meta-analysis.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/34742820",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-27T12:38:12.164477Z"
+    },
+    {
+      "retractedDoi": "10.1016/j.scitotenv.2019.134664",
+      "noticeDoi": "10.1016/j.scitotenv.2019.134664",
+      "crossrefUpdateSelfReferential": true,
+      "noticeStatus": "unverified",
+      "metadataCaveat": "Self-referential Crossref retraction-type update: the notice DOI matches the original DOI. Independently verify the publisher notice and its actual status before asserting retraction.",
+      "citingSource": "MED",
+      "citingId": "34639124",
+      "citingTitle": "Integrating Statistical and Machine-Learning Approach for Meta-Analysis of Bisphenol A-Exposure Datasets Reveals Effects on Mouse Gene Expression within Pathways of Apoptosis and Cell Survival.",
+      "candidateType": "Possible meta-analysis",
+      "reason": "Title keyword only; needs human verification",
+      "europePmcUrl": "https://europepmc.org/article/MED/34639124",
+      "status": "unreviewed",
+      "detectedAt": "2026-11-27T12:38:12.164477Z"
     }
   ]
 }
