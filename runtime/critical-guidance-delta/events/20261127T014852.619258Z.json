@@ -1,0 +1,27 @@
+{
+  "baselinesCreated": 0,
+  "changes": [
+    {
+      "authority": "European Medicines Agency",
+      "detectedAt": "2026-11-27T01:48:52.619258Z",
+      "evidenceDiff": "REMOVED FROM PRIOR VERSION:\n- 23 Nov\n- 2026\n- Pharmacovigilance Risk Assessment Committee (PRAC): 23 - 26 November 2026\n- 23 November 2026\n- 26 November 2026\n\nADDED IN CURRENT VERSION:\n+ 12 Apr\n+ Pharmacovigilance Risk Assessment Committee (PRAC): 12 - 15 April 2027\n+ 12 April 2027\n+ 15 April 2027",
+      "materiality": "unreviewed",
+      "medicalAdvice": null,
+      "newFingerprint": "3b2246339d5e82397c0f5b853e7c56ab1d306467680dc509d8e9ae470c2a5c71",
+      "oldFingerprint": "b24addabeb05f58f39fd2e2effabf2b5f9b452c3959264abe1e6fd0de8741f45",
+      "severity": "unreviewed",
+      "sourceKey": "ema-prac",
+      "sourceName": "EMA PRAC Safety Highlights",
+      "sourceUrl": "https://www.ema.europa.eu/en/committees/pharmacovigilance-risk-assessment-committee-prac",
+      "verificationStatus": "needs-independent-source-review"
+    }
+  ],
+  "changesDetected": 1,
+  "failures": [],
+  "failuresCount": 0,
+  "runAt": "2026-11-27T01:48:52.619258Z",
+  "schemaVersion": 1,
+  "sourcesChecked": 3,
+  "sourcesConfigured": 3,
+  "verificationRule": "A detected page delta is triage only. Verify the official source and evidence before any clinical, regulatory, or safety action."
+}
