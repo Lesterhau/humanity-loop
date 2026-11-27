@@ -8,6 +8,44 @@
 -- advance, renew, abort or complete a fenced task; expiry dead-letters, never
 -- silently replays external actions.
 BEGIN;
+SET LOCAL search_path TO pg_catalog, pg_temp;
+
+
+-- Enabling row level security hides every row from a non-owner role that has
+-- no policy, without raising an error. Refuse to do that silently to a role
+-- that can read or write these tables today; it needs a reviewed policy or an
+-- explicit decision first.
+DO $rls_guard$
+DECLARE hit record;
+BEGIN
+  SELECT c.relname, r.rolname INTO hit
+  FROM pg_catalog.pg_class c
+  JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+  CROSS JOIN pg_catalog.pg_roles r
+  WHERE n.nspname = 'hl_control'
+    AND c.relname IN ('agents', 'tasks', 'events', 'dead_letters')
+    AND NOT c.relrowsecurity
+    AND NOT r.rolsuper AND NOT r.rolbypassrls
+    AND r.oid <> c.relowner AND r.rolname !~ '^pg_'
+    AND (pg_catalog.has_any_column_privilege(r.oid, c.oid, 'SELECT')
+         OR pg_catalog.has_any_column_privilege(r.oid, c.oid, 'INSERT')
+         OR pg_catalog.has_any_column_privilege(r.oid, c.oid, 'UPDATE')
+         OR pg_catalog.has_table_privilege(r.oid, c.oid, 'DELETE'))
+  LIMIT 1;
+  IF FOUND THEN
+    RAISE EXCEPTION 'fenced_migration_rls_would_hide_rows: role % on table %',
+      hit.rolname, hit.relname;
+  END IF;
+END $rls_guard$;
+
+-- Explicit private relation boundary; deployment requires separate ACL compatibility review.
+REVOKE ALL ON SCHEMA hl_control FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON hl_control.agents, hl_control.tasks, hl_control.events, hl_control.dead_letters FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON ALL SEQUENCES IN SCHEMA hl_control FROM PUBLIC, anon, authenticated, service_role;
+ALTER TABLE hl_control.agents ENABLE ROW LEVEL SECURITY;
+ALTER TABLE hl_control.tasks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE hl_control.events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE hl_control.dead_letters ENABLE ROW LEVEL SECURITY;
 
 ALTER TABLE hl_control.tasks
   ADD COLUMN IF NOT EXISTS fenced_epoch bigint NOT NULL DEFAULT 0,
@@ -17,7 +55,7 @@ DO $guard$
 BEGIN
   IF NOT EXISTS (
     SELECT 1 FROM pg_constraint
-    WHERE conrelid='hl_control.tasks'::regclass AND conname='tasks_fenced_epoch_nonnegative'
+    WHERE conrelid='hl_control.tasks'::pg_catalog.regclass AND conname='tasks_fenced_epoch_nonnegative'
   ) THEN
     ALTER TABLE hl_control.tasks ADD CONSTRAINT tasks_fenced_epoch_nonnegative
       CHECK (fenced_epoch >= 0);
@@ -27,9 +65,9 @@ END $guard$;
 -- Existing general claim API must NEVER claim an opt-in fenced record even
 -- if a legacy administrator accidentally returns it to queued state.
 CREATE OR REPLACE FUNCTION hl_control.claim_next_task(
-  p_agent_id text, p_lease_seconds integer DEFAULT 300
+  p_agent_id pg_catalog.text, p_lease_seconds integer DEFAULT 300
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE claimed hl_control.tasks;
 BEGIN
@@ -56,10 +94,10 @@ BEGIN
 END $fn$;
 
 CREATE OR REPLACE FUNCTION hl_control.claim_fenced_task_v1(
-  p_task_id text, p_agent_id text, p_idempotency_key text,
+  p_task_id pg_catalog.text, p_agent_id pg_catalog.text, p_idempotency_key pg_catalog.text,
   p_lease_seconds integer DEFAULT 60
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE claimed hl_control.tasks;
 BEGIN
@@ -73,7 +111,7 @@ BEGIN
   IF NOT EXISTS(
     SELECT 1 FROM hl_control.agents
     WHERE agent_id=p_agent_id AND status='active'
-      AND permissions @> '["tier0"]'::jsonb
+      AND permissions @> '["tier0"]'::pg_catalog.jsonb
       AND (expires_at IS NULL OR expires_at > clock_timestamp())
   ) THEN
     RAISE EXCEPTION 'fenced_claim_unapproved_agent';
@@ -115,13 +153,13 @@ END $fn$;
 -- A NEW lease for the SAME owner still has a NEW epoch and token. Old workers
 -- cannot complete after expiration/rearming.
 CREATE OR REPLACE FUNCTION hl_control.advance_fenced_stage_v1(
-  p_task_id text, p_agent_id text, p_fenced_epoch bigint, p_fenced_token uuid,
-  p_stage text, p_result jsonb, p_next_stage text DEFAULT NULL,
+  p_task_id pg_catalog.text, p_agent_id pg_catalog.text, p_fenced_epoch bigint, p_fenced_token uuid,
+  p_stage pg_catalog.text, p_result pg_catalog.jsonb, p_next_stage pg_catalog.text DEFAULT NULL,
   p_complete boolean DEFAULT false
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
-DECLARE t hl_control.tasks; v_ord bigint; expected_next text;
+DECLARE t hl_control.tasks; v_ord bigint; expected_next pg_catalog.text;
 BEGIN
   IF p_fenced_token IS NULL OR p_fenced_epoch IS NULL OR
      p_stage IS NULL OR p_result IS NULL OR
@@ -149,7 +187,7 @@ BEGIN
   IF v_ord IS NULL OR jsonb_typeof(t.stages)<>'array' THEN
     RAISE EXCEPTION 'fenced_stage_not_in_sequence';
   END IF;
-  expected_next := t.stages->>(v_ord::integer);  -- JSON index 1 denotes second stage.
+  expected_next := t.stages->>(v_ord::pg_catalog.int4);  -- JSON index 1 denotes second stage.
   IF (expected_next IS NULL AND (p_complete IS DISTINCT FROM true OR p_next_stage IS NOT NULL))
   OR (expected_next IS NOT NULL AND (p_complete IS DISTINCT FROM false OR
        p_next_stage IS DISTINCT FROM expected_next)) THEN
@@ -177,10 +215,10 @@ BEGIN
 END $fn$;
 
 CREATE OR REPLACE FUNCTION hl_control.renew_fenced_lease_v1(
-  p_task_id text,p_agent_id text,p_fenced_epoch bigint,p_fenced_token uuid,
+  p_task_id pg_catalog.text,p_agent_id pg_catalog.text,p_fenced_epoch bigint,p_fenced_token uuid,
   p_lease_seconds integer DEFAULT 60
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE t hl_control.tasks;
 BEGIN
@@ -209,10 +247,10 @@ END $fn$;
 -- A genuinely failed task is held for review. Never automatically repeat
 -- the external side effect or the 8 model calls under a new lease.
 CREATE OR REPLACE FUNCTION hl_control.fail_fenced_task_v1(
-  p_task_id text,p_agent_id text,p_fenced_epoch bigint,p_fenced_token uuid,
-  p_reason text
+  p_task_id pg_catalog.text,p_agent_id pg_catalog.text,p_fenced_epoch bigint,p_fenced_token uuid,
+  p_reason pg_catalog.text
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE t hl_control.tasks;
 BEGIN
@@ -245,11 +283,11 @@ END $fn$;
 -- Administrator-only recovery: expired fenced leases DEAD-LETTER, never requeue.
 -- No scheduled invocation is created. Future manual retry requires separate
 -- review and an explicit new idempotency operation.
-CREATE OR REPLACE FUNCTION hl_control.expire_fenced_task_v1(p_task_id text)
+CREATE OR REPLACE FUNCTION hl_control.expire_fenced_task_v1(p_task_id pg_catalog.text)
 RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
-DECLARE t hl_control.tasks; previous_owner text;
+DECLARE t hl_control.tasks; previous_owner pg_catalog.text;
 BEGIN
   SELECT * INTO t FROM hl_control.tasks WHERE task_id=p_task_id FOR UPDATE;
   IF t.task_id IS NULL OR t.status<>'leased' OR
@@ -275,10 +313,10 @@ END $fn$;
 -- Prevent the old stage/renew/fail paths from bypassing fenced token checks.
 -- They continue to serve only PRE-EXISTING unfenced task IDs.
 CREATE OR REPLACE FUNCTION hl_control.advance_task_stage(
-  p_task_id text,p_agent_id text,p_stage text,p_result jsonb,
-  p_next_stage text DEFAULT NULL,p_complete boolean DEFAULT false
+  p_task_id pg_catalog.text,p_agent_id pg_catalog.text,p_stage pg_catalog.text,p_result pg_catalog.jsonb,
+  p_next_stage pg_catalog.text DEFAULT NULL,p_complete boolean DEFAULT false
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE t hl_control.tasks;
 BEGIN
@@ -295,7 +333,7 @@ BEGIN
   END IF;
   IF t.current_stage IS DISTINCT FROM p_stage THEN RAISE EXCEPTION 'stage_mismatch'; END IF;
   UPDATE hl_control.tasks SET
-    stage_results=stage_results||jsonb_build_object(p_stage,coalesce(p_result,'{}'::jsonb)),
+    stage_results=stage_results||jsonb_build_object(p_stage,coalesce(p_result,'{}'::pg_catalog.jsonb)),
     current_stage=CASE WHEN p_complete THEN NULL ELSE p_next_stage END,
     status=CASE WHEN p_complete THEN 'completed' ELSE 'leased' END,
     completed_at=CASE WHEN p_complete THEN clock_timestamp() ELSE completed_at END
@@ -308,10 +346,10 @@ BEGIN
 END $fn$;
 
 CREATE OR REPLACE FUNCTION hl_control.advance_task_stage_v2(
-  p_task_id text,p_lease_owner_id text,p_role_agent_id text,p_stage text,
-  p_result jsonb,p_next_stage text DEFAULT NULL,p_complete boolean DEFAULT false
+  p_task_id pg_catalog.text,p_lease_owner_id pg_catalog.text,p_role_agent_id pg_catalog.text,p_stage pg_catalog.text,
+  p_result pg_catalog.jsonb,p_next_stage pg_catalog.text DEFAULT NULL,p_complete boolean DEFAULT false
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE t hl_control.tasks; r hl_control.agents;
 BEGIN
@@ -335,7 +373,7 @@ BEGIN
   UPDATE hl_control.tasks SET
     stage_results=stage_results||jsonb_build_object(p_stage,
        jsonb_build_object('role_agent_id',p_role_agent_id,
-                          'result',coalesce(p_result,'{}'::jsonb))),
+                          'result',coalesce(p_result,'{}'::pg_catalog.jsonb))),
     current_stage=CASE WHEN p_complete THEN NULL ELSE p_next_stage END,
     status=CASE WHEN p_complete THEN 'completed' ELSE 'leased' END,
     completed_at=CASE WHEN p_complete THEN clock_timestamp() ELSE completed_at END
@@ -351,9 +389,9 @@ BEGIN
 END $fn$;
 
 CREATE OR REPLACE FUNCTION hl_control.renew_task_lease(
-  p_task_id text,p_agent_id text,p_lease_seconds integer DEFAULT 300
+  p_task_id pg_catalog.text,p_agent_id pg_catalog.text,p_lease_seconds integer DEFAULT 300
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE t hl_control.tasks;
 BEGIN
@@ -371,9 +409,9 @@ BEGIN
 END $fn$;
 
 CREATE OR REPLACE FUNCTION hl_control.fail_task(
-  p_task_id text,p_agent_id text,p_reason text,p_snapshot jsonb DEFAULT '{}'::jsonb
+  p_task_id pg_catalog.text,p_agent_id pg_catalog.text,p_reason pg_catalog.text,p_snapshot pg_catalog.jsonb DEFAULT '{}'::pg_catalog.jsonb
 ) RETURNS hl_control.tasks
-LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE t hl_control.tasks; next_attempts integer;
 BEGIN
@@ -391,7 +429,7 @@ BEGIN
       lease_owner=NULL,lease_expires_at=NULL
     WHERE task_id=p_task_id RETURNING * INTO t;
     INSERT INTO hl_control.dead_letters(task_id,project_id,reason,snapshot)
-    VALUES (t.task_id,t.project_id,p_reason,coalesce(p_snapshot,'{}'::jsonb));
+    VALUES (t.task_id,t.project_id,p_reason,coalesce(p_snapshot,'{}'::pg_catalog.jsonb));
     INSERT INTO hl_control.events(event_type,task_id,agent_id,project_id,payload)
     VALUES ('task_dead_lettered',t.task_id,p_agent_id,t.project_id,
             jsonb_build_object('reason',p_reason,'attempts',next_attempts));
@@ -407,7 +445,7 @@ BEGIN
 END $fn$;
 
 CREATE OR REPLACE FUNCTION hl_control.release_expired_leases()
-RETURNS integer LANGUAGE plpgsql SECURITY INVOKER SET search_path TO ''
+RETURNS integer LANGUAGE plpgsql SECURITY INVOKER SET search_path TO pg_catalog, pg_temp
 AS $fn$
 DECLARE r record; processed integer:=0; next_attempts integer;
 BEGIN
@@ -445,18 +483,18 @@ END $fn$;
 -- functions have no EXECUTE grant to PUBLIC/anon/authenticated/service_role.
 -- A future reviewed, least-privileged backend identity must be explicitly
 -- provisioned/granted, after staging acceptance and production cutover review.
-REVOKE ALL ON FUNCTION hl_control.claim_fenced_task_v1(text,text,text,integer) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.advance_fenced_stage_v1(text,text,bigint,uuid,text,jsonb,text,boolean) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.renew_fenced_lease_v1(text,text,bigint,uuid,integer) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.fail_fenced_task_v1(text,text,bigint,uuid,text) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.expire_fenced_task_v1(text) FROM PUBLIC;
+REVOKE ALL ON FUNCTION hl_control.claim_fenced_task_v1(pg_catalog.text,pg_catalog.text,pg_catalog.text,integer) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.advance_fenced_stage_v1(pg_catalog.text,pg_catalog.text,bigint,uuid,pg_catalog.text,pg_catalog.jsonb,pg_catalog.text,boolean) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.renew_fenced_lease_v1(pg_catalog.text,pg_catalog.text,bigint,uuid,integer) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.fail_fenced_task_v1(pg_catalog.text,pg_catalog.text,bigint,uuid,pg_catalog.text) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.expire_fenced_task_v1(pg_catalog.text) FROM PUBLIC, anon, authenticated, service_role;
 -- Legacy functions may predate this migration with private ACLs in Supabase,
 -- but a fresh staging fixture creates them with PostgreSQL's PUBLIC default.
 -- Explicitly preserve a deny-by-default RPC boundary in both environments.
-REVOKE ALL ON FUNCTION hl_control.claim_next_task(text,integer) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.advance_task_stage(text,text,text,jsonb,text,boolean) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.advance_task_stage_v2(text,text,text,text,jsonb,text,boolean) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.renew_task_lease(text,text,integer) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.fail_task(text,text,text,jsonb) FROM PUBLIC;
-REVOKE ALL ON FUNCTION hl_control.release_expired_leases() FROM PUBLIC;
+REVOKE ALL ON FUNCTION hl_control.claim_next_task(pg_catalog.text,integer) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.advance_task_stage(pg_catalog.text,pg_catalog.text,pg_catalog.text,pg_catalog.jsonb,pg_catalog.text,boolean) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.advance_task_stage_v2(pg_catalog.text,pg_catalog.text,pg_catalog.text,pg_catalog.text,pg_catalog.jsonb,pg_catalog.text,boolean) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.renew_task_lease(pg_catalog.text,pg_catalog.text,integer) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.fail_task(pg_catalog.text,pg_catalog.text,pg_catalog.text,pg_catalog.jsonb) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION hl_control.release_expired_leases() FROM PUBLIC, anon, authenticated, service_role;
 COMMIT;

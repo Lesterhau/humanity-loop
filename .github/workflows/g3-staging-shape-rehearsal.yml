@@ -1,0 +1,47 @@
+name: G3 isolated staging-shape rehearsal (synthetic only)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/g3-staging-shape-rehearsal.yml'
+      - 'scripts/sql/**'
+      - 'supabase/sql/hl_control_fenced_tasks_candidate_v1.sql'
+      - 'supabase/sql/hl_fenced_executor_restricted_candidate_v1.sql'
+permissions:
+  contents: read
+jobs:
+  staging-shape-rehearsal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: rehearsal_only_ephemeral_test_db
+          POSTGRES_DB: foundry_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d foundry_ci"
+          --health-interval 4s
+          --health-timeout 3s
+          --health-retries 12
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: 5432
+      PGDATABASE: foundry_ci
+      PGUSER: postgres
+      PGPASSWORD: rehearsal_only_ephemeral_test_db
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify PostgreSQL client available
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq postgresql-client
+          fi
+      - name: Rehearse with synthetic staging collisions and actual TCP sessions
+        run: bash scripts/sql/g3-staging-rehearsal/run-ci.sh

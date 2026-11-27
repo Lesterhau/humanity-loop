@@ -58,5 +58,17 @@ jobs:
             (SELECT COUNT(*) FROM hl_control.tasks WHERE project_id='humanity-loop') = 10,
             'ephemeral_fixture_only');"
           echo "G3_FENCING_EPHEMERAL_INTEGRATION_SUCCESS: no production database connection or model calls"
+      - name: Restrict disposable executor database privileges and check candidate attributes
+        run: |
+          psql -X -v ON_ERROR_STOP=1 -c 'REVOKE TEMPORARY ON DATABASE foundry_ci FROM PUBLIC'
+          psql -X -v ON_ERROR_STOP=1 -f scripts/sql/check_fenced_candidate_attributes.sql
       - name: Test real password-authenticated restricted executor LOGINs (ephemeral only)
         run: bash scripts/sql/test_fenced_authenticated_login.sh
+      - name: Recheck candidate attributes after authenticated exercise
+        run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/check_fenced_candidate_attributes.sql
+      - name: Probe the wrapper namespace boundary over real logins (non-destructive)
+        run: bash scripts/sql/test_fenced_namespace_boundary.sh
+      - name: Prove the privilege checker fails on unsafe configurations (rolled back)
+        run: bash scripts/sql/test_fenced_acl_checker_mutations.sh
+      - name: Final candidate attribute check
+        run: psql -X -v ON_ERROR_STOP=1 -f scripts/sql/check_fenced_candidate_attributes.sql
