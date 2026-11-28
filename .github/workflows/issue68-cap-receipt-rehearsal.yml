@@ -1,0 +1,62 @@
+name: Issue 68 CAP receipt cutover rehearsal (offline only)
+on:
+  pull_request:
+    paths:
+      - 'scripts/cap_receipt_pilot.py'
+      - 'scripts/test_cap_receipt_pilot.py'
+      - 'scripts/check_cap_receipt_seed.py'
+      - 'scripts/cap_daily_audit.py'
+      - 'scripts/cap_receipt_consumer.py'
+      - 'scripts/test_cap_receipt_consumer.py'
+      - 'scripts/test_critical_guidance_cutover.py'
+      - 'scripts/test_federal_policy_cutover.py'
+      - 'scripts/test_remaining_receipt_cutover.py'
+      - 'scripts/receipt_state_store.py'
+      - 'scripts/test_receipt_state_store.py'
+      - 'scripts/check_receipt_state_seed.py'
+      - 'scripts/evidence_integrity_backup.py'
+      - 'scripts/reciprocal_audit.js'
+      - 'scripts/public_methods_source.js'
+      - 'scripts/federal_policy_delta.py'
+      - 'scripts/critical_guidance_delta.py'
+      - 'scripts/monitor_cadence_gate.py'
+      - 'scripts/ops_sentinel.js'
+      - '.github/workflows/issue68-cap-receipt-rehearsal.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-cap:
+    if: github.repository == 'Lesterhau/humanity-loop' && github.event.pull_request.head.repo.full_name == 'Lesterhau/humanity-loop'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Offline CAP producer and receipt candidate tests
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_cap_daily_audit.py scripts/test_cap_receipt_pilot.py scripts/test_cap_receipt_consumer.py -v
+      - name: Critical guidance dual-write compatibility (offline only)
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_critical_guidance_cutover.py -v
+      - name: Federal policy dual-write compatibility (offline only)
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_federal_policy_cutover.py -v
+      - name: Evidence integrity and Sentinel dual-write compatibility (offline only)
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_remaining_receipt_cutover.py -v
+      - name: Exercise shared receipt storage implementation
+        run: PYTHONPATH=scripts python3 -m unittest scripts/test_receipt_state_store.py -v
+      - name: Checkout exact historical public receipt seed (no credentials)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: e15ad3f8257187648a73decc235342be8e509ef2
+          path: _historical_seed
+          persist-credentials: false
+      - name: Rehearse historical receipt migration without changing refs
+        run: PYTHONPATH=scripts python3 scripts/check_cap_receipt_seed.py _historical_seed
+      - name: Checkout reviewed current-shape public seed (no credentials)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: d3068601c1e17fc0083832259bf3b7698fc0ff52
+          path: _writer_seed
+          persist-credentials: false
+      - name: Validate historical state for remaining four writers
+        run: PYTHONPATH=scripts python3 scripts/check_receipt_state_seed.py _writer_seed

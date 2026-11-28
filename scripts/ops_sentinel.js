@@ -107,6 +107,24 @@ function evaluate(nowMs = Date.now(), read = readJSON) {
     limitation: "Checks saved GitHub detector results and a worker self-report. Does NOT verify AppDeploy Foundry model execution.",
   };
 }
+// The caller must supply a fresh workspace materialized from independently
+// pinned and verified receipt heads. This function does not attest those heads.
+// Preserve the separate canonical worker self-report; never fall back to
+// canonical copies of any migrated detector receipt.
+function evaluateVerified(nowMs, canonicalRoot, verifiedRoot) {
+  const path = require("node:path");
+  const roots = [canonicalRoot, verifiedRoot].map(p => fs.realpathSync(p));
+  if (roots[0] === roots[1]) throw Error("separate_verified_workspace_required");
+  const migrated = new Set(CHECKS.map(v => v[1]));
+  return evaluate(nowMs, name => {
+    if (name !== WORKER && !migrated.has(name)) throw Error("unexpected_receipt_path");
+    const root = name === WORKER ? roots[0] : roots[1];
+    const file = path.join(root, name);
+    const real = fs.realpathSync(file);
+    if (real !== file || !fs.statSync(real).isFile()) throw Error("unsafe_receipt_path");
+    return readJSON(real);
+  });
+}
 function alertBody(r) {
   const broken = r.checks.filter(c => ["critical", "warning"].includes(c.status));
   const lines = [
@@ -134,4 +152,4 @@ function persistReport(r, path = "runtime/ops-sentinel/latest.json") {
   fs.writeFileSync(path, JSON.stringify(r, null, 2) + "\n");
   return true;
 }
-module.exports = {CHECKS, WORKER, GRACE_END, ALERT_TITLE, receiptCheck, heartbeatCheck, evaluate, alertBody, persistReport};
+module.exports = {CHECKS, WORKER, GRACE_END, ALERT_TITLE, receiptCheck, heartbeatCheck, evaluate, evaluateVerified, alertBody, persistReport};
